@@ -7,7 +7,7 @@
     :placeholder="placeholder"
     class="form-control form-control-lg"
     :required="required"
-  >
+  />
   <a
     href="javascript:void(0);"
     @click="changeInputType"
@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { ref, watch, defineProps, defineEmits } from 'vue';
+import { ref, watch, defineProps, defineEmits } from 'vue'
 
 const props = defineProps({
   initialValue: String,
@@ -28,18 +28,18 @@ const props = defineProps({
   id: String,
   placeholder: String,
   required: Boolean,
-});
+})
 
-const emit = defineEmits(['input']);
+const emit = defineEmits(['input'])
 
-const inputType = ref('password');
-const inputValue = ref(props.initialValue || '');
+const inputType = ref('password')
+const inputValue = ref(props.initialValue || '')
 
 const changeInputType = () => {
-  inputType.value = inputType.value === 'text' ? 'password' : 'text';
-};
+  inputType.value = inputType.value === 'text' ? 'password' : 'text'
+}
 
 watch(inputValue, () => {
-  emit('input', inputValue.value);
-});
+  emit('input', inputValue.value)
+})
 </script>
