@@ -5,9 +5,9 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
-    "lint": "eslint \"resources/js/**/*.{js,vue}\"",
-    "lint:fix": "eslint \"resources/js/**/*.{js,vue}\" --fix",
-    "format": "prettier --write \"resources/js/**/*.{js,vue,ts,json,css,scss}\""
+    "lint": "eslint \"resources/**/**/*.{js,vue}\"",
+    "lint:fix": "eslint \"resources/**/**/*.{js,vue}\" --fix",
+    "format": "prettier --write \"resources/**/**/*.{js,vue,ts,json,css,scss}\""
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.28.4",

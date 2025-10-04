@@ -25,12 +25,7 @@ export default [
 
   // 🧩 Aturan untuk file Vue & JS di dalam aplikasi
   {
-    files: [
-      'resources/js/**/*.{js,vue}',
-      'resources/stores/**/*.{js,vue}',
-      'resources/utils/**/*.{js,vue}',
-      'resources/UI/**/*.{js,vue}',
-    ],
+    files: ['resources/**/**/*.{js,vue}'],
     languageOptions: {
       parser: vueParser,
       parserOptions: {
