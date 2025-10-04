@@ -1,5 +1,4 @@
 import * as echarts from 'echarts'
-import myChart from 'echarts'
 
 export const chartOption = {
   grid: {
@@ -671,7 +670,7 @@ app.config = {
   verticalAlign: 'middle',
   position: 'insideBottom',
   distance: 15,
-  onChange: function () {
+  onChange: function (myChart) {
     const labelOption = {
       rotate: app.config.rotate,
       align: app.config.align,
