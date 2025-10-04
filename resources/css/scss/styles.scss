@@ -1,0 +1,152 @@
+/*------------------------------------------------------------------
+[Master Stylesheet]
+
+Project                            :   VYZOR - HTML5 Bootstrap Admin Template
+Create Date                        :  
+Author & Copyright Ownership       :   Spruko Technologies Private Limited 
+Author URL                         :   https://themeforest.net/user/spruko
+Support	                           :   https://support.spruko.com/
+License Details                    :   https://spruko.com/licenses-details
+------------------------------------------------------------------*/
+
+/* Table Of Content 
+switcher
+accordion
+alerts
+badge
+breadcrumb
+buttons
+cards
+dropdown
+forms
+input_group
+list_group
+modals
+navbar
+navs_tabs
+pagination
+popovers
+progress
+tables
+toast
+tooltips
+authentication
+custom
+dashboard_styles
+error
+header
+plugins
+ribbons
+widgets
+closed_menu
+detached_menu
+double_menu
+horizontal
+icon_click
+icon_hover
+icon_overlay
+icontext
+menu_click
+menu_hover
+vertical
+chat
+ecommerce
+file-manager
+landing
+mail
+task
+avatars
+background
+border
+opacity
+typography
+*/
+
+// @forward "switcher";
+@forward "bootstrap";
+
+
+/* BOOTSTRAP */
+@forward "bootstrap/accordion";
+@forward "bootstrap/alerts";
+@forward "bootstrap/badge";
+@forward "bootstrap/breadcrumb";
+@forward "bootstrap/buttons";
+@forward "bootstrap/cards";
+@forward "bootstrap/dropdown";
+@forward "bootstrap/forms";
+@forward "bootstrap/input_group";
+@forward "bootstrap/list_group";
+@forward "bootstrap/modals";
+@forward "bootstrap/navbar";
+@forward "bootstrap/navs_tabs";
+@forward "bootstrap/pagination";
+@forward "bootstrap/popovers";
+@forward "bootstrap/progress";
+@forward "bootstrap/tables";
+@forward "bootstrap/toast";
+@forward "bootstrap/tooltips";
+
+/* CUSTOM */
+@forward "custom/authentication";
+@forward "custom/custom";
+@forward "custom/dashboard_styles";
+@forward "custom/error";
+@forward "custom/header";
+@forward "custom/plugins";
+@forward "custom/ribbons";
+@forward "custom/widgets";
+
+/* GLOBAL */
+@forward "./global/tables";
+@forward "./global/select2";
+@forward "./global/vue3-slider-component";
+@forward "./global/vue-multiselect";
+@forward "./global/dropzone";
+@forward "./global/vuepic_vue-datepicker";
+@forward "./global/vue3-datepicker";
+@forward "./global/vue3colorpicker";
+@forward "./global/v-color-picker";
+// @forward "./global/form-wizard-vue3";
+@forward "./global/vuetify";
+@forward "./global/vue3-easy-data-table";
+@forward "./global/charts";
+@forward "./global/pscroll";
+@forward "./global/range-slider";
+@forward "./global/jsVector";
+@forward "./global/custom";
+
+/* MENU-STYLES */
+@forward "menu-styles/closed_menu";
+@forward "menu-styles/detached_menu";
+@forward "menu-styles/double_menu";
+@forward "menu-styles/horizontal";
+@forward "menu-styles/icon_click";
+@forward "menu-styles/icon_hover";
+@forward "menu-styles/icon_overlay";
+@forward "menu-styles/icontext";
+@forward "menu-styles/menu_click";
+@forward "menu-styles/menu_hover";
+@forward "menu-styles/vertical";
+
+/* PAGES */
+@forward "pages/chat";
+@forward "pages/ecommerce";
+@forward "pages/file-manager";
+@forward "pages/landing";
+@forward "pages/mail";
+@forward "pages/task";
+
+
+/* UTILITIES */
+@forward "util/avatars";
+@forward "util/background";
+@forward "util/border";
+@forward "util/opacity";
+@forward "util/typography";
+
+
+/* FONT */
+
+/* Space Grotesk Sans */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');

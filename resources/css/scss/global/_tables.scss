@@ -1,0 +1,54 @@
+   //*** Data-Tables-Css-Start ***//
+
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1 {
+    --Paper-shadow: none !important;
+    background-color: var(--custom-white) !important;
+
+    table {
+        border-color: var(--default-border) !important;
+    }
+
+    .MuiTableCell-root.MuiTableCell-body {
+        color: var(--default-text-color) !important;
+    }
+
+    .MuiTableCell-root.MuiTableCell-head.MuiTableCell-sizeMedium {
+        background-color: var(--custom-white) !important;
+        color: var(--default-text-color) !important;
+    }
+}
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded {
+    border-radius: 0 !important;
+}
+.MuiTable-root.MuiTable-stickyHeader.sticky-header-table {
+    border-collapse: collapse !important;
+    border-color: var(--default-border) !important;
+    background-color: var(--custom-white) !important;
+    color: var(--default-text-color) !important;
+}
+
+.sticky-header-table {
+    .MuiTableCell-root.MuiTableCell-body {
+        color: var(--default-text-color) !important;
+    }
+
+    .MuiTableCell-root.MuiTableCell-head.MuiTableCell-stickyHeader {
+        background-color: var(--custom-white) !important;
+        color: var(--default-text-color) !important;
+    }
+}
+.MuiTable-root .MuiTableCell-root {
+    text-align: start !important;
+}
+
+   //*** Data-Tables-Css-End ***//
+
+   //*** GridJs-Tables-Css-Start ***//
+   .gridjs-pagination .gridjs-summary {
+    float: left;
+    margin-top: 5px;
+}
+.gridjs-pagination .gridjs-pages {
+    float: right;
+}
+   //*** GridJs-Tables-Css-End ***//

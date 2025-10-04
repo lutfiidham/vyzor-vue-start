@@ -1,0 +1,243 @@
+@use '../variables';
+/* ###### 3.13 globalReactselect ###### */
+
+.Select2__indicator-separator {
+    display: none;
+  }
+  .Select2__option:hover {
+    color:#fff;
+  }
+
+  .Select2__menu {
+    margin: 0 !important;
+    margin-top: -1px !important;
+  }
+  //
+  
+  .Select2__control {
+    box-shadow: none !important;
+  }
+  
+  //
+  .background__indicator-separator{
+    display: none;
+  }
+  .Select2__multi-value, .react-select__multi-value {
+    border-radius: .25rem !important;
+  }
+  .default{
+    .Select2__multi-value__label {
+    padding: 0.025rem 0.625rem!important;
+     background-color: variables.$primary !important;
+    color: #fff !important;
+    border-radius: .25rem;
+    }
+    .Select2__multi-value__remove{
+     display: none;
+    }
+  }
+  .passing-option{
+      .react-select__multi-value__remove{
+       display: none;
+      }
+  }
+  
+
+  
+.Select2__menu {
+    div,
+    li,
+    .Select2__single-value {
+      &.active,
+      .Select2__option--is-selected {
+        background: var(--primary-bg-color) !important;
+      }
+      
+    }
+      
+  }
+
+
+  .rmsc.multi-select .dropdown-container,
+  .rdl-actions .rdl-move,
+  .Select2__control {
+    border-color: variables.$default-border;
+    background-color: variables.$custom-white;
+  }
+  .multi-select .dropdown-content {
+    background-color: variables.$custom-white;
+    border: 1px solid variables.$default-border;
+    
+    div {
+      background-color: variables.$custom-white;
+  
+      label {
+        &:hover,
+        &.selected {
+          background-color: variables.$custom-white;
+        }
+      }
+    }
+  }
+  .Select2__menu {
+    background-color: variables.$custom-white;
+    border: 1px solid variables.$default-border;
+  }
+  
+  .Select2__option--is-selected,
+  .Select2__option--is-focused {
+    background: variables.$custom-white !important;
+    color: variables.$default-text-color !important;
+  }
+  .Select2__option:hover {  
+    background: variables.$primary !important;
+  }
+  .Select2__control {
+    background-color: variables.$custom-white;
+    border-color: variables.$default-border;
+  }
+  .Select2__option, .Select2__single-value {
+    img {
+      width: 30px !important;
+      height: 30px !important;
+      border-radius: 50%;
+    }
+  }
+
+  .input-group {
+    .buysell {
+      .Select2__input-container {
+        color: variables.$default-text-color;
+      }
+      .Select2__control{
+        border-start-start-radius: 0;
+        border-end-start-radius: 0;
+        min-height: 39px !important;
+        border-color: variables.$default-border;
+      }
+    }
+    
+  }
+
+  .Select2__control, .Select2__menu {
+    background-color: variables.$form-control-bg !important;
+    border-color: variables.$input-border !important;
+  }
+  .Select2__menu {
+    background-color: variables.$form-control-bg !important;
+    box-shadow: none !important;
+  }
+  .Select2__option:hover {
+    color: #fff !important;
+     background-color: variables.$primary !important;
+  }
+  .Select2__input-container, .Select2__single-value {
+    color: variables.$default-text-color !important;
+  }
+  .input-group {
+    .Select2__control {
+      border-start-start-radius: 0 !important;
+      border-end-start-radius: 0 !important;
+    }
+  }
+  .Select2__menu {
+    div,
+    li,
+    .Select2__single-value {
+      &.active {
+        color: #fff !important;
+         background-color: variables.$primary !important;
+      }
+    }
+  }
+  .Select2__menu div .Select2__option--is-selected {
+    color: variables.$primary !important;
+    background-color:transparent !important;
+  }
+  .Select2__menu { 
+    z-index: 3 !important;
+  }
+
+  .Select2__multi-value {
+     background-color: variables.$primary !important;
+    color: #fff !important;
+  }
+  .Select2__multi-value__label {
+    color: #fff !important;
+  }
+  .react-select__control {
+    background-color: variables.$form-control-bg !important;
+    border-color: variables.$default-border !important;
+  }
+  .react-select__multi-value {
+     background-color: variables.$primary !important;
+  }
+  .react-select__multi-value__label {
+    color: #fff !important;
+  }
+  .react-select__multi-value__remove {
+    svg {
+      fill: #fff !important;
+    }
+  }
+  .Select2__placeholder {
+    color: variables.$text-muted !important;
+  }  
+  .rmsc {
+    --rmsc-main: transparent;
+    --rmsc-border: #e9edf6 !important;
+    --rmsc-bg: #fff !important;
+    --rmsc-main: #000;
+    --rmsc-selected: #845adf1a !important;
+    --rmsc-hover: #845adf1a !important;
+  }
+  
+  .rmsc .dropdown-container {
+    background: variables.$custom-white;
+    border: 1px solid variables.$default-border !important;
+  }
+  
+  .rmsc .dropdown-content {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+  }
+  .rmsc {
+    --rmsc-main: transparent !important;
+  }
+  .react-select__input-container {
+    color: variables.$default-text-color !important;
+  }
+  .custom-multi {
+    .Select2__clear-indicator{
+      display: none;
+    } 
+  }
+  .passing-option{
+    .react-select__multi-value__remove{
+     display: none;
+    }
+  }
+  .form-select option.selected {
+    background-color: var(--primary02)!important;
+    color: var(--primary-color)!important;
+  }
+  .basic-custom-select {
+    .Select2__value-container {
+      cursor: pointer; 
+    }
+  }
+  #search-modal .Select2__indicator svg, .Select2__indicator svg {
+    display: none !important;
+}
+  .Select2__dropdown-indicator:after {
+    pointer-events: none !important;
+    position: absolute !important;
+    inset-inline-end: 11.5px !important;
+    top: 50% !important;
+    margin-top: -2.5px !important;
+    height: 0 !important;
+    width: 0 !important;
+    content: "" !important;
+    border: 5px solid transparent !important;
+    border-top: 5px solid var(--text-muted) !important;
+}
+  /* ###### 3.13 globalReactselect ###### */

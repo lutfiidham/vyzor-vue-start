@@ -1,0 +1,207 @@
+
+
+export const ProjectListDat = [
+    {
+        id: 1,
+        name: "Website Redesign",
+        companyLogo: '/images/company-logos/1.png',
+        companyName: "ABC Corp",
+        startDate: "2025-01-10",
+        endDate: "2025-03-15",
+        status: "In Progress",
+        statucolor: "info-transparent",
+        budget: "$15,000",
+        team: [
+            '/images/faces/2.jpg',
+            '/images/faces/8.jpg',
+            '/images/faces/2.jpg',
+            '/images/faces/10.jpg',
+        ],
+        extraTeam: 2,
+        priority: "High",
+        PriorityColor: "danger"
+    },
+    {
+        id: 2,
+        name: "Mobile App",
+        companyLogo: '/images/company-logos/2.png',
+        companyName: "XYZ Ltd",
+        startDate: "2025-02-01",
+        endDate: "2025-04-20",
+        status: "Completed",
+        statucolor: "success-transparent",
+        budget: "$25,000",
+        team: [
+            '/images/faces/12.jpg',
+            '/images/faces/9.jpg',
+            '/images/faces/11.jpg',
+        ],
+        extraTeam: 4,
+        priority: "Medium",
+        PriorityColor: "warning"
+    },
+    {
+        id: 3,
+        name: "E-commerce Platform",
+        companyLogo: '/images/company-logos/3.png',
+        companyName: "FutureTech",
+        startDate: "2025-03-05",
+        endDate: "2025-05-30",
+        status: "In Progress",
+        statucolor: "info-transparent",
+        budget: "$50,000",
+        team: [
+            '/images/faces/5.jpg',
+            '/images/faces/6.jpg',
+        ],
+        extraTeam: 1,
+        priority: "High",
+        PriorityColor: "danger"
+    },
+    {
+        id: 4,
+        name: "CRM System",
+        companyLogo: '/images/company-logos/4.png',
+        companyName: "Innovate Solutions",
+        startDate: "2025-01-15",
+        endDate: "2025-04-05",
+        status: "Delayed",
+        statucolor: "warning-transparent",
+        budget: "$20,000",
+        team: [
+            '/images/faces/3.jpg',
+            '/images/faces/9.jpg',
+            '/images/faces/12.jpg',
+            '/images/faces/11.jpg',
+        ],
+        extraTeam: 2,
+        priority: "Low",
+        PriorityColor: "primary"
+    },
+    {
+        id: 5,
+        name: "Content Management System",
+        companyLogo: '/images/company-logos/5.png',
+        companyName: "DesignWorks",
+        startDate: "2025-02-20",
+        endDate: "2025-05-01",
+        status: "Completed",
+        statucolor: "success-transparent",
+        budget: "$18,000",
+        team: [
+            '/images/faces/10.jpg',
+            '/images/faces/2.jpg',
+            '/images/faces/1.jpg',
+        ],
+        extraTeam: 1,
+        priority: "Medium",
+        PriorityColor: "warning"
+    },
+    {
+        id: 6,
+        name: "Analytics Dashboard",
+        companyLogo: '/images/company-logos/6.png',
+        companyName: "GreenTech",
+        startDate: "2025-03-01",
+        endDate: "2025-06-15",
+        status: "In Progress",
+        statucolor: "info-transparent",
+        budget: "$30,000",
+        team: [
+            '/images/faces/7.jpg',
+            '/images/faces/13.jpg',
+        ],
+        extraTeam: 0,
+        priority: "High",
+        PriorityColor: "danger"
+    },
+    {
+        id: 7,
+        name: "AI Integration",
+        companyLogo: '/images/company-logos/7.png',
+        companyName: "Tech Innovations",
+        startDate: "2025-03-10",
+        endDate: "2025-07-01",
+        status: "Not Started",
+        statucolor: "light text-default",
+        budget: "$40,000",
+        team: [
+            '/images/faces/5.jpg',
+            '/images/faces/14.jpg',
+            '/images/faces/15.jpg',
+        ],
+        extraTeam: 2,
+        priority: "High",
+        PriorityColor: "danger"
+    },
+    {
+        id: 8,
+        name: "SEO Optimization",
+        companyLogo: '/images/company-logos/8.png',
+        companyName: "Creativa Solutions",
+        startDate: "2025-01-25",
+        endDate: "2025-03-10",
+        status: "Completed",
+        statucolor: "success-transparent",
+        budget: "$8,000",
+        team: [
+            '/images/faces/13.jpg',
+            '/images/faces/16.jpg',
+        ],
+        extraTeam: 2,
+        priority: "Medium",
+        PriorityColor: "warning"
+    },
+    {
+        id: 9,
+        name: "HR Management System",
+        companyLogo: '/images/company-logos/9.png',
+        companyName: "Innovators Inc",
+        startDate: "2025-04-01",
+        endDate: "2025-07-01",
+        status: "In Progress",
+        statucolor: "info-transparent",
+        budget: "$12,000",
+        team: [
+            '/images/faces/1.jpg',
+            '/images/faces/15.jpg',
+            '/images/faces/12.jpg',
+            '/images/faces/8.jpg',
+        ],
+        extraTeam: 7,
+        priority: "Medium",
+        PriorityColor: "warning"
+    },
+    {
+        id: 10,
+        name: "Project Management Tool",
+        companyLogo: '/images/company-logos/10.png',
+        companyName: "GreenFuture",
+        startDate: "2025-02-10",
+        endDate: "2025-02-10",
+        status: "Delayed",
+        statucolor: "warning-transparent",
+        budget: "$22,000",
+        team: [
+            '/images/faces/5.jpg',
+            '/images/faces/11.jpg',
+            '/images/faces/13.jpg',
+        ],
+        extraTeam: 4,
+        priority: "Low",
+        PriorityColor: "primary",
+        tdClass: 'border-bottom-0'
+    }
+];
+
+export const AvatarImages = [
+    '/images/faces/1.jpg',
+    '/images/faces/2.jpg',
+    '/images/faces/8.jpg',
+    '/images/faces/12.jpg',
+    '/images/faces/10.jpg',
+    '/images/faces/4.jpg',
+    '/images/faces/5.jpg',
+    '/images/faces/13.jpg'
+];
+

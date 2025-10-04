@@ -1,0 +1,146 @@
+
+export const Leadsdata = [
+    {
+        id: "1",
+        name: "John Doe",
+        email: "john.doe@example.com",
+        phone: "(123) 456-7890",
+        status: "New Lead",
+        companyLogo: '/images/company-logos/1.png',
+        companyName: "ABC Corp",
+        source: "Web",
+        tags: [
+            { label: "Interested", color: "primary-transparent" },
+            { label: "VIP", color: "primary-transparent" }
+        ],
+        avatar: '/images/faces/9.jpg'
+    },
+    {
+        id: "2",
+        name: "Jane Smith",
+        email: "jane.smith@example.com",
+        phone: "(987) 654-3210",
+        status: "Contacted",
+        companyLogo: '/images/company-logos/3.png',
+        companyName: "XYZ Ltd",
+        source: "Referral",
+        tags: [
+            { label: "Follow-up", color: "primary-transparent" },
+        ],
+        avatar: '/images/faces/1.jpg'
+    },
+    {
+        id: "3",
+        name: "Emily Johnson",
+        email: "emily.johnson@example.com",
+        phone: "(555) 123-4567",
+        status: "Qualified",
+        companyLogo: '/images/company-logos/4.png',
+        companyName: "FutureTech",
+        source: "Social Media",
+        tags: [
+            { label: "High Priority", color: "success-transparent" },
+            { label: "VIP", color: "primary-transparent" }
+        ],
+        avatar: '/images/faces/2.jpg'
+    },
+    {
+        id: "4",
+        name: "Michael Brown",
+        email: "michael.brown@example.com",
+        phone: "(333) 777-8888",
+        status: "Negotiation",
+        companyLogo: '/images/company-logos/5.png',
+        companyName: "Innovate Solutions",
+        source: "Web",
+        tags: [
+            { label: "Potential", color: "light text-default" },
+        ],
+        avatar: '/images/faces/10.jpg'
+    },
+    {
+        id: "5",
+        name: "Sara White",
+        email: "sara.white@example.com",
+        phone: "(222) 333-4444",
+        status: "Lead Closed",
+        companyLogo: '/images/company-logos/6.png',
+        companyName: "DesignWorks",
+        source: "Event",
+        tags: [
+            { label: "Coverted", color: "pink-transparent" },
+        ],
+        avatar: '/images/faces/3.jpg'
+    },
+    {
+        id: "6",
+        name: "David Lee",
+        email: "david.lee@example.com",
+        phone: "(444) 555-6666",
+        status: "Contacted",
+        companyLogo: '/images/company-logos/7.png',
+        companyName: "Tech Innovations",
+        source: "Referral",
+        tags: [
+            { label: "Follow-up", color: "danger-transparent" },
+        ],
+        avatar: '/images/faces/11.jpg'
+    },
+    {
+        id: "7",
+        name: "Olivia Green",
+        email: "olivia.green@example.com",
+        phone: "(555) 777-8888",
+        status: "Contacted",
+        companyLogo: '/images/company-logos/8.png',
+        companyName: "GreenTech",
+        source: "Web",
+        tags: [
+            { label: "Interested", color: "warning-transparent" },
+            { label: "VIP", color: "purple-transparent" }
+        ],
+        avatar: '/images/faces/4.jpg'
+    },
+    {
+        id: "8",
+        name: "Liam Turner",
+        email: "liam.turner@example.com",
+        phone: "(888) 999-0000",
+        status: "Negotiation",
+        companyLogo: '/images/company-logos/9.png',
+        companyName: "Innovators Inc",
+        source: "Event",
+        tags: [
+            { label: "Potential", color: "success-transparent" },
+        ],
+        avatar: '/images/faces/13.jpg'
+    },
+    {
+        id: "9",
+        name: "Mia Martinez",
+        email: "mia.martinez@example.com",
+        phone: "(777) 888-9999",
+        status: "Qualified",
+        companyLogo: '/images/company-logos/10.png',
+        companyName: "Creativa Solutions",
+        source: "Social Media",
+        tags: [
+            { label: "VIP", color: "primary-transparent" }
+        ],
+        avatar: '/images/faces/5.jpg'
+    },
+    {
+        id: "10",
+        name: "Noah Harris",
+        email: "noah.harris@example.com",
+        phone: "(444) 222-3333",
+        status: "Lead Closed",
+        companyLogo: '/images/company-logos/2.png',
+        companyName: "GreenFuture",
+        source: "Referral",
+        tags: [
+            { label: "Converted", color: "primary-transparent" },
+        ],
+        avatar: '/images/faces/15.jpg'
+    }
+]
