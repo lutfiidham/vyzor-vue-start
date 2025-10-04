@@ -3,11 +3,13 @@ import pluginVue from 'eslint-plugin-vue'
 import pluginPrettier from 'eslint-plugin-prettier'
 import globals from 'globals'
 import vueParser from 'vue-eslint-parser'
+import babelParser from '@babel/eslint-parser'
+import tsParser from '@typescript-eslint/parser'
 
 export default [
   js.configs.recommended,
 
-  // 🧩 Konfigurasi khusus untuk file Node.js seperti vite.config.js, tailwind.config.js, dll
+  // 🧩 Konfigurasi untuk file Node.js (vite.config.js, tailwind.config.js, dsb)
   {
     files: ['vite.config.{js,ts}', 'tailwind.config.{js,ts}', 'postcss.config.{js,ts}'],
     languageOptions: {
@@ -18,18 +20,27 @@ export default [
       },
     },
     rules: {
-      // Nonaktifkan aturan browser yang gak relevan di Node
-      'no-undef': 'off',
+      'no-undef': 'off', // Nonaktifkan aturan browser di environment Node
     },
   },
 
   // 🧩 Aturan untuk file Vue & JS di dalam aplikasi
   {
-    files: ['resources/**/**/*.{js,vue}'],
+    files: [
+      'resources/**/**/*.{js,vue,ts}',
+      'resources/stores/**/*.{js,vue,ts}',
+      'resources/utils/**/*.{js,vue,ts}',
+      'resources/UI/**/*.{js,vue,ts}',
+    ],
     languageOptions: {
       parser: vueParser,
       parserOptions: {
-        parser: '@babel/eslint-parser',
+        parser: {
+          // otomatis: <script lang="ts"> → pakai TS parser
+          ts: tsParser,
+          // otomatis: <script> biasa → pakai Babel parser
+          js: babelParser,
+        },
         requireConfigFile: false, // biar gak butuh .babelrc
         ecmaVersion: 2020,
         sourceType: 'module',
@@ -47,7 +58,13 @@ export default [
     },
     rules: {
       ...pluginVue.configs['flat/recommended'].rules,
-      'vue/multi-word-component-names': 'off', // biar gak maksa nama 2 kata
+
+      // ✨ Aturan tambahan Ndoro
+      'vue/multi-word-component-names': 'off',
+      'no-unused-vars': 'warn',
+      'no-useless-escape': 'warn',
+
+      // 💅 Integrasi Prettier
       'prettier/prettier': [
         'error',
         {

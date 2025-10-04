@@ -5,14 +5,16 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
-    "lint": "eslint \"resources/**/**/*.{js,vue}\"",
-    "lint:fix": "eslint \"resources/**/**/*.{js,vue}\" --fix",
-    "format": "prettier --write \"resources/**/**/*.{js,vue,ts,json,css,scss}\""
+    "lint": "eslint \"resources/**/*.{js,vue}\"",
+    "lint:fix": "eslint \"resources/**/*.{js,vue}\" --fix",
+    "format": "prettier --write \"resources/**/*.{js,vue,ts,json,css,scss}\""
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.28.4",
     "@eslint/js": "^9.37.0",
     "@tailwindcss/vite": "^4.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.45.0",
+    "@typescript-eslint/parser": "^8.45.0",
     "axios": "^1.11.0",
     "concurrently": "^9.0.1",
     "eslint": "^9.37.0",
