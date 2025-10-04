@@ -7,13 +7,30 @@ import vueParser from 'vue-eslint-parser'
 export default [
   js.configs.recommended,
 
+  // 🧩 Konfigurasi khusus untuk file Node.js seperti vite.config.js, tailwind.config.js, dll
+  {
+    files: ['vite.config.{js,ts}', 'tailwind.config.{js,ts}', 'postcss.config.{js,ts}'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      sourceType: 'module',
+      globals: {
+        ...globals.node, // biar __dirname, process, require, dsb dianggap valid
+      },
+    },
+    rules: {
+      // Nonaktifkan aturan browser yang gak relevan di Node
+      'no-undef': 'off',
+    },
+  },
+
+  // 🧩 Aturan untuk file Vue & JS di dalam aplikasi
   {
     files: ['resources/js/**/*.{js,vue}'],
     languageOptions: {
       parser: vueParser,
       parserOptions: {
         parser: '@babel/eslint-parser',
-        requireConfigFile: false, // ⬅️ tambahkan ini biar gak butuh .babelrc
+        requireConfigFile: false, // biar gak butuh .babelrc
         ecmaVersion: 2020,
         sourceType: 'module',
         ecmaFeatures: { jsx: false },
@@ -21,6 +38,7 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.node,
+        __BASE_PATH__: 'readonly',
       },
     },
     plugins: {
@@ -29,7 +47,7 @@ export default [
     },
     rules: {
       ...pluginVue.configs['flat/recommended'].rules,
-      'vue/multi-word-component-names': 'off',
+      'vue/multi-word-component-names': 'off', // biar gak maksa nama 2 kata
       'prettier/prettier': [
         'error',
         {
