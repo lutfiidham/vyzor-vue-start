@@ -110,9 +110,9 @@ export let LiveExample = {
   CustomContent = {
     script: `  <div class="btn-list">
                 <button v-on:click="successToast(
-                        <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
-                        '<strong class=\' me-auto\'>Vyzor</strong>' +
-                        '<div class=\'toast-body\'>Your toast message here.</div>',
+                        <img class=' bd-placeholder-img rounded me-2 ' src='/images/brand-logos/toggle-dark.png' alt='...'> +
+                        '<strong class=' me-auto'>Vyzor</strong>' +
+                        '<div class='toast-body'>Your toast message here.</div>',
                         true,
                         'auto',
                         true,
@@ -122,9 +122,9 @@ export let LiveExample = {
                         'top-right'
                     )" type="button" class="btn btn-success-light me-2 btn-wave" id="successToastBtn">success</button>
                     <button v-on:click="warningToast(
-                        <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
-                        '<strong class=\' me-auto\'>Vyzor</strong>' +
-                        '<div class=\'toast-body\'>Your toast message here.</div>',
+                        <img class=' bd-placeholder-img rounded me-2 ' src='/images/brand-logos/toggle-dark.png' alt='...'> +
+                        '<strong class=' me-auto'>Vyzor</strong>' +
+                        '<div class='toast-body'>Your toast message here.</div>',
                         true,
                         'auto',
                         true,
@@ -134,9 +134,9 @@ export let LiveExample = {
                         'top-right'
                     )" type="button" class="btn btn-warning-light me-2 btn-wave" id="warningToastBtn">warning</button>
                     <button v-on:click="infoToast(
-                        <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
-                        '<strong class=\' me-auto\'>Vyzor</strong>' +
-                        '<div class=\'toast-body\'>Your toast message here.</div>',
+                        <img class=' bd-placeholder-img rounded me-2 ' src='/images/brand-logos/toggle-dark.png' alt='...'> +
+                        '<strong class=' me-auto'>Vyzor</strong>' +
+                        '<div class='toast-body'>Your toast message here.</div>',
                         true,
                         'auto',
                         true,
@@ -146,9 +146,9 @@ export let LiveExample = {
                         'top-right'
                     )" type="button" class="btn btn-info-light me-2 btn-wave" id="infoToastBtn">info</button>
                     <button v-on:click="errorToast(
-                        <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
-                        '<strong class=\' me-auto\'>Vyzor</strong>' +
-                        '<div class=\'toast-body\'>Your toast message here.</div>',
+                        <img class=' bd-placeholder-img rounded me-2 ' src='/images/brand-logos/toggle-dark.png' alt='...'> +
+                        '<strong class=' me-auto'>Vyzor</strong>' +
+                        '<div class='toast-body'>Your toast message here.</div>',
                         true,
                         'auto',
                         true,
@@ -162,9 +162,9 @@ export let LiveExample = {
   ToastVariants = {
     script: `&lt;div class="btn-list">
     &lt;button v-on:click="successToast(
-        '&lt;img class=\' bd-placeholder-img rounded me-2 \' src='+BASE_URL+'images/brand-logos/toggle-dark.png alt=\'...\'>' +
-        '&lt;strong class=\' me-auto\'>Vyzor&lt;/strong>' +
-        '&lt;div class=\'toast-body\'>Your toast message here.&lt;/div>',
+        '&lt;img class=' bd-placeholder-img rounded me-2 ' src='+BASE_URL+'images/brand-logos/toggle-dark.png alt='...'>' +
+        '&lt;strong class=' me-auto'>Vyzor&lt;/strong>' +
+        '&lt;div class='toast-body'>Your toast message here.&lt;/div>',
         true,
         'auto',
         true,
@@ -174,9 +174,9 @@ export let LiveExample = {
         'top-right'
     )" type="button" class="btn btn-success-light me-2 btn-wave" id="successToastBtn">success&lt;/button>
     &lt;button v-on:click="warningToast(
-        '&lt;img class=\' bd-placeholder-img rounded me-2 \' src='+BASE_URL+'images/brand-logos/toggle-dark.png alt=\'...\'>' +
-        '&lt;strong class=\' me-auto\'>Vyzor&lt;/strong>' +
-        '&lt;div class=\'toast-body\'>Your toast message here.&lt;/div>',
+        '&lt;img class=' bd-placeholder-img rounded me-2 ' src='+BASE_URL+'images/brand-logos/toggle-dark.png alt='...'>' +
+        '&lt;strong class=' me-auto'>Vyzor&lt;/strong>' +
+        '&lt;div class='toast-body'>Your toast message here.&lt;/div>',
         true,
         'auto',
         true,
@@ -186,9 +186,9 @@ export let LiveExample = {
         'top-right'
     )" type="button" class="btn btn-warning-light me-2 btn-wave" id="warningToastBtn">warning&lt;/button>
     &lt;button v-on:click="infoToast(
-        '&lt;img class=\' bd-placeholder-img rounded me-2 \' src='+BASE_URL+'images/brand-logos/toggle-dark.png alt=\'...\'>' +
-        '&lt;strong class=\' me-auto\'>Vyzor&lt;/strong>' +
-        '&lt;div class=\'toast-body\'>Your toast message here.&lt;/div>',
+        '&lt;img class=' bd-placeholder-img rounded me-2 ' src='+BASE_URL+'images/brand-logos/toggle-dark.png alt='...'>' +
+        '&lt;strong class=' me-auto'>Vyzor&lt;/strong>' +
+        '&lt;div class='toast-body'>Your toast message here.&lt;/div>',
         true,
         'auto',
         true,
@@ -198,9 +198,9 @@ export let LiveExample = {
         'top-right'
     )" type="button" class="btn btn-info-light me-2 btn-wave" id="infoToastBtn">info&lt;/button>
     &lt;button v-on:click="errorToast(
-        '&lt;img class=\' bd-placeholder-img rounded me-2 \' src='+BASE_URL+'images/brand-logos/toggle-dark.png alt=\'...\'>' +
-        '&lt;strong class=\' me-auto\'>Vyzor&lt;/strong>' +
-        '&lt;div class=\'toast-body\'>Your toast message here.&lt;/div>',
+        '&lt;img class=' bd-placeholder-img rounded me-2 ' src='+BASE_URL+'images/brand-logos/toggle-dark.png alt='...'>' +
+        '&lt;strong class=' me-auto'>Vyzor&lt;/strong>' +
+        '&lt;div class='toast-body'>Your toast message here.&lt;/div>',
         true,
         'auto',
         true,
@@ -214,9 +214,9 @@ export let LiveExample = {
   ToastOptions = {
     script: `div class="btn-list">
                     <button v-on:click="toster(
-                        <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
-                        '<strong class=\' me-auto\'>Vyzor</strong>' +
-                        '<div class=\'toast-body\'>Your toast message here.</div>',
+                        <img class=' bd-placeholder-img rounded me-2 ' src='/images/brand-logos/toggle-dark.png' alt='...'> +
+                        '<strong class=' me-auto'>Vyzor</strong>' +
+                        '<div class='toast-body'>Your toast message here.</div>',
                         true,
                         'auto',
                         false,
@@ -228,9 +228,9 @@ export let LiveExample = {
                         on
                         Top</button>
                     <button v-on:click="toster(
-                        <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
-                        '<strong class=\' me-auto\'>Vyzor</strong>' +
-                        '<div class=\'toast-body\'>Your toast message here.</div>',
+                        <img class=' bd-placeholder-img rounded me-2 ' src='/images/brand-logos/toggle-dark.png' alt='...'> +
+                        '<strong class=' me-auto'>Vyzor</strong>' +
+                        '<div class='toast-body'>Your toast message here.</div>',
                         true,
                         'auto',
                         true,
@@ -240,9 +240,9 @@ export let LiveExample = {
                         'top-right', 3000, false, false
                     )" type="button" class="btn btn-warning me-2 btn-wave" id="solidwarningToastBtn">Delay</button>
                     <button v-on:click="toster(
-                        <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
-                        '<strong class=\' me-auto\'>Vyzor</strong>' +
-                        '<div class=\'toast-body\'>Your toast message here.</div>',
+                        <img class=' bd-placeholder-img rounded me-2 ' src='/images/brand-logos/toggle-dark.png' alt='...'> +
+                        '<strong class=' me-auto'>Vyzor</strong>' +
+                        '<div class='toast-body'>Your toast message here.</div>',
                         true,
                         'auto',
                         false,
@@ -253,9 +253,9 @@ export let LiveExample = {
                     )" type="button" class="btn btn-info me-2 btn-wave" id="solidinfoToastBtn">Close on
                         Click</button>
                     <button v-on:click="toster(
-                        <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
-                        '<strong class=\' me-auto\'>Vyzor</strong>' +
-                        '<div class=\'toast-body\'>Your toast message here.</div>',
+                        <img class=' bd-placeholder-img rounded me-2 ' src='/images/brand-logos/toggle-dark.png' alt='...'> +
+                        '<strong class=' me-auto'>Vyzor</strong>' +
+                        '<div class='toast-body'>Your toast message here.</div>',
                         true,
                         'auto',
                         false,
@@ -267,9 +267,9 @@ export let LiveExample = {
                         Auto
                         Close</button>
                     <button v-on:click="toster(
-                        <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
-                        '<strong class=\' me-auto\'>Vyzor</strong>' +
-                        '<div class=\'toast-body\'>Your toast message here.</div>',
+                        <img class=' bd-placeholder-img rounded me-2 ' src='/images/brand-logos/toggle-dark.png' alt='...'> +
+                        '<strong class=' me-auto'>Vyzor</strong>' +
+                        '<div class='toast-body'>Your toast message here.</div>',
                         true,
                         'auto',
                         true,
@@ -284,9 +284,9 @@ export let LiveExample = {
   ToastPlacements = {
     script: `            <div class="btn-list">
                 <button v-on:click="toster(
-                        <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
-                        '<strong class=\' me-auto\'>Vyzor</strong>' +
-                        '<div class=\'toast-body\'>Your toast message here.</div>',
+                        <img class=' bd-placeholder-img rounded me-2 ' src='/images/brand-logos/toggle-dark.png' alt='...'> +
+                        '<strong class=' me-auto'>Vyzor</strong>' +
+                        '<div class='toast-body'>Your toast message here.</div>',
                         true,
                         'auto',
                         false,
@@ -297,9 +297,9 @@ export let LiveExample = {
                     )" type="button" class="btn btn-outline-primary me-2 btn-wave" id="topleftToastBtn">Top
                     Left</button>
                 <button v-on:click="toster(
-                        <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
-                        '<strong class=\' me-auto\'>Vyzor</strong>' +
-                        '<div class=\'toast-body\'>Your toast message here.</div>',
+                        <img class=' bd-placeholder-img rounded me-2 ' src='/images/brand-logos/toggle-dark.png' alt='...'> +
+                        '<strong class=' me-auto'>Vyzor</strong>' +
+                        '<div class='toast-body'>Your toast message here.</div>',
                         true,
                         'auto',
                         false,
@@ -310,9 +310,9 @@ export let LiveExample = {
                     )" type="button" class="btn btn-outline-primary me-2 btn-wave" id="topcenterToastBtn">Top
                     Center</button>
                 <button v-on:click="toster(
-                        <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
-                        '<strong class=\' me-auto\'>Vyzor</strong>' +
-                        '<div class=\'toast-body\'>Your toast message here.</div>',
+                        <img class=' bd-placeholder-img rounded me-2 ' src='/images/brand-logos/toggle-dark.png' alt='...'> +
+                        '<strong class=' me-auto'>Vyzor</strong>' +
+                        '<div class='toast-body'>Your toast message here.</div>',
                         true,
                         'auto',
                         false,
@@ -323,9 +323,9 @@ export let LiveExample = {
                     )" type="button" class="btn btn-outline-primary me-2 btn-wave" id="toprightToastBtn">Top
                     Right</button>
                 <button v-on:click="toster(
-                        <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
-                        '<strong class=\' me-auto\'>Vyzor</strong>' +
-                        '<div class=\'toast-body\'>Your toast message here.</div>',
+                        <img class=' bd-placeholder-img rounded me-2 ' src='/images/brand-logos/toggle-dark.png' alt='...'> +
+                        '<strong class=' me-auto'>Vyzor</strong>' +
+                        '<div class='toast-body'>Your toast message here.</div>',
                         true,
                         'auto',
                         false,
@@ -336,9 +336,9 @@ export let LiveExample = {
                     )" type="button" class="btn btn-outline-primary me-2 btn-wave" id="bottomleftToastBtn">Bottom
                     Left</button>
                 <button v-on:click="toster(
-                        <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
-                        '<strong class=\' me-auto\'>Vyzor</strong>' +
-                        '<div class=\'toast-body\'>Your toast message here.</div>',
+                        <img class=' bd-placeholder-img rounded me-2 ' src='/images/brand-logos/toggle-dark.png' alt='...'> +
+                        '<strong class=' me-auto'>Vyzor</strong>' +
+                        '<div class='toast-body'>Your toast message here.</div>',
                         true,
                         'auto',
                         false,
@@ -349,9 +349,9 @@ export let LiveExample = {
                     )" type="button" class="btn btn-outline-primary me-2 btn-wave" id="bottomcenterToastBtn">Bottom
                     Center</button>
                 <button v-on:click="toster(
-                        <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
-                        '<strong class=\' me-auto\'>Vyzor</strong>' +
-                        '<div class=\'toast-body\'>Your toast message here.</div>',
+                        <img class=' bd-placeholder-img rounded me-2 ' src='/images/brand-logos/toggle-dark.png' alt='...'> +
+                        '<strong class=' me-auto'>Vyzor</strong>' +
+                        '<div class='toast-body'>Your toast message here.</div>',
                         true,
                         'auto',
                         false,
@@ -362,9 +362,9 @@ export let LiveExample = {
                     )" type="button" class="btn btn-outline-primary me-2 btn-wave" id="bottomrightToastBtn">Bottom
                     Right</button>
                 <button v-on:click="toster(
-                        <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
-                        '<strong class=\' me-auto\'>Vyzor</strong>' +
-                        '<div class=\'toast-body\'>Your toast message here.</div>',
+                        <img class=' bd-placeholder-img rounded me-2 ' src='/images/brand-logos/toggle-dark.png' alt='...'> +
+                        '<strong class=' me-auto'>Vyzor</strong>' +
+                        '<div class='toast-body'>Your toast message here.</div>',
                         true,
                         'auto',
                         false,
@@ -375,9 +375,9 @@ export let LiveExample = {
                     )" type="button" class="btn btn-outline-primary me-2 btn-wave" id="middleleftToastBtn">Flip
                     Animation</button>
                 <button v-on:click="toster(
-                        <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
-                        '<strong class=\' me-auto\'>Vyzor</strong>' +
-                        '<div class=\'toast-body\'>Your toast message here.</div>',
+                        <img class=' bd-placeholder-img rounded me-2 ' src='/images/brand-logos/toggle-dark.png' alt='...'> +
+                        '<strong class=' me-auto'>Vyzor</strong>' +
+                        '<div class='toast-body'>Your toast message here.</div>',
                         true,
                         'auto',
                         false,
@@ -388,9 +388,9 @@ export let LiveExample = {
                     )" type="button" class="btn btn-outline-primary me-2 btn-wave" id="middlecenterToastBtn">Slide
                     Animation</button>
                 <button v-on:click="toster(
-                        <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
-                        '<strong class=\' me-auto\'>Vyzor</strong>' +
-                        '<div class=\'toast-body\'>Your toast message here.</div>',
+                        <img class=' bd-placeholder-img rounded me-2 ' src='/images/brand-logos/toggle-dark.png' alt='...'> +
+                        '<strong class=' me-auto'>Vyzor</strong>' +
+                        '<div class='toast-body'>Your toast message here.</div>',
                         true,
                         'auto',
                         false,

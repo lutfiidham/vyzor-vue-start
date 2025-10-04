@@ -1,4 +1,5 @@
 import moment from 'moment'
+import ApexCharts from 'apexcharts'
 
 //Basic Area Chart
 

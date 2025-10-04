@@ -1,4 +1,5 @@
 import * as echarts from 'echarts'
+import myChart from 'echarts'
 
 export const chartOption = {
   grid: {

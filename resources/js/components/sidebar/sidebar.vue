@@ -674,7 +674,7 @@ function setSubmenu(event, targetObject, menuList = menuData) {
 
 function getParentObject(obj, childObject) {
   for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
+    if (Object.hasOwn(obj, key)) {
       if (
         typeof obj[key] === 'object' &&
         JSON.stringify(obj[key]) === JSON.stringify(childObject)
@@ -939,7 +939,7 @@ function setMenuUsingUrl(currentPath) {
 }
 
 const preventpagejump = ref('')
-const menuOverflowed = false
+let menuOverflowed = false
 
 function menuscrollFn() {
   let html = document.documentElement

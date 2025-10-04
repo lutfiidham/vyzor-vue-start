@@ -4,6 +4,8 @@ import { ref } from 'vue'
 import Pageheader from '@/components/pageheader/pageheader.vue'
 import BaseImg from '../../../components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
+import ApexCharts from 'apexcharts'
+
 const dataToPass = {
   title: 'Charts',
   subtitle: 'Apex Charts',
