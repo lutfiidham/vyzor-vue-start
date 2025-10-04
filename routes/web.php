@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('', function () {
-    return Inertia::render('Login'); // your React component
+    return Inertia::render('Login'); // your Vue component
 });
 Route::get('dashboards/sales', action: function () {
-    return Inertia::render('dashboards/sales'); // your React component
+    return Inertia::render('dashboards/sales'); // your Vue component
 });
 Route::get('dashboards/analytics', function () {
-    return Inertia::render('dashboards/analytics'); // your React component
+    return Inertia::render('dashboards/analytics'); // your Vue component
 });
 Route::get('dashboards/ecommerce/dashboard', function () {
     return Inertia::render('dashboards/ecommerce/dashboard');
@@ -85,10 +85,10 @@ Route::get('dashboards/projects/create-project', function () {
     return Inertia::render('dashboards/projects/create-project');
 });
 Route::get('dashboards/hrm', function () {
-    return Inertia::render('dashboards/hrm'); // your React component
+    return Inertia::render('dashboards/hrm'); // your Vue component
 });
 Route::get('dashboards/courses', function () {
-    return Inertia::render('dashboards/courses'); // your React component
+    return Inertia::render('dashboards/courses'); // your Vue component
 });
 Route::get('dashboards/stocks', function () {
     return Inertia::render('dashboards/stocks');
