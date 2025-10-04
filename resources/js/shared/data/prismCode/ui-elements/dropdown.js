@@ -1,6 +1,5 @@
-export let
-    dropdowns = {
-        script: `
+export let dropdowns = {
+    script: `
      <div class="btn-list d-flex align-items-center flex-wrap">
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -22,9 +21,10 @@ export let
                         <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
                     </ul>
                 </div>
-            </div>` },
-    singleDropdownButtons = {
-        script: `
+            </div>`,
+  },
+  singleDropdownButtons = {
+    script: `
         <div class="btn-list">
                 <div class="btn-group" v-for="(idx,index) in dropdownData.singleDropdownButtons" :key="index">
                     <button type="button" :class="btn btn-{idx.class} dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,8 +41,8 @@ export let
                     </ul>
                 </div>
             </div>
-    ` ,
-        data: `
+    `,
+    data: `
 singleDropdownButtons = [
         { id: 1, class: "primary" },
         { id: 2, class: "secondary" },
@@ -51,10 +51,10 @@ singleDropdownButtons = [
         { id: 5, class: "warning" },
         { id: 6, class: "danger" }
     ]
-`
-    },
-    roundedButtonDropdowns = {
-        script: `
+`,
+  },
+  roundedButtonDropdowns = {
+    script: `
     <div class="btn-list">
                 <div class="btn-group" v-for="(idx,index) in dropdownData.singleDropdownButtons" :key="index">
                     <button type="button" :class="btn btn-{idx.class} dropdown-toggle rounded-pill" data-bs-toggle="dropdown" aria-expanded="false">
@@ -71,7 +71,7 @@ singleDropdownButtons = [
                     </ul>
                 </div>
             </div>`,
-        data: `
+    data: `
         singleDropdownButtons = [
         { id: 1, class: "primary" },
         { id: 2, class: "secondary" },
@@ -80,10 +80,10 @@ singleDropdownButtons = [
         { id: 5, class: "warning" },
         { id: 6, class: "danger" }
     ]
-        `
-    },
-    outlineButtonDropdowns = {
-        script: `
+        `,
+  },
+  outlineButtonDropdowns = {
+    script: `
    <div class="btn-list">
                 <div class="btn-group" v-for="(idx,index) in dropdownData.OutlineButtons" :key="index">
                     <button type="button" :class="btn btn-{idx.class} dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -99,8 +99,8 @@ singleDropdownButtons = [
                         <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
                     </ul>
                 </div>
-            </div>` ,
-        data: `
+            </div>`,
+    data: `
             OutlineButtons = [
     { id: 1, class: "outline-primary" },
     { id: 2, class: "outline-secondary" },
@@ -109,10 +109,10 @@ singleDropdownButtons = [
     { id: 5, class: "outline-warning" },
     { id: 6, class: "outline-danger" }
 ]
-            `
-    },
-    roundedOutlineDropdowns = {
-        script: `
+            `,
+  },
+  roundedOutlineDropdowns = {
+    script: `
      <div class="btn-list">
                 <div class="btn-group" v-for="(idx,index) in dropdownData.OutlineButtons" :key="index">
                     <button type="button" :class="btn btn-{idx.class} dropdown-toggle rounded-pill" data-bs-toggle="dropdown" aria-expanded="false">
@@ -129,7 +129,7 @@ singleDropdownButtons = [
                     </ul>
                 </div>
             </div>`,
-        data: `
+    data: `
         OutlineButtons = [
     { id: 1, class: "outline-primary" },
     { id: 2, class: "outline-secondary" },
@@ -138,10 +138,10 @@ singleDropdownButtons = [
     { id: 5, class: "outline-warning" },
     { id: 6, class: "outline-danger" }
 ]
-        `
-    },
-    splitButtons = {
-        script: `
+        `,
+  },
+  splitButtons = {
+    script: `
     <div class="btn-group my-1" v-for="(idx,index) in dropdownData.SplitButtonsdata" :key="index">
                 <button type="button" :class="btn btn-{idx.class}">Action</button>
                 <button type="button" :class="btn btn-{idx.class} dropdown-toggle dropdown-toggle-split me-2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -157,7 +157,7 @@ singleDropdownButtons = [
                     <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
                 </ul>
             </div>`,
-        data: `
+    data: `
              SplitButtonsdata = [
         { id: 1, class: "primary" },
         { id: 2, class: "secondary" },
@@ -166,10 +166,10 @@ singleDropdownButtons = [
         { id: 5, class: "warning" },
         { id: 6, class: "danger" }
     ]
-            `
-    },
-    dropdownSizing = {
-        script: `
+            `,
+  },
+  dropdownSizing = {
+    script: `
     <div class="btn-group my-1 me-2">
                     <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Large button
@@ -232,9 +232,10 @@ singleDropdownButtons = [
                         </li>
                         <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
                     </ul>
-                </div>` },
-    dropup = {
-        script: `
+                </div>`,
+  },
+  dropup = {
+    script: `
     <div class="btn-group dropup my-1">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         Dropup
@@ -265,9 +266,10 @@ singleDropdownButtons = [
                         </li>
                         <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
                     </ul>
-                </div>` },
-    dropupRight = {
-        script: `
+                </div>`,
+  },
+  dropupRight = {
+    script: `
     <div class="btn-group dropend my-1">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         Dropright
@@ -298,9 +300,10 @@ singleDropdownButtons = [
                         </li>
                         <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
                     </ul>
-                </div>` },
-    dropupLeft = {
-        script: `
+                </div>`,
+  },
+  dropupLeft = {
+    script: `
     <div class="btn-group dropstart my-1">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         Dropleft
@@ -333,9 +336,10 @@ singleDropdownButtons = [
                     <button type="button" class="btn btn-info my-1">
                         Split dropleft
                     </button>
-                </div>` },
-    active = {
-        script: `
+                </div>`,
+  },
+  active = {
+    script: `
     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropstart
                 </button>
@@ -345,9 +349,10 @@ singleDropdownButtons = [
                             link</a>
                     </li>
                     <li><a class="dropdown-item" href="javascript:void(0);">Another link</a></li>
-                </ul>` },
-    disabled = {
-        script: `
+                </ul>`,
+  },
+  disabled = {
+    script: `
     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 Dropstart
             </button>
@@ -356,9 +361,10 @@ singleDropdownButtons = [
                 <li><a class="dropdown-item disabled" href="javascript:void(0);" aria-current="true">Active
                         link</a></li>
                 <li><a class="dropdown-item" href="javascript:void(0);">Another link</a></li>
-            </ul>` },
-    autoCloseBehavior = {
-        script: `
+            </ul>`,
+  },
+  autoCloseBehavior = {
+    script: `
     <div class="btn-list" >
                 <div class="btn-group" v-for="(idx,index) in dropdownData.AutocloseButtons" :key="index">
                     <button :class="btn btn-{idx.class} dropdown-toggle" type="button" id="defaultDropdown" data-bs-toggle="dropdown" :data-bs-auto-close="idx.autoClose" aria-expanded="false">
@@ -371,18 +377,17 @@ singleDropdownButtons = [
                     </ul>
                 </div>
             </div>`,
-        data: `
+    data: `
              AutocloseButtons = [
         { id: 1, class: "primary", text: "Default dropdown",autoClose:true },
         { id: 2, class: "secondary", text: "Clickable  outside",autoClose:'inside' },
         { id: 3, class: "info", text: "Clickable  inside",autoClose:'outside' },
         { id: 4, class: "warning", text: "Manual  close" ,autoClose:false},
     ]
-            `
-
-    },
-    dropdownsWithForms = {
-        script: `
+            `,
+  },
+  dropdownsWithForms = {
+    script: `
     <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                         Dropdown
@@ -412,9 +417,10 @@ singleDropdownButtons = [
                         <a class="dropdown-item" href="javascript:void(0);">New around here? Sign up</a>
                         <a class="dropdown-item" href="javascript:void(0);">Forgot password?</a>
                     </div>
-                </div>` },
-    dropdownMenuCentered = {
-        script: `
+                </div>`,
+  },
+  dropdownMenuCentered = {
+    script: `
      <p class="card-title mb-3">Use <code>.dropdown-center</code> on the parent element.
             </p>
             <div class="dropdown-center">
@@ -426,9 +432,10 @@ singleDropdownButtons = [
                     <li><a class="dropdown-item" href="javascript:void(0);">Action two</a></li>
                     <li><a class="dropdown-item" href="javascript:void(0);">Action three</a></li>
                 </ul>
-            </div>` },
-    dropupCentered = {
-        script: `
+            </div>`,
+  },
+  dropupCentered = {
+    script: `
      <p class="card-title mb-3">Use <code>.dropup-center</code>
                 on the parent element.
             </p>
@@ -441,9 +448,10 @@ singleDropdownButtons = [
                     <li><a class="dropdown-item" href="javascript:void(0);">Action two</a></li>
                     <li><a class="dropdown-item" href="javascript:void(0);">Action three</a></li>
                 </ul>
-            </div>` },
-    menuItems = {
-        script: `
+            </div>`,
+  },
+  menuItems = {
+    script: `
     <p class="card-title mb-3">You can use <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> as
                     dropdown items.</p>
                 <div class="dropdown">
@@ -458,9 +466,10 @@ singleDropdownButtons = [
                                 here</button>
                         </li>
                     </ul>
-                </div>` },
-    dropdownsOptions = {
-        script: `
+                </div>`,
+  },
+  dropdownsOptions = {
+    script: `
    <p class="card-title mb-3">Use <code>data-bs-offset</code> or <code>data-bs-reference</code> to change
                     the location of the dropdown.</p>
                 <div class="d-flex align-items-center">
@@ -489,9 +498,10 @@ singleDropdownButtons = [
                             <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
                         </ul>
                     </div>
-                </div>` },
-    alignmentOptions = {
-        script: `
+                </div>`,
+  },
+  alignmentOptions = {
+    script: `
    <div class="btn-list">
                 <div :class="btn-group {idx.drop}" v-for="(idx,index) in dropdownData.AlignmentButtons" :key="index">
                     <button :class="btn btn-{idx.class} dropdown-toggle mb-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -503,8 +513,8 @@ singleDropdownButtons = [
                         <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
                     </ul>
                 </div>
-            </div>` ,
-        data: `
+            </div>`,
+    data: `
          AlignmentButtons = [
         { id: 1, class: "primary", text: "Dropdown", dir: "dropdown-menu",drop:'' },
         { id: 2, class: "secondary", text: "Right-aligned menu", dir: "dropdown-menu dropdown-menu-end",drop:'' },
@@ -514,10 +524,10 @@ singleDropdownButtons = [
         { id: 6, class: "danger", text: "Dropend", dir: "dropdown-menu" ,drop:'dropend'},
         { id: 7, class: "teal", text: "Dropup", dir: "dropdown-menu" ,drop:'dropup'}
     ]
-        `
-    },
-    darkDropdowns = {
-        script: `
+        `,
+  },
+  darkDropdowns = {
+    script: `
     <div class="dropdown">
                 <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropdown button
@@ -527,9 +537,10 @@ singleDropdownButtons = [
                     <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
                     <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
                 </ul>
-            </div>` },
-    menuAlignment = {
-        script: `
+            </div>`,
+  },
+  menuAlignment = {
+    script: `
      <div class="btn-group">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         Right-aligned menu example
@@ -543,9 +554,10 @@ singleDropdownButtons = [
                                 here</button>
                         </li>
                     </ul>
-                </div>` },
-    responsiveAlignmentEnd = {
-        script: `
+                </div>`,
+  },
+  responsiveAlignmentEnd = {
+    script: `
      <div class="btn-group">
                     <button type="button" class="btn btn-secondary dropdown-toggle text-wrap" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                         Left-aligned but right aligned when large screen
@@ -559,9 +571,10 @@ singleDropdownButtons = [
                                 here</button>
                         </li>
                     </ul>
-                </div>` },
-    responsiveAlignmentLeft = {
-        script: `
+                </div>`,
+  },
+  responsiveAlignmentLeft = {
+    script: `
     <div class="btn-group">
                     <button type="button" class="btn btn-info dropdown-toggle text-wrap" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                         Left-aligned but right aligned when large screen
@@ -574,9 +587,10 @@ singleDropdownButtons = [
                         <li><button class="dropdown-item" type="button">Something else
                                 here</button></li>
                     </ul>
-                </div>` },
-    customDropdownMenus = {
-        script: `
+                </div>`,
+  },
+  customDropdownMenus = {
+    script: `
    <div class="btn-list">
                 <div class="btn-group" v-for="(idx,index) in dropdownData.CustomButtons" :key="index">
                     <button :class="btn btn-{idx.class} dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -589,7 +603,7 @@ singleDropdownButtons = [
                     </ul>
                 </div>
             </div>`,
-        data: `
+    data: `
         CustomButtons = [
         { id: 1, class: "primary", text: "Primary", class1: "dropdown-menu-primary" },
         { id: 2, class: "secondary", text: "Secondary", class1: "dropdown-menu-secondary" },
@@ -598,10 +612,10 @@ singleDropdownButtons = [
         { id: 5, class: "success-light", text: "success", class1: "dropmenu-light-success" },
         { id: 6, class: "danger-light", text: "danger", class1: "dropmenu-light-danger" }
     ]
-        `
-    },
-    ghostButtonDropdowns = {
-        script: `
+        `,
+  },
+  ghostButtonDropdowns = {
+    script: `
    <div class="btn-list">
                 <div class="btn-group" v-for="(idx,index) in dropdownData.GhostButtons" :key="index">
                     <button type="button" :class="btn btn-{idx.class} dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -617,8 +631,8 @@ singleDropdownButtons = [
                         <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
                     </ul>
                 </div>
-            </div>` ,
-        data:`
+            </div>`,
+    data: `
         GhostButtons = [
         { id: 1, class: "primary-ghost", text: "Primary" },
         { id: 2, class: "secondary-ghost", text: "Secondary" },
@@ -627,10 +641,10 @@ singleDropdownButtons = [
         { id: 5, class: "success-ghost", text: "success" },
         { id: 6, class: "danger-ghost", text: "danger" }
     ]
-        `
-        },
-    nonInteractiveDropdownItems = {
-        script: `
+        `,
+  },
+  nonInteractiveDropdownItems = {
+    script: `
     <p class="card-title mb-3">Use <code>.dropdown-item-text.</code> to create non-interactive dropdown items.</p>
                 <div class="bd-example">
                     <ul class="dropdown-menu">
@@ -641,9 +655,10 @@ singleDropdownButtons = [
                         <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a>
                         </li>
                     </ul>
-                </div>` },
-    dropdownHeaders = {
-        script: `
+                </div>`,
+  },
+  dropdownHeaders = {
+    script: `
    <p class="card-titlte mb-3">Add a <code>.dropdown-header</code> to label sections of actions in any dropdown menu.</p>
                 <div class="bd-example">
                     <ul class="dropdown-menu">
@@ -654,9 +669,10 @@ singleDropdownButtons = [
                         <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
                         <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
                     </ul>
-                </div>` },
-    dropdownDividers = {
-        script: `
+                </div>`,
+  },
+  dropdownDividers = {
+    script: `
     <div class="bd-example">
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-header" href="javascript:void(0);">Heading</a></li>
@@ -668,9 +684,10 @@ singleDropdownButtons = [
                         </li>
                         <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
                     </ul>
-                </div>` },
-    dropdownMenuText = {
-        script: `
+                </div>`,
+  },
+  dropdownMenuText = {
+    script: `
     <div class="bd-example">
                     <div class="dropdown-menu p-4 text-muted" style="max-width: 200px;">
                         <p>
@@ -680,4 +697,5 @@ singleDropdownButtons = [
                             And this is more example text.
                         </p>
                     </div>
-                </div>` };
+                </div>`,
+  }

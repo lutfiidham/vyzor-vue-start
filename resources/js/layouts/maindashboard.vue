@@ -1,18 +1,18 @@
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from "vue";
-import { switcherStore } from "../../stores/switcher";
-import Header from "../components/header/header.vue";
-import Sidebar from "../components/sidebar/sidebar.vue";
-import Footer from "../components/footer/footer.vue";
-import Switcher from "../components/switcher/switcher.vue";
-import BackToTop from "../components/backtotop/backtotop.vue";
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { switcherStore } from '../../stores/switcher'
+import Header from '../components/header/header.vue'
+import Sidebar from '../components/sidebar/sidebar.vue'
+import Footer from '../components/footer/footer.vue'
+import Switcher from '../components/switcher/switcher.vue'
+import BackToTop from '../components/backtotop/backtotop.vue'
 
 // Store
 const switcher = switcherStore()
 
 // Computed class based on page style
 const customClass = computed(() => {
-  return switcher.pageStyles === "flat" ? "main-body-container" : "";
+  return switcher.pageStyles === 'flat' ? 'main-body-container' : ''
 })
 
 // Reference for the scroll progress bar
@@ -36,12 +36,12 @@ const handleScroll = () => {
 
 // Lifecycle hooks
 onMounted(() => {
-  window.addEventListener("scroll", handleScroll)
+  window.addEventListener('scroll', handleScroll)
   switcher.retrieveFromLocalStorage()
 })
 
 onBeforeUnmount(() => {
-  window.removeEventListener("scroll", handleScroll)
+  window.removeEventListener('scroll', handleScroll)
 })
 </script>
 

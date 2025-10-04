@@ -1,6 +1,5 @@
-export let
-    basicExamples = {
-        script: `
+export let basicExamples = {
+    script: `
 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                     <label for="floatingInput">Email address</label>
@@ -8,9 +7,10 @@ export let
                 <div class="form-floating">
                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                     <label for="floatingPassword">Password</label>
-                </div>` },
-    readonlyplaintext = {
-        script: `
+                </div>`,
+  },
+  readonlyplaintext = {
+    script: `
 <div class="form-floating mb-3">
                     <input type="email" readonly class="form-control-plaintext" id="floatingEmptyPlaintextInput"
                         placeholder="name@example.com">
@@ -20,9 +20,10 @@ export let
                     <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput"
                         placeholder="name@example.com" value="name@example.com">
                     <label for="floatingPlaintextInput">Input with value</label>
-                </div>` },
-    floatingLabelsWithPreDefinedValues = {
-        script: `
+                </div>`,
+  },
+  floatingLabelsWithPreDefinedValues = {
+    script: `
 <form class="form-floating my-3">
                     <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com"
                         value="test@example.com">
@@ -32,9 +33,10 @@ export let
                     <input type="email" class="form-control is-invalid" id="floatingInputInvalid"
                         placeholder="name@example.com" value="test@example.com">
                     <label for="floatingInputInvalid">Invalid input</label>
-                </form>` },
-    textareas = {
-        script: `
+                </form>`,
+  },
+  textareas = {
+    script: `
 <div class="form-floating mb-4">
                     <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
                     <label for="floatingTextarea">Description</label>
@@ -43,9 +45,10 @@ export let
                     <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" rows="1"
                         disabled></textarea>
                     <label for="floatingTextarea2">Disabled</label>
-                </div>` },
-    floatingLabelsInSelect = {
-        script: `
+                </div>`,
+  },
+  floatingLabelsInSelect = {
+    script: `
 <div class="form-floating">
                     <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
                         <option selected>Open this select menu</option>
@@ -54,9 +57,10 @@ export let
                         <option value="3">Three</option>
                     </select>
                     <label for="floatingSelect">Works with selects</label>
-                </div>` },
-    floatingLabelsWithLayouts = {
-        script: `
+                </div>`,
+  },
+  floatingLabelsWithLayouts = {
+    script: `
 <div class="row g-2">
                     <div class="col-md">
                         <div class="form-floating">
@@ -76,9 +80,10 @@ export let
                             <label for="floatingSelectGrid">Works with selects</label>
                         </div>
                     </div>
-                </div>` },
-    floatingLabelColors = {
-        script: `
+                </div>`,
+  },
+  floatingLabelColors = {
+    script: `
 <div class="row gy-4">
                     <div class="col-xl-4">
                         <div class="form-floating mb-4 floating-primary">
@@ -122,4 +127,5 @@ export let
                             <label for="floatingInputdanger">danger</label>
                         </div>
                     </div>
-                </div>` };
+                </div>`,
+  }

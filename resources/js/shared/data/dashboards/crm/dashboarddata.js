@@ -1,89 +1,91 @@
-
 export const statCards = [
-  {
-    id: "1",
-    title: "Total Customers",
-    value: "32,152",
-    iconClass: "ti ti-users",
-    color: "bg-primary avatar-rounded",
-    crmpercentChange: "4.21%",
-    crmicon: "up",
-    percentageColorClass: "text-success",
-    crmbadge: true,
-    crmiconColor: 'success',
-    endText: 'text-end',
-    divClass: 'flex-wrap',
-  },
-  {
-    id: "2",
-    title: "Total Deals",
-    value: "5,543",
-    iconClass: "ti ti-briefcase",
-    color: "bg-secondary avatar-rounded",
-    crmpercentChange: "2.35%",
-    crmicon: "up",
-    percentageColorClass: "text-success",
-    crmbadge: true,
-    crmiconColor: 'success',
-    endText: 'text-end',
-    divClass: 'flex-wrap',
-  },
-  {
-    id: "3",
-    title: "Conversion Ratio",
-    value: "12.34%",
-    iconClass: "ti ti-wave-square",
-    color: "bg-success avatar-rounded",
-    crmpercentChange: "4.75%",
-    crmicon: "down",
-    percentageColorClass: "text-danger",
-    crmbadge: true,
-    crmiconColor: 'danger',
-    endText: 'text-end',
-    divClass: 'flex-wrap',
-  },
-  {
-    id: "4",
-    title: "Total Revenue",
-    value: "$53,276",
-    valueClass: "mb-0",
-    iconClass: "ti ti-wallet",
-    color: "bg-warning avatar-rounded",
-    crmpercentChange: "0.59%",
-    crmicon: "up",
-    percentageColorClass: "text-success",
-    crmbadge: true,
-    crmiconColor: 'success',
-    endText: 'text-end',
-    divClass: 'flex-wrap',
-  },
-],
-  crmSeries = [{
-    name: 'Revenue',
-    type: 'column',
-    data: [161, 255, 322, 750, 353, 200, 415, 225, 673, 413, 504, 441]
-  }, {
-    name: 'Profit',
-    type: 'line',
-    data: [118, 410, 225, 820, 235, 115, 620, 445, 525, 438, 640, 325]
-  }],
+    {
+      id: '1',
+      title: 'Total Customers',
+      value: '32,152',
+      iconClass: 'ti ti-users',
+      color: 'bg-primary avatar-rounded',
+      crmpercentChange: '4.21%',
+      crmicon: 'up',
+      percentageColorClass: 'text-success',
+      crmbadge: true,
+      crmiconColor: 'success',
+      endText: 'text-end',
+      divClass: 'flex-wrap',
+    },
+    {
+      id: '2',
+      title: 'Total Deals',
+      value: '5,543',
+      iconClass: 'ti ti-briefcase',
+      color: 'bg-secondary avatar-rounded',
+      crmpercentChange: '2.35%',
+      crmicon: 'up',
+      percentageColorClass: 'text-success',
+      crmbadge: true,
+      crmiconColor: 'success',
+      endText: 'text-end',
+      divClass: 'flex-wrap',
+    },
+    {
+      id: '3',
+      title: 'Conversion Ratio',
+      value: '12.34%',
+      iconClass: 'ti ti-wave-square',
+      color: 'bg-success avatar-rounded',
+      crmpercentChange: '4.75%',
+      crmicon: 'down',
+      percentageColorClass: 'text-danger',
+      crmbadge: true,
+      crmiconColor: 'danger',
+      endText: 'text-end',
+      divClass: 'flex-wrap',
+    },
+    {
+      id: '4',
+      title: 'Total Revenue',
+      value: '$53,276',
+      valueClass: 'mb-0',
+      iconClass: 'ti ti-wallet',
+      color: 'bg-warning avatar-rounded',
+      crmpercentChange: '0.59%',
+      crmicon: 'up',
+      percentageColorClass: 'text-success',
+      crmbadge: true,
+      crmiconColor: 'success',
+      endText: 'text-end',
+      divClass: 'flex-wrap',
+    },
+  ],
+  crmSeries = [
+    {
+      name: 'Revenue',
+      type: 'column',
+      data: [161, 255, 322, 750, 353, 200, 415, 225, 673, 413, 504, 441],
+    },
+    {
+      name: 'Profit',
+      type: 'line',
+      data: [118, 410, 225, 820, 235, 115, 620, 445, 525, 438, 640, 325],
+    },
+  ],
   crmOptions = {
     chart: {
       height: 318,
       animations: {
-        speed: 500
+        speed: 500,
       },
       toolbar: {
-        show: false
-      }
+        show: false,
+      },
     },
-    colors: ["var(--primary-color)", "rgba(255, 73, 205)"],
+    colors: ['var(--primary-color)', 'rgba(255, 73, 205)'],
     dataLabels: {
-      enabled: false
+      enabled: false,
     },
     grid: {
       borderColor: '#f1f1f1',
-      strokeDashArray: 3
+      strokeDashArray: 3,
     },
     stroke: {
       width: [0, 2],
@@ -93,7 +95,7 @@ export const statCards = [
       bar: {
         horizontal: false,
         columnWidth: '30%',
-        borderRadius: 3
+        borderRadius: 3,
       },
     },
     xaxis: {
@@ -101,56 +103,59 @@ export const statCards = [
         show: false,
       },
       categories: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "sep",
-        "oct",
-        "nov",
-        "dec",
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'sep',
+        'oct',
+        'nov',
+        'dec',
       ],
     },
     yaxis: {
       labels: {
         formatter: function (value) {
-          return "$" + value;
-        }
+          return '$' + value
+        },
       },
     },
     tooltip: {
-      y: [{
-        formatter: function (e) {
-          return void 0 !== e ? "$" + e.toFixed(0) : e
-        }
-      }, {
-        formatter: function (e) {
-          return void 0 !== e ? "$" + e.toFixed(0) : e
-        }
-      }]
+      y: [
+        {
+          formatter: function (e) {
+            return void 0 !== e ? '$' + e.toFixed(0) : e
+          },
+        },
+        {
+          formatter: function (e) {
+            return void 0 !== e ? '$' + e.toFixed(0) : e
+          },
+        },
+      ],
     },
     legend: {
       show: true,
       customLegendItems: ['Revenue', 'Profit'],
-      inverseOrder: true
+      inverseOrder: true,
     },
     title: {
       align: 'left',
       style: {
         fontSize: '.8125rem',
         fontWeight: 'semibold',
-        color: '#8c9097'
+        color: '#8c9097',
       },
     },
     markers: {
       hover: {
-        sizeOffset: 5
-      }
-    }
+        sizeOffset: 5,
+      },
+    },
   },
   tasks = [
     {
@@ -280,46 +285,62 @@ export const statCards = [
   leadOptions = {
     chart: {
       type: 'polarArea',
-      height: 205
+      height: 205,
     },
     stroke: {
       colors: ['#fff'],
     },
     fill: {
-      opacity: 1
+      opacity: 1,
     },
     legend: {
       show: false,
       position: 'bottom',
       itemMargin: {
         horizontal: 5,
-        vertical: 5
+        vertical: 5,
       },
       markers: {
-        size: 5
-      }
+        size: 5,
+      },
     },
-    labels: ['Organic Search', 'Paid Search', 'Direct Traffic', 'Social Media', 'Referrals', "Others"],
-    colors: ["var(--primary-color)", "rgb(255, 73, 205)", "rgb(50, 212, 132)", "rgb(250, 129, 40)", "rgb(0, 201, 255)", "rgb(253, 175, 34)"],
-    responsive: [{
-      breakpoint: 480,
-      options: {
-        chart: {
-          width: 200
+    labels: [
+      'Organic Search',
+      'Paid Search',
+      'Direct Traffic',
+      'Social Media',
+      'Referrals',
+      'Others',
+    ],
+    colors: [
+      'var(--primary-color)',
+      'rgb(255, 73, 205)',
+      'rgb(50, 212, 132)',
+      'rgb(250, 129, 40)',
+      'rgb(0, 201, 255)',
+      'rgb(253, 175, 34)',
+    ],
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200,
+          },
+          legend: {
+            position: 'bottom',
+          },
         },
-        legend: {
-          position: 'bottom'
-        }
-      }
-    }]
+      },
+    ],
   },
   trafficSources = [
-    { name: 'Organic Search', percentage: '0.64%', count: "1,754", trend: 'up' },
-    { name: 'Paid Search', percentage: '2.75%', count: "1,234", trend: 'down' },
-    { name: 'Direct Traffic', percentage: '1.54%', count: "878", trend: 'up' },
-    { name: 'Social Media', percentage: '1.54%', count: "270", trend: 'up' },
-    { name: 'Referrals', percentage: '1.54%', count: "878", trend: 'up' },
-    { name: 'Others', percentage: '1.54%', count: "270", trend: 'up' },
+    { name: 'Organic Search', percentage: '0.64%', count: '1,754', trend: 'up' },
+    { name: 'Paid Search', percentage: '2.75%', count: '1,234', trend: 'down' },
+    { name: 'Direct Traffic', percentage: '1.54%', count: '878', trend: 'up' },
+    { name: 'Social Media', percentage: '1.54%', count: '270', trend: 'up' },
+    { name: 'Referrals', percentage: '1.54%', count: '878', trend: 'up' },
+    { name: 'Others', percentage: '1.54%', count: '270', trend: 'up' },
   ],
   deals = [
     {
@@ -360,18 +381,20 @@ export const statCards = [
       amount: '$2,679',
     },
   ],
-  staticSeries = [{
-    name: 'Sessions',
-    data: [400, 430, 470, 540, 1100, 1200, 1380]
-  }],
+  staticSeries = [
+    {
+      name: 'Sessions',
+      data: [400, 430, 470, 540, 1100, 1200, 1380],
+    },
+  ],
   staticOptions = {
     chart: {
       fontFamily: 'Poppins, Arial, sans-serif',
       toolbar: {
-        show: false
+        show: false,
       },
       type: 'bar',
-      height: 351
+      height: 351,
     },
     grid: {
       borderColor: '#f2f6f7',
@@ -379,17 +402,25 @@ export const statCards = [
     plotOptions: {
       bar: {
         horizontal: true,
-        barHeight: "30%",
+        barHeight: '30%',
         borderRadius: 2,
-      }
+      },
     },
-    colors: ["var(--primary-color)"],
+    colors: ['var(--primary-color)'],
     dataLabels: {
-      enabled: false
+      enabled: false,
     },
     xaxis: {
-      categories: ['New Deal', 'Qualified Deal', 'Renewal Deal', 'Referral Deal', 'Won Deal', 'Lost Deal', 'Neotiation'],
-    }
+      categories: [
+        'New Deal',
+        'Qualified Deal',
+        'Renewal Deal',
+        'Referral Deal',
+        'Won Deal',
+        'Lost Deal',
+        'Neotiation',
+      ],
+    },
   },
   overviewtable = [
     {
@@ -436,7 +467,7 @@ export const statCards = [
       avatar: '/images/faces/11.jpg',
       assignedTo: 'John Doe',
       assignedAvatar: '/images/faces/1.jpg',
-      tdClass: 'border-bottom-0'
+      tdClass: 'border-bottom-0',
     },
   ],
   topdealsTable = [
@@ -505,11 +536,6 @@ export const statCards = [
       closeDate: '2025-02-20',
       owner: 'Anna Wilson',
       priority: 'High',
-      tdClass: 'border-bottom-0'
+      tdClass: 'border-bottom-0',
     },
-  ];
-
-
-
-
-
+  ]

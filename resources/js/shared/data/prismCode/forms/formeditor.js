@@ -1,9 +1,9 @@
-export let
-    defaultEditor = {
-        script: `
-    <vue-editor v-model="content"></vue-editor>` },
-    customToolbar = {
-        script: `
+export let defaultEditor = {
+    script: `
+    <vue-editor v-model="content"></vue-editor>`,
+  },
+  customToolbar = {
+    script: `
 
         data(){ 
             return {
@@ -14,4 +14,5 @@ export let
                 ["image", "code-block"]
             ],
         }}
-    <vue-editor v-model="content1" :editorToolbar="customToolbar"></vue-editor>` };
+    <vue-editor v-model="content1" :editorToolbar="customToolbar"></vue-editor>`,
+  }

@@ -1,27 +1,25 @@
-
-
 export const detailsTable = [
-  {
-    id: 'ADI-UB-2023',
-    brand: 'Adidas',
-    name: 'Adidas UltraBoost 2023',
-    color: 'Green',
-    size: '10 US',
-    price: 159.99,
-    quantity: 1,
-    imageUrl: '/images/ecommerce/jpg/1.jpg',
-  },
-  {
-    id: 'NIKE-AMX-2025',
-    brand: 'Nike',
-    name: 'Nike Air Max 2025 Sneakers',
-    color: 'Teal',
-    size: '10 US',
-    price: 129.99,
-    quantity: 2,
-    imageUrl: '/images/ecommerce/jpg/4.jpg',
-  },
-],
+    {
+      id: 'ADI-UB-2023',
+      brand: 'Adidas',
+      name: 'Adidas UltraBoost 2023',
+      color: 'Green',
+      size: '10 US',
+      price: 159.99,
+      quantity: 1,
+      imageUrl: '/images/ecommerce/jpg/1.jpg',
+    },
+    {
+      id: 'NIKE-AMX-2025',
+      brand: 'Nike',
+      name: 'Nike Air Max 2025 Sneakers',
+      color: 'Teal',
+      size: '10 US',
+      price: 129.99,
+      quantity: 2,
+      imageUrl: '/images/ecommerce/jpg/4.jpg',
+    },
+  ],
   orderTimeline = [
     {
       title: 'Order Placed',
@@ -77,4 +75,4 @@ export const detailsTable = [
     { label: 'Amount Paid', value: '$389.99' },
     { label: 'Transaction ID', value: '5678-ABC12345XYZ' },
     { label: 'Payment Date', value: 'March 15, 2025, 11:45 AM' },
-  ];
+  ]

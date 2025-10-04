@@ -1,30 +1,60 @@
 <script setup>
-import { onMounted } from 'vue';
-import Pageheader from "@/components/pageheader/pageheader.vue";
-import { Head } from '@inertiajs/vue3';
+import { onMounted } from 'vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import { Head } from '@inertiajs/vue3'
 
-const jsVectorMap = window.jsVectorMap;
+const jsVectorMap = window.jsVectorMap
 
 const dataToPass = {
   title: 'Maps',
-  currentpage: "Vector Maps",
-  activepage: "Vector Maps"
+  currentpage: 'Vector Maps',
+  activepage: 'Vector Maps',
 }
 
 const data = [
-  { id: 1, name: 'Basic Vector Map', chartid: 'vector-map', bodyclass: 'text-center', cardclass: 'overflow-hidden' },
-  { id: 2, name: 'Map With Markers', chartid: 'marker-map', bodyclass: 'text-center', cardclass: 'overflow-hidden' },
-  { id: 3, name: 'Map With Image Markers', chartid: 'marker-image-map', bodyclass: 'text-center', cardclass: 'overflow-hidden' },
-  { id: 4, name: 'Map With Lines', chartid: 'lines-map', bodyclass: 'text-center', cardclass: 'overflow-hidden' },
-  { id: 5, name: 'World Vector Map', chartid: 'world-map', bodyclass: 'text-center', cardclass: 'overflow-hidden' },
+  {
+    id: 1,
+    name: 'Basic Vector Map',
+    chartid: 'vector-map',
+    bodyclass: 'text-center',
+    cardclass: 'overflow-hidden',
+  },
+  {
+    id: 2,
+    name: 'Map With Markers',
+    chartid: 'marker-map',
+    bodyclass: 'text-center',
+    cardclass: 'overflow-hidden',
+  },
+  {
+    id: 3,
+    name: 'Map With Image Markers',
+    chartid: 'marker-image-map',
+    bodyclass: 'text-center',
+    cardclass: 'overflow-hidden',
+  },
+  {
+    id: 4,
+    name: 'Map With Lines',
+    chartid: 'lines-map',
+    bodyclass: 'text-center',
+    cardclass: 'overflow-hidden',
+  },
+  {
+    id: 5,
+    name: 'World Vector Map',
+    chartid: 'world-map',
+    bodyclass: 'text-center',
+    cardclass: 'overflow-hidden',
+  },
 ]
 
 onMounted(() => {
   // Basic Vector Map
   const basicmap = new jsVectorMap({
-    selector: "#vector-map",
-    map: "world_merc",
-  });
+    selector: '#vector-map',
+    map: 'world_merc',
+  })
 
   // Map with Markers
   const markers = [
@@ -32,25 +62,24 @@ onMounted(() => {
     { name: 'Greenland', coords: [72, -42], style: { fill: '#ff9251' } },
     { name: 'Canada', coords: [56, -106], style: { fill: '#56de80' } },
     { name: 'Palestine', coords: [31.5, 34.8], style: { fill: 'yellow' } },
-    { name: 'Brazil', coords: [-14.2350, -51.9253], style: { fill: '#000' } },
-  ];
+    { name: 'Brazil', coords: [-14.235, -51.9253], style: { fill: '#000' } },
+  ]
 
   const markersmap = new jsVectorMap({
     map: 'world_merc',
     selector: '#marker-map',
     markersSelectable: true,
-    onMarkerSelected(index, isSelected, selectedMarkers) {
-    },
+    onMarkerSelected(index, isSelected, selectedMarkers) {},
     labels: {
       markers: {
         render(marker) {
-          return marker.name;
+          return marker.name
         },
       },
     },
     markers: markers,
     markerStyle: {
-      hover: { stroke: "#DDD", strokeWidth: 3, fill: '#FFF' },
+      hover: { stroke: '#DDD', strokeWidth: 3, fill: '#FFF' },
       selected: { fill: '#ff525d' },
     },
     markerLabelStyle: {
@@ -61,7 +90,7 @@ onMounted(() => {
         fill: '#35373e',
       },
     },
-  });
+  })
 
   const icon = `${__BASE_PATH__}/images/brand-logos/toggle-logo.png`
 
@@ -71,7 +100,7 @@ onMounted(() => {
     { name: 'Russia', coords: [61, 105] },
     { name: 'Greenland', coords: [72, -42] },
     { name: 'Canada', coords: [56, -106] },
-  ];
+  ]
 
   const imagemap = new jsVectorMap({
     map: 'world_merc',
@@ -79,7 +108,7 @@ onMounted(() => {
     labels: {
       markers: {
         render(marker) {
-          return marker.name;
+          return marker.name
         },
       },
     },
@@ -110,20 +139,20 @@ onMounted(() => {
         },
       ],
     },
-  });
+  })
 
   // Map with Lines
   const linesmarkers = [
-    { name: 'Russia', coords: [61.5240, 105.3188] },
+    { name: 'Russia', coords: [61.524, 105.3188] },
     { name: 'Egypt', coords: [26.8206, 30.8025] },
     { name: 'Greenland', coords: [71.7069, -42.6043], offsets: [2, 10] },
     { name: 'Canada', coords: [56, -106], offsets: [-7, 12] },
-  ];
+  ]
 
   const lines = [
     { from: 'Russia', to: 'Egypt', style: { stroke: '#abb0b7', strokeWidth: 1.5 } },
     { from: 'Canada', to: 'Russia', style: { stroke: '#abb0b7', strokeWidth: 1.5 } },
-  ];
+  ]
 
   new jsVectorMap({
     map: 'world_merc',
@@ -131,16 +160,16 @@ onMounted(() => {
     labels: {
       markers: {
         render(marker, index) {
-          return marker.name;
+          return marker.name
         },
         offsets(index) {
-          return linesmarkers[index].offsets || [0, 0];
+          return linesmarkers[index].offsets || [0, 0]
         },
       },
     },
     markers: linesmarkers,
     lines: lines,
-    lineStyle: { animation: true, strokeDasharray: "6 3 6" },
+    lineStyle: { animation: true, strokeDasharray: '6 3 6' },
     markerStyle: {
       initial: { r: 6, fill: '#1266f1', stroke: '#fff', strokeWidth: 3 },
     },
@@ -151,28 +180,25 @@ onMounted(() => {
         fill: '#35373e',
       },
     },
-  });
+  })
 
   // World Vector Map
   new jsVectorMap({
-    selector: "#world-map",
-    map: "world",
+    selector: '#world-map',
+    map: 'world',
     regionStyle: {
       initial: {
-        stroke: "#e9e9e9",
-        strokeWidth: .15,
-        fill: "#845adf",
+        stroke: '#e9e9e9',
+        strokeWidth: 0.15,
+        fill: '#845adf',
         fillOpacity: 1,
       },
     },
-  });
-});
-
+  })
+})
 </script>
 
-
 <template>
-
   <Head title="Vectors Maps | Vyzor - Laravel & Vue " />
   <Pageheader :propData="dataToPass" />
 
@@ -184,14 +210,13 @@ onMounted(() => {
           <div class="card-title">{{ map.name }}</div>
         </div>
         <div :class="`card-body scrollable-card-body ${map.bodyclass}`">
-          <div :id="map.chartid" style="width: 100%; height: 350px;"></div>
+          <div :id="map.chartid" style="width: 100%; height: 350px"></div>
         </div>
       </div>
     </div>
   </div>
   <!-- End::row-1 -->
 </template>
-
 
 <style scoped>
 /* Add scrolling to card-body */

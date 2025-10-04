@@ -1,5 +1,4 @@
-<script  setup>
-
+<script setup>
 defineProps({
   customCardClass: String,
   cardHeaderClass: String,
@@ -7,12 +6,12 @@ defineProps({
   cardBodyClass: String,
   type: {
     type: Object,
-    required: true
+    required: true,
   },
   data: {
     type: [Object, Array],
-    required: true
-  }
+    required: true,
+  },
 })
 </script>
 
@@ -22,7 +21,7 @@ defineProps({
       <div class="card-title">{{ title }}</div>
     </div>
     <div :class="['card-body', cardBodyClass]">
-      <component :is="type" :chartData="data" style="height:300px" />
+      <component :is="type" :chartData="data" style="height: 300px" />
     </div>
   </div>
 </template>

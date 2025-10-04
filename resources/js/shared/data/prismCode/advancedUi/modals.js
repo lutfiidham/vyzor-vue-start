@@ -1,7 +1,5 @@
-export let
-
-    basicModal = {
-        script: `
+export let basicModal = {
+    script: `
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Launch demo modal
             </button>
@@ -22,9 +20,10 @@ export let
                         </div>
                     </div>
                 </div>
-            </div>` },
-    staticBackdrop = {
-        script: `<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            </div>`,
+  },
+  staticBackdrop = {
+    script: `<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Launch static backdrop modal
                 </button>
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -46,9 +45,10 @@ export let
                             </div>
                         </div>
                     </div>
-                </div>` },
-    scrollingLongContent = {
-        script: `
+                </div>`,
+  },
+  scrollingLongContent = {
+    script: `
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable">
                     Scrolling long content
                 </button>
@@ -125,9 +125,10 @@ export let
                             </div>
                         </div>
                     </div>
-                </div>` },
-    verticallyCenteredModal = {
-        script: `
+                </div>`,
+  },
+  verticallyCenteredModal = {
+    script: `
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable2">
                     Vertically centered modal
                 </button>
@@ -154,9 +155,10 @@ export let
                             </div>
                         </div>
                     </div>
-                </div>` },
-    verticalCenteredScrollable = {
-        script: `
+                </div>`,
+  },
+  verticalCenteredScrollable = {
+    script: `
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable3">
                     Vertically centered scrollable modal
                 </button>
@@ -214,9 +216,10 @@ export let
                             </div>
                         </div>
                     </div>
-                </div>` },
-    tooltipsAndPopovers = {
-        script: `
+                </div>`,
+  },
+  tooltipsAndPopovers = {
+    script: `
      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#exampleModalScrollable4">
                     Launch demo modal
@@ -256,9 +259,10 @@ export let
                             </div>
                         </div>
                     </div>
-                </div>` },
-    usingTheGrid = {
-        script: `<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                </div>`,
+  },
+  usingTheGrid = {
+    script: `<button type="button" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#exampleModalScrollable5">
                     Launch demo modal
                 </button>
@@ -311,9 +315,10 @@ export let
                             </div>
                         </div>
                     </div>
-                </div>` },
-    toggleBetweenModals = {
-        script: `
+                </div>`,
+  },
+  toggleBetweenModals = {
+    script: `
     <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open
                     first
                     modal
@@ -357,9 +362,10 @@ export let
                             </div>
                         </div>
                     </div>
-                </div>` },
-    optionalSizes = {
-        script: `<button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#exampleModalXl">Extra large modal</button>
+                </div>`,
+  },
+  optionalSizes = {
+    script: `<button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#exampleModalXl">Extra large modal</button>
             <button type="button" class="btn btn-secondary m-1" data-bs-toggle="modal" data-bs-target="#exampleModalLg">Large modal</button>
             <button type="button" class="btn btn-warning m-1" data-bs-toggle="modal" data-bs-target="#exampleModalSm">Small modal</button>
             <div class="modal fade" id="exampleModalXl" tabindex="-1" aria-labelledby="exampleModalXlLabel" style="display: none;" aria-hidden="true">
@@ -403,9 +409,10 @@ export let
                         </div>
                     </div>
                 </div>
-            </div>` },
-    fullscreenModal = {
-        script: `<div class="bd-example">
+            </div>`,
+  },
+  fullscreenModal = {
+    script: `<div class="bd-example">
                 <button type="button" class="btn btn-primary mb-1 me-2" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen">Full screen</button>
                 <button type="button" class="btn btn-secondary mb-1 me-2" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreenSm">Full screen below sm</button>
                 <button type="button" class="btn btn-warning mb-1 me-2" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreenMd">Full screen below md</button>
@@ -520,9 +527,10 @@ export let
                         </div>
                     </div>
                 </div>
-            </div>` },
-    varyingModalContent = {
-        script: `
+            </div>`,
+  },
+  varyingModalContent = {
+    script: `
     <button type="button" class="btn btn-primary mb-1 me-1" data-bs-toggle="modal"
                     data-bs-target="#formmodal" data-bs-whatever="@mdo">Open modal for
                     @mdo</button>
@@ -560,9 +568,10 @@ export let
                             </div>
                         </div>
                     </div>
-                </div>` },
-    modalAnimationEffects = {
-        script: `
+                </div>`,
+  },
+  modalAnimationEffects = {
+    script: `
     &lt;div class="row ">
         &lt;div class="col-sm-6 col-md-4 col-xl-3">
             &lt;a class="modal-effect btn btn-primary d-grid mb-3" data-bs-effect="effect-scale"
@@ -632,14 +641,18 @@ export let
                 &lt;/div>
             &lt;/div>
         &lt;/div>
-    &lt;/div>` },
-    basicClose = { script: `<button type="button" class="btn-close" aria-label="Close"></button>` },
-    disabelState = { script: `<button type="button" class="btn-close" disabled aria-label="Close"></button>` },
-    whiteVariant = {
-        script: ` <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
-            <button type="button" class="btn-close btn-close-white" disabled aria-label="Close"></button>` },
-    ModalAnimationEffects = {
-        script: `&lt;div class="row "> 
+    &lt;/div>`,
+  },
+  basicClose = { script: `<button type="button" class="btn-close" aria-label="Close"></button>` },
+  disabelState = {
+    script: `<button type="button" class="btn-close" disabled aria-label="Close"></button>`,
+  },
+  whiteVariant = {
+    script: ` <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+            <button type="button" class="btn-close btn-close-white" disabled aria-label="Close"></button>`,
+  },
+  ModalAnimationEffects = {
+    script: `&lt;div class="row "> 
     &lt;div class="col-sm-6 col-md-4 col-xl-3">
         &lt;a class="modal-effect btn btn-primary d-grid mb-3" data-bs-effect="effect-scale" data-bs-toggle="modal" href="#modaldemo8">Scale&lt;/a> 
     &lt;/div> 
@@ -694,5 +707,5 @@ export let
             &lt;/div> 
         &lt;/div> 
     &lt;/div> 
-&lt;/div> `
-    }
+&lt;/div> `,
+  }

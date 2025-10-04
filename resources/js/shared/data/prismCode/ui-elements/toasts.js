@@ -1,6 +1,5 @@
-export let
-    LiveExample = {
-        script: `
+export let LiveExample = {
+    script: `
      <button type="button" class="btn btn-primary btn-wave" id="liveToastBtn" @click="showliveToast">Show live
                     toast</button>
                 <div class="toast-container position-fixed top-0 end-0 p-3">
@@ -15,9 +14,10 @@ export let
                             Hello, world! This is a toast message.
                         </div>
                     </div>
-                </div>` },
-    ColorSchemes = {
-        script: `
+                </div>`,
+  },
+  ColorSchemes = {
+    script: `
     <div class="toast align-items-center text-bg-primary border-0 fade show mb-4" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="d-flex">
                         <div class="toast-body">
@@ -49,9 +49,10 @@ export let
                         </div>
                         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                     </div>
-                </div>` },
-    BasicExample = {
-        script: ` <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+                </div>`,
+  },
+  BasicExample = {
+    script: ` <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-header text-default">
                         <img class="bd-placeholder-img rounded me-2" src="/images/brand-logos/favicon.ico" alt="...">
 
@@ -62,9 +63,10 @@ export let
                     <div class="toast-body">
                         Hello, world! This is a toast message.
                     </div>
-                </div>` },
-    Stacking = {
-        script: `<div class="toast-container position-static">
+                </div>`,
+  },
+  Stacking = {
+    script: `<div class="toast-container position-static">
                     <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
                         <div class="toast-header text-default">
                             <img class="bd-placeholder-img rounded me-2" src="/images/brand-logos/favicon.ico" alt="...">
@@ -89,9 +91,10 @@ export let
                             Heads up, toasts will stack automatically
                         </div>
                     </div>
-                </div>` },
-    Translucent = {
-        script: ` <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+                </div>`,
+  },
+  Translucent = {
+    script: ` <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-header text-default">
                         <img class="bd-placeholder-img rounded me-2" src="/images/brand-logos/favicon.ico" alt="...">
 
@@ -102,9 +105,10 @@ export let
                     <div class="toast-body">
                         Hello, world! This is a toast message.
                     </div>
-                </div>` },
-    CustomContent = {
-        script: `  <div class="btn-list">
+                </div>`,
+  },
+  CustomContent = {
+    script: `  <div class="btn-list">
                 <button v-on:click="successToast(
                         <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
                         '<strong class=\' me-auto\'>Vyzor</strong>' +
@@ -153,9 +157,10 @@ export let
                         1000,
                         'top-right'
                     )" type="button" class="btn btn-danger-light me-2 btn-wave" id="dangerToastBtn">danger</button>
-            </div>` },
-    ToastVariants = {
-        script: `&lt;div class="btn-list">
+            </div>`,
+  },
+  ToastVariants = {
+    script: `&lt;div class="btn-list">
     &lt;button v-on:click="successToast(
         '&lt;img class=\' bd-placeholder-img rounded me-2 \' src='+BASE_URL+'images/brand-logos/toggle-dark.png alt=\'...\'>' +
         '&lt;strong class=\' me-auto\'>Vyzor&lt;/strong>' +
@@ -204,9 +209,10 @@ export let
         1000,
         'top-right'
     )" type="button" class="btn btn-danger-light me-2 btn-wave" id="dangerToastBtn">danger&lt;/button>
-&lt;/div>` },
-    ToastOptions = {
-        script: `div class="btn-list">
+&lt;/div>`,
+  },
+  ToastOptions = {
+    script: `div class="btn-list">
                     <button v-on:click="toster(
                         <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
                         '<strong class=\' me-auto\'>Vyzor</strong>' +
@@ -273,9 +279,10 @@ export let
                         'top-right'
                     )" type="button" class="btn btn-outline-primary me-2 btn-wave" id="middlerightToastBtn">Show
                         ProgressBar</button>
-                        </div>` },
-    ToastPlacements = {
-        script: `            <div class="btn-list">
+                        </div>`,
+  },
+  ToastPlacements = {
+    script: `            <div class="btn-list">
                 <button v-on:click="toster(
                         <img class=\' bd-placeholder-img rounded me-2 \' src='/images/brand-logos/toggle-dark.png' alt=\'...\'> +
                         '<strong class=\' me-auto\'>Vyzor</strong>' +
@@ -393,9 +400,10 @@ export let
                         'top-right'
                     )" type="button" class="btn btn-outline-primary me-2 btn-wave" id="middlerightToastBtn">Zoom
                     Animation</button>
-            </div>` },
-    AligningToastUsingFlexbox = {
-        script: `<div class="bd-example bg-light bd-example-toasts d-flex p-0">
+            </div>`,
+  },
+  AligningToastUsingFlexbox = {
+    script: `<div class="bd-example bg-light bd-example-toasts d-flex p-0">
                 <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
                     <div class="toast fade show shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
                         <div class="toast-header text-default">
@@ -409,4 +417,5 @@ export let
                         </div>
                     </div>
                 </div>
-            </div>` };
+            </div>`,
+  }

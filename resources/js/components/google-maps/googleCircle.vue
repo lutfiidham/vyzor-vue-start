@@ -2,7 +2,6 @@
 import { ref, computed } from 'vue'
 import { GoogleMap, Circle } from 'vue3-google-map'
 
-
 const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 
 const center = ref({ lat: 37.09, lng: -95.712 })
@@ -51,4 +50,3 @@ const circlesObj = computed(() => {
 </template>
 
 <style scoped></style>
-

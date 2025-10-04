@@ -1,64 +1,106 @@
-
-
-export let
-    Languages = [
-        { name: 'English', flag: "/images/flags/us_flag.jpg" },
-        { name: 'Spanish', flag: "/images/flags/spain_flag.jpg" },
-        { name: 'français', flag: "/images/flags/french_flag.jpg" },
-        { name: 'عربي', flag: "/images/flags/uae_flag.jpg" },
-        { name: 'Deutsch', flag: "/images/flags/germany_flag.jpg" },
-        { name: '中国人', flag: "/images/flags/china_flag.jpg" },
-        { name: 'Italiano', flag: "/images/flags/italy_flag.jpg" },
-        { name: 'Русский', flag: "/images/flags/russia_flag.jpg" },
-    ],
-    notificationNotes = [
-        { id: 1, image: "/images/ecommerce/png/13.png", name: "Urban Chic Satchel", description: "Sleek, stylish, and perfect for daily use", oldprice: '$120', newprice: '$90', off: '25%' ,quantity:'1'},
-        { id: 2, image: "/images/ecommerce/png/15.png", name: "TrailBlaze Runners", description: "Lightweight and built for comfort", oldprice: '$80', newprice: '$60', off: '25%' ,quantity:'1'},
-        { id: 3, image: "/images/ecommerce/png/19.png", name: "VisionTech SLR", description: "High-quality shots with every click", oldprice: '$500', newprice: '$375', off: '25%',quantity:'1' },
-        { id: 4, image: "/images/ecommerce/png/6.png", name: "FlexiSeat Office Chair", description: "Comfortable support for long hours", oldprice: '$200', newprice: '$150', off: '25%' ,quantity:'5'},
-        { id: 5, image: "/images/ecommerce/png/11.png", name: "DecoDial Classic", description: "A bold, colorful timepiece for any room", oldprice: '$50', newprice: '$35', off: '30%', liclass: "border-bottom-0",quantity:'2' },
-    ],
-
-    Notifications = [
-        {
-            id: 1,
-            title: "New Message",
-            description: "You have received a new message from John Doe",
-            time: "11:45am",
-            avatar: '/images/faces/1.jpg',
-            isUnread: false
-        },
-        {
-            id: 2,
-            title: "Task Reminder",
-            description: "Don't forget to submit your report by 3 PM today",
-            time: "02:16pm",
-            icon: "ri-notification-line",
-            isUnread: false
-        },
-        {
-            id: 3,
-            title: "Friend Request",
-            description: "Jane Smith sent you a friend request",
-            time: "10:04am",
-            avatar: '/images/faces/12.jpg',
-            isUnread: true
-        },
-        {
-            id: 4,
-            title: "Event Reminder",
-            description: "You have an upcoming event: Team Meeting on October 25 at 10 AM.",
-            time: "12:58pm",
-            icon: "ri-notification-line",
-            isUnread: true
-        },
-        {
-            id: 5,
-            title: "File Uploaded",
-            description: 'The file "Project_Proposal.pdf" has been uploaded successfully',
-            time: "05:13pm",
-            icon: "ri-notification-line",
-            isUnread: true,
-            liClass: 'border-bottom-0'
-        }
-    ];
+export let Languages = [
+    { name: 'English', flag: '/images/flags/us_flag.jpg' },
+    { name: 'Spanish', flag: '/images/flags/spain_flag.jpg' },
+    { name: 'français', flag: '/images/flags/french_flag.jpg' },
+    { name: 'عربي', flag: '/images/flags/uae_flag.jpg' },
+    { name: 'Deutsch', flag: '/images/flags/germany_flag.jpg' },
+    { name: '中国人', flag: '/images/flags/china_flag.jpg' },
+    { name: 'Italiano', flag: '/images/flags/italy_flag.jpg' },
+    { name: 'Русский', flag: '/images/flags/russia_flag.jpg' },
+  ],
+  notificationNotes = [
+    {
+      id: 1,
+      image: '/images/ecommerce/png/13.png',
+      name: 'Urban Chic Satchel',
+      description: 'Sleek, stylish, and perfect for daily use',
+      oldprice: '$120',
+      newprice: '$90',
+      off: '25%',
+      quantity: '1',
+    },
+    {
+      id: 2,
+      image: '/images/ecommerce/png/15.png',
+      name: 'TrailBlaze Runners',
+      description: 'Lightweight and built for comfort',
+      oldprice: '$80',
+      newprice: '$60',
+      off: '25%',
+      quantity: '1',
+    },
+    {
+      id: 3,
+      image: '/images/ecommerce/png/19.png',
+      name: 'VisionTech SLR',
+      description: 'High-quality shots with every click',
+      oldprice: '$500',
+      newprice: '$375',
+      off: '25%',
+      quantity: '1',
+    },
+    {
+      id: 4,
+      image: '/images/ecommerce/png/6.png',
+      name: 'FlexiSeat Office Chair',
+      description: 'Comfortable support for long hours',
+      oldprice: '$200',
+      newprice: '$150',
+      off: '25%',
+      quantity: '5',
+    },
+    {
+      id: 5,
+      image: '/images/ecommerce/png/11.png',
+      name: 'DecoDial Classic',
+      description: 'A bold, colorful timepiece for any room',
+      oldprice: '$50',
+      newprice: '$35',
+      off: '30%',
+      liclass: 'border-bottom-0',
+      quantity: '2',
+    },
+  ],
+  Notifications = [
+    {
+      id: 1,
+      title: 'New Message',
+      description: 'You have received a new message from John Doe',
+      time: '11:45am',
+      avatar: '/images/faces/1.jpg',
+      isUnread: false,
+    },
+    {
+      id: 2,
+      title: 'Task Reminder',
+      description: "Don't forget to submit your report by 3 PM today",
+      time: '02:16pm',
+      icon: 'ri-notification-line',
+      isUnread: false,
+    },
+    {
+      id: 3,
+      title: 'Friend Request',
+      description: 'Jane Smith sent you a friend request',
+      time: '10:04am',
+      avatar: '/images/faces/12.jpg',
+      isUnread: true,
+    },
+    {
+      id: 4,
+      title: 'Event Reminder',
+      description: 'You have an upcoming event: Team Meeting on October 25 at 10 AM.',
+      time: '12:58pm',
+      icon: 'ri-notification-line',
+      isUnread: true,
+    },
+    {
+      id: 5,
+      title: 'File Uploaded',
+      description: 'The file "Project_Proposal.pdf" has been uploaded successfully',
+      time: '05:13pm',
+      icon: 'ri-notification-line',
+      isUnread: true,
+      liClass: 'border-bottom-0',
+    },
+  ]

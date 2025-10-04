@@ -5,17 +5,17 @@ export let basicTable = {
                 <td>{{ row.number }}</td>
                 <td><span :class="badge {row.color}">{{ row.status }}</span></td>
             </TableComponent>`,
-            data:`
+    data: `
              basicRows = [
         { name: 'Mark', createdOn: '21, Dec 2021', number: '+1234-12340', status: 'Completed', color: "bg-outline-primary" },
         { name: 'Monika', createdOn: '29, April 2022', number: '+1523-12459', status: 'Failed', color: "bg-outline-warning" },
         { name: 'Madina', createdOn: '30, Nov 2022', number: '+1982-16234', status: 'Successful', color: "bg-outline-success" },
         { name: 'Bhamako', createdOn: '18, Mar 2022', number: '+1526-10729', status: 'Pending', color: "bg-outline-secondary" },
     ]
-            `
-},
-    BorderedTables = {
-        script: `
+            `,
+  },
+  BorderedTables = {
+    script: `
    <TableComponent :headers="[{text:'User'}, {text:'Status'}, {text:'Email'}, {text:'Action'}]" :rows="tableData.bordered"
                     tableClass="table text-nowrap table-bordered" v-slot:cell="{ row }">
                     <th>
@@ -34,17 +34,17 @@ export let basicTable = {
                         </div>
                     </td>
                 </TableComponent>`,
-                data:`
+    data: `
                 bordered = [
                         { name: "Sukuro Kim", status: "Active", email: "kimosukuro@gmail.com", avatar: '/images/faces/13.jpg', color: "success-transparent" },
                         { name: "Hasimna", status: "Inactive", email: "hasimna2132@gmail.com", avatar: '/images/faces/6.jpg', color: "light", textColor: "dark" },
                         { name: "Azimo Khan", status: "Active", email: "azimokhan421@gmail.com", avatar: '/images/faces/15.jpg', color: "success-transparent" },
                         { name: "Samantha Julia", status: "Active", email: "julianasams143@gmail.com", avatar: '/images/faces/5.jpg', color: "success-transparent" }
                     ]
-                `
-    },
-    BorderedPrimary = {
-        script: ` <TableComponent :headers="[{text:'Order'}, {text:'Date'}, {text:'Customer'}, {text:'Action'}]" :rows="tableData.borderedPrimary"
+                `,
+  },
+  BorderedPrimary = {
+    script: ` <TableComponent :headers="[{text:'Order'}, {text:'Date'}, {text:'Customer'}, {text:'Action'}]" :rows="tableData.borderedPrimary"
                     tableClass="table text-nowrap table-bordered border-primary" v-slot:cell="{ row }">
                     <td>{{ row.id }}</td>
                     <td><span class="badge bg-light text-dark">{{ row.date }}</span></td>
@@ -57,16 +57,16 @@ export let basicTable = {
                     </td>
                     <td><span class="badge bg-primary-transparent">{{ row.status }}</span></td>
                 </TableComponent>`,
-                data:`
+    data: `
                  borderedPrimary = [
                         { id: "#0007", date: "26-04-2022", name: "Mayor Kelly", avatar: '/images/faces/3.jpg', status: "Booked" },
                         { id: "#0008", date: "15-02-2022", name: "Wicky Kross", avatar: '/images/faces/6.jpg', status: "Booked" },
                         { id: "#0009", date: "23-05-2022", name: "Julia Cam", avatar: '/images/faces/1.jpg', status: "Booked" }
                     ]
-                `
-    },
-    BorderedSuccess = {
-        script: ` <TableComponent :headers="[{text:'Order'}, {text:'Date'}, {text:'Customer'}, {text:'Action'}]" :rows="tableData.borderedSuccess" tableClass="table text-nowrap table-bordered border-success" v-slot:cell="{ row }">
+                `,
+  },
+  BorderedSuccess = {
+    script: ` <TableComponent :headers="[{text:'Order'}, {text:'Date'}, {text:'Customer'}, {text:'Action'}]" :rows="tableData.borderedSuccess" tableClass="table text-nowrap table-bordered border-success" v-slot:cell="{ row }">
                 <td>{{ row.id }}</td>
                 <td><span class="badge bg-light text-dark">{{ row.date }}</span></td>
                 <td>
@@ -78,16 +78,16 @@ export let basicTable = {
                 </td>
                 <td><span :class="badge {row.color}">{{ row.status }}</span></td>
             </TableComponent>`,
-            data:`
+    data: `
             borderedSuccess = [
                     { id: "#0011", date: "07-01-2022", name: "Helsenky", avatar: '/images/faces/10.jpg', status: "Delivered", color: "bg-success-transparent" },
                     { id: "#0012", date: "18-05-2022", name: "Brodus", avatar: '/images/faces/14.jpg', status: "Delivered", color: "bg-success-transparent" },
                     { id: "#0013", date: "19-03-2022", name: "Chikka Alen", avatar: '/images/faces/12.jpg', status: "Delivered", color: "bg-success-transparent" }
                 ]
-            `
-    },
-    BorderedWarning = {
-        script: ` <TableComponent :headers="[{text:'Order'}, {text:'Date'}, {text:'Customer'}, {text:'Action'}]" :rows="tableData.borderedWarning" tableClass="table text-nowrap table-bordered border-warning" v-slot:cell="{ row }">
+            `,
+  },
+  BorderedWarning = {
+    script: ` <TableComponent :headers="[{text:'Order'}, {text:'Date'}, {text:'Customer'}, {text:'Action'}]" :rows="tableData.borderedWarning" tableClass="table text-nowrap table-bordered border-warning" v-slot:cell="{ row }">
                 <td>{{ row.id }}</td>
                 <td><span class="badge bg-light text-dark">{{ row.date }}</span></td>
                 <td>
@@ -99,48 +99,48 @@ export let basicTable = {
                 </td>
                 <td><span :class="badge {row.color}">{{ row.status }}</span></td>
             </TableComponent>`,
-            data:`
+    data: `
              borderedWarning = [
                     { id: "#0014", date: "21-02-2022", name: "Sukuro Kim", avatar: '/images/faces/13.jpg', status: "Accepted", color: "bg-warning-transparent" },
                     { id: "#0018", date: "26-03-2022", name: "Alex Carey", avatar: '/images/faces/11.jpg', status: "Accepted", color: "bg-warning-transparent" },
                     { id: "#0020", date: "14-03-2022", name: "Pamila Anderson", avatar: '/images/faces/12.jpg', status: "Accepted", color: "bg-warning-transparent" }
                 ]
-            `
-    },
-    TableWithoutBorders = {
-        script: ` <TableComponent :headers="[{text:'User Name'}, {text:'Transaction Id'}, {text:'Created'}, {text:'Status'}]" :rows="tableData.withourBorder" tableClass="table text-nowrap table-borderless" v-slot:cell="{ row }">
+            `,
+  },
+  TableWithoutBorders = {
+    script: ` <TableComponent :headers="[{text:'User Name'}, {text:'Transaction Id'}, {text:'Created'}, {text:'Status'}]" :rows="tableData.withourBorder" tableClass="table text-nowrap table-borderless" v-slot:cell="{ row }">
                 <td>{{ row.name }}</td>
                 <td>{{ row.ticketId }}</td>
                 <td>{{ row.date }}</td>
                 <td><span :class="badge {row.badgeClass}">{{ row.status }}</span></td>
             </TableComponent>`,
-            data:`
+    data: `
             withourBorder = [
         { name: "Harshrath", ticketId: "#5182-3467", date: "24 May 2022", status: "Fixed", badgeClass: "bg-primary" },
         { name: "Zozo Hadid", ticketId: "#5182-3412", date: "02 July 2022", status: "In Progress", badgeClass: "bg-warning" },
         { name: "Martiana", ticketId: "#5182-3423", date: "15 April 2022", status: "Completed", badgeClass: "bg-success" },
         { name: "Alex Carey", ticketId: "#5182-3456", date: "17 March 2022", status: "Pending", badgeClass: "bg-danger" }
     ];
-            `
-    },
-    TableGroupDivideres = {
-        script: ` <TableComponent :headers="[{text:'Product'}, {text:'Seller'}, {text:'Sale Percentage'}, {text:'Quantity Sold'}]" :rows="tableData.groupDivideres" tableClass="table text-nowrap" v-slot:cell="{ row }">
+            `,
+  },
+  TableGroupDivideres = {
+    script: ` <TableComponent :headers="[{text:'Product'}, {text:'Seller'}, {text:'Sale Percentage'}, {text:'Quantity Sold'}]" :rows="tableData.groupDivideres" tableClass="table text-nowrap" v-slot:cell="{ row }">
                 <td>{{ row.name }}</td>
                 <td>{{ row.brand }}</td>
                 <td><a href="javascript:void(0);" :class="text-{row.color}">{{ row.percentage }}<i :class="ri-arrow-{row.dir}-fill ms-1"></i></a></td>
                 <td>250/1786</td>
             </TableComponent>`,
-            data:`
+    data: `
             groupDivideres = [
         { name: "Smart Watch", brand: "Slowtrack.inc", percentage: "24.23%", stock: "250/1786", color: "success", dir: "up" },
         { name: "White Sneakers", brand: "American & Co.inc", percentage: "12.45%", stock: "123/985", color: "danger", dir: "down" },
         { name: "Baseball Bat", brand: "Sports Company", percentage: "06.64%", stock: "124/232", color: "success", dir: "up" },
         { name: "Black Hoodie", brand: "Renolds Fabrics", percentage: "14.42%", stock: "192/2456", color: "success", dir: "up" }
     ]
-            `
-    },
-    Stripedrows = {
-        script: `  <TableComponent :headers="[{text:'ID'}, {text:'Date'}, {text:'Customer'}, {text:'Action'}]" :rows="tableData.stripedRows" tableClass="table text-nowrap table-striped" v-slot:cell="{ row }">
+            `,
+  },
+  Stripedrows = {
+    script: `  <TableComponent :headers="[{text:'ID'}, {text:'Date'}, {text:'Customer'}, {text:'Action'}]" :rows="tableData.stripedRows" tableClass="table text-nowrap table-striped" v-slot:cell="{ row }">
                 <td>{{ row.id }}</td>
                 <td>{{ row.date }}</td>
                 <td>{{ row.name }}</td>
@@ -150,17 +150,17 @@ export let basicTable = {
                     </button>
                 </td>
             </TableComponent>`,
-            data:`
+    data: `
             stripedRows = [
                     { id: "2022R-01", date: "27-01-2022", name: "Moracco" },
                     { id: "2022R-02", date: "28-10-2022", name: "Thornton" },
                     { id: "2022R-03", date: "22-10-2022", name: "Larry Bird" },
                     { id: "2022R-04", date: "29-09-2022", name: "Erica Sean" }
                 ]
-            `
-    },
-    Stripedcolumns = {
-        script: `<TableComponent :headers="[{text:'ID'}, {text:'Date'}, {text:'Customer'}, {text:'Action'}]" :rows="tableData.stripedRows" tableClass="table text-nowrap table-striped-columns" v-slot:cell="{ row }">
+            `,
+  },
+  Stripedcolumns = {
+    script: `<TableComponent :headers="[{text:'ID'}, {text:'Date'}, {text:'Customer'}, {text:'Action'}]" :rows="tableData.stripedRows" tableClass="table text-nowrap table-striped-columns" v-slot:cell="{ row }">
                 <td>{{ row.id }}</td>
                 <td>{{ row.date }}</td>
                 <td>{{ row.name }}</td>
@@ -170,107 +170,107 @@ export let basicTable = {
                     </button>
                 </td>
             </TableComponent>`,
-            data:`
+    data: `
             stripedRows = [
         { id: "2022R-01", date: "27-01-2022", name: "Moracco" },
         { id: "2022R-02", date: "28-10-2022", name: "Thornton" },
         { id: "2022R-03", date: "22-10-2022", name: "Larry Bird" },
         { id: "2022R-04", date: "29-09-2022", name: "Erica Sean" }
     ]
-            `
-    },
-    PrimaryTable = {
-        script: `  <TableComponent :headers="[{text:'#'}, {text:'First'}, {text:'Last'}, {text:'Handle'}]" :rows="tableData.colorTable" tableClass="table text-nowrap table-primary" v-slot:cell="{ row }">
+            `,
+  },
+  PrimaryTable = {
+    script: `  <TableComponent :headers="[{text:'#'}, {text:'First'}, {text:'Last'}, {text:'Handle'}]" :rows="tableData.colorTable" tableClass="table text-nowrap table-primary" v-slot:cell="{ row }">
                 <td>{{ row.id }}</td>
                 <td>{{ row.firstName }}</td>
                 <td>{{ row.lastName }}</td>
                 <td>{{ row.username }}</td>
             </TableComponent>`,
-            data:`
+    data: `
             colorTable = [
         { id: 1, firstName: "Mark", lastName: "Otto", username: "@mdo" },
         { id: 2, firstName: "Jacob", lastName: "Thornton", username: "@fat" },
         { id: 3, firstName: "Larry the Bird", lastName: "Thornton", username: "@twitter" }
     ]
-            `
-    },
-    SecondaryTable = {
-        script: ` <TableComponent :headers="[{text:'#'}, {text:'First'}, {text:'Last'}, {text:'Handle'}]" :rows="tableData.colorTable" tableClass="table text-nowrap table-secondary" v-slot:cell="{ row }">
+            `,
+  },
+  SecondaryTable = {
+    script: ` <TableComponent :headers="[{text:'#'}, {text:'First'}, {text:'Last'}, {text:'Handle'}]" :rows="tableData.colorTable" tableClass="table text-nowrap table-secondary" v-slot:cell="{ row }">
                 <td>{{ row.id }}</td>
                 <td>{{ row.firstName }}</td>
                 <td>{{ row.lastName }}</td>
                 <td>{{ row.username }}</td>
             </TableComponent>`,
-            data:`
+    data: `
             colorTable = [
         { id: 1, firstName: "Mark", lastName: "Otto", username: "@mdo" },
         { id: 2, firstName: "Jacob", lastName: "Thornton", username: "@fat" },
         { id: 3, firstName: "Larry the Bird", lastName: "Thornton", username: "@twitter" }
-    ]`
-    },
-    WarningTable = {
-        script: `<TableComponent :headers="[{text:'#'}, {text:'First'}, {text:'Last'}, {text:'Handle'}]" :rows="tableData.colorTable" tableClass="table text-nowrap table-warning" v-slot:cell="{ row }">
+    ]`,
+  },
+  WarningTable = {
+    script: `<TableComponent :headers="[{text:'#'}, {text:'First'}, {text:'Last'}, {text:'Handle'}]" :rows="tableData.colorTable" tableClass="table text-nowrap table-warning" v-slot:cell="{ row }">
                 <td>{{ row.id }}</td>
                 <td>{{ row.firstName }}</td>
                 <td>{{ row.lastName }}</td>
                 <td>{{ row.username }}</td>
             </TableComponent>`,
-            data:`
+    data: `
             colorTable = [
         { id: 1, firstName: "Mark", lastName: "Otto", username: "@mdo" },
         { id: 2, firstName: "Jacob", lastName: "Thornton", username: "@fat" },
         { id: 3, firstName: "Larry the Bird", lastName: "Thornton", username: "@twitter" }
-    ]`
-    },
-    DangerTable = {
-        script: `   <TableComponent :headers="['#', 'First', 'Last', 'Handle']" :rows="tableData.colorTable"
+    ]`,
+  },
+  DangerTable = {
+    script: `   <TableComponent :headers="['#', 'First', 'Last', 'Handle']" :rows="tableData.colorTable"
                     tableClass="table text-nowrap table-danger" v-slot:cell="{ row }">
                     <td>{{ row.id }}</td>
                     <td>{{ row.firstName }}</td>
                     <td>{{ row.lastName }}</td>
                     <td>{{ row.username }}</td>
                 </TableComponent>`,
-                data:`
+    data: `
                 colorTable = [
                         { id: 1, firstName: "Mark", lastName: "Otto", username: "@mdo" },
                         { id: 2, firstName: "Jacob", lastName: "Thornton", username: "@fat" },
                         { id: 3, firstName: "Larry the Bird", lastName: "Thornton", username: "@twitter" }
                     ]
-                `
-    },
-    DarkTable = {
-        script: `<TableComponent :headers="[{text:'#'}, {text:'First'}, {text:'Last'}, {text:'Handle'}]" :rows="tableData.colorTable" tableClass="table text-nowrap table-dark" v-slot:cell="{ row }">
+                `,
+  },
+  DarkTable = {
+    script: `<TableComponent :headers="[{text:'#'}, {text:'First'}, {text:'Last'}, {text:'Handle'}]" :rows="tableData.colorTable" tableClass="table text-nowrap table-dark" v-slot:cell="{ row }">
                 <td>{{ row.id }}</td>
                 <td>{{ row.firstName }}</td>
                 <td>{{ row.lastName }}</td>
                 <td>{{ row.username }}</td>
             </TableComponent>`,
-            data:`
+    data: `
              colorTable = [
                         { id: 1, firstName: "Mark", lastName: "Otto", username: "@mdo" },
                         { id: 2, firstName: "Jacob", lastName: "Thornton", username: "@fat" },
                         { id: 3, firstName: "Larry the Bird", lastName: "Thornton", username: "@twitter" }
                     ]
-            `
-    },
-    SuccessTableWithStripedRows = {
-        script: `
+            `,
+  },
+  SuccessTableWithStripedRows = {
+    script: `
          <TableComponent :headers="[{text:'#'}, {text:'First'}, {text:'Last'}, {text:'Handle'}]" :rows="tableData.colorTable" tableClass="table text-nowrap table-success table-striped" v-slot:cell="{ row }">
                 <td>{{ row.id }}</td>
                 <td>{{ row.firstName }}</td>
                 <td>{{ row.lastName }}</td>
                 <td>{{ row.username }}</td>
             </TableComponent>`,
-            data:`
+    data: `
             colorTable = [
                         { id: 1, firstName: "Mark", lastName: "Otto", username: "@mdo" },
                         { id: 2, firstName: "Jacob", lastName: "Thornton", username: "@fat" },
                         { id: 3, firstName: "Larry the Bird", lastName: "Thornton", username: "@twitter" }
                     ]
-            `
-    },
-    HoverableRows = {
-        script: ` <TableComponent :headers="[{text:'Product Manager'},{text: 'Category'}, {text:'Team'}, {text:'Status'}]"
+            `,
+  },
+  HoverableRows = {
+    script: ` <TableComponent :headers="[{text:'Product Manager'},{text: 'Category'}, {text:'Team'}, {text:'Status'}]"
                     :rows="tableData.hoverableRows" tableClass="table text-nowrap table-hover" v-slot:cell="{ row }">
                     <td>
                         <div class="d-flex align-items-center">
@@ -308,17 +308,17 @@ export let basicTable = {
                         </div>
                     </td>
                 </TableComponent>`,
-                data:`
+    data: `
                  hoverableRows = [
                         { src: '/images/faces/10.jpg', name: "Joanna Smith", email: "joannasmith14@gmail.com", category: "Fashion", color: "bg-primary-transparent", progress: 52, avatars: ['/images/faces/10.jpg', '/images/faces/2.jpg', '/images/faces/8.jpg'], extraAvatarsCount: 5, },
                         { src: '/images/faces/2.jpg', name: "Kara Kova", email: "milesakara@gmail.com", category: "Clothing", color: "bg-warning-transparent", progress: 40, avatars: ['/images/faces/2.jpg', '/images/faces/4.jpg', '/images/faces/6.jpg'], extraAvatarsCount: 6, },
                         { src: '/images/faces/16.jpg', name: "Donald Trimb", email: "donaldo21@gmail.com", category: "Electronics", color: "bg-dark-transparent", progress: 17, avatars: ['/images/faces/16.jpg', '/images/faces/1.jpg', '/images/faces/11.jpg', '/images/faces/15.jpg'], extraAvatarsCount: 2, },
                         { src: '/images/faces/13.jpg', name: "Justin Gaethje", email: "justingae@gmail.com", category: "Sports", color: "bg-danger-transparent", progress: 72, avatars: ['/images/faces/13.jpg', '/images/faces/4.jpg', '/images/faces/6.jpg'], extraAvatarsCount: 5, },
                     ]
-                `
-    },
-    HoverablerowsWithstripedrows = {
-        script: ` <TableComponent :headers="[{text:'Invoice'}, {text:'Customer'}, {text:'Status'}, {text:'Date'}]" :rows="tableData.hoverableRow"
+                `,
+  },
+  HoverablerowsWithstripedrows = {
+    script: ` <TableComponent :headers="[{text:'Invoice'}, {text:'Customer'}, {text:'Status'}, {text:'Date'}]" :rows="tableData.hoverableRow"
                     tableClass="table text-nowrap table-striped table-hover" v-slot:cell="{ row }">
                     <td>{{ row.number }}</td>
                     <td>
@@ -341,17 +341,17 @@ export let basicTable = {
                     </td>
                     <td>Jul 26,2022</td>
                 </TableComponent>`,
-                data:`
+    data: `
                 
                 hoverableRow = [
                         { number: "IN-2032", name: "Mark Cruise", email: "markcruise24@gmail.com", status: "Paid", statusClass: "bg-success-transparent", statusIcon: "ri-check-fill", date: "Jul 26, 2022", avatar: '/images/faces/15.jpg', },
                         { number: "IN-2022", name: "Charanjeep", email: "charanjeep@gmail.in", status: "Paid", statusClass: "bg-success-transparent", statusIcon: "ri-check-fill", date: "Mar 14, 2022", avatar: '/images/faces/12.jpg', },
                         { number: "IN-2014", name: "Samantha Julie", email: "julie453@gmail.com", status: "Cancelled", statusClass: "bg-danger-transparent", statusIcon: "ri-close-fill", date: "Feb 1, 2022", avatar: '/images/faces/5.jpg', },
                         { number: "IN-2036", name: "Simon Cohen", email: "simon@gmail.com", status: "Refunded", statusClass: "light text-dark", statusIcon: "ri-reply-line", date: "Apr 24, 2022", avatar: '/images/faces/11.jpg', },
-                    ],`
-    },
-    TableHeadPrimary = {
-        script: ` <TableComponent :headers="[{text:'User Name'}, {text:'Transaction Id'}, {text:'Created'}, {text:'Status'}]" :rows="tableData.tableHeadwarning" tableClass="table text-nowrap" theadClass="table-primary" v-slot:cell="{ row }">
+                    ],`,
+  },
+  TableHeadPrimary = {
+    script: ` <TableComponent :headers="[{text:'User Name'}, {text:'Transaction Id'}, {text:'Created'}, {text:'Status'}]" :rows="tableData.tableHeadwarning" tableClass="table text-nowrap" theadClass="table-primary" v-slot:cell="{ row }">
                 <td>{{ row.name }}</td>
                 <td>{{ row.orderNumber }}</td>
                 <td>{{ row.date }}</td>
@@ -363,109 +363,109 @@ export let basicTable = {
                     </div>
                 </td>
             </TableComponent>`,
-            data:`
+    data: `
             tableHeadwarning = [
         { name: "Harshrath", orderNumber: "#5182-3467", date: "24 May 2022", status: "Pending", statusClass: "primary-light" },
         { name: "Zozo Hadid", orderNumber: "#5182-3412", date: "02 July 2022", status: "Pending", statusClass: "primary-light" },
         { name: "Martiana", orderNumber: "#5182-3423", date: "15 April 2022", status: "Rejected", statusClass: "danger-light" },
         { name: "Alex Carey", orderNumber: "#5182-3456", date: "17 March 2022", status: "Processed", statusClass: "success-light" }
     ]
-            `
-    },
-    TableHeadwarning = {
-        script: `<TableComponent :headers="[{text:'User Name'}, {text:'Transaction Id'}, {text:'Created'}, {text:'Status'}]" :rows="tableData.tableHeadwarning" tableClass="table text-nowrap" theadClass="table-warning" v-slot:cell="{ row }">
+            `,
+  },
+  TableHeadwarning = {
+    script: `<TableComponent :headers="[{text:'User Name'}, {text:'Transaction Id'}, {text:'Created'}, {text:'Status'}]" :rows="tableData.tableHeadwarning" tableClass="table text-nowrap" theadClass="table-warning" v-slot:cell="{ row }">
                 <td>{{ row.name }}</td>
                 <td>{{ row.orderNumber }}</td>
                 <td>{{ row.date }}</td>
                 <td><button :class="btn btn-sm btn-{row.statusClass}">{{ row.status }}</button> </td>
             </TableComponent>`,
-            data:`
+    data: `
             tableHeadwarning = [
         { name: "Harshrath", orderNumber: "#5182-3467", date: "24 May 2022", status: "Pending", statusClass: "primary-light" },
         { name: "Zozo Hadid", orderNumber: "#5182-3412", date: "02 July 2022", status: "Pending", statusClass: "primary-light" },
         { name: "Martiana", orderNumber: "#5182-3423", date: "15 April 2022", status: "Rejected", statusClass: "danger-light" },
         { name: "Alex Carey", orderNumber: "#5182-3456", date: "17 March 2022", status: "Processed", statusClass: "success-light" }
     ],
-            `
-    },
-    TableHeadSuccess = {
-        script: `<TableComponent :headers="[{text:'User Name'}, {text:'Transaction Id'}, {text:'Created'}, {text:'Status'}]" :rows="tableData.tableHeadwarning" tableClass="table text-nowrap" theadClass="table-success" v-slot:cell="{ row }">
+            `,
+  },
+  TableHeadSuccess = {
+    script: `<TableComponent :headers="[{text:'User Name'}, {text:'Transaction Id'}, {text:'Created'}, {text:'Status'}]" :rows="tableData.tableHeadwarning" tableClass="table text-nowrap" theadClass="table-success" v-slot:cell="{ row }">
                 <td>{{ row.name }}</td>
                 <td>{{ row.orderNumber }}</td>
                 <td>{{ row.date }}</td>
                 <td><button :class="btn btn-sm btn-{row.statusClass}">{{ row.status }}</button> </td>
             </TableComponent>`,
-            data:` tableHeadwarning = [
+    data: ` tableHeadwarning = [
         { name: "Harshrath", orderNumber: "#5182-3467", date: "24 May 2022", status: "Pending", statusClass: "primary-light" },
         { name: "Zozo Hadid", orderNumber: "#5182-3412", date: "02 July 2022", status: "Pending", statusClass: "primary-light" },
         { name: "Martiana", orderNumber: "#5182-3423", date: "15 April 2022", status: "Rejected", statusClass: "danger-light" },
         { name: "Alex Carey", orderNumber: "#5182-3456", date: "17 March 2022", status: "Processed", statusClass: "success-light" }
-    ],`
-    },
-    TableHeadInfo = {
-        script: ` <TableComponent :headers="[{text:'User Name'}, {text:'Transaction Id'}, {text:'Created'}, {text:'Status'}]" :rows="tableData.tableHeadwarning" tableClass="table text-nowrap" theadClass="table-info" v-slot:cell="{ row }">
+    ],`,
+  },
+  TableHeadInfo = {
+    script: ` <TableComponent :headers="[{text:'User Name'}, {text:'Transaction Id'}, {text:'Created'}, {text:'Status'}]" :rows="tableData.tableHeadwarning" tableClass="table text-nowrap" theadClass="table-info" v-slot:cell="{ row }">
                 <td>{{ row.name }}</td>
                 <td>{{ row.orderNumber }}</td>
                 <td>{{ row.date }}</td>
                 <td><button :class="btn btn-sm btn-{row.statusClass}">{{ row.status }}</button> </td>
             </TableComponent>`,
-            data:`
+    data: `
              tableHeadwarning = [
         { name: "Harshrath", orderNumber: "#5182-3467", date: "24 May 2022", status: "Pending", statusClass: "primary-light" },
         { name: "Zozo Hadid", orderNumber: "#5182-3412", date: "02 July 2022", status: "Pending", statusClass: "primary-light" },
         { name: "Martiana", orderNumber: "#5182-3423", date: "15 April 2022", status: "Rejected", statusClass: "danger-light" },
         { name: "Alex Carey", orderNumber: "#5182-3456", date: "17 March 2022", status: "Processed", statusClass: "success-light" }
     ]
-            `
-    },
-    TableHeadSecondary = {
-        script: ` <TableComponent :headers="[{text:'User Name'}, {text:'Transaction Id'}, {text:'Created'}, {text:'Status'}]" :rows="tableData.tableHeadwarning" tableClass="table text-nowrap" theadClass="table-secondary" v-slot:cell="{ row }">
+            `,
+  },
+  TableHeadSecondary = {
+    script: ` <TableComponent :headers="[{text:'User Name'}, {text:'Transaction Id'}, {text:'Created'}, {text:'Status'}]" :rows="tableData.tableHeadwarning" tableClass="table text-nowrap" theadClass="table-secondary" v-slot:cell="{ row }">
                 <td>{{ row.name }}</td>
                 <td>{{ row.orderNumber }}</td>
                 <td>{{ row.date }}</td>
                 <td><button :class="btn btn-sm btn-{row.statusClass}">{{ row.status }}</button> </td>
             </TableComponent>`,
-            data:` tableHeadwarning = [
+    data: ` tableHeadwarning = [
         { name: "Harshrath", orderNumber: "#5182-3467", date: "24 May 2022", status: "Pending", statusClass: "primary-light" },
         { name: "Zozo Hadid", orderNumber: "#5182-3412", date: "02 July 2022", status: "Pending", statusClass: "primary-light" },
         { name: "Martiana", orderNumber: "#5182-3423", date: "15 April 2022", status: "Rejected", statusClass: "danger-light" },
         { name: "Alex Carey", orderNumber: "#5182-3456", date: "17 March 2022", status: "Processed", statusClass: "success-light" }
     ]
             
-            `
-    },
-    TableHeadDanger = {
-        script: ` <TableComponent :headers="[{text:'User Name'}, {text:'Transaction Id'}, {text:'Created'}, {text:'Status'}]" :rows="tableData.tableHeadwarning" tableClass="table text-nowrap" theadClass="table-danger" v-slot:cell="{ row }">
+            `,
+  },
+  TableHeadDanger = {
+    script: ` <TableComponent :headers="[{text:'User Name'}, {text:'Transaction Id'}, {text:'Created'}, {text:'Status'}]" :rows="tableData.tableHeadwarning" tableClass="table text-nowrap" theadClass="table-danger" v-slot:cell="{ row }">
                 <td>{{ row.name }}</td>
                 <td>{{ row.orderNumber }}</td>
                 <td>{{ row.date }}</td>
                 <td><button :class="btn btn-sm btn-{row.statusClass}">{{ row.status }}</button> </td>
             </TableComponent>`,
-            data:`
+    data: `
             tableHeadwarning = [
         { name: "Harshrath", orderNumber: "#5182-3467", date: "24 May 2022", status: "Pending", statusClass: "primary-light" },
         { name: "Zozo Hadid", orderNumber: "#5182-3412", date: "02 July 2022", status: "Pending", statusClass: "primary-light" },
         { name: "Martiana", orderNumber: "#5182-3423", date: "15 April 2022", status: "Rejected", statusClass: "danger-light" },
         { name: "Alex Carey", orderNumber: "#5182-3456", date: "17 March 2022", status: "Processed", statusClass: "success-light" }
     ]
-            `
-    },
-    TableFoot = {
-        script: ` <TableComponent theadClass="table-primary" :headers="[{text:'S.No'}, {text:'Team'}, {text:'Matches Won'}, {text:'Win Ratio'}]" :rows="tableData.tableFoot" tableClass="table text-nowrap" v-slot:cell="{ row }">
+            `,
+  },
+  TableFoot = {
+    script: ` <TableComponent theadClass="table-primary" :headers="[{text:'S.No'}, {text:'Team'}, {text:'Matches Won'}, {text:'Win Ratio'}]" :rows="tableData.tableFoot" tableClass="table text-nowrap" v-slot:cell="{ row }">
                 <td> {{ row.id }} </td>
                 <td> {{ row.location }}</td>
                 <td> {{ row.count }}</td>
                 <td> <span class="badge bg-primary">{{ row.percentage }}</span></td>
             </TableComponent>`,
-            data:`tableFoot = [
+    data: `tableFoot = [
                     { id: '01', location: 'Manchester', count: 232, percentage: '42%' },
                     { id: '02', location: 'Barcelona', count: 175, percentage: '58%' },
                     { id: '03', location: 'Portugal', count: 126, percentage: '32%' },
                     { id: "Total", location: 'United States', count: 558, percentage: '56%', },
-                ]`
-    },
-    TableWithCaption = {
-        script: ` <TableComponent :headers="[{text:'S.No'}, {text:'Country'}, {text:'Medals Won'}, {text:'No Of Athletes'}]" :rows="tableData.tableWithCaption" tableClass="table text-nowrap" v-slot:cell="{ row }">
+                ]`,
+  },
+  TableWithCaption = {
+    script: ` <TableComponent :headers="[{text:'S.No'}, {text:'Country'}, {text:'Medals Won'}, {text:'No Of Athletes'}]" :rows="tableData.tableWithCaption" tableClass="table text-nowrap" v-slot:cell="{ row }">
                 <td>{{ row.rank }}</td>
                 <td>{{ row.country }}</td>
                 <td>{{ row.year }}<i class="ri-medal-line mx-2"></i></td>
@@ -473,48 +473,48 @@ export let basicTable = {
 
             </TableComponent>
             <caption class="d-flex">Top 3 Countries</caption>`,
-            data:`
+    data: `
             tableWithCaption = [
         { rank: '01', country: 'United States', year: 2012, value: 1823 },
         { rank: '02', country: 'United Kingdom', year: 1012, value: 992 },
         { rank: '03', country: 'Germany', year: 914, value: 875 },
     ]
-            `
-    },
-    TableWithTopCaption = {
-        script: ` <caption class="d-flex">Top IT Companies</caption>
+            `,
+  },
+  TableWithTopCaption = {
+    script: ` <caption class="d-flex">Top IT Companies</caption>
             <TableComponent :headers="[{text:'S.No'}, {text:'Name'}, {text:'Revenue'}, {text:'Country'}]" :rows="tableData.tableWithTopCaption" tableClass="table text-nowrap caption-top" v-slot:cell="{ row }">
                 <td>{{ row.rank }}</td>
                 <td>{{ row.name }}</td>
                 <td>{{ row.revenue }}</td>
                 <td>{{ row.country }}</td>
             </TableComponent>`,
-            data:`
+    data: `
             tableWithTopCaption = [
         { rank: '1', name: 'Microsoft', revenue: '$170 billion', country: 'United States' },
         { rank: '2', name: 'HP', revenue: '$72 billion', country: 'United States' },
         { rank: '3', name: 'IBM', revenue: '$60 billion', country: 'United States' },
     ]
-            `
-    },
-    ActiveTables = {
-        script: `  <TableComponent :headers="[{text:'Name'}, {text:'Created On'}, {text:'Number'}, {text:'Status'}]" :rows="tableData.activeTables" tableClass="table text-nowrap" v-slot:cell="{ row }" :trClass="trClass">
+            `,
+  },
+  ActiveTables = {
+    script: `  <TableComponent :headers="[{text:'Name'}, {text:'Created On'}, {text:'Number'}, {text:'Status'}]" :rows="tableData.activeTables" tableClass="table text-nowrap" v-slot:cell="{ row }" :trClass="trClass">
                 <td>{{ row.name }}</td>
                 <td>{{ row.date }}</td>
                 <td :class="row.tdClass">{{ row.phone }}</td>
                 <td><span :class="badge {row.statusClass}">{{ row.status }}</span></td>
             </TableComponent>`,
-            data:`
+    data: `
             activeTables = [
         { name: 'Mark', date: '21, Dec 2021', phone: '+1234-12340', status: 'Completed', statusClass: 'bg-primary', trClass: "table-active" },
         { name: 'Monika', date: '29, April 2022', phone: '+1523-12459', status: 'Failed', statusClass: 'bg-warning', },
         { name: 'Madina', date: '30, Nov 2022', phone: '+1982-16234', status: 'Successful', statusClass: 'bg-success', tdClass: "table-active" },
         { name: 'Bhamako', date: '18, Mar 2022', phone: '+1526-10729', status: 'Pending', statusClass: 'bg-secondary', },
     ]
-            `
-    },
-    SmallTables = {
-        script: ` <TableComponent :headers="[{text:'Invoice'}, {text:'Created Date'}, {text:'Status'}, {text:'Action'}]" :rows="tableData.smallTables" tableClass="table text-nowrap table-sm" v-slot:cell="{ row }">
+            `,
+  },
+  SmallTables = {
+    script: ` <TableComponent :headers="[{text:'Invoice'}, {text:'Created Date'}, {text:'Status'}, {text:'Action'}]" :rows="tableData.smallTables" tableClass="table text-nowrap table-sm" v-slot:cell="{ row }">
                 <td>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="checkebox-sm" :checked="row.cheacked">
@@ -530,7 +530,7 @@ export let basicTable = {
                     </div>
                 </td>
             </TableComponent>`,
-            data:`
+    data: `
             smallTables = [
         { name: 'Zelensky', date: '25-Apr-2021', status: 'Paid', statusClass: 'bg-success-transparent', cheacked: true },
         { name: 'Kim Jong', date: '29-Apr-2022', status: 'Pending', statusClass: 'bg-danger-transparent', cheacked: false },
@@ -538,17 +538,17 @@ export let basicTable = {
         { name: 'Sean Paul', date: '01-Jan-2022', status: 'Paid', statusClass: 'bg-success-transparent', cheacked: false },
         { name: 'Karizma', date: '14-Feb-2022', status: 'Pending', statusClass: 'bg-danger-transparent', cheacked: false },
     ]
-            `
-    },
-    Colorvariantstables = {
-        script: ` <TableComponent :headers="[{text:'Color'},{text:'Client'}, {text:'State'}, {text:'Quantity'}, {text:'Total Price'}]" :rows="tableData.colorvariantsTables" tableClass="table text-nowrap" v-slot:cell="{ row }">
+            `,
+  },
+  Colorvariantstables = {
+    script: ` <TableComponent :headers="[{text:'Color'},{text:'Client'}, {text:'State'}, {text:'Quantity'}, {text:'Total Price'}]" :rows="tableData.colorvariantsTables" tableClass="table text-nowrap" v-slot:cell="{ row }">
                 <td>{{ row.type }}</td>
                 <td>{{ row.title }}</td>
                 <td><span :class="badge {row.badgeClass}">{{ row.status }}</span></td>
                 <td>{{ row.quantity }}</td>
                 <td>{{ row.amount }}</td>
             </TableComponent>`,
-            data:`
+    data: `
             colorvariantsTables = [
         { type: 'Default', title: 'Rita Book', status: 'Processed', badgeClass: 'bg-primary-transparent', quantity: 22, amount: '$2,012' },
         { type: 'Primary', title: 'Rhoda Report', status: 'Processed', badgeClass: 'bg-primary', quantity: 22, amount: '$4,254' },
@@ -560,10 +560,10 @@ export let basicTable = {
         { type: 'Light', title: 'Fran Tick', status: 'Processed', badgeClass: 'bg-light text-dark', quantity: 5, amount: '$823' },
         { type: 'Dark', title: 'Polly Pipe', status: 'Processed', badgeClass: 'bg-dark text-white', quantity: 35, amount: '$1,832' },
     ]
-            `
-    },
-    Nesting = {
-        script: ` <div class="table-responsive">
+            `,
+  },
+  Nesting = {
+    script: ` <div class="table-responsive">
                 <table class="table text-nowrap table-striped table-bordered">
                     <thead>
                         <tr>
@@ -630,10 +630,10 @@ export let basicTable = {
                         </tr>
                     </tbody>
                 </table>
-            </div>`
-    },
-    Alwaysresponsive = {
-        script: ` <TableComponent :headers="tableHeader" :rows="tableData.alwaysResponsive" tableClass="table text-nowrap" v-slot:cell="{ row }">
+            </div>`,
+  },
+  Alwaysresponsive = {
+    script: ` <TableComponent :headers="tableHeader" :rows="tableData.alwaysResponsive" tableClass="table text-nowrap" v-slot:cell="{ row }">
                 <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel1" value="" aria-label="...">
                 </td>
                 <td>
@@ -668,10 +668,10 @@ export let basicTable = {
                         <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-info"><i class="ri-edit-line"></i></a>
                     </div>
                 </td>
-            </TableComponent>`
-    },
-    Verticalalignment = {
-        script: ` <div class="table-responsive">
+            </TableComponent>`,
+  },
+  Verticalalignment = {
+    script: ` <div class="table-responsive">
                     <table class="table align-middle">
                         <thead>
                             <tr>
@@ -730,5 +730,5 @@ export let basicTable = {
                             </tr>
                         </tbody>
                     </table>
-                </div>`
-    }
+                </div>`,
+  }

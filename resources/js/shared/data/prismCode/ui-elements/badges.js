@@ -1,9 +1,8 @@
-export let
-    badges = {
-        script: `
+export let badges = {
+    script: `
     <span :class="badge bg-{idx.color} {idx.class}" v-for="(idx,index) in badgeData.Badgesdata" :key="index">{{idx.heading}}</span>
    `,
-   data:`
+    data: `
    Badgesdata = [
     { id: 1, heading: "Primary", color: "primary", class: "" },
     { id: 5, heading: "Secondary", color: "secondary", class: "" },
@@ -14,12 +13,12 @@ export let
     { id: 10, heading: "Light", color: "light", class: "text-dark" },
     { id: 11, heading: "Dark", color: "dark", class: "text-white" },
 ]
-   `
-},
-    pillBadges = {
-        script: `
+   `,
+  },
+  pillBadges = {
+    script: `
    <span :class="badge rounded-pill bg-{badge.color} {badge.class}" v-for="(badge,index) in badgeData.Badgesdata" :key="index">{{badge.heading}}</span>`,
-   data:`
+    data: `
    Outlinebadgesdata = [
         { id: 1, heading: "Primary", color: "primary", class: "" },
         { id: 5, heading: "Secondary", color: "secondary", class: "" },
@@ -30,13 +29,13 @@ export let
         { id: 10, heading: "Light", color: "light", class: "text-dark" },
         { id: 11, heading: "Dark", color: "dark", class: "" },
     ]
-   `
-},
-    lightBadges = {
-        script: `
+   `,
+  },
+  lightBadges = {
+    script: `
     <span :class="badge bg-{badge.color}-transparent {badge.class}" v-for="(badge,index) in badgeData.Outlinebadgesdata" :key="index">{{badge.heading}}</span>
-   ` ,
-   data:`
+   `,
+    data: `
    Outlinebadgesdata = [
         { id: 1, heading: "Primary", color: "primary", class: "" },
         { id: 5, heading: "Secondary", color: "secondary", class: "" },
@@ -47,18 +46,18 @@ export let
         { id: 10, heading: "Light", color: "light", class: "text-dark" },
         { id: 11, heading: "Dark", color: "dark", class: "" },
     ]
-   `
-
-},
-    lightPillBadges = {
-        script: `
+   `,
+  },
+  lightPillBadges = {
+    script: `
     &lt;span :class="badge rounded-pill bg-{badge.color}-transparent {badge.class}" v-for="(badge,index) in badgeData.Outlinebadgesdata" :key="index">{{badge.heading}}&lt;/span>
-    ` },
-    gradientBadges = {
-        script: `
+    `,
+  },
+  gradientBadges = {
+    script: `
     <span :class="badge bg-{badge1.color}-gradient" v-for="(badge1,index) in badgeData.badges1" :key="index">{{badge1.heading}}</span>
     `,
-    data:`
+    data: `
      badges1 = [
         { id: 1, heading: "Primary", color: "primary" },
         { id: 2, heading: "secondary", color: "secondary" },
@@ -69,14 +68,13 @@ export let
         { id: 7, heading: "orange", color: "orange" },
         { id: 8, heading: "purple", color: "purple" },
     ]
-    `
-
-},
-    gradientPillBadges = {
-        script: `
+    `,
+  },
+  gradientPillBadges = {
+    script: `
      <span :class="badge rounded-pill bg-{badge1.color}-gradient" v-for="(badge1,index) in badgeData.badges1" :key="index">{{badge1.heading}}</span>
     `,
-    data:`
+    data: `
     badges1 = [
         { id: 1, heading: "Primary", color: "primary" },
         { id: 2, heading: "secondary", color: "secondary" },
@@ -87,13 +85,13 @@ export let
         { id: 7, heading: "orange", color: "orange" },
         { id: 8, heading: "purple", color: "purple" },
     ]
-    `
- },
-    outlineBadges = {
-        script: `
+    `,
+  },
+  outlineBadges = {
+    script: `
     <span :class="badge bg-outline-{badge.color} {badge.class}" v-for="(badge,index) in badgeData.Outlinebadgesdata" :key="index">{{badge.heading}}</span>
     `,
-    data:`
+    data: `
      Outlinebadgesdata = [
         { id: 1, heading: "Primary", color: "primary", class: "" },
         { id: 5, heading: "Secondary", color: "secondary", class: "" },
@@ -104,14 +102,13 @@ export let
         { id: 10, heading: "Light", color: "light", class: "text-dark" },
         { id: 11, heading: "Dark", color: "dark", class: "" },
     ]
-    `
-
-},
-    outlinePillBadges = {
-        script: `
+    `,
+  },
+  outlinePillBadges = {
+    script: `
    <span :class="badge rounded-pill bg-outline-{badge.color} {badge.class}" v-for="(badge,index) in badgeData.Outlinebadgesdata" :key="index">{{badge.heading}}</span>
-    ` ,
-    data:`
+    `,
+    data: `
     Outlinebadgesdata = [
         { id: 1, heading: "Primary", color: "primary", class: "" },
         { id: 5, heading: "Secondary", color: "secondary", class: "" },
@@ -122,11 +119,10 @@ export let
         { id: 10, heading: "Light", color: "light", class: "text-dark" },
         { id: 11, heading: "Dark", color: "dark", class: "" },
     ]
-    `
-
-},
-    buttonsWithBadges = {
-        script: `
+    `,
+  },
+  buttonsWithBadges = {
+    script: `
     <button type="button" class="btn btn-primary my-1 me-2">
                 Notifications <span class="badge ms-2 bg-secondary">4</span>
             </button>
@@ -138,9 +134,10 @@ export let
             </button>
             <button type="button" class="btn btn-info my-1 me-2">
                 Notifications <span class="badge ms-2 bg-warning">32</span>
-            </button>` },
-    outlineButtonBadges = {
-        script: `
+            </button>`,
+  },
+  outlineButtonBadges = {
+    script: `
     <button type="button" class="btn btn-outline-primary my-1 me-2">
                 Notifications <span class="badge ms-2">4</span>
             </button>
@@ -152,17 +149,19 @@ export let
             </button>
             <button type="button" class="btn btn-outline-info my-1 me-2">
                 Notifications <span class="badge ms-2">32</span>
-            </button>` },
-    headings = {
-        script: `
+            </button>`,
+  },
+  headings = {
+    script: `
     <h1>Example heading <span class="badge bg-primary">New</span></h1>
             <h2>Example heading <span class="badge bg-primary">New</span></h2>
             <h3>Example heading <span class="badge bg-primary">New</span></h3>
             <h4>Example heading <span class="badge bg-primary">New</span></h4>
             <h5>Example heading <span class="badge bg-primary">New</span></h5>
-            <h6>Example heading <span class="badge bg-primary">New</span></h6>` },
-    positionedBadges = {
-        script: `
+            <h6>Example heading <span class="badge bg-primary">New</span></h6>`,
+  },
+  positionedBadges = {
+    script: `
     <button type="button" class="btn btn-primary position-relative">
                         Inbox
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -193,9 +192,10 @@ export let
                         <span class="position-absolute top-0 start-100 translate-middle badge bg-secondary rounded-pill shadow-lg">1000+
                             <span class="visually-hidden">New alerts</span>
                         </span>
-                    </span>` },
-    customBadges = {
-        script: `
+                    </span>`,
+  },
+  customBadges = {
+    script: `
    <div class="d-flex align-items-center gap-5 flex-wrap">
                         <div>
                             <span class="badge bg-outline-secondary custom-badge fs-15 d-inline-flex align-items-center"><i class="ti ti-flame me-1"></i>Hot</span>
@@ -216,4 +216,5 @@ export let
                                 <span class="badge rounded-pill bg-success">32</span>
                             </span>
                         </div>
-                    </div>` };
+                    </div>`,
+  }

@@ -1,16 +1,23 @@
-
-const chartSeries = [{
-  data: [105, 112, 80, 145, 98, 148, 110, 87, 102]
-}]
-const chartSeries1 = [{
-  data: [112, 87, 105, 102, 145, 98, 110, 148, 80]
-}]
-const chartSeries2 = [{
-  data: [145, 110, 112, 87, 148, 102, 98, 105, 80]
-}]
-const chartSeries3 = [{
-  data: [105, 87, 148, 80, 110, 145, 112, 102, 98]
-}]
+const chartSeries = [
+  {
+    data: [105, 112, 80, 145, 98, 148, 110, 87, 102],
+  },
+]
+const chartSeries1 = [
+  {
+    data: [112, 87, 105, 102, 145, 98, 110, 148, 80],
+  },
+]
+const chartSeries2 = [
+  {
+    data: [145, 110, 112, 87, 148, 102, 98, 105, 80],
+  },
+]
+const chartSeries3 = [
+  {
+    data: [105, 87, 148, 80, 110, 145, 112, 102, 98],
+  },
+]
 
 const Chartoptions = ({ color, colors }) => ({
   chart: {
@@ -18,31 +25,31 @@ const Chartoptions = ({ color, colors }) => ({
     width: 100,
     type: 'area',
     zoom: {
-      enabled: false
+      enabled: false,
     },
     sparkline: {
-      enabled: true
+      enabled: true,
     },
   },
   tooltip: {
     enabled: true,
-    theme: "dark",
+    theme: 'dark',
     x: {
-      show: false
+      show: false,
     },
     y: {
       title: {
         formatter: function () {
           return ''
-        }
-      }
+        },
+      },
     },
     marker: {
-      show: false
-    }
+      show: false,
+    },
   },
   dataLabels: {
-    enabled: false
+    enabled: false,
   },
   stroke: {
     curve: 'smooth',
@@ -57,7 +64,7 @@ const Chartoptions = ({ color, colors }) => ({
   xaxis: {
     crosshairs: {
       show: false,
-    }
+    },
   },
   colors: [color],
   fill: {
@@ -72,71 +79,70 @@ const Chartoptions = ({ color, colors }) => ({
           {
             offset: 0,
             color: colors,
-            opacity: 1
+            opacity: 1,
           },
           {
             offset: 75,
             color: colors,
-            opacity: 1
+            opacity: 1,
           },
           {
             offset: 100,
             color: colors,
-            opacity: 1
-          }
-        ]
-      ]
-    }
+            opacity: 1,
+          },
+        ],
+      ],
+    },
   },
 })
 
-
 export const cryptoCards = [
-  {
-    imgSrc: '/images/crypto-currencies/crypto-icons/bitcoin-btc-logo.svg',
-    value: "21.235-BTC",
-    percent: " 4.21%",
-    iconColor: "success",
-    icon: "ti ti-trending-up",
-    id: "btc-chart",
-    chartseries: chartSeries,
-    chartoptions: Chartoptions({ color: 'var(--primary-color)', colors: 'var(--primary01)' }),
-    type: 'area'
-  },
-  {
-    imgSrc: '/images/crypto-currencies/crypto-icons/ethereum-eth-logo.svg',
-    value: "164.75-ETH",
-    percent: " 2.21%",
-    iconColor: "danger",
-    icon: "ti ti-trending-down",
-    id: "eth-chart",
-    chartseries: chartSeries1,
-    chartoptions: Chartoptions({ color: 'rgb(255, 73, 205)', colors: 'rgba(255, 73, 205, 0.1)' }),
-    type: 'area'
-  },
-  {
-    imgSrc: '/images/crypto-currencies/crypto-icons/tether-usdt-logo.svg',
-    value: "31,421-USDT",
-    percent: "12.43%",
-    iconColor: "success",
-    icon: "ti ti-trending-up",
-    id: "tether-chart",
-    chartseries: chartSeries2,
-    chartoptions: Chartoptions({ color: 'rgb(50, 212, 132)', colors: 'rgba(50, 212, 132, 0.1)' }),
-    type: 'area'
-  },
-  {
-    imgSrc: '/images/crypto-currencies/crypto-icons/binance-usd-busd-logo.svg',
-    value: "4,224-BNB",
-    percent: "15.54%",
-    iconColor: "danger",
-    icon: "ti ti-trending-down",
-    id: "bnb-chart",
-    chartseries: chartSeries3,
-    chartoptions: Chartoptions({ color: 'rgb(253, 175, 34)', colors: 'rgba(253, 175, 34, 0.1)' }),
-    type: 'area'
-  },
-],
+    {
+      imgSrc: '/images/crypto-currencies/crypto-icons/bitcoin-btc-logo.svg',
+      value: '21.235-BTC',
+      percent: ' 4.21%',
+      iconColor: 'success',
+      icon: 'ti ti-trending-up',
+      id: 'btc-chart',
+      chartseries: chartSeries,
+      chartoptions: Chartoptions({ color: 'var(--primary-color)', colors: 'var(--primary01)' }),
+      type: 'area',
+    },
+    {
+      imgSrc: '/images/crypto-currencies/crypto-icons/ethereum-eth-logo.svg',
+      value: '164.75-ETH',
+      percent: ' 2.21%',
+      iconColor: 'danger',
+      icon: 'ti ti-trending-down',
+      id: 'eth-chart',
+      chartseries: chartSeries1,
+      chartoptions: Chartoptions({ color: 'rgb(255, 73, 205)', colors: 'rgba(255, 73, 205, 0.1)' }),
+      type: 'area',
+    },
+    {
+      imgSrc: '/images/crypto-currencies/crypto-icons/tether-usdt-logo.svg',
+      value: '31,421-USDT',
+      percent: '12.43%',
+      iconColor: 'success',
+      icon: 'ti ti-trending-up',
+      id: 'tether-chart',
+      chartseries: chartSeries2,
+      chartoptions: Chartoptions({ color: 'rgb(50, 212, 132)', colors: 'rgba(50, 212, 132, 0.1)' }),
+      type: 'area',
+    },
+    {
+      imgSrc: '/images/crypto-currencies/crypto-icons/binance-usd-busd-logo.svg',
+      value: '4,224-BNB',
+      percent: '15.54%',
+      iconColor: 'danger',
+      icon: 'ti ti-trending-down',
+      id: 'bnb-chart',
+      chartseries: chartSeries3,
+      chartoptions: Chartoptions({ color: 'rgb(253, 175, 34)', colors: 'rgba(253, 175, 34, 0.1)' }),
+      type: 'area',
+    },
+  ],
   cryptoseries = [
     {
       data: [
@@ -385,7 +391,7 @@ export const cryptoCards = [
   ],
   cryptooptions = {
     chart: {
-      type: "candlestick",
+      type: 'candlestick',
       height: 400,
       toolbar: {
         show: false,
@@ -393,200 +399,200 @@ export const cryptoCards = [
     },
     tooltip: {
       enabled: true,
-      theme: "dark",
+      theme: 'dark',
     },
     plotOptions: {
       candlestick: {
         colors: {
           upward: 'rgb(50, 212, 132)',
-          downward: 'rgb(255, 103, 87)'
+          downward: 'rgb(255, 103, 87)',
         },
       },
     },
     grid: {
-      borderColor: "#f1f1f1",
+      borderColor: '#f1f1f1',
       strokeDashArray: 3,
     },
     title: {
-      align: "left",
+      align: 'left',
     },
     xaxis: {
-      type: "datetime",
+      type: 'datetime',
       labels: {
         rotate: -90,
         style: {
-          colors: "rgb(107 ,114 ,128)",
-          fontSize: "12px",
+          colors: 'rgb(107 ,114 ,128)',
+          fontSize: '12px',
         },
       },
     },
     yaxis: {
       tooltip: {
         enabled: true,
-        theme: "dark",
+        theme: 'dark',
       },
       labels: {
         style: {
-          colors: "rgb(107 ,114 ,128)",
-          fontSize: "10px",
+          colors: 'rgb(107 ,114 ,128)',
+          fontSize: '10px',
         },
         formatter: function (e) {
-          return "$" + e
-        }
+          return '$' + e
+        },
       },
     },
   },
   transactions = [
     {
       icon: '/images/crypto-currencies/crypto-icons/bitcoin-btc-logo.svg',
-      title: "Deposit",
-      date: "2025-02-10 14:30",
-      amount: "0.25 BTC",
-      status: "Completed",
+      title: 'Deposit',
+      date: '2025-02-10 14:30',
+      amount: '0.25 BTC',
+      status: 'Completed',
     },
     {
       icon: '/images/crypto-currencies/crypto-icons/ethereum-eth-logo.svg',
-      title: "Withdrawal",
-      date: "2025-02-11 10:00",
-      amount: "500 ETH",
-      status: "Pending",
+      title: 'Withdrawal',
+      date: '2025-02-11 10:00',
+      amount: '500 ETH',
+      status: 'Pending',
     },
     {
       icon: '/images/crypto-currencies/crypto-icons/solana-sol-logo.svg',
-      title: "Transfer",
-      date: "2025-02-12 16:45",
-      amount: "2,000 XRP",
-      status: "Completed",
-      imgClass: "invert-1"
+      title: 'Transfer',
+      date: '2025-02-12 16:45',
+      amount: '2,000 XRP',
+      status: 'Completed',
+      imgClass: 'invert-1',
     },
     {
       icon: '/images/crypto-currencies/crypto-icons/bitcoin-btc-logo.svg',
-      title: "Deposit",
-      date: "2025-02-13 09:30",
-      amount: "1.5 BTC",
-      status: "Failed",
+      title: 'Deposit',
+      date: '2025-02-13 09:30',
+      amount: '1.5 BTC',
+      status: 'Failed',
     },
     {
       icon: '/images/crypto-currencies/crypto-icons/tether-usdt-logo.svg',
-      title: "Withdrawal",
-      date: "2025-02-14 13:20",
-      amount: "1500 USDT",
-      status: "Completed",
+      title: 'Withdrawal',
+      date: '2025-02-14 13:20',
+      amount: '1500 USDT',
+      status: 'Completed',
     },
     {
       icon: '/images/crypto-currencies/crypto-icons/bitcoin-btc-logo.svg',
-      title: "Deposit",
-      date: "2025-02-14 17:05",
-      amount: "5.0 BTC",
-      status: "Pending",
+      title: 'Deposit',
+      date: '2025-02-14 17:05',
+      amount: '5.0 BTC',
+      status: 'Pending',
     },
   ],
   transactionActivities = [
     {
       avatar: '/images/faces/4.jpg',
-      name: "Emiley Jackson",
-      currency: "Bitcoin",
-      amount: "0.12",
-      date: "2025-02-10",
-      time: "04:24PM",
-      status: "Sent",
+      name: 'Emiley Jackson',
+      currency: 'Bitcoin',
+      amount: '0.12',
+      date: '2025-02-10',
+      time: '04:24PM',
+      status: 'Sent',
     },
     {
       avatar: '/images/faces/15.jpg',
-      name: "Jackie Shraff",
-      currency: "Etherium",
-      amount: "9.20",
-      date: "2025-02-11",
-      time: "11:57PM",
-      status: "Received",
+      name: 'Jackie Shraff',
+      currency: 'Etherium',
+      amount: '9.20',
+      date: '2025-02-11',
+      time: '11:57PM',
+      status: 'Received',
     },
     {
       avatar: '/images/faces/11.jpg',
-      name: "Json Taylor",
-      currency: "Dash",
-      amount: "830.9",
-      date: "2025-02-12",
-      time: "02:28AM",
-      status: "Received",
+      name: 'Json Taylor',
+      currency: 'Dash',
+      amount: '830.9',
+      date: '2025-02-12',
+      time: '02:28AM',
+      status: 'Received',
     },
     {
       avatar: '/images/faces/5.jpg',
-      name: "Jessica May",
-      currency: "Euro",
-      amount: "11.23",
-      date: "2025-02-13",
-      time: "10:08AM",
-      status: "Processing",
+      name: 'Jessica May',
+      currency: 'Euro',
+      amount: '11.23',
+      date: '2025-02-13',
+      time: '10:08AM',
+      status: 'Processing',
     },
     {
       avatar: '/images/faces/14.jpg',
-      name: "Leo Phillip",
-      currency: "Bitcoin",
-      amount: "0.56",
-      date: "2025-02-12",
-      time: "02:34PM",
-      status: "Sent",
+      name: 'Leo Phillip',
+      currency: 'Bitcoin',
+      amount: '0.56',
+      date: '2025-02-12',
+      time: '02:34PM',
+      status: 'Sent',
     },
     {
       avatar: '/images/faces/12.jpg',
-      name: "Lieonel Marsi",
-      currency: "Litecoin",
-      amount: "125.65",
-      date: "2025-02-14",
-      time: "06:05PM",
-      status: "Received",
+      name: 'Lieonel Marsi',
+      currency: 'Litecoin',
+      amount: '125.65',
+      date: '2025-02-14',
+      time: '06:05PM',
+      status: 'Received',
     },
   ],
   cryptoStats = [
     {
-      label: "Bitcoin value in USD",
-      value: "$97,133.00",
-      valueColor: "text-dark",
+      label: 'Bitcoin value in USD',
+      value: '$97,133.00',
+      valueColor: 'text-dark',
     },
     {
-      label: "Price Change",
-      value: "+883.00(0.91%) today",
-      valueColor: "text-success",
+      label: 'Price Change',
+      value: '+883.00(0.91%) today',
+      valueColor: 'text-success',
       badge: {
         isbadge: true,
-        text: "Increased",
-        className: "bg-primary-transparent text-primary",
+        text: 'Increased',
+        className: 'bg-primary-transparent text-primary',
       },
     },
     {
-      label: "Trade Value",
-      value: "$34.64 billion",
-      valueColor: "text-dark",
+      label: 'Trade Value',
+      value: '$34.64 billion',
+      valueColor: 'text-dark',
     },
     {
-      label: "Market Rank",
-      value: "#1",
-      valueColor: "text-dark",
+      label: 'Market Rank',
+      value: '#1',
+      valueColor: 'text-dark',
       badge: {
         isbadge: true,
-        text: "3 Years",
-        className: "bg-secondary-transparent",
+        text: '3 Years',
+        className: 'bg-secondary-transparent',
       },
     },
     {
-      label: "This Week High",
-      value: "$97,253.24",
-      valueColor: "text-success",
+      label: 'This Week High',
+      value: '$97,253.24',
+      valueColor: 'text-success',
     },
     {
-      label: "This Week Low",
-      value: "$95,220.00",
-      valueColor: "text-danger",
+      label: 'This Week Low',
+      value: '$95,220.00',
+      valueColor: 'text-danger',
     },
     {
-      label: "Market Dominance",
-      value: "70%",
-      valueColor: "text-dark",
+      label: 'Market Dominance',
+      value: '70%',
+      valueColor: 'text-dark',
     },
     {
-      label: "Alltime High",
-      value: "$109,358.01",
-      valueColor: "text-info",
+      label: 'Alltime High',
+      value: '$109,358.01',
+      valueColor: 'text-info',
     },
   ],
   assetseries = [85, 75],
@@ -610,8 +616,8 @@ export const cryptoCards = [
           name: {
             show: true,
             fontSize: '20px',
-            fontFamily: "Poppins, sans-serif",
-            offsetY: 0
+            fontFamily: 'Poppins, sans-serif',
+            offsetY: 0,
           },
           value: {
             show: true,
@@ -619,10 +625,10 @@ export const cryptoCards = [
             color: undefined,
             offsetY: 12,
             fontWeight: 600,
-            fontFamily: "Poppins, sans-serif",
+            fontFamily: 'Poppins, sans-serif',
             formatter: function (val) {
-              return val + "%";
-            }
+              return val + '%'
+            },
           },
           total: {
             show: true,
@@ -631,122 +637,106 @@ export const cryptoCards = [
             fontSize: '14px',
             fontWeight: 400,
             formatter: function () {
-              return 254;
-            }
-          }
-        }
-      }
+              return 254
+            },
+          },
+        },
+      },
     },
     tooltip: {
-      enabled: true,  // Ensure tooltips are enabled
+      enabled: true, // Ensure tooltips are enabled
       y: {
         formatter: function (val) {
-          return val + '%'; // Format the tooltip value as percentage
-        }
-      }
+          return val + '%' // Format the tooltip value as percentage
+        },
+      },
     },
     stroke: {
-      lineCap: 'round'
+      lineCap: 'round',
     },
     grid: {
       padding: {
         bottom: -10,
-        top: -10
-      }
+        top: -10,
+      },
     },
-    colors: ["var(--primary-color)", "rgba(255, 73, 205, 1)"],
+    colors: ['var(--primary-color)', 'rgba(255, 73, 205, 1)'],
     labels: ['Funding', 'Trading'],
   },
   cryptoTableRows = [
     {
-      name: "Bitcoin (BTC)",
+      name: 'Bitcoin (BTC)',
       image: '/images/crypto-currencies/crypto-icons/bitcoin-btc-logo.svg',
-      quantity: "2.5",
-      price: "$29,472.60",
-      totalValue: "$73,681.50",
-      change: "+1.2%",
-      changeColor: "bg-success",
-      profitLoss: "+$5,800.00",
-      marketCap: "$6.5 Billion",
-      rank: "#1",
+      quantity: '2.5',
+      price: '$29,472.60',
+      totalValue: '$73,681.50',
+      change: '+1.2%',
+      changeColor: 'bg-success',
+      profitLoss: '+$5,800.00',
+      marketCap: '$6.5 Billion',
+      rank: '#1',
     },
     {
-      name: "Ethereum (ETH)",
-      image: "/images/crypto-currencies/crypto-icons/ethereum-eth-logo.svg",
-      quantity: "15",
-      price: "$1,842.30",
-      totalValue: "$27,634.50",
-      change: "+0.9%",
-      changeColor: "bg-success",
-      profitLoss: "+$2,000.00",
-      marketCap: "$2.2 Billion",
-      rank: "#2",
+      name: 'Ethereum (ETH)',
+      image: '/images/crypto-currencies/crypto-icons/ethereum-eth-logo.svg',
+      quantity: '15',
+      price: '$1,842.30',
+      totalValue: '$27,634.50',
+      change: '+0.9%',
+      changeColor: 'bg-success',
+      profitLoss: '+$2,000.00',
+      marketCap: '$2.2 Billion',
+      rank: '#2',
     },
     {
-      name: "Dogecoin (DOGE)",
+      name: 'Dogecoin (DOGE)',
       image: '/images/crypto-currencies/crypto-icons/dogecoin-doge-logo.svg',
-      quantity: "100,000",
-      price: "$0.075",
-      totalValue: "$7,500.00",
-      change: "+4.5%",
-      changeColor: "bg-success",
-      profitLoss: "+$320.00",
-      marketCap: "$1.8 Billion",
-      rank: "#9",
+      quantity: '100,000',
+      price: '$0.075',
+      totalValue: '$7,500.00',
+      change: '+4.5%',
+      changeColor: 'bg-success',
+      profitLoss: '+$320.00',
+      marketCap: '$1.8 Billion',
+      rank: '#9',
     },
     {
-      name: "Tether (USDT)",
+      name: 'Tether (USDT)',
       image: '/images/crypto-currencies/crypto-icons/tether-usdt-logo.svg',
-      quantity: "10,000",
-      price: "$1.00",
-      totalValue: "$10,000.00",
-      change: "0.0%",
-      changeColor: "bg-success",
-      profitLoss: "$0.00",
-      marketCap: "$25 Billion",
-      rank: "#3",
+      quantity: '10,000',
+      price: '$1.00',
+      totalValue: '$10,000.00',
+      change: '0.0%',
+      changeColor: 'bg-success',
+      profitLoss: '$0.00',
+      marketCap: '$25 Billion',
+      rank: '#3',
     },
     {
-      name: "Ripple (XRP)",
+      name: 'Ripple (XRP)',
       image: '/images/crypto-currencies/crypto-icons/xrp-xrp-logo.svg',
-      quantity: "5,000",
-      price: "$0.75",
-      totalValue: "$3,750.00",
-      change: "+2.5%",
-      changeColor: "bg-success",
-      profitLoss: "+$500.00",
-      marketCap: "$1.5 Billion",
-      rank: "#6",
+      quantity: '5,000',
+      price: '$0.75',
+      totalValue: '$3,750.00',
+      change: '+2.5%',
+      changeColor: 'bg-success',
+      profitLoss: '+$500.00',
+      marketCap: '$1.5 Billion',
+      rank: '#6',
     },
     {
-      name: "Cardano (ADA)",
+      name: 'Cardano (ADA)',
       image: '/images/crypto-currencies/crypto-icons/cardano-ada-logo.svg',
-      quantity: "10,000",
-      price: "$0.35",
-      totalValue: "$3,500.00",
-      change: "-0.8%",
-      changeColor: "bg-danger",
-      profitLoss: "-$100.00",
-      marketCap: "$350 Million",
-      rank: "#8",
-      tdClass: 'border-bottom-0'
+      quantity: '10,000',
+      price: '$0.35',
+      totalValue: '$3,500.00',
+      change: '-0.8%',
+      changeColor: 'bg-danger',
+      profitLoss: '-$100.00',
+      marketCap: '$350 Million',
+      rank: '#8',
+      tdClass: 'border-bottom-0',
     },
   ],
-  coindata = [
-    "BTC",
-    "ETH",
-    "XRP",
-    "DASH",
-    "NEO",
-    "LTC",
-    "BSD",
-  ],
-  currencydata = [
-    "USD",
-    "AED",
-    "AUD",
-    "ARS",
-    "AZN",
-    "BGN",
-    "BRL",
-  ];
+  coindata = ['BTC', 'ETH', 'XRP', 'DASH', 'NEO', 'LTC', 'BSD'],
+  currencydata = ['USD', 'AED', 'AUD', 'ARS', 'AZN', 'BGN', 'BRL']

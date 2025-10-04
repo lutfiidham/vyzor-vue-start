@@ -1,7 +1,7 @@
 <script setup>
-import { GoogleMap, Marker, MarkerCluster } from "vue3-google-map";
+import { GoogleMap, Marker, MarkerCluster } from 'vue3-google-map'
 
-const apiKey = import.meta.env.googleMapsApiKey;
+const apiKey = import.meta.env.googleMapsApiKey
 const center = { lat: -28.024, lng: 140.887 }
 
 const locations = [

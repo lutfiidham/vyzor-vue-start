@@ -1,5 +1,5 @@
-export let 
-inputTypes = { script : `<div class="row gy-4">
+export let inputTypes = {
+    script: `<div class="row gy-4">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <label for="input-label" class="form-label">Basic Input:</label>
                     <input type="text" class="form-control" id="input">
@@ -132,8 +132,10 @@ inputTypes = { script : `<div class="row gy-4">
                         </option>
                     </datalist>
                 </div>
-            </div>`},
-inputShapes = { script : `<div class="row gy-3">
+            </div>`,
+  },
+  inputShapes = {
+    script: `<div class="row gy-3">
                     <div class="col-xl-12">
                         <label for="input-noradius" class="form-label">Input With No Radius</label>
                         <input type="text" class="form-control rounded-0" id="input-noradius" placeholder="No Radius">
@@ -146,8 +148,10 @@ inputShapes = { script : `<div class="row gy-3">
                         <label for="input-rounded-pill" class="form-label">Rounded Input</label>
                         <input type="text" class="form-control rounded-pill" id="input-rounded-pill" placeholder="Rounded">
                     </div>
-                </div>`},
-inputBorderStyles = { script : ` <div class="row gy-3">
+                </div>`,
+  },
+  inputBorderStyles = {
+    script: ` <div class="row gy-3">
                     <div class="col-xl-12">
                         <label for="input-rounded1" class="form-label">Default</label>
                         <input type="text" class="form-control" id="input-rounded1" placeholder="Default">
@@ -160,11 +164,15 @@ inputBorderStyles = { script : ` <div class="row gy-3">
                         <label for="input-rounded3" class="form-label">Dashed Input</label>
                         <input type="text" class="form-control border-dashed" id="input-rounded3" placeholder="Dashed">
                     </div>
-                </div>`},
-inputSizing = { script : `<input class="form-control form-control-sm mb-3" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example">
+                </div>`,
+  },
+  inputSizing = {
+    script: `<input class="form-control form-control-sm mb-3" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example">
                 <input class="form-control mb-3" type="text" placeholder="Default input" aria-label="default input example">
-                <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">`},
-overview = { script : `<form>
+                <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">`,
+  },
+  overview = {
+    script: `<form>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email
                             address</label>
@@ -184,16 +192,20 @@ overview = { script : `<form>
                             me out</label>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
-                </form>`},
-formtext = { script : `<label for="inputPassword5" class="form-label">Password</label>
+                </form>`,
+  },
+  formtext = {
+    script: `<label for="inputPassword5" class="form-label">Password</label>
                         <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
                         <div id="passwordHelpBlock" class="form-text">
                             Your password must be 8-20 characters long, contain letters and
                             numbers,
                             and
                             must not contain spaces, special characters, or emoji.
-                        </div>`},
-inlineText = { script : ` <div class="row g-3 align-items-center">
+                        </div>`,
+  },
+  inlineText = {
+    script: ` <div class="row g-3 align-items-center">
                             <div class="col-auto">
                                 <label for="inputPassword6" class="col-form-label">Password</label>
                             </div>
@@ -205,8 +217,10 @@ inlineText = { script : ` <div class="row g-3 align-items-center">
                                     Must be 8-20 characters long.
                                 </span>
                             </div>
-                        </div>`},
-disabledForms = { script : ` <form>
+                        </div>`,
+  },
+  disabledForms = {
+    script: ` <form>
                     <fieldset disabled="">
                         <legend>Disabled fieldset example</legend>
                         <div class="mb-3">
@@ -231,4 +245,5 @@ disabledForms = { script : ` <form>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </fieldset>
-                </form>`};
+                </form>`,
+  }

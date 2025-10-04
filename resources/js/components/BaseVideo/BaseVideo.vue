@@ -1,7 +1,16 @@
 <!-- components/BaseVideo.vue -->
 <template>
-  <video :src="videoUrl" :alt="alt" :class="class" :id="id" :height="height" :width="width" v-bind="$attrs"
-    :style="style" :controls="false">
+  <video
+    :src="videoUrl"
+    :alt="alt"
+    :class="class"
+    :id="id"
+    :height="height"
+    :width="width"
+    v-bind="$attrs"
+    :style="style"
+    :controls="false"
+  >
     Your browser does not support the video tag.
   </video>
 </template>
@@ -22,7 +31,7 @@ const props = defineProps({
   },
   id: {
     type: String,
-    default: ''
+    default: '',
   },
   height: {
     type: [String, Number],
@@ -34,8 +43,8 @@ const props = defineProps({
   },
   style: {
     type: String,
-    default: ''
-  }
+    default: '',
+  },
 })
 
 // Check if src is external
@@ -45,7 +54,6 @@ const isExternalUrl = /^https?:\/\//.test(props.src)
 const basePath = __BASE_PATH__
 
 // Final computed video URL
-const basePathValue = !isExternalUrl && process.env.NODE_ENV === 'production' ? basePath : '';
-const videoUrl = `${basePathValue}${props.src}`;
-
+const basePathValue = !isExternalUrl && process.env.NODE_ENV === 'production' ? basePath : ''
+const videoUrl = `${basePathValue}${props.src}`
 </script>

@@ -1,6 +1,5 @@
-export let
-    BasicPagination = {
-        script: `
+export let BasicPagination = {
+    script: `
      <nav aria-label="Page navigation">
                     <ul class="pagination mb-0">
                         <li class="page-item disabled"><a class="page-link" href="javascript:void(0);">Previous</a></li>
@@ -8,9 +7,10 @@ export let
                         <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
                         <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
                     </ul>
-                </nav>` },
-    PaginationWithIcons = {
-        script: `
+                </nav>`,
+  },
+  PaginationWithIcons = {
+    script: `
                     <nav aria-label="Page navigation">
                     <ul class="pagination mb-0">
                         <li class="page-item">
@@ -27,9 +27,10 @@ export let
                             </a>
                         </li>
                     </ul>
-                </nav>` },
-    PaginationSizing = {
-        script: `
+                </nav>`,
+  },
+  PaginationSizing = {
+    script: `
     <nav aria-label="...">
                     <ul class="pagination pagination-sm mb-0">
                         <li class="page-item active" aria-current="page">
@@ -56,9 +57,10 @@ export let
                         <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
                         <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
                     </ul>
-                </nav>` },
-    CenterRightAlignedPagination = {
-        script: `
+                </nav>`,
+  },
+  CenterRightAlignedPagination = {
+    script: `
    <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center">
                         <li class="page-item disabled">
@@ -84,9 +86,10 @@ export let
                             <a class="page-link" href="javascript:void(0);">Next</a>
                         </li>
                     </ul>
-                </nav>` },
-    ActiveAndDisabledStates = {
-        script: `
+                </nav>`,
+  },
+  ActiveAndDisabledStates = {
+    script: `
      <nav aria-label="..." class="me-3">
                 <ul class="pagination">
                     <li class="page-item disabled">
@@ -114,9 +117,10 @@ export let
                         <a class="page-link" href="javascript:void(0);">Next</a>
                     </li>
                 </ul>
-            </nav>` },
-    PaginationStyle1 = {
-        script: `
+            </nav>`,
+  },
+  PaginationStyle1 = {
+    script: `
      <nav aria-label="Page navigation" class="pagination-style-1">
                 <ul class="pagination mb-0 flex-wrap">
                     <li class="page-item disabled">
@@ -138,9 +142,10 @@ export let
                         </a>
                     </li>
                 </ul>
-            </nav>` },
-    PaginationStyle2 = {
-        script: `
+            </nav>`,
+  },
+  PaginationStyle2 = {
+    script: `
     <nav aria-label="Page navigation" class="pagination-style-2">
                 <ul class="pagination mb-0 flex-wrap">
                     <li class="page-item disabled">
@@ -162,9 +167,10 @@ export let
                         </a>
                     </li>
                 </ul>
-            </nav>` },
-    PaginationStyle3 = {
-        script: `
+            </nav>`,
+  },
+  PaginationStyle3 = {
+    script: `
       <nav aria-label="Page navigation" class="pagination-style-3">
                     <ul class="pagination mb-0 flex-wrap">
                         <li class="page-item disabled">
@@ -186,9 +192,10 @@ export let
                             </a>
                         </li>
                     </ul>
-                </nav>` },
-    PaginationStyle4 = {
-        script: `
+                </nav>`,
+  },
+  PaginationStyle4 = {
+    script: `
     &lt;nav aria-label="Page navigation" class="pagination-style-4">
         &lt;ul class="pagination mb-0 flex-wrap">
             &lt;li class="page-item disabled">
@@ -211,4 +218,5 @@ export let
                 &lt;/a>
             &lt;/li>
         &lt;/ul>
-    &lt;/nav>` };
+    &lt;/nav>`,
+  }

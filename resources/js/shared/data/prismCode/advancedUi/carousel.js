@@ -1,6 +1,5 @@
-export let
-    slidesOnly = {
-        script: `
+export let slidesOnly = {
+    script: `
     <Carousel id="carouselExampleSlidesOnly">
                 <Slide>
                     <div class="carousel__item">
@@ -17,9 +16,10 @@ export let
                         <img src="/images/media/media-33.jpg" class="d-block w-100" alt="...">
                     </div>
                 </Slide>
-            </Carousel>` },
-    withControls = {
-        script: `
+            </Carousel>`,
+  },
+  withControls = {
+    script: `
     <Carousel id="carouselExampleControls">
                 <Slide>
                     <div class="carousel__item">
@@ -39,9 +39,10 @@ export let
                 <template #addons>
                     <Navigation/>
                 </template>
-            </Carousel>` },
-    withIndicators = {
-        script: `<Carousel v-bind="carouselConfig" id="carouselExampleIndicators">
+            </Carousel>`,
+  },
+  withIndicators = {
+    script: `<Carousel v-bind="carouselConfig" id="carouselExampleIndicators">
                 <Slide>
                     <div class="carousel__item">
                         <img src="/images/media/media-25.jpg" class="d-block w-100" alt="...">
@@ -61,9 +62,10 @@ export let
                     <Navigation/>
                     <Pagination />
                 </template>
-            </Carousel>` },
-    withCaptions = {
-        script: `<Carousel v-bind="carouselConfig" id="carouselExampleCaptions">
+            </Carousel>`,
+  },
+  withCaptions = {
+    script: `<Carousel v-bind="carouselConfig" id="carouselExampleCaptions">
                 <Slide>
                     <div class="carousel__item">
                         <img src="/images/media/media-59.jpg" class="d-block w-100" alt="...">
@@ -95,9 +97,10 @@ export let
                     <Navigation/>
                     <Pagination />
                 </template>
-            </Carousel>` },
-    crossfade = {
-        script: `<Carousel v-bind="{slideEffect:'fade',autoplay:5000}" id="carouselExampleCaptions">
+            </Carousel>`,
+  },
+  crossfade = {
+    script: `<Carousel v-bind="{slideEffect:'fade',autoplay:5000}" id="carouselExampleCaptions">
                 <Slide>
                     <div class="carousel__item">
                         <img src="/images/media/media-43.jpg" class="d-block w-100" alt="...">
@@ -116,9 +119,10 @@ export let
                 <template #addons>
                     <Navigation/>
                 </template>
-            </Carousel>` },
-    individualCarouselItemInterval = {
-        script: `<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+            </Carousel>`,
+  },
+  individualCarouselItemInterval = {
+    script: `<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active" data-bs-interval="10000">
                             <img src="/images/media/media-40.jpg" class="d-block w-100" alt="...">
@@ -138,9 +142,10 @@ export let
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
-                </div>` },
-    disableTouchSwiping = {
-        script: `<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+                </div>`,
+  },
+  disableTouchSwiping = {
+    script: `<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <img src="/images/media/media-13.jpg" class="d-block w-100" alt="...">
@@ -160,9 +165,10 @@ export let
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
-                </div>` },
-    darkVariant = {
-        script: `<div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
+                </div>`,
+  },
+  darkVariant = {
+    script: `<div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -199,9 +205,10 @@ export let
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
-                </div>` },
-    WrapAround = {
-        script: `
+                </div>`,
+  },
+  WrapAround = {
+    script: `
                      <Carousel v-bind="{itemsToShow: 2,
   autoplay: 4000,
   wrapAround: true,
@@ -224,10 +231,10 @@ export let
                 <template #addons>
                     <Navigation />
                 </template>
-            </Carousel>`
-    },
-    Vertical={
-        script:` <Carousel v-bind="{dir: 'ttb',height: '400px',
+            </Carousel>`,
+  },
+  Vertical = {
+    script: ` <Carousel v-bind="{dir: 'ttb',height: '400px',
 }" id="carouselExampleCaptions">
                 <Slide>
                     <div class="carousel__item">
@@ -247,10 +254,10 @@ export let
                 <template #addons>
                     <Navigation />
                 </template>
-            </Carousel>`
-    },
-    MouseWheel={
-        script:`<Carousel v-bind="{mouseWheel: true,
+            </Carousel>`,
+  },
+  MouseWheel = {
+    script: `<Carousel v-bind="{mouseWheel: true,
 }" id="carouselExampleCaptions">
                 <Slide>
                     <div class="carousel__item">
@@ -270,10 +277,10 @@ export let
                 <template #addons>
                     <Navigation />
                 </template>
-            </Carousel>`
-    },
-    CustomNavigation={
-        script:`<Carousel v-bind="{autoplay:5000,
+            </Carousel>`,
+  },
+  CustomNavigation = {
+    script: `<Carousel v-bind="{autoplay:5000,
 }" id="carouselExampleCaptions" ref="carouselRef" v-model="currentSlide">
                 <Slide>
                     <div class="carousel__item">
@@ -298,5 +305,5 @@ export let
                 <button @click="prev">Prev</button>
                 <input type="number" min="0" max="9" v-model="currentSlide" />
                 <button @click="next">Next</button>
-            </div>`
-    }
+            </div>`,
+  }

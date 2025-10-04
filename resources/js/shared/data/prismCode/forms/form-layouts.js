@@ -1,6 +1,5 @@
-export let
-    verticalForms = {
-        script: `
+export let verticalForms = {
+    script: `
      <div class="mb-3">
                     <label for="form-text" class="form-label fs-14 text-dark">Enter name</label>
                     <input type="text" class="form-control" id="form-text" placeholder="full name">
@@ -16,9 +15,10 @@ export let
                         Accept Policy
                     </label>
                 </div>
-                <button class="btn btn-primary" type="submit">Submit</button>` },
-    horizontalform = {
-        script: `
+                <button class="btn btn-primary" type="submit">Submit</button>`,
+  },
+  horizontalform = {
+    script: `
     <form>
                     <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
@@ -58,9 +58,10 @@ export let
                         </div>
                     </fieldset>
                     <button type="submit" class="btn btn-primary">Sign in</button>
-                </form>` },
-    verticalFormswithicon = {
-        script: `
+                </form>`,
+  },
+  verticalFormswithicon = {
+    script: `
      <div class="mb-3">
                     <label for="form-text1" class="form-label fs-14 text-dark">Enter name</label>
                     <div class="input-group">
@@ -82,9 +83,10 @@ export let
                         Accept Policy
                     </label>
                 </div>
-                <button class="btn btn-primary" type="submit">Submit</button>` },
-    horizontalformWithIcons = {
-        script: `
+                <button class="btn btn-primary" type="submit">Submit</button>`,
+  },
+  horizontalformWithIcons = {
+    script: `
     <form>
                     <div class="row mb-3">
                         <label for="inputEmail1" class="col-sm-2 col-form-label">Email</label>
@@ -134,9 +136,10 @@ export let
                         </div>
                     </fieldset>
                     <button type="submit" class="btn btn-primary">Sign in</button>
-                </form>` },
-    inlineforms = {
-        script: `
+                </form>`,
+  },
+  inlineforms = {
+    script: `
     <form class="row row-cols-lg-auto g-3 align-items-center">
                 <div class="col-12">
                     <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
@@ -166,9 +169,10 @@ export let
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
-            </form>` },
-    columnsizing = {
-        script: `
+            </form>`,
+  },
+  columnsizing = {
+    script: `
      <div class="row g-3">
                     <div class="col-sm-7">
                         <input type="text" class="form-control" placeholder="City" aria-label="City">
@@ -179,9 +183,10 @@ export let
                     <div class="col-sm">
                         <input type="text" class="form-control" placeholder="Zip" aria-label="Zip">
                     </div>
-                </div>` },
-    utilities = {
-        script: `
+                </div>`,
+  },
+  utilities = {
+    script: `
     <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label">Example label</label>
                     <input type="text" class="form-control" id="formGroupExampleInput"
@@ -191,9 +196,10 @@ export let
                     <label for="formGroupExampleInput2" class="form-label">Another label</label>
                     <input type="text" class="form-control" id="formGroupExampleInput2"
                         placeholder="Another input placeholder">
-                </div>` },
-    horizontalformlabelsizing = {
-        script: `
+                </div>`,
+  },
+  horizontalformlabelsizing = {
+    script: `
     <div class="row mb-3">
                 <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
                 <div class="col-sm-10">
@@ -211,9 +217,10 @@ export let
                 <div class="col-sm-10">
                     <input type="email" class="form-control form-control-lg" id="colFormLabelLg" placeholder="col-form-label-lg">
                 </div>
-            </div>` },
-    autosizing = {
-        script: ` <form class="row gy-2 gx-3 align-items-center mb-4">
+            </div>`,
+  },
+  autosizing = {
+    script: ` <form class="row gy-2 gx-3 align-items-center mb-4">
                     <div class="col-auto">
                         <label class="visually-hidden" for="autoSizingInput">Name</label>
                         <input type="text" class="form-control" id="autoSizingInput" placeholder="Jane Doe">
@@ -282,9 +289,10 @@ export let
                     <div class="col-auto">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
-                </form>` },
-    formgrid = {
-        script: `<div class="row">
+                </form>`,
+  },
+  formgrid = {
+    script: `<div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="form-label">First Name</label>
                     <input type="text" class="form-control" placeholder="First name" aria-label="First name">
@@ -377,9 +385,10 @@ export let
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-primary">Sign in</button>
                 </div>
-            </div>` },
-    gutters = {
-        script: ` <form class="row g-3 mt-0">
+            </div>`,
+  },
+  gutters = {
+    script: ` <form class="row g-3 mt-0">
                     <div class="col-md-6">
                         <label class="form-label">First Name</label>
                         <input type="text" class="form-control" placeholder="First name" aria-label="First name">
@@ -431,4 +440,5 @@ export let
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Sign in</button>
                     </div>
-                </form>` };
+                </form>`,
+  }

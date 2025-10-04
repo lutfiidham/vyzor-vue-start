@@ -1,6 +1,5 @@
-export let
-    inputGroups = {
-        script: `
+export let inputGroups = {
+    script: `
 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">@</span>
                     <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
@@ -27,14 +26,16 @@ export let
                 <div class="input-group">
                     <span class="input-group-text">With textarea</span>
                     <textarea class="form-control" aria-label="With textarea"></textarea>
-                </div>` },
-    warpping = {
-        script: `<div class="input-group flex-nowrap">
+                </div>`,
+  },
+  warpping = {
+    script: `<div class="input-group flex-nowrap">
                     <span class="input-group-text" id="addon-wrapping">@</span>
                     <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-                </div>` },
-    sizing = {
-        script: `<div class="input-group input-group-sm mb-3">
+                </div>`,
+  },
+  sizing = {
+    script: `<div class="input-group input-group-sm mb-3">
                             <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
                             <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                         </div>
@@ -45,9 +46,10 @@ export let
                         <div class="input-group input-group-lg">
                             <span class="input-group-text" id="inputGroup-sizing-lg">Large</span>
                             <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-                        </div>` },
-    buttonswithDropdowns = {
-        script: ` <div class="input-group mb-3">
+                        </div>`,
+  },
+  buttonswithDropdowns = {
+    script: ` <div class="input-group mb-3">
                             <button class="btn btn-primary" type="button" id="button-addon1">Button</button>
                             <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
                         </div>
@@ -65,9 +67,10 @@ export let
                             <input type="text" class="form-control px-sm-3 px-1" placeholder="Recipient's username" aria-label="Recipient's username with two button addons">
                             <button class="btn btn-primary" type="button">Button</button>
                             <button class="btn btn-primary" type="button">Button</button>
-                        </div>` },
-    buttonsAddons = {
-        script: `<div class="input-group mb-3">
+                        </div>`,
+  },
+  buttonsAddons = {
+    script: `<div class="input-group mb-3">
                             <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="javascript:void(0);">Action</a></li>
@@ -115,9 +118,10 @@ export let
                                 </li>
                                 <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
                             </ul>
-                        </div>` },
-    customfileInput = {
-        script: `
+                        </div>`,
+  },
+  customfileInput = {
+    script: `
     <div class="input-group mb-3">
                             <label class="input-group-text" for="inputGroupFile01">Upload</label>
                             <input type="file" class="form-control py-1" id="inputGroupFile01">
@@ -136,15 +140,17 @@ export let
                         <div class="input-group">
                             <input type="file" class="form-control py-1" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                             <button class="btn btn-primary" type="button" id="inputGroupFileAddon04">Button</button>
-                        </div>` },
-    MultipleInputs = {
-        script: ` <div class="input-group">
+                        </div>`,
+  },
+  MultipleInputs = {
+    script: ` <div class="input-group">
                             <span class="input-group-text">First , last name</span>
                             <input type="text" aria-label="First name" class="form-control">
                             <input type="text" aria-label="Last name" class="form-control">
-                        </div>` },
-    checkboxesandRadios = {
-        script: `<div class="input-group mb-3">
+                        </div>`,
+  },
+  checkboxesandRadios = {
+    script: `<div class="input-group mb-3">
                             <div class="input-group-text">
                                 <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
                             </div>
@@ -155,9 +161,10 @@ export let
                                 <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
                             </div>
                             <input type="text" class="form-control" aria-label="Text input with radio button">
-                        </div>` },
-    multipleAddons = {
-        script: `<div class="input-group mb-3">
+                        </div>`,
+  },
+  multipleAddons = {
+    script: `<div class="input-group mb-3">
                             <div class="input-group-text">
                                 <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
                             </div>
@@ -168,9 +175,10 @@ export let
                                 <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
                             </div>
                             <input type="text" class="form-control" aria-label="Text input with radio button">
-                        </div>` },
-    segmentedButtons = {
-        script: `<div class="input-group mb-3">
+                        </div>`,
+  },
+  segmentedButtons = {
+    script: `<div class="input-group mb-3">
                             <button type="button" class="btn btn-primary">Action</button>
                             <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                                 <span class="visually-hidden">Toggle Dropdown</span>
@@ -201,9 +209,10 @@ export let
                                 </li>
                                 <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
                             </ul>
-                        </div>` },
-    customSelect = {
-        script: `<div class="input-group mb-3">
+                        </div>`,
+  },
+  customSelect = {
+    script: `<div class="input-group mb-3">
                             <label class="input-group-text" for="inputGroupSelect01">Options</label>
                             <select class="form-select" id="inputGroupSelect01">
                                 <option selected>Choose...</option>
@@ -238,4 +247,5 @@ export let
                                 <option value="3">Three</option>
                             </select>
                             <button class="btn btn-primary" type="button">Button</button>
-                        </div>` };
+                        </div>`,
+  }

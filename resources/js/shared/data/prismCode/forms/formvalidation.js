@@ -1,6 +1,5 @@
-export let
-    customValidation = {
-        script: `
+export let customValidation = {
+    script: `
         
 
         data() {
@@ -94,9 +93,10 @@ export let
                     <div class="col-12">
                         <button class="btn btn-primary" type="submit">Submit form</button>
                     </div>
-                </form>` },
-    browserDefaultValidation = {
-        script: `
+                </form>`,
+  },
+  browserDefaultValidation = {
+    script: `
 <form class="row g-3">
                     <div class="col-md-4">
                         <label for="validationDefault01" class="form-label">First name</label>
@@ -140,9 +140,10 @@ export let
                     <div class="col-12">
                         <button class="btn btn-primary" type="submit">Submit form</button>
                     </div>
-                </form>` },
-    serversideValidation = {
-        script: `
+                </form>`,
+  },
+  serversideValidation = {
+    script: `
  <form class="row g-3">
                             <div class="col-md-4">
                                 <label for="validationServer01" class="form-label">First
@@ -216,9 +217,10 @@ export let
                                 <button class="btn btn-primary" type="submit">Submit
                                     form</button>
                             </div>
-                        </form>` },
-    vutifyValidation = {
-        script: `
+                        </form>`,
+  },
+  vutifyValidation = {
+    script: `
 
         data() {
             return {
@@ -270,9 +272,10 @@ export let
                             <v-btn @click="handleReset" color="error">
                                 clear
                             </v-btn>
-                        </form>` },
-    supportedElements = {
-        script: `
+                        </form>`,
+  },
+  supportedElements = {
+    script: `
  <form class="was-validated">
                     <div class="mb-3">
                         <label for="validationTextarea" class="form-label">Textarea</label>
@@ -324,4 +327,5 @@ export let
                         <button class="btn btn-primary" type="submit" disabled>Submit
                             form</button>
                     </div>
-                </form>` };
+                </form>`,
+  }

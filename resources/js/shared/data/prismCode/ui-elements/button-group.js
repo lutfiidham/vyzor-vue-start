@@ -1,35 +1,38 @@
-export let
-    BasicExample = {
-        script: `
+export let BasicExample = {
+    script: `
    <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-info btn-wave"><i class="bi bi-skip-backward"></i></button>
                     <button type="button" class="btn btn-info btn-wave"><i class="bi bi-pause"></i></button>
                     <button type="button" class="btn btn-info btn-wave"><i class="bi bi-skip-forward"></i></button>
-                </div>` },
-    Navigation = {
-        script: `
+                </div>`,
+  },
+  Navigation = {
+    script: `
     <div class="btn-group">
                     <a href="javascript:void(0);" class="btn btn-primary active btn-wave" aria-current="page">Active
                         link</a>
                     <a href="javascript:void(0);" class="btn btn-primary">Link</a>
                     <a href="javascript:void(0);" class="btn btn-primary">Link</a>
-                </div>` },
-    MixedStyle = {
-        script: `
+                </div>`,
+  },
+  MixedStyle = {
+    script: `
     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                     <button type="button" class="btn btn-danger btn-wave">Left</button>
                     <button type="button" class="btn btn-warning btn-wave">Middle</button>
                     <button type="button" class="btn btn-success btn-wave">Right</button>
-                </div>` },
-    OutlineStyled = {
-        script: `
+                </div>`,
+  },
+  OutlineStyled = {
+    script: `
     <div class="btn-group" role="group" aria-label="Basic outlined example">
                     <button type="button" class="btn btn-outline-primary btn-wave">Left</button>
                     <button type="button" class="btn btn-outline-primary btn-wave">Middle</button>
                     <button type="button" class="btn btn-outline-primary btn-wave">Right</button>
-                </div>` },
-    CheckboxButtonGroups = {
-        script: `
+                </div>`,
+  },
+  CheckboxButtonGroups = {
+    script: `
    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                     <input type="checkbox" class="btn-check" id="btncheck1">
                     <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
@@ -39,9 +42,10 @@ export let
 
                     <input type="checkbox" class="btn-check" id="btncheck3">
                     <label class="btn btn-outline-primary" for="btncheck3">Checkbox 3</label>
-                </div>` },
-    RadioButtonGroups = {
-        script: `
+                </div>`,
+  },
+  RadioButtonGroups = {
+    script: `
     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                     <input type="radio" class="btn-check" name="btnradio" id="btnradio1" checked>
                     <label class="btn btn-outline-primary" for="btnradio1">Radio 1</label>
@@ -51,9 +55,10 @@ export let
 
                     <input type="radio" class="btn-check" name="btnradio" id="btnradio3">
                     <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
-                </div>` },
-    Sizing = {
-        script: `
+                </div>`,
+  },
+  Sizing = {
+    script: `
     <div class="btn-group btn-group-lg my-1 me-5" role="group" aria-label="Large button group">
                 <button type="button" class="btn btn-outline-success">Left</button>
                 <button type="button" class="btn btn-outline-success">Middle</button>
@@ -68,9 +73,10 @@ export let
                 <button type="button" class="btn btn-outline-success">Left</button>
                 <button type="button" class="btn btn-outline-success">Middle</button>
                 <button type="button" class="btn btn-outline-success">Right</button>
-            </div>` },
-    ButtonToolbar = {
-        script: `
+            </div>`,
+  },
+  ButtonToolbar = {
+    script: `
     <div class="btn-toolbar mb-4" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group me-2 my-1" role="group" aria-label="First group">
                         <button type="button" class="btn btn-primary">1</button>
@@ -110,9 +116,10 @@ export let
                         <div class="input-group-text" id="btnGroupAddon2">@</div>
                         <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
                     </div>
-                </div>` },
-    SocialGroupButtons = {
-        script: `
+                </div>`,
+  },
+  SocialGroupButtons = {
+    script: `
    <div class="btn-group" role="group" aria-label="Basic example">
                     <button class="btn btn-icon btn-facebook btn-wave">
                         <i class="ri-facebook-line"></i>
@@ -132,9 +139,10 @@ export let
                     <button class="btn btn-icon btn-google btn-wave">
                         <i class="ri-google-line"></i>
                     </button>
-                </div>` },
-    VerticalVariation = {
-        script: `
+                </div>`,
+  },
+  VerticalVariation = {
+    script: `
     <div class="row gap-2">
                     <div class="col-sm-3">
                         <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
@@ -200,9 +208,10 @@ export let
                             <label class="btn btn-outline-danger" for="vbtn-radio3">Radio 3</label>
                         </div>
                     </div>
-                </div>` },
-    Nesting = {
-        script: `
+                </div>`,
+  },
+  Nesting = {
+    script: `
      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                     <button type="button" class="btn btn-primary">1</button>
                     <button type="button" class="btn btn-primary">2</button>
@@ -216,4 +225,5 @@ export let
                             <li><a class="dropdown-item" href="javascript:void(0);">Dropdown link</a></li>
                         </ul>
                     </div>
-                </div>` };
+                </div>`,
+  }

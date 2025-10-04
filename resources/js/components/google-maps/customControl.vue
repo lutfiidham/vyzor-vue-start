@@ -1,10 +1,9 @@
 <script setup>
-import { GoogleMap, CustomControl } from "vue3-google-map";
+import { GoogleMap, CustomControl } from 'vue3-google-map'
 
-const apiKey = import.meta.env.googleMapsApiKey;
-const center = { lat: 35, lng: -95 };
-const sayHi = () => alert("Hi!");
-
+const apiKey = import.meta.env.googleMapsApiKey
+const center = { lat: 35, lng: -95 }
+const sayHi = () => alert('Hi!')
 </script>
 
 <template>

@@ -9,7 +9,6 @@ defineProps({
   cardFooterClass: String,
   cardFooter2: { type: Boolean, default: false },
   cardBodyId: String,
-
 })
 </script>
 
@@ -17,7 +16,7 @@ defineProps({
   <div :class="['card custom-card', customCardClass]">
     <template v-if="showCardHeader">
       <div :class="['card-header', cardHeaderClass]">
-        <div class="card-title" v-html="title"> </div>
+        <div class="card-title" v-html="title"></div>
         <slot name="showheader" />
       </div>
     </template>
