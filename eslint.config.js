@@ -1,80 +1,97 @@
-import js from '@eslint/js'
+import antfu from '@antfu/eslint-config'
 import pluginVue from 'eslint-plugin-vue'
-import pluginPrettier from 'eslint-plugin-prettier'
-import globals from 'globals'
-import vueParser from 'vue-eslint-parser'
-import babelParser from '@babel/eslint-parser'
-import tsParser from '@typescript-eslint/parser'
+import pluginPromise from 'eslint-plugin-promise'
+import pluginSonar from 'eslint-plugin-sonarjs'
+import pluginRegexp from 'eslint-plugin-regexp'
+import pluginRegex from 'eslint-plugin-regex'
 
-export default [
-  js.configs.recommended,
+export default antfu({
+  vue: true,
+  typescript: true,
+  prettier: true,
 
-  // 🧩 Konfigurasi untuk file Node.js (vite.config.js, tailwind.config.js, dsb)
-  {
-    files: ['vite.config.{js,ts}', 'tailwind.config.{js,ts}', 'postcss.config.{js,ts}'],
-    languageOptions: {
-      ecmaVersion: 2020,
-      sourceType: 'module',
-      globals: {
-        ...globals.node, // biar __dirname, process, require, dsb dianggap valid
-      },
-    },
-    rules: {
-      'no-undef': 'off', // Nonaktifkan aturan browser di environment Node
-    },
-  },
+  ignores: [
+    'node_modules',
+    'dist',
+    'vendor',
+    '*.d.ts',
+    '*.json',
+    'resources/ts/plugins/iconify/*.js',
+  ],
 
-  // 🧩 Aturan untuk file Vue & JS di dalam aplikasi
-  {
-    files: [
-      'resources/**/**/*.{js,vue,ts}',
-      'resources/stores/**/*.{js,vue,ts}',
-      'resources/utils/**/*.{js,vue,ts}',
-      'resources/UI/**/*.{js,vue,ts}',
+  rules: {
+    // 🧹 General cleanup
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    semi: ['error', 'never'],
+    'arrow-parens': ['error', 'as-needed'],
+    'comma-dangle': ['error', 'always-multiline'],
+    'object-curly-spacing': ['error', 'always'],
+    camelcase: 'error',
+    'newline-before-return': 'error',
+    'comma-spacing': ['error', { before: false, after: true }],
+    'key-spacing': ['error', { afterColon: true }],
+    indent: ['error', 2],
+
+    // 🧠 TypeScript
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      { varsIgnorePattern: '^_+$', argsIgnorePattern: '^_+$' },
     ],
-    languageOptions: {
-      parser: vueParser,
-      parserOptions: {
-        parser: {
-          // otomatis: <script lang="ts"> → pakai TS parser
-          ts: tsParser,
-          // otomatis: <script> biasa → pakai Babel parser
-          js: babelParser,
-        },
-        requireConfigFile: false, // biar gak butuh .babelrc
-        ecmaVersion: 2020,
-        sourceType: 'module',
-        ecmaFeatures: { jsx: false },
-      },
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-        __BASE_PATH__: 'readonly',
-      },
-    },
-    plugins: {
-      vue: pluginVue,
-      prettier: pluginPrettier,
-    },
-    rules: {
-      ...pluginVue.configs['flat/recommended'].rules,
+    '@typescript-eslint/no-shadow': ['error'],
+    '@typescript-eslint/consistent-type-imports': 'error',
 
-      // ✨ Aturan tambahan Ndoro
-      'vue/multi-word-component-names': 'off',
-      'no-unused-vars': 'warn',
-      'no-useless-escape': 'warn',
+    // 🌈 Vue rules
+    'vue/multi-word-component-names': 'off',
+    'vue/require-default-prop': 'off',
+    'vue/no-reserved-component-names': 'error',
+    'vue/no-template-target-blank': 'error',
+    'vue/block-tag-newline': 'error',
+    'vue/component-name-in-template-casing': [
+      'error',
+      'PascalCase',
+      { registeredComponentsOnly: false },
+    ],
+    'vue/padding-line-between-blocks': 'error',
+    'vue/prefer-true-attribute-shorthand': 'error',
 
-      // 💅 Integrasi Prettier
-      'prettier/prettier': [
-        'error',
+    // 🪄 Promise & Sonar
+    'promise/always-return': 'off',
+    'promise/catch-or-return': 'off',
+    'sonarjs/cognitive-complexity': 'off',
+    'sonarjs/no-duplicate-string': 'off',
+
+    // 🎯 Regex rules (path alias enforcement)
+    'regex/invalid': [
+      'error',
+      [
         {
-          singleQuote: true,
-          semi: false,
-          trailingComma: 'es5',
-          printWidth: 100,
-          endOfLine: 'auto',
+          regex: '@/assets/images',
+          replacement: '@images',
+          message: 'Use "@images" alias for image imports',
+        },
+        {
+          regex: '@/assets/styles',
+          replacement: '@styles',
+          message: 'Use "@styles" alias for styles',
         },
       ],
+    ],
+  },
+
+  settings: {
+    'import/resolver': {
+      node: true,
+      typescript: true,
     },
   },
-]
+
+  plugins: {
+    vue: pluginVue,
+    promise: pluginPromise,
+    sonarjs: pluginSonar,
+    regexp: pluginRegexp,
+    regex: pluginRegex,
+  },
+})

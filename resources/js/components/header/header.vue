@@ -191,6 +191,7 @@
         <!-- End::header-element -->
 
         <!-- Start::header-element -->
+        <!-- Dark/Light theme toggle -->
         <li class="header-element header-theme-mode">
           <!-- Start::header-link|layout-setting -->
           <a href="javascript:void(0);" class="header-link layout-setting">
@@ -793,7 +794,7 @@
 
         <!-- Start::header-element -->
         <li class="header-element">
-          <!-- Start::header-link|switcher-icon -->
+          <!-- Start::header-link|switcher-icon 
           <a
             href="javascript:void(0);"
             class="header-link switcher-icon"
@@ -826,7 +827,7 @@
               />
             </svg>
           </a>
-          <!-- End::header-link|switcher-icon -->
+           End::header-link|switcher-icon -->
         </li>
         <!-- End::header-element -->
       </ul>

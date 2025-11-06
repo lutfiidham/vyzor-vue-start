@@ -1,12 +1,6 @@
 export let Languages = [
     { name: 'English', flag: '/images/flags/us_flag.jpg' },
-    { name: 'Spanish', flag: '/images/flags/spain_flag.jpg' },
-    { name: 'français', flag: '/images/flags/french_flag.jpg' },
-    { name: 'عربي', flag: '/images/flags/uae_flag.jpg' },
-    { name: 'Deutsch', flag: '/images/flags/germany_flag.jpg' },
-    { name: '中国人', flag: '/images/flags/china_flag.jpg' },
-    { name: 'Italiano', flag: '/images/flags/italy_flag.jpg' },
-    { name: 'Русский', flag: '/images/flags/russia_flag.jpg' },
+    { name: 'Indonesia', flag: '/images/flags/indonesia_flag.jpg' },
   ],
   notificationNotes = [
     {

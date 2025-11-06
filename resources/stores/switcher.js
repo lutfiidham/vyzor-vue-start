@@ -6,7 +6,7 @@ export const switcherStore = defineStore('switcher', {
     direction: 'ltr', // ltr, rtl
     navigationStyles: 'vertical', // vertical, horizontal
     menuStyles: 'menu-click', // menu-click, menu-hover, icon-click, icon-hover
-    layoutStyles: 'double-menu', // double-menu, detached, icon-overlay, icontext-menu, closed-menu, default-menu
+    layoutStyles: 'default-menu', // double-menu, detached, icon-overlay, icontext-menu, closed-menu, default-menu
     pageStyles: 'flat', // regular, classic, modern,flat
     widthStyles: 'fullwidth', // fullwidth, boxed
     menuPosition: 'fixed', // fixed, scrollable
@@ -97,10 +97,10 @@ export const switcherStore = defineStore('switcher', {
       } else {
         this.$state.navigationStyles = 'vertical'
         this.$state.menuStyles = ''
-        this.$state.layoutStyles = 'double-menu'
+        this.$state.layoutStyles = 'default-menu'
         html.setAttribute('data-nav-layout', 'vertical')
-        html.setAttribute('data-toggled', 'double-menu-open')
-        html.setAttribute('data-vertical-style', 'doublemenu')
+        html.setAttribute('data-toggled', 'default-menu-open')
+        html.setAttribute('data-vertical-style', 'defaultmenu')
         html.removeAttribute('data-nav-style')
         if (window.innerWidth < 992) {
           html.setAttribute('data-toggled', 'close')
