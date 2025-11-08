@@ -924,3 +924,597 @@ switcher.reset()
 // Retrieve from localStorage
 switcher.retrieveFromLocalStorage()
 ```
+
+---
+
+## Komponen Aplikasi Tambahan
+
+### SpkKanbanCard
+
+**Lokasi:** `resources/js/shared/@spk/applications/task/spk-kanbancard.vue`
+
+**Fungsi:** Card kanban untuk aplikasi task management dengan drag and drop.
+
+**Props:**
+
+- `card` (Object) - Data card dengan properti:
+  - `id` (String|Number) - ID card
+  - `title` (String) - Judul task
+  - `description` (String) - Deskripsi task
+  - `priority` (String) - Prioritas (high/medium/low)
+  - `assignee` (String) - Penanggung jawab
+  - `dueDate` (String) - Tanggal deadline
+  - `tags` (Array) - Array tag/label
+  - `color` (String) - Warna card
+
+**Cara Penggunaan:**
+
+```vue
+<template>
+  <SpkKanbanCard :card="taskData" />
+</template>
+
+<script setup>
+import SpkKanbanCard from '@/shared/@spk/applications/task/spk-kanbancard.vue'
+
+const taskData = {
+  id: 1,
+  title: 'Design Dashboard',
+  description: 'Create responsive dashboard layout',
+  priority: 'high',
+  assignee: 'John Doe',
+  dueDate: '2024-01-15',
+  tags: ['design', 'frontend'],
+  color: 'bg-primary',
+}
+</script>
+```
+
+---
+
+## Komponen Dashboard Projects
+
+### SpkProjectDashboard
+
+**Lokasi:** `resources/js/shared/@spk/dashboards/projects/spk-project-dashboard.vue`
+
+**Fungsi:** Card dashboard untuk menampilkan informasi project.
+
+**Props:**
+
+- `project` (Object) - Data project dengan properti:
+  - `id` (String|Number) - ID project
+  - `name` (String) - Nama project
+  - `description` (String) - Deskripsi project
+  - `progress` (Number) - Progress percentage (0-100)
+  - `status` (String) - Status project
+  - `startDate` (String) - Tanggal mulai
+  - `endDate` (String) - Tanggal selesai
+  - `team` (Array) - Array team members
+  - `budget` (String) - Budget project
+  - `priority` (String) - Prioritas project
+
+**Cara Penggunaan:**
+
+```vue
+<template>
+  <SpkProjectDashboard :project="projectData" />
+</template>
+
+<script setup>
+import SpkProjectDashboard from '@/shared/@spk/dashboards/projects/spk-project-dashboard.vue'
+
+const projectData = {
+  id: 1,
+  name: 'E-commerce Platform',
+  description: 'Develop modern e-commerce platform',
+  progress: 75,
+  status: 'In Progress',
+  startDate: '2024-01-01',
+  endDate: '2024-03-31',
+  team: ['John', 'Jane', 'Bob'],
+  budget: '$50,000',
+  priority: 'High',
+}
+</script>
+```
+
+---
+
+## Komponen Dashboard NFT
+
+### SpkNftReusebleCard
+
+**Lokasi:** `resources/js/shared/@spk/dashboards/nft/spk-nft-reusebleCard.vue`
+
+**Fungsi:** Card reusable untuk dashboard NFT dengan informasi koleksi.
+
+**Props:**
+
+- `nft` (Object) - Data NFT dengan properti:
+  - `id` (String|Number) - ID NFT
+  - `name` (String) - Nama NFT
+  - `image` (String) - URL gambar NFT
+  - `price` (String) - Harga NFT
+  - `owner` (String) - Pemilik NFT
+  - `category` (String) - Kategori NFT
+  - `rarity` (String) - Kelangkaan NFT
+  - `likes` (Number) - Jumlah like
+  - `views` (Number) - Jumlah view
+
+**Cara Penggunaan:**
+
+```vue
+<template>
+  <SpkNftReusebleCard :nft="nftData" />
+</template>
+
+<script setup>
+import SpkNftReusebleCard from '@/shared/@spk/dashboards/nft/spk-nft-reusebleCard.vue'
+
+const nftData = {
+  id: 1,
+  name: 'Cosmic Ape #123',
+  image: '/images/nft/ape.jpg',
+  price: '2.5 ETH',
+  owner: '0x1234...5678',
+  category: 'Art',
+  rarity: 'Legendary',
+  likes: 245,
+  views: 1250,
+}
+</script>
+```
+
+---
+
+### SpkNftSwiperCard
+
+**Lokasi:** `resources/js/shared/@spk/dashboards/nft/spk-nft-swipercard.vue`
+
+**Fungsi:** Card swiper untuk menampilkan koleksi NFT dalam carousel.
+
+**Props:**
+
+- `nftItems` (Array) - Array data NFT
+- `swiperClass` (String) - Class CSS tambahan untuk swiper
+- `slideClass` (String) - Class CSS tambahan untuk slide
+
+**Cara Penggunaan:**
+
+```vue
+<template>
+  <SpkNftSwiperCard :nftItems="nftCollection" swiperClass="nft-swiper" slideClass="nft-slide" />
+</template>
+
+<script setup>
+import SpkNftSwiperCard from '@/shared/@spk/dashboards/nft/spk-nft-swipercard.vue'
+
+const nftCollection = [
+  {
+    id: 1,
+    name: 'Digital Art #1',
+    image: '/images/nft/art1.jpg',
+    price: '1.2 ETH',
+    owner: 'Artist Name',
+  },
+  // ... more NFT items
+]
+</script>
+```
+
+---
+
+## Komponen Dashboard CRM
+
+### SpkDealsCard
+
+**Lokasi:** `resources/js/shared/@spk/dashboards/crm/spk-deals-card.vue`
+
+**Fungsi:** Card untuk menampilkan informasi deals dalam CRM.
+
+**Props:**
+
+- `deal` (Object) - Data deal dengan properti:
+  - `id` (String|Number) - ID deal
+  - `title` (String) - Judul deal
+  - `client` (String) - Nama client
+  - `value` (String) - Nilai deal
+  - `stage` (String) - Tahapan deal
+  - `probability` (Number) - Probabilitas closing (0-100)
+  - `expectedCloseDate` (String) - Tanggal closing yang diharapkan
+  - `assignedTo` (String) - Sales person
+  - `status` (String) - Status deal
+
+**Cara Penggunaan:**
+
+```vue
+<template>
+  <SpkDealsCard :deal="dealData" />
+</template>
+
+<script setup>
+import SpkDealsCard from '@/shared/@spk/dashboards/crm/spk-deals-card.vue'
+
+const dealData = {
+  id: 1,
+  title: 'Enterprise Software License',
+  client: 'Tech Corp Inc.',
+  value: '$150,000',
+  stage: 'Negotiation',
+  probability: 75,
+  expectedCloseDate: '2024-02-15',
+  assignedTo: 'John Smith',
+  status: 'Active',
+}
+</script>
+```
+
+---
+
+### SpkReusableCrmCard
+
+**Lokasi:** `resources/js/shared/@spk/dashboards/crm/spk-reusable-crmCard.vue`
+
+**Fungsi:** Card reusable untuk dashboard CRM dengan metrik performa.
+
+**Props:**
+
+- `crmData` (Object) - Data CRM dengan properti:
+  - `title` (String) - Judul card
+  - `value` (String) - Nilai utama
+  - `change` (String) - Perubahan nilai
+  - `changeType` (String) - Tipe perubahan (increase/decrease)
+  - `icon` (String) - Icon class
+  - `color` (String) - Warna tema
+  - `chart` (Object) - Data chart opsional
+
+**Cara Penggunaan:**
+
+```vue
+<template>
+  <SpkReusableCrmCard :crmData="crmMetrics" />
+</template>
+
+<script setup>
+import SpkReusableCrmCard from '@/shared/@spk/dashboards/crm/spk-reusable-crmCard.vue'
+
+const crmMetrics = {
+  title: 'Total Leads',
+  value: '1,245',
+  change: '+12.5%',
+  changeType: 'increase',
+  icon: 'ti ti-users',
+  color: 'primary',
+  chart: {
+    // Optional chart data
+  },
+}
+</script>
+```
+
+---
+
+## Komponen Dashboard Crypto
+
+### SpkReusableCryptoCard
+
+**Lokasi:** `resources/js/shared/@spk/dashboards/crypto/spk-reusable-cryptoCard.vue`
+
+**Fungsi:** Card reusable untuk menampilkan informasi cryptocurrency.
+
+**Props:**
+
+- `crypto` (Object) - Data crypto dengan properti:
+  - `symbol` (String) - Symbol cryptocurrency
+  - `name` (String) - Nama cryptocurrency
+  - `price` (String) - Harga saat ini
+  - `change24h` (String) - Perubahan 24 jam
+  - `change7d` (String) - Perubahan 7 hari
+  - `marketCap` (String) - Market cap
+  - `volume24h` (String) - Volume 24 jam
+  - `icon` (String) - Icon cryptocurrency
+  - `sparkline` (Array) - Data sparkline chart
+
+**Cara Penggunaan:**
+
+```vue
+<template>
+  <SpkReusableCryptoCard :crypto="bitcoinData" />
+</template>
+
+<script setup>
+import SpkReusableCryptoCard from '@/shared/@spk/dashboards/crypto/spk-reusable-cryptoCard.vue'
+
+const bitcoinData = {
+  symbol: 'BTC',
+  name: 'Bitcoin',
+  price: '$45,234.56',
+  change24h: '+2.45%',
+  change7d: '+8.12%',
+  marketCap: '$882.3B',
+  volume24h: '$28.5B',
+  icon: 'ti ti-currency-bitcoin',
+  sparkline: [42000, 43500, 44200, 43800, 44500, 45234],
+}
+</script>
+```
+
+---
+
+### SpkReusableExchangeCard
+
+**Lokasi:** `resources/js/shared/@spk/dashboards/crypto/spk-reusable-exchangeCard.vue`
+
+**Fungsi:** Card untuk menampilkan informasi exchange cryptocurrency.
+
+**Props:**
+
+- `exchange` (Object) - Data exchange dengan properti:
+  - `name` (String) - Nama exchange
+  - `volume24h` (String) - Volume 24 jam
+  - `pairs` (Number) - Jumlah trading pairs
+  - `coins` (Number) - Jumlah coins
+  - `score` (Number) - Trust score
+  - `yearEstablished` (Number) - Tahun berdiri
+  - `country` (String) - Negara
+  - `url` (String) - Website URL
+
+**Cara Penggunaan:**
+
+```vue
+<template>
+  <SpkReusableExchangeCard :exchange="exchangeData" />
+</template>
+
+<script setup>
+import SpkReusableExchangeCard from '@/shared/@spk/dashboards/crypto/spk-reusable-exchangeCard.vue'
+
+const exchangeData = {
+  name: 'Binance',
+  volume24h: '$28.5B',
+  pairs: 1854,
+  coins: 368,
+  score: 10,
+  yearEstablished: 2017,
+  country: 'Cayman Islands',
+  url: 'https://binance.com',
+}
+</script>
+```
+
+---
+
+### SpkReusableMarketCapCard
+
+**Lokasi:** `resources/js/shared/@spk/dashboards/crypto/spk-reusable-marketCapCard.vue`
+
+**Fungsi:** Card untuk menampilkan data market cap cryptocurrency.
+
+**Props:**
+
+- `marketData` (Object) - Data market dengan properti:
+  - `totalMarketCap` (String) - Total market cap
+  - `marketCapChange` (String) - Perubahan market cap
+  - `totalVolume24h` (String) - Total volume 24 jam
+  - `btcDominance` (String) - Bitcoin dominance
+  - `ethDominance` (String) - Ethereum dominance
+  - `activeCryptos` (Number) - Jumlah crypto aktif
+  - `marketCapChart` (Array) - Data chart market cap
+
+**Cara Penggunaan:**
+
+```vue
+<template>
+  <SpkReusableMarketCapCard :marketData="marketStats" />
+</template>
+
+<script setup>
+import SpkReusableMarketCapCard from '@/shared/@spk/dashboards/crypto/spk-reusable-marketCapCard.vue'
+
+const marketStats = {
+  totalMarketCap: '$1.75T',
+  marketCapChange: '+2.34%',
+  totalVolume24h: '$89.2B',
+  btcDominance: '48.5%',
+  ethDominance: '18.2%',
+  activeCryptos: 9827,
+  marketCapChart: [1.72, 1.73, 1.74, 1.71, 1.75],
+}
+</script>
+```
+
+---
+
+### SpkReusableWalletAddressCard
+
+**Lokasi:** `resources/js/shared/@spk/dashboards/crypto/spk-reusable-walletAddressCard.vue`
+
+**Fungsi:** Card untuk menampilkan informasi alamat wallet cryptocurrency.
+
+**Props:**
+
+- `wallet` (Object) - Data wallet dengan properti:
+  - `address` (String) - Alamat wallet
+  - `balance` (String) - Saldo wallet
+  - `value` (String) - Nilai dalam USD
+  - `transactions` (Number) - Jumlah transaksi
+  - `tokens` (Array) - Array token yang dimiliki
+  - `qrCode` (String) - QR code data
+  - `network` (String) - Jaringan blockchain
+
+**Cara Penggunaan:**
+
+```vue
+<template>
+  <SpkReusableWalletAddressCard :wallet="walletData" />
+</template>
+
+<script setup>
+import SpkReusableWalletAddressCard from '@/shared/@spk/dashboards/crypto/spk-reusable-walletAddressCard.vue'
+
+const walletData = {
+  address: '0x1234...5678',
+  balance: '2.456 ETH',
+  value: '$11,234.56',
+  transactions: 156,
+  tokens: [
+    { symbol: 'ETH', balance: '2.456', value: '$11,234' },
+    { symbol: 'USDC', balance: '5,000', value: '$5,000' },
+  ],
+  qrCode: 'data:image/png;base64,iVBORw0KGgoAAAANS...',
+  network: 'Ethereum',
+}
+</script>
+```
+
+---
+
+### SpkReusableWalletCard
+
+**Lokasi:** `resources/js/shared/@spk/dashboards/crypto/spk-reusable-walletCard.vue`
+
+**Fungsi:** Card untuk menampilkan informasi wallet cryptocurrency utama.
+
+**Props:**
+
+- `wallet` (Object) - Data wallet dengan properti:
+  - `name` (String) - Nama wallet
+  - `type` (String) - Tipe wallet (hardware/software)
+  - `totalValue` (String) - Total nilai portfolio
+  - `change24h` (String) - Perubahan 24 jam
+  - `assets` (Array) - Array aset crypto
+  - `lastActivity` (String) - Aktivitas terakhir
+  - `securityLevel` (String) - Level keamanan
+
+**Cara Penggunaan:**
+
+```vue
+<template>
+  <SpkReusableWalletCard :wallet="portfolioData" />
+</template>
+
+<script setup>
+import SpkReusableWalletCard from '@/shared/@spk/dashboards/crypto/spk-reusable-walletCard.vue'
+
+const portfolioData = {
+  name: 'Main Portfolio',
+  type: 'Software',
+  totalValue: '$45,678.90',
+  change24h: '+3.45%',
+  assets: [
+    { symbol: 'BTC', amount: '0.5', value: '$22,500' },
+    { symbol: 'ETH', amount: '8.2', value: '$15,678' },
+    { symbol: 'SOL', amount: '150', value: '$7,500' },
+  ],
+  lastActivity: '2 hours ago',
+  securityLevel: 'High',
+}
+</script>
+```
+
+---
+
+## Komponen Dashboard Jobs
+
+### SpkReusebleJobs
+
+**Lokasi:** `resources/js/shared/@spk/dashboards/jobs/dashboard/spk-reuseble-jobs.vue`
+
+**Fungsi:** Card reusable untuk dashboard jobs dengan informasi lowongan kerja.
+
+**Props:**
+
+- `job` (Object) - Data job dengan properti:
+  - `id` (String|Number) - ID job
+  - `title` (String) - Judul posisi
+  - `company` (String) - Nama perusahaan
+  - `location` (String) - Lokasi
+  - `type` (String) - Tipe pekerjaan (full-time/part-time/remote)
+  - `salary` (String) - Range gaji
+  - `postedDate` (String) - Tanggal posting
+  - `applicants` (Number) - Jumlah pelamar
+  - `status` (String) - Status lowongan
+  - `skills` (Array) - Array skill yang dibutuhkan
+
+**Cara Penggunaan:**
+
+```vue
+<template>
+  <SpkReusebleJobs :job="jobData" />
+</template>
+
+<script setup>
+import SpkReusebleJobs from '@/shared/@spk/dashboards/jobs/dashboard/spk-reuseble-jobs.vue'
+
+const jobData = {
+  id: 1,
+  title: 'Senior Vue.js Developer',
+  company: 'Tech Solutions Inc.',
+  location: 'Jakarta, Indonesia',
+  type: 'Remote',
+  salary: '$15,000 - $25,000',
+  postedDate: '2024-01-10',
+  applicants: 45,
+  status: 'Active',
+  skills: ['Vue.js', 'JavaScript', 'Node.js', 'MongoDB'],
+}
+</script>
+```
+
+---
+
+### SpkJobDetailsSwiper
+
+**Lokasi:** `resources/js/shared/@spk/dashboards/jobs/job-details/spk-job-detailsswiper.vue`
+
+**Fungsi:** Swiper untuk menampilkan detail pekerjaan dan informasi terkait.
+
+**Props:**
+
+- `jobDetails` (Object) - Data detail job dengan properti:
+  - `job` (Object) - Informasi utama job
+  - `company` (Object) - Informasi perusahaan
+  - `benefits` (Array) - Array benefit
+  - `requirements` (Array) - Array persyaratan
+  - `responsibilities` (Array) - Array tanggung jawab
+  - `similarJobs` (Array) - Array job similar
+- `swiperOptions` (Object) - Opsi konfigurasi swiper
+
+**Cara Penggunaan:**
+
+```vue
+<template>
+  <SpkJobDetailsSwiper :jobDetails="jobInfo" :swiperOptions="swiperConfig" />
+</template>
+
+<script setup>
+import SpkJobDetailsSwiper from '@/shared/@spk/dashboards/jobs/job-details/spk-job-detailsswiper.vue'
+
+const jobInfo = {
+  job: {
+    title: 'Full Stack Developer',
+    company: 'Digital Agency',
+    description: 'We are looking for experienced developer...',
+  },
+  company: {
+    name: 'Digital Agency',
+    size: '50-100 employees',
+    industry: 'Technology',
+  },
+  benefits: ['Health Insurance', 'Flexible Hours', 'Remote Work'],
+  requirements: ['5+ years experience', 'Vue.js expertise'],
+  responsibilities: ['Develop web applications', 'Code review'],
+  similarJobs: [
+    { title: 'Frontend Developer', company: 'Tech Corp' },
+    { title: 'Backend Developer', company: 'StartupXYZ' },
+  ],
+}
+
+const swiperConfig = {
+  slidesPerView: 1,
+  spaceBetween: 20,
+  pagination: true,
+}
+</script>
+```
