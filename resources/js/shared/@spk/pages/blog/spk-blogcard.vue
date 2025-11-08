@@ -10,7 +10,7 @@ defineProps({
 <template>
   <div class="card custom-card border-0 blog-card shadow-none">
     <div class="card-body p-0">
-      <Link :href="`${baseUrl}/pages/blog/blog-details`" class="stretched-link"></Link>
+      <Link :href="`${baseUrl}/demo/pages/blog/blog-details`" class="stretched-link"></Link>
       <div class="blog-image mb-3">
         <BaseImg :src="card.image" class="card-img" alt="..." />
       </div>

@@ -49,7 +49,7 @@ const togglePassword = () => {
 const handleSubmit = () => {
   if (validate()) {
     matched.value = 'Save Password successful'
-    router.visit(`${baseUrl}/dashboards/sales`) // Replace with your basePath if needed
+    router.visit(`${baseUrl}/demo/dashboards/sales`) // Replace with your basePath if needed
   }
 }
 
@@ -190,7 +190,7 @@ onMounted(() => {
               </div>
               <div class="text-center mt-3 fw-medium">
                 Already have a account?
-                <Link :href="`${baseUrl}/pages/authentication/sign-in/basic`" class="text-primary"
+                <Link :href="`${baseUrl}/demo/pages/authentication/sign-in/basic`" class="text-primary"
                   >Sign In
                 </Link>
               </div>
@@ -202,7 +202,7 @@ onMounted(() => {
     <div class="col-xxl-3 col-xl-3 col-lg-12 d-xl-block d-none px-0">
       <div class="authentication-cover overflow-hidden">
         <div class="authentication-cover-logo">
-          <Link :href="`${baseUrl}/dashboards/sales`">
+          <Link :href="`${baseUrl}/demo/dashboards/sales`">
             <BaseImg src="/images/brand-logos/toggle-logo.png" alt="logo" class="desktop-dark" />
           </Link>
         </div>

@@ -1152,7 +1152,7 @@ const finish1 = () => {
                             >I agree with the
                             <Link
                               class="fw-medium text-decoration-underline"
-                              :href="`${baseUrl}/pages/terms-conditions/`"
+                              :href="`${baseUrl}/demo/pages/terms-conditions/`"
                               >Terms and Conditions.
                             </Link>
                           </label>
@@ -1439,7 +1439,7 @@ const finish1 = () => {
                             >I agree with the
                             <Link
                               class="fw-medium text-decoration-underline"
-                              :href="`${baseUrl}/pages/terms-conditions/`"
+                              :href="`${baseUrl}/demo/pages/terms-conditions/`"
                               >Terms and Conditions.
                             </Link>
                           </label>

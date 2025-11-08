@@ -283,7 +283,7 @@ const breakpoints2 = reactive({
           <!-- Start::header-element -->
           <div class="header-element">
             <div class="horizontal-logo">
-              <Link :href="`${baseUrl}/dashboards/sales`" class="header-logo">
+              <Link :href="`${baseUrl}/demo/dashboards/sales`" class="header-logo">
                 <BaseImg src="/images/brand-logos/toggle-logo.png" alt="logo" class="toggle-logo" />
                 <BaseImg src="/images/brand-logos/toggle-dark.png" alt="logo" class="toggle-dark" />
               </Link>
@@ -317,7 +317,7 @@ const breakpoints2 = reactive({
             <!-- Start::header-link|switcher-icon -->
             <div class="btn-list d-lg-none d-flex">
               <Link
-                :href="`${baseUrl}/pages/authentication/sign-in/basic`"
+                :href="`${baseUrl}/demo/pages/authentication/sign-in/basic`"
                 class="btn btn-primary-light"
               >
                 Login / Register
@@ -351,7 +351,7 @@ const breakpoints2 = reactive({
           <nav class="main-menu-container nav nav-pills sub-open">
             <div class="landing-logo-container">
               <div class="horizontal-logo">
-                <Link :href="`${baseUrl}/dashboards/sales`" class="header-logo">
+                <Link :href="`${baseUrl}/demo/dashboards/sales`" class="header-logo">
                   <BaseImg
                     src="/images/brand-logos/desktop-logo.png"
                     alt="logo"
@@ -553,7 +553,7 @@ const breakpoints2 = reactive({
             <div class="d-lg-flex d-none">
               <div class="btn-list d-lg-flex d-none mt-lg-2 mt-xl-0 mt-0">
                 <Link
-                  :href="`${baseUrl}/pages/authentication/sign-in/basic`"
+                  :href="`${baseUrl}/demo/pages/authentication/sign-in/basic`"
                   class="btn btn-wave btn-primary"
                 >
                   Login / Register
@@ -601,7 +601,7 @@ const breakpoints2 = reactive({
               >
               <div class="btn-list banner-buttons">
                 <Link
-                  :href="`${baseUrl}/dashboards/sales`"
+                  :href="`${baseUrl}/demo/dashboards/sales`"
                   class="btn btn-primary btn-lg rounded-pill btn-w-lg"
                   >Get Started for free</Link
                 >
@@ -744,7 +744,7 @@ const breakpoints2 = reactive({
             </div>
             <div class="btn-list">
               <Link
-                :href="`${baseUrl}/dashboards/sales`"
+                :href="`${baseUrl}/demo/dashboards/sales`"
                 class="btn btn-danger btn-lg btn-w-md d-inline-flex align-items-center"
                 >View Demo<i class="ti ti-arrow-narrow-right ms-2 custom-arrow"></i
               ></Link>
@@ -1216,7 +1216,7 @@ const breakpoints2 = reactive({
         <div class="row justify-content-center gy-3">
           <div class="col-xl-4">
             <p class="fw-semibold mb-3 brand-image">
-              <Link :href="`${baseUrl}/dashboards/sales`">
+              <Link :href="`${baseUrl}/demo/dashboards/sales`">
                 <BaseImg src="/images/brand-logos/desktop-dark.png" alt="" />
               </Link>
             </p>

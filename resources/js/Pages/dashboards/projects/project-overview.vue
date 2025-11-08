@@ -29,7 +29,7 @@ const dataToPass = {
           <div class="card-title">Project Details</div>
           <div class="btn-list">
             <Link
-              :href="`${baseUrl}/dashboards/projects/create-project`"
+              :href="`${baseUrl}/demo/dashboards/projects/create-project`"
               class="btn btn-sm btn-primary btn-wave"
               ><i class="ri-add-line align-middle me-1 fw-medium"></i>Create Project</Link
             >

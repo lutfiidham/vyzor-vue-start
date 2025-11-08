@@ -242,7 +242,7 @@ function deleteOrder(orderId) {
                   </td>
                   <td data-column-id="customer" class="gridjs-td">
                     <span>
-                      <Link :href="`${baseUrl}/dashboards/ecommerce/order-details`">
+                      <Link :href="`${baseUrl}/demo/dashboards/ecommerce/order-details`">
                         <div class="d-flex align-items-center gap-3 position-relative">
                           <div class="lh-1">
                             <span class="avatar avatar-md avatar-rounded">
@@ -291,7 +291,7 @@ function deleteOrder(orderId) {
                           <li>
                             <Link
                               class="dropdown-item"
-                              :href="`${baseUrl}/dashboards/ecommerce/order-details`"
+                              :href="`${baseUrl}/demo/dashboards/ecommerce/order-details`"
                               ><i class="ri-eye-line me-2"></i>View</Link
                             >
                           </li>

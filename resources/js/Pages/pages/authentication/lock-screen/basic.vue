@@ -45,7 +45,7 @@ const validate = () => {
 
 const handleSubmit = () => {
   if (validate()) {
-    router.visit(`${baseUrl}/dashboards/sales`) // Replace with your actual route
+    router.visit(`${baseUrl}/demo/dashboards/sales`) // Replace with your actual route
     matched.value = 'Save Password successful'
   }
 }
@@ -100,7 +100,7 @@ onMounted(() => {
           <div class="card custom-card border-0 my-4">
             <div class="card-body p-5">
               <div class="mb-4">
-                <Link :href="`${baseUrl}/dashboards/sales`">
+                <Link :href="`${baseUrl}/demo/dashboards/sales`">
                   <BaseImg
                     src="/images/brand-logos/toggle-logo.png"
                     alt="logo"

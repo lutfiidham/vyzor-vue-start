@@ -30,7 +30,7 @@ const handleToDelete = (id) => {
         <div class="card-header justify-content-between">
           <div class="card-title">All Jobs List</div>
           <div class="d-flex flex-wrap gap-2">
-            <Link :href="`${baseUrl}/dashboards/jobs/job-post`" class="btn btn-primary btn-wave">
+            <Link :href="`${baseUrl}/demo/dashboards/jobs/job-post`" class="btn btn-primary btn-wave">
               <i class="ri-add-line me-1 align-middle"></i>Post Job
             </Link>
             <div>
@@ -91,7 +91,7 @@ const handleToDelete = (id) => {
                   </div>
                   <div class="ms-2">
                     <p class="fw-medium mb-0 d-flex align-items-center">
-                      <Link :href="`${baseUrl}/dashboards/jobs/job-details`">{{ row.title }}</Link>
+                      <Link :href="`${baseUrl}/demo/dashboards/jobs/job-details`">{{ row.title }}</Link>
                     </p>
                     <p class="fs-12 text-muted mb-0">{{ row.location }}</p>
                   </div>
@@ -121,7 +121,7 @@ const handleToDelete = (id) => {
               </td>
               <td>
                 <Link
-                  :href="`${baseUrl}/dashboards/jobs/job-details`"
+                  :href="`${baseUrl}/demo/dashboards/jobs/job-details`"
                   class="btn btn-icon btn-sm btn-primary-light btn-wave waves-effect waves-light me-1"
                 >
                   <i class="ri-eye-line"></i>

@@ -28,7 +28,7 @@ defineProps({
       <BaseImg :src="card.image" class="card-img mb-3" alt="..." />
       <div class="p-2">
         <div class="mb-3">
-          <Link :href="`${baseUrl}/dashboards/nft/nft-details`">
+          <Link :href="`${baseUrl}/demo/dashboards/nft/nft-details`">
             <h6 class="fw-semibold mb-1 text-truncate">{{ card.title }}</h6>
           </Link>
           <a href="javascript:void(0);"

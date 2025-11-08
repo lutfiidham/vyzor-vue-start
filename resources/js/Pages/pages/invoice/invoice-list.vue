@@ -70,7 +70,7 @@ function handleToDelete(id) {
           <div class="card-title">Manage Invoices</div>
           <div class="d-flex">
             <Link
-              :href="`${baseUrl}/pages/invoice/create-invoice`"
+              :href="`${baseUrl}/demo/pages/invoice/create-invoice`"
               class="btn btn-sm btn-primary btn-wave waves-light"
               ><i class="ri-add-line fw-medium align-middle me-1"></i> Create Invoice</Link
             >

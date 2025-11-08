@@ -65,7 +65,7 @@ onMounted(() => {
             <div class="col-xxl-7 col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12">
               <div>
                 <div class="mb-3">
-                  <Link :href="`${baseUrl}/dashboards/sales`">
+                  <Link :href="`${baseUrl}/demo/dashboards/sales`">
                     <BaseImg
                       src="/images/brand-logos/desktop-logo.png"
                       alt=""

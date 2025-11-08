@@ -88,7 +88,7 @@ onMounted(() => {
         <div class="card custom-card border-0 my-4">
           <div class="card-body p-sm-5">
             <div class="mb-4">
-              <Link :href="`${baseUrl}/dashboards/sales`">
+              <Link :href="`${baseUrl}/demo/dashboards/sales`">
                 <BaseImg
                   src="/images/brand-logos/toggle-logo.png"
                   alt="logo"
@@ -145,7 +145,7 @@ onMounted(() => {
                         Remember me
                       </label>
                       <Link
-                        :href="`${baseUrl}/pages/authentication/reset-password/basic`"
+                        :href="`${baseUrl}/demo/pages/authentication/reset-password/basic`"
                         class="float-end link-danger fw-medium fs-12"
                         >Forget password ?</Link
                       >
@@ -186,7 +186,7 @@ onMounted(() => {
             </div>
             <div class="text-center mt-3 fw-medium">
               Dont have an account?
-              <Link :href="`${baseUrl}/pages/authentication/sign-up/basic`" class="text-primary"
+              <Link :href="`${baseUrl}/demo/pages/authentication/sign-up/basic`" class="text-primary"
                 >Sign Up
               </Link>
             </div>

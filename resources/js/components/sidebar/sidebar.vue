@@ -4,7 +4,7 @@
   <aside class="app-sidebar sticky" id="sidebar">
     <!-- Start::main-sidebar-header -->
     <div class="main-sidebar-header">
-      <Link :href="`${baseUrl}/dashboards/sales/`" class="header-logo">
+      <Link :href="`${baseUrl}/demo/dashboards/sales/`" class="header-logo">
         <BaseImg src="/images/brand-logos/desktop-logo.png" alt="logo" class="desktop-logo" />
         <BaseImg src="/images/brand-logos/toggle-logo.png" alt="logo" class="toggle-logo" />
         <BaseImg src="/images/brand-logos/desktop-dark.png" alt="logo" class="desktop-dark" />
@@ -234,7 +234,7 @@
           <!-- End::slide -->
           <!-- Start::slide -->
           <li class="slide">
-            <Link :href="`${baseUrl}/pages/authentication/sign-in/cover`" class="side-menu__item">
+            <Link :href="`${baseUrl}/demo/pages/authentication/sign-in/cover`" class="side-menu__item">
               <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256">
                 <rect width="256" height="256" fill="none" />
                 <path
@@ -275,7 +275,7 @@
           <!-- End::slide -->
           <!-- Start::slide -->
           <li class="slide">
-            <Link :href="`${baseUrl}/pages/profile-settings`" class="side-menu__item">
+            <Link :href="`${baseUrl}/demo/pages/profile-settings`" class="side-menu__item">
               <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256">
                 <rect width="256" height="256" fill="none" />
                 <path
@@ -392,7 +392,7 @@
           <!-- Start::slide -->
           <li class="slide">
             <Link
-              :href="`${baseUrl}/pages/profile`"
+              :href="`${baseUrl}/demo/pages/profile`"
               class="side-menu__item p-1 rounded-circle mb-0"
             >
               <span class="avatar avatar-md avatar-rounded">

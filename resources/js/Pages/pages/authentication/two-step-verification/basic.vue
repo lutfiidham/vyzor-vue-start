@@ -66,7 +66,7 @@ const handleSubmit = () => {
   const fullOTP = `${one}${two}${three}${four}`
 
   // Example: Navigate to dashboard on success
-  router.visit(`${baseUrl}/dashboards/sales`) // Replace with your basePath if needed
+  router.visit(`${baseUrl}/demo/dashboards/sales`) // Replace with your basePath if needed
 
   verify.value = 'Verify Your Account successful'
   error.value = ''
@@ -124,7 +124,7 @@ onMounted(() => {
           <div class="card custom-card border-0 my-4">
             <div class="card-body p-5">
               <div class="mb-4">
-                <Link :href="`${baseUrl}/dashboards/sales`">
+                <Link :href="`${baseUrl}/demo/dashboards/sales`">
                   <BaseImg
                     src="/images/brand-logos/toggle-logo.png"
                     alt="logo"
@@ -188,7 +188,7 @@ onMounted(() => {
                       <label class="form-check-label" for="defaultCheck1">
                         Did not receive a code ?
                         <Link
-                          :href="`${baseUrl}/applications/email/mail-app`"
+                          :href="`${baseUrl}/demo/applications/email/mail-app`"
                           class="text-primary ms-2 d-inline-block fw-medium"
                         >
                           Resend

@@ -18,7 +18,7 @@ export const MENUITEMS = [
     dirchange: false,
     children: [
       {
-        path: `${baseUrl}/dashboards/sales`,
+        path: `${baseUrl}/demo/dashboards/sales`,
         icon: Svgicons.Salesicon,
         type: 'link',
         active: false,
@@ -27,7 +27,7 @@ export const MENUITEMS = [
         title: 'Sales',
       },
       {
-        path: `${baseUrl}/dashboards/analytics`,
+        path: `${baseUrl}/demo/dashboards/analytics`,
         icon: Svgicons.Analyticsicon,
         type: 'link',
         active: false,
@@ -45,7 +45,7 @@ export const MENUITEMS = [
         dirchange: false,
         children: [
           {
-            path: `${baseUrl}/dashboards/ecommerce/dashboard`,
+            path: `${baseUrl}/demo/dashboards/ecommerce/dashboard`,
             type: 'link',
             active: false,
             selected: false,
@@ -53,7 +53,7 @@ export const MENUITEMS = [
             title: 'Dashboard',
           },
           {
-            path: `${baseUrl}/dashboards/ecommerce/products`,
+            path: `${baseUrl}/demo/dashboards/ecommerce/products`,
             type: 'link',
             active: false,
             selected: false,
@@ -61,7 +61,7 @@ export const MENUITEMS = [
             title: 'Products',
           },
           {
-            path: `${baseUrl}/dashboards/ecommerce/product-details`,
+            path: `${baseUrl}/demo/dashboards/ecommerce/product-details`,
             type: 'link',
             active: false,
             selected: false,
@@ -69,7 +69,7 @@ export const MENUITEMS = [
             title: 'Product Details',
           },
           {
-            path: `${baseUrl}/dashboards/ecommerce/cart`,
+            path: `${baseUrl}/demo/dashboards/ecommerce/cart`,
             type: 'link',
             active: false,
             selected: false,
@@ -77,7 +77,7 @@ export const MENUITEMS = [
             title: 'Cart',
           },
           {
-            path: `${baseUrl}/dashboards/ecommerce/checkout`,
+            path: `${baseUrl}/demo/dashboards/ecommerce/checkout`,
             type: 'link',
             active: false,
             selected: false,
@@ -85,7 +85,7 @@ export const MENUITEMS = [
             title: 'Checkout',
           },
           {
-            path: `${baseUrl}/dashboards/ecommerce/customers`,
+            path: `${baseUrl}/demo/dashboards/ecommerce/customers`,
             type: 'link',
             active: false,
             selected: false,
@@ -93,7 +93,7 @@ export const MENUITEMS = [
             title: 'Customers',
           },
           {
-            path: `${baseUrl}/dashboards/ecommerce/orders`,
+            path: `${baseUrl}/demo/dashboards/ecommerce/orders`,
             type: 'link',
             active: false,
             selected: false,
@@ -101,7 +101,7 @@ export const MENUITEMS = [
             title: 'Orders',
           },
           {
-            path: `${baseUrl}/dashboards/ecommerce/order-details`,
+            path: `${baseUrl}/demo/dashboards/ecommerce/order-details`,
             type: 'link',
             active: false,
             selected: false,
@@ -109,7 +109,7 @@ export const MENUITEMS = [
             title: 'Order Details',
           },
           {
-            path: `${baseUrl}/dashboards/ecommerce/add-product`,
+            path: `${baseUrl}/demo/dashboards/ecommerce/add-product`,
             type: 'link',
             active: false,
             selected: false,
@@ -128,7 +128,7 @@ export const MENUITEMS = [
         dirchange: false,
         children: [
           {
-            path: `${baseUrl}/dashboards/crypto/dashboard`,
+            path: `${baseUrl}/demo/dashboards/crypto/dashboard`,
             type: 'link',
             active: false,
             selected: false,
@@ -136,7 +136,7 @@ export const MENUITEMS = [
             title: 'Dashboard',
           },
           {
-            path: `${baseUrl}/dashboards/crypto/transactions`,
+            path: `${baseUrl}/demo/dashboards/crypto/transactions`,
             type: 'link',
             active: false,
             selected: false,
@@ -144,7 +144,7 @@ export const MENUITEMS = [
             title: 'Transactions',
           },
           {
-            path: `${baseUrl}/dashboards/crypto/currency-exchange`,
+            path: `${baseUrl}/demo/dashboards/crypto/currency-exchange`,
             type: 'link',
             active: false,
             selected: false,
@@ -152,7 +152,7 @@ export const MENUITEMS = [
             title: 'Exchange',
           },
           {
-            path: `${baseUrl}/dashboards/crypto/buy-sell`,
+            path: `${baseUrl}/demo/dashboards/crypto/buy-sell`,
             type: 'link',
             active: false,
             selected: false,
@@ -160,7 +160,7 @@ export const MENUITEMS = [
             title: 'Buy & Sell',
           },
           {
-            path: `${baseUrl}/dashboards/crypto/market-cap`,
+            path: `${baseUrl}/demo/dashboards/crypto/market-cap`,
             type: 'link',
             active: false,
             selected: false,
@@ -168,7 +168,7 @@ export const MENUITEMS = [
             title: 'Marketcap',
           },
           {
-            path: `${baseUrl}/dashboards/crypto/wallet`,
+            path: `${baseUrl}/demo/dashboards/crypto/wallet`,
             type: 'link',
             active: false,
             selected: false,
@@ -187,7 +187,7 @@ export const MENUITEMS = [
         dirchange: false,
         children: [
           {
-            path: `${baseUrl}/dashboards/crm/dashboard`,
+            path: `${baseUrl}/demo/dashboards/crm/dashboard`,
             type: 'link',
             active: false,
             selected: false,
@@ -195,7 +195,7 @@ export const MENUITEMS = [
             title: 'Dashboard',
           },
           {
-            path: `${baseUrl}/dashboards/crm/contacts`,
+            path: `${baseUrl}/demo/dashboards/crm/contacts`,
             type: 'link',
             active: false,
             selected: false,
@@ -203,7 +203,7 @@ export const MENUITEMS = [
             title: 'Contacts',
           },
           {
-            path: `${baseUrl}/dashboards/crm/companies`,
+            path: `${baseUrl}/demo/dashboards/crm/companies`,
             type: 'link',
             active: false,
             selected: false,
@@ -211,7 +211,7 @@ export const MENUITEMS = [
             title: 'Companies',
           },
           {
-            path: `${baseUrl}/dashboards/crm/deals`,
+            path: `${baseUrl}/demo/dashboards/crm/deals`,
             type: 'link',
             active: false,
             selected: false,
@@ -219,7 +219,7 @@ export const MENUITEMS = [
             title: 'Deals',
           },
           {
-            path: `${baseUrl}/dashboards/crm/leads`,
+            path: `${baseUrl}/demo/dashboards/crm/leads`,
             type: 'link',
             active: false,
             selected: false,
@@ -238,7 +238,7 @@ export const MENUITEMS = [
         dirchange: false,
         children: [
           {
-            path: `${baseUrl}/dashboards/projects/dashboard`,
+            path: `${baseUrl}/demo/dashboards/projects/dashboard`,
             type: 'link',
             active: false,
             selected: false,
@@ -246,7 +246,7 @@ export const MENUITEMS = [
             title: 'Dashboard',
           },
           {
-            path: `${baseUrl}/dashboards/projects/projects-list`,
+            path: `${baseUrl}/demo/dashboards/projects/projects-list`,
             type: 'link',
             active: false,
             selected: false,
@@ -254,7 +254,7 @@ export const MENUITEMS = [
             title: 'Projects List',
           },
           {
-            path: `${baseUrl}/dashboards/projects/project-overview`,
+            path: `${baseUrl}/demo/dashboards/projects/project-overview`,
             type: 'link',
             active: false,
             selected: false,
@@ -262,7 +262,7 @@ export const MENUITEMS = [
             title: 'Project Overview',
           },
           {
-            path: `${baseUrl}/dashboards/projects/create-project`,
+            path: `${baseUrl}/demo/dashboards/projects/create-project`,
             type: 'link',
             active: false,
             selected: false,
@@ -272,7 +272,7 @@ export const MENUITEMS = [
         ],
       },
       {
-        path: `${baseUrl}/dashboards/hrm`,
+        path: `${baseUrl}/demo/dashboards/hrm`,
         type: 'link',
         icon: Svgicons.Hrmicon,
         active: false,
@@ -281,7 +281,7 @@ export const MENUITEMS = [
         title: 'HRM',
       },
       {
-        path: `${baseUrl}/dashboards/courses`,
+        path: `${baseUrl}/demo/dashboards/courses`,
         type: 'link',
         active: false,
         icon: Svgicons.Courseicon,
@@ -290,7 +290,7 @@ export const MENUITEMS = [
         title: 'Courses',
       },
       {
-        path: `${baseUrl}/dashboards/stocks`,
+        path: `${baseUrl}/demo/dashboards/stocks`,
         type: 'link',
         active: false,
         icon: Svgicons.Stockicon,
@@ -308,7 +308,7 @@ export const MENUITEMS = [
         dirchange: false,
         children: [
           {
-            path: `${baseUrl}/dashboards/nft/dashboard`,
+            path: `${baseUrl}/demo/dashboards/nft/dashboard`,
             type: 'link',
             active: false,
             selected: false,
@@ -316,7 +316,7 @@ export const MENUITEMS = [
             title: 'Dashboard',
           },
           {
-            path: `${baseUrl}/dashboards/nft/market-place`,
+            path: `${baseUrl}/demo/dashboards/nft/market-place`,
             type: 'link',
             active: false,
             selected: false,
@@ -324,7 +324,7 @@ export const MENUITEMS = [
             title: 'Market Place',
           },
           {
-            path: `${baseUrl}/dashboards/nft/nft-details`,
+            path: `${baseUrl}/demo/dashboards/nft/nft-details`,
             type: 'link',
             active: false,
             selected: false,
@@ -332,7 +332,7 @@ export const MENUITEMS = [
             title: 'NFT Details',
           },
           {
-            path: `${baseUrl}/dashboards/nft/create-nft`,
+            path: `${baseUrl}/demo/dashboards/nft/create-nft`,
             type: 'link',
             active: false,
             selected: false,
@@ -340,7 +340,7 @@ export const MENUITEMS = [
             title: 'Create NFT',
           },
           {
-            path: `${baseUrl}/dashboards/nft/wallet-integration`,
+            path: `${baseUrl}/demo/dashboards/nft/wallet-integration`,
             type: 'link',
             active: false,
             selected: false,
@@ -348,7 +348,7 @@ export const MENUITEMS = [
             title: ' Wallet Integration',
           },
           {
-            path: `${baseUrl}/dashboards/nft/live-auction`,
+            path: `${baseUrl}/demo/dashboards/nft/live-auction`,
             type: 'link',
             active: false,
             selected: false,
@@ -366,7 +366,7 @@ export const MENUITEMS = [
         selected: false,
         children: [
           {
-            path: `${baseUrl}/dashboards/jobs/dashboard`,
+            path: `${baseUrl}/demo/dashboards/jobs/dashboard`,
             type: 'link',
             active: false,
             selected: false,
@@ -374,7 +374,7 @@ export const MENUITEMS = [
             title: 'Dashboard',
           },
           {
-            path: `${baseUrl}/dashboards/jobs/job-details`,
+            path: `${baseUrl}/demo/dashboards/jobs/job-details`,
             type: 'link',
             active: false,
             selected: false,
@@ -382,7 +382,7 @@ export const MENUITEMS = [
             title: 'Job Details',
           },
           {
-            path: `${baseUrl}/dashboards/jobs/search-company`,
+            path: `${baseUrl}/demo/dashboards/jobs/search-company`,
             type: 'link',
             active: false,
             selected: false,
@@ -390,7 +390,7 @@ export const MENUITEMS = [
             title: 'Search Company',
           },
           {
-            path: `${baseUrl}/dashboards/jobs/search-jobs`,
+            path: `${baseUrl}/demo/dashboards/jobs/search-jobs`,
             type: 'link',
             active: false,
             selected: false,
@@ -398,7 +398,7 @@ export const MENUITEMS = [
             title: 'Search Jobs',
           },
           {
-            path: `${baseUrl}/dashboards/jobs/job-post`,
+            path: `${baseUrl}/demo/dashboards/jobs/job-post`,
             type: 'link',
             active: false,
             selected: false,
@@ -406,7 +406,7 @@ export const MENUITEMS = [
             title: ' Job Post',
           },
           {
-            path: `${baseUrl}/dashboards/jobs/jobs-list`,
+            path: `${baseUrl}/demo/dashboards/jobs/jobs-list`,
             type: 'link',
             active: false,
             selected: false,
@@ -414,7 +414,7 @@ export const MENUITEMS = [
             title: ' Jobs List',
           },
           {
-            path: `${baseUrl}/dashboards/jobs/search-candidate`,
+            path: `${baseUrl}/demo/dashboards/jobs/search-candidate`,
             type: 'link',
             active: false,
             selected: false,
@@ -422,7 +422,7 @@ export const MENUITEMS = [
             title: ' Search Candidate',
           },
           {
-            path: `${baseUrl}/dashboards/jobs/candidate-details`,
+            path: `${baseUrl}/demo/dashboards/jobs/candidate-details`,
             type: 'link',
             active: false,
             selected: false,
@@ -432,7 +432,7 @@ export const MENUITEMS = [
         ],
       },
       {
-        path: `${baseUrl}/dashboards/podcast`,
+        path: `${baseUrl}/demo/dashboards/podcast`,
         type: 'link',
         icon: Svgicons.Podcasticon,
         active: false,
@@ -441,7 +441,7 @@ export const MENUITEMS = [
         title: 'Podcast',
       },
       {
-        path: `${baseUrl}/dashboards/social-media`,
+        path: `${baseUrl}/demo/dashboards/social-media`,
         type: 'link',
         icon: Svgicons.Socialicon,
         active: false,
@@ -450,7 +450,7 @@ export const MENUITEMS = [
         title: 'Social Media',
       },
       {
-        path: `${baseUrl}/dashboards/school`,
+        path: `${baseUrl}/demo/dashboards/school`,
         type: 'link',
         icon: Svgicons.Schoolicon,
         active: false,
@@ -459,7 +459,7 @@ export const MENUITEMS = [
         title: 'School',
       },
       {
-        path: `${baseUrl}/dashboards/medical`,
+        path: `${baseUrl}/demo/dashboards/medical`,
         type: 'link',
         icon: Svgicons.Medicalicon,
         active: false,
@@ -468,7 +468,7 @@ export const MENUITEMS = [
         title: 'Medical',
       },
       {
-        path: `${baseUrl}/dashboards/pos-system`,
+        path: `${baseUrl}/demo/dashboards/pos-system`,
         type: 'link',
         icon: Svgicons.Posicon,
         active: false,
@@ -492,7 +492,7 @@ export const MENUITEMS = [
     dirchange: false,
     children: [
       {
-        path: `${baseUrl}/applications/chat`,
+        path: `${baseUrl}/demo/applications/chat`,
         icon: Svgicons.Chaticon,
         type: 'link',
         active: false,
@@ -507,7 +507,7 @@ export const MENUITEMS = [
         active: false,
         children: [
           {
-            path: `${baseUrl}/applications/email/mail-app`,
+            path: `${baseUrl}/demo/applications/email/mail-app`,
             type: 'link',
             active: false,
             selected: false,
@@ -515,7 +515,7 @@ export const MENUITEMS = [
             title: 'Mail App',
           },
           {
-            path: `${baseUrl}/applications/email/mail-settings`,
+            path: `${baseUrl}/demo/applications/email/mail-settings`,
             type: 'link',
             active: false,
             selected: false,
@@ -525,7 +525,7 @@ export const MENUITEMS = [
         ],
       },
       {
-        path: `${baseUrl}/applications/file-manager`,
+        path: `${baseUrl}/demo/applications/file-manager`,
         icon: Svgicons.Fileicon,
         type: 'link',
         active: false,
@@ -534,7 +534,7 @@ export const MENUITEMS = [
         title: 'File Manager',
       },
       {
-        path: `${baseUrl}/applications/full-calendar`,
+        path: `${baseUrl}/demo/applications/full-calendar`,
         icon: Svgicons.Fullicon,
         type: 'link',
         active: false,
@@ -543,7 +543,7 @@ export const MENUITEMS = [
         title: 'Full Calendar',
       },
       {
-        path: `${baseUrl}/applications/gallery`,
+        path: `${baseUrl}/demo/applications/gallery`,
         type: 'link',
         icon: Svgicons.Galleryicon,
         active: false,
@@ -552,7 +552,7 @@ export const MENUITEMS = [
         title: 'Gallery',
       },
       {
-        path: `${baseUrl}/applications/sweet-alerts`,
+        path: `${baseUrl}/demo/applications/sweet-alerts`,
         type: 'link',
         icon: Svgicons.Sweeticon,
         active: false,
@@ -570,7 +570,7 @@ export const MENUITEMS = [
         doublToggle: false,
         children: [
           {
-            path: `${baseUrl}/applications/task/kanban-board`,
+            path: `${baseUrl}/demo/applications/task/kanban-board`,
             type: 'link',
             active: false,
             selected: false,
@@ -578,7 +578,7 @@ export const MENUITEMS = [
             title: 'Kanban Board',
           },
           {
-            path: `${baseUrl}/applications/task/list-view`,
+            path: `${baseUrl}/demo/applications/task/list-view`,
             type: 'link',
             active: false,
             selected: false,
@@ -588,7 +588,7 @@ export const MENUITEMS = [
         ],
       },
       {
-        path: `${baseUrl}/applications/to-do-list`,
+        path: `${baseUrl}/demo/applications/to-do-list`,
         icon: Svgicons.Todoicon,
         type: 'link',
         active: false,
@@ -683,7 +683,7 @@ export const MENUITEMS = [
         dirchange: false,
         children: [
           {
-            path: `${baseUrl}/pages/authentication/coming-soon`,
+            path: `${baseUrl}/demo/pages/authentication/coming-soon`,
             type: 'link',
             active: false,
             selected: false,
@@ -698,7 +698,7 @@ export const MENUITEMS = [
             dirchange: false,
             children: [
               {
-                path: `${baseUrl}/pages/authentication/create-password/basic`,
+                path: `${baseUrl}/demo/pages/authentication/create-password/basic`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -706,7 +706,7 @@ export const MENUITEMS = [
                 title: 'Basic',
               },
               {
-                path: `${baseUrl}/pages/authentication/create-password/cover`,
+                path: `${baseUrl}/demo/pages/authentication/create-password/cover`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -722,7 +722,7 @@ export const MENUITEMS = [
             dirchange: false,
             children: [
               {
-                path: `${baseUrl}/pages/authentication/lock-screen/basic`,
+                path: `${baseUrl}/demo/pages/authentication/lock-screen/basic`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -730,7 +730,7 @@ export const MENUITEMS = [
                 title: 'Basic',
               },
               {
-                path: `${baseUrl}/pages/authentication/lock-screen/cover`,
+                path: `${baseUrl}/demo/pages/authentication/lock-screen/cover`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -746,7 +746,7 @@ export const MENUITEMS = [
             dirchange: false,
             children: [
               {
-                path: `${baseUrl}/pages/authentication/reset-password/basic`,
+                path: `${baseUrl}/demo/pages/authentication/reset-password/basic`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -754,7 +754,7 @@ export const MENUITEMS = [
                 title: 'Basic',
               },
               {
-                path: `${baseUrl}/pages/authentication/reset-password/cover`,
+                path: `${baseUrl}/demo/pages/authentication/reset-password/cover`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -771,7 +771,7 @@ export const MENUITEMS = [
             dirchange: false,
             children: [
               {
-                path: `${baseUrl}/pages/authentication/sign-up/basic`,
+                path: `${baseUrl}/demo/pages/authentication/sign-up/basic`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -779,7 +779,7 @@ export const MENUITEMS = [
                 title: 'Basic',
               },
               {
-                path: `${baseUrl}/pages/authentication/sign-up/cover`,
+                path: `${baseUrl}/demo/pages/authentication/sign-up/cover`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -796,7 +796,7 @@ export const MENUITEMS = [
             dirchange: false,
             children: [
               {
-                path: `${baseUrl}/pages/authentication/sign-in/basic`,
+                path: `${baseUrl}/demo/pages/authentication/sign-in/basic`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -804,7 +804,7 @@ export const MENUITEMS = [
                 title: 'Basic',
               },
               {
-                path: `${baseUrl}/pages/authentication/sign-in/cover`,
+                path: `${baseUrl}/demo/pages/authentication/sign-in/cover`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -821,7 +821,7 @@ export const MENUITEMS = [
             dirchange: false,
             children: [
               {
-                path: `${baseUrl}/pages/authentication/two-step-verification/basic`,
+                path: `${baseUrl}/demo/pages/authentication/two-step-verification/basic`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -829,7 +829,7 @@ export const MENUITEMS = [
                 title: 'Basic',
               },
               {
-                path: `${baseUrl}/pages/authentication/two-step-verification/cover`,
+                path: `${baseUrl}/demo/pages/authentication/two-step-verification/cover`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -839,7 +839,7 @@ export const MENUITEMS = [
             ],
           },
           {
-            path: `${baseUrl}/pages/authentication/under-maintenance`,
+            path: `${baseUrl}/demo/pages/authentication/under-maintenance`,
             type: 'link',
             active: false,
             selected: false,
@@ -857,7 +857,7 @@ export const MENUITEMS = [
         dirchange: false,
         children: [
           {
-            path: `${baseUrl}/pages/error/401-error`,
+            path: `${baseUrl}/demo/pages/error/401-error`,
             type: 'link',
             active: false,
             selected: false,
@@ -865,7 +865,7 @@ export const MENUITEMS = [
             title: '401-Error',
           },
           {
-            path: `${baseUrl}/pages/error/404-error`,
+            path: `${baseUrl}/demo/pages/error/404-error`,
             type: 'link',
             active: false,
             selected: false,
@@ -873,7 +873,7 @@ export const MENUITEMS = [
             title: '404-Error',
           },
           {
-            path: `${baseUrl}/pages/error/500-error`,
+            path: `${baseUrl}/demo/pages/error/500-error`,
             type: 'link',
             active: false,
             selected: false,
@@ -890,7 +890,7 @@ export const MENUITEMS = [
         dirchange: false,
         children: [
           {
-            path: `${baseUrl}/pages/blog/blog`,
+            path: `${baseUrl}/demo/pages/blog/blog`,
             type: 'link',
             active: false,
             selected: false,
@@ -898,7 +898,7 @@ export const MENUITEMS = [
             title: 'Blog',
           },
           {
-            path: `${baseUrl}/pages/blog/blog-details`,
+            path: `${baseUrl}/demo/pages/blog/blog-details`,
             type: 'link',
             active: false,
             selected: false,
@@ -906,7 +906,7 @@ export const MENUITEMS = [
             title: 'Blog-Details',
           },
           {
-            path: `${baseUrl}/pages/blog/create-blog`,
+            path: `${baseUrl}/demo/pages/blog/create-blog`,
             type: 'link',
             active: false,
             selected: false,
@@ -916,7 +916,7 @@ export const MENUITEMS = [
         ],
       },
       {
-        path: `${baseUrl}/pages/empty`,
+        path: `${baseUrl}/demo/pages/empty`,
         icon: Svgicons.Emptyicon,
         type: 'link',
         active: false,
@@ -933,7 +933,7 @@ export const MENUITEMS = [
         dirchange: false,
         children: [
           {
-            path: `${baseUrl}/pages/forms/form-advanced`,
+            path: `${baseUrl}/demo/pages/forms/form-advanced`,
             type: 'link',
             active: false,
             selected: false,
@@ -950,7 +950,7 @@ export const MENUITEMS = [
             dirchange: false,
             children: [
               {
-                path: `${baseUrl}/pages/forms/form-elements/inputs`,
+                path: `${baseUrl}/demo/pages/forms/form-elements/inputs`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -958,7 +958,7 @@ export const MENUITEMS = [
                 title: 'Inputs',
               },
               {
-                path: `${baseUrl}/pages/forms/form-elements/checks-radios`,
+                path: `${baseUrl}/demo/pages/forms/form-elements/checks-radios`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -966,7 +966,7 @@ export const MENUITEMS = [
                 title: 'Checks & Radios ',
               },
               {
-                path: `${baseUrl}/pages/forms/form-elements/input-group`,
+                path: `${baseUrl}/demo/pages/forms/form-elements/input-group`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -974,7 +974,7 @@ export const MENUITEMS = [
                 title: 'Input Group',
               },
               {
-                path: `${baseUrl}/pages/forms/form-elements/form-select`,
+                path: `${baseUrl}/demo/pages/forms/form-elements/form-select`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -982,7 +982,7 @@ export const MENUITEMS = [
                 title: 'Form Select',
               },
               {
-                path: `${baseUrl}/pages/forms/form-elements/range-slider`,
+                path: `${baseUrl}/demo/pages/forms/form-elements/range-slider`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -990,7 +990,7 @@ export const MENUITEMS = [
                 title: 'Range Slider',
               },
               {
-                path: `${baseUrl}/pages/forms/form-elements/input-masks`,
+                path: `${baseUrl}/demo/pages/forms/form-elements/input-masks`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -998,7 +998,7 @@ export const MENUITEMS = [
                 title: 'Input Masks',
               },
               {
-                path: `${baseUrl}/pages/forms/form-elements/file-uploads`,
+                path: `${baseUrl}/demo/pages/forms/form-elements/file-uploads`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -1006,7 +1006,7 @@ export const MENUITEMS = [
                 title: 'File Uploads',
               },
               {
-                path: `${baseUrl}/pages/forms/form-elements/date-time-picker`,
+                path: `${baseUrl}/demo/pages/forms/form-elements/date-time-picker`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -1014,7 +1014,7 @@ export const MENUITEMS = [
                 title: 'Date,Time Picker',
               },
               {
-                path: `${baseUrl}/pages/forms/form-elements/color-picker`,
+                path: `${baseUrl}/demo/pages/forms/form-elements/color-picker`,
                 type: 'link',
                 active: false,
                 selected: false,
@@ -1024,7 +1024,7 @@ export const MENUITEMS = [
             ],
           },
           {
-            path: `${baseUrl}/pages/forms/floating-labels`,
+            path: `${baseUrl}/demo/pages/forms/floating-labels`,
             type: 'link',
             active: false,
             selected: false,
@@ -1032,7 +1032,7 @@ export const MENUITEMS = [
             title: 'Floating Labels',
           },
           {
-            path: `${baseUrl}/pages/forms/form-layouts`,
+            path: `${baseUrl}/demo/pages/forms/form-layouts`,
             type: 'link',
             active: false,
             selected: false,
@@ -1040,7 +1040,7 @@ export const MENUITEMS = [
             title: 'Form Layouts',
           },
           {
-            path: `${baseUrl}/pages/forms/form-wizards`,
+            path: `${baseUrl}/demo/pages/forms/form-wizards`,
             type: 'link',
             active: false,
             selected: false,
@@ -1048,7 +1048,7 @@ export const MENUITEMS = [
             title: 'Form Wizards',
           },
           {
-            path: `${baseUrl}/pages/forms/vue-editor`,
+            path: `${baseUrl}/demo/pages/forms/vue-editor`,
             type: 'link',
             active: false,
             selected: false,
@@ -1056,7 +1056,7 @@ export const MENUITEMS = [
             title: 'Vue Editor',
           },
           {
-            path: `${baseUrl}/pages/forms/validation`,
+            path: `${baseUrl}/demo/pages/forms/validation`,
             type: 'link',
             active: false,
             selected: false,
@@ -1066,7 +1066,7 @@ export const MENUITEMS = [
         ],
       },
       {
-        path: `${baseUrl}/pages/faqs`,
+        path: `${baseUrl}/demo/pages/faqs`,
         icon: Svgicons.Faqsicon,
         type: 'link',
         active: false,
@@ -1084,7 +1084,7 @@ export const MENUITEMS = [
         dirchange: false,
         children: [
           {
-            path: `${baseUrl}/pages/invoice/create-invoice`,
+            path: `${baseUrl}/demo/pages/invoice/create-invoice`,
             type: 'link',
             active: false,
             selected: false,
@@ -1092,7 +1092,7 @@ export const MENUITEMS = [
             title: 'Create Invoice',
           },
           {
-            path: `${baseUrl}/pages/invoice/invoice-details`,
+            path: `${baseUrl}/demo/pages/invoice/invoice-details`,
             type: 'link',
             active: false,
             selected: false,
@@ -1100,7 +1100,7 @@ export const MENUITEMS = [
             title: 'Invoice Details',
           },
           {
-            path: `${baseUrl}/pages/invoice/invoice-list`,
+            path: `${baseUrl}/demo/pages/invoice/invoice-list`,
             type: 'link',
             active: false,
             selected: false,
@@ -1110,7 +1110,7 @@ export const MENUITEMS = [
         ],
       },
       {
-        path: `${baseUrl}/pages/landing`,
+        path: `${baseUrl}/demo/pages/landing`,
         icon: Svgicons.Landingicon,
         type: 'link',
         active: false,
@@ -1119,7 +1119,7 @@ export const MENUITEMS = [
         title: 'Landing',
       },
       {
-        path: `${baseUrl}/pages/pricing`,
+        path: `${baseUrl}/demo/pages/pricing`,
         icon: Svgicons.Pricingicon,
         type: 'link',
         active: false,
@@ -1128,7 +1128,7 @@ export const MENUITEMS = [
         title: 'Pricing',
       },
       {
-        path: `${baseUrl}/pages/profile`,
+        path: `${baseUrl}/demo/pages/profile`,
         type: 'link',
         icon: Svgicons.Profileicon,
         active: false,
@@ -1137,7 +1137,7 @@ export const MENUITEMS = [
         title: 'Profile',
       },
       {
-        path: `${baseUrl}/pages/profile-settings`,
+        path: `${baseUrl}/demo/pages/profile-settings`,
         type: 'link',
         icon: Svgicons.Profilesettingicon,
         active: false,
@@ -1146,7 +1146,7 @@ export const MENUITEMS = [
         title: 'Profile Settings',
       },
       {
-        path: `${baseUrl}/pages/testimonials`,
+        path: `${baseUrl}/demo/pages/testimonials`,
         type: 'link',
         icon: Svgicons.Testimonialicon,
         active: false,
@@ -1155,7 +1155,7 @@ export const MENUITEMS = [
         title: 'Testimonials',
       },
       {
-        path: `${baseUrl}/pages/search`,
+        path: `${baseUrl}/demo/pages/search`,
         type: 'link',
         icon: Svgicons.Searchicon,
         active: false,
@@ -1164,7 +1164,7 @@ export const MENUITEMS = [
         title: 'Search',
       },
       {
-        path: `${baseUrl}/pages/team`,
+        path: `${baseUrl}/demo/pages/team`,
         type: 'link',
         icon: Svgicons.Teamicon,
         active: false,
@@ -1173,7 +1173,7 @@ export const MENUITEMS = [
         title: 'Team',
       },
       {
-        path: `${baseUrl}/pages/terms-conditions`,
+        path: `${baseUrl}/demo/pages/terms-conditions`,
         type: 'link',
         icon: Svgicons.Termsicon,
         active: false,
@@ -1182,7 +1182,7 @@ export const MENUITEMS = [
         title: 'Terms & Conditions',
       },
       {
-        path: `${baseUrl}/pages/timeline`,
+        path: `${baseUrl}/demo/pages/timeline`,
         type: 'link',
         icon: Svgicons.Timelineicon,
         active: false,
@@ -1214,7 +1214,7 @@ export const MENUITEMS = [
         dirchange: false,
         children: [
           {
-            path: `${baseUrl}/general/ui-elements/alerts`,
+            path: `${baseUrl}/demo/general/ui-elements/alerts`,
             type: 'link',
             active: false,
             selected: false,
@@ -1222,7 +1222,7 @@ export const MENUITEMS = [
             title: 'Alerts',
           },
           {
-            path: `${baseUrl}/general/ui-elements/badge`,
+            path: `${baseUrl}/demo/general/ui-elements/badge`,
             type: 'link',
             active: false,
             selected: false,
@@ -1230,7 +1230,7 @@ export const MENUITEMS = [
             title: 'Badge',
           },
           {
-            path: `${baseUrl}/general/ui-elements/breadcrumb`,
+            path: `${baseUrl}/demo/general/ui-elements/breadcrumb`,
             type: 'link',
             active: false,
             selected: false,
@@ -1238,7 +1238,7 @@ export const MENUITEMS = [
             title: 'Breadcrumb',
           },
           {
-            path: `${baseUrl}/general/ui-elements/buttons`,
+            path: `${baseUrl}/demo/general/ui-elements/buttons`,
             type: 'link',
             active: false,
             selected: false,
@@ -1246,7 +1246,7 @@ export const MENUITEMS = [
             title: 'Buttons',
           },
           {
-            path: `${baseUrl}/general/ui-elements/button-group`,
+            path: `${baseUrl}/demo/general/ui-elements/button-group`,
             type: 'link',
             active: false,
             selected: false,
@@ -1254,7 +1254,7 @@ export const MENUITEMS = [
             title: 'Button Group',
           },
           {
-            path: `${baseUrl}/general/ui-elements/cards`,
+            path: `${baseUrl}/demo/general/ui-elements/cards`,
             type: 'link',
             active: false,
             selected: false,
@@ -1262,7 +1262,7 @@ export const MENUITEMS = [
             title: 'Cards',
           },
           {
-            path: `${baseUrl}/general/ui-elements/dropdowns`,
+            path: `${baseUrl}/demo/general/ui-elements/dropdowns`,
             type: 'link',
             active: false,
             selected: false,
@@ -1270,7 +1270,7 @@ export const MENUITEMS = [
             title: 'Dropdowns',
           },
           {
-            path: `${baseUrl}/general/ui-elements/images-figures`,
+            path: `${baseUrl}/demo/general/ui-elements/images-figures`,
             type: 'link',
             active: false,
             selected: false,
@@ -1278,7 +1278,7 @@ export const MENUITEMS = [
             title: 'Images & Figures',
           },
           {
-            path: `${baseUrl}/general/ui-elements/links-interactions`,
+            path: `${baseUrl}/demo/general/ui-elements/links-interactions`,
             type: 'link',
             active: false,
             selected: false,
@@ -1286,7 +1286,7 @@ export const MENUITEMS = [
             title: 'Links & Interactions',
           },
           {
-            path: `${baseUrl}/general/ui-elements/list-group`,
+            path: `${baseUrl}/demo/general/ui-elements/list-group`,
             type: 'link',
             active: false,
             selected: false,
@@ -1294,7 +1294,7 @@ export const MENUITEMS = [
             title: 'List Group',
           },
           {
-            path: `${baseUrl}/general/ui-elements/navs-tabs`,
+            path: `${baseUrl}/demo/general/ui-elements/navs-tabs`,
             type: 'link',
             active: false,
             selected: false,
@@ -1302,7 +1302,7 @@ export const MENUITEMS = [
             title: 'Navs & Tabs',
           },
           {
-            path: `${baseUrl}/general/ui-elements/object-fit`,
+            path: `${baseUrl}/demo/general/ui-elements/object-fit`,
             type: 'link',
             active: false,
             selected: false,
@@ -1310,7 +1310,7 @@ export const MENUITEMS = [
             title: 'Object Fit',
           },
           {
-            path: `${baseUrl}/general/ui-elements/pagination`,
+            path: `${baseUrl}/demo/general/ui-elements/pagination`,
             type: 'link',
             active: false,
             selected: false,
@@ -1318,7 +1318,7 @@ export const MENUITEMS = [
             title: 'Pagination',
           },
           {
-            path: `${baseUrl}/general/ui-elements/popovers`,
+            path: `${baseUrl}/demo/general/ui-elements/popovers`,
             type: 'link',
             active: false,
             selected: false,
@@ -1326,7 +1326,7 @@ export const MENUITEMS = [
             title: 'Popovers',
           },
           {
-            path: `${baseUrl}/general/ui-elements/progress`,
+            path: `${baseUrl}/demo/general/ui-elements/progress`,
             type: 'link',
             active: false,
             selected: false,
@@ -1334,7 +1334,7 @@ export const MENUITEMS = [
             title: 'Progress',
           },
           {
-            path: `${baseUrl}/general/ui-elements/spinners`,
+            path: `${baseUrl}/demo/general/ui-elements/spinners`,
             type: 'link',
             active: false,
             selected: false,
@@ -1342,7 +1342,7 @@ export const MENUITEMS = [
             title: 'Spinners',
           },
           {
-            path: `${baseUrl}/general/ui-elements/toasts`,
+            path: `${baseUrl}/demo/general/ui-elements/toasts`,
             type: 'link',
             active: false,
             selected: false,
@@ -1350,7 +1350,7 @@ export const MENUITEMS = [
             title: 'Toasts',
           },
           {
-            path: `${baseUrl}/general/ui-elements/tooltips`,
+            path: `${baseUrl}/demo/general/ui-elements/tooltips`,
             type: 'link',
             active: false,
             selected: false,
@@ -1358,7 +1358,7 @@ export const MENUITEMS = [
             title: 'Tooltips',
           },
           {
-            path: `${baseUrl}/general/ui-elements/typography`,
+            path: `${baseUrl}/demo/general/ui-elements/typography`,
             type: 'link',
             active: false,
             selected: false,
@@ -1376,7 +1376,7 @@ export const MENUITEMS = [
         dirchange: false,
         children: [
           {
-            path: `${baseUrl}/general/utilities/avatars`,
+            path: `${baseUrl}/demo/general/utilities/avatars`,
             type: 'link',
             active: false,
             selected: false,
@@ -1384,7 +1384,7 @@ export const MENUITEMS = [
             title: 'Avatars',
           },
           {
-            path: `${baseUrl}/general/utilities/borders`,
+            path: `${baseUrl}/demo/general/utilities/borders`,
             type: 'link',
             active: false,
             selected: false,
@@ -1392,7 +1392,7 @@ export const MENUITEMS = [
             title: 'Borders',
           },
           {
-            path: `${baseUrl}/general/utilities/breakpoints`,
+            path: `${baseUrl}/demo/general/utilities/breakpoints`,
             type: 'link',
             active: false,
             selected: false,
@@ -1400,7 +1400,7 @@ export const MENUITEMS = [
             title: 'Breakpoints',
           },
           {
-            path: `${baseUrl}/general/utilities/colors`,
+            path: `${baseUrl}/demo/general/utilities/colors`,
             type: 'link',
             active: false,
             selected: false,
@@ -1408,7 +1408,7 @@ export const MENUITEMS = [
             title: 'Colors',
           },
           {
-            path: `${baseUrl}/general/utilities/columns`,
+            path: `${baseUrl}/demo/general/utilities/columns`,
             type: 'link',
             active: false,
             selected: false,
@@ -1416,7 +1416,7 @@ export const MENUITEMS = [
             title: 'Columns',
           },
           {
-            path: `${baseUrl}/general/utilities/css-grid`,
+            path: `${baseUrl}/demo/general/utilities/css-grid`,
             type: 'link',
             active: false,
             selected: false,
@@ -1424,7 +1424,7 @@ export const MENUITEMS = [
             title: 'Css Grid',
           },
           {
-            path: `${baseUrl}/general/utilities/flex`,
+            path: `${baseUrl}/demo/general/utilities/flex`,
             type: 'link',
             active: false,
             selected: false,
@@ -1432,7 +1432,7 @@ export const MENUITEMS = [
             title: 'Flex',
           },
           {
-            path: `${baseUrl}/general/utilities/gutters`,
+            path: `${baseUrl}/demo/general/utilities/gutters`,
             type: 'link',
             active: false,
             selected: false,
@@ -1440,7 +1440,7 @@ export const MENUITEMS = [
             title: 'Gutters',
           },
           {
-            path: `${baseUrl}/general/utilities/helpers`,
+            path: `${baseUrl}/demo/general/utilities/helpers`,
             type: 'link',
             active: false,
             selected: false,
@@ -1448,7 +1448,7 @@ export const MENUITEMS = [
             title: 'Helpers',
           },
           {
-            path: `${baseUrl}/general/utilities/position`,
+            path: `${baseUrl}/demo/general/utilities/position`,
             type: 'link',
             active: false,
             selected: false,
@@ -1456,7 +1456,7 @@ export const MENUITEMS = [
             title: 'Position',
           },
           {
-            path: `${baseUrl}/general/utilities/additional-content`,
+            path: `${baseUrl}/demo/general/utilities/additional-content`,
             type: 'link',
             active: false,
             selected: false,
@@ -1474,7 +1474,7 @@ export const MENUITEMS = [
         dirchange: false,
         children: [
           {
-            path: `${baseUrl}/general/advanced-ui/accordions-collapse`,
+            path: `${baseUrl}/demo/general/advanced-ui/accordions-collapse`,
             type: 'link',
             active: false,
             selected: false,
@@ -1482,7 +1482,7 @@ export const MENUITEMS = [
             title: 'Accordions & Collapse',
           },
           {
-            path: `${baseUrl}/general/advanced-ui/carousel`,
+            path: `${baseUrl}/demo/general/advanced-ui/carousel`,
             type: 'link',
             active: false,
             selected: false,
@@ -1490,7 +1490,7 @@ export const MENUITEMS = [
             title: 'Carousel',
           },
           {
-            path: `${baseUrl}/general/advanced-ui/draggable-cards`,
+            path: `${baseUrl}/demo/general/advanced-ui/draggable-cards`,
             type: 'link',
             active: false,
             selected: false,
@@ -1498,7 +1498,7 @@ export const MENUITEMS = [
             title: 'Draggable Cards',
           },
           {
-            path: `${baseUrl}/general/advanced-ui/media-player`,
+            path: `${baseUrl}/demo/general/advanced-ui/media-player`,
             type: 'link',
             active: false,
             selected: false,
@@ -1506,7 +1506,7 @@ export const MENUITEMS = [
             title: 'Media Player',
           },
           {
-            path: `${baseUrl}/general/advanced-ui/modals-closes`,
+            path: `${baseUrl}/demo/general/advanced-ui/modals-closes`,
             type: 'link',
             active: false,
             selected: false,
@@ -1514,7 +1514,7 @@ export const MENUITEMS = [
             title: 'Modals & Closes',
           },
           {
-            path: `${baseUrl}/general/advanced-ui/navbar`,
+            path: `${baseUrl}/demo/general/advanced-ui/navbar`,
             type: 'link',
             active: false,
             selected: false,
@@ -1522,7 +1522,7 @@ export const MENUITEMS = [
             title: 'Navbar',
           },
           {
-            path: `${baseUrl}/general/advanced-ui/offcanvas`,
+            path: `${baseUrl}/demo/general/advanced-ui/offcanvas`,
             type: 'link',
             active: false,
             selected: false,
@@ -1530,7 +1530,7 @@ export const MENUITEMS = [
             title: 'Offcanvas',
           },
           {
-            path: `${baseUrl}/general/advanced-ui/placeholders`,
+            path: `${baseUrl}/demo/general/advanced-ui/placeholders`,
             type: 'link',
             active: false,
             selected: false,
@@ -1538,7 +1538,7 @@ export const MENUITEMS = [
             title: 'Placeholders',
           },
           {
-            path: `${baseUrl}/general/advanced-ui/ratings`,
+            path: `${baseUrl}/demo/general/advanced-ui/ratings`,
             type: 'link',
             active: false,
             selected: false,
@@ -1546,7 +1546,7 @@ export const MENUITEMS = [
             title: 'Ratings',
           },
           {
-            path: `${baseUrl}/general/advanced-ui/ribbons`,
+            path: `${baseUrl}/demo/general/advanced-ui/ribbons`,
             type: 'link',
             active: false,
             selected: false,
@@ -1554,7 +1554,7 @@ export const MENUITEMS = [
             title: 'Ribbons',
           },
           {
-            path: `${baseUrl}/general/advanced-ui/sortable-js`,
+            path: `${baseUrl}/demo/general/advanced-ui/sortable-js`,
             type: 'link',
             active: false,
             selected: false,
@@ -1562,7 +1562,7 @@ export const MENUITEMS = [
             title: 'Sortable Js',
           },
           {
-            path: `${baseUrl}/general/advanced-ui/swiper-js`,
+            path: `${baseUrl}/demo/general/advanced-ui/swiper-js`,
             type: 'link',
             active: false,
             selected: false,
@@ -1570,7 +1570,7 @@ export const MENUITEMS = [
             title: 'Swiper JS',
           },
           {
-            path: `${baseUrl}/general/advanced-ui/tour`,
+            path: `${baseUrl}/demo/general/advanced-ui/tour`,
             type: 'link',
             active: false,
             selected: false,
@@ -1583,7 +1583,7 @@ export const MENUITEMS = [
   },
 
   {
-    path: `${baseUrl}/widgets`,
+    path: `${baseUrl}/demo/widgets`,
     icon: Svgicons.widgetsicon,
     title: 'widgets',
     type: 'link',
@@ -1606,7 +1606,7 @@ export const MENUITEMS = [
     dirchange: false,
     children: [
       {
-        path: `${baseUrl}/maps/jsvector`,
+        path: `${baseUrl}/demo/maps/jsvector`,
         icon: Svgicons.Vectoricon,
         type: 'link',
         active: false,
@@ -1615,7 +1615,7 @@ export const MENUITEMS = [
         title: 'vector Maps',
       },
       {
-        path: `${baseUrl}/maps/leaflet`,
+        path: `${baseUrl}/demo/maps/leaflet`,
         icon: Svgicons.Leafleticon,
         type: 'link',
         active: false,
@@ -1624,7 +1624,7 @@ export const MENUITEMS = [
         title: 'Leaflet Maps',
       },
       {
-        path: `${baseUrl}/maps/google`,
+        path: `${baseUrl}/demo/maps/google`,
         icon: Svgicons.Googleicon,
         type: 'link',
         active: false,
@@ -1636,7 +1636,7 @@ export const MENUITEMS = [
   },
 
   {
-    path: `${baseUrl}/icons`,
+    path: `${baseUrl}/demo/icons`,
     icon: Svgicons.Iconsicon,
     type: 'link',
     active: false,
@@ -1665,7 +1665,7 @@ export const MENUITEMS = [
         dirchange: false,
         children: [
           {
-            path: `${baseUrl}/charts/apex-charts/line-chart`,
+            path: `${baseUrl}/demo/charts/apex-charts/line-chart`,
             type: 'link',
             active: false,
             selected: false,
@@ -1673,7 +1673,7 @@ export const MENUITEMS = [
             title: 'Line Charts',
           },
           {
-            path: `${baseUrl}/charts/apex-charts/area-chart`,
+            path: `${baseUrl}/demo/charts/apex-charts/area-chart`,
             type: 'link',
             active: false,
             selected: false,
@@ -1681,7 +1681,7 @@ export const MENUITEMS = [
             title: 'Area Charts ',
           },
           {
-            path: `${baseUrl}/charts/apex-charts/column-chart`,
+            path: `${baseUrl}/demo/charts/apex-charts/column-chart`,
             type: 'link',
             active: false,
             selected: false,
@@ -1689,7 +1689,7 @@ export const MENUITEMS = [
             title: 'Column Charts',
           },
           {
-            path: `${baseUrl}/charts/apex-charts/bar-chart`,
+            path: `${baseUrl}/demo/charts/apex-charts/bar-chart`,
             type: 'link',
             active: false,
             selected: false,
@@ -1697,7 +1697,7 @@ export const MENUITEMS = [
             title: 'Bar Charts',
           },
           {
-            path: `${baseUrl}/charts/apex-charts/mixed-chart`,
+            path: `${baseUrl}/demo/charts/apex-charts/mixed-chart`,
             type: 'link',
             active: false,
             selected: false,
@@ -1705,7 +1705,7 @@ export const MENUITEMS = [
             title: 'Mixed Charts',
           },
           {
-            path: `${baseUrl}/charts/apex-charts/funnel-chart`,
+            path: `${baseUrl}/demo/charts/apex-charts/funnel-chart`,
             type: 'link',
             active: false,
             selected: false,
@@ -1713,7 +1713,7 @@ export const MENUITEMS = [
             title: 'Funnel Charts',
           },
           {
-            path: `${baseUrl}/charts/apex-charts/candlestick-chart`,
+            path: `${baseUrl}/demo/charts/apex-charts/candlestick-chart`,
             type: 'link',
             active: false,
             selected: false,
@@ -1721,7 +1721,7 @@ export const MENUITEMS = [
             title: 'CandleStick Charts',
           },
           {
-            path: `${baseUrl}/charts/apex-charts/boxplot-chart`,
+            path: `${baseUrl}/demo/charts/apex-charts/boxplot-chart`,
             type: 'link',
             active: false,
             selected: false,
@@ -1729,7 +1729,7 @@ export const MENUITEMS = [
             title: 'Boxplot Charts',
           },
           {
-            path: `${baseUrl}/charts/apex-charts/bubble-chart`,
+            path: `${baseUrl}/demo/charts/apex-charts/bubble-chart`,
             type: 'link',
             active: false,
             selected: false,
@@ -1737,7 +1737,7 @@ export const MENUITEMS = [
             title: 'Bubble Charts',
           },
           {
-            path: `${baseUrl}/charts/apex-charts/scatter-chart`,
+            path: `${baseUrl}/demo/charts/apex-charts/scatter-chart`,
             type: 'link',
             active: false,
             selected: false,
@@ -1745,7 +1745,7 @@ export const MENUITEMS = [
             title: 'Scatter Charts',
           },
           {
-            path: `${baseUrl}/charts/apex-charts/heatmap-chart`,
+            path: `${baseUrl}/demo/charts/apex-charts/heatmap-chart`,
             type: 'link',
             active: false,
             selected: false,
@@ -1753,7 +1753,7 @@ export const MENUITEMS = [
             title: 'Heatmap Charts',
           },
           {
-            path: `${baseUrl}/charts/apex-charts/treemap-chart`,
+            path: `${baseUrl}/demo/charts/apex-charts/treemap-chart`,
             type: 'link',
             active: false,
             selected: false,
@@ -1761,7 +1761,7 @@ export const MENUITEMS = [
             title: 'Treemap Charts',
           },
           {
-            path: `${baseUrl}/charts/apex-charts/pie-chart`,
+            path: `${baseUrl}/demo/charts/apex-charts/pie-chart`,
             type: 'link',
             active: false,
             selected: false,
@@ -1769,7 +1769,7 @@ export const MENUITEMS = [
             title: 'Pie Charts',
           },
           {
-            path: `${baseUrl}/charts/apex-charts/radialbar-chart`,
+            path: `${baseUrl}/demo/charts/apex-charts/radialbar-chart`,
             type: 'link',
             active: false,
             selected: false,
@@ -1777,7 +1777,7 @@ export const MENUITEMS = [
             title: 'Radialbar Charts',
           },
           {
-            path: `${baseUrl}/charts/apex-charts/radar-chart`,
+            path: `${baseUrl}/demo/charts/apex-charts/radar-chart`,
             type: 'link',
             active: false,
             selected: false,
@@ -1785,7 +1785,7 @@ export const MENUITEMS = [
             title: 'Radar Charts',
           },
           {
-            path: `${baseUrl}/charts/apex-charts/polararea-chart`,
+            path: `${baseUrl}/demo/charts/apex-charts/polararea-chart`,
             type: 'link',
             active: false,
             selected: false,
@@ -1795,7 +1795,7 @@ export const MENUITEMS = [
         ],
       },
       {
-        path: `${baseUrl}/charts/chartjs-charts`,
+        path: `${baseUrl}/demo/charts/chartjs-charts`,
         icon: Svgicons.Chartjsicon,
         type: 'link',
         active: false,
@@ -1804,7 +1804,7 @@ export const MENUITEMS = [
         title: 'Chartjs Charts',
       },
       {
-        path: `${baseUrl}/charts/echart-charts`,
+        path: `${baseUrl}/demo/charts/echart-charts`,
         type: 'link',
         icon: Svgicons.Echartsicon,
         active: false,
@@ -1825,7 +1825,7 @@ export const MENUITEMS = [
     dirchange: false,
     children: [
       {
-        path: `${baseUrl}/tables/tables`,
+        path: `${baseUrl}/demo/tables/tables`,
         type: 'link',
         icon: Svgicons.Basictableicon,
         active: false,
@@ -1834,7 +1834,7 @@ export const MENUITEMS = [
         title: 'Tables',
       },
       {
-        path: `${baseUrl}/tables/girdjs`,
+        path: `${baseUrl}/demo/tables/girdjs`,
         type: 'link',
         icon: Svgicons.Gridjsicon,
         active: false,
@@ -1843,7 +1843,7 @@ export const MENUITEMS = [
         title: 'Grid JS Tables',
       },
       {
-        path: `${baseUrl}/tables/data-tables`,
+        path: `${baseUrl}/demo/tables/data-tables`,
         type: 'link',
         icon: Svgicons.Datatablesicon,
         active: false,

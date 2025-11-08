@@ -7,7 +7,7 @@
         <!-- Start::header-element -->
         <div class="header-element">
           <div class="horizontal-logo">
-            <Link :href="`${baseUrl}/dashboards/sales/`" class="header-logo">
+            <Link :href="`${baseUrl}/demo/dashboards/sales/`" class="header-logo">
               <BaseImg src="/images/brand-logos/desktop-logo.png" alt="logo" class="desktop-logo" />
               <BaseImg src="/images/brand-logos/toggle-logo.png" alt="logo" class="toggle-logo" />
               <BaseImg src="/images/brand-logos/desktop-dark.png" alt="logo" class="desktop-dark" />
@@ -402,7 +402,7 @@
                   >
                 </p>
                 <Link
-                  :href="`${baseUrl}/dashboards/ecommerce/products/`"
+                  :href="`${baseUrl}/demo/dashboards/ecommerce/products/`"
                   class="text-fixed-white text-decoration-underline fs-12"
                   >Continue Shopping <i class="ti ti-arrow-narrow-right"></i
                 ></Link>
@@ -426,7 +426,7 @@
                       <div class="d-flex align-items-start justify-content-between mb-3">
                         <div class="fs-14 fw-medium w-75">
                           <div class="text-truncate">
-                            <Link :href="`${baseUrl}/dashboards/ecommerce/cart/`"
+                            <Link :href="`${baseUrl}/demo/dashboards/ecommerce/cart/`"
                               >{{ item.name }}
                             </Link>
                           </div>
@@ -488,7 +488,7 @@
             >
               <div class="text-center d-grid">
                 <Link
-                  :href="`${baseUrl}/dashboards/ecommerce/checkout/`"
+                  :href="`${baseUrl}/demo/dashboards/ecommerce/checkout/`"
                   class="btn btn-primary btn-wave"
                 >
                   Proceed to checkout</Link
@@ -568,7 +568,7 @@
                 v-for="idx in Notifications"
                 :key="idx.id"
               >
-                <Link :href="`${baseUrl}/applications/chat/`" class="stretched-link"></Link>
+                <Link :href="`${baseUrl}/demo/applications/chat/`" class="stretched-link"></Link>
                 <div class="d-flex align-items-start gap-3">
                   <div class="lh-1">
                     <span class="avatar avatar-sm avatar-rounded bg-primary-transparent">
@@ -747,14 +747,14 @@
                   <li>
                     <Link
                       class="dropdown-item d-flex align-items-center"
-                      :href="`${baseUrl}/pages/profile`"
+                      :href="`${baseUrl}/demo/pages/profile`"
                       ><i class="ti ti-user-circle me-2 fs-18"></i>View Profile</Link
                     >
                   </li>
                   <li>
                     <Link
                       class="dropdown-item d-flex align-items-center"
-                      :href="`${baseUrl}/pages/profile-settings`"
+                      :href="`${baseUrl}/demo/pages/profile-settings`"
                     >
                       <i class="ti ti-settings-cog me-2 fs-18"></i>Account Settings
                     </Link>
@@ -782,7 +782,7 @@
               </li>
               <li>
                 <Link
-                  :href="`${baseUrl}/pages/authentication/sign-in/cover`"
+                  :href="`${baseUrl}/demo/pages/authentication/sign-in/cover`"
                   class="dropdown-item d-flex align-items-center"
                   ><i class="ti ti-logout me-2 fs-18"></i>Log Out</Link
                 >

@@ -155,7 +155,7 @@ const baseUrl = __BASE_PATH__
         </div>
         <div class="card-footer d-grid">
           <Link
-            :href="`${baseUrl}/dashboards/ecommerce/checkout`"
+            :href="`${baseUrl}/demo/dashboards/ecommerce/checkout`"
             class="btn btn-primary d-inline-flex align-items-center justify-content-center"
             >Proceed to checkout<i class="ti ti-arrow-narrow-right ms-1"></i
           ></Link>

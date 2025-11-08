@@ -21,7 +21,7 @@ const dataToPass = {
   <div class="row">
     <div class="col-xxl-5">
       <div class="card custom-card overlay-card blog-card">
-        <Link :href="`${baseUrl}/pages/blog/blog-details`" class="stretched-link"></Link>
+        <Link :href="`${baseUrl}/demo/pages/blog/blog-details`" class="stretched-link"></Link>
         <BaseImg src="/images/media/blog/1.jpg" class="card-img" alt="..." />
         <div class="card-img-overlay d-flex flex-column p-0 over-content-bottom">
           <div class="card-body text-fixed-white">
@@ -51,7 +51,7 @@ const dataToPass = {
         <div class="card-body">
           <ul class="list-unstyled blog-top-stories-list">
             <li v-for="idx in BlogData.TopStories" :key="idx.id">
-              <Link :href="`${baseUrl}/pages/blog/blog-details`" class="stretched-link"></Link>
+              <Link :href="`${baseUrl}/demo/pages/blog/blog-details`" class="stretched-link"></Link>
               <div class="d-flex align-items-center gap-3">
                 <div class="lh-1">
                   <span class="avatar avatar-xl">
@@ -109,7 +109,7 @@ const dataToPass = {
         <div class="card-body p-0">
           <ul class="list-group list-group-flush">
             <li class="list-group-item" v-for="idx in BlogData.PopularBlogs" :key="idx.id">
-              <Link :href="`${baseUrl}/pages/blog/blog-details`" class="stretched-link"></Link>
+              <Link :href="`${baseUrl}/demo/pages/blog/blog-details`" class="stretched-link"></Link>
               <div class="d-flex align-items-center gap-3">
                 <div class="lh-1">
                   <span class="avatar avatar-xl">

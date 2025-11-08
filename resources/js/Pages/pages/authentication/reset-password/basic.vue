@@ -57,7 +57,7 @@ function validateForm() {
 function onSubmit() {
   if (validateForm()) {
     reseted.value = 'Created Password successful'
-    router.visit(`${baseUrl}/dashboards/sales`) // Adjust the path as needed
+    router.visit(`${baseUrl}/demo/dashboards/sales`) // Adjust the path as needed
   }
 }
 
@@ -111,7 +111,7 @@ onMounted(() => {
           <div class="card custom-card border-0 my-4">
             <div class="card-body p-5">
               <div class="mb-4">
-                <Link :href="`${baseUrl}/dashboards/sales`">
+                <Link :href="`${baseUrl}/demo/dashboards/sales`">
                   <BaseImg
                     src="/images/brand-logos/toggle-logo.png"
                     alt="logo"
@@ -248,7 +248,7 @@ onMounted(() => {
               </div>
               <div class="text-center mt-3 fw-medium">
                 Dont want to reset?
-                <Link :href="`${baseUrl}/pages/authentication/sign-in/basic`" class="text-primary"
+                <Link :href="`${baseUrl}/demo/pages/authentication/sign-in/basic`" class="text-primary"
                   >Sign In</Link
                 >
               </div>

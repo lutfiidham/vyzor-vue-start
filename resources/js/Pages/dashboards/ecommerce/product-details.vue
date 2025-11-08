@@ -203,12 +203,12 @@ const dataToPass = {
                 </div>
                 <div class="d-flex align-items-center justify-content-center gap-2 mt-5 flex-wrap">
                   <Link
-                    :href="`${baseUrl}/dashboards/ecommerce/cart`"
+                    :href="`${baseUrl}/demo/dashboards/ecommerce/cart`"
                     class="btn btn-primary btn-lg btn-w-lg border"
                     ><i class="ti ti-shopping-cart mx-1"></i>Add To Cart</Link
                   >
                   <Link
-                    :href="`${baseUrl}/dashboards/ecommerce/checkout`"
+                    :href="`${baseUrl}/demo/dashboards/ecommerce/checkout`"
                     class="btn btn-primary btn-lg btn-w-lg border"
                     >Buy Now</Link
                   >

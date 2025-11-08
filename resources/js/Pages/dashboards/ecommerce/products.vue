@@ -213,7 +213,7 @@ function deleteProduct(id) {
                   </td>
                   <td class="gridjs-td">
                     <span>
-                      <Link :href="`${baseUrl}/dashboards/ecommerce/product-details`">
+                      <Link :href="`${baseUrl}/demo/dashboards/ecommerce/product-details`">
                         <div class="d-flex align-items-center gap-3 position-relative">
                           <div class="lh-1">
                             <span class="avatar avatar-lg bg-light">
@@ -261,7 +261,7 @@ function deleteProduct(id) {
                           <li>
                             <Link
                               class="dropdown-item"
-                              :href="`${baseUrl}/dashboards/ecommerce/product-details`"
+                              :href="`${baseUrl}/demo/dashboards/ecommerce/product-details`"
                               ><i class="ri-eye-line me-2"></i>View</Link
                             >
                           </li>

@@ -62,7 +62,7 @@ const handleSubmit = (e) => {
   if (validate()) {
     matched.value = 'Create Password Successfully'
     // Navigate using Vue Router
-    router.visit(`${baseUrl}/dashboards/sales`)
+    router.visit(`${baseUrl}/demo/dashboards/sales`)
   }
 }
 
@@ -115,7 +115,7 @@ onMounted(() => {
         <div class="card custom-card border-0 my-4">
           <div class="card-body p-5">
             <div class="mb-4">
-              <Link :href="`${baseUrl}/dashboards/sales`">
+              <Link :href="`${baseUrl}/demo/dashboards/sales`">
                 <Baseimg
                   src="/images/brand-logos/toggle-logo.png"
                   alt="logo"
@@ -233,7 +233,7 @@ onMounted(() => {
             </div>
             <div class="text-center mt-3 fw-medium">
               Dont have an account?
-              <Link :href="`${baseUrl}/pages/authentication/sign-up/basic`" class="text-primary"
+              <Link :href="`${baseUrl}/demo/pages/authentication/sign-up/basic`" class="text-primary"
                 >Sign up</Link
               >
             </div>

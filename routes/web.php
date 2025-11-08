@@ -8,8 +8,12 @@ use Inertia\Inertia;
 Route::middleware('guest')->group(function () {
     Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login');
     Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+});
 
-    // Authentication pages
+// Demo routes - all pages moved under /demo/* prefix
+Route::prefix('demo')->group(function () {
+
+    // Authentication pages (demo)
     Route::get('pages/authentication/reset-password/basic', function () {
         return Inertia::render('pages/authentication/reset-password/basic');
     });
@@ -53,7 +57,7 @@ Route::middleware('guest')->group(function () {
         return Inertia::render('pages/authentication/under-maintenance');
     });
 
-    // Error pages (should be accessible to all)
+    // Error pages (demo)
     Route::get('pages/error/401-error', function () {
         return Inertia::render('pages/error/401-error');
     });
@@ -64,7 +68,7 @@ Route::middleware('guest')->group(function () {
         return Inertia::render('pages/error/500-error');
     });
 
-    // Landing and other public pages
+    // Landing and other public pages (demo)
     Route::get('pages/landing', function () {
         return Inertia::render('pages/landing');
     });
@@ -95,14 +99,8 @@ Route::middleware('guest')->group(function () {
     Route::get('pages/testimonials', function () {
         return Inertia::render('pages/testimonials');
     });
-});
 
-// Protected routes (require authentication)
-Route::middleware('auth')->group(function () {
-    // Logout route
-    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
-
-    // Dashboard routes
+  // Dashboard routes (demo)
     Route::get('dashboards/sales', function () {
         return Inertia::render('dashboards/sales');
     });
@@ -248,7 +246,7 @@ Route::middleware('auth')->group(function () {
         return Inertia::render('dashboards/pos-system');
     });
 
-    // Application routes
+    // Application routes (demo)
     Route::get('applications/chat', function () {
         return Inertia::render('applications/chat');
     });
@@ -280,7 +278,7 @@ Route::middleware('auth')->group(function () {
         return Inertia::render('applications/to-do-list');
     });
 
-    // Page routes (protected)
+    // Page routes (demo)
     Route::get('pages/empty', function () {
         return Inertia::render('pages/empty');
     });
@@ -348,7 +346,7 @@ Route::middleware('auth')->group(function () {
         return Inertia::render('pages/timeline');
     });
 
-    // UI Elements routes
+    // UI Elements routes (demo)
     Route::get('general/ui-elements/alerts', function () {
         return Inertia::render('general/ui-elements/alerts');
     });
@@ -407,7 +405,7 @@ Route::middleware('auth')->group(function () {
         return Inertia::render('general/ui-elements/typography');
     });
 
-    // Utilities routes
+    // Utilities routes (demo)
     Route::get('general/utilities/avatars', function () {
         return Inertia::render('general/utilities/avatars');
     });
@@ -442,7 +440,7 @@ Route::middleware('auth')->group(function () {
         return Inertia::render('general/utilities/additional-content');
     });
 
-    // Advanced UI routes
+    // Advanced UI routes (demo)
     Route::get('general/advanced-ui/accordions-collapse', function () {
         return Inertia::render('general/advanced-ui/accordions-collapse');
     });
@@ -483,7 +481,7 @@ Route::middleware('auth')->group(function () {
         return Inertia::render('general/advanced-ui/tour');
     });
 
-    // Other routes
+    // Other routes (demo)
     Route::get('widgets', function () {
         return Inertia::render('widgets');
     });
@@ -500,7 +498,7 @@ Route::middleware('auth')->group(function () {
         return Inertia::render('icons');
     });
 
-    // Charts routes
+    // Charts routes (demo)
     Route::get('charts/apex-charts/area-chart', function () {
         return Inertia::render('charts/apex-charts/area-chart');
     });
@@ -556,7 +554,7 @@ Route::middleware('auth')->group(function () {
         return Inertia::render('charts/echart-charts');
     });
 
-    // Tables routes
+    // Tables routes (demo)
     Route::get('tables/tables', function () {
         return Inertia::render('tables/tables');
     });
@@ -566,4 +564,9 @@ Route::middleware('auth')->group(function () {
     Route::get('tables/data-tables', function () {
         return Inertia::render('tables/data-tables');
     });
+});
+
+// Protected routes (require authentication) - only logout route
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });

@@ -32,7 +32,7 @@ const Projectselectdata = ['Newest', 'Date Added', 'Type', 'A - Z']
               class="d-flex gap-1 project-list-main d-inline-flex text-nowrap flex-sm-nowrap flex-wrap"
             >
               <Link
-                :href="`${baseUrl}/dashboards/projects/create-project`"
+                :href="`${baseUrl}/demo/dashboards/projects/create-project`"
                 class="btn btn-primary me-2"
                 ><i class="ri-add-line me-1 fw-medium align-middle"></i>New Project</Link
               >
