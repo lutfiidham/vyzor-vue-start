@@ -16,7 +16,7 @@ Komponen-komponen untuk berbagai aplikasi dan fitur produktivitas.
 
 ### Gallery
 
-**Lokasi:** `resources/js/Pages/applications/gallery.vue`
+**Lokasi:** `resources/js/Pages/demo/applications/gallery.vue`
 
 **Fungsi:** Halaman galeri dengan grid layout, filter, dan lightbox.
 
@@ -31,7 +31,7 @@ Komponen-komponen untuk berbagai aplikasi dan fitur produktivitas.
 
 ### Full Calendar
 
-**Lokasi:** `resources/js/Pages/applications/full-calendar.vue`
+**Lokasi:** `resources/js/Pages/demo/applications/full-calendar.vue`
 
 **Fungsi:** Halaman kalender dengan drag & drop events.
 
@@ -46,7 +46,7 @@ Komponen-komponen untuk berbagai aplikasi dan fitur produktivitas.
 
 ### File Manager
 
-**Lokasi:** `resources/js/Pages/applications/file-manager.vue`
+**Lokasi:** `resources/js/Pages/demo/applications/file-manager.vue`
 
 **Fungsi:** File manager dengan tree view dan file operations.
 
@@ -62,7 +62,7 @@ Komponen-komponen untuk berbagai aplikasi dan fitur produktivitas.
 
 ### Chat
 
-**Lokasi:** `resources/js/Pages/applications/chat.vue`
+**Lokasi:** `resources/js/Pages/demo/applications/chat.vue`
 
 **Fungsi:** Aplikasi chat real-time dengan multiple conversations.
 
@@ -78,7 +78,7 @@ Komponen-komponen untuk berbagai aplikasi dan fitur produktivitas.
 
 ### Task Management
 
-**Lokasi:** `resources/js/Pages/applications/task/kanban-board.vue` dan `list-view.vue`
+**Lokasi:** `resources/js/Pages/demo/applications/task/kanban-board.vue` dan `list-view.vue`
 
 **Fungsi:** Task management dengan kanban board dan list view.
 
@@ -94,7 +94,7 @@ Komponen-komponen untuk berbagai aplikasi dan fitur produktivitas.
 
 ### Email Application
 
-**Lokasi:** `resources/js/Pages/applications/email/mail-app.vue` dan `mail-settings.vue`
+**Lokasi:** `resources/js/Pages/demo/applications/email/mail-app.vue` dan `mail-settings.vue`
 
 **Fungsi:** Email client dengan inbox, compose, dan settings.
 
@@ -110,7 +110,7 @@ Komponen-komponen untuk berbagai aplikasi dan fitur produktivitas.
 
 ### To-Do List
 
-**Lokasi:** `resources/js/Pages/applications/to-do-list.vue`
+**Lokasi:** `resources/js/Pages/demo/applications/to-do-list.vue`
 
 **Fungsi:** Simple to-do list dengan categories dan priorities.
 
@@ -125,7 +125,7 @@ Komponen-komponen untuk berbagai aplikasi dan fitur produktivitas.
 
 ### Sweet Alerts
 
-**Lokasi:** `resources/js/Pages/applications/sweet-alerts.vue`
+**Lokasi:** `resources/js/Pages/demo/applications/sweet-alerts.vue`
 
 **Fungsi:** Demo berbagai jenis alert dan notification.
 
@@ -147,7 +147,7 @@ Komponen-komponen dashboard untuk berbagai domain bisnis dan industri.
 ### General Dashboards
 
 #### Analytics Dashboard
-**Lokasi:** `resources/js/Pages/dashboards/analytics.vue`
+**Lokasi:** `resources/js/Pages/demo/dashboards/analytics.vue`
 - Web traffic analytics
 - User behavior tracking
 - Conversion metrics
@@ -155,7 +155,7 @@ Komponen-komponen dashboard untuk berbagai domain bisnis dan industri.
 - Real-time data visualization
 
 #### Sales Dashboard
-**Lokasi:** `resources/js/Pages/dashboards/sales.vue`
+**Lokasi:** `resources/js/Pages/demo/dashboards/sales.vue`
 - Sales performance metrics
 - Pipeline tracking
 - Revenue forecasts
@@ -163,7 +163,7 @@ Komponen-komponen dashboard untuk berbagai domain bisnis dan industri.
 - Regional sales data
 
 #### Social Media Dashboard
-**Lokasi:** `resources/js/Pages/dashboards/social-media.vue`
+**Lokasi:** `resources/js/Pages/demo/dashboards/social-media.vue`
 - Social media metrics
 - Engagement analytics
 - Follower growth
@@ -171,7 +171,7 @@ Komponen-komponen dashboard untuk berbagai domain bisnis dan industri.
 - Multi-platform integration
 
 #### Medical Dashboard
-**Lokasi:** `resources/js/Pages/dashboards/medical.vue`
+**Lokasi:** `resources/js/Pages/demo/dashboards/medical.vue`
 - Patient management
 - Appointment scheduling
 - Medical records
@@ -179,7 +179,7 @@ Komponen-komponen dashboard untuk berbagai domain bisnis dan industri.
 - Staff management
 
 #### Podcast Dashboard
-**Lokasi:** `resources/js/Pages/dashboards/podcast.vue`
+**Lokasi:** `resources/js/Pages/demo/dashboards/podcast.vue`
 - Episode analytics
 - Listener statistics
 - Revenue tracking
@@ -187,7 +187,7 @@ Komponen-komponen dashboard untuk berbagai domain bisnis dan industri.
 - Distribution metrics
 
 #### POS System Dashboard
-**Lokasi:** `resources/js/Pages/dashboards/pos-system.vue`
+**Lokasi:** `resources/js/Pages/demo/dashboards/pos-system.vue`
 - Sales transactions
 - Inventory management
 - Customer data
@@ -195,7 +195,7 @@ Komponen-komponen dashboard untuk berbagai domain bisnis dan industri.
 - Daily reports
 
 #### Stocks Dashboard
-**Lokasi:** `resources/js/Pages/dashboards/stocks.vue`
+**Lokasi:** `resources/js/Pages/demo/dashboards/stocks.vue`
 - Stock portfolio tracking
 - Real-time prices
 - Market indices
@@ -205,7 +205,7 @@ Komponen-komponen dashboard untuk berbagai domain bisnis dan industri.
 ### Specialized Dashboards
 
 #### E-commerce Dashboard
-**Lokasi:** `resources/js/Pages/dashboards/ecommerce/`
+**Lokasi:** `resources/js/Pages/demo/dashboards/ecommerce/`
 - **dashboard.vue**: Overview dengan sales, orders, customers
 - **products.vue**: Product management dengan inventory tracking
 - **product-details.vue**: Detailed product information dan analytics
@@ -217,7 +217,7 @@ Komponen-komponen dashboard untuk berbagai domain bisnis dan industri.
 - **add-product.vue**: Product creation form
 
 #### CRM Dashboard
-**Lokasi:** `resources/js/Pages/dashboards/crm/`
+**Lokasi:** `resources/js/Pages/demo/dashboards/crm/`
 - **dashboard.vue**: CRM overview dengan leads, deals, contacts
 - **leads.vue**: Lead management dengan scoring
 - **deals.vue**: Deal pipeline dengan probability tracking
@@ -225,7 +225,7 @@ Komponen-komponen dashboard untuk berbagai domain bisnis dan industri.
 - **companies.vue**: Company account management
 
 #### Crypto Dashboard
-**Lokasi:** `resources/js/Pages/dashboards/crypto/`
+**Lokasi:** `resources/js/Pages/demo/dashboards/crypto/`
 - **dashboard.vue**: Portfolio overview dengan market data
 - **wallet.vue**: Cryptocurrency wallet management
 - **transactions.vue**: Transaction history dan analysis
@@ -234,7 +234,7 @@ Komponen-komponen dashboard untuk berbagai domain bisnis dan industri.
 - **buy-sell.vue**: Trading interface dengan order book
 
 #### Jobs Dashboard
-**Lokasi:** `resources/js/Pages/dashboards/jobs/`
+**Lokasi:** `resources/js/Pages/demo/dashboards/jobs/`
 - **dashboard.vue**: Jobs overview dengan statistics
 - **search-jobs.vue**: Job search dengan filters
 - **search-company.vue**: Company search dan discovery
@@ -246,14 +246,14 @@ Komponen-komponen dashboard untuk berbagai domain bisnis dan industri.
 - **search-candidate.vue**: Advanced candidate search
 
 #### Projects Dashboard
-**Lokasi:** `resources/js/Pages/dashboards/projects/`
+**Lokasi:** `resources/js/Pages/demo/dashboards/projects/`
 - **dashboard.vue**: Project overview dengan portfolio
 - **projects-list.vue**: Project listing dengan status tracking
 - **project-overview.vue**: Detailed project information
 - **create-project.vue**: Project creation wizard
 
 #### NFT Dashboard
-**Lokasi:** `resources/js/Pages/dashboards/nft/`
+**Lokasi:** `resources/js/Pages/demo/dashboards/nft/`
 - **dashboard.vue**: NFT portfolio overview
 - **market-place.vue**: NFT marketplace interface
 - **live-auction.vue**: Live auction tracking
@@ -262,7 +262,7 @@ Komponen-komponen dashboard untuk berbagai domain bisnis dan industri.
 - **wallet-integration.vue**: Wallet connection management
 
 #### HRM Dashboard
-**Lokasi:** `resources/js/Pages/dashboards/hrm.vue`
+**Lokasi:** `resources/js/Pages/demo/dashboards/hrm.vue`
 - Employee management
 - Attendance tracking
 - Payroll management
@@ -270,7 +270,7 @@ Komponen-komponen dashboard untuk berbagai domain bisnis dan industri.
 - Leave management
 
 #### School Dashboard
-**Lokasi:** `resources/js/Pages/dashboards/school.vue`
+**Lokasi:** `resources/js/Pages/demo/dashboards/school.vue`
 - Student management
 - Course management
 - Grade tracking
@@ -278,7 +278,7 @@ Komponen-komponen dashboard untuk berbagai domain bisnis dan industri.
 - Parent portal
 
 #### Courses Dashboard
-**Lokasi:** `resources/js/Pages/dashboards/courses.vue`
+**Lokasi:** `resources/js/Pages/demo/dashboards/courses.vue`
 - Course catalog
 - Student enrollment
 - Progress tracking
@@ -292,7 +292,7 @@ Komponen-komponen dashboard untuk berbagai domain bisnis dan industri.
 Komponen-komponen untuk visualisasi data dengan berbagai library chart.
 
 ### Chart.js Charts
-**Lokasi:** `resources/js/Pages/charts/chartjs-charts.vue`
+**Lokasi:** `resources/js/Pages/demo/charts/chartjs-charts.vue`
 - Line charts, bar charts, pie charts
 - Doughnut charts, radar charts
 - Polar area charts, scatter charts
@@ -300,7 +300,7 @@ Komponen-komponen untuk visualisasi data dengan berbagai library chart.
 - Custom styling and animations
 
 ### Apex Charts
-**Lokasi:** `resources/js/Pages/charts/apex-charts/`
+**Lokasi:** `resources/js/Pages/demo/charts/apex-charts/`
 
 #### Basic Charts
 - **bar-chart.vue**: Bar charts dengan grouping dan stacking
@@ -321,7 +321,7 @@ Komponen-komponen untuk visualisasi data dengan berbagai library chart.
 - **treemap-chart.vue**: Treemap untuk hierarchical data
 
 ### ECharts
-**Lokasi:** `resources/js/Pages/charts/echart-charts.vue`
+**Lokasi:** `resources/js/Pages/demo/charts/echart-charts.vue`
 - 3D charts
 - Geographic data visualization
 - Sankey diagrams
@@ -337,7 +337,7 @@ Komponen-komponen UI yang sering digunakan dalam aplikasi web.
 ### UI Elements
 
 #### Basic Components
-**Lokasi:** `resources/js/Pages/general/ui-elements/`
+**Lokasi:** `resources/js/Pages/demo/general/ui-elements/`
 - **buttons.vue**: Button styles, sizes, states
 - **badge.vue**: Badge variations dan positioning
 - **alerts.vue**: Alert types dan dismissible alerts
@@ -348,7 +348,7 @@ Komponen-komponen UI yang sering digunakan dalam aplikasi web.
 - **links-interactions.vue**: Link styles dan interactive elements
 
 #### Advanced UI
-**Lokasi:** `resources/js/Pages/general/advanced-ui/`
+**Lokasi:** `resources/js/Pages/demo/general/advanced-ui/`
 - **accordion-collapse.vue**: Accordion panels dengan smooth animations
 - **carousel.vue**: Image/content sliders dengan controls
 - **modals-closes.vue**: Modal dialogs dengan various sizes
@@ -372,14 +372,14 @@ Komponen-komponen untuk maps dan icon systems.
 ### Maps
 
 #### Interactive Maps
-**Lokasi:** `resources/js/Pages/maps/`
+**Lokasi:** `resources/js/Pages/demo/maps/`
 - **google.vue**: Google Maps integration dengan markers
 - **leaflet.vue**: Leaflet maps dengan custom layers
 - **jsvector.vue**: Vector maps dengan country data
 
 ### Icons
 
-**Lokasi:** `resources/js/Pages/icons.vue`
+**Lokasi:** `resources/js/Pages/demo/icons.vue`
 - Icon library showcase
 - Search functionality
 - Category filtering

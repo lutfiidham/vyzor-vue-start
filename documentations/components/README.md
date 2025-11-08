@@ -7,6 +7,24 @@
 **Total Komponen Terdokumentasi:** 136 komponen (100%) ✅
 **Total File Dokumentasi:** 4 file
 
+## ⚠️ Struktur Folder Komponen
+
+**Catatan Penting:** Semua komponen demo telah dipindahkan ke folder `demo/` di dalam `resources/js/Pages/`.
+
+Struktur baru:
+- `resources/js/Pages/demo/applications/`
+- `resources/js/Pages/demo/dashboards/`
+- `resources/js/Pages/demo/pages/`
+- `resources/js/Pages/demo/charts/`
+- `resources/js/Pages/demo/general/`
+- `resources/js/Pages/demo/maps/`
+- `resources/js/Pages/demo/tables/`
+- `resources/js/Pages/demo/widgets.vue`
+- `resources/js/Pages/demo/icons.vue`
+
+Komponen non-demo (produksi):
+- `resources/js/Pages/Login.vue` (komponen autentikasi aktif)
+
 ---
 
 ## 📁 Struktur Dokumentasi

@@ -488,3 +488,4 @@ import Sidebar from '@/components/sidebar/sidebar.vue'
 import Switcher from '@/components/switcher/switcher.vue'
 </script>
 ```
+
