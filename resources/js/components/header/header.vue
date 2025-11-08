@@ -781,8 +781,10 @@
                 </ul>
               </li>
               <li>
-                <Link
-                  :href="`${baseUrl}/demo/pages/authentication/sign-in/cover`"
+                <Link 
+                  :href="`${baseUrl}/logout`" 
+                  method="post" 
+                  as="button"
                   class="dropdown-item d-flex align-items-center"
                   ><i class="ti ti-logout me-2 fs-18"></i>Log Out</Link
                 >

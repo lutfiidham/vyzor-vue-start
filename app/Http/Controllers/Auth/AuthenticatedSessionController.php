@@ -43,7 +43,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         // Return Inertia response to redirect to dashboard
-        return Inertia::location(url('dashboards/sales'));
+        return Inertia::location(url('/dashboard'));
     }
 
     /**

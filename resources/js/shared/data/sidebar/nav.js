@@ -11,8 +11,17 @@ export const MENUITEMS = [
     menutitle: 'MAIN',
   },
   {
-    title: 'Demo',
+    title: 'Dashboard',
     icon: Svgicons.Dashboardicon,
+    path: `${baseUrl}/dashboard`,
+    type: 'link',
+    active: false,
+    selected: false,
+    dirchange: false,
+  },
+  {
+    title: 'Demo',
+    icon: Svgicons.Applicationicon,
     type: 'sub',
     active: false,
     dirchange: false,

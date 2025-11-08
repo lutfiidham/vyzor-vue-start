@@ -566,7 +566,13 @@ Route::prefix('demo')->group(function () {
     });
 });
 
-// Protected routes (require authentication) - only logout route
+// Protected routes (require authentication)
 Route::middleware('auth')->group(function () {
+    // Dashboard - Landing page after login
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
+    
+    // Logout
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
