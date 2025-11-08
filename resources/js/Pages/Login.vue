@@ -5,7 +5,7 @@ import ParticlesJs from '../shared/@spk/reuseble-plugin/particles-js.vue'
 import BaseImg from '../components/Baseimage/BaseImg.vue'
 import authlayout from '../layouts/authlayout.vue'
 import { Link, router, useForm } from '@inertiajs/vue3'
-import { Head } from '@inertiajs/vue3' // For Vue 3
+import { Head } from '@inertiajs/vue3'
 
 const baseUrl = __BASE_PATH__
 const { proxy } = getCurrentInstance()
@@ -15,8 +15,8 @@ defineOptions({
 })
 
 const form = useForm({
-  username: 'spruko',
-  password: 'spruko1234',
+  username: '',
+  password: '',
   remember: false
 })
 
@@ -24,18 +24,19 @@ const theme = localStorage.getItem('vyzorcolortheme') || 'light'
 
 const login = () => {
   form.post('/login', {
+    preserveScroll: true,
     onSuccess: () => {
-      // Inertia will automatically handle the redirect
-      proxy.$toast.success('Login Successful!', {
+      proxy.$toast.success('Welcome back!', {
         theme: theme,
         icon: true,
         hideProgressBar: false,
-        autoClose: 3000,
+        autoClose: 2000,
         position: 'top-right',
       })
     },
     onError: (errors) => {
-      proxy.$toast.error(errors.username?.[0] || errors.password?.[0] || 'Invalid credentials', {
+      const errorMessage = errors.username || errors.password || 'Invalid credentials'
+      proxy.$toast.error(errorMessage, {
         theme: theme,
         icon: true,
         hideProgressBar: false,

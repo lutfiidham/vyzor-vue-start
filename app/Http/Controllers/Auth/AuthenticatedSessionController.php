@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -26,23 +28,54 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(Request $request)
     {
+        // Validate input
         $request->validate([
-            'username' => 'required|string',
-            'password' => 'required|string',
+            'username' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'string'],
         ]);
 
-        // Attempt to login with email or username
-        $loginField = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
+        // Rate limiting key
+        $throttleKey = Str::transliterate(Str::lower($request->input('username')).'|'.$request->ip());
 
-        if (!Auth::attempt([$loginField => $request->username, 'password' => $request->password], $request->boolean('remember'))) {
+        // Check rate limiting (5 attempts per minute)
+        if (RateLimiter::tooManyAttempts($throttleKey, 5)) {
+            $seconds = RateLimiter::availableIn($throttleKey);
+            
+            throw ValidationException::withMessages([
+                'username' => trans('auth.throttle', [
+                    'seconds' => $seconds,
+                    'minutes' => ceil($seconds / 60),
+                ]),
+            ]);
+        }
+
+        // Determine login field (email or username)
+        $loginField = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
+        
+        // Find user
+        $user = User::where($loginField, $request->username)->first();
+
+        // Check if user exists and password is correct
+        if (!$user || !Auth::attempt([
+            $loginField => $request->username, 
+            'password' => $request->password
+        ], $request->boolean('remember'))) {
+            
+            // Increment rate limiter on failed attempt
+            RateLimiter::hit($throttleKey, 60);
+
             throw ValidationException::withMessages([
                 'username' => __('auth.failed'),
             ]);
         }
 
+        // Clear rate limiter on successful login
+        RateLimiter::clear($throttleKey);
+
+        // Regenerate session to prevent session fixation
         $request->session()->regenerate();
 
-        // Return Inertia response to redirect to dashboard
+        // Redirect to dashboard
         return Inertia::location(url('/dashboard'));
     }
 

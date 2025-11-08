@@ -23,23 +23,27 @@
 import { ref, watch, defineProps, defineEmits } from 'vue'
 
 const props = defineProps({
-  initialValue: String,
+  modelValue: String,
   name: String,
   id: String,
   placeholder: String,
   required: Boolean,
 })
 
-const emit = defineEmits(['input'])
+const emit = defineEmits(['update:modelValue'])
 
 const inputType = ref('password')
-const inputValue = ref(props.initialValue || '')
+const inputValue = ref(props.modelValue || '')
 
 const changeInputType = () => {
   inputType.value = inputType.value === 'text' ? 'password' : 'text'
 }
 
-watch(inputValue, () => {
-  emit('input', inputValue.value)
+watch(inputValue, (newValue) => {
+  emit('update:modelValue', newValue)
+})
+
+watch(() => props.modelValue, (newValue) => {
+  inputValue.value = newValue || ''
 })
 </script>
