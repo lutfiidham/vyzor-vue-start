@@ -75,8 +75,8 @@ class AuthenticatedSessionController extends Controller
         // Regenerate session to prevent session fixation
         $request->session()->regenerate();
 
-        // Redirect to dashboard
-        return Inertia::location(url('/dashboard'));
+        // Redirect to dashboard using Inertia (smooth transition, no white flash)
+        return redirect()->intended('/dashboard');
     }
 
     /**
