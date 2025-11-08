@@ -280,70 +280,70 @@ Route::prefix('demo')->group(function () {
 
     // Page routes (demo)
     Route::get('pages/empty', function () {
-        return Inertia::render('pages/empty');
+        return Inertia::render('demo/pages/empty');
     });
     Route::get('pages/forms/form-advanced', function () {
-        return Inertia::render('pages/forms/form-advanced');
+        return Inertia::render('demo/pages/forms/form-advanced');
     });
     Route::get('pages/forms/form-elements/inputs', function () {
-        return Inertia::render('pages/forms/form-elements/inputs');
+        return Inertia::render('demo/pages/forms/form-elements/inputs');
     });
     Route::get('pages/forms/form-elements/checks-radios', function () {
-        return Inertia::render('pages/forms/form-elements/checks-radios');
+        return Inertia::render('demo/pages/forms/form-elements/checks-radios');
     });
     Route::get('pages/forms/form-elements/input-group', function () {
-        return Inertia::render('pages/forms/form-elements/input-group');
+        return Inertia::render('demo/pages/forms/form-elements/input-group');
     });
     Route::get('pages/forms/form-elements/form-select', function () {
-        return Inertia::render('pages/forms/form-elements/form-select');
+        return Inertia::render('demo/pages/forms/form-elements/form-select');
     });
     Route::get('pages/forms/form-elements/range-slider', function () {
-        return Inertia::render('pages/forms/form-elements/range-slider');
+        return Inertia::render('demo/pages/forms/form-elements/range-slider');
     });
     Route::get('pages/forms/form-elements/input-masks', function () {
-        return Inertia::render('pages/forms/form-elements/input-masks');
+        return Inertia::render('demo/pages/forms/form-elements/input-masks');
     });
     Route::get('pages/forms/form-elements/file-uploads', function () {
-        return Inertia::render('pages/forms/form-elements/file-uploads');
+        return Inertia::render('demo/pages/forms/form-elements/file-uploads');
     });
     Route::get('pages/forms/form-elements/date-time-picker', function () {
-        return Inertia::render('pages/forms/form-elements/date-time-picker');
+        return Inertia::render('demo/pages/forms/form-elements/date-time-picker');
     });
     Route::get('pages/forms/form-elements/color-picker', function () {
-        return Inertia::render('pages/forms/form-elements/color-picker');
+        return Inertia::render('demo/pages/forms/form-elements/color-picker');
     });
     Route::get('pages/forms/floating-labels', function () {
-        return Inertia::render('pages/forms/floating-labels');
+        return Inertia::render('demo/pages/forms/floating-labels');
     });
     Route::get('pages/forms/form-layouts', function () {
-        return Inertia::render('pages/forms/form-layouts');
+        return Inertia::render('demo/pages/forms/form-layouts');
     });
     Route::get('pages/forms/form-wizards', function () {
-        return Inertia::render('pages/forms/form-wizards');
+        return Inertia::render('demo/pages/forms/form-wizards');
     });
     Route::get('pages/forms/vue-editor', function () {
-        return Inertia::render('pages/forms/vue-editor');
+        return Inertia::render('demo/pages/forms/vue-editor');
     });
     Route::get('pages/forms/validation', function () {
-        return Inertia::render('pages/forms/validation');
+        return Inertia::render('demo/pages/forms/validation');
     });
     Route::get('pages/invoice/create-invoice', function () {
-        return Inertia::render('pages/invoice/create-invoice');
+        return Inertia::render('demo/pages/invoice/create-invoice');
     });
     Route::get('pages/invoice/invoice-details', function () {
-        return Inertia::render('pages/invoice/invoice-details');
+        return Inertia::render('demo/pages/invoice/invoice-details');
     });
     Route::get('pages/invoice/invoice-list', function () {
-        return Inertia::render('pages/invoice/invoice-list');
+        return Inertia::render('demo/pages/invoice/invoice-list');
     });
     Route::get('pages/profile', function () {
-        return Inertia::render('pages/profile');
+        return Inertia::render('demo/pages/profile');
     });
     Route::get('pages/profile-settings', function () {
-        return Inertia::render('pages/profile-settings');
+        return Inertia::render('demo/pages/profile-settings');
     });
     Route::get('pages/timeline', function () {
-        return Inertia::render('pages/timeline');
+        return Inertia::render('demo/pages/timeline');
     });
 
     // UI Elements routes (demo)

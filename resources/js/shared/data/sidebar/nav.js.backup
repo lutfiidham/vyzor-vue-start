@@ -11,15 +11,7 @@ export const MENUITEMS = [
     menutitle: 'MAIN',
   },
   {
-    title: 'Demo',
-    icon: Svgicons.Dashboardicon,
-    type: 'sub',
-    active: false,
-    dirchange: false,
-    badgetxt: `<span class="badge bg-warning-transparent ms-2">Demo</span>`,
-    children: [
-      {
-        title: 'Dashboards',
+    title: 'Dashboards',
     icon: Svgicons.Dashboardicon,
     type: 'sub',
     active: false,
@@ -486,7 +478,12 @@ export const MENUITEMS = [
       },
     ],
   },
-      {
+
+  {
+    menutitle: 'WEB APPS',
+  },
+
+  {
     title: 'Applications',
     icon: Svgicons.Applicationicon,
     type: 'sub',
@@ -665,7 +662,12 @@ export const MENUITEMS = [
       },
     ],
   },
-{
+
+  {
+    menutitle: 'PAGES',
+  },
+
+  {
     icon: Svgicons.Pagesicon,
     title: 'Pages',
     type: 'sub',
@@ -1190,7 +1192,12 @@ export const MENUITEMS = [
       },
     ],
   },
-      {
+
+  {
+    menutitle: 'GENERAL',
+  },
+
+  {
     title: 'General',
     icon: Svgicons.Generalicon,
     type: 'sub',
@@ -1584,7 +1591,12 @@ export const MENUITEMS = [
     dirchange: false,
     selected: false,
   },
-      {
+
+  {
+    menutitle: 'MAPS & ICONS',
+  },
+
+  {
     title: 'Maps',
     icon: Svgicons.Mapsicon,
     type: 'sub',
@@ -1632,7 +1644,12 @@ export const MENUITEMS = [
     dirchange: false,
     title: 'Icons',
   },
-      {
+
+  {
+    menutitle: 'TABLES & CHARTS',
+  },
+
+  {
     title: 'Charts',
     icon: Svgicons.Chartsicon,
     type: 'sub',
@@ -1836,7 +1853,4 @@ export const MENUITEMS = [
       },
     ],
   },
-    ],
-  },
 ]
-
