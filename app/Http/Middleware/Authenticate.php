@@ -24,8 +24,11 @@ class Authenticate
             }
         }
 
-        return $request->expectsJson()
-            ? response()->json(['message' => 'Unauthenticated.'], 401)
-            : redirect('/');
+        if ($request->expectsJson()) {
+            return response()->json(['message' => 'Unauthenticated.'], 401);
+        }
+
+        // Save the intended URL before redirecting to login
+        return redirect()->guest(route('login'));
     }
 }

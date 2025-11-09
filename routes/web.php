@@ -7,6 +7,7 @@ use Inertia\Inertia;
 // Guest routes
 Route::middleware('guest')->group(function () {
     Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::get('/login', [AuthenticatedSessionController::class, 'create']);
     Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 });
 
@@ -17,7 +18,7 @@ Route::prefix('demo')->group(base_path('routes/demo.php'));
 Route::middleware('auth')->group(function () {
     // Dashboard - Landing page after login
     Route::get('/dashboard', function () {
-        $user = Auth()->user;
+        $user = auth()->user();
         
         return Inertia::render('Dashboard', [
             'stats' => [
