@@ -15,6 +15,48 @@ class SystemSettingController extends Controller
     public function index()
     {
         $settings = SystemSetting::pluck('value', 'key')->toArray();
+        
+        // Merge with .env config values sebagai fallback
+        $settings = array_merge([
+            // General Settings
+            'app_name' => config('app.name'),
+            'app_url' => config('app.url'),
+            'admin_email' => config('mail.from.address', 'admin@example.com'),
+            'timezone' => config('app.timezone'),
+            'date_format' => 'Y-m-d',
+            'app_description' => '',
+            
+            // Email Settings
+            'mail_driver' => config('mail.default'),
+            'mail_host' => config('mail.mailers.smtp.host'),
+            'mail_port' => config('mail.mailers.smtp.port'),
+            'mail_encryption' => config('mail.mailers.smtp.encryption'),
+            'mail_username' => config('mail.mailers.smtp.username'),
+            'mail_password' => config('mail.mailers.smtp.password'),
+            'mail_from_address' => config('mail.from.address'),
+            'mail_from_name' => config('mail.from.name'),
+            
+            // Security Settings
+            'two_factor_enabled' => false,
+            'session_lifetime' => config('session.lifetime', 120),
+            'login_attempts' => 5,
+            'lockout_duration' => 15,
+            'password_min_length' => 8,
+            'password_complexity' => false,
+            
+            // Notification Settings
+            'notify_user_registration' => true,
+            'notify_password_reset' => true,
+            'notify_login' => false,
+            'notify_suspicious_activity' => true,
+            'notify_maintenance' => true,
+            'notify_updates' => true,
+            
+            // Maintenance Settings
+            'maintenance_mode' => app()->isDownForMaintenance(),
+            'maintenance_message' => 'We are currently performing scheduled maintenance. We will be back shortly.',
+            'maintenance_end' => '',
+        ], $settings);
 
         return Inertia::render('Admin/Settings/Index', [
             'settings' => $settings
@@ -31,7 +73,7 @@ class SystemSettingController extends Controller
                 ['key' => $key],
                 [
                     'value' => is_bool($value) ? ($value ? '1' : '0') : $value,
-                    'category' => $category
+                    'group' => $category
                 ]
             );
         }

@@ -518,8 +518,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { getCurrentInstance, ref } from 'vue'
 import { Head, router } from '@inertiajs/vue3'
+
+const { proxy } = getCurrentInstance()
+const theme = localStorage.getItem('vyzorcolortheme') || 'light'
 
 // Props
 const props = defineProps({
@@ -541,21 +544,21 @@ const categories = ref([
   { id: 'cache', name: 'Cache', icon: 'ri-database-2-line' }
 ])
 
-// Settings data
+// Settings data - Langsung dari backend tanpa hardcoded defaults
 const generalSettings = ref({
-  app_name: props.settings.app_name || 'Vyzor Vue Start',
-  app_url: props.settings.app_url || 'http://localhost:8000',
-  admin_email: props.settings.admin_email || 'admin@vyzor.test',
-  timezone: props.settings.timezone || 'UTC',
-  date_format: props.settings.date_format || 'Y-m-d',
+  app_name: props.settings.app_name || '',
+  app_url: props.settings.app_url || '',
+  admin_email: props.settings.admin_email || '',
+  timezone: props.settings.timezone || '',
+  date_format: props.settings.date_format || '',
   app_description: props.settings.app_description || ''
 })
 
 const emailSettings = ref({
-  mail_driver: props.settings.mail_driver || 'smtp',
-  mail_host: props.settings.mail_host || 'smtp.gmail.com',
-  mail_port: props.settings.mail_port || '587',
-  mail_encryption: props.settings.mail_encryption || 'tls',
+  mail_driver: props.settings.mail_driver || '',
+  mail_host: props.settings.mail_host || '',
+  mail_port: props.settings.mail_port || '',
+  mail_encryption: props.settings.mail_encryption || '',
   mail_username: props.settings.mail_username || '',
   mail_password: props.settings.mail_password || '',
   mail_from_address: props.settings.mail_from_address || '',
@@ -563,26 +566,26 @@ const emailSettings = ref({
 })
 
 const securitySettings = ref({
-  two_factor_enabled: props.settings.two_factor_enabled || false,
+  two_factor_enabled: props.settings.two_factor_enabled == '1' || props.settings.two_factor_enabled === true,
   session_lifetime: props.settings.session_lifetime || 120,
   login_attempts: props.settings.login_attempts || 5,
   lockout_duration: props.settings.lockout_duration || 15,
   password_min_length: props.settings.password_min_length || 8,
-  password_complexity: props.settings.password_complexity || false
+  password_complexity: props.settings.password_complexity == '1' || props.settings.password_complexity === true
 })
 
 const notificationSettings = ref({
-  notify_user_registration: props.settings.notify_user_registration || true,
-  notify_password_reset: props.settings.notify_password_reset || true,
-  notify_login: props.settings.notify_login || false,
-  notify_suspicious_activity: props.settings.notify_suspicious_activity || true,
-  notify_maintenance: props.settings.notify_maintenance || true,
-  notify_updates: props.settings.notify_updates || true
+  notify_user_registration: props.settings.notify_user_registration == '1' || props.settings.notify_user_registration === true,
+  notify_password_reset: props.settings.notify_password_reset == '1' || props.settings.notify_password_reset === true,
+  notify_login: props.settings.notify_login == '1' || props.settings.notify_login === true,
+  notify_suspicious_activity: props.settings.notify_suspicious_activity == '1' || props.settings.notify_suspicious_activity === true,
+  notify_maintenance: props.settings.notify_maintenance == '1' || props.settings.notify_maintenance === true,
+  notify_updates: props.settings.notify_updates == '1' || props.settings.notify_updates === true
 })
 
 const maintenanceSettings = ref({
-  maintenance_mode: props.settings.maintenance_mode || false,
-  maintenance_message: props.settings.maintenance_message || 'We are currently performing scheduled maintenance. We will be back shortly.',
+  maintenance_mode: props.settings.maintenance_mode == '1' || props.settings.maintenance_mode === true,
+  maintenance_message: props.settings.maintenance_message || '',
   maintenance_end: props.settings.maintenance_end || ''
 })
 
@@ -608,27 +611,79 @@ const saveSettings = (category) => {
       break
   }
   
-  console.log(`Saving ${category} settings:`, data)
-  
-  // router.post('/admin/settings', {
-  //   category: category,
-  //   settings: data
-  // })
-  
-  alert(`${category.charAt(0).toUpperCase() + category.slice(1)} settings saved successfully!`)
+  router.post('/admin/settings', {
+    category: category,
+    settings: data
+  }, {
+    preserveScroll: true,
+    onSuccess: () => {
+      proxy.$toast.success(`${category.charAt(0).toUpperCase() + category.slice(1)} settings saved successfully!`, {
+        theme: theme,
+        icon: true,
+        hideProgressBar: false,
+        autoClose: 3000,
+        position: 'top-right',
+      })
+    },
+    onError: () => {
+      proxy.$toast.error('Failed to save settings. Please try again.', {
+        theme: theme,
+        icon: true,
+        hideProgressBar: false,
+        autoClose: 3000,
+        position: 'top-right',
+      })
+    }
+  })
 }
 
 const testEmail = () => {
-  console.log('Sending test email...')
-  // router.post('/admin/settings/test-email', emailSettings.value)
-  alert('Test email sent! Please check your inbox.')
+  router.post('/admin/settings/test-email', emailSettings.value, {
+    preserveScroll: true,
+    onSuccess: () => {
+      proxy.$toast.success('Test email sent! Please check your inbox.', {
+        theme: theme,
+        icon: true,
+        hideProgressBar: false,
+        autoClose: 3000,
+        position: 'top-right',
+      })
+    },
+    onError: () => {
+      proxy.$toast.error('Failed to send test email.', {
+        theme: theme,
+        icon: true,
+        hideProgressBar: false,
+        autoClose: 3000,
+        position: 'top-right',
+      })
+    }
+  })
 }
 
 const clearCache = (type) => {
   if (confirm(`Are you sure you want to clear ${type} cache?`)) {
-    console.log(`Clearing ${type} cache...`)
-    // router.post('/admin/settings/clear-cache', { type: type })
-    alert(`${type.charAt(0).toUpperCase() + type.slice(1)} cache cleared successfully!`)
+    router.post('/admin/settings/clear-cache', { type: type }, {
+      preserveScroll: true,
+      onSuccess: () => {
+        proxy.$toast.success(`${type.charAt(0).toUpperCase() + type.slice(1)} cache cleared successfully!`, {
+          theme: theme,
+          icon: true,
+          hideProgressBar: false,
+          autoClose: 3000,
+          position: 'top-right',
+        })
+      },
+      onError: () => {
+        proxy.$toast.error('Failed to clear cache.', {
+          theme: theme,
+          icon: true,
+          hideProgressBar: false,
+          autoClose: 3000,
+          position: 'top-right',
+        })
+      }
+    })
   }
 }
 </script>

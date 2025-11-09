@@ -594,7 +594,9 @@ Route::middleware('auth')->group(function () {
         
         // Settings
         Route::get('settings', [\App\Http\Controllers\Admin\SystemSettingController::class, 'index'])->name('settings.index');
-        Route::put('settings', [\App\Http\Controllers\Admin\SystemSettingController::class, 'update'])->name('settings.update');
+        Route::post('settings', [\App\Http\Controllers\Admin\SystemSettingController::class, 'update'])->name('settings.update');
+        Route::post('settings/test-email', [\App\Http\Controllers\Admin\SystemSettingController::class, 'testEmail'])->name('settings.test-email');
+        Route::post('settings/clear-cache', [\App\Http\Controllers\Admin\SystemSettingController::class, 'clearCache'])->name('settings.clear-cache');
         
         // Activity Logs
         Route::get('activity-logs', [\App\Http\Controllers\Admin\ActivityLogController::class, 'index'])->name('activity-logs.index');
