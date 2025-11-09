@@ -1,61 +1,345 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚀 Vyzor Vue Start
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <strong>Production-Ready Laravel + Vue.js Application Starter</strong>
 </p>
 
-## About Laravel
+<p align="center">
+  <a href="#features">Features</a> •
+  <a href="#tech-stack">Tech Stack</a> •
+  <a href="#quick-start">Quick Start</a> •
+  <a href="#documentation">Documentation</a> •
+  <a href="#demo-credentials">Demo</a>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🔐 Authentication & Authorization
 
-## Learning Laravel
+- ✅ Complete authentication system with email verification
+- ✅ Two-factor authentication (2FA)
+- ✅ Role-based access control (RBAC)
+- ✅ Permission management system
+- ✅ Account lockout protection
+- ✅ Login tracking with device information
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 👥 User Management
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- ✅ Full CRUD operations
+- ✅ Bulk actions (activate, deactivate, delete)
+- ✅ Advanced filtering and search
+- ✅ Export/Import functionality (CSV, Excel, PDF)
+- ✅ User activity tracking
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 📊 Dashboard & Analytics
 
-## Laravel Sponsors
+- ✅ Interactive dashboard with real-time statistics
+- ✅ Customizable widgets
+- ✅ Charts and graphs
+- ✅ Key performance indicators
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 🔔 Notification System
 
-### Premium Partners
+- ✅ In-app notifications
+- ✅ Email notifications
+- ✅ Real-time updates
+- ✅ Notification preferences
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 📁 File Management
 
-## Contributing
+- ✅ Drag & drop upload
+- ✅ Folder structure
+- ✅ File preview
+- ✅ Cloud storage integration ready
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### ⚙️ System Settings
 
-## Code of Conduct
+- ✅ Application configuration
+- ✅ Email settings
+- ✅ Theme customization
+- ✅ Multi-language support ready
+- ✅ Maintenance mode
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 📝 Activity Logs
 
-## Security Vulnerabilities
+- ✅ Automatic activity tracking
+- ✅ User action logging
+- ✅ Model change tracking
+- ✅ Advanced filtering
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 🔑 API Management
 
-## License
+- ✅ RESTful API endpoints
+- ✅ API key management
+- ✅ Rate limiting
+- ✅ API documentation
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 🛡️ Security
+
+- ✅ CSRF protection
+- ✅ XSS protection
+- ✅ SQL injection prevention
+- ✅ Security headers
+- ✅ Password strength requirements
+
+### 🎨 Modern UI/UX
+
+- ✅ Responsive design
+- ✅ Dark mode ready
+- ✅ Smooth animations
+- ✅ Loading states
+- ✅ Toast notifications
+
+---
+
+## 🛠️ Tech Stack
+
+### Backend
+
+- **Laravel 12** - PHP Framework
+- **PHP 8.2+** - Programming Language
+- **MySQL/PostgreSQL/SQLite** - Database
+- **Redis** - Caching & Queues
+
+### Frontend
+
+- **Vue 3** - JavaScript Framework (Composition API)
+- **Inertia.js** - Modern Monolith
+- **Bootstrap CSS** - CSS
+- **Vite** - Build Tool
+
+### Key Packages
+
+- **Laravel Sanctum** - API Authentication
+- **Laravel Fortify** - Authentication Backend
+- **Spatie Laravel Permission** - Roles & Permissions
+- **Spatie Laravel Activitylog** - Activity Tracking
+- **Spatie Laravel MediaLibrary** - File Management
+- **Maatwebsite Excel** - Excel Import/Export
+- **Barryvdh DomPDF** - PDF Generation
+
+---
+
+## ⚡ Quick Start
+
+### Requirements
+
+- PHP >= 8.2
+- Composer
+- Node.js >= 18
+- MySQL/PostgreSQL/SQLite
+
+### Installation
+
+```bash
+# 1. Clone repository
+git clone <repository-url> vyzor-vue-start
+cd vyzor-vue-start
+
+# 2. Install dependencies
+composer install
+npm install
+
+# 3. Environment setup
+cp .env.example .env
+php artisan key:generate
+
+# 4. Database setup
+php artisan migrate:fresh --seed
+
+# 5. Storage link
+php artisan storage:link
+
+# 6. Start development servers
+composer dev
+```
+
+The application will be available at `http://localhost:8000`
+
+---
+
+## 👤 Demo Credentials
+
+### Admin User
+
+- **Email**: `admin@vyzor.test`
+- **Password**: `password`
+- **Roles**: Admin (Full Access)
+
+### Manager User
+
+- **Email**: `manager@vyzor.test`
+- **Password**: `password`
+- **Roles**: Manager (Limited Access)
+
+### Regular User
+
+- **Email**: `user@vyzor.test`
+- **Password**: `password`
+- **Roles**: User (Basic Access)
+
+⚠️ **Important**: Change these passwords in production!
+
+---
+
+## 📚 Documentation
+
+Comprehensive documentation available in the `/documentations` folder:
+
+- **[Installation Guide](documentations/INSTALLATION.md)** - Detailed setup instructions
+- **[User Guide](documentations/USER_GUIDE.md)** - Feature documentation for end-users
+- **[Developer Guide](documentations/DEVELOPER_GUIDE.md)** - Development guidelines
+- **[API Documentation](documentations/API_DOCUMENTATION.md)** - API reference
+- **[Features Planning](documentations/FEATURES_PLANNING.md)** - Roadmap & features list
+
+---
+
+## 📦 What's Included
+
+### Database Schema
+
+✅ 16 tables with complete relationships:
+
+- `users` - User accounts
+- `roles` - Role definitions
+- `permissions` - Permission definitions
+- `model_has_roles` - User-role relationships
+- `model_has_permissions` - Direct permissions
+- `role_has_permissions` - Role-permission relationships
+- `user_settings` - User preferences
+- `notifications` - Notification storage
+- `activity_log` - Activity tracking
+- `media` - File metadata
+- `login_logs` - Login activity
+- `system_settings` - Application settings
+- `api_keys` - API key management
+- `personal_access_tokens` - Sanctum tokens
+- `cache`, `jobs`, `job_batches` - System tables
+
+### Pre-configured Features
+
+✅ **3 Roles**: Admin, Manager, User  
+✅ **35+ Permissions**: Granular access control  
+✅ **3 Demo Users**: Ready for testing  
+✅ **System Settings**: Pre-configured defaults
+
+### Controllers
+
+✅ User management controller  
+✅ Role management controller  
+✅ Permission controller  
+✅ Settings controller  
+✅ Activity log controller  
+✅ Notification controller  
+✅ Profile controller
+
+### Middleware
+
+✅ Authentication  
+✅ Authorization  
+✅ Activity logging  
+✅ Rate limiting
+
+---
+
+## 🚀 Deployment
+
+### Production Optimization
+
+```bash
+# 1. Install production dependencies
+composer install --optimize-autoloader --no-dev
+npm run build
+
+# 2. Cache configuration
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+
+# 3. Set production environment
+APP_ENV=production
+APP_DEBUG=false
+```
+
+See [Installation Guide](documentations/INSTALLATION.md) for detailed deployment instructions.
+
+---
+
+## 🧪 Testing
+
+```bash
+# Run all tests
+composer test
+
+# Run specific test
+php artisan test --filter=UserManagementTest
+
+# Run with coverage
+php artisan test --coverage
+```
+
+---
+
+## 📝 Code Quality
+
+```bash
+# Format PHP code (Laravel Pint)
+composer pint
+
+# Lint JavaScript/Vue
+npm run lint
+npm run lint:fix
+
+# Format code (Prettier)
+npm run format
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read our contributing guidelines first.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+Built with:
+
+- [Laravel](https://laravel.com) - The PHP Framework
+- [Vue.js](https://vuejs.org) - The Progressive JavaScript Framework
+- [Inertia.js](https://inertiajs.com) - The Modern Monolith
+- [Tailwind CSS](https://tailwindcss.com) - Utility-First CSS Framework
+- [Spatie Packages](https://spatie.be/open-source) - High-quality Laravel packages
+
+---
+
+## 📞 Support
+
+- **Documentation**: Check the `/documentations` folder
+- **Issues**: Open an issue on GitHub
+- **Email**: support@vyzor.test
+
+---
+
+<p align="center">
+  <strong>Made with ❤️ by Vyzor Team</strong>
+</p>
+
+<p align="center">
+  <sub>Version 1.0.0 | Last Updated: 2025-11-09</sub>
+</p>
