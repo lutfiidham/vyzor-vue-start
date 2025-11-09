@@ -7,7 +7,7 @@
         <!-- Start::header-element -->
         <div class="header-element">
           <div class="horizontal-logo">
-            <Link :href="`${baseUrl}/demo/dashboards/sales/`" class="header-logo">
+            <Link :href="logoLink" class="header-logo">
               <BaseImg src="/images/brand-logos/desktop-logo.png" alt="logo" class="desktop-logo" />
               <BaseImg src="/images/brand-logos/toggle-logo.png" alt="logo" class="toggle-logo" />
               <BaseImg src="/images/brand-logos/desktop-dark.png" alt="logo" class="desktop-dark" />
@@ -781,9 +781,9 @@
                 </ul>
               </li>
               <li>
-                <Link 
-                  :href="`${baseUrl}/logout`" 
-                  method="post" 
+                <Link
+                  :href="`${baseUrl}/logout`"
+                  method="post"
                   as="button"
                   class="dropdown-item d-flex align-items-center"
                   ><i class="ti ti-logout me-2 fs-18"></i>Log Out</Link
@@ -924,8 +924,16 @@ import { Link, usePage } from '@inertiajs/vue3'
 // Stores
 const switcher = switcherStore()
 const { logUserOut } = useAuthStore()
-const router = usePage()
+const page = usePage()
 const baseUrl = __BASE_PATH__
+
+// Computed logo link - if on demo pages, link to demo dashboard, else to main dashboard
+const logoLink = computed(() => {
+  const currentPath = page.url
+  const isDemoPage = currentPath.startsWith('/demo')
+  return isDemoPage ? `${baseUrl}/demo/dashboards/sales/` : '/dashboard'
+})
+
 // Refs
 const isFullScreen = ref(false)
 const search = ref('')

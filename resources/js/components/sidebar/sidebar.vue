@@ -4,7 +4,7 @@
   <aside class="app-sidebar sticky" id="sidebar">
     <!-- Start::main-sidebar-header -->
     <div class="main-sidebar-header">
-      <Link :href="`${baseUrl}/demo/dashboards/sales/`" class="header-logo">
+      <Link :href="logoLink" class="header-logo">
         <BaseImg src="/images/brand-logos/desktop-logo.png" alt="logo" class="desktop-logo" />
         <BaseImg src="/images/brand-logos/toggle-logo.png" alt="logo" class="toggle-logo" />
         <BaseImg src="/images/brand-logos/desktop-dark.png" alt="logo" class="desktop-dark" />
@@ -448,6 +448,13 @@ const previousUrl = ref('/')
 const page = usePage()
 const { url } = page
 const baseUrl = __BASE_PATH__
+
+// Computed logo link - if on demo pages, link to demo dashboard, else to main dashboard
+const logoLink = computed(() => {
+  const currentPath = page.url
+  const isDemoPage = currentPath.startsWith('/demo')
+  return isDemoPage ? `${baseUrl}/demo/dashboards/sales/` : '/dashboard'
+})
 
 // Get current user from page props
 const currentUser = computed(() => page.props.auth?.user || null)
