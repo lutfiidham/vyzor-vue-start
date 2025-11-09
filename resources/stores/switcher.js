@@ -23,13 +23,14 @@ export const switcherStore = defineStore('switcher', {
       let html = document.querySelector('html')
       if (value == 'light') {
         this.$state.colortheme = 'light'
-        this.menuColorFn(this.menuColor)
+        // Keep sidebar dark
+        this.$state.menuColor = 'dark'
         this.headerColorFn(this.headerColor)
         this.$state.themePrimary = ''
         this.$state.themeBackground = ''
         html.setAttribute('data-theme-mode', 'light')
         html.setAttribute('data-header-styles', 'transparent')
-        html.setAttribute('data-menu-styles', 'transparent')
+        html.setAttribute('data-menu-styles', 'dark') // Always keep sidebar dark
         html.style.removeProperty('--body-bg-rgb')
         html.style.removeProperty('--body-bg-rgb2')
         html.setAttribute('data-header-styles', 'transparent')
@@ -40,16 +41,11 @@ export const switcherStore = defineStore('switcher', {
       }
       if (value == 'dark') {
         this.colortheme = 'dark'
-        this.menuColorFn(this.menuColor)
+        // Keep sidebar dark
+        this.$state.menuColor = 'dark'
         this.headerColorFn(this.headerColor)
         this.$state.themePrimary = ''
         this.$state.themeBackground = ''
-        if (
-          !localStorage.getItem('vyzorMenu') ||
-          localStorage.getItem('vyzorMenu') == 'transparent'
-        ) {
-          this.menuColor = 'transparent'
-        }
         if (
           !localStorage.getItem('vyzorHeader') ||
           localStorage.getItem('vyzorHeader') == 'transparent'
@@ -61,7 +57,7 @@ export const switcherStore = defineStore('switcher', {
         }
         html.setAttribute('data-theme-mode', 'dark')
         html.setAttribute('data-header-styles', 'transparent')
-        html.setAttribute('data-menu-styles', 'transparent')
+        html.setAttribute('data-menu-styles', 'dark') // Always keep sidebar dark
         localStorage.removeItem('data-header-styles')
         html.style.removeProperty('--body-bg-rgb')
         html.style.removeProperty('--body-bg-rgb2')
@@ -501,11 +497,8 @@ export const switcherStore = defineStore('switcher', {
       this.backgroundImage = localStorage.getItem('vyzorbgimg') || this.backgroundImage
       this.backgroundImageFn(this.backgroundImage)
       this.themeBackgroundStorage()
-      this.menuColor = localStorage.getItem('vyzorMenu')
-        ? localStorage.getItem('vyzorMenu')
-        : localStorage.getItem('vyzorcolortheme') === 'dark'
-          ? 'transparent'
-          : this.menuColor
+      // Always keep sidebar dark regardless of theme
+      this.menuColor = 'dark'
       this.menuColorFn(this.menuColor)
       this.headerColor = localStorage.getItem('vyzorHeader')
         ? localStorage.getItem('vyzorHeader')
