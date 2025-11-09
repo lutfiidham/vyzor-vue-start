@@ -70,8 +70,33 @@ class ProfileController extends Controller
             'phone' => 'nullable|string|max:20',
             'timezone' => 'nullable|string',
             'locale' => 'nullable|string',
+            'avatar' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
+            'remove_avatar' => 'nullable|in:true,false,1,0',
         ]);
         
+        // Handle avatar upload
+        if ($request->hasFile('avatar')) {
+            // Delete old avatar if exists
+            if ($user->avatar && file_exists(public_path($user->avatar))) {
+                unlink(public_path($user->avatar));
+            }
+            
+            // Store new avatar
+            $avatar = $request->file('avatar');
+            $filename = 'avatar_' . $user->id . '_' . time() . '.' . $avatar->getClientOriginalExtension();
+            $avatar->move(public_path('uploads/avatars'), $filename);
+            $validated['avatar'] = '/uploads/avatars/' . $filename;
+        }
+        
+        // Handle avatar removal
+        if ($request->input('remove_avatar') == 'true' || $request->input('remove_avatar') == true || $request->input('remove_avatar') == '1') {
+            if ($user->avatar && file_exists(public_path($user->avatar))) {
+                unlink(public_path($user->avatar));
+            }
+            $validated['avatar'] = null;
+        }
+        
+        unset($validated['remove_avatar']);
         $user->update($validated);
         
         return redirect()->route('profile.show')

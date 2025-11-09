@@ -10,7 +10,7 @@
       <div class="ms-md-1 ms-0">
         <nav>
           <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item"><Link href="/dashboard">Home</Link></li>
             <li class="breadcrumb-item active" aria-current="page">Profile</li>
           </ol>
         </nav>
@@ -33,10 +33,10 @@
               </div>
               <div class="flex-fill main-profile-info">
                 <div class="d-flex align-items-center justify-content-between">
-                  <h6 class="fw-semibold mb-1 text-fixed-white">{{ user.name }}</h6>
+                  <h6 class="fw-semibold mb-1">{{ user.name }}</h6>
                 </div>
-                <p class="mb-1 text-muted text-fixed-white op-7">{{ user.email }}</p>
-                <p class="fs-12 text-fixed-white mb-4 op-5">
+                <p class="mb-1 op-7">{{ user.email }}</p>
+                <p class="fs-12 mb-4 op-5">
                   <span class="me-3">
                     <i class="ri-shield-user-line me-1 align-middle"></i>{{ user.role }}
                   </span>
@@ -46,16 +46,16 @@
                 </p>
                 <div class="d-flex mb-0">
                   <div class="me-4">
-                    <p class="fw-bold fs-20 text-fixed-white text-shadow mb-0">{{ stats.loginCount }}</p>
-                    <p class="mb-0 fs-11 op-5 text-fixed-white">Total Logins</p>
+                    <p class="fw-bold fs-20 text-shadow mb-0">{{ stats.loginCount }}</p>
+                    <p class="mb-0 fs-11 op-5">Total Logins</p>
                   </div>
                   <div class="me-4">
-                    <p class="fw-bold fs-20 text-fixed-white text-shadow mb-0">{{ stats.activeDays }}</p>
-                    <p class="mb-0 fs-11 op-5 text-fixed-white">Active Days</p>
+                    <p class="fw-bold fs-20 text-shadow mb-0">{{ stats.activeDays }}</p>
+                    <p class="mb-0 fs-11 op-5">Active Days</p>
                   </div>
                   <div class="me-4">
-                    <p class="fw-bold fs-20 text-fixed-white text-shadow mb-0">{{ permissions.length }}</p>
-                    <p class="mb-0 fs-11 op-5 text-fixed-white">Permissions</p>
+                    <p class="fw-bold fs-20 text-shadow mb-0">{{ permissions.length }}</p>
+                    <p class="mb-0 fs-11 op-5">Permissions</p>
                   </div>
                 </div>
               </div>
@@ -171,7 +171,7 @@
             <div class="card-title">Recent Activity</div>
           </div>
           <div class="card-body">
-            <ul class="list-unstyled mb-0 activity-timeline">
+            <ul v-if="recentActivity.length > 0" class="list-unstyled mb-0 activity-timeline">
               <li v-for="(activity, index) in recentActivity" :key="index" class="activity-item">
                 <div class="d-flex align-items-start">
                   <div class="me-3">
@@ -187,6 +187,9 @@
                 </div>
               </li>
             </ul>
+            <div v-else class="text-center text-muted py-3">
+              <i class="ri-information-line me-1"></i>No recent activity
+            </div>
           </div>
         </div>
       </div>
@@ -196,7 +199,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import { Head, router, usePage } from '@inertiajs/vue3'
+import { Head, Link, router, usePage } from '@inertiajs/vue3'
 
 const page = usePage()
 
@@ -275,6 +278,7 @@ const getRoleBadgeClass = (role) => {
 }
 
 const formatDate = (date) => {
+  if (!date) return 'N/A'
   return new Date(date).toLocaleString('en-US', {
     year: 'numeric',
     month: 'short',
@@ -289,6 +293,34 @@ const formatDate = (date) => {
 .main-profile-cover {
   background: linear-gradient(to right, var(--primary-color), var(--primary-rgb));
   position: relative;
+}
+
+/* Text dinamis berdasarkan theme mode */
+/* Light mode - text hitam untuk kontras dengan background gradient terang */
+.main-profile-info h6,
+.main-profile-info p,
+.main-profile-info span,
+.main-profile-info i {
+  color: rgba(0, 0, 0, 0.9) !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Dark mode - text putih untuk kontras dengan background gradient gelap */
+[data-theme-mode="dark"] .main-profile-info h6,
+[data-theme-mode="dark"] .main-profile-info p,
+[data-theme-mode="dark"] .main-profile-info span,
+[data-theme-mode="dark"] .main-profile-info i {
+  color: rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Opacity untuk text secondary */
+.main-profile-info .op-7 {
+  opacity: 0.85;
+}
+
+.main-profile-info .op-5 {
+  opacity: 0.75;
 }
 
 .activity-item {
