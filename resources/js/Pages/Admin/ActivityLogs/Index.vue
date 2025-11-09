@@ -49,7 +49,7 @@
               <div class="col-xl-2 col-lg-3 col-md-6">
                 <select class="form-select" v-model="filters.user" @change="applyFilters">
                   <option value="">All Users</option>
-                  <option v-for="user in users" :key="user.id" :value="user.id">
+                  <option v-for="user in usersData" :key="user.id" :value="user.id">
                     {{ user.name }}
                   </option>
                 </select>
@@ -86,44 +86,51 @@
             <div class="card-title">Activity Timeline</div>
           </div>
           <div class="card-body">
-            <ul class="list-unstyled mb-0 activity-logs-timeline">
+            <div v-if="activitiesData.length === 0" class="text-center py-5">
+              <div class="avatar avatar-xxl bg-light mb-3">
+                <i class="ri-history-line fs-1 text-muted"></i>
+              </div>
+              <h5 class="mb-2">No Activity Logs Found</h5>
+              <p class="text-muted">There are no activity logs to display at this time.</p>
+            </div>
+            <ul v-else class="list-unstyled mb-0 activity-logs-timeline">
               <li 
-                v-for="(activity, index) in activities" 
+                v-for="(activity, index) in activitiesData" 
                 :key="index"
                 class="activity-log-item"
               >
                 <div class="d-flex align-items-start">
                   <div class="me-3">
-                    <span :class="`avatar avatar-sm avatar-rounded ${getActivityColor(activity.description)}`">
-                      <i :class="getActivityIcon(activity.description)"></i>
+                    <span :class="`avatar avatar-sm avatar-rounded ${getActivityColor(activity?.description || '')}`">
+                      <i :class="getActivityIcon(activity?.description || '')"></i>
                     </span>
                   </div>
                   <div class="flex-fill">
                     <div class="d-flex align-items-center justify-content-between mb-1">
                       <div>
-                        <span class="fw-semibold">{{ activity.causer?.name || 'System' }}</span>
+                        <span class="fw-semibold">{{ activity?.causer?.name || 'System' }}</span>
                         <span class="text-muted mx-1">•</span>
-                        <span :class="`badge ${getActionBadgeClass(activity.description)}`">
-                          {{ activity.description }}
+                        <span :class="`badge ${getActionBadgeClass(activity?.description || '')}`">
+                          {{ activity?.description || 'unknown' }}
                         </span>
                       </div>
-                      <span class="text-muted fs-11">{{ formatTime(activity.created_at) }}</span>
+                      <span class="text-muted fs-11">{{ formatTime(activity?.created_at) }}</span>
                     </div>
                     <p class="text-muted fs-13 mb-2">
-                      {{ getActivityMessage(activity) }}
+                      {{ getActivityMessage(activity || {}) }}
                     </p>
-                    <div v-if="activity.properties" class="activity-details">
+                    <div v-if="activity?.properties" class="activity-details">
                       <div class="d-flex gap-2 flex-wrap">
-                        <span class="badge bg-light text-dark" v-if="activity.subject_type">
+                        <span class="badge bg-light text-dark" v-if="activity?.subject_type">
                           <i class="ri-file-line me-1"></i>{{ getModelName(activity.subject_type) }}
                         </span>
-                        <span class="badge bg-light text-dark" v-if="activity.subject_id">
+                        <span class="badge bg-light text-dark" v-if="activity?.subject_id">
                           <i class="ri-hashtag me-1"></i>ID: {{ activity.subject_id }}
                         </span>
-                        <span class="badge bg-light text-dark" v-if="activity.ip_address">
+                        <span class="badge bg-light text-dark" v-if="activity?.ip_address">
                           <i class="ri-global-line me-1"></i>{{ activity.ip_address }}
                         </span>
-                        <span class="badge bg-light text-dark" v-if="activity.user_agent">
+                        <span class="badge bg-light text-dark" v-if="activity?.user_agent">
                           <i class="ri-computer-line me-1"></i>{{ getBrowser(activity.user_agent) }}
                         </span>
                       </div>
@@ -141,15 +148,15 @@
           </div>
           
           <!-- Pagination -->
-          <div class="card-footer" v-if="pagination.last_page > 1">
+          <div class="card-footer" v-if="paginationData.last_page > 1">
             <div class="d-flex align-items-center justify-content-between flex-wrap">
               <div class="mb-2 mb-sm-0">
-                Showing {{ pagination.from }} to {{ pagination.to }} of {{ pagination.total }} entries
+                Showing {{ paginationData.from }} to {{ paginationData.to }} of {{ paginationData.total }} entries
               </div>
               <nav>
                 <ul class="pagination mb-0">
-                  <li class="page-item" :class="{ disabled: !pagination.prev_page_url }">
-                    <a class="page-link" @click="changePage(pagination.current_page - 1)" href="javascript:void(0);">
+                  <li class="page-item" :class="{ disabled: !paginationData.prev_page_url }">
+                    <a class="page-link" @click="changePage(paginationData.current_page - 1)" href="javascript:void(0);">
                       Previous
                     </a>
                   </li>
@@ -157,14 +164,14 @@
                     v-for="page in pages" 
                     :key="page" 
                     class="page-item" 
-                    :class="{ active: page === pagination.current_page }"
+                    :class="{ active: page === paginationData.current_page }"
                   >
                     <a class="page-link" @click="changePage(page)" href="javascript:void(0);">
                       {{ page }}
                     </a>
                   </li>
-                  <li class="page-item" :class="{ disabled: !pagination.next_page_url }">
-                    <a class="page-link" @click="changePage(pagination.current_page + 1)" href="javascript:void(0);">
+                  <li class="page-item" :class="{ disabled: !paginationData.next_page_url }">
+                    <a class="page-link" @click="changePage(paginationData.current_page + 1)" href="javascript:void(0);">
                       Next
                     </a>
                   </li>
@@ -182,65 +189,24 @@
 import { ref, computed } from 'vue'
 import { Head, router } from '@inertiajs/vue3'
 
-// Props with sample data
+// Props
 const props = defineProps({
-  activities: {
-    type: Array,
-    default: () => [
-      {
-        id: 1,
-        description: 'created',
-        subject_type: 'App\\Models\\User',
-        subject_id: 5,
-        causer: { id: 1, name: 'Admin User' },
-        properties: {},
-        ip_address: '127.0.0.1',
-        user_agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0',
-        created_at: '2025-11-09T09:30:00Z'
-      },
-      {
-        id: 2,
-        description: 'login',
-        subject_type: null,
-        subject_id: null,
-        causer: { id: 2, name: 'Manager User' },
-        properties: {},
-        ip_address: '127.0.0.1',
-        user_agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Firefox/120.0',
-        created_at: '2025-11-09T08:15:00Z'
-      },
-      {
-        id: 3,
-        description: 'updated',
-        subject_type: 'App\\Models\\User',
-        subject_id: 3,
-        causer: { id: 1, name: 'Admin User' },
-        properties: {},
-        ip_address: '127.0.0.1',
-        user_agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0',
-        created_at: '2025-11-09T07:45:00Z'
-      }
-    ]
-  },
-  users: {
-    type: Array,
-    default: () => [
-      { id: 1, name: 'Admin User' },
-      { id: 2, name: 'Manager User' }
-    ]
-  },
-  pagination: {
-    type: Object,
-    default: () => ({
-      current_page: 1,
-      last_page: 1,
-      from: 1,
-      to: 3,
-      total: 3,
-      prev_page_url: null,
-      next_page_url: null
-    })
-  }
+  activities: Array,
+  users: Array,
+  pagination: Object
+})
+
+// Computed data with fallbacks
+const activitiesData = computed(() => props.activities || [])
+const usersData = computed(() => props.users || [])
+const paginationData = computed(() => props.pagination || {
+  current_page: 1,
+  last_page: 1,
+  from: 1,
+  to: 0,
+  total: 0,
+  prev_page_url: null,
+  next_page_url: null
 })
 
 // State
@@ -253,22 +219,23 @@ const filters = ref({
 
 // Computed
 const pages = computed(() => {
-  const total = props.pagination.last_page
-  const current = props.pagination.current_page
-  const pages = []
+  const total = paginationData.value.last_page
+  const current = paginationData.value.current_page
+  const pagesList = []
   
   let start = Math.max(1, current - 2)
   let end = Math.min(total, current + 2)
   
   for (let i = start; i <= end; i++) {
-    pages.push(i)
+    pagesList.push(i)
   }
   
-  return pages
+  return pagesList
 })
 
 // Methods
 const getActivityIcon = (description) => {
+  if (!description) return 'ri-history-line'
   const icons = {
     created: 'ri-add-circle-line',
     updated: 'ri-pencil-line',
@@ -280,6 +247,7 @@ const getActivityIcon = (description) => {
 }
 
 const getActivityColor = (description) => {
+  if (!description) return 'bg-secondary-transparent'
   const colors = {
     created: 'bg-success-transparent',
     updated: 'bg-primary-transparent',
@@ -291,6 +259,7 @@ const getActivityColor = (description) => {
 }
 
 const getActionBadgeClass = (description) => {
+  if (!description) return 'bg-secondary-transparent'
   const classes = {
     created: 'bg-success-transparent',
     updated: 'bg-primary-transparent',
@@ -302,6 +271,7 @@ const getActionBadgeClass = (description) => {
 }
 
 const getActivityMessage = (activity) => {
+  if (!activity || !activity.description) return 'Performed an action'
   const messages = {
     created: `Created new ${getModelName(activity.subject_type)}`,
     updated: `Updated ${getModelName(activity.subject_type)}`,
@@ -328,13 +298,18 @@ const getBrowser = (userAgent) => {
 }
 
 const formatTime = (date) => {
-  return new Date(date).toLocaleString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
-  })
+  if (!date) return 'N/A'
+  try {
+    return new Date(date).toLocaleString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    })
+  } catch (e) {
+    return 'Invalid Date'
+  }
 }
 
 const applyFilters = () => {
