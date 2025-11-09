@@ -234,7 +234,7 @@
           <!-- End::slide -->
           <!-- Start::slide -->
           <li class="slide">
-            <Link :href="`${baseUrl}/demo/pages/authentication/sign-in/cover`" class="side-menu__item">
+            <a href="javascript:void(0);" @click="handleLogout" class="side-menu__item">
               <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256">
                 <rect width="256" height="256" fill="none" />
                 <path
@@ -270,12 +270,12 @@
                 />
               </svg>
               <span class="side-menu__label">Logout</span>
-            </Link>
+            </a>
           </li>
           <!-- End::slide -->
           <!-- Start::slide -->
           <li class="slide">
-            <Link :href="`${baseUrl}/demo/pages/profile-settings`" class="side-menu__item">
+            <Link :href="`${baseUrl}/profile`" class="side-menu__item">
               <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256">
                 <rect width="256" height="256" fill="none" />
                 <path
@@ -385,18 +385,21 @@
                   stroke-width="16"
                 />
               </svg>
-              <span class="side-menu__label">Profile Settings</span>
+              <span class="side-menu__label">My Profile</span>
             </Link>
           </li>
           <!-- End::slide -->
           <!-- Start::slide -->
           <li class="slide">
             <Link
-              :href="`${baseUrl}/demo/pages/profile`"
+              :href="`${baseUrl}/profile`"
               class="side-menu__item p-1 rounded-circle mb-0"
             >
               <span class="avatar avatar-md avatar-rounded">
-                <BaseImg src="/images/faces/10.jpg" alt="" />
+                <BaseImg v-if="currentUser?.avatar" :src="currentUser.avatar" alt="" />
+                <span v-else class="avatar-title bg-primary">
+                  {{ currentUser?.name?.charAt(0).toUpperCase() || 'U' }}
+                </span>
               </span>
             </Link>
           </li>
@@ -424,14 +427,14 @@
 </template>
 
 <script setup>
-import { onBeforeMount, onMounted, reactive, ref, watchEffect } from 'vue'
+import { onBeforeMount, onMounted, reactive, ref, watchEffect, computed } from 'vue'
 import { MENUITEMS as staticMenuData } from '@/shared/data/sidebar/nav'
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 import 'vue3-perfect-scrollbar/style.css'
 import RecursiveMenu from '../../../UI/recursiveMenu.vue'
 import { switcherStore } from '../../../stores/switcher'
 import BaseImg from '../Baseimage/BaseImg.vue'
-import { Link, usePage } from '@inertiajs/vue3'
+import { Link, usePage, router } from '@inertiajs/vue3'
 
 const menuData = reactive(staticMenuData)
 
@@ -442,8 +445,19 @@ let hasParent = false
 let hasParentLevel = 0
 let WindowPreSize = [window.innerWidth]
 const previousUrl = ref('/')
-const { url } = usePage()
+const page = usePage()
+const { url } = page
 const baseUrl = __BASE_PATH__
+
+// Get current user from page props
+const currentUser = computed(() => page.props.auth?.user || null)
+
+// Logout handler
+const handleLogout = () => {
+  if (confirm('Are you sure you want to logout?')) {
+    router.post('/logout')
+  }
+}
 
 function toggleSubmenu(event, targetObject, menuList = menuData, isChildFlag = isChild) {
   let html = document.documentElement

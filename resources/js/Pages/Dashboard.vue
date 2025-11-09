@@ -73,8 +73,8 @@
               <div>
                 <p class="mb-1 text-muted">Total Users</p>
                 <h3 class="fw-semibold mb-1">{{ stats.totalUsers }}</h3>
-                <span class="badge bg-success-transparent">
-                  <i class="ri-arrow-up-line me-1"></i>12.5%
+                <span class="badge bg-primary-transparent">
+                  <i class="ri-user-line me-1"></i>Registered
                 </span>
               </div>
               <div>
@@ -92,36 +92,15 @@
           <div class="card-body">
             <div class="d-flex align-items-start justify-content-between">
               <div>
-                <p class="mb-1 text-muted">Active Projects</p>
-                <h3 class="fw-semibold mb-1">{{ stats.activeProjects }}</h3>
-                <span class="badge bg-info-transparent">
-                  <i class="ri-arrow-up-line me-1"></i>8.2%
-                </span>
-              </div>
-              <div>
-                <span class="avatar avatar-lg bg-info-transparent">
-                  <i class="ri-folder-line fs-4"></i>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-        <div class="card custom-card">
-          <div class="card-body">
-            <div class="d-flex align-items-start justify-content-between">
-              <div>
-                <p class="mb-1 text-muted">Tasks Completed</p>
-                <h3 class="fw-semibold mb-1">{{ stats.tasksCompleted }}</h3>
+                <p class="mb-1 text-muted">Active Users</p>
+                <h3 class="fw-semibold mb-1">{{ stats.activeUsers }}</h3>
                 <span class="badge bg-success-transparent">
-                  <i class="ri-arrow-up-line me-1"></i>24.8%
+                  <i class="ri-checkbox-circle-line me-1"></i>Online
                 </span>
               </div>
               <div>
                 <span class="avatar avatar-lg bg-success-transparent">
-                  <i class="ri-task-line fs-4"></i>
+                  <i class="ri-user-follow-line fs-4"></i>
                 </span>
               </div>
             </div>
@@ -134,15 +113,36 @@
           <div class="card-body">
             <div class="d-flex align-items-start justify-content-between">
               <div>
-                <p class="mb-1 text-muted">Revenue</p>
-                <h3 class="fw-semibold mb-1">${{ stats.revenue }}</h3>
+                <p class="mb-1 text-muted">Total Roles</p>
+                <h3 class="fw-semibold mb-1">{{ stats.totalRoles }}</h3>
+                <span class="badge bg-info-transparent">
+                  <i class="ri-shield-user-line me-1"></i>Configured
+                </span>
+              </div>
+              <div>
+                <span class="avatar avatar-lg bg-info-transparent">
+                  <i class="ri-shield-user-line fs-4"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+        <div class="card custom-card">
+          <div class="card-body">
+            <div class="d-flex align-items-start justify-content-between">
+              <div>
+                <p class="mb-1 text-muted">Permissions</p>
+                <h3 class="fw-semibold mb-1">{{ stats.totalPermissions }}</h3>
                 <span class="badge bg-warning-transparent">
-                  <i class="ri-arrow-down-line me-1"></i>3.1%
+                  <i class="ri-key-line me-1"></i>Available
                 </span>
               </div>
               <div>
                 <span class="avatar avatar-lg bg-warning-transparent">
-                  <i class="ri-money-dollar-circle-line fs-4"></i>
+                  <i class="ri-key-line fs-4"></i>
                 </span>
               </div>
             </div>
@@ -188,7 +188,7 @@
           <div class="card-body">
             <div class="row g-3">
               <div class="col-md-6" v-for="(action, index) in quickActions" :key="index">
-                <div class="card border shadow-none mb-0 quick-action-card" style="cursor: pointer;">
+                <div class="card border shadow-none mb-0 quick-action-card" style="cursor: pointer;" @click="navigateToAction(action.link)">
                   <div class="card-body text-center">
                     <span :class="`avatar avatar-xl avatar-rounded ${action.color} mb-3`">
                       <i :class="`${action.icon} fs-3`"></i>
@@ -249,12 +249,17 @@
 import { ref } from 'vue'
 import { Head, router } from '@inertiajs/vue3'
 
+// Props
+const props = defineProps({
+  stats: Object
+})
+
 // Stats Data
 const stats = ref({
-  totalUsers: '2,543',
-  activeProjects: '48',
-  tasksCompleted: '326',
-  revenue: '42,890'
+  totalUsers: props.stats?.totalUsers || 0,
+  activeUsers: props.stats?.activeUsers || 0,
+  totalRoles: props.stats?.totalRoles || 0,
+  totalPermissions: props.stats?.totalPermissions || 0
 })
 
 // Recent Activities
@@ -292,30 +297,39 @@ const recentActivities = ref([
 // Quick Actions
 const quickActions = ref([
   {
-    title: 'Create Project',
-    description: 'Start a new project',
-    icon: 'ri-add-circle-line',
-    color: 'bg-primary-transparent'
+    title: 'Manage Users',
+    description: 'View & manage users',
+    icon: 'ri-user-settings-line',
+    color: 'bg-primary-transparent',
+    link: '/admin/users'
   },
   {
-    title: 'Add User',
-    description: 'Register new user',
-    icon: 'ri-user-add-line',
-    color: 'bg-success-transparent'
+    title: 'Roles & Permissions',
+    description: 'Manage access control',
+    icon: 'ri-shield-user-line',
+    color: 'bg-success-transparent',
+    link: '/admin/roles'
   },
   {
-    title: 'View Reports',
-    description: 'Check analytics',
-    icon: 'ri-bar-chart-line',
-    color: 'bg-info-transparent'
+    title: 'Activity Logs',
+    description: 'View audit trail',
+    icon: 'ri-history-line',
+    color: 'bg-info-transparent',
+    link: '/admin/activity-logs'
   },
   {
     title: 'Settings',
     description: 'Configure system',
     icon: 'ri-settings-3-line',
-    color: 'bg-warning-transparent'
+    color: 'bg-warning-transparent',
+    link: '/admin/settings'
   }
 ])
+
+// Navigate to quick action
+const navigateToAction = (link) => {
+  router.visit(link)
+}
 
 // System Information
 const systemInfo = ref({
