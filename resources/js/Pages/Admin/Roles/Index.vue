@@ -554,7 +554,7 @@ const confirmDelete = (role) => {
       preserveScroll: true,
       onSuccess: () => {
         proxy.$toast.success('Role deleted successfully!', {
-          theme: theme,
+          theme: 'colored',
           icon: true,
           hideProgressBar: false,
           autoClose: 3000,
@@ -564,7 +564,7 @@ const confirmDelete = (role) => {
       onError: (errors) => {
         const errorMessage = Object.values(errors)[0] || 'Failed to delete role. Role may have assigned users.'
         proxy.$toast.error(errorMessage, {
-          theme: theme,
+          theme: 'colored',
           icon: true,
           hideProgressBar: false,
           autoClose: 3000,
@@ -578,7 +578,7 @@ const confirmDelete = (role) => {
 const saveRole = () => {
   if (!form.value.name) {
     proxy.$toast.error('Please enter role name', {
-      theme: theme,
+      theme: 'colored',
       icon: true,
       hideProgressBar: false,
       autoClose: 3000,
@@ -592,7 +592,7 @@ const saveRole = () => {
       preserveScroll: true,
       onSuccess: () => {
         proxy.$toast.success('Role updated successfully!', {
-          theme: theme,
+          theme: 'colored',
           icon: true,
           hideProgressBar: false,
           autoClose: 3000,
@@ -605,7 +605,7 @@ const saveRole = () => {
       onError: (errors) => {
         const errorMessage = Object.values(errors)[0] || 'Failed to update role'
         proxy.$toast.error(errorMessage, {
-          theme: theme,
+          theme: 'colored',
           icon: true,
           hideProgressBar: false,
           autoClose: 3000,
@@ -618,7 +618,7 @@ const saveRole = () => {
       preserveScroll: true,
       onSuccess: () => {
         proxy.$toast.success('Role created successfully!', {
-          theme: theme,
+          theme: 'colored',
           icon: true,
           hideProgressBar: false,
           autoClose: 3000,
@@ -631,7 +631,7 @@ const saveRole = () => {
       onError: (errors) => {
         const errorMessage = Object.values(errors)[0] || 'Failed to create role'
         proxy.$toast.error(errorMessage, {
-          theme: theme,
+          theme: 'colored',
           icon: true,
           hideProgressBar: false,
           autoClose: 3000,
