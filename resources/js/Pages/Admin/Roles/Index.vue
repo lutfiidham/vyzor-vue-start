@@ -170,7 +170,7 @@
                             <a
                               class="dropdown-item text-danger"
                               href="javascript:void(0);"
-                              @click="confirmDelete(role)"
+                              @click="confirmDeleteRole(role)"
                             >
                               <i class="ri-delete-bin-line me-2"></i>Delete
                             </a>
@@ -404,8 +404,10 @@ import { ref, computed, onMounted } from 'vue'
 import { Head, router } from '@inertiajs/vue3'
 import * as bootstrap from 'bootstrap'
 import { useToast } from '@/composables/useToast'
+import { useConfirm } from '@/composables/useConfirm'
 
 const toast = useToast()
+const { confirmDelete } = useConfirm()
 
 // Props with default data
 const props = defineProps({
@@ -548,8 +550,10 @@ const editRole = (role) => {
   }
 }
 
-const confirmDelete = (role) => {
-  if (confirm(`Are you sure you want to delete the role "${role.name}"?`)) {
+const confirmDeleteRole = async (role) => {
+  const confirmed = await confirmDelete(role.name)
+  
+  if (confirmed) {
     router.delete(`/admin/roles/${role.id}`, {
       preserveScroll: true,
       onSuccess: () => {
