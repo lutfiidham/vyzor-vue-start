@@ -300,11 +300,10 @@ const debouncedSearch = () => {
 }
 
 const applyFilters = () => {
-  console.log('Applying filters:', filters.value)
-  // router.get('/admin/users', filters.value, {
-  //   preserveState: true,
-  //   preserveScroll: true
-  // })
+  router.get('/admin/users', filters.value, {
+    preserveState: true,
+    preserveScroll: true
+  })
 }
 
 const resetFilters = () => {
@@ -317,11 +316,10 @@ const resetFilters = () => {
 }
 
 const changePage = (page) => {
-  console.log('Changing to page:', page)
-  // router.get(`/admin/users?page=${page}`, filters.value, {
-  //   preserveState: true,
-  //   preserveScroll: true
-  // })
+  router.get(`/admin/users?page=${page}`, filters.value, {
+    preserveState: true,
+    preserveScroll: true
+  })
 }
 
 const toggleSelectAll = () => {
@@ -333,24 +331,28 @@ const toggleSelectAll = () => {
 }
 
 const openCreateModal = () => {
-  console.log('Opening create user modal')
-  // router.visit('/admin/users/create')
+  router.visit('/admin/users/create')
 }
 
 const viewUser = (user) => {
-  console.log('Viewing user:', user)
-  // router.visit(`/admin/users/${user.id}`)
+  router.visit(`/admin/users/${user.id}`)
 }
 
 const editUser = (user) => {
-  console.log('Editing user:', user)
-  // router.visit(`/admin/users/${user.id}/edit`)
+  router.visit(`/admin/users/${user.id}/edit`)
 }
 
 const confirmDelete = (user) => {
   if (confirm(`Are you sure you want to delete ${user.name}?`)) {
-    console.log('Deleting user:', user)
-    // router.delete(`/admin/users/${user.id}`)
+    router.delete(`/admin/users/${user.id}`, {
+      preserveScroll: true,
+      onSuccess: () => {
+        // User deleted successfully
+      },
+      onError: (errors) => {
+        console.error('Delete failed:', errors)
+      }
+    })
   }
 }
 
@@ -359,16 +361,27 @@ const bulkAction = (action) => {
     return
   }
   
-  console.log(`Bulk ${action}:`, selected.value)
-  // router.post('/admin/users/bulk', {
-  //   action: action,
-  //   ids: selected.value
-  // })
+  router.post('/admin/users/bulk', {
+    action: action,
+    ids: selected.value
+  }, {
+    preserveScroll: true,
+    onSuccess: () => {
+      selected.value = []
+      selectAll.value = false
+    },
+    onError: (errors) => {
+      console.error('Bulk action failed:', errors)
+    }
+  })
 }
 
 const exportUsers = (format) => {
-  console.log('Exporting to:', format)
-  // window.location.href = `/admin/users/export?format=${format}`
+  const params = new URLSearchParams({
+    format: format,
+    ...filters.value
+  })
+  window.location.href = `/admin/users/export?${params.toString()}`
 }
 
 const getRoleBadgeClass = (role) => {
