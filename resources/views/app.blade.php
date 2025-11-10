@@ -7,6 +7,10 @@
   <title inertia>Vyzor - Inertia + Vue & Laravel Admin & Dashboard Template</title>
   <!-- Favicon -->
   <link rel="icon" href="{{asset('/images/brand-logos/favicon.ico')}}" type="image/x-icon">
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- ICONS CSS -->
   <link href="{{asset('/icon-fonts/icons.css')}}" rel="stylesheet">
   <!--@routes-->
