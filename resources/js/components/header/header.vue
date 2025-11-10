@@ -709,8 +709,11 @@
             data-bs-auto-close="outside"
             aria-expanded="false"
           >
-            <div>
-              <BaseImg src="/images/faces/12.jpg" alt="img" class="header-link-icon" />
+            <div class="d-flex align-items-center">
+              <span class="avatar avatar-sm avatar-rounded me-2">
+                <BaseImg v-if="currentUser?.avatar" :src="currentUser.avatar" alt="User Avatar" class="header-link-icon" />
+                <span v-else class="avatar-title bg-primary header-link-icon">{{ userInitials }}</span>
+              </span>
             </div>
           </a>
           <!-- End::header-link|dropdown-toggle -->
@@ -720,10 +723,10 @@
           >
             <div class="p-3 bg-primary text-fixed-white">
               <div class="d-flex align-items-center justify-content-between">
-                <p class="mb-0 fs-16">Profile</p>
-                <a href="javascript:void(0);" class="text-fixed-white"
+                <p class="mb-0 fs-16">{{ currentUser?.name || 'Profile' }}</p>
+                <Link href="/profile/edit" class="text-fixed-white"
                   ><i class="ti ti-settings-cog"></i
-                ></a>
+                ></Link>
               </div>
             </div>
             <div class="dropdown-divider"></div>
@@ -731,12 +734,13 @@
               <div class="d-flex align-items-start gap-2">
                 <div class="lh-1">
                   <span class="avatar avatar-sm bg-primary-transparent avatar-rounded">
-                    <BaseImg src="/images/faces/12.jpg" alt="" />
+                    <BaseImg v-if="currentUser?.avatar" :src="currentUser.avatar" alt="User Avatar" />
+                    <span v-else class="avatar-title bg-primary">{{ userInitials }}</span>
                   </span>
                 </div>
                 <div>
-                  <span class="d-block fw-semibold lh-1">Tom Phillip</span>
-                  <span class="text-muted fs-12">tomphillip32@gmail.com</span>
+                  <span class="d-block fw-semibold lh-1">{{ currentUser?.name || 'User' }}</span>
+                  <span class="text-muted fs-12">{{ currentUser?.email || 'user@example.com' }}</span>
                 </div>
               </div>
             </div>
@@ -747,16 +751,16 @@
                   <li>
                     <Link
                       class="dropdown-item d-flex align-items-center"
-                      :href="`${baseUrl}/demo/pages/profile`"
-                      ><i class="ti ti-user-circle me-2 fs-18"></i>View Profile</Link
+                      href="/profile"
+                      ><i class="ti ti-user-circle me-2 fs-18"></i>My Profile</Link
                     >
                   </li>
                   <li>
                     <Link
                       class="dropdown-item d-flex align-items-center"
-                      :href="`${baseUrl}/demo/pages/profile-settings`"
+                      href="/profile/edit"
                     >
-                      <i class="ti ti-settings-cog me-2 fs-18"></i>Account Settings
+                      <i class="ti ti-settings-cog me-2 fs-18"></i>Edit Profile
                     </Link>
                   </li>
                 </ul>
@@ -764,25 +768,24 @@
               <li>
                 <ul class="list-unstyled mb-0 sub-list">
                   <li>
-                    <a class="dropdown-item d-flex align-items-center" href="javascript:void(0);"
-                      ><i class="ti ti-lifebuoy me-2 fs-18"></i>Support</a
+                    <Link
+                      class="dropdown-item d-flex align-items-center"
+                      href="/admin/activity-logs"
+                      ><i class="ti ti-bolt me-2 fs-18"></i>Activity Logs</Link
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item d-flex align-items-center" href="javascript:void(0);"
-                      ><i class="ti ti-bolt me-2 fs-18"></i>Activity Log</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item d-flex align-items-center" href="javascript:void(0);"
-                      ><i class="ti ti-calendar me-2 fs-18"></i>Events</a
+                    <Link
+                      class="dropdown-item d-flex align-items-center"
+                      href="/notifications"
+                      ><i class="ti ti-bell me-2 fs-18"></i>Notifications</Link
                     >
                   </li>
                 </ul>
               </li>
               <li>
                 <Link
-                  :href="`${baseUrl}/logout`"
+                  href="/logout"
                   method="post"
                   as="button"
                   class="dropdown-item d-flex align-items-center"
@@ -926,6 +929,15 @@ const switcher = switcherStore()
 const { logUserOut } = useAuthStore()
 const page = usePage()
 const baseUrl = __BASE_PATH__
+
+// Get current user from page props
+const currentUser = computed(() => page.props.auth?.user || null)
+
+// User initials for avatar fallback
+const userInitials = computed(() => {
+  if (!currentUser.value?.name) return 'U'
+  return currentUser.value.name.charAt(0).toUpperCase()
+})
 
 // Computed logo link - if on demo pages, link to demo dashboard, else to main dashboard
 const logoLink = computed(() => {
