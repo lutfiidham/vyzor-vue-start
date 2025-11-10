@@ -313,11 +313,10 @@ const formatTime = (date) => {
 }
 
 const applyFilters = () => {
-  console.log('Applying filters:', filters.value)
-  // router.get('/admin/activity-logs', filters.value, {
-  //   preserveState: true,
-  //   preserveScroll: true
-  // })
+  router.get('/admin/activity-logs', filters.value, {
+    preserveState: true,
+    preserveScroll: true
+  })
 }
 
 const resetFilters = () => {
@@ -331,16 +330,14 @@ const resetFilters = () => {
 }
 
 const changePage = (page) => {
-  console.log('Changing to page:', page)
-  // router.get(`/admin/activity-logs?page=${page}`, filters.value, {
-  //   preserveState: true,
-  //   preserveScroll: true
-  // })
+  router.get('/admin/activity-logs', { ...filters.value, page }, {
+    preserveState: true,
+    preserveScroll: true
+  })
 }
 
 const exportLogs = () => {
-  console.log('Exporting logs')
-  // window.location.href = `/admin/activity-logs/export?${new URLSearchParams(filters.value).toString()}`
+  window.location.href = `/admin/activity-logs/export?${new URLSearchParams(filters.value).toString()}`
 }
 </script>
 

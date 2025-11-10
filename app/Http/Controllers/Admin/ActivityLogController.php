@@ -12,7 +12,9 @@ class ActivityLogController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Activity::with('causer')->latest();
+        $query = Activity::with(['causer' => function($query) {
+            $query->select('id', 'name', 'email');
+        }])->latest();
 
         // Search
         if ($request->search) {
@@ -39,10 +41,25 @@ class ActivityLogController extends Controller
 
         $activities = $query->paginate(20);
 
+        // Transform activities to include properties
+        $activitiesData = $activities->map(function ($activity) {
+            return [
+                'id' => $activity->id,
+                'description' => $activity->description,
+                'subject_type' => $activity->subject_type,
+                'subject_id' => $activity->subject_id,
+                'causer' => $activity->causer,
+                'properties' => $activity->properties,
+                'created_at' => $activity->created_at,
+                'ip_address' => $activity->properties['ip'] ?? null,
+                'user_agent' => $activity->properties['user_agent'] ?? null,
+            ];
+        });
+
         $users = User::select('id', 'name')->get();
 
         return Inertia::render('Admin/ActivityLogs/Index', [
-            'activities' => $activities,
+            'activities' => $activitiesData,
             'users' => $users,
             'pagination' => [
                 'current_page' => $activities->currentPage(),
