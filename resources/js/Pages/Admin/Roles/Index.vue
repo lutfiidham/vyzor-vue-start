@@ -2,7 +2,9 @@
   <Head title="Roles & Permissions" />
   <div>
     <!-- Page Header -->
-    <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
+    <div
+      class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb"
+    >
       <div>
         <h1 class="page-title fw-semibold fs-20 mb-0">Roles & Permissions</h1>
         <p class="mb-0 text-muted">Manage user roles and their permissions</p>
@@ -119,35 +121,57 @@
           </div>
           <div class="card-body">
             <div class="row g-4">
-              <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12" v-for="role in roles" :key="role.id">
+              <div
+                class="col-xl-4 col-lg-6 col-md-6 col-sm-12"
+                v-for="role in roles"
+                :key="role.id"
+              >
                 <div class="card custom-card border shadow-sm">
                   <div class="card-body">
                     <div class="d-flex align-items-center justify-content-between mb-3">
                       <div>
-                        <span :class="`avatar avatar-lg avatar-rounded ${getRoleBadgeClass(role.name)}`">
+                        <span
+                          :class="`avatar avatar-lg avatar-rounded ${getRoleBadgeClass(role.name)}`"
+                        >
                           <i class="ri-shield-user-line fs-4"></i>
                         </span>
                       </div>
                       <div class="dropdown">
-                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-light" data-bs-toggle="dropdown">
+                        <a
+                          href="javascript:void(0);"
+                          class="btn btn-icon btn-sm btn-light"
+                          data-bs-toggle="dropdown"
+                        >
                           <i class="ri-more-2-fill"></i>
                         </a>
                         <ul class="dropdown-menu">
                           <li>
-                            <a class="dropdown-item" href="javascript:void(0);" @click="viewRole(role)">
+                            <a
+                              class="dropdown-item"
+                              href="javascript:void(0);"
+                              @click="viewRole(role)"
+                            >
                               <i class="ri-eye-line me-2"></i>View Details
                             </a>
                           </li>
                           <li>
-                            <a class="dropdown-item" href="javascript:void(0);" @click="editRole(role)">
+                            <a
+                              class="dropdown-item"
+                              href="javascript:void(0);"
+                              @click="editRole(role)"
+                            >
                               <i class="ri-pencil-line me-2"></i>Edit
                             </a>
                           </li>
                           <li>
-                            <hr class="dropdown-divider">
+                            <hr class="dropdown-divider" />
                           </li>
                           <li>
-                            <a class="dropdown-item text-danger" href="javascript:void(0);" @click="confirmDelete(role)">
+                            <a
+                              class="dropdown-item text-danger"
+                              href="javascript:void(0);"
+                              @click="confirmDelete(role)"
+                            >
                               <i class="ri-delete-bin-line me-2"></i>Delete
                             </a>
                           </li>
@@ -156,7 +180,7 @@
                     </div>
                     <h6 class="fw-semibold mb-1">{{ role.name }}</h6>
                     <p class="text-muted fs-12 mb-3">{{ role.description || 'No description' }}</p>
-                    
+
                     <div class="d-flex align-items-center justify-content-between mb-3">
                       <div>
                         <span class="text-muted fs-12">Permissions:</span>
@@ -169,10 +193,16 @@
                     </div>
 
                     <div class="d-flex gap-2">
-                      <button class="btn btn-sm btn-primary-light flex-fill" @click="viewRole(role)">
+                      <button
+                        class="btn btn-sm btn-primary-light flex-fill"
+                        @click="viewRole(role)"
+                      >
                         <i class="ri-eye-line me-1"></i>View
                       </button>
-                      <button class="btn btn-sm btn-success-light flex-fill" @click="editRole(role)">
+                      <button
+                        class="btn btn-sm btn-success-light flex-fill"
+                        @click="editRole(role)"
+                      >
                         <i class="ri-pencil-line me-1"></i>Edit
                       </button>
                     </div>
@@ -193,32 +223,37 @@
             <div class="card-title">All Permissions by Category</div>
           </div>
           <div class="card-body">
-            <div class="accordion accordion-customicon1 accordion-primary" id="permissionsAccordion">
+            <div
+              class="accordion accordion-customicon1 accordion-primary"
+              id="permissionsAccordion"
+            >
               <div class="accordion-item" v-for="(group, index) in permissionGroups" :key="index">
                 <h2 class="accordion-header">
-                  <button 
-                    class="accordion-button" 
+                  <button
+                    class="accordion-button"
                     :class="{ collapsed: index !== 0 }"
-                    type="button" 
-                    data-bs-toggle="collapse" 
+                    type="button"
+                    data-bs-toggle="collapse"
                     :data-bs-target="`#collapse${index}`"
                   >
                     <i class="ri-key-line me-2"></i>
                     {{ group.name }}
-                    <span class="badge bg-primary-transparent ms-2">{{ group.permissions.length }}</span>
+                    <span class="badge bg-primary-transparent ms-2">{{
+                      group.permissions.length
+                    }}</span>
                   </button>
                 </h2>
-                <div 
-                  :id="`collapse${index}`" 
+                <div
+                  :id="`collapse${index}`"
                   class="accordion-collapse collapse"
                   :class="{ show: index === 0 }"
                   data-bs-parent="#permissionsAccordion"
                 >
                   <div class="accordion-body">
                     <div class="row g-2">
-                      <div 
-                        class="col-xl-3 col-lg-4 col-md-6 col-sm-12" 
-                        v-for="permission in group.permissions" 
+                      <div
+                        class="col-xl-3 col-lg-4 col-md-6 col-sm-12"
+                        v-for="permission in group.permissions"
                         :key="permission.id"
                       >
                         <div class="p-2 border rounded d-flex align-items-center">
@@ -241,7 +276,11 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h6 class="modal-title">{{ editingRole ? 'Edit Role' : 'Create New Role' }}</h6>
+            <h6 class="modal-title">
+              {{
+                viewingRole ? 'View Role Details' : editingRole ? 'Edit Role' : 'Create New Role'
+              }}
+            </h6>
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="modal-body">
@@ -249,52 +288,92 @@
               <div class="row">
                 <div class="col-xl-12 mb-3">
                   <label class="form-label">Role Name *</label>
-                  <input 
-                    type="text" 
-                    class="form-control" 
+                  <input
+                    type="text"
+                    class="form-control"
                     v-model="form.name"
                     placeholder="e.g., Manager, Editor, Viewer"
+                    :disabled="viewingRole"
                     required
-                  >
+                  />
                 </div>
                 <div class="col-xl-12 mb-3">
                   <label class="form-label">Description</label>
-                  <textarea 
-                    class="form-control" 
+                  <textarea
+                    class="form-control"
                     v-model="form.description"
                     rows="2"
                     placeholder="Brief description of this role..."
+                    :disabled="viewingRole"
                   ></textarea>
                 </div>
                 <div class="col-xl-12 mb-3">
-                  <label class="form-label">Permissions *</label>
-                  <div class="border rounded p-3" style="max-height: 300px; overflow-y: auto;">
+                  <label class="form-label">Permissions {{ viewingRole ? '' : '*' }}</label>
+
+                  <!-- View Mode: Only show role's permissions -->
+                  <div
+                    v-if="viewingRole"
+                    class="border rounded p-3"
+                    style="max-height: 300px; overflow-y: auto"
+                  >
+                    <div v-if="viewRolePermissionGroups.length > 0">
+                      <div
+                        v-for="(group, index) in viewRolePermissionGroups"
+                        :key="index"
+                        class="mb-3"
+                      >
+                        <div class="fw-semibold mb-2 text-primary">
+                          <i class="ri-key-line me-1"></i>{{ group.name }}
+                        </div>
+                        <div class="ms-4">
+                          <div
+                            v-for="permission in group.permissions"
+                            :key="permission.id"
+                            class="mb-2 d-flex align-items-center"
+                          >
+                            <i class="ri-checkbox-circle-fill text-success me-2"></i>
+                            <span class="fs-13">{{ permission.name }}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div v-else class="text-muted text-center py-3">
+                      <i class="ri-information-line me-1"></i>No permissions assigned to this role
+                    </div>
+                  </div>
+
+                  <!-- Edit/Create Mode: Show all permissions with checkboxes -->
+                  <div
+                    v-else
+                    class="border rounded p-3"
+                    style="max-height: 300px; overflow-y: auto"
+                  >
                     <div v-for="(group, index) in permissionGroups" :key="index" class="mb-3">
                       <div class="d-flex align-items-center mb-2">
-                        <input 
-                          type="checkbox" 
+                        <input
+                          type="checkbox"
                           class="form-check-input me-2"
                           :id="`group-${index}`"
                           @change="toggleGroup(group)"
                           :checked="isGroupSelected(group)"
-                        >
+                        />
                         <label class="form-check-label fw-semibold" :for="`group-${index}`">
                           {{ group.name }}
                         </label>
                       </div>
                       <div class="ms-4">
-                        <div 
-                          v-for="permission in group.permissions" 
+                        <div
+                          v-for="permission in group.permissions"
                           :key="permission.id"
                           class="form-check mb-1"
                         >
-                          <input 
-                            type="checkbox" 
+                          <input
+                            type="checkbox"
                             class="form-check-input"
                             :id="`perm-${permission.id}`"
                             :value="permission.id"
                             v-model="form.permissions"
-                          >
+                          />
                           <label class="form-check-label fs-13" :for="`perm-${permission.id}`">
                             {{ permission.name }}
                           </label>
@@ -307,8 +386,10 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary" @click="saveRole">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              {{ viewingRole ? 'Close' : 'Cancel' }}
+            </button>
+            <button v-if="!viewingRole" type="button" class="btn btn-primary" @click="saveRole">
               <i class="ri-save-line me-1"></i>Save Role
             </button>
           </div>
@@ -319,72 +400,97 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { Head, router } from '@inertiajs/vue3'
+import * as bootstrap from 'bootstrap'
 
 // Props with default data
 const props = defineProps({
   roles: {
     type: Array,
     default: () => [
-      { 
-        id: 1, 
-        name: 'admin', 
+      {
+        id: 1,
+        name: 'admin',
         description: 'Administrator with full access',
         permissions: [],
-        users_count: 1
+        users_count: 1,
       },
-      { 
-        id: 2, 
-        name: 'manager', 
+      {
+        id: 2,
+        name: 'manager',
         description: 'Manager with limited admin access',
         permissions: [],
-        users_count: 2
+        users_count: 2,
       },
-      { 
-        id: 3, 
-        name: 'user', 
+      {
+        id: 3,
+        name: 'user',
         description: 'Regular user with basic access',
         permissions: [],
-        users_count: 5
-      }
-    ]
+        users_count: 5,
+      },
+    ],
   },
   allPermissions: {
     type: Array,
-    default: () => []
+    default: () => [],
   },
   stats: {
     type: Object,
     default: () => ({
-      totalUsers: 8
-    })
-  }
+      totalUsers: 8,
+    }),
+  },
 })
 
 // State
 const editingRole = ref(null)
+const viewingRole = ref(null)
 const form = ref({
   name: '',
   description: '',
-  permissions: []
+  permissions: [],
 })
+const roleModal = ref(null)
 
 // Computed
 const permissionGroups = computed(() => {
   const groups = {}
-  
-  props.allPermissions.forEach(permission => {
+
+  props.allPermissions.forEach((permission) => {
     const groupName = permission.name.split('.')[0]
     if (!groups[groupName]) {
       groups[groupName] = {
         name: groupName.charAt(0).toUpperCase() + groupName.slice(1),
-        permissions: []
+        permissions: [],
       }
     }
     groups[groupName].permissions.push(permission)
   })
-  
+
+  return Object.values(groups)
+})
+
+const viewRolePermissionGroups = computed(() => {
+  if (!viewingRole.value) return []
+
+  const groups = {}
+  const rolePermissionIds = form.value.permissions
+
+  props.allPermissions.forEach((permission) => {
+    if (rolePermissionIds.includes(permission.id)) {
+      const groupName = permission.name.split('.')[0]
+      if (!groups[groupName]) {
+        groups[groupName] = {
+          name: groupName.charAt(0).toUpperCase() + groupName.slice(1),
+          permissions: [],
+        }
+      }
+      groups[groupName].permissions.push(permission)
+    }
+  })
+
   return Object.values(groups)
 })
 
@@ -393,42 +499,60 @@ const getRoleBadgeClass = (roleName) => {
   const classes = {
     admin: 'bg-primary-transparent',
     manager: 'bg-success-transparent',
-    user: 'bg-info-transparent'
+    user: 'bg-info-transparent',
   }
   return classes[roleName] || 'bg-secondary-transparent'
 }
 
 const openCreateModal = () => {
   editingRole.value = null
+  viewingRole.value = null
   form.value = {
     name: '',
     description: '',
-    permissions: []
+    permissions: [],
   }
-  const modal = new bootstrap.Modal(document.getElementById('roleModal'))
-  modal.show()
+  if (roleModal.value) {
+    roleModal.value.show()
+  }
 }
 
 const viewRole = (role) => {
-  console.log('Viewing role:', role)
-  // router.visit(`/admin/roles/${role.id}`)
-}
-
-const editRole = (role) => {
-  editingRole.value = role
+  viewingRole.value = role
+  editingRole.value = null
   form.value = {
     name: role.name,
     description: role.description || '',
-    permissions: role.permissions?.map(p => p.id) || []
+    permissions: role.permissions?.map((p) => p.id) || [],
   }
-  const modal = new bootstrap.Modal(document.getElementById('roleModal'))
-  modal.show()
+
+  if (roleModal.value) {
+    roleModal.value.show()
+  }
+}
+
+const editRole = (role) => {
+  console.log('Edit Role - Original:', role)
+  console.log('Edit Role - Permissions:', role.permissions)
+
+  editingRole.value = role
+  viewingRole.value = null
+  form.value = {
+    name: role.name,
+    description: role.description || '',
+    permissions: role.permissions?.map((p) => p.id) || [],
+  }
+
+  console.log('Edit Role - Form permissions:', form.value.permissions)
+
+  if (roleModal.value) {
+    roleModal.value.show()
+  }
 }
 
 const confirmDelete = (role) => {
   if (confirm(`Are you sure you want to delete the role "${role.name}"?`)) {
-    console.log('Deleting role:', role)
-    // router.delete(`/admin/roles/${role.id}`)
+    router.delete(`/admin/roles/${role.id}`)
   }
 }
 
@@ -437,34 +561,40 @@ const saveRole = () => {
     alert('Please enter role name')
     return
   }
-  
-  console.log('Saving role:', form.value)
-  
-  // if (editingRole.value) {
-  //   router.put(`/admin/roles/${editingRole.value.id}`, form.value)
-  // } else {
-  //   router.post('/admin/roles', form.value)
-  // }
-  
-  const modal = bootstrap.Modal.getInstance(document.getElementById('roleModal'))
-  modal.hide()
+
+  if (editingRole.value) {
+    router.put(`/admin/roles/${editingRole.value.id}`, form.value)
+  } else {
+    router.post('/admin/roles', form.value)
+  }
+
+  if (roleModal.value) {
+    roleModal.value.hide()
+  }
 }
 
 const toggleGroup = (group) => {
-  const groupPermissionIds = group.permissions.map(p => p.id)
-  const allSelected = groupPermissionIds.every(id => form.value.permissions.includes(id))
-  
+  const groupPermissionIds = group.permissions.map((p) => p.id)
+  const allSelected = groupPermissionIds.every((id) => form.value.permissions.includes(id))
+
   if (allSelected) {
-    form.value.permissions = form.value.permissions.filter(id => !groupPermissionIds.includes(id))
+    form.value.permissions = form.value.permissions.filter((id) => !groupPermissionIds.includes(id))
   } else {
     form.value.permissions = [...new Set([...form.value.permissions, ...groupPermissionIds])]
   }
 }
 
 const isGroupSelected = (group) => {
-  const groupPermissionIds = group.permissions.map(p => p.id)
-  return groupPermissionIds.every(id => form.value.permissions.includes(id))
+  const groupPermissionIds = group.permissions.map((p) => p.id)
+  return groupPermissionIds.every((id) => form.value.permissions.includes(id))
 }
+
+onMounted(() => {
+  const modalElement = document.getElementById('roleModal')
+  if (modalElement) {
+    roleModal.value = new bootstrap.Modal(modalElement)
+  }
+})
 </script>
 
 <style scoped>

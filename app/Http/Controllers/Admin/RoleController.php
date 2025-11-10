@@ -68,6 +68,7 @@ class RoleController extends Controller
 
         $role = Role::create([
             'name' => $validated['name'],
+            'description' => $validated['description'] ?? null,
             'guard_name' => 'web',
         ]);
 
@@ -110,6 +111,7 @@ class RoleController extends Controller
 
         $role->update([
             'name' => $validated['name'],
+            'description' => $validated['description'] ?? null,
         ]);
 
         if (isset($validated['permissions'])) {
