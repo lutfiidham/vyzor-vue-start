@@ -233,12 +233,116 @@
         </div>
       </div>
     </div>
+
+    <!-- User Modal -->
+    <div class="modal fade" id="userModal" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h6 class="modal-title">
+              {{ viewingUser ? 'View User Details' : (editingUser ? 'Edit User' : 'Create New User') }}
+            </h6>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <form @submit.prevent="saveUser">
+              <div class="row">
+                <div class="col-xl-6 mb-3">
+                  <label class="form-label">Name *</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    v-model="form.name"
+                    placeholder="Enter full name"
+                    :disabled="viewingUser"
+                    required
+                  >
+                </div>
+                <div class="col-xl-6 mb-3">
+                  <label class="form-label">Email *</label>
+                  <input 
+                    type="email" 
+                    class="form-control" 
+                    v-model="form.email"
+                    placeholder="Enter email address"
+                    :disabled="viewingUser"
+                    required
+                  >
+                </div>
+                <div class="col-xl-6 mb-3" v-if="!viewingUser">
+                  <label class="form-label">Password {{ editingUser ? '' : '*' }}</label>
+                  <input 
+                    type="password" 
+                    class="form-control" 
+                    v-model="form.password"
+                    placeholder="Enter password"
+                    :required="!editingUser"
+                  >
+                  <small class="text-muted" v-if="editingUser">Leave blank to keep current password</small>
+                </div>
+                <div class="col-xl-6 mb-3" v-if="!viewingUser && form.password">
+                  <label class="form-label">Confirm Password *</label>
+                  <input 
+                    type="password" 
+                    class="form-control" 
+                    v-model="form.password_confirmation"
+                    placeholder="Confirm password"
+                    required
+                  >
+                </div>
+                <div class="col-xl-6 mb-3">
+                  <label class="form-label">Role *</label>
+                  <select 
+                    class="form-select" 
+                    v-model="form.role"
+                    :disabled="viewingUser"
+                    required
+                  >
+                    <option value="user">User</option>
+                    <option value="manager">Manager</option>
+                    <option value="admin">Admin</option>
+                  </select>
+                </div>
+                <div class="col-xl-6 mb-3">
+                  <label class="form-label">Status</label>
+                  <div class="form-check form-switch mt-2">
+                    <input 
+                      class="form-check-input" 
+                      type="checkbox" 
+                      v-model="form.is_active"
+                      :disabled="viewingUser"
+                    >
+                    <label class="form-check-label">
+                      {{ form.is_active ? 'Active' : 'Inactive' }}
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              {{ viewingUser ? 'Close' : 'Cancel' }}
+            </button>
+            <button v-if="!viewingUser" type="button" class="btn btn-primary" @click="saveUser">
+              <i class="ri-save-line me-1"></i>{{ editingUser ? 'Update' : 'Create' }} User
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import { Head, router } from '@inertiajs/vue3'
+import * as bootstrap from 'bootstrap'
+import { useToast } from '@/composables/useToast'
+import { useConfirm } from '@/composables/useConfirm'
+
+const toast = useToast()
+const { confirmDelete: confirmDeleteDialog } = useConfirm()
 
 // Props with default data
 const props = defineProps({
@@ -275,6 +379,17 @@ const filters = ref({
   search: '',
   role: '',
   status: ''
+})
+const userModal = ref(null)
+const editingUser = ref(null)
+const viewingUser = ref(null)
+const form = ref({
+  name: '',
+  email: '',
+  password: '',
+  password_confirmation: '',
+  role: 'user',
+  is_active: true
 })
 
 // Computed
@@ -331,33 +446,128 @@ const toggleSelectAll = () => {
 }
 
 const openCreateModal = () => {
-  router.visit('/admin/users/create')
+  editingUser.value = null
+  viewingUser.value = null
+  form.value = {
+    name: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+    role: 'user',
+    is_active: true
+  }
+  if (userModal.value) {
+    userModal.value.show()
+  }
 }
 
 const viewUser = (user) => {
-  router.visit(`/admin/users/${user.id}`)
+  viewingUser.value = user
+  editingUser.value = null
+  form.value = {
+    name: user.name,
+    email: user.email,
+    role: user.role,
+    is_active: user.is_active
+  }
+  if (userModal.value) {
+    userModal.value.show()
+  }
 }
 
 const editUser = (user) => {
-  router.visit(`/admin/users/${user.id}/edit`)
+  editingUser.value = user
+  viewingUser.value = null
+  form.value = {
+    name: user.name,
+    email: user.email,
+    password: '',
+    password_confirmation: '',
+    role: user.role,
+    is_active: user.is_active
+  }
+  if (userModal.value) {
+    userModal.value.show()
+  }
 }
 
-const confirmDelete = (user) => {
-  if (confirm(`Are you sure you want to delete ${user.name}?`)) {
+const confirmDelete = async (user) => {
+  const confirmed = await confirmDeleteDialog(user.name)
+  
+  if (confirmed) {
     router.delete(`/admin/users/${user.id}`, {
       preserveScroll: true,
       onSuccess: () => {
-        // User deleted successfully
+        toast.success('User deleted successfully!')
       },
       onError: (errors) => {
-        console.error('Delete failed:', errors)
+        const errorMessage = Object.values(errors)[0] || 'Failed to delete user'
+        toast.error(errorMessage)
       }
     })
   }
 }
 
-const bulkAction = (action) => {
-  if (!confirm(`Are you sure you want to ${action} ${selected.value.length} user(s)?`)) {
+const saveUser = () => {
+  if (!form.value.name || !form.value.email) {
+    toast.error('Please fill in all required fields')
+    return
+  }
+
+  if (editingUser.value) {
+    // Update user
+    const data = {
+      name: form.value.name,
+      email: form.value.email,
+      role: form.value.role,
+      is_active: form.value.is_active
+    }
+    
+    if (form.value.password) {
+      data.password = form.value.password
+      data.password_confirmation = form.value.password_confirmation
+    }
+
+    router.put(`/admin/users/${editingUser.value.id}`, data, {
+      preserveScroll: true,
+      onSuccess: () => {
+        toast.success('User updated successfully!')
+        if (userModal.value) {
+          userModal.value.hide()
+        }
+      },
+      onError: (errors) => {
+        const errorMessage = Object.values(errors)[0] || 'Failed to update user'
+        toast.error(errorMessage)
+      }
+    })
+  } else {
+    // Create user
+    if (!form.value.password) {
+      toast.error('Password is required for new user')
+      return
+    }
+
+    router.post('/admin/users', form.value, {
+      preserveScroll: true,
+      onSuccess: () => {
+        toast.success('User created successfully!')
+        if (userModal.value) {
+          userModal.value.hide()
+        }
+      },
+      onError: (errors) => {
+        const errorMessage = Object.values(errors)[0] || 'Failed to create user'
+        toast.error(errorMessage)
+      }
+    })
+  }
+}
+
+const bulkAction = async (action) => {
+  const confirmed = await confirmDeleteDialog(`${selected.value.length} user(s)`)
+  
+  if (!confirmed) {
     return
   }
   
@@ -367,11 +577,13 @@ const bulkAction = (action) => {
   }, {
     preserveScroll: true,
     onSuccess: () => {
+      toast.success(`Bulk action "${action}" completed successfully!`)
       selected.value = []
       selectAll.value = false
     },
     onError: (errors) => {
-      console.error('Bulk action failed:', errors)
+      const errorMessage = Object.values(errors)[0] || 'Bulk action failed'
+      toast.error(errorMessage)
     }
   })
 }
@@ -420,6 +632,13 @@ const formatDate = (date) => {
 // Watch selected
 watch(selected, (newVal) => {
   selectAll.value = newVal.length === props.users.data.length && newVal.length > 0
+})
+
+onMounted(() => {
+  const modalElement = document.getElementById('userModal')
+  if (modalElement) {
+    userModal.value = new bootstrap.Modal(modalElement)
+  }
 })
 </script>
 

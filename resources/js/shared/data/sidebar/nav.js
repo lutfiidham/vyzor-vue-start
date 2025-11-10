@@ -30,7 +30,6 @@ export const MENUITEMS = [
     active: false,
     selected: false,
     dirchange: false,
-    badgetxt: `<span class="badge bg-success-transparent ms-2">New</span>`,
   },
   {
     title: 'Roles & Permissions',

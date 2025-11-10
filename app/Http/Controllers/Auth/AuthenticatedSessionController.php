@@ -72,6 +72,11 @@ class AuthenticatedSessionController extends Controller
         // Clear rate limiter on successful login
         RateLimiter::clear($throttleKey);
 
+        // Update last login timestamp
+        $user->update([
+            'last_login_at' => now(),
+        ]);
+
         // Regenerate session to prevent session fixation
         $request->session()->regenerate();
 
