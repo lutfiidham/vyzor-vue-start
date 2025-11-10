@@ -400,12 +400,12 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, getCurrentInstance } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { Head, router } from '@inertiajs/vue3'
 import * as bootstrap from 'bootstrap'
+import { useToast } from '@/composables/useToast'
 
-const { proxy } = getCurrentInstance()
-const theme = localStorage.getItem('vyzorcolortheme') || 'light'
+const toast = useToast()
 
 // Props with default data
 const props = defineProps({
@@ -553,23 +553,11 @@ const confirmDelete = (role) => {
     router.delete(`/admin/roles/${role.id}`, {
       preserveScroll: true,
       onSuccess: () => {
-        proxy.$toast.success('Role deleted successfully!', {
-          theme: 'colored',
-          icon: true,
-          hideProgressBar: false,
-          autoClose: 3000,
-          position: 'top-right',
-        })
+        toast.success('Role deleted successfully!')
       },
       onError: (errors) => {
         const errorMessage = Object.values(errors)[0] || 'Failed to delete role. Role may have assigned users.'
-        proxy.$toast.error(errorMessage, {
-          theme: 'colored',
-          icon: true,
-          hideProgressBar: false,
-          autoClose: 3000,
-          position: 'top-right',
-        })
+        toast.error(errorMessage)
       }
     })
   }
@@ -577,13 +565,7 @@ const confirmDelete = (role) => {
 
 const saveRole = () => {
   if (!form.value.name) {
-    proxy.$toast.error('Please enter role name', {
-      theme: 'colored',
-      icon: true,
-      hideProgressBar: false,
-      autoClose: 3000,
-      position: 'top-right',
-    })
+    toast.error('Please enter role name')
     return
   }
 
@@ -591,52 +573,28 @@ const saveRole = () => {
     router.put(`/admin/roles/${editingRole.value.id}`, form.value, {
       preserveScroll: true,
       onSuccess: () => {
-        proxy.$toast.success('Role updated successfully!', {
-          theme: 'colored',
-          icon: true,
-          hideProgressBar: false,
-          autoClose: 3000,
-          position: 'top-right',
-        })
+        toast.success('Role updated successfully!')
         if (roleModal.value) {
           roleModal.value.hide()
         }
       },
       onError: (errors) => {
         const errorMessage = Object.values(errors)[0] || 'Failed to update role'
-        proxy.$toast.error(errorMessage, {
-          theme: 'colored',
-          icon: true,
-          hideProgressBar: false,
-          autoClose: 3000,
-          position: 'top-right',
-        })
+        toast.error(errorMessage)
       }
     })
   } else {
     router.post('/admin/roles', form.value, {
       preserveScroll: true,
       onSuccess: () => {
-        proxy.$toast.success('Role created successfully!', {
-          theme: 'colored',
-          icon: true,
-          hideProgressBar: false,
-          autoClose: 3000,
-          position: 'top-right',
-        })
+        toast.success('Role created successfully!')
         if (roleModal.value) {
           roleModal.value.hide()
         }
       },
       onError: (errors) => {
         const errorMessage = Object.values(errors)[0] || 'Failed to create role'
-        proxy.$toast.error(errorMessage, {
-          theme: 'colored',
-          icon: true,
-          hideProgressBar: false,
-          autoClose: 3000,
-          position: 'top-right',
-        })
+        toast.error(errorMessage)
       }
     })
   }
