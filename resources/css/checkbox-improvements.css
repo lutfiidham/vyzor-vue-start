@@ -1,0 +1,207 @@
+/* ==============================================
+   Checkbox & Radio Improvements
+   Better visibility in light and dark modes
+   ============================================== */
+
+/* Base checkbox/radio styling - Light Mode */
+[data-theme-mode="light"] .form-check-input {
+  border: 2px solid #8c9097 !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme-mode="light"] .form-check-input:hover {
+  border-color: #6c757d !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-theme-mode="light"] .form-check-input:focus {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 0.25rem rgba(var(--primary-rgb), 0.25) !important;
+}
+
+[data-theme-mode="light"] .form-check-input:checked {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 2px 4px rgba(var(--primary-rgb), 0.3) !important;
+}
+
+/* Base checkbox/radio styling - Dark Mode */
+[data-theme-mode="dark"] .form-check-input {
+  border: 2px solid #6c757d !important;
+  background-color: #2b3144 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme-mode="dark"] .form-check-input:hover {
+  border-color: #8c9097 !important;
+  background-color: #343a50 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme-mode="dark"] .form-check-input:focus {
+  border-color: var(--primary-color) !important;
+  background-color: #343a50 !important;
+  box-shadow: 0 0 0 0.25rem rgba(var(--primary-rgb), 0.4) !important;
+}
+
+[data-theme-mode="dark"] .form-check-input:checked {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 2px 4px rgba(var(--primary-rgb), 0.5) !important;
+}
+
+/* Indeterminate state */
+[data-theme-mode="light"] .form-check-input:indeterminate {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+[data-theme-mode="dark"] .form-check-input:indeterminate {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+/* Disabled state */
+[data-theme-mode="light"] .form-check-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #dee2e6 !important;
+  background-color: #f8f9fa !important;
+}
+
+[data-theme-mode="dark"] .form-check-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #495057 !important;
+  background-color: #1a1d2e !important;
+}
+
+/* Table checkboxes - Extra visibility */
+.table .form-check-input {
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-top: 0.125rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.table .form-check-input:hover {
+  transform: scale(1.1);
+}
+
+/* Header checkbox (select all) */
+.table thead .form-check-input {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Checkbox in cards */
+.card .form-check-input {
+  cursor: pointer;
+}
+
+/* Animation for checked state */
+.form-check-input:checked {
+  animation: checkboxPulse 0.3s ease;
+}
+
+@keyframes checkboxPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* High contrast mode for accessibility */
+@media (prefers-contrast: high) {
+  .form-check-input {
+    border-width: 3px !important;
+  }
+  
+  [data-theme-mode="light"] .form-check-input {
+    border-color: #000000 !important;
+  }
+  
+  [data-theme-mode="dark"] .form-check-input {
+    border-color: #ffffff !important;
+  }
+}
+
+/* Focus visible for keyboard navigation */
+.form-check-input:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Radio buttons - specific styling */
+.form-check-input[type="radio"] {
+  border-radius: 50%;
+}
+
+[data-theme-mode="light"] .form-check-input[type="radio"]:checked {
+  background-image: radial-gradient(circle, #ffffff 35%, var(--primary-color) 35%);
+}
+
+[data-theme-mode="dark"] .form-check-input[type="radio"]:checked {
+  background-image: radial-gradient(circle, #2b3144 35%, var(--primary-color) 35%);
+}
+
+/* Switch toggle improvements */
+.form-switch .form-check-input {
+  width: 2.5rem;
+  height: 1.25rem;
+  border: 2px solid;
+}
+
+[data-theme-mode="light"] .form-switch .form-check-input {
+  border-color: #8c9097;
+  background-color: #e9ecef;
+}
+
+[data-theme-mode="dark"] .form-switch .form-check-input {
+  border-color: #6c757d;
+  background-color: #343a50;
+}
+
+[data-theme-mode="light"] .form-switch .form-check-input:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+[data-theme-mode="dark"] .form-switch .form-check-input:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* Bulk actions bar checkboxes */
+.bulk-actions-bar .form-check-input {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .table .form-check-input {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  .table thead .form-check-input {
+    width: 1.375rem;
+    height: 1.375rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .form-check-input:checked {
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+  }
+}

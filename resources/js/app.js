@@ -7,6 +7,7 @@ import maindashboard from '@/layouts/maindashboard.vue'
 import plugins from './plugins'
 import '../css/app.scss'
 import '../css/scss/switcher.scss'
+import '../css/checkbox-improvements.css'
 import '@mdi/font/css/materialdesignicons.css'
 
 // Progress bar for page transitions
