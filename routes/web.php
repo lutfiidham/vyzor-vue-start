@@ -39,7 +39,12 @@ Route::middleware('auth')->group(function () {
         
         // Role Management
         Route::resource('roles', \App\Http\Controllers\Admin\RoleController::class);
-        
+
+        // Menu Management
+        Route::resource('menus', \App\Http\Controllers\Admin\MenuController::class);
+        Route::post('menus/reorder', [\App\Http\Controllers\Admin\MenuController::class, 'reorder'])->name('menus.reorder');
+        Route::post('menus/{menu}/toggle', [\App\Http\Controllers\Admin\MenuController::class, 'toggle'])->name('menus.toggle');
+
         // Settings
         Route::get('settings', [\App\Http\Controllers\Admin\SystemSettingController::class, 'index'])->name('settings.index');
         Route::post('settings', [\App\Http\Controllers\Admin\SystemSettingController::class, 'update'])->name('settings.update');

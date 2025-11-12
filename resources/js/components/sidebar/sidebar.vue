@@ -428,7 +428,7 @@
 
 <script setup>
 import { onBeforeMount, onMounted, reactive, ref, watchEffect, computed } from 'vue'
-import { MENUITEMS as staticMenuData } from '@/shared/data/sidebar/nav'
+// Dynamic menu from Inertia shared props
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 import 'vue3-perfect-scrollbar/style.css'
 import RecursiveMenu from '../../../UI/recursiveMenu.vue'
@@ -436,7 +436,8 @@ import { switcherStore } from '../../../stores/switcher'
 import BaseImg from '../Baseimage/BaseImg.vue'
 import { Link, usePage, router } from '@inertiajs/vue3'
 
-const menuData = reactive(staticMenuData)
+// Get dynamic menu from Inertia shared props
+const menuData = computed(() => page.props.menus || [])
 
 let level = 0
 let isChild = false
@@ -466,7 +467,7 @@ const handleLogout = () => {
   }
 }
 
-function toggleSubmenu(event, targetObject, menuList = menuData, isChildFlag = isChild) {
+function toggleSubmenu(event, targetObject, menuList = menuData.value, isChildFlag = isChild) {
   let html = document.documentElement
   let element = event.target
   if (
@@ -665,7 +666,7 @@ function HoverToggleInnerMenuFn(event, item) {
   }
 }
 
-function setSubmenu(event, targetObject, menuList = menuData) {
+function setSubmenu(event, targetObject, menuList = menuData.value) {
   let html = document.documentElement
   if (
     html.getAttribute('data-nav-style') != 'icon-hover' &&
@@ -714,7 +715,7 @@ function getParentObject(obj, childObject) {
 }
 
 function setMenuAncestorsActive(targetObject) {
-  const parent = getParentObject(menuData, targetObject)
+  const parent = getParentObject(menuData.value, targetObject)
   let html = document.documentElement
   if (parent) {
     if (hasParentLevel > 2) {
@@ -761,7 +762,7 @@ function closeMenuFn() {
       closeMenuRecursively(item.children)
     })
   }
-  closeMenuRecursively(menuData)
+  closeMenuRecursively(menuData.value)
 }
 const switcher = switcherStore()
 const colorthemeFn = (value) => {
@@ -956,7 +957,7 @@ function setMenuUsingUrl(currentPath) {
       setSubmenuRecursively(item.children)
     })
   }
-  setSubmenuRecursively(menuData)
+  setSubmenuRecursively(menuData.value)
 }
 
 const preventpagejump = ref('')
