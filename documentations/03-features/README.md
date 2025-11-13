@@ -70,6 +70,32 @@ User interface and design system documentation.
 
 ---
 
+### [Menu Management System](./menu-management/)
+Dynamic menu management with role-based access control.
+
+**Contents:**
+- Complete System Architecture
+- Implementation Status & Progress
+- Flexibility & Dynamic Usage Guide
+- Security & RBAC Implementation
+- Quick Reference & Troubleshooting
+
+**Features:**
+- 📋 Dynamic menu CRUD via UI
+- 🔐 Role-based menu access
+- 🏗️ Hierarchical menu structure
+- ⚡ Performance-optimized caching
+- 🔄 Zero code changes needed
+
+**Documentation Files:**
+- [System Overview](./menu-management/README.md) - Main documentation hub
+- [Technical Guide](./menu-management/MENU_MANAGEMENT_SYSTEM.md) - Architecture & implementation
+- [Status Report](./menu-management/MENU_IMPLEMENTATION_STATUS.md) - What's done & working
+- [Flexibility Guide](./menu-management/MENU_FLEXIBILITY_GUIDE.md) - Dynamic usage scenarios
+- [RBAC Implementation](./menu-management/RBAC_IMPLEMENTATION.md) - Security & permissions
+
+---
+
 ## 🎯 Feature Categories
 
 ### 1. Authentication & Security
@@ -92,6 +118,7 @@ User interface and design system documentation.
 - Activity Logs
 - User Management
 - Role & Permissions
+- **Menu Management** (Dynamic, Role-based)
 
 ### 4. Content Management
 - Dynamic Forms
@@ -114,6 +141,7 @@ User interface and design system documentation.
 |---------|--------|---------------|----------|
 | User Management | ✅ Complete | [Planning](./FEATURES_PLANNING.md) | High |
 | Roles & Permissions | ✅ Complete | [Planning](./FEATURES_PLANNING.md) | High |
+| **Menu Management** | ✅ Complete | [Menu System](./menu-management/) | High |
 | Dashboard | ✅ Complete | [Dashboard](./DASHBOARD_CREATION.md) | High |
 | UI System | ✅ Complete | [UI Docs](./UI_IMPLEMENTATION.md) | High |
 | Activity Logs | ✅ Complete | [Planning](./FEATURES_PLANNING.md) | Medium |
