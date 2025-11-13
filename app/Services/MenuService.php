@@ -187,14 +187,35 @@ class MenuService
      */
     public function clearMenuCache(): void
     {
-        // Clear all cache keys that start with 'user_menus_'
+        // Method 1: Clear tracked cache keys
         $cacheKeys = Cache::get('menu_cache_keys', []);
-        
         foreach ($cacheKeys as $key) {
             Cache::forget($key);
         }
-        
         Cache::forget('menu_cache_keys');
+        
+        // Method 2: Clear with Laravel prefix (for database driver)
+        $prefix = config('cache.prefix', 'laravel_cache');
+        
+        // Force clear all possible menu cache patterns (up to 10 roles)
+        for ($i = 1; $i <= 10; $i++) {
+            Cache::forget("user_menus_{$i}");
+            for ($j = $i + 1; $j <= 10; $j++) {
+                Cache::forget("user_menus_{$i}_{$j}");
+            }
+        }
+        
+        // Method 3: For database driver, clear from table directly
+        if (config('cache.default') === 'database') {
+            try {
+                // Delete all cache entries with 'user_menus' in key
+                DB::table(config('cache.stores.database.table', 'cache'))
+                    ->where('key', 'like', $prefix . '%user_menus%')
+                    ->delete();
+            } catch (\Exception $e) {
+                \Log::warning('Could not clear cache from database: ' . $e->getMessage());
+            }
+        }
     }
     
     /**

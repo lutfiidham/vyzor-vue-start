@@ -156,12 +156,13 @@ const confirmDeleteMenu = async (menu) => {
 
 const clearCache = () => {
     router.post('/admin/menus/clear-cache', {}, {
-        preserveScroll: true,
+        preserveScroll: false,
         onSuccess: () => {
-            toast.success('Menu cache cleared! Page will reload...')
+            toast.success('Menu cache cleared! Reloading...')
+            // Force full reload to clear all caches
             setTimeout(() => {
-                window.location.reload()
-            }, 1000)
+                router.reload({ only: [] }) // Force full page reload
+            }, 500)
         },
         onError: (errors) => {
             const errorMessage = Object.values(errors)[0] || 'Failed to clear cache'

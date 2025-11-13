@@ -329,11 +329,18 @@ class MenuController extends Controller
     public function clearCache()
     {
         try {
-            $this->clearMenuCache();
+            \Log::info('Clear cache triggered by user: ' . auth()->id());
+            
+            // Use Artisan cache:clear - sama seperti command line
+            \Artisan::call('cache:clear');
+            
+            \Log::info('All cache cleared successfully');
             
             return redirect()->back()
-                ->with('success', 'Menu cache cleared successfully');
+                ->with('success', 'Cache cleared successfully');
         } catch (\Exception $e) {
+            \Log::error('Failed to clear cache: ' . $e->getMessage());
+            
             return redirect()->back()
                 ->with('error', 'Failed to clear cache: ' . $e->getMessage());
         }
@@ -384,6 +391,7 @@ class MenuController extends Controller
      */
     private function clearMenuCache(): void
     {
-        Cache::forget('user_menus_*');
+        // Clear all cache - sama seperti php artisan cache:clear
+        \Artisan::call('cache:clear');
     }
 }
