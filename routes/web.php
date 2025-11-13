@@ -33,27 +33,78 @@ Route::middleware('auth')->group(function () {
     // Admin Routes
     Route::prefix('admin')->name('admin.')->group(function () {
         // User Management
-        Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
-        Route::post('users/bulk', [\App\Http\Controllers\Admin\UserController::class, 'bulk'])->name('users.bulk');
-        Route::get('users/export', [\App\Http\Controllers\Admin\UserController::class, 'export'])->name('users.export');
+        Route::middleware('permission:users.view')->group(function () {
+            Route::get('users', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
+            Route::get('users/{user}', [\App\Http\Controllers\Admin\UserController::class, 'show'])->name('users.show');
+        });
+        Route::middleware('permission:users.create')->group(function () {
+            Route::get('users/create', [\App\Http\Controllers\Admin\UserController::class, 'create'])->name('users.create');
+            Route::post('users', [\App\Http\Controllers\Admin\UserController::class, 'store'])->name('users.store');
+        });
+        Route::middleware('permission:users.edit')->group(function () {
+            Route::get('users/{user}/edit', [\App\Http\Controllers\Admin\UserController::class, 'edit'])->name('users.edit');
+            Route::put('users/{user}', [\App\Http\Controllers\Admin\UserController::class, 'update'])->name('users.update');
+            Route::patch('users/{user}', [\App\Http\Controllers\Admin\UserController::class, 'update']);
+            Route::post('users/bulk', [\App\Http\Controllers\Admin\UserController::class, 'bulk'])->name('users.bulk');
+        });
+        Route::middleware('permission:users.delete')->group(function () {
+            Route::delete('users/{user}', [\App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('users.destroy');
+        });
+        Route::get('users/export', [\App\Http\Controllers\Admin\UserController::class, 'export'])->name('users.export')->middleware('permission:users.view');
         
         // Role Management
-        Route::resource('roles', \App\Http\Controllers\Admin\RoleController::class);
+        Route::middleware('permission:roles.view')->group(function () {
+            Route::get('roles', [\App\Http\Controllers\Admin\RoleController::class, 'index'])->name('roles.index');
+            Route::get('roles/{role}', [\App\Http\Controllers\Admin\RoleController::class, 'show'])->name('roles.show');
+        });
+        Route::middleware('permission:roles.create')->group(function () {
+            Route::get('roles/create', [\App\Http\Controllers\Admin\RoleController::class, 'create'])->name('roles.create');
+            Route::post('roles', [\App\Http\Controllers\Admin\RoleController::class, 'store'])->name('roles.store');
+        });
+        Route::middleware('permission:roles.edit')->group(function () {
+            Route::get('roles/{role}/edit', [\App\Http\Controllers\Admin\RoleController::class, 'edit'])->name('roles.edit');
+            Route::put('roles/{role}', [\App\Http\Controllers\Admin\RoleController::class, 'update'])->name('roles.update');
+            Route::patch('roles/{role}', [\App\Http\Controllers\Admin\RoleController::class, 'update']);
+        });
+        Route::middleware('permission:roles.delete')->group(function () {
+            Route::delete('roles/{role}', [\App\Http\Controllers\Admin\RoleController::class, 'destroy'])->name('roles.destroy');
+        });
 
         // Menu Management
-        Route::resource('menus', \App\Http\Controllers\Admin\MenuController::class);
-        Route::post('menus/reorder', [\App\Http\Controllers\Admin\MenuController::class, 'reorder'])->name('menus.reorder');
-        Route::post('menus/{menu}/toggle', [\App\Http\Controllers\Admin\MenuController::class, 'toggle'])->name('menus.toggle');
-        Route::post('menus/clear-cache', [\App\Http\Controllers\Admin\MenuController::class, 'clearCache'])->name('menus.clear-cache');
+        Route::middleware('permission:menus.view')->group(function () {
+            Route::get('menus', [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('menus.index');
+            Route::get('menus/{menu}', [\App\Http\Controllers\Admin\MenuController::class, 'show'])->name('menus.show');
+        });
+        Route::middleware('permission:menus.create')->group(function () {
+            Route::get('menus/create', [\App\Http\Controllers\Admin\MenuController::class, 'create'])->name('menus.create');
+            Route::post('menus', [\App\Http\Controllers\Admin\MenuController::class, 'store'])->name('menus.store');
+        });
+        Route::middleware('permission:menus.edit')->group(function () {
+            Route::get('menus/{menu}/edit', [\App\Http\Controllers\Admin\MenuController::class, 'edit'])->name('menus.edit');
+            Route::put('menus/{menu}', [\App\Http\Controllers\Admin\MenuController::class, 'update'])->name('menus.update');
+            Route::patch('menus/{menu}', [\App\Http\Controllers\Admin\MenuController::class, 'update']);
+            Route::post('menus/reorder', [\App\Http\Controllers\Admin\MenuController::class, 'reorder'])->name('menus.reorder');
+            Route::post('menus/{menu}/toggle', [\App\Http\Controllers\Admin\MenuController::class, 'toggle'])->name('menus.toggle');
+            Route::post('menus/clear-cache', [\App\Http\Controllers\Admin\MenuController::class, 'clearCache'])->name('menus.clear-cache');
+        });
+        Route::middleware('permission:menus.delete')->group(function () {
+            Route::delete('menus/{menu}', [\App\Http\Controllers\Admin\MenuController::class, 'destroy'])->name('menus.destroy');
+        });
 
         // Settings
-        Route::get('settings', [\App\Http\Controllers\Admin\SystemSettingController::class, 'index'])->name('settings.index');
-        Route::post('settings', [\App\Http\Controllers\Admin\SystemSettingController::class, 'update'])->name('settings.update');
-        Route::post('settings/test-email', [\App\Http\Controllers\Admin\SystemSettingController::class, 'testEmail'])->name('settings.test-email');
-        Route::post('settings/clear-cache', [\App\Http\Controllers\Admin\SystemSettingController::class, 'clearCache'])->name('settings.clear-cache');
+        Route::middleware('permission:settings.view')->group(function () {
+            Route::get('settings', [\App\Http\Controllers\Admin\SystemSettingController::class, 'index'])->name('settings.index');
+        });
+        Route::middleware('permission:settings.edit')->group(function () {
+            Route::post('settings', [\App\Http\Controllers\Admin\SystemSettingController::class, 'update'])->name('settings.update');
+            Route::post('settings/test-email', [\App\Http\Controllers\Admin\SystemSettingController::class, 'testEmail'])->name('settings.test-email');
+            Route::post('settings/clear-cache', [\App\Http\Controllers\Admin\SystemSettingController::class, 'clearCache'])->name('settings.clear-cache');
+        });
         
         // Activity Logs
-        Route::get('activity-logs', [\App\Http\Controllers\Admin\ActivityLogController::class, 'index'])->name('activity-logs.index');
+        Route::middleware('permission:activity-logs.view')->group(function () {
+            Route::get('activity-logs', [\App\Http\Controllers\Admin\ActivityLogController::class, 'index'])->name('activity-logs.index');
+        });
     });
     
     // Profile Routes

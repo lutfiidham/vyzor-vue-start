@@ -20,28 +20,34 @@ class PermissionSeeder extends Seeder
             'users.create',
             'users.edit',
             'users.delete',
-            
+
             // Role Management
             'roles.view',
             'roles.create',
             'roles.edit',
             'roles.delete',
-            
+
+            // Menu Management
+            'menus.view',
+            'menus.create',
+            'menus.edit',
+            'menus.delete',
+
             // Content Management
             'posts.view',
             'posts.create',
             'posts.edit',
             'posts.delete',
             'posts.publish',
-            
+
             // Settings
             'settings.view',
             'settings.edit',
-            
+
             // Reports
             'reports.view',
             'reports.export',
-            
+
             // Activity Logs
             'activity-logs.view',
             'activity-logs.export',
@@ -67,6 +73,7 @@ class PermissionSeeder extends Seeder
         $managerRole->update(['description' => 'Can manage content and view reports']);
         $managerRole->givePermissionTo([
             'users.view',
+            'roles.view',
             'posts.view', 'posts.create', 'posts.edit', 'posts.publish',
             'reports.view', 'reports.export',
             'activity-logs.view',
