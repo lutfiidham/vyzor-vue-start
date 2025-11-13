@@ -5,7 +5,7 @@ import { useToast } from '@/composables/useToast'
 import { useConfirm } from '@/composables/useConfirm'
 
 const props = defineProps({
-    menus: Array,
+    menuList: Array,  // Menu data for table
     roles: Array,
     parentMenus: Array,
 })
@@ -34,10 +34,10 @@ const form = ref({
 
 // Computed
 const stats = computed(() => ({
-    total: props.menus.length,
-    active: props.menus.filter(m => m.is_active).length,
-    inactive: props.menus.filter(m => m.is_active === false).length,
-    withChildren: props.menus.filter(m => m.children && m.children.length > 0).length,
+    total: props.menuList.length,
+    active: props.menuList.filter(m => m.is_active).length,
+    inactive: props.menuList.filter(m => m.is_active === false).length,
+    withChildren: props.menuList.filter(m => m.children && m.children.length > 0).length,
 }))
 
 const availableParentMenus = computed(() => {
@@ -109,6 +109,9 @@ const editMenu = (menu) => {
     // Ensure parent_id is correct type (number or null)
     const parentId = menu.parent_id ? parseInt(menu.parent_id) : null
     
+    // Ensure role_ids are numbers
+    const roleIds = menu.roles?.map(r => parseInt(r.id)) || []
+    
     form.value = {
         title: menu.title || '',
         parent_id: parentId,
@@ -121,7 +124,7 @@ const editMenu = (menu) => {
         is_active: menu.is_active !== undefined ? menu.is_active : true,
         target: menu.target || '_self',
         description: menu.description || '',
-        role_ids: menu.roles?.map(r => r.id) || [],
+        role_ids: roleIds,
     }
     
     if (menuModal.value) {
@@ -149,6 +152,22 @@ const confirmDeleteMenu = async (menu) => {
             }
         })
     }
+}
+
+const clearCache = () => {
+    router.post('/admin/menus/clear-cache', {}, {
+        preserveScroll: true,
+        onSuccess: () => {
+            toast.success('Menu cache cleared! Page will reload...')
+            setTimeout(() => {
+                window.location.reload()
+            }, 1000)
+        },
+        onError: (errors) => {
+            const errorMessage = Object.values(errors)[0] || 'Failed to clear cache'
+            toast.error(errorMessage)
+        }
+    })
 }
 
 const toggleStatus = (menu) => {
@@ -333,6 +352,9 @@ onMounted(() => {
                     <div class="card-header justify-content-between">
                         <div class="card-title">Menus List</div>
                         <div>
+                            <button class="btn btn-secondary btn-wave me-2" @click="clearCache">
+                                <i class="ri-refresh-line me-1"></i>Clear Cache
+                            </button>
                             <button class="btn btn-primary btn-wave" @click="openCreateModal">
                                 <i class="ri-add-line me-1"></i>Create Menu
                             </button>
@@ -353,7 +375,7 @@ onMounted(() => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <template v-for="menu in menus" :key="menu.id">
+                                    <template v-for="menu in menuList" :key="menu.id">
                                         <tr>
                                             <td>{{ menu.order }}</td>
                                             <td>
@@ -482,7 +504,7 @@ onMounted(() => {
                                 </tbody>
                             </table>
 
-                            <div v-if="menus.length === 0" class="text-center py-5">
+                            <div v-if="menuList.length === 0" class="text-center py-5">
                                 <i class="ri-menu-line fs-1 text-muted"></i>
                                 <p class="text-muted mt-3">No menus found</p>
                                 <button class="btn btn-primary btn-sm" @click="openCreateModal">

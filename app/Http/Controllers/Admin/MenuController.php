@@ -47,7 +47,7 @@ class MenuController extends Controller
             ->get(['id', 'title']);
 
         return Inertia::render('Admin/Menus/Index', [
-            'menus' => $menuTree,
+            'menuList' => $menuTree,  // For table display
             'roles' => $roles,
             'parentMenus' => $parentMenus,
             'filters' => [
@@ -320,6 +320,22 @@ class MenuController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()
                 ->with('error', 'Failed to update menu status: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Clear menu cache manually
+     */
+    public function clearCache()
+    {
+        try {
+            $this->clearMenuCache();
+            
+            return redirect()->back()
+                ->with('success', 'Menu cache cleared successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->with('error', 'Failed to clear cache: ' . $e->getMessage());
         }
     }
 

@@ -13,11 +13,33 @@ class MenuService
      */
     public function getMenusByRoles(array $roleIds): array
     {
-        $cacheKey = "user_menus_" . implode('_', sort($roleIds));
+        sort($roleIds);
+        $cacheKey = "user_menus_" . implode('_', $roleIds);
         
-        return Cache::remember($cacheKey, 3600, function () use ($roleIds) {
+        return Cache::remember($cacheKey, 3600, function () use ($roleIds, $cacheKey) {
+            $this->storeCacheKey($cacheKey);
             return $this->buildMenuTree($roleIds);
         });
+    }
+
+    /**
+     * Get menus for current authenticated user
+     */
+    public function getUserMenu(): array
+    {
+        $user = auth()->user();
+        
+        if (!$user) {
+            return [];
+        }
+
+        $roleIds = $user->roles->pluck('id')->toArray();
+        
+        if (empty($roleIds)) {
+            return [];
+        }
+
+        return $this->getMenusByRoles($roleIds);
     }
 
     /**
@@ -165,7 +187,24 @@ class MenuService
      */
     public function clearMenuCache(): void
     {
-        Cache::flush(); // Or use specific pattern if needed
+        // Clear all cache keys that start with 'user_menus_'
+        $cacheKeys = Cache::get('menu_cache_keys', []);
+        
+        foreach ($cacheKeys as $key) {
+            Cache::forget($key);
+        }
+        
+        Cache::forget('menu_cache_keys');
+    }
+    
+    /**
+     * Store cache key for later clearing
+     */
+    protected function storeCacheKey(string $key): void
+    {
+        $keys = Cache::get('menu_cache_keys', []);
+        $keys[] = $key;
+        Cache::put('menu_cache_keys', array_unique($keys), 86400); // 24 hours
     }
 
     /**
