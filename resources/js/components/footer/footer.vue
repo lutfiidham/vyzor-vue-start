@@ -2,7 +2,7 @@
   <footer class="footer mt-auto py-3 text-center">
     <div class="container">
       <span class="text-muted">
-        Copyright © <span id="year">20225 - {{ currentYear }}</span>
+        Copyright © <span id="year">2025 - {{ currentYear }}</span>
         <a href="javascript:void(0);" class="text-dark fw-medium"></a>. Compiled with
         <span class="bi bi-cup-hot-fill text-danger"></span> by
         <a href="javascript:void(0);">

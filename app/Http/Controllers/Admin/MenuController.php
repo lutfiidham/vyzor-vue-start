@@ -41,9 +41,15 @@ class MenuController extends Controller
             ];
         });
 
+        $parentMenus = Menu::whereNull('parent_id')
+            ->active()
+            ->ordered()
+            ->get(['id', 'title']);
+
         return Inertia::render('Admin/Menus/Index', [
             'menus' => $menuTree,
             'roles' => $roles,
+            'parentMenus' => $parentMenus,
             'filters' => [
                 'search' => $request->search,
                 'status' => $request->status,
@@ -122,13 +128,13 @@ class MenuController extends Controller
 
             DB::commit();
 
-            return redirect()->route('admin.menus.index')
-                ->with('success', 'Menu created successfully');
+            return redirect()->route('admin.menus.index');
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->back()
-                ->with('error', 'Failed to create menu: ' . $e->getMessage())
-                ->withInput();
+            
+            return back()->withErrors([
+                'error' => 'Failed to create menu: ' . $e->getMessage()
+            ]);
         }
     }
 
@@ -224,13 +230,13 @@ class MenuController extends Controller
 
             DB::commit();
 
-            return redirect()->route('admin.menus.index')
-                ->with('success', 'Menu updated successfully');
+            return redirect()->route('admin.menus.index');
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->back()
-                ->with('error', 'Failed to update menu: ' . $e->getMessage())
-                ->withInput();
+            
+            return back()->withErrors([
+                'error' => 'Failed to update menu: ' . $e->getMessage()
+            ]);
         }
     }
 
@@ -328,6 +334,7 @@ class MenuController extends Controller
             if ($menu->parent_id == $parentId) {
                 $menuData = [
                     'id' => $menu->id,
+                    'parent_id' => $menu->parent_id,
                     'title' => $menu->title,
                     'icon' => $menu->icon,
                     'path' => $menu->path,

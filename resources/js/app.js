@@ -10,6 +10,10 @@ import '../css/scss/switcher.scss'
 import '../css/checkbox-improvements.css'
 import '@mdi/font/css/materialdesignicons.css'
 
+// Import Bootstrap JS
+import * as bootstrap from 'bootstrap'
+window.bootstrap = bootstrap
+
 // Progress bar for page transitions
 router.on('start', () => {
   const loader = document.createElement('div')
