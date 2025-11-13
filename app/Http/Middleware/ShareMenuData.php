@@ -21,10 +21,14 @@ class ShareMenuData
      */
     public function handle(Request $request, Closure $next)
     {
-        // Share menu data with all Inertia views
-        Inertia::share([
-            'menus' => fn () => $this->menuService->getUserMenu(),
-        ]);
+        // Load menu ONCE and cache in request
+        if (!$request->attributes->has('user_menus')) {
+            $menus = $this->menuService->getUserMenu();
+            $request->attributes->set('user_menus', $menus);
+        }
+
+        // Share menu data with all Inertia views (eager, not lazy)
+        Inertia::share('menus', $request->attributes->get('user_menus'));
 
         return $next($request);
     }
