@@ -49,7 +49,7 @@
             <div class="d-flex align-items-start justify-content-between">
               <div>
                 <p class="mb-1 text-muted">Total Permissions</p>
-                <h3 class="fw-semibold mb-1">{{ allPermissions.length }}</h3>
+                <h3 class="fw-semibold mb-1">{{ localPermissions.length }}</h3>
                 <span class="badge bg-success-transparent">
                   <i class="ri-key-line me-1"></i>Available
                 </span>
@@ -107,20 +107,54 @@
       </div>
     </div>
 
-    <!-- Roles List -->
+    <!-- Tabs for Roles and Permissions -->
     <div class="row">
       <div class="col-xl-12">
         <div class="card custom-card">
           <div class="card-header justify-content-between">
-            <div class="card-title">Roles List</div>
+            <ul class="nav nav-tabs nav-tabs-header mb-0 d-sm-flex d-block" role="tablist">
+              <li class="nav-item m-1">
+                <a
+                  class="nav-link"
+                  :class="{ active: activeTab === 'roles' }"
+                  @click="activeTab = 'roles'"
+                  href="javascript:void(0);"
+                >
+                  <i class="ri-shield-user-line me-1"></i>Roles
+                </a>
+              </li>
+              <li class="nav-item m-1">
+                <a
+                  class="nav-link"
+                  :class="{ active: activeTab === 'permissions' }"
+                  @click="activeTab = 'permissions'"
+                  href="javascript:void(0);"
+                >
+                  <i class="ri-key-line me-1"></i>Permissions
+                </a>
+              </li>
+            </ul>
             <div>
-              <button class="btn btn-primary btn-wave" @click="openCreateModal">
+              <button
+                v-if="activeTab === 'roles'"
+                class="btn btn-primary btn-wave"
+                @click="openCreateModal"
+              >
                 <i class="ri-add-line me-1"></i>Create Role
               </button>
+              <div v-else class="btn-group" role="group">
+                <button class="btn btn-success btn-wave" @click="openCreatePermissionModal">
+                  <i class="ri-add-line me-1"></i>Create Permission
+                </button>
+                <button class="btn btn-primary btn-wave" @click="openBulkCreateModal">
+                  <i class="ri-flashlight-line me-1"></i>Quick Add CRUD
+                </button>
+              </div>
             </div>
           </div>
           <div class="card-body">
-            <div class="row g-4">
+            <!-- Roles Tab Content -->
+            <div v-show="activeTab === 'roles'" class="row g-4">
               <div
                 class="col-xl-4 col-lg-6 col-md-6 col-sm-12"
                 v-for="role in roles"
@@ -210,13 +244,79 @@
                 </div>
               </div>
             </div>
+
+            <!-- Permissions Tab Content -->
+            <div v-show="activeTab === 'permissions'">
+              <div class="table-responsive">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th scope="col">Permission Name</th>
+                      <th scope="col">Category</th>
+                      <th scope="col">Assigned to Roles</th>
+                      <th scope="col" class="text-end">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="permission in localPermissions" :key="permission.id">
+                      <td>
+                        <span class="badge bg-light text-dark">
+                          <i class="ri-key-line me-1"></i>{{ permission.name }}
+                        </span>
+                      </td>
+                      <td>
+                        <span class="badge bg-primary-transparent">
+                          {{ getPermissionCategory(permission.name) }}
+                        </span>
+                      </td>
+                      <td>
+                        <span
+                          v-for="role in getRolesWithPermission(permission.id)"
+                          :key="role.id"
+                          class="badge bg-info-transparent me-1"
+                        >
+                          {{ role.name }}
+                        </span>
+                        <span
+                          v-if="getRolesWithPermission(permission.id).length === 0"
+                          class="text-muted"
+                        >
+                          Not assigned
+                        </span>
+                      </td>
+                      <td class="text-end">
+                        <button
+                          class="btn btn-sm btn-primary-light btn-icon"
+                          @click="editPermission(permission)"
+                          title="Edit"
+                        >
+                          <i class="ri-pencil-line"></i>
+                        </button>
+                        <button
+                          class="btn btn-sm btn-danger-light btn-icon ms-1"
+                          @click="confirmDeletePermission(permission)"
+                          title="Delete"
+                        >
+                          <i class="ri-delete-bin-line"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr v-if="localPermissions.length === 0">
+                      <td colspan="4" class="text-center text-muted py-4">
+                        No permissions found. Create your first permission!
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Permissions by Group -->
-    <div class="row">
+    <!-- Permissions by Group (Show only when Roles tab is active) -->
+    <div class="row" v-show="activeTab === 'roles'">
       <div class="col-xl-12">
         <div class="card custom-card">
           <div class="card-header">
@@ -396,18 +496,192 @@
         </div>
       </div>
     </div>
+
+    <!-- Permission Modal -->
+    <div
+      class="modal fade"
+      id="permissionModal"
+      tabindex="-1"
+      aria-labelledby="permissionModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h6 class="modal-title" id="permissionModalLabel">
+              {{ editingPermission ? 'Edit Permission' : 'Create Permission' }}
+            </h6>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form @submit.prevent="savePermission">
+              <div class="mb-3">
+                <label for="permissionName" class="form-label">Permission Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="permissionName"
+                  v-model="permissionForm.name"
+                  placeholder="e.g., users.view"
+                  required
+                />
+                <div class="form-text">
+                  Use lowercase with dots (.) for separation. Format: <code>module.action</code
+                  ><br />
+                  Examples: <code>users.view</code>, <code>posts.create</code>,
+                  <code>settings.edit</code>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-success" @click="savePermission">
+              <i class="ri-save-line me-1"></i>Save Permission
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bulk Create Permission Modal -->
+    <div
+      class="modal fade"
+      id="bulkPermissionModal"
+      tabindex="-1"
+      aria-labelledby="bulkPermissionModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h6 class="modal-title" id="bulkPermissionModalLabel">
+              <i class="ri-flashlight-line me-2"></i>Quick Add CRUD Permissions
+            </h6>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form @submit.prevent="saveBulkPermissions">
+              <div class="mb-3">
+                <label for="moduleName" class="form-label">Module Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="moduleName"
+                  v-model="bulkForm.module"
+                  placeholder="e.g., kategori, products, orders"
+                  required
+                />
+                <div class="form-text">
+                  Enter module name in lowercase. Examples: <code>kategori</code>, <code>products</code>, <code>customers</code>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Select Actions to Create</label>
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-check">
+                      <input
+                        type="checkbox"
+                        class="form-check-input"
+                        id="action_view"
+                        value="view"
+                        v-model="bulkForm.actions"
+                      />
+                      <label class="form-check-label" for="action_view">
+                        <i class="ri-eye-line me-1 text-primary"></i>
+                        <strong>View</strong>
+                        <small class="d-block text-muted">{{ bulkForm.module || 'module' }}.view</small>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-check">
+                      <input
+                        type="checkbox"
+                        class="form-check-input"
+                        id="action_create"
+                        value="create"
+                        v-model="bulkForm.actions"
+                      />
+                      <label class="form-check-label" for="action_create">
+                        <i class="ri-add-line me-1 text-success"></i>
+                        <strong>Create</strong>
+                        <small class="d-block text-muted">{{ bulkForm.module || 'module' }}.create</small>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-check mt-2">
+                      <input
+                        type="checkbox"
+                        class="form-check-input"
+                        id="action_edit"
+                        value="edit"
+                        v-model="bulkForm.actions"
+                      />
+                      <label class="form-check-label" for="action_edit">
+                        <i class="ri-pencil-line me-1 text-warning"></i>
+                        <strong>Edit</strong>
+                        <small class="d-block text-muted">{{ bulkForm.module || 'module' }}.edit</small>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-check mt-2">
+                      <input
+                        type="checkbox"
+                        class="form-check-input"
+                        id="action_delete"
+                        value="delete"
+                        v-model="bulkForm.actions"
+                      />
+                      <label class="form-check-label" for="action_delete">
+                        <i class="ri-delete-bin-line me-1 text-danger"></i>
+                        <strong>Delete</strong>
+                        <small class="d-block text-muted">{{ bulkForm.module || 'module' }}.delete</small>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="alert alert-info mb-0">
+                <i class="ri-information-line me-1"></i>
+                <strong>Preview:</strong> Will create 
+                <span class="badge bg-primary">{{ bulkForm.actions.length }}</span>
+                permission(s) for module "<strong>{{ bulkForm.module || '...' }}</strong>"
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" @click="saveBulkPermissions">
+              <i class="ri-flashlight-line me-1"></i>Create Permissions
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
-import { Head, router } from '@inertiajs/vue3'
+import { ref, computed, onMounted, watch } from 'vue'
+import { Head, router, usePage } from '@inertiajs/vue3'
 import * as bootstrap from 'bootstrap'
 import { useToast } from '@/composables/useToast'
 import { useConfirm } from '@/composables/useConfirm'
 
 const toast = useToast()
 const { confirmDelete } = useConfirm()
+const page = usePage()
 
 // Props with default data
 const props = defineProps({
@@ -450,20 +724,32 @@ const props = defineProps({
 })
 
 // State
+const activeTab = ref('roles')
 const editingRole = ref(null)
 const viewingRole = ref(null)
+const editingPermission = ref(null)
+const localPermissions = ref([...props.allPermissions])
 const form = ref({
   name: '',
   description: '',
   permissions: [],
 })
+const permissionForm = ref({
+  name: '',
+})
+const bulkForm = ref({
+  module: '',
+  actions: ['view', 'create', 'edit', 'delete'], // Default: select all
+})
 const roleModal = ref(null)
+const permissionModal = ref(null)
+const bulkPermissionModal = ref(null)
 
 // Computed
 const permissionGroups = computed(() => {
   const groups = {}
 
-  props.allPermissions.forEach((permission) => {
+  localPermissions.value.forEach((permission) => {
     const groupName = permission.name.split('.')[0]
     if (!groups[groupName]) {
       groups[groupName] = {
@@ -552,7 +838,7 @@ const editRole = (role) => {
 
 const confirmDeleteRole = async (role) => {
   const confirmed = await confirmDelete(role.name)
-  
+
   if (confirmed) {
     router.delete(`/admin/roles/${role.id}`, {
       preserveScroll: true,
@@ -560,9 +846,10 @@ const confirmDeleteRole = async (role) => {
         toast.success('Role deleted successfully!')
       },
       onError: (errors) => {
-        const errorMessage = Object.values(errors)[0] || 'Failed to delete role. Role may have assigned users.'
+        const errorMessage =
+          Object.values(errors)[0] || 'Failed to delete role. Role may have assigned users.'
         toast.error(errorMessage)
-      }
+      },
     })
   }
 }
@@ -585,7 +872,7 @@ const saveRole = () => {
       onError: (errors) => {
         const errorMessage = Object.values(errors)[0] || 'Failed to update role'
         toast.error(errorMessage)
-      }
+      },
     })
   } else {
     router.post('/admin/roles', form.value, {
@@ -599,7 +886,7 @@ const saveRole = () => {
       onError: (errors) => {
         const errorMessage = Object.values(errors)[0] || 'Failed to create role'
         toast.error(errorMessage)
-      }
+      },
     })
   }
 }
@@ -620,12 +907,171 @@ const isGroupSelected = (group) => {
   return groupPermissionIds.every((id) => form.value.permissions.includes(id))
 }
 
+// Permission methods
+const getPermissionCategory = (permissionName) => {
+  const parts = permissionName.split('.')
+  return parts[0] || 'general'
+}
+
+const getRolesWithPermission = (permissionId) => {
+  return props.roles.filter((role) => role.permissions.some((p) => p.id === permissionId))
+}
+
+const openCreatePermissionModal = () => {
+  editingPermission.value = null
+  permissionForm.value = {
+    name: '',
+  }
+  if (permissionModal.value) {
+    permissionModal.value.show()
+  }
+}
+
+const editPermission = (permission) => {
+  editingPermission.value = permission
+  permissionForm.value = {
+    name: permission.name,
+  }
+  if (permissionModal.value) {
+    permissionModal.value.show()
+  }
+}
+
+const savePermission = () => {
+  if (!permissionForm.value.name) {
+    toast.error('Please enter permission name')
+    return
+  }
+
+  // Validate format
+  const regex = /^[a-z0-9\-_.]+$/
+  if (!regex.test(permissionForm.value.name)) {
+    toast.error(
+      'Permission name must be lowercase and can only contain letters, numbers, dots, dashes and underscores'
+    )
+    return
+  }
+
+  if (editingPermission.value) {
+    router.put(`/admin/permissions/${editingPermission.value.id}`, permissionForm.value, {
+      preserveScroll: true,
+      onSuccess: () => {
+        toast.success('Permission updated successfully!')
+        if (permissionModal.value) {
+          permissionModal.value.hide()
+        }
+      },
+      onError: (errors) => {
+        const errorMessage = Object.values(errors)[0] || 'Failed to update permission'
+        toast.error(errorMessage)
+      },
+    })
+  } else {
+    router.post('/admin/permissions', permissionForm.value, {
+      preserveScroll: true,
+      onSuccess: () => {
+        toast.success('Permission created successfully!')
+        if (permissionModal.value) {
+          permissionModal.value.hide()
+        }
+      },
+      onError: (errors) => {
+        const errorMessage = Object.values(errors)[0] || 'Failed to create permission'
+        toast.error(errorMessage)
+      },
+    })
+  }
+}
+
+const confirmDeletePermission = async (permission) => {
+  const rolesCount = getRolesWithPermission(permission.id).length
+  const message =
+    rolesCount > 0
+      ? `This permission is assigned to ${rolesCount} role(s). Are you sure you want to delete "${permission.name}"?`
+      : `Are you sure you want to delete permission "${permission.name}"?`
+
+  const confirmed = await confirmDelete(message)
+
+  if (confirmed) {
+    router.delete(`/admin/permissions/${permission.id}`, {
+      preserveScroll: true,
+      onSuccess: () => {
+        toast.success('Permission deleted successfully!')
+      },
+      onError: (errors) => {
+        const errorMessage =
+          Object.values(errors)[0] || 'Failed to delete permission. It may be assigned to roles.'
+        toast.error(errorMessage)
+      },
+    })
+  }
+}
+
+// Bulk create permissions
+const openBulkCreateModal = () => {
+  bulkForm.value = {
+    module: '',
+    actions: ['view', 'create', 'edit', 'delete'],
+  }
+  if (bulkPermissionModal.value) {
+    bulkPermissionModal.value.show()
+  }
+}
+
+const saveBulkPermissions = () => {
+  if (!bulkForm.value.module) {
+    toast.error('Please enter module name')
+    return
+  }
+
+  if (bulkForm.value.actions.length === 0) {
+    toast.error('Please select at least one action')
+    return
+  }
+
+  // Validate module format
+  const regex = /^[a-z0-9\-_]+$/
+  if (!regex.test(bulkForm.value.module)) {
+    toast.error('Module name must be lowercase and can only contain letters, numbers, dashes and underscores')
+    return
+  }
+
+  router.post('/admin/permissions/bulk', bulkForm.value, {
+    preserveScroll: true,
+    onSuccess: () => {
+      toast.success('CRUD permissions created successfully!')
+      if (bulkPermissionModal.value) {
+        bulkPermissionModal.value.hide()
+      }
+    },
+    onError: (errors) => {
+      const errorMessage = Object.values(errors)[0] || 'Failed to create permissions'
+      toast.error(errorMessage)
+    }
+  })
+}
+
 onMounted(() => {
   const modalElement = document.getElementById('roleModal')
   if (modalElement) {
     roleModal.value = new bootstrap.Modal(modalElement)
   }
+
+  const permModalElement = document.getElementById('permissionModal')
+  if (permModalElement) {
+    permissionModal.value = new bootstrap.Modal(permModalElement)
+  }
+
+  const bulkModalElement = document.getElementById('bulkPermissionModal')
+  if (bulkModalElement) {
+    bulkPermissionModal.value = new bootstrap.Modal(bulkModalElement)
+  }
 })
+
+// Watch for changes in allPermissions prop and sync to localPermissions
+watch(() => props.allPermissions, (newPermissions) => {
+  localPermissions.value = [...newPermissions]
+}, { deep: true })
 </script>
 
 <style scoped>

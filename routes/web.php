@@ -70,6 +70,18 @@ Route::middleware('auth')->group(function () {
             Route::delete('roles/{role}', [\App\Http\Controllers\Admin\RoleController::class, 'destroy'])->name('roles.destroy');
         });
 
+        // Permission Management
+        Route::middleware('permission:roles.create')->group(function () {
+            Route::post('permissions', [\App\Http\Controllers\Admin\PermissionController::class, 'store'])->name('permissions.store');
+            Route::post('permissions/bulk', [\App\Http\Controllers\Admin\PermissionController::class, 'bulkStore'])->name('permissions.bulk-store');
+        });
+        Route::middleware('permission:roles.edit')->group(function () {
+            Route::put('permissions/{permission}', [\App\Http\Controllers\Admin\PermissionController::class, 'update'])->name('permissions.update');
+        });
+        Route::middleware('permission:roles.delete')->group(function () {
+            Route::delete('permissions/{permission}', [\App\Http\Controllers\Admin\PermissionController::class, 'destroy'])->name('permissions.destroy');
+        });
+
         // Menu Management
         Route::middleware('permission:menus.view')->group(function () {
             Route::get('menus', [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('menus.index');
