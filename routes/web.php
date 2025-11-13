@@ -80,6 +80,7 @@ Route::middleware('auth')->group(function () {
         });
         Route::middleware('permission:roles.delete')->group(function () {
             Route::delete('permissions/{permission}', [\App\Http\Controllers\Admin\PermissionController::class, 'destroy'])->name('permissions.destroy');
+            Route::post('permissions/bulk-delete', [\App\Http\Controllers\Admin\PermissionController::class, 'bulkDestroy'])->name('permissions.bulk-destroy');
         });
 
         // Menu Management

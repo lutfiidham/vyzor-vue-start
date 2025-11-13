@@ -247,10 +247,35 @@
 
             <!-- Permissions Tab Content -->
             <div v-show="activeTab === 'permissions'">
+              <!-- Bulk Actions Bar -->
+              <div v-if="selectedPermissions.length > 0" class="alert alert-info d-flex align-items-center justify-content-between mb-3">
+                <div>
+                  <i class="ri-checkbox-multiple-line me-2"></i>
+                  <strong>{{ selectedPermissions.length }}</strong> permission(s) selected
+                </div>
+                <div>
+                  <button class="btn btn-sm btn-danger" @click="confirmBulkDelete">
+                    <i class="ri-delete-bin-line me-1"></i>Delete Selected
+                  </button>
+                  <button class="btn btn-sm btn-light ms-2" @click="clearSelection">
+                    <i class="ri-close-line me-1"></i>Clear Selection
+                  </button>
+                </div>
+              </div>
+
               <div class="table-responsive">
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
+                      <th scope="col" style="width: 40px">
+                        <input
+                          type="checkbox"
+                          class="form-check-input"
+                          @change="toggleSelectAll"
+                          :checked="isAllSelected"
+                          :indeterminate="isSomeSelected"
+                        />
+                      </th>
                       <th scope="col">Permission Name</th>
                       <th scope="col">Category</th>
                       <th scope="col">Assigned to Roles</th>
@@ -259,6 +284,14 @@
                   </thead>
                   <tbody>
                     <tr v-for="permission in localPermissions" :key="permission.id">
+                      <td>
+                        <input
+                          type="checkbox"
+                          class="form-check-input"
+                          :value="permission.id"
+                          v-model="selectedPermissions"
+                        />
+                      </td>
                       <td>
                         <span class="badge bg-light text-dark">
                           <i class="ri-key-line me-1"></i>{{ permission.name }}
@@ -302,7 +335,7 @@
                       </td>
                     </tr>
                     <tr v-if="localPermissions.length === 0">
-                      <td colspan="4" class="text-center text-muted py-4">
+                      <td colspan="5" class="text-center text-muted py-4">
                         No permissions found. Create your first permission!
                       </td>
                     </tr>
@@ -725,6 +758,7 @@ const props = defineProps({
 
 // State
 const activeTab = ref('roles')
+const selectedPermissions = ref([])
 const editingRole = ref(null)
 const viewingRole = ref(null)
 const editingPermission = ref(null)
@@ -746,6 +780,14 @@ const permissionModal = ref(null)
 const bulkPermissionModal = ref(null)
 
 // Computed
+const isAllSelected = computed(() => {
+  return localPermissions.value.length > 0 && selectedPermissions.value.length === localPermissions.value.length
+})
+
+const isSomeSelected = computed(() => {
+  return selectedPermissions.value.length > 0 && selectedPermissions.value.length < localPermissions.value.length
+})
+
 const permissionGroups = computed(() => {
   const groups = {}
 
@@ -1049,6 +1091,74 @@ const saveBulkPermissions = () => {
       toast.error(errorMessage)
     }
   })
+}
+
+// Bulk selection methods
+const toggleSelectAll = () => {
+  if (isAllSelected.value) {
+    selectedPermissions.value = []
+  } else {
+    selectedPermissions.value = localPermissions.value.map(p => p.id)
+  }
+}
+
+const clearSelection = () => {
+  selectedPermissions.value = []
+}
+
+const confirmBulkDelete = async () => {
+  const count = selectedPermissions.value.length
+  
+  // Check which permissions are assigned to roles
+  const assignedPermissions = selectedPermissions.value.filter(permId => {
+    const permission = localPermissions.value.find(p => p.id === permId)
+    return permission && getRolesWithPermission(permId).length > 0
+  })
+  
+  let message = `Are you sure you want to delete ${count} permission(s)?`
+  
+  if (assignedPermissions.length > 0) {
+    if (assignedPermissions.length === count) {
+      // All selected are assigned
+      toast.error('All selected permissions are assigned to roles and cannot be deleted.')
+      return
+    } else {
+      // Some are assigned
+      message = `Warning: ${assignedPermissions.length} of ${count} selected permission(s) are assigned to roles and will be skipped.\n\nOnly ${count - assignedPermissions.length} permission(s) will be deleted. Continue?`
+    }
+  }
+  
+  const confirmed = await confirmDelete(message)
+  
+  if (confirmed) {
+    router.post('/admin/permissions/bulk-delete', {
+      permission_ids: selectedPermissions.value
+    }, {
+      preserveScroll: true,
+      onSuccess: (response) => {
+        selectedPermissions.value = []
+        
+        // Check for error message first
+        const errorMessage = response.props.flash?.error
+        if (errorMessage) {
+          toast.error(errorMessage)
+          return
+        }
+        
+        // Use success message from server
+        const successMessage = response.props.flash?.success
+        if (successMessage) {
+          toast.success(successMessage)
+        } else {
+          toast.success('Bulk delete operation completed')
+        }
+      },
+      onError: (errors) => {
+        const errorMessage = Object.values(errors)[0] || 'Failed to delete permissions'
+        toast.error(errorMessage)
+      }
+    })
+  }
 }
 
 onMounted(() => {

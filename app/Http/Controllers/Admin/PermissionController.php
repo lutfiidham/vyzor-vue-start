@@ -115,4 +115,48 @@ class PermissionController extends Controller
             'deletedId' => $permissionId,
         ]);
     }
+
+    public function bulkDestroy(Request $request)
+    {
+        $validated = $request->validate([
+            'permission_ids' => 'required|array|min:1',
+            'permission_ids.*' => 'required|integer|exists:permissions,id',
+        ], [
+            'permission_ids.required' => 'Please select at least one permission to delete',
+            'permission_ids.min' => 'Please select at least one permission to delete',
+        ]);
+
+        $permissionIds = $validated['permission_ids'];
+        
+        // Get permissions
+        $permissions = Permission::whereIn('id', $permissionIds)->get();
+        
+        $deleted = [];
+        $skipped = [];
+
+        foreach ($permissions as $permission) {
+            // Check if permission is assigned to any role
+            if ($permission->roles()->count() > 0) {
+                $skipped[] = $permission->name;
+                continue;
+            }
+
+            $deleted[] = $permission->name;
+            $permission->delete();
+        }
+
+        $message = '';
+        if (count($deleted) > 0) {
+            $message .= 'Deleted ' . count($deleted) . ' permission(s)';
+        }
+        if (count($skipped) > 0) {
+            $message .= (count($deleted) > 0 ? '. ' : '') . 'Skipped ' . count($skipped) . ' permission(s) that are assigned to roles';
+        }
+
+        if (count($deleted) === 0) {
+            return back()->with('error', 'No permissions were deleted. All selected permissions are assigned to roles.');
+        }
+
+        return back()->with('success', $message);
+    }
 }
