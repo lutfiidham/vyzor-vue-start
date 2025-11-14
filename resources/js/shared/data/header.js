@@ -1,8 +1,9 @@
-export let Languages = [
+export const Languages = [
     { name: 'English', flag: '/images/flags/us_flag.jpg' },
     { name: 'Indonesia', flag: '/images/flags/indonesia_flag.jpg' },
-  ],
-  notificationNotes = [
+  ]
+
+export const notificationNotes = [
     {
       id: 1,
       image: '/images/ecommerce/png/13.png',
@@ -54,8 +55,9 @@ export let Languages = [
       liclass: 'border-bottom-0',
       quantity: '2',
     },
-  ],
-  Notifications = [
+  ]
+
+export const Notifications = [
     {
       id: 1,
       title: 'New Message',

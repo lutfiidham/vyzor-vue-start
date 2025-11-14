@@ -126,676 +126,26 @@
         </li>
         <!-- End::header-element -->
 
-        <!-- Start::header-element -->
-        <li class="header-element country-selector dropdown d-sm-block d-none">
-          <!-- Start::header-link|dropdown-toggle -->
-          <a
-            href="javascript:void(0);"
-            class="header-link dropdown-toggle"
-            data-bs-auto-close="outside"
-            data-bs-toggle="dropdown"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="header-link-icon" viewBox="0 0 256 256">
-              <rect width="256" height="256" fill="none" />
-              <path
-                d="M215,168.71a96.42,96.42,0,0,1-30.54,37l-9.36-9.37a8,8,0,0,0-3.63-2.09L150,188.59a8,8,0,0,1-5.88-8.9l2.38-16.2a8,8,0,0,1,4.85-6.22l30.45-12.66a8,8,0,0,1,8.47,1.49Z"
-                opacity="0.2"
-              />
-              <path
-                d="M184,74a8,8,0,0,1-1.94,5.22L159.89,105a8,8,0,0,1-5,2.71l-31.46,4.26a8.06,8.06,0,0,1-5.77-1.45l-19.81-13a8,8,0,0,0-11.34,2l-20.94,31.3a8.06,8.06,0,0,0-1.35,4.41L64,171.49a8,8,0,0,1-3.61,6.64l-9.92,6.52A96,96,0,0,1,184,50Z"
-                opacity="0.2"
-              />
-              <circle
-                cx="128"
-                cy="128"
-                r="96"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              />
-              <path
-                d="M184.42,205.68l-9.36-9.37a8,8,0,0,0-3.63-2.09L150,188.59a8,8,0,0,1-5.88-8.9l2.38-16.2a8,8,0,0,1,4.85-6.22l30.45-12.66a8,8,0,0,1,8.47,1.49L215,168.71"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              />
-              <path
-                d="M50.49,184.65l9.92-6.52A8,8,0,0,0,64,171.49l.21-36.23a8.06,8.06,0,0,1,1.35-4.41l20.94-31.3a8,8,0,0,1,11.34-2l19.81,13a8.06,8.06,0,0,0,5.77,1.45l31.46-4.26a8,8,0,0,0,5-2.71L182.06,79.2A8,8,0,0,0,184,74V50"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              />
-            </svg>
-          </a>
-          <!-- End::header-link|dropdown-toggle -->
-          <ul
-            class="main-header-dropdown dropdown-menu dropdown-menu-end"
-            data-popper-placement="none"
-          >
-            <li v-for="(lang, index) in Languages" :key="index">
-              <a class="dropdown-item d-flex align-items-center" href="javascript:void(0);">
-                <span class="avatar avatar-rounded avatar-xs lh-1 me-2">
-                  <BaseImg :src="lang.flag" alt="img" />
-                </span>
-                {{ lang.name }}
-              </a>
-            </li>
-          </ul>
-        </li>
-        <!-- End::header-element -->
+        <!-- Language Switcher Component -->
+        <!-- <LanguageSwitcher @language-changed="handleLanguageChanged" /> -->
 
-        <!-- Start::header-element -->
-        <!-- Dark/Light theme toggle -->
-        <li class="header-element header-theme-mode">
-          <!-- Start::header-link|layout-setting -->
-          <a href="javascript:void(0);" class="header-link layout-setting">
-            <span class="light-layout" @click="colorthemeFn('dark')">
-              <!-- Start::header-link-icon -->
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="header-link-icon"
-                viewBox="0 0 256 256"
-              >
-                <rect width="256" height="256" fill="none" />
-                <path
-                  d="M108.11,28.11A96.09,96.09,0,0,0,227.89,147.89,96,96,0,1,1,108.11,28.11Z"
-                  opacity="0.2"
-                />
-                <path
-                  d="M108.11,28.11A96.09,96.09,0,0,0,227.89,147.89,96,96,0,1,1,108.11,28.11Z"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-              </svg>
-              <!-- End::header-link-icon -->
-            </span>
-            <span class="dark-layout" @click="colorthemeFn('light')">
-              <!-- Start::header-link-icon -->
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="header-link-icon"
-                viewBox="0 0 256 256"
-              >
-                <rect width="256" height="256" fill="none" />
-                <circle cx="128" cy="128" r="56" opacity="0.2" />
-                <line
-                  x1="128"
-                  y1="40"
-                  x2="128"
-                  y2="32"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <circle
-                  cx="128"
-                  cy="128"
-                  r="56"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <line
-                  x1="64"
-                  y1="64"
-                  x2="56"
-                  y2="56"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <line
-                  x1="64"
-                  y1="192"
-                  x2="56"
-                  y2="200"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <line
-                  x1="192"
-                  y1="64"
-                  x2="200"
-                  y2="56"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <line
-                  x1="192"
-                  y1="192"
-                  x2="200"
-                  y2="200"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <line
-                  x1="40"
-                  y1="128"
-                  x2="32"
-                  y2="128"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <line
-                  x1="128"
-                  y1="216"
-                  x2="128"
-                  y2="224"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <line
-                  x1="216"
-                  y1="128"
-                  x2="224"
-                  y2="128"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-              </svg>
-              <!-- End::header-link-icon -->
-            </span>
-          </a>
-          <!-- End::header-link|layout-setting -->
-        </li>
-        <!-- End::header-element -->
+        <!-- Dark Mode Toggle Component -->
+        <DarkModeToggle @theme-changed="handleThemeChanged" />
 
-        <!-- Start::header-element -->
-        <li class="header-element cart-dropdown dropdown">
-          <!-- Start::header-link|dropdown-toggle -->
-          <a
-            href="javascript:void(0);"
-            class="header-link dropdown-toggle"
-            data-bs-auto-close="outside"
-            data-bs-toggle="dropdown"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="header-link-icon" viewBox="0 0 256 256">
-              <rect width="256" height="256" fill="none" />
-              <path d="M70.55,144H196.1a16,16,0,0,0,15.74-13.14L224,64H56Z" opacity="0.2" />
-              <path
-                d="M188,184H91.17a16,16,0,0,1-15.74-13.14L48.73,24H24"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              />
-              <circle
-                cx="92"
-                cy="204"
-                r="20"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              />
-              <circle
-                cx="188"
-                cy="204"
-                r="20"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              />
-              <path
-                d="M70.55,144H196.1a16,16,0,0,0,15.74-13.14L224,64H56"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              />
-            </svg>
-            <span class="badge bg-primary rounded-pill header-icon-badge" id="cart-icon-badge">{{
-              notificationNotes.length
-            }}</span>
-          </a>
-          <!-- End::header-link|dropdown-toggle -->
-          <!-- Start::main-header-dropdown -->
-          <div
-            class="main-header-dropdown dropdown-menu dropdown-menu-end"
-            data-popper-placement="none"
-          >
-            <div class="p-3 bg-primary text-fixed-white position-relative z-2">
-              <div class="d-flex align-items-center justify-content-between">
-                <p class="mb-0 fs-16">
-                  Cart Items<span
-                    class="badge bg-warning ms-1 fs-12 rounded-circle"
-                    id="cart-data"
-                    >{{ notificationNotes.length }}</span
-                  >
-                </p>
-                <Link
-                  :href="`${baseUrl}/demo/dashboards/ecommerce/products/`"
-                  class="text-fixed-white text-decoration-underline fs-12"
-                  >Continue Shopping <i class="ti ti-arrow-narrow-right"></i
-                ></Link>
-              </div>
-            </div>
-            <div class="dropdown-divider"></div>
-            <ul class="list-unstyled mb-0">
-              <PerfectScrollbar id="header-cart-items-scroll">
-                <li
-                  :class="`dropdown-item ${item.liclass}`"
-                  v-for="(item, index) in notificationNotes"
-                  :key="index"
-                >
-                  <div class="d-flex align-items-start cart-dropdown-item gap-3">
-                    <div class="lh-1">
-                      <span class="avatar avatar-xl bg-gray-300">
-                        <BaseImg :src="item.image" alt="img" />
-                      </span>
-                    </div>
-                    <div class="flex-fill w-75">
-                      <div class="d-flex align-items-start justify-content-between mb-3">
-                        <div class="fs-14 fw-medium w-75">
-                          <div class="text-truncate">
-                            <Link :href="`${baseUrl}/demo/dashboards/ecommerce/cart/`"
-                              >{{ item.name }}
-                            </Link>
-                          </div>
-                          <div class="fs-11 text-muted text-truncate">
-                            <span>{{ item.description }}</span>
-                          </div>
-                        </div>
-                        <div class="text-end">
-                          <a
-                            href="javascript:void(0);"
-                            class="header-cart-remove dropdown-item-close"
-                            @click="handleCartDelete(item.id)"
-                            ><i class="ri-delete-bin-line"></i
-                          ></a>
-                        </div>
-                      </div>
-                      <div class="d-flex align-items-center justify-content-between">
-                        <div class="flex-fill">
-                          <div class="lh-1 fs-12 mb-1">
-                            <span
-                              class="text-muted fw-normal d-inline-block text-decoration-line-through"
-                              >{{ item.oldprice }}</span
-                            ><span class="text-success ms-1">25% off</span>
-                          </div>
-                          <h6 class="fw-medium mb-0">{{ item.newprice }}</h6>
-                        </div>
-                        <div class="d-flex rounded align-items-center flex-nowrap order-qnt gap-2">
-                          <a
-                            href="javascript:void(0);"
-                            @click="dec"
-                            class="badge bg-white p-1 border text-muted fs-13 product-quantity-minus"
-                          >
-                            <i class="ri-subtract-line"></i>
-                          </a>
-                          <input
-                            type="text"
-                            class="form-control form-control-cart border-0 text-center w-100"
-                            aria-label="quantity"
-                            id="product-qty-1"
-                            :value="item.quantity"
-                          />
-                          <a
-                            href="javascript:void(0);"
-                            @click="inc"
-                            class="badge bg-white p-1 border text-muted fs-13 product-quantity-plus"
-                          >
-                            <i class="ri-add-line"></i>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </PerfectScrollbar>
-            </ul>
-            <div
-              class="p-3 empty-header-item border-top position-relative z-2"
-              v-if="notificationNotes.length"
-            >
-              <div class="text-center d-grid">
-                <Link
-                  :href="`${baseUrl}/demo/dashboards/ecommerce/checkout/`"
-                  class="btn btn-primary btn-wave"
-                >
-                  Proceed to checkout</Link
-                >
-              </div>
-            </div>
-            <div class="p-5 empty-item" v-if="!notificationNotes.length">
-              <div class="text-center">
-                <span class="avatar avatar-xl avatar-rounded bg-success-transparent">
-                  <i class="ti ti-shopping-cart fs-2"></i>
-                </span>
-                <h6 class="fw-medium mb-1 mt-3">No items in your cart yet</h6>
-                <span class="mb-3 fw-normal fs-13 d-block"
-                  >Add some to enjoy a seamless checkout experience! :)</span
-                >
-              </div>
-            </div>
-          </div>
-          <!-- End::main-header-dropdown -->
-        </li>
-        <!-- End::header-element -->
+        <!-- Cart Button Component -->
+        <!-- <CartButton :base-url="baseUrl" @cart-updated="handleCartUpdated" /> -->
 
-        <!-- Start::header-element -->
-        <li class="header-element notifications-dropdown d-xl-block d-none dropdown">
-          <!-- Start::header-link|dropdown-toggle -->
-          <a
-            href="javascript:void(0);"
-            class="header-link dropdown-toggle"
-            data-bs-toggle="dropdown"
-            data-bs-auto-close="outside"
-            id="messageDropdown"
-            aria-expanded="false"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="header-link-icon" viewBox="0 0 256 256">
-              <rect width="256" height="256" fill="none" />
-              <path
-                d="M56,104a72,72,0,0,1,144,0c0,35.82,8.3,64.6,14.9,76A8,8,0,0,1,208,192H48a8,8,0,0,1-6.88-12C47.71,168.6,56,139.81,56,104Z"
-                opacity="0.2"
-              />
-              <path
-                d="M96,192a32,32,0,0,0,64,0"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              />
-              <path
-                d="M56,104a72,72,0,0,1,144,0c0,35.82,8.3,64.6,14.9,76A8,8,0,0,1,208,192H48a8,8,0,0,1-6.88-12C47.71,168.6,56,139.81,56,104Z"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              />
-            </svg>
-            <span class="header-icon-pulse bg-secondary rounded pulse pulse-secondary"></span>
-          </a>
-          <!-- End::header-link|dropdown-toggle -->
-          <!-- Start::main-header-dropdown -->
-          <div
-            class="main-header-dropdown dropdown-menu dropdown-menu-end"
-            data-popper-placement="none"
-          >
-            <div class="p-3 bg-primary text-fixed-white">
-              <div class="d-flex align-items-center justify-content-between">
-                <p class="mb-0 fs-16">Notifications</p>
-                <a href="javascript:void(0);" class="badge bg-light text-default border"
-                  >Clear All</a
-                >
-              </div>
-            </div>
-            <div class="dropdown-divider"></div>
-            <PerfectScrollbar class="list-unstyled mb-0" id="header-notification-scroll">
-              <li
-                :class="`dropdown-item position-relative ${idx.liClass}`"
-                v-for="idx in Notifications"
-                :key="idx.id"
-              >
-                <Link :href="`${baseUrl}/demo/applications/chat/`" class="stretched-link"></Link>
-                <div class="d-flex align-items-start gap-3">
-                  <div class="lh-1">
-                    <span class="avatar avatar-sm avatar-rounded bg-primary-transparent">
-                      <BaseImg v-if="idx.avatar" :src="idx.avatar" alt="" />
-                      <i v-if="idx.icon" class="ri-notification-line fs-16"></i>
-                    </span>
-                  </div>
-                  <div class="flex-fill">
-                    <span class="d-block fw-semibold">{{ idx.title }}</span>
-                    <span class="d-block text-muted fs-12">{{ idx.description }}</span>
-                  </div>
-                  <div class="text-end">
-                    <span class="d-block mb-1 fs-12 text-muted">{{ idx.time }}</span>
-                    <span :class="`d-block text-primary ${idx.isUnread ? '' : 'd-none'} `"
-                      ><i class="ri-circle-fill fs-9"></i
-                    ></span>
-                  </div>
-                </div>
-              </li>
-            </PerfectScrollbar>
-            <div class="p-5 empty-item1 d-none">
-              <div class="text-center">
-                <span class="avatar avatar-xl avatar-rounded bg-secondary-transparent">
-                  <i class="ri-notification-off-line fs-2"></i>
-                </span>
-                <h6 class="fw-medium mt-3">No New Notifications</h6>
-              </div>
-            </div>
-          </div>
-          <!-- End::main-header-dropdown -->
-        </li>
-        <!-- End::header-element -->
+        <!-- Notification Button Component -->
+        <!-- <NotificationButton
+          :base-url="baseUrl"
+          @notifications-updated="handleNotificationsUpdated"
+        /> -->
 
-        <!-- Start::header-element -->
-        <li class="header-element header-fullscreen">
-          <a @click="toggleFullScreen()" href="javascript:void(0);" class="header-link">
-            <svg
-              v-if="!isFullScreen"
-              xmlns="http://www.w3.org/2000/svg"
-              class="full-screen-open header-link-icon d-block"
-              viewBox="0 0 256 256"
-            >
-              <rect width="256" height="256" fill="none"></rect>
-              <rect x="48" y="48" width="160" height="160" opacity="0.2"></rect>
-              <polyline
-                points="168 48 208 48 208 88"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              ></polyline>
-              <polyline
-                points="88 208 48 208 48 168"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              ></polyline>
-              <polyline
-                points="208 168 208 208 168 208"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              ></polyline>
-              <polyline
-                points="48 88 48 48 88 48"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              ></polyline>
-            </svg>
-            <svg
-              v-if="isFullScreen"
-              xmlns="http://www.w3.org/2000/svg"
-              class="full-screen-close header-link-icon d-block"
-              viewBox="0 0 256 256"
-            >
-              <rect width="256" height="256" fill="none"></rect>
-              <rect x="32" y="32" width="192" height="192" rx="16" opacity="0.2"></rect>
-              <polyline
-                points="160 48 208 48 208 96"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              ></polyline>
-              <line
-                x1="144"
-                y1="112"
-                x2="208"
-                y2="48"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              ></line>
-              <polyline
-                points="96 208 48 208 48 160"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              ></polyline>
-              <line
-                x1="112"
-                y1="144"
-                x2="48"
-                y2="208"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              ></line>
-            </svg>
-          </a>
-          <!-- End::header-link -->
-        </li>
-        <!-- End::header-element -->
+        <!-- Fullscreen Toggle Component -->
+        <FullscreenToggle @fullscreen-changed="handleFullscreenChanged" />
 
-        <!-- Start::header-element -->
-        <li class="header-element dropdown">
-          <!-- Start::header-link|dropdown-toggle -->
-          <a
-            href="javascript:void(0);"
-            class="header-link dropdown-toggle"
-            id="mainHeaderProfile"
-            data-bs-toggle="dropdown"
-            data-bs-auto-close="outside"
-            aria-expanded="false"
-          >
-            <div class="d-flex align-items-center">
-              <span class="avatar avatar-sm avatar-rounded me-2">
-                <BaseImg v-if="currentUser?.avatar" :src="currentUser.avatar" alt="User Avatar" class="header-link-icon" />
-                <span v-else class="avatar-title bg-primary header-link-icon">{{ userInitials }}</span>
-              </span>
-            </div>
-          </a>
-          <!-- End::header-link|dropdown-toggle -->
-          <div
-            class="main-header-dropdown dropdown-menu pt-0 overflow-hidden header-profile-dropdown dropdown-menu-end"
-            aria-labelledby="mainHeaderProfile"
-          >
-            <div class="p-3 bg-primary text-fixed-white">
-              <div class="d-flex align-items-center justify-content-between">
-                <p class="mb-0 fs-16">{{ currentUser?.name || 'Profile' }}</p>
-                <Link href="/profile/edit" class="text-fixed-white"
-                  ><i class="ti ti-settings-cog"></i
-                ></Link>
-              </div>
-            </div>
-            <div class="dropdown-divider"></div>
-            <div class="p-3">
-              <div class="d-flex align-items-start gap-2">
-                <div class="lh-1">
-                  <span class="avatar avatar-sm bg-primary-transparent avatar-rounded">
-                    <BaseImg v-if="currentUser?.avatar" :src="currentUser.avatar" alt="User Avatar" />
-                    <span v-else class="avatar-title bg-primary">{{ userInitials }}</span>
-                  </span>
-                </div>
-                <div>
-                  <span class="d-block fw-semibold lh-1">{{ currentUser?.name || 'User' }}</span>
-                  <span class="text-muted fs-12">{{ currentUser?.email || 'user@example.com' }}</span>
-                </div>
-              </div>
-            </div>
-            <div class="dropdown-divider"></div>
-            <ul class="list-unstyled mb-0">
-              <li>
-                <ul class="list-unstyled mb-0 sub-list">
-                  <li>
-                    <Link
-                      class="dropdown-item d-flex align-items-center"
-                      href="/profile"
-                      ><i class="ti ti-user-circle me-2 fs-18"></i>My Profile</Link
-                    >
-                  </li>
-                  <li>
-                    <Link
-                      class="dropdown-item d-flex align-items-center"
-                      href="/profile/edit"
-                    >
-                      <i class="ti ti-settings-cog me-2 fs-18"></i>Edit Profile
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <ul class="list-unstyled mb-0 sub-list">
-                  <li>
-                    <Link
-                      class="dropdown-item d-flex align-items-center"
-                      href="/admin/activity-logs"
-                      ><i class="ti ti-bolt me-2 fs-18"></i>Activity Logs</Link
-                    >
-                  </li>
-                  <li>
-                    <Link
-                      class="dropdown-item d-flex align-items-center"
-                      href="/notifications"
-                      ><i class="ti ti-bell me-2 fs-18"></i>Notifications</Link
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <Link
-                  href="/logout"
-                  method="post"
-                  as="button"
-                  class="dropdown-item d-flex align-items-center"
-                  ><i class="ti ti-logout me-2 fs-18"></i>Log Out</Link
-                >
-              </li>
-            </ul>
-          </div>
-        </li>
-        <!-- End::header-element -->
+        <!-- Profile Dropdown Component -->
+        <ProfileDropdown />
 
         <!-- Start::header-element -->
         <li class="header-element">
@@ -914,8 +264,6 @@ import { useAuthStore } from '../../../stores/auth'
 import { switcherStore } from '../../../stores/switcher.js'
 import { MENUITEMS } from '@/shared/data/sidebar/nav.js'
 import { Tooltip } from 'bootstrap'
-import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
-import 'vue3-perfect-scrollbar/style.css'
 import {
   Languages,
   Notifications,
@@ -923,6 +271,16 @@ import {
 } from '@/shared/data/header.js'
 import BaseImg from '../Baseimage/BaseImg.vue'
 import { Link, usePage } from '@inertiajs/vue3'
+
+// Modular components
+import {
+  // LanguageSwitcher,
+  DarkModeToggle,
+  // CartButton,
+  // NotificationButton,
+  FullscreenToggle,
+  ProfileDropdown,
+} from './parts/index.js'
 
 // Stores
 const switcher = switcherStore()
@@ -1013,6 +371,33 @@ const fullscreenChanged = () => {
   isFullScreen.value = !!document.fullscreenElement
 }
 
+// Event handlers for modular components
+const handleLanguageChanged = (lang) => {
+  console.log('Language changed to:', lang)
+  // Add language change logic here
+}
+
+const handleThemeChanged = (theme) => {
+  console.log('Theme changed to:', theme)
+  // Theme is already handled in DarkModeToggle component
+}
+
+const handleCartUpdated = (cartItems) => {
+  notificationNotes.value = cartItems
+  console.log('Cart updated:', cartItems)
+}
+
+const handleNotificationsUpdated = (notifications) => {
+  console.log('Notifications updated:', notifications)
+  // Add notification update logic here
+}
+
+const handleFullscreenChanged = (isFullscreen) => {
+  isFullScreen.value = isFullscreen
+  console.log('Fullscreen changed:', isFullscreen)
+}
+
+// Legacy functions (kept for compatibility)
 const handleCartDelete = (id) => {
   notificationNotes.value = notificationNotes.value.filter((item) => item.id !== id)
 }
