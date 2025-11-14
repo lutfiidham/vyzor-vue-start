@@ -3,60 +3,32 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\SystemSetting;
+use App\Settings\GeneralSettings;
+use App\Settings\EmailSettings;
+use App\Settings\SecuritySettings;
+use App\Settings\NotificationSettings;
+use App\Settings\MaintenanceSettings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
 
 class SystemSettingController extends Controller
 {
-    public function index()
-    {
-        $settings = SystemSetting::pluck('value', 'key')->toArray();
-        
-        // Merge with .env config values sebagai fallback
-        $settings = array_merge([
-            // General Settings
-            'app_name' => config('app.name'),
-            'app_url' => config('app.url'),
-            'admin_email' => config('mail.from.address', 'admin@example.com'),
-            'timezone' => config('app.timezone'),
-            'date_format' => 'Y-m-d',
-            'app_description' => '',
-            
-            // Email Settings
-            'mail_driver' => config('mail.default'),
-            'mail_host' => config('mail.mailers.smtp.host'),
-            'mail_port' => config('mail.mailers.smtp.port'),
-            'mail_encryption' => config('mail.mailers.smtp.encryption'),
-            'mail_username' => config('mail.mailers.smtp.username'),
-            'mail_password' => config('mail.mailers.smtp.password'),
-            'mail_from_address' => config('mail.from.address'),
-            'mail_from_name' => config('mail.from.name'),
-            
-            // Security Settings
-            'two_factor_enabled' => false,
-            'session_lifetime' => config('session.lifetime', 120),
-            'login_attempts' => 5,
-            'lockout_duration' => 15,
-            'password_min_length' => 8,
-            'password_complexity' => false,
-            
-            // Notification Settings
-            'notify_user_registration' => true,
-            'notify_password_reset' => true,
-            'notify_login' => false,
-            'notify_suspicious_activity' => true,
-            'notify_maintenance' => true,
-            'notify_updates' => true,
-            
-            // Maintenance Settings
-            'maintenance_mode' => app()->isDownForMaintenance(),
-            'maintenance_message' => 'We are currently performing scheduled maintenance. We will be back shortly.',
-            'maintenance_end' => '',
-        ], $settings);
+    public function index(
+        GeneralSettings $generalSettings,
+        EmailSettings $emailSettings,
+        SecuritySettings $securitySettings,
+        NotificationSettings $notificationSettings,
+        MaintenanceSettings $maintenanceSettings
+    ) {
+        $settings = array_merge(
+            $this->toArray($generalSettings),
+            $this->toArray($emailSettings),
+            $this->toArray($securitySettings),
+            $this->toArray($notificationSettings),
+            $this->toArray($maintenanceSettings)
+        );
 
         return Inertia::render('Admin/Settings/Index', [
             'settings' => $settings
@@ -68,31 +40,58 @@ class SystemSettingController extends Controller
         $category = $request->input('category');
         $settings = $request->input('settings');
 
-        foreach ($settings as $key => $value) {
-            SystemSetting::updateOrCreate(
-                ['key' => $key],
-                [
-                    'value' => is_bool($value) ? ($value ? '1' : '0') : $value,
-                    'group' => $category
-                ]
-            );
+        switch ($category) {
+            case 'general':
+                $settingsClass = app(GeneralSettings::class);
+                break;
+            case 'email':
+                $settingsClass = app(EmailSettings::class);
+                $this->updateEnvFile([
+                    'MAIL_MAILER' => $settings['mail_driver'] ?? '',
+                    'MAIL_HOST' => $settings['mail_host'] ?? '',
+                    'MAIL_PORT' => $settings['mail_port'] ?? '',
+                    'MAIL_USERNAME' => $settings['mail_username'] ?? '',
+                    'MAIL_PASSWORD' => $settings['mail_password'] ?? '',
+                    'MAIL_ENCRYPTION' => $settings['mail_encryption'] ?? '',
+                    'MAIL_FROM_ADDRESS' => $settings['mail_from_address'] ?? '',
+                    'MAIL_FROM_NAME' => $settings['mail_from_name'] ?? '',
+                ]);
+                break;
+            case 'security':
+                $settingsClass = app(SecuritySettings::class);
+                break;
+            case 'notifications':
+                $settingsClass = app(NotificationSettings::class);
+                break;
+            case 'maintenance':
+                $settingsClass = app(MaintenanceSettings::class);
+                break;
+            default:
+                return redirect()->back()->with('error', 'Invalid settings category');
         }
 
-        // Update .env file for certain settings
-        if ($category === 'email') {
-            $this->updateEnvFile([
-                'MAIL_MAILER' => $settings['mail_driver'] ?? '',
-                'MAIL_HOST' => $settings['mail_host'] ?? '',
-                'MAIL_PORT' => $settings['mail_port'] ?? '',
-                'MAIL_USERNAME' => $settings['mail_username'] ?? '',
-                'MAIL_PASSWORD' => $settings['mail_password'] ?? '',
-                'MAIL_ENCRYPTION' => $settings['mail_encryption'] ?? '',
-                'MAIL_FROM_ADDRESS' => $settings['mail_from_address'] ?? '',
-                'MAIL_FROM_NAME' => $settings['mail_from_name'] ?? '',
-            ]);
+        foreach ($settings as $key => $value) {
+            if (property_exists($settingsClass, $key)) {
+                $settingsClass->$key = $value;
+            }
         }
+
+        $settingsClass->save();
 
         return redirect()->back()->with('success', 'Settings updated successfully');
+    }
+
+    private function toArray($settings): array
+    {
+        $reflection = new \ReflectionClass($settings);
+        $result = [];
+        
+        foreach ($reflection->getProperties(\ReflectionProperty::IS_PUBLIC) as $property) {
+            $key = $property->getName();
+            $result[$key] = $settings->$key;
+        }
+        
+        return $result;
     }
 
     public function testEmail(Request $request)

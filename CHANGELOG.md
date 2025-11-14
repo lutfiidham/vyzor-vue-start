@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+- **BREAKING CHANGE**: Migrated system settings from custom implementation to `spatie/laravel-settings`
+- System settings now use type-safe Settings classes instead of database model
+- Settings are now grouped into: General, Email, Security, Notification, and Maintenance
+- Improved settings caching and performance
+
+### Added
+- Added `spatie/laravel-settings` package (v3.5.0)
+- Created Settings classes: `GeneralSettings`, `EmailSettings`, `SecuritySettings`, `NotificationSettings`, `MaintenanceSettings`
+- Added settings migrations for each settings group
+- Added documentation for settings migration in `docs/SETTINGS_MIGRATION.md`
+
+### Removed
+- Removed `SystemSetting` model (replaced by Spatie Settings classes)
+- Removed `SystemSettingsSeeder` (replaced by settings migrations)
+- Dropped `system_settings` table (replaced by `settings` table)
+
 ## [1.0.0] - 2025-11-09
 
 ### Added
