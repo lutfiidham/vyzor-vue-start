@@ -56,11 +56,15 @@
 
 ### ⚙️ System Settings
 
-- ✅ Application configuration
-- ✅ Email settings
+- ✅ **Spatie Laravel Settings** - Type-safe settings management
+- ✅ Application configuration (name, URL, timezone, etc)
+- ✅ Email settings (SMTP configuration)
+- ✅ Security settings (2FA, session timeout)
 - ✅ Theme customization
 - ✅ Multi-language support ready
 - ✅ Maintenance mode
+- ✅ **Dynamic page titles** - Auto-update from settings
+- ✅ Settings accessible globally in Vue components
 
 ### 📝 Activity Logs
 
@@ -115,6 +119,7 @@
 - **Laravel Sanctum** - API Authentication
 - **Laravel Fortify** - Authentication Backend
 - **Spatie Laravel Permission** - Roles & Permissions
+- **Spatie Laravel Settings** - Type-safe Settings Management
 - **Spatie Laravel Activitylog** - Activity Tracking
 - **Spatie Laravel MediaLibrary** - File Management
 - **Maatwebsite Excel** - Excel Import/Export
@@ -194,6 +199,13 @@ Comprehensive documentation available in the `/documentations` folder:
 - **[API Documentation](documentations/API_DOCUMENTATION.md)** - API reference
 - **[Features Planning](documentations/FEATURES_PLANNING.md)** - Roadmap & features list
 
+### Settings Documentation
+
+- **[Settings Usage Guide](docs/SETTINGS_USAGE.md)** - Complete guide for using Spatie Laravel Settings
+- **[Settings Quick Reference](docs/SETTINGS_QUICK_REFERENCE.md)** - Quick reference and common tasks
+- **[Settings Demo](docs/SETTINGS_DEMO.md)** - Examples and demonstrations
+- **[Settings Migration Guide](docs/SETTINGS_MIGRATION.md)** - Migration from old system
+
 ---
 
 ## 📦 What's Included
@@ -213,7 +225,7 @@ Comprehensive documentation available in the `/documentations` folder:
 - `activity_log` - Activity tracking
 - `media` - File metadata
 - `login_logs` - Login activity
-- `system_settings` - Application settings
+- `settings` - Application settings (Spatie Settings)
 - `api_keys` - API key management
 - `personal_access_tokens` - Sanctum tokens
 - `cache`, `jobs`, `job_batches` - System tables

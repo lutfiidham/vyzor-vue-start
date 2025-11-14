@@ -32,6 +32,10 @@ router.on('finish', () => {
 })
 
 createInertiaApp({
+  title: (title) => {
+    const appName = window._appName || 'Vyzor'
+    return title ? `${title} - ${appName}` : appName
+  },
   resolve: (name) => {
     const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
     const page = pages[`./Pages/${name}.vue`].default
@@ -42,6 +46,9 @@ createInertiaApp({
     return page
   },
   setup({ el, App, props, plugin }) {
+    // Store app name globally for title callback
+    window._appName = props.initialPage.props.settings?.app_name || 'Vyzor'
+    
     createApp({ render: () => h(App, props) })
       .use(plugin)
       .use(plugins)

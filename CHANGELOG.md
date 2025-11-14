@@ -12,12 +12,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - System settings now use type-safe Settings classes instead of database model
 - Settings are now grouped into: General, Email, Security, Notification, and Maintenance
 - Improved settings caching and performance
+- Page titles now dynamically use `app_name` from GeneralSettings
+- Meta description now dynamically uses `app_description` from GeneralSettings
 
 ### Added
 - Added `spatie/laravel-settings` package (v3.5.0)
 - Created Settings classes: `GeneralSettings`, `EmailSettings`, `SecuritySettings`, `NotificationSettings`, `MaintenanceSettings`
 - Added settings migrations for each settings group
 - Added documentation for settings migration in `docs/SETTINGS_MIGRATION.md`
+- Integrated GeneralSettings with Inertia middleware for global access
+- Added dynamic title formatting using settings in `resources/js/app.js`
+- Added dynamic meta tags in `resources/views/app.blade.php` using settings
+- Created `docs/SETTINGS_USAGE.md` - comprehensive guide for using settings
+- Created `docs/SETTINGS_DEMO.md` - quick demo and examples
 
 ### Removed
 - Removed `SystemSetting` model (replaced by Spatie Settings classes)

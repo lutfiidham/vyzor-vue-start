@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Settings\GeneralSettings;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -39,6 +40,10 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
+            ],
+            'settings' => [
+                'app_name' => app(GeneralSettings::class)->app_name,
+                'app_description' => app(GeneralSettings::class)->app_description,
             ],
             // Menu is now shared by ShareMenuData middleware
             // No need to load it here to avoid duplicate cache queries
