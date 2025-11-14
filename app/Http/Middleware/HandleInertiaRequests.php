@@ -39,13 +39,25 @@ class HandleInertiaRequests extends Middleware
         return [
             ...parent::share($request),
             'auth' => [
-                'user' => $request->user(),
+                'user' => $request->user() ? [
+                    'id' => $request->user()->id,
+                    'name' => $request->user()->name,
+                    'email' => $request->user()->email,
+                    'roles' => $request->user()->getRoleNames(), // Mengambil semua role user
+                ] : null,
             ],
             'settings' => [
                 'app_name' => app(GeneralSettings::class)->app_name,
                 'app_description' => app(GeneralSettings::class)->app_description,
                 'timezone' => app(GeneralSettings::class)->timezone,
                 'date_format' => app(GeneralSettings::class)->date_format,
+            ],
+            // Version information
+            'versions' => [
+                'laravel' => app()->version(),
+                'php' => PHP_VERSION,
+                'environment' => config('app.env'),
+                'vue' => json_decode(file_get_contents(base_path('package.json')), true)['dependencies']['vue'] ?? '3.x',
             ],
             // Menu is now shared by ShareMenuData middleware
             // No need to load it here to avoid duplicate cache queries

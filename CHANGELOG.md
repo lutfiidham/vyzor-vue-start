@@ -38,6 +38,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Dynamic Title Pages:**
   - Updated Login page to use dynamic title from settings
   - Created `docs/DYNAMIC_TITLE_PAGES.md` - guide for dynamic title implementation
+- **Role-Based Access Control (RBAC):**
+  - Created `useAuth` composable for role checking in Vue components
+  - Updated `HandleInertiaRequests` to share user roles via `getRoleNames()`
+  - Added role-based visibility for System Information in Dashboard (admin only)
+  - Created `docs/ROLE_BASED_ACCESS_CONTROL.md` - comprehensive RBAC guide
 
 ### Removed
 - Removed `SystemSetting` model (replaced by Spatie Settings classes)

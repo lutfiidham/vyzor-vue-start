@@ -11,7 +11,12 @@
     >
       <div class="d-flex align-items-center">
         <span class="avatar avatar-sm avatar-rounded me-2">
-          <BaseImg v-if="currentUser?.avatar" :src="currentUser.avatar" alt="User Avatar" class="header-link-icon" />
+          <BaseImg
+            v-if="currentUser?.avatar"
+            :src="currentUser.avatar"
+            alt="User Avatar"
+            class="header-link-icon"
+          />
           <span v-else class="avatar-title bg-primary header-link-icon">{{ userInitials }}</span>
         </span>
       </div>
@@ -23,7 +28,13 @@
     >
       <div class="p-3 bg-primary text-fixed-white">
         <div class="d-flex align-items-center justify-content-between">
-          <p class="mb-0 fs-16">{{ currentUser?.name || 'Profile' }}</p>
+          <p class="mb-0 fs-16">
+            {{
+              currentUser?.roles
+                .map((role) => role.charAt(0).toUpperCase() + role.slice(1))
+                .join(', ')
+            }}
+          </p>
           <Link href="/profile/edit" class="text-fixed-white"
             ><i class="ti ti-settings-cog"></i
           ></Link>
@@ -49,17 +60,12 @@
         <li>
           <ul class="list-unstyled mb-0 sub-list">
             <li>
-              <Link
-                class="dropdown-item d-flex align-items-center"
-                href="/profile"
+              <Link class="dropdown-item d-flex align-items-center" href="/profile"
                 ><i class="ti ti-user-circle me-2 fs-18"></i>My Profile</Link
               >
             </li>
             <li>
-              <Link
-                class="dropdown-item d-flex align-items-center"
-                href="/profile/edit"
-              >
+              <Link class="dropdown-item d-flex align-items-center" href="/profile/edit">
                 <i class="ti ti-settings-cog me-2 fs-18"></i>Edit Profile
               </Link>
             </li>
@@ -68,16 +74,12 @@
         <li>
           <ul class="list-unstyled mb-0 sub-list">
             <li>
-              <Link
-                class="dropdown-item d-flex align-items-center"
-                href="/admin/activity-logs"
+              <Link class="dropdown-item d-flex align-items-center" href="/admin/activity-logs"
                 ><i class="ti ti-bolt me-2 fs-18"></i>Activity Logs</Link
               >
             </li>
             <li>
-              <Link
-                class="dropdown-item d-flex align-items-center"
-                href="/notifications"
+              <Link class="dropdown-item d-flex align-items-center" href="/notifications"
                 ><i class="ti ti-bell me-2 fs-18"></i>Notifications</Link
               >
             </li>

@@ -2,7 +2,9 @@
   <Head title="Dashboard" />
   <div>
     <!-- Page Header -->
-    <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
+    <div
+      class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb"
+    >
       <div>
         <h1 class="page-title fw-semibold fs-20 mb-0">Dashboard</h1>
         <p class="mb-0 text-muted">Selamat datang di Vyzor Dashboard</p>
@@ -49,12 +51,22 @@
               </div>
               <div class="col-xl-4 col-lg-5 d-none d-lg-block">
                 <div class="text-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="img-fluid" style="max-height: 200px;" viewBox="0 0 200 200">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="img-fluid"
+                    style="max-height: 200px"
+                    viewBox="0 0 200 200"
+                  >
                     <circle cx="100" cy="100" r="80" fill="#e3f2fd" />
-                    <path d="M70,90 Q100,60 130,90" stroke="#2196f3" stroke-width="4" fill="none"/>
-                    <circle cx="80" cy="85" r="8" fill="#2196f3"/>
-                    <circle cx="120" cy="85" r="8" fill="#2196f3"/>
-                    <path d="M70,130 Q100,150 130,130" stroke="#2196f3" stroke-width="4" fill="none"/>
+                    <path d="M70,90 Q100,60 130,90" stroke="#2196f3" stroke-width="4" fill="none" />
+                    <circle cx="80" cy="85" r="8" fill="#2196f3" />
+                    <circle cx="120" cy="85" r="8" fill="#2196f3" />
+                    <path
+                      d="M70,130 Q100,150 130,130"
+                      stroke="#2196f3"
+                      stroke-width="4"
+                      fill="none"
+                    />
                   </svg>
                 </div>
               </div>
@@ -188,7 +200,11 @@
           <div class="card-body">
             <div class="row g-3">
               <div class="col-md-6" v-for="(action, index) in quickActions" :key="index">
-                <div class="card border shadow-none mb-0 quick-action-card" style="cursor: pointer;" @click="navigateToAction(action.link)">
+                <div
+                  class="card border shadow-none mb-0 quick-action-card"
+                  style="cursor: pointer"
+                  @click="navigateToAction(action.link)"
+                >
                   <div class="card-body text-center">
                     <span :class="`avatar avatar-xl avatar-rounded ${action.color} mb-3`">
                       <i :class="`${action.icon} fs-3`"></i>
@@ -204,8 +220,8 @@
       </div>
     </div>
 
-    <!-- System Info -->
-    <div class="row">
+    <!-- System Info - Only visible for Admin -->
+    <div class="row" v-if="isAdmin">
       <div class="col-xl-12">
         <div class="card custom-card">
           <div class="card-header">
@@ -246,20 +262,27 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { Head, router } from '@inertiajs/vue3'
+import { ref, computed } from 'vue'
+import { Head, router, usePage } from '@inertiajs/vue3'
+import { useAuth } from '@/composables/useAuth'
 
 // Props
 const props = defineProps({
-  stats: Object
+  stats: Object,
 })
+
+// Auth composable
+const { user, isAdmin } = useAuth()
+
+// Page data
+const page = usePage()
 
 // Stats Data
 const stats = ref({
   totalUsers: props.stats?.totalUsers || 0,
   activeUsers: props.stats?.activeUsers || 0,
   totalRoles: props.stats?.totalRoles || 0,
-  totalPermissions: props.stats?.totalPermissions || 0
+  totalPermissions: props.stats?.totalPermissions || 0,
 })
 
 // Recent Activities
@@ -269,29 +292,29 @@ const recentActivities = ref([
     description: 'John Doe registered as a new user',
     time: '2 hours ago',
     icon: 'ri-user-add-line',
-    color: 'bg-primary-transparent'
+    color: 'bg-primary-transparent',
   },
   {
     title: 'Project Created',
     description: 'New project "Website Redesign" created',
     time: '4 hours ago',
     icon: 'ri-folder-add-line',
-    color: 'bg-success-transparent'
+    color: 'bg-success-transparent',
   },
   {
     title: 'Task Completed',
     description: 'Database optimization task completed',
     time: '6 hours ago',
     icon: 'ri-checkbox-circle-line',
-    color: 'bg-info-transparent'
+    color: 'bg-info-transparent',
   },
   {
     title: 'System Update',
     description: 'Application updated to v1.0.0',
     time: '1 day ago',
     icon: 'ri-refresh-line',
-    color: 'bg-warning-transparent'
-  }
+    color: 'bg-warning-transparent',
+  },
 ])
 
 // Quick Actions
@@ -301,29 +324,29 @@ const quickActions = ref([
     description: 'View & manage users',
     icon: 'ri-user-settings-line',
     color: 'bg-primary-transparent',
-    link: '/admin/users'
+    link: '/admin/users',
   },
   {
     title: 'Roles & Permissions',
     description: 'Manage access control',
     icon: 'ri-shield-user-line',
     color: 'bg-success-transparent',
-    link: '/admin/roles'
+    link: '/admin/roles',
   },
   {
     title: 'Activity Logs',
     description: 'View audit trail',
     icon: 'ri-history-line',
     color: 'bg-info-transparent',
-    link: '/admin/activity-logs'
+    link: '/admin/activity-logs',
   },
   {
     title: 'Settings',
     description: 'Configure system',
     icon: 'ri-settings-3-line',
     color: 'bg-warning-transparent',
-    link: '/admin/settings'
-  }
+    link: '/admin/settings',
+  },
 ])
 
 // Navigate to quick action
@@ -331,12 +354,13 @@ const navigateToAction = (link) => {
   router.visit(link)
 }
 
-// System Information
-const systemInfo = ref({
-  laravelVersion: '11.x',
-  vueVersion: '3.x',
-  environment: 'Development'
-})
+// System Information - Using Inertia shared data
+const systemInfo = computed(() => ({
+  laravelVersion: page.props.versions?.laravel || '12.x',
+  vueVersion: page.props.versions?.vue || '3.x',
+  environment: page.props.versions?.environment || 'Development',
+  phpVersion: page.props.versions?.php || '8.2+',
+}))
 
 // Methods
 const exploreDemo = () => {
