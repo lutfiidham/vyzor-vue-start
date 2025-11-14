@@ -17,7 +17,7 @@ defineOptions({
 const form = useForm({
   username: '',
   password: '',
-  remember: false
+  remember: false,
 })
 
 const theme = localStorage.getItem('vyzorcolortheme') || 'light'
@@ -43,7 +43,7 @@ const login = () => {
         autoClose: 3000,
         position: 'top-right',
       })
-    }
+    },
   })
 }
 
@@ -104,7 +104,9 @@ onMounted(() => {
             <form @submit.prevent="login">
               <div class="row gy-3">
                 <div class="col-xl-12">
-                  <label for="signin-email" class="form-label text-default">Username or Email</label>
+                  <label for="signin-email" class="form-label text-default"
+                    >Username or Email</label
+                  >
                   <input
                     type="text"
                     class="form-control"
@@ -142,9 +144,7 @@ onMounted(() => {
                         v-model="form.remember"
                         id="defaultCheck1"
                       />
-                      <label class="form-check-label flex-grow-1" for="defaultCheck1">
-                        Remember me
-                      </label>
+                      <label class="form-check-label grow" for="defaultCheck1"> Remember me </label>
                       <Link
                         :href="`${baseUrl}/demo/pages/authentication/reset-password/basic`"
                         class="float-end link-danger fw-medium fs-12"
@@ -154,15 +154,19 @@ onMounted(() => {
                   </div>
                 </div>
               </div>
-            <div class="d-grid mt-3">
-              <button type="submit" class="btn btn-primary" :disabled="form.processing">
-                <span v-if="form.processing">
-                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                  Signing in...
-                </span>
-                <span v-else>Sign In</span>
-              </button>
-            </div>
+              <div class="d-grid mt-3">
+                <button type="submit" class="btn btn-primary" :disabled="form.processing">
+                  <span v-if="form.processing">
+                    <span
+                      class="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    Signing in...
+                  </span>
+                  <span v-else>Sign In</span>
+                </button>
+              </div>
             </form>
             <div class="text-center my-3 authentication-barrier">
               <span class="op-4 fs-13">OR</span>
@@ -187,7 +191,9 @@ onMounted(() => {
             </div>
             <div class="text-center mt-3 fw-medium">
               Dont have an account?
-              <Link :href="`${baseUrl}/demo/pages/authentication/sign-up/basic`" class="text-primary"
+              <Link
+                :href="`${baseUrl}/demo/pages/authentication/sign-up/basic`"
+                class="text-primary"
                 >Sign Up
               </Link>
             </div>

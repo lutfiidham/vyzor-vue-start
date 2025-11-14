@@ -1,5 +1,5 @@
 <template>
-  <div class="scrollToTop" ref="scrollToTop" style="display: flex">
+  <div class="scrollToTop btn btn-primary" ref="scrollToTop" style="display: flex">
     <span class="arrow lh-1"><i class="ti ti-arrow-big-up fs-18"></i></span>
   </div>
 </template>
