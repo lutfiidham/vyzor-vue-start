@@ -36,11 +36,10 @@ import * as directives from 'vuetify/directives'
 
 // VueEditor removed due to security vulnerabilities - consider using @tinymce/tinymce-vue or @ckeditor/ckeditor5-vue
 
-const Particles = defineAsyncComponent(() => import('@tsparticles/vue3'))
+import { tsParticles } from 'tsparticles-engine'
 
-import { loadFull } from 'tsparticles'
-
-import SmartTable from 'vuejs-smart-table'
+// SmartTable removed due to component conflicts with Vuetify
+// import SmartTable from 'vuejs-smart-table'
 
 const VueApexCharts = defineAsyncComponent(() => import('vue3-apexcharts'))
 
@@ -71,25 +70,23 @@ export default {
     app.use(VueSweetalert2)
     app.use(Vue3Tour)
     app.directive('maska', vMaska)
-    // Particle effects
-    app.use(Particles, {
-      init: async (engine) => {
-        await loadFull(engine)
-      },
-    })
+    // Particle effects - make available globally
+    app.config.globalProperties.$tsParticles = tsParticles
     // toast
     app.config.globalProperties.$toast = toast
 
-    // Vuetify UI
-    app.use(vuetify)
+    // SmartTable disabled due to component conflicts with Vuetify
+    // Use Vuetify's VTable and other table components instead
 
-    app.use(SmartTable)
+    // Vuetify UI - register last to ensure its components take precedence
+    app.use(vuetify)
 
     // Register global components
     app.component('apexchart', VueApexCharts)
     app.component('Datepicker', Datepicker)
     app.component('EasyDataTable', Vue3EasyDataTable)
-    app.component('jsVectorMap', jsVectorMap)
+    // jsVectorMap is not a Vue component, but a vanilla JS library
+    // It should be imported and used directly in components
     app.component('Countdown', Countdown)
     app.component('VueMultiselect', VueMultiselect)
     app.component(VueCountdown.name, VueCountdown)

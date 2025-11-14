@@ -1,22 +1,23 @@
 <template>
-  <input
-    :type="inputType"
-    v-model="inputValue"
-    :name="name"
-    :id="id"
-    :placeholder="placeholder"
-    class="form-control form-control-lg"
-    :required="required"
-  />
-  <a
-    href="javascript:void(0);"
-    @click="changeInputType"
-    class="show-password-button text-muted"
-    type="button"
-    id="button-addon2"
-  >
-    <i class="align-middle" :class="inputType === 'text' ? 'ri-eye-line' : 'ri-eye-off-line'"></i>
-  </a>
+  <div class="input-group">
+    <input
+      :type="inputType"
+      v-model="inputValue"
+      :name="name"
+      :id="id"
+      :placeholder="placeholder"
+      class="form-control form-control-lg"
+      :required="required"
+    />
+    <button
+      type="button"
+      @click="changeInputType"
+      class="btn btn-outline-secondary"
+      style="border-left: none;"
+    >
+      <i class="align-middle" :class="inputType === 'text' ? 'ri-eye-line' : 'ri-eye-off-line'"></i>
+    </button>
+  </div>
 </template>
 
 <script setup>

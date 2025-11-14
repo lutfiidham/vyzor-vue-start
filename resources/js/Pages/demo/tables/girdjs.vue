@@ -44,6 +44,21 @@ const filteredProducts = computed(() => {
   return result
 })
 
+// Computed: filtered table data
+const filteredTableData = computed(() => {
+  let result = [...GriData.users]
+
+  // Apply name filter
+  if (filters.value.name.value) {
+    const searchTerm = filters.value.name.value.toLowerCase()
+    result = result.filter(row =>
+      row.name.toLowerCase().includes(searchTerm)
+    )
+  }
+
+  return result
+})
+
 // Methods
 function nameLength(row) {
   return row.name.length
@@ -65,8 +80,8 @@ function dateSort(a, b) {
     <div class="col-xl-12">
       <SimpleCard title="Basic Table">
         <div class="table-responsive">
-          <VTable :data="GriData.users">
-            <template #head>
+          <table class="table table-striped">
+            <thead>
               <tr>
                 <th class="gridjs-th gridjs-th-sort">Date</th>
                 <th class="gridjs-th gridjs-th-sort">Name</th>
@@ -76,9 +91,9 @@ function dateSort(a, b) {
                 <th class="gridjs-th gridjs-th-sort">Quantity</th>
                 <th class="gridjs-th gridjs-th-sort">Total</th>
               </tr>
-            </template>
-            <template #body="{ rows }">
-              <tr v-for="row in rows" :key="row.id">
+            </thead>
+            <tbody>
+              <tr v-for="row in GriData.users" :key="row.id">
                 <td class="gridjs-td">{{ row.date }}</td>
                 <td class="gridjs-td">{{ row.name }}</td>
                 <td class="gridjs-td">{{ row.email }}</td>
@@ -87,8 +102,8 @@ function dateSort(a, b) {
                 <td class="gridjs-td">{{ row.quantity }}</td>
                 <td class="gridjs-td">{{ row.total }}</td>
               </tr>
-            </template>
-          </VTable>
+            </tbody>
+          </table>
         </div>
       </SimpleCard>
     </div>
@@ -106,8 +121,8 @@ function dateSort(a, b) {
         />
 
         <div class="table-responsive">
-          <VTable :data="GriData.users" :filters="filters">
-            <template #head>
+          <table class="table table-striped">
+            <thead>
               <tr>
                 <th class="gridjs-th gridjs-th-sort">Date</th>
                 <th class="gridjs-th gridjs-th-sort">Name</th>
@@ -117,12 +132,12 @@ function dateSort(a, b) {
                 <th class="gridjs-th gridjs-th-sort">Quantity</th>
                 <th class="gridjs-th gridjs-th-sort">Total</th>
               </tr>
-            </template>
-            <template #body="{ rows }">
-              <tr v-if="rows.length === 0">
+            </thead>
+            <tbody>
+              <tr v-if="filteredTableData.length === 0">
                 <td class="gridjs-td text-center" colspan="7">No matching records found</td>
               </tr>
-              <tr v-for="row in rows" :key="row.id">
+              <tr v-for="row in filteredTableData" :key="row.id">
                 <td class="gridjs-td">{{ row.date }}</td>
                 <td class="gridjs-td">{{ row.name }}</td>
                 <td class="gridjs-td">{{ row.email }}</td>
@@ -131,8 +146,8 @@ function dateSort(a, b) {
                 <td class="gridjs-td">{{ row.quantity }}</td>
                 <td class="gridjs-td">{{ row.total }}</td>
               </tr>
-            </template>
-          </VTable>
+            </tbody>
+          </table>
         </div>
       </SimpleCard>
     </div>

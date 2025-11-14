@@ -1375,7 +1375,7 @@ function getVirtulData(year) {
   var dayTime = 3600 * 24 * 1000
   var data = []
   for (var time = date; time < end; time += dayTime) {
-    data.push([echarts.format.formatTime('yyyy-MM-dd', time), Math.floor(Math.random() * 10000)])
+    data.push([echarts.time.format(time, '{yyyy}-{MM}-{dd}'), Math.floor(Math.random() * 10000)])
   }
   return data
 }
