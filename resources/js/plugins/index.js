@@ -34,7 +34,7 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
-import { VueEditor } from 'vue3-editor'
+// VueEditor removed due to security vulnerabilities - consider using @tinymce/tinymce-vue or @ckeditor/ckeditor5-vue
 
 const Particles = defineAsyncComponent(() => import('@tsparticles/vue3'))
 
@@ -93,7 +93,7 @@ export default {
     app.component('Countdown', Countdown)
     app.component('VueMultiselect', VueMultiselect)
     app.component(VueCountdown.name, VueCountdown)
-    app.component('VueEditor', VueEditor)
+    // VueEditor component removed due to security vulnerabilities
     app.component('count-up', CountUp)
     // Pinia store
     app.use(pinia)
