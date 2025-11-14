@@ -44,6 +44,8 @@ class HandleInertiaRequests extends Middleware
             'settings' => [
                 'app_name' => app(GeneralSettings::class)->app_name,
                 'app_description' => app(GeneralSettings::class)->app_description,
+                'timezone' => app(GeneralSettings::class)->timezone,
+                'date_format' => app(GeneralSettings::class)->date_format,
             ],
             // Menu is now shared by ShareMenuData middleware
             // No need to load it here to avoid duplicate cache queries

@@ -28,6 +28,29 @@ $s->save();
 - Meta description otomatis update
 - Tersedia di semua Vue components via `$page.props.settings.app_name`
 
+### Mengubah Timezone
+
+**Via Tinker:**
+```bash
+php artisan tinker
+```
+```php
+$s = app(\App\Settings\GeneralSettings::class);
+$s->timezone = "America/New_York";
+$s->save();
+```
+
+**Via Settings Page:**
+1. Login → Admin → Settings
+2. General Settings → Timezone
+3. Select timezone from dropdown
+4. Save Changes
+
+**Hasil:**
+- Semua tanggal/waktu otomatis menggunakan timezone baru
+- PHP timezone dan Carbon otomatis update
+- Format tersedia via `DateTimeHelper` dan `useDateTime` composable
+
 ## 📁 Settings Classes Location
 
 ```
@@ -155,6 +178,8 @@ php artisan config:clear
 
 - **Detailed Guide:** `docs/SETTINGS_USAGE.md`
 - **Demo & Examples:** `docs/SETTINGS_DEMO.md`
+- **Timezone Implementation:** `docs/TIMEZONE_IMPLEMENTATION.md`
+- **Dynamic Title Pages:** `docs/DYNAMIC_TITLE_PAGES.md`
 - **Official Docs:** https://github.com/spatie/laravel-settings
 
 ## 🔍 Troubleshooting
@@ -183,8 +208,8 @@ php artisan config:clear
 - `app_url` - Application URL
 - `app_description` - Meta description
 - `admin_email` - Admin contact email
-- `timezone` - Application timezone
-- `date_format` - Date display format
+- `timezone` - Application timezone (e.g., 'Asia/Jakarta', 'UTC')
+- `date_format` - Date display format (e.g., 'd/m/Y', 'Y-m-d')
 
 ### EmailSettings
 - `mail_driver`, `mail_host`, `mail_port`

@@ -205,6 +205,7 @@ Comprehensive documentation available in the `/documentations` folder:
 - **[Settings Quick Reference](docs/SETTINGS_QUICK_REFERENCE.md)** - Quick reference and common tasks
 - **[Settings Demo](docs/SETTINGS_DEMO.md)** - Examples and demonstrations
 - **[Settings Migration Guide](docs/SETTINGS_MIGRATION.md)** - Migration from old system
+- **[Timezone Implementation](docs/TIMEZONE_IMPLEMENTATION.md)** - Dynamic timezone and date formatting guide
 
 ---
 

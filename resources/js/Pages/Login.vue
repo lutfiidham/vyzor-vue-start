@@ -4,11 +4,12 @@ import PasswordInput from '../../UI/passwordInput.vue'
 import ParticlesJs from '../shared/@spk/reuseble-plugin/particles-js.vue'
 import BaseImg from '../components/Baseimage/BaseImg.vue'
 import authlayout from '../layouts/authlayout.vue'
-import { Link, router, useForm } from '@inertiajs/vue3'
+import { Link, router, useForm, usePage } from '@inertiajs/vue3'
 import { Head } from '@inertiajs/vue3'
 
 const baseUrl = __BASE_PATH__
 const { proxy } = getCurrentInstance()
+const page = usePage()
 
 defineOptions({
   layout: authlayout,
@@ -76,7 +77,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <Head title="Login | Vyzor - Laravel & Vue " />
+  <Head title="Login" />
   <div class="authentication-basic-background">
     <BaseImg src="/images/media/backgrounds/9.png" alt="" />
   </div>

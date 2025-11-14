@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improved settings caching and performance
 - Page titles now dynamically use `app_name` from GeneralSettings
 - Meta description now dynamically uses `app_description` from GeneralSettings
+- Application timezone now dynamically loaded from GeneralSettings
+- All dates/times automatically use configured timezone
+- Date format configurable via GeneralSettings
 
 ### Added
 - Added `spatie/laravel-settings` package (v3.5.0)
@@ -25,6 +28,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added dynamic meta tags in `resources/views/app.blade.php` using settings
 - Created `docs/SETTINGS_USAGE.md` - comprehensive guide for using settings
 - Created `docs/SETTINGS_DEMO.md` - quick demo and examples
+- **Timezone Implementation:**
+  - Added `DateTimeHelper` class for consistent date formatting across application
+  - Added Vue `useDateTime` composable for frontend date formatting
+  - Added Blade directives: `@datetime`, `@date`, `@diffHumans`
+  - Dynamic timezone from database settings applied globally
+  - Timezone and date format shared to all Vue components
+  - Created `docs/TIMEZONE_IMPLEMENTATION.md` - complete timezone guide
+- **Dynamic Title Pages:**
+  - Updated Login page to use dynamic title from settings
+  - Created `docs/DYNAMIC_TITLE_PAGES.md` - guide for dynamic title implementation
 
 ### Removed
 - Removed `SystemSetting` model (replaced by Spatie Settings classes)
