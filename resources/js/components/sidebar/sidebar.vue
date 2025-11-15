@@ -78,7 +78,17 @@
 </template>
 
 <script setup>
-import { onBeforeMount, onMounted, reactive, ref, watchEffect, computed, nextTick, triggerRef, shallowRef } from 'vue'
+import {
+  onBeforeMount,
+  onMounted,
+  reactive,
+  ref,
+  watchEffect,
+  computed,
+  nextTick,
+  triggerRef,
+  shallowRef,
+} from 'vue'
 // Dynamic menu from Inertia shared props
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 import 'vue3-perfect-scrollbar/style.css'
@@ -88,7 +98,7 @@ import BaseImg from '../Baseimage/BaseImg.vue'
 import { Link, usePage, router } from '@inertiajs/vue3'
 import { MENUITEMS as staticMenuData } from '@/shared/data/sidebar/nav'
 
-// Combine dynamic menu with static menu
+// Combine dynamic menu with static menu based on user role
 const menuData = computed(() => {
   const dynamicMenus = page.props.menus || []
 
@@ -99,14 +109,20 @@ const menuData = computed(() => {
       active: menu.active || false,
       selected: menu.selected || false,
       dirchange: menu.dirchange || false,
-      children: menu.children ? menu.children.map(child => cleanStaticMenu(child)) : []
+      children: menu.children ? menu.children.map((child) => cleanStaticMenu(child)) : [],
     }
     return cleaned
   }
 
-  const staticMenuDataClean = staticMenuData.map(menu => cleanStaticMenu(menu))
-  const combinedMenus = [...dynamicMenus, ...staticMenuDataClean]
-  return combinedMenus
+  // Only combine with static menu if user is admin
+  if (isAdmin.value) {
+    const staticMenuDataClean = staticMenuData.map((menu) => cleanStaticMenu(menu))
+    const combinedMenus = [...dynamicMenus, ...staticMenuDataClean]
+    return combinedMenus
+  } else {
+    // Non-admin users only get dynamic menus
+    return dynamicMenus
+  }
 })
 
 let level = 0
@@ -120,15 +136,40 @@ const page = usePage()
 const { url } = page
 const baseUrl = __BASE_PATH__
 
+// Get current user from page props
+const currentUser = computed(() => page.props.auth?.user || null)
+
+// Get current user roles
+const userRoles = computed(() => {
+  const roles = page.props.auth?.user?.roles
+  if (!roles) return []
+
+  // Laravel getRoleNames() returns array of strings
+  if (Array.isArray(roles)) {
+    return roles.filter((role) => typeof role === 'string' && role.trim() !== '')
+  }
+
+  // If it's an object (like Laravel Collection converted to object)
+  if (typeof roles === 'object') {
+    return Object.values(roles).filter((role) => typeof role === 'string' && role.trim() !== '')
+  }
+
+  return []
+})
+
+// Check if user is admin
+const isAdmin = computed(() => {
+  return userRoles.value.some((role) =>
+    typeof role === 'string' ? role.toLowerCase() === 'admin' : role.name?.toLowerCase() === 'admin'
+  )
+})
+
 // Computed logo link - if on demo pages, link to demo dashboard, else to main dashboard
 const logoLink = computed(() => {
   const currentPath = page.url
   const isDemoPage = currentPath.startsWith('/demo')
   return isDemoPage ? `${baseUrl}/demo/dashboards/sales/` : '/dashboard'
 })
-
-// Get current user from page props
-const currentUser = computed(() => page.props.auth?.user || null)
 
 // Logout handler
 const handleLogout = () => {

@@ -12,7 +12,9 @@ Route::middleware('guest')->group(function () {
 });
 
 // Demo routes - all pages moved under /demo/* prefix
-Route::prefix('demo')->group(base_path('routes/demo.php'));
+Route::middleware('permission:demo.view')->group(function () {
+    Route::prefix('demo')->group(base_path('routes/demo.php'));
+});
 
 // Protected routes (require authentication)
 Route::middleware('auth')->group(function () {
