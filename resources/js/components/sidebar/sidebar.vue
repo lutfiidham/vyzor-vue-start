@@ -31,7 +31,7 @@
         <ul class="main-menu">
           <li
             v-for="(mainmenuItem, index) in menuData"
-            :key="index"
+            :key="`${mainmenuItem.id || mainmenuItem.title || index}-${forceUpdateCounter}`"
             :class="`${mainmenuItem?.menutitle ? 'slide__category' : ''} ${mainmenuItem?.type == 'link' ? 'slide' : ''} ${mainmenuItem?.type == 'empty' ? 'slide' : ''} ${mainmenuItem?.type == 'sub' ? 'slide has-sub' : ''} ${mainmenuItem?.active ? 'open' : ''} ${mainmenuItem?.selected ? 'active' : ''}`"
           >
             <template v-if="mainmenuItem?.menutitle">
@@ -68,356 +68,7 @@
               />
             </template>
           </li>
-          <li>
-            <ul class="slide-menu child1 doublemenu_slide-menu">
-              <li class="text-center p-3 text-fixed-white">
-                <div class="doublemenu_slide-menu-background">
-                  <BaseImg src="/images/media/backgrounds/13.png" alt="" />
-                </div>
-                <div class="d-flex flex-column align-items-center justify-content-between h-100">
-                  <div class="fs-15 fw-medium">Dashboard AI Helper</div>
-                  <div>
-                    <span class="avatar avatar-lg p-1">
-                      <BaseImg src="/images/media/media-80.png" alt="" />
-                      <span class="top-right"></span>
-                      <span class="bottom-right"></span>
-                    </span>
-                  </div>
-                  <div class="d-grid w-100">
-                    <button class="btn btn-light border-0">Try Now</button>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </li>
         </ul>
-        <ul class="doublemenu_bottom-menu main-menu mb-0 border-top">
-          <!-- Start::slide -->
-          <li class="slide">
-            <a href="javascript:void(0);" class="side-menu__item layout-setting-doublemenu">
-              <span class="light-layout" @click="colorthemeFn('dark')">
-                <!-- Start::header-link-icon -->
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="side-menu__icon"
-                  viewBox="0 0 256 256"
-                >
-                  <rect width="256" height="256" fill="none" />
-                  <path
-                    d="M108.11,28.11A96.09,96.09,0,0,0,227.89,147.89,96,96,0,1,1,108.11,28.11Z"
-                    opacity="0.2"
-                  />
-                  <path
-                    d="M108.11,28.11A96.09,96.09,0,0,0,227.89,147.89,96,96,0,1,1,108.11,28.11Z"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="16"
-                  />
-                </svg>
-                <!-- End::header-link-icon -->
-              </span>
-              <span class="dark-layout" @click="colorthemeFn('light')">
-                <!-- Start::header-link-icon -->
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="side-menu__icon"
-                  viewBox="0 0 256 256"
-                >
-                  <rect width="256" height="256" fill="none" />
-                  <circle cx="128" cy="128" r="56" opacity="0.2" />
-                  <line
-                    x1="128"
-                    y1="40"
-                    x2="128"
-                    y2="32"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="16"
-                  />
-                  <circle
-                    cx="128"
-                    cy="128"
-                    r="56"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="16"
-                  />
-                  <line
-                    x1="64"
-                    y1="64"
-                    x2="56"
-                    y2="56"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="16"
-                  />
-                  <line
-                    x1="64"
-                    y1="192"
-                    x2="56"
-                    y2="200"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="16"
-                  />
-                  <line
-                    x1="192"
-                    y1="64"
-                    x2="200"
-                    y2="56"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="16"
-                  />
-                  <line
-                    x1="192"
-                    y1="192"
-                    x2="200"
-                    y2="200"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="16"
-                  />
-                  <line
-                    x1="40"
-                    y1="128"
-                    x2="32"
-                    y2="128"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="16"
-                  />
-                  <line
-                    x1="128"
-                    y1="216"
-                    x2="128"
-                    y2="224"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="16"
-                  />
-                  <line
-                    x1="216"
-                    y1="128"
-                    x2="224"
-                    y2="128"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="16"
-                  />
-                </svg>
-                <!-- End::header-link-icon -->
-              </span>
-              <span class="side-menu__label">Theme Settings</span>
-            </a>
-          </li>
-          <!-- End::slide -->
-          <!-- Start::slide -->
-          <li class="slide">
-            <a href="javascript:void(0);" @click="handleLogout" class="side-menu__item">
-              <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256">
-                <rect width="256" height="256" fill="none" />
-                <path
-                  d="M48,40H208a16,16,0,0,1,16,16V200a16,16,0,0,1-16,16H48a0,0,0,0,1,0,0V40A0,0,0,0,1,48,40Z"
-                  opacity="0.2"
-                />
-                <polyline
-                  points="112 40 48 40 48 216 112 216"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <line
-                  x1="112"
-                  y1="128"
-                  x2="224"
-                  y2="128"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <polyline
-                  points="184 88 224 128 184 168"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-              </svg>
-              <span class="side-menu__label">Logout</span>
-            </a>
-          </li>
-          <!-- End::slide -->
-          <!-- Start::slide -->
-          <li class="slide">
-            <Link :href="`${baseUrl}/profile`" class="side-menu__item">
-              <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256">
-                <rect width="256" height="256" fill="none" />
-                <path
-                  d="M205.31,71.08a16,16,0,0,1-20.39-20.39A96,96,0,0,0,63.8,199.38h0A72,72,0,0,1,128,160a40,40,0,1,1,40-40,40,40,0,0,1-40,40,72,72,0,0,1,64.2,39.37A96,96,0,0,0,205.31,71.08Z"
-                  opacity="0.2"
-                />
-                <line
-                  x1="200"
-                  y1="40"
-                  x2="200"
-                  y2="28"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <circle
-                  cx="200"
-                  cy="56"
-                  r="16"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <line
-                  x1="186.14"
-                  y1="48"
-                  x2="175.75"
-                  y2="42"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <line
-                  x1="186.14"
-                  y1="64"
-                  x2="175.75"
-                  y2="70"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <line
-                  x1="200"
-                  y1="72"
-                  x2="200"
-                  y2="84"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <line
-                  x1="213.86"
-                  y1="64"
-                  x2="224.25"
-                  y2="70"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <line
-                  x1="213.86"
-                  y1="48"
-                  x2="224.25"
-                  y2="42"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <circle
-                  cx="128"
-                  cy="120"
-                  r="40"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <path
-                  d="M63.8,199.37a72,72,0,0,1,128.4,0"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <path
-                  d="M222.67,112A95.92,95.92,0,1,1,144,33.33"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-              </svg>
-              <span class="side-menu__label">My Profile</span>
-            </Link>
-          </li>
-          <!-- End::slide -->
-          <!-- Start::slide -->
-          <li class="slide">
-            <Link
-              :href="`${baseUrl}/profile`"
-              class="side-menu__item p-1 rounded-circle mb-0"
-            >
-              <span class="avatar avatar-md avatar-rounded">
-                <BaseImg v-if="currentUser?.avatar" :src="currentUser.avatar" alt="" />
-                <span v-else class="avatar-title bg-primary">
-                  {{ currentUser?.name?.charAt(0).toUpperCase() || 'U' }}
-                </span>
-              </span>
-            </Link>
-          </li>
-          <!-- End::slide -->
-        </ul>
-        <div class="slide-right" id="slide-right" @click="rightArrowFn">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="#7b8191"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"
-            ></path>
-          </svg>
-        </div>
       </nav>
       <!-- End::nav -->
     </PerfectScrollbar>
@@ -427,7 +78,7 @@
 </template>
 
 <script setup>
-import { onBeforeMount, onMounted, reactive, ref, watchEffect, computed } from 'vue'
+import { onBeforeMount, onMounted, reactive, ref, watchEffect, computed, nextTick, triggerRef, shallowRef } from 'vue'
 // Dynamic menu from Inertia shared props
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 import 'vue3-perfect-scrollbar/style.css'
@@ -435,9 +86,28 @@ import RecursiveMenu from '../../../UI/recursiveMenu.vue'
 import { switcherStore } from '../../../stores/switcher'
 import BaseImg from '../Baseimage/BaseImg.vue'
 import { Link, usePage, router } from '@inertiajs/vue3'
+import { MENUITEMS as staticMenuData } from '@/shared/data/sidebar/nav'
 
-// Get dynamic menu from Inertia shared props
-const menuData = computed(() => page.props.menus || [])
+// Combine dynamic menu with static menu
+const menuData = computed(() => {
+  const dynamicMenus = page.props.menus || []
+
+  // Deep clean static menu data to ensure all properties exist
+  const cleanStaticMenu = (menu) => {
+    const cleaned = {
+      ...menu,
+      active: menu.active || false,
+      selected: menu.selected || false,
+      dirchange: menu.dirchange || false,
+      children: menu.children ? menu.children.map(child => cleanStaticMenu(child)) : []
+    }
+    return cleaned
+  }
+
+  const staticMenuDataClean = staticMenuData.map(menu => cleanStaticMenu(menu))
+  const combinedMenus = [...dynamicMenus, ...staticMenuDataClean]
+  return combinedMenus
+})
 
 let level = 0
 let isChild = false
@@ -467,6 +137,34 @@ const handleLogout = () => {
   }
 }
 
+// Force update counter
+const forceUpdateCounter = ref(0)
+
+// Helper function to find and toggle menu by title
+const toggleMenuByTitle = (title) => {
+  const findMenu = (items) => {
+    for (const item of items) {
+      if (item.title === title) {
+        return item
+      }
+      if (item.children && item.children.length > 0) {
+        const found = findMenu(item.children)
+        if (found) return found
+      }
+    }
+    return null
+  }
+
+  const menu = findMenu(menuData.value)
+  if (menu) {
+    menu.active = !menu.active
+    // Force update to trigger re-render
+    forceUpdateCounter.value++
+    return true
+  }
+  return false
+}
+
 function toggleSubmenu(event, targetObject, menuList = menuData.value, isChildFlag = isChild) {
   let html = document.documentElement
   let element = event.target
@@ -478,35 +176,12 @@ function toggleSubmenu(event, targetObject, menuList = menuData.value, isChildFl
   ) {
     return
   }
-  for (const item of menuList) {
-    if (item === targetObject) {
-      if (html.getAttribute('data-vertical-style') == 'doublemenu') {
-        // checking for child in double menu
-        if (isChildFlag) {
-          item.active = !item.active // Children toggle normally
-        } else {
-          if (window.innerWidth < 992) {
-            item.active = !item.active // Parent should always stay active when double menu active
-          } else {
-            item.active = true // Parent should always stay active when double menu active
-          }
-        }
-      } else {
-        item.active = !item.active // Regular toggle
-      }
-      // item.active = !item.active;
-      if (item.active) {
-        closeOtherMenus(menuList, item)
-      }
-      setAncestorsActive(menuList, item)
-    } else if (!item.active) {
-      if (html.getAttribute('data-vertical-style') != 'doublemenu') {
-        item.active = false // Set active to false for items not matching the target
-      }
-    }
-    if (item.children && item.children.length > 0) {
-      toggleSubmenu(event, targetObject, item.children, true)
-    }
+
+  // Simple approach: direct toggle
+  if (targetObject && targetObject.hasOwnProperty('active')) {
+    targetObject.active = !targetObject.active
+    // Force update to trigger re-render
+    forceUpdateCounter.value++
   }
   if (targetObject?.children && targetObject.active) {
     if (

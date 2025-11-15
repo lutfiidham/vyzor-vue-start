@@ -3,7 +3,7 @@
     href="javascript:;"
     class="side-menu__item"
     :class="`${menuData?.selected ? 'active' : ''}`"
-    @click="toggleSubmenu($event, menuData, undefined, level > 1)"
+    @click.stop="toggleSubmenu($event, menuData, undefined, level > 1)"
     @mouseover="HoverToggleInnerMenuFn($event, menuData)"
   >
     <span v-if="menuData?.icon" v-html="menuData.icon"> </span>
@@ -20,6 +20,8 @@
     </span>
     <i class="ri-arrow-right-s-line side-menu__angle"></i>
   </a>
+
+  
   <ul
     class="slide-menu"
     :class="`${menuData.active ? 'double-menu-active' : ''} child${level} ${menuData?.dirchange ? 'force-left' : ''}`"
@@ -75,7 +77,7 @@
 <script setup>
 import { Link } from '@inertiajs/vue3'
 
-defineProps({
+const props = defineProps({
   menuData: {
     type: Object,
     required: true,
@@ -93,6 +95,7 @@ defineProps({
     required: true,
   },
 })
+
 </script>
 
 <style lang=""></style>
