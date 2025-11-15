@@ -1,8 +1,9 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, nextTick, watch } from 'vue'
 import { Head, router } from '@inertiajs/vue3'
 import { useToast } from '@/composables/useToast'
 import { useConfirm } from '@/composables/useConfirm'
+import Sortable from 'sortablejs'
 
 const props = defineProps({
     menuList: Array,  // Menu data for table
@@ -242,18 +243,132 @@ const saveMenu = () => {
     }
 }
 
+// Initialize Sortable for drag and drop
+let menuSortable = null
+
+const initializeSortable = () => {
+    nextTick(() => {
+        const menuTable = document.querySelector('table tbody')
+
+        if (menuTable && menuSortable) {
+            menuSortable.destroy()
+        }
+
+        if (menuTable) {
+            menuSortable = Sortable.create(menuTable, {
+                group: 'nested',
+                animation: 150,
+                fallbackOnBody: true,
+                swapThreshold: 0.65,
+                handle: '.drag-handle',
+                ghostClass: 'sortable-ghost',
+                chosenClass: 'sortable-chosen',
+                dragClass: 'sortable-drag',
+                onEnd: (evt) => {
+                    handleMenuReorder(evt)
+                }
+            })
+        }
+
+        // Initialize nested sortables for child menus
+        document.querySelectorAll('.child-menu-group').forEach(childGroup => {
+            if (childGroup.sortableInstance) {
+                childGroup.sortableInstance.destroy()
+            }
+
+            childGroup.sortableInstance = Sortable.create(childGroup, {
+                group: 'nested',
+                animation: 150,
+                fallbackOnBody: true,
+                swapThreshold: 0.65,
+                handle: '.drag-handle',
+                ghostClass: 'sortable-ghost',
+                chosenClass: 'sortable-chosen',
+                dragClass: 'sortable-drag',
+                onEnd: (evt) => {
+                    handleMenuReorder(evt)
+                }
+            })
+        })
+    })
+}
+
+// Handle menu reorder
+const handleMenuReorder = (evt) => {
+    const menuId = evt.item.dataset.menuId
+    const newParentId = evt.item.dataset.parentId
+    const newIndex = evt.newIndex
+    const oldIndex = evt.oldIndex
+
+    // Get all menu items in the new order
+    const menuItems = []
+    const allRows = evt.to.querySelectorAll('tr')
+
+    allRows.forEach((row, index) => {
+        const id = row.dataset.menuId
+        const parentId = row.dataset.parentId
+
+        if (id && id !== menuId) {
+            menuItems.push({
+                id: parseInt(id),
+                order: index,
+                parent_id: parentId ? parseInt(parentId) : null
+            })
+        }
+    })
+
+    // Add the moved menu item
+    menuItems.splice(newIndex, 0, {
+        id: parseInt(menuId),
+        order: newIndex,
+        parent_id: newParentId ? parseInt(newParentId) : null
+    })
+
+    // Renumber all items
+    menuItems.forEach((item, index) => {
+        item.order = index
+    })
+
+    // Send update to server
+    router.post('/admin/menus/reorder', {
+        menus: menuItems
+    }, {
+        preserveScroll: true,
+        onSuccess: (page) => {
+            // Success message will be handled by the flash message from backend
+            toast.success('Menu order updated successfully!')
+        },
+        onError: (errors) => {
+            const errorMessage = Object.values(errors)[0] || 'Failed to reorder menu'
+            toast.error(errorMessage)
+            // Reload to restore original order
+            router.reload({ only: ['menuList'] })
+        }
+    })
+}
+
 onMounted(() => {
     const modalElement = document.getElementById('menuModal')
     if (modalElement) {
         menuModal.value = new bootstrap.Modal(modalElement)
-        
+
         // Clear state when modal is hidden
         modalElement.addEventListener('hidden.bs.modal', () => {
             editingMenu.value = null
             viewingMenu.value = null
         })
     }
+
+    // Initialize sortable after DOM is ready
+    initializeSortable()
 })
+
+// Watch for menuList changes and reinitialize sortable
+watch(() => props.menuList, () => {
+    nextTick(() => {
+        initializeSortable()
+    })
+}, { deep: true })
 </script>
 
 <template>
@@ -396,6 +511,7 @@ onMounted(() => {
                             <table class="table text-nowrap table-hover">
                                 <thead>
                                     <tr>
+                                        <th style="width: 40px;"></th>
                                         <th>Order</th>
                                         <th>Title</th>
                                         <th>Type</th>
@@ -407,7 +523,16 @@ onMounted(() => {
                                 </thead>
                                 <tbody>
                                     <template v-for="menu in menuList" :key="menu.id">
-                                        <tr>
+                                        <tr
+                                            :data-menu-id="menu.id"
+                                            :data-parent-id="menu.parent_id"
+                                            class="menu-item"
+                                        >
+                                            <td>
+                                                <div class="drag-handle cursor-move text-center">
+                                                    <i class="ri-drag-move-2-line text-muted"></i>
+                                                </div>
+                                            </td>
                                             <td>{{ menu.order }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center">
@@ -473,7 +598,18 @@ onMounted(() => {
                                         </tr>
                                         <!-- Child Menus -->
                                         <template v-if="menu.children && menu.children.length > 0">
-                                            <tr v-for="child in menu.children" :key="child.id" class="table-active">
+                                            <tr
+                                                v-for="child in menu.children"
+                                                :key="child.id"
+                                                class="table-active"
+                                                :data-menu-id="child.id"
+                                                :data-parent-id="child.parent_id"
+                                            >
+                                                <td>
+                                                    <div class="drag-handle cursor-move text-center">
+                                                        <i class="ri-drag-move-2-line text-muted"></i>
+                                                    </div>
+                                                </td>
                                                 <td><span class="ms-4">└─ {{ child.order }}</span></td>
                                                 <td>
                                                     <div class="d-flex align-items-center ms-4">
@@ -737,3 +873,46 @@ onMounted(() => {
         </div>
     </div>
 </template>
+
+<style scoped>
+.drag-handle {
+    cursor: move;
+    transition: all 0.2s ease;
+}
+
+.drag-handle:hover {
+    color: var(--bs-primary) !important;
+    transform: scale(1.1);
+}
+
+.sortable-ghost {
+    opacity: 0.4;
+    background: #f0f9ff;
+}
+
+.sortable-chosen {
+    background: #e0f2fe;
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.sortable-drag {
+    opacity: 0.8;
+    transform: rotate(2deg);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    z-index: 1000;
+}
+
+.menu-item {
+    transition: all 0.2s ease;
+}
+
+.menu-item.sortable-ghost td {
+    border-top: 2px solid var(--bs-primary);
+    border-bottom: 2px solid var(--bs-primary);
+}
+
+.cursor-move {
+    cursor: move !important;
+}
+</style>
