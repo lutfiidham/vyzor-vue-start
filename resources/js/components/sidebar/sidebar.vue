@@ -114,13 +114,13 @@ const menuData = computed(() => {
     return cleaned
   }
 
-  // Only combine with static menu if user is admin
-  if (isAdmin.value) {
+  // Only combine with static menu if user is admin and demo menu is enabled
+  if (shouldShowDemoMenu.value) {
     const staticMenuDataClean = staticMenuData.map((menu) => cleanStaticMenu(menu))
     const combinedMenus = [...dynamicMenus, ...staticMenuDataClean]
     return combinedMenus
   } else {
-    // Non-admin users only get dynamic menus
+    // Non-admin users or demo menu disabled only get dynamic menus
     return dynamicMenus
   }
 })
@@ -157,11 +157,21 @@ const userRoles = computed(() => {
   return []
 })
 
+// Get demo menu setting from page props
+const showDemoMenu = computed(() => {
+  return page.props.settings?.show_demo_menu || false
+})
+
 // Check if user is admin
 const isAdmin = computed(() => {
   return userRoles.value.some((role) =>
     typeof role === 'string' ? role.toLowerCase() === 'admin' : role.name?.toLowerCase() === 'admin'
   )
+})
+
+// Check if demo menu should be shown
+const shouldShowDemoMenu = computed(() => {
+  return isAdmin.value && showDemoMenu.value
 })
 
 // Computed logo link - if on demo pages, link to demo dashboard, else to main dashboard

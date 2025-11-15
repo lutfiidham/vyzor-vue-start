@@ -12,6 +12,7 @@ class GeneralSettings extends Settings
     public string $timezone;
     public string $date_format;
     public string $app_description;
+    public bool $show_demo_menu;
 
     public static function group(): string
     {

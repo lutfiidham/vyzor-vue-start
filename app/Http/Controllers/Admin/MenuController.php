@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
+use App\Settings\GeneralSettings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -50,6 +51,7 @@ class MenuController extends Controller
             'menuList' => $menuTree,  // For table display
             'roles' => $roles,
             'parentMenus' => $parentMenus,
+            'showDemoMenu' => app(GeneralSettings::class)->show_demo_menu,
             'filters' => [
                 'search' => $request->search,
                 'status' => $request->status,
@@ -324,23 +326,45 @@ class MenuController extends Controller
     }
 
     /**
+     * Toggle demo menu visibility
+     */
+    public function toggleDemoMenu(Request $request)
+    {
+        $validated = $request->validate([
+            'show_demo_menu' => 'required|boolean',
+        ]);
+
+        try {
+            $settings = app(GeneralSettings::class);
+            $settings->show_demo_menu = $validated['show_demo_menu'];
+            $settings->save();
+
+            return redirect()->back()
+                ->with('success', 'Demo menu setting updated successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->with('error', 'Failed to update demo menu setting: ' . $e->getMessage());
+        }
+    }
+
+    /**
      * Clear menu cache manually
      */
     public function clearCache()
     {
         try {
             \Log::info('Clear cache triggered by user: ' . auth()->id());
-            
+
             // Use Artisan cache:clear - sama seperti command line
             \Artisan::call('cache:clear');
-            
+
             \Log::info('All cache cleared successfully');
-            
+
             return redirect()->back()
                 ->with('success', 'Cache cleared successfully');
         } catch (\Exception $e) {
             \Log::error('Failed to clear cache: ' . $e->getMessage());
-            
+
             return redirect()->back()
                 ->with('error', 'Failed to clear cache: ' . $e->getMessage());
         }

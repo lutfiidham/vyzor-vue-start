@@ -100,6 +100,7 @@ Route::middleware('auth')->group(function () {
             Route::patch('menus/{menu}', [\App\Http\Controllers\Admin\MenuController::class, 'update']);
             Route::post('menus/reorder', [\App\Http\Controllers\Admin\MenuController::class, 'reorder'])->name('menus.reorder');
             Route::post('menus/{menu}/toggle', [\App\Http\Controllers\Admin\MenuController::class, 'toggle'])->name('menus.toggle');
+            Route::post('menus/toggle-demo-menu', [\App\Http\Controllers\Admin\MenuController::class, 'toggleDemoMenu'])->name('menus.toggle-demo-menu');
             Route::post('menus/clear-cache', [\App\Http\Controllers\Admin\MenuController::class, 'clearCache'])->name('menus.clear-cache');
         });
         Route::middleware('permission:menus.delete')->group(function () {

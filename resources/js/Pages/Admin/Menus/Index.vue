@@ -8,6 +8,7 @@ const props = defineProps({
     menuList: Array,  // Menu data for table
     roles: Array,
     parentMenus: Array,
+    showDemoMenu: Boolean, // Demo menu setting dari settings
 })
 
 const toast = useToast()
@@ -55,6 +56,22 @@ const getTypeBadge = (type) => {
         sub: 'bg-warning-transparent',
     }
     return badges[type] || 'bg-secondary-transparent'
+}
+
+// Toggle demo menu visibility
+const toggleDemoMenu = (value) => {
+    router.post('/admin/menus/toggle-demo-menu', {
+        show_demo_menu: value
+    }, {
+        preserveScroll: true,
+        onSuccess: () => {
+            toast.success(`Demo menu ${value ? 'enabled' : 'disabled'} successfully!`)
+        },
+        onError: (errors) => {
+            const errorMessage = Object.values(errors)[0] || 'Failed to update demo menu setting'
+            toast.error(errorMessage)
+        }
+    })
 }
 
 const openCreateModal = () => {
@@ -352,7 +369,20 @@ onMounted(() => {
                 <div class="card custom-card">
                     <div class="card-header justify-content-between">
                         <div class="card-title">Menus List</div>
-                        <div>
+                        <div class="d-flex align-items-center">
+                            <!-- Demo Menu Toggle -->
+                            <div class="form-check form-switch me-3">
+                                <input
+                                    :checked="showDemoMenu"
+                                    @change="toggleDemoMenu($event.target.checked)"
+                                    type="checkbox"
+                                    class="form-check-input"
+                                    id="demoMenuToggle"
+                                />
+                                <label class="form-check-label" for="demoMenuToggle">
+                                    Show Demo Menu
+                                </label>
+                            </div>
                             <button class="btn btn-secondary btn-wave me-2" @click="clearCache">
                                 <i class="ri-refresh-line me-1"></i>Clear Cache
                             </button>

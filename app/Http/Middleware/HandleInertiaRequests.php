@@ -51,6 +51,7 @@ class HandleInertiaRequests extends Middleware
                 'app_description' => app(GeneralSettings::class)->app_description,
                 'timezone' => app(GeneralSettings::class)->timezone,
                 'date_format' => app(GeneralSettings::class)->date_format,
+                'show_demo_menu' => app(GeneralSettings::class)->show_demo_menu,
             ],
             // Version information
             'versions' => [
