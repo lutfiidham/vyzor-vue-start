@@ -20,6 +20,9 @@ const props = defineProps({
   mainClass: String,
 })
 
+// Define emit
+const emit = defineEmits(['toggle'])
+
 // Create reactive state
 const isActive = ref(props.isOn ?? false)
 
@@ -34,7 +37,20 @@ watch(
 // Toggle function
 const toggleState = () => {
   isActive.value = !isActive.value
+  emit('toggle', isActive.value)
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.toggle {
+  cursor: pointer;
+}
+
+.toggle.on {
+  background-color: var(--bs-primary) !important;
+}
+
+.toggle.on span {
+  inset-inline-start: 2.313rem;
+}
+</style>
