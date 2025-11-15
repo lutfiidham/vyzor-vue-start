@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, defineProps, watch } from 'vue'
+import { ref, computed, watch } from 'vue'
 
 // Define Props
 interface Header {

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, defineProps, computed } from 'vue'
+import { ref, computed } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/swiper-bundle.css'
 
