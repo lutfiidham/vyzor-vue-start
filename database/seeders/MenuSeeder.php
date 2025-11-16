@@ -16,10 +16,10 @@ class MenuSeeder extends Seeder
     public function run(): void
     {
         // Get roles or create if not exists
-        $superAdminRole = Role::firstOrCreate(['name' => 'admin']);
-        $adminRole = Role::firstOrCreate(['name' => 'admin']);
-        $managerRole = Role::firstOrCreate(['name' => 'manager']);
-        $userRole = Role::firstOrCreate(['name' => 'user']);
+        $superAdminRole = Role::firstOrCreate(['name' => 'Super Admin']);
+        $adminRole = Role::firstOrCreate(['name' => 'Admin']);
+        $managerRole = Role::firstOrCreate(['name' => 'Manager']);
+        $userRole = Role::firstOrCreate(['name' => 'User']);
 
         // Clear existing menus and role relationships
         DB::table('menu_role')->truncate();
@@ -35,7 +35,7 @@ class MenuSeeder extends Seeder
                 'type' => 'menutitle',
                 'order' => 1,
                 'is_active' => true,
-                'roles' => [$adminRole->id, $managerRole->id],
+                'roles' => [$superAdminRole->id, $adminRole->id, $managerRole->id],
             ],
             [
                 'title' => 'Dashboard',
@@ -44,7 +44,7 @@ class MenuSeeder extends Seeder
                 'type' => 'link',
                 'order' => 2,
                 'is_active' => true,
-                'roles' => [$adminRole->id, $managerRole->id, $userRole->id],
+                'roles' => [$superAdminRole->id, $adminRole->id, $managerRole->id, $userRole->id],
             ],
 
             // ADMINISTRATION
@@ -53,7 +53,7 @@ class MenuSeeder extends Seeder
                 'type' => 'menutitle',
                 'order' => 10,
                 'is_active' => true,
-                'roles' => [$adminRole->id, $managerRole->id],
+                'roles' => [$superAdminRole->id, $adminRole->id, $managerRole->id],
             ],
             [
                 'title' => 'User Management',
@@ -62,7 +62,7 @@ class MenuSeeder extends Seeder
                 'type' => 'link',
                 'order' => 11,
                 'is_active' => true,
-                'roles' => [$adminRole->id, $managerRole->id],
+                'roles' => [$superAdminRole->id, $adminRole->id, $managerRole->id],
             ],
             [
                 'title' => 'Roles & Permissions',
@@ -71,7 +71,7 @@ class MenuSeeder extends Seeder
                 'type' => 'link',
                 'order' => 12,
                 'is_active' => true,
-                'roles' => [$adminRole->id],
+                'roles' => [$superAdminRole->id, $adminRole->id],
             ],
             [
                 'title' => 'Menu Management',
@@ -80,7 +80,7 @@ class MenuSeeder extends Seeder
                 'type' => 'link',
                 'order' => 13,
                 'is_active' => true,
-                'roles' => [$adminRole->id],
+                'roles' => [$superAdminRole->id, $adminRole->id],
             ],
             [
                 'title' => 'Activity Logs',
@@ -89,7 +89,7 @@ class MenuSeeder extends Seeder
                 'type' => 'link',
                 'order' => 14,
                 'is_active' => true,
-                'roles' => [$adminRole->id, $managerRole->id],
+                'roles' => [$superAdminRole->id, $adminRole->id, $managerRole->id],
             ],
             [
                 'title' => 'System Settings',
@@ -98,7 +98,7 @@ class MenuSeeder extends Seeder
                 'type' => 'link',
                 'order' => 15,
                 'is_active' => true,
-                'roles' => [$adminRole->id, $managerRole->id],
+                'roles' => [$superAdminRole->id, $adminRole->id, $managerRole->id],
             ],
 
             // ACCOUNT
@@ -107,7 +107,7 @@ class MenuSeeder extends Seeder
                 'type' => 'menutitle',
                 'order' => 20,
                 'is_active' => true,
-                'roles' => [$adminRole->id, $managerRole->id, $userRole->id],
+                'roles' => [$superAdminRole->id, $adminRole->id, $managerRole->id, $userRole->id],
             ],
             [
                 'title' => 'My Profile',
@@ -116,7 +116,7 @@ class MenuSeeder extends Seeder
                 'type' => 'link',
                 'order' => 21,
                 'is_active' => true,
-                'roles' => [$adminRole->id, $managerRole->id, $userRole->id],
+                'roles' => [$superAdminRole->id, $adminRole->id, $managerRole->id, $userRole->id],
             ],
         ];
 
@@ -134,6 +134,6 @@ class MenuSeeder extends Seeder
 
         $this->command->info('✅ Menus seeded successfully!');
         $this->command->info("📊 Created " . count($menus) . " menus");
-        $this->command->info("👥 Assigned roles: Super Admin, Admin, User");
+        $this->command->info("👥 Assigned roles: Super Admin, Admin, Manager, User");
     }
 }

@@ -13,10 +13,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->command->info('🌱 Starting database seeding...');
+        $this->command->newLine();
+
         $this->call([
             RolesAndPermissionsSeeder::class,
             AdminUserSeeder::class,
             MenuSeeder::class,
+            SettingsSeeder::class,
+            ActivityLogSeeder::class,
         ]);
+
+        $this->command->newLine();
+        $this->command->info('🎉 Database seeding completed successfully!');
     }
 }
