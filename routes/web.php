@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisterController;
 use Inertia\Inertia;
 
 // Guest routes
@@ -9,6 +10,8 @@ Route::middleware('guest')->group(function () {
     Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login');
     Route::get('/login', [AuthenticatedSessionController::class, 'create']);
     Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+    Route::get('/register', [RegisterController::class, 'create'])->name('register');
+    Route::post('/register', [RegisterController::class, 'store']);
 });
 
 // Demo routes - all pages moved under /demo/* prefix

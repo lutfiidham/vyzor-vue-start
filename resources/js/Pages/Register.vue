@@ -9,23 +9,25 @@ import ParticlesJs from '../shared/@spk/reuseble-plugin/particles-js.vue'
 defineOptions({
   layout: authlayout,
 })
+
 const baseUrl = __BASE_PATH__
 const { proxy } = getCurrentInstance()
 const page = usePage()
 
 const form = useForm({
-  username: '',
+  name: '',
+  email: '',
   password: '',
-  remember: false,
+  password_confirmation: '',
 })
 
 const theme = localStorage.getItem('vyzorcolortheme') || 'light'
 
-function login() {
-  form.post('/login', {
+function register() {
+  form.post('/register', {
     preserveScroll: true,
     onSuccess: () => {
-      proxy.$toast.success('Welcome back!', {
+      proxy.$toast.success('Account created successfully!', {
         theme,
         icon: true,
         hideProgressBar: false,
@@ -34,7 +36,7 @@ function login() {
       })
     },
     onError: errors => {
-      const errorMessage = errors.username || errors.password || 'Invalid credentials'
+      const errorMessage = errors.name || errors.email || errors.password || 'Registration failed'
       proxy.$toast.error(errorMessage, {
         theme,
         icon: true,
@@ -60,23 +62,21 @@ onMounted(() => {
 
   setBodyClass('add')
 
-  // Clean up display on browser unload
   const handleBeforeUnload = () => {
     setBodyClass('remove')
   }
   window.addEventListener('beforeunload', handleBeforeUnload)
 
-  // Remove listener and clean body style on unmount
   onUnmounted(() => {
     setBodyClass('remove')
-    document.body.removeAttribute('style') // <== this removes the whole style attribute
+    document.body.removeAttribute('style')
     window.removeEventListener('beforeunload', handleBeforeUnload)
   })
 })
 </script>
 
 <template>
-  <Head title="Login" />
+  <Head title="Sign Up" />
   <div class="authentication-basic-background">
     <BaseImg src="/images/media/backgrounds/9.png" alt="" />
   </div>
@@ -89,7 +89,7 @@ onMounted(() => {
         <div class="card custom-card border-0 my-4">
           <div class="card-body p-sm-5">
             <div class="mb-4">
-              <Link :href="`${baseUrl}/demo/dashboards/sales`">
+              <Link :href="`${baseUrl}/`">
                 <BaseImg
                   src="/images/brand-logos/toggle-logo.png"
                   alt="logo"
@@ -99,33 +99,47 @@ onMounted(() => {
             </div>
             <div>
               <h4 class="mb-1 fw-semibold">
-                Hi,Welcome back!
+                Sign Up
               </h4>
               <p class="mb-4 text-muted fw-normal">
-                Please enter your credentials
+                Join us by creating a free account!
               </p>
             </div>
-            <form @submit.prevent="login">
+            <form @submit.prevent="register">
               <div class="row gy-3">
                 <div class="col-xl-12">
-                  <label for="signin-email" class="form-label text-default">Username or Email</label>
+                  <label for="signup-name" class="form-label text-default">Full Name</label>
                   <input
-                    id="signin-email"
-                    v-model="form.username"
+                    id="signup-name"
+                    v-model="form.name"
                     type="text"
                     class="form-control"
-                    :class="{ 'is-invalid': form.errors.username }"
-                    placeholder="Enter Username or Email"
+                    :class="{ 'is-invalid': form.errors.name }"
+                    placeholder="Enter Full Name"
                   >
-                  <div v-if="form.errors.username" class="invalid-feedback">
-                    {{ form.errors.username }}
+                  <div v-if="form.errors.name" class="invalid-feedback">
+                    {{ form.errors.name }}
                   </div>
                 </div>
-                <div class="col-xl-12 mb-2">
-                  <label for="signin-password" class="form-label text-default d-block">Password</label>
+                <div class="col-xl-12">
+                  <label for="signup-email" class="form-label text-default">Email</label>
+                  <input
+                    id="signup-email"
+                    v-model="form.email"
+                    type="email"
+                    class="form-control"
+                    :class="{ 'is-invalid': form.errors.email }"
+                    placeholder="Enter Email"
+                  >
+                  <div v-if="form.errors.email" class="invalid-feedback">
+                    {{ form.errors.email }}
+                  </div>
+                </div>
+                <div class="col-xl-12">
+                  <label for="signup-password" class="form-label text-default d-block">Password</label>
                   <div class="position-relative">
                     <PasswordInput
-                      id="password"
+                      id="signup-password"
                       v-model="form.password"
                       name="password"
                       placeholder="Password"
@@ -136,22 +150,17 @@ onMounted(() => {
                       {{ form.errors.password }}
                     </div>
                   </div>
-                  <div class="mt-2">
-                    <div class="form-check d-flex gap-2 flex-wrap">
-                      <input
-                        id="defaultCheck1"
-                        v-model="form.remember"
-                        class="form-check-input"
-                        type="checkbox"
-                      >
-                      <label class="form-check-label grow" for="defaultCheck1"> Remember me </label>
-                      <Link
-                        :href="`${baseUrl}/demo/pages/authentication/reset-password/basic`"
-                        class="float-end link-danger fw-medium fs-12"
-                      >
-                        Forget password ?
-                      </Link>
-                    </div>
+                </div>
+                <div class="col-xl-12 mb-2">
+                  <label for="signup-password-confirm" class="form-label text-default d-block">Confirm Password</label>
+                  <div class="position-relative">
+                    <PasswordInput
+                      id="signup-password-confirm"
+                      v-model="form.password_confirmation"
+                      name="password_confirmation"
+                      placeholder="Confirm Password"
+                      required
+                    />
                   </div>
                 </div>
               </div>
@@ -163,9 +172,9 @@ onMounted(() => {
                       role="status"
                       aria-hidden="true"
                     />
-                    Signing in...
+                    Creating account...
                   </span>
-                  <span v-else>Sign In</span>
+                  <span v-else>Sign Up</span>
                 </button>
               </div>
             </form>
@@ -191,12 +200,12 @@ onMounted(() => {
               </button>
             </div>
             <div class="text-center mt-3 fw-medium">
-              Dont have an account?
+              Already have an account?
               <Link
-                :href="`${baseUrl}/register`"
+                :href="`${baseUrl}/login`"
                 class="text-primary"
               >
-                Sign Up
+                Sign In
               </Link>
             </div>
           </div>
