@@ -1,25 +1,25 @@
-export let TooltipDirections = {
-    script: `
+export const TooltipDirections = {
+  script: `
      <div class="btn-list">
                 <button type="button" class="btn btn-primary btn-wave" data-bs-toggle="tooltip" :data-bs-placement="idx.text" :title="Tooltip on {idx.text}" v-for="(idx, index) in tooltipData.Tooltipdirtooltip" :key="index" >
                     Tooltip on {{idx.text}}
                 </button>
             </div>`,
-    data: `
+  data: `
          Tooltipdirtooltip = [
         { id: 1, text: "top" },
         { id: 2, text: "right" },
         { id: 3, text: "bottom" },
         { id: 4, text: "left" }
     ]`,
-  },
-  ColoredTooltips = {
-    script: `<div class="btn-list">
+}
+export const ColoredTooltips = {
+  script: `<div class="btn-list">
                 <button type="button" :class="btn btn-{idx.color} btn-wave" data-bs-toggle="tooltip" :data-bs-custom-class="tooltip-{idx.color}" :data-bs-placement="idx.dir" :title="{idx.text} Tooltip" v-for="(idx, index) in tooltipData.Coloredtooltip" :key="index">
                     {{idx.text}} Tooltip
                 </button>
             </div>`,
-    data: `
+  data: `
         Coloredtooltip = [
         { id: 1, dir: "top", color: "primary", text: "Primary" },
         { id: 2, dir: "right", color: "secondary", text: "Secondary" },
@@ -31,21 +31,21 @@ export let TooltipDirections = {
         { id: 8, dir: "bottom", color: "dark", text: "Dark" }
     ]
         `,
-  },
-  TooltipsOnLinks = {
-    script: `
+}
+export const TooltipsOnLinks = {
+  script: `
      <p class="text-muted mb-0">
                 Hover on the link to view the <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-custom-class="tooltip-primary" title="Link Tooltip" class="text-primary">Tooltip</a>
             </p>`,
-  },
-  WithAnSVGs = {
-    script: `
+}
+export const WithAnSVGs = {
+  script: `
  <a href="javascript:void(0);" data-bs-toggle="tooltip" :title="idx.text" :data-bs-custom-class="tooltip-{idx.color}" :class="me-3 svg-{idx.color}" v-for="(idx, index) in tooltipData.SVGtooltip" :key="index">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                     <path d="M0 0h24v24H0V0z" fill="none" />
                     <path :d="idx.class" /></svg>
             </a>`,
-    data: `
+  data: `
         SVGtooltip = [
         { id: 1, class: "M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z", color: "primary", text: "Home" },
         { id: 2, class: "M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z", color: "secondary", text: "Message" },
@@ -54,17 +54,17 @@ export let TooltipDirections = {
         { id: 5, class: "M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z", color: "success", text: "Action" },
     ]
         `,
-  },
-  DisabledElements = {
-    script: `
+}
+export const DisabledElements = {
+  script: `
 <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Disabled tooltip">
                     <button class="btn btn-primary" type="button" disabled="">Disabled
                         button
                     </button>
                 </span>`,
-  },
-  TooltipForImages = {
-    script: `
+}
+export const TooltipForImages = {
+  script: `
 <a href="javascript:void(0);" data-bs-toggle="tooltip" title="Alex Carey" data-bs-custom-class="tooltip-primary" class="avatar avatar-md me-2 online avatar-rounded">
                 <img src="/images/faces/12.jpg" alt="img">
             </a>
@@ -74,4 +74,4 @@ export let TooltipDirections = {
             <a href="javascript:void(0);" data-bs-toggle="tooltip" title="Tim Cook" data-bs-custom-class="tooltip-primary" class="avatar avatar-xl me-2 offline avatar-rounded">
                 <img src="/images/faces/15.jpg" alt="img">
             </a>`,
-  }
+}

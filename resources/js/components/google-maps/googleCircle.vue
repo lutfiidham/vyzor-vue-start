@@ -1,6 +1,6 @@
 <script setup>
-import { ref, computed } from 'vue'
-import { GoogleMap, Circle } from 'vue3-google-map'
+import { computed, ref } from 'vue'
+import { Circle, GoogleMap } from 'vue3-google-map'
 
 const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 
@@ -39,6 +39,7 @@ const circlesObj = computed(() => {
       fillOpacity: 0.35,
     }
   }
+
   return obj
 })
 </script>

@@ -1,13 +1,12 @@
 <script setup>
-import * as JobsData from '@/shared/data/dashboards/jobs/dashboard'
-import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
-import simplebar from 'simplebar-vue'
-import 'simplebar-vue/dist/simplebar.min.css'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import SpkReusebleJobs from '@/shared/@spk/dashboards/jobs/dashboard/spk-reuseble-jobs.vue'
+import { Head } from '@inertiajs/vue3'
 import { ref } from 'vue'
 import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import SpkReusebleJobs from '@/shared/@spk/dashboards/jobs/dashboard/spk-reuseble-jobs.vue'
+import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
+import * as JobsData from '@/shared/data/dashboards/jobs/dashboard'
+import 'simplebar-vue/dist/simplebar.min.css'
 
 // Page metadata
 const dataToPass = {
@@ -22,21 +21,21 @@ const Jobs = ref([...JobsData.JobsPostings])
 
 // Methods
 function handleToDelete(id) {
-  Jobs.value = Jobs.value.filter((job) => job.id !== id)
+  Jobs.value = Jobs.value.filter(job => job.id !== id)
 }
 </script>
 
 <template>
   <Head title="Dashboards-Jobs | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start:: row-1 -->
   <div class="row row-cols-xxl-5 row-cols-xl-3 row-cols-lg-3 row-cols-sm-2 row-cols-1">
-    <div class="col" v-for="idx in JobsData.JobsCards" :key="idx.id">
+    <div v-for="idx in JobsData.JobsCards" :key="idx.id" class="col">
       <SpkReusebleJobs
-        :jobsCard="true"
-        cardClass="card"
+        :jobs-card="true"
+        card-class="card"
         :list="idx"
-        :imageIcon="false"
+        :image-icon="false"
         :NoCountUp="true"
       />
     </div>
@@ -48,11 +47,13 @@ function handleToDelete(id) {
     <div class="col-xxl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Employees Performance</div>
+          <div class="card-title">
+            Employees Performance
+          </div>
         </div>
         <div class="card-body">
           <div id="employees-performance">
-            <apexchart
+            <Apexchart
               type="line"
               height="378px"
               :options="JobsData.JobsEmployeeOptions"
@@ -65,7 +66,9 @@ function handleToDelete(id) {
     <div class="col-xxl-3 col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Recent Activity</div>
+          <div class="card-title">
+            Recent Activity
+          </div>
         </div>
         <div class="card-body">
           <ul class="list-unstyled jobs-recent-activity-list">
@@ -78,10 +81,14 @@ function handleToDelete(id) {
                 </div>
                 <div>
                   <div class="d-flex align-items-center gap-2">
-                    <div class="fw-semibold">{{ idx.name }}</div>
+                    <div class="fw-semibold">
+                      {{ idx.name }}
+                    </div>
                     <span :class="`badge ${idx.badgeClass}`">{{ idx.badgeText }}</span>
                   </div>
-                  <div class="fs-13 description mb-1">{{ idx.description }}</div>
+                  <div class="fs-13 description mb-1">
+                    {{ idx.description }}
+                  </div>
                   <span class="d-block fs-12 text-muted">{{ idx.timestamp }}</span>
                 </div>
               </div>
@@ -93,11 +100,13 @@ function handleToDelete(id) {
     <div class="col-xxl-3 col-xl-6">
       <div class="card custom-card overflow-hidden">
         <div class="card-header">
-          <div class="card-title">Candidates Overview</div>
+          <div class="card-title">
+            Candidates Overview
+          </div>
         </div>
         <div class="card-body">
           <div id="candidates-overview">
-            <apexchart
+            <Apexchart
               type="donut"
               height="236px"
               :options="JobsData.JobsOverviewOptions"
@@ -128,10 +137,12 @@ function handleToDelete(id) {
                 </div>
                 <div class="flex-fill">
                   <span class="fs-13 d-block">Male</span>
-                  <h5 class="fw-semibold mb-0">15,976</h5>
+                  <h5 class="fw-semibold mb-0">
+                    15,976
+                  </h5>
                 </div>
                 <div>
-                  <span class="text-success"><i class="ti ti-arrow-narrow-up me-1"></i>3.45%</span>
+                  <span class="text-success"><i class="ti ti-arrow-narrow-up me-1" />3.45%</span>
                   <span class="d-block fs-13 text-muted">This Year</span>
                 </div>
               </div>
@@ -157,10 +168,12 @@ function handleToDelete(id) {
                 </div>
                 <div class="flex-fill">
                   <span class="fs-13 d-block">Female</span>
-                  <h5 class="fw-semibold mb-0">12,765</h5>
+                  <h5 class="fw-semibold mb-0">
+                    12,765
+                  </h5>
                 </div>
                 <div>
-                  <span class="text-danger"><i class="ti ti-arrow-narrow-down me-1"></i>0.86%</span>
+                  <span class="text-danger"><i class="ti ti-arrow-narrow-down me-1" />0.86%</span>
                   <span class="d-block fs-13 text-muted">This Year</span>
                 </div>
               </div>
@@ -177,12 +190,15 @@ function handleToDelete(id) {
     <div class="col-xxl-6">
       <div class="card custom-card overflow-hidden">
         <div class="card-header">
-          <div class="card-title">Recently Added Jobs</div>
+          <div class="card-title">
+            Recently Added Jobs
+          </div>
         </div>
         <div class="card-body p-0">
           <div class="table-responsive">
             <TableComponent
-              tableClass="table text-nowrap"
+              #cell="{ row }"
+              table-class="table text-nowrap"
               :headers="[
                 { text: 'Company', thClass: '' },
                 { text: 'Job Role', thClass: '' },
@@ -190,7 +206,6 @@ function handleToDelete(id) {
                 { text: 'Job Type', thClass: '' },
               ]"
               :rows="JobsData.JobsTable"
-              v-slot:cell="{ row }"
             >
               <td :class="row.tdClass">
                 <div class="d-flex align-items-center gap-2">
@@ -200,11 +215,12 @@ function handleToDelete(id) {
                   <a href="javascript:void(0);" class="fw-medium">{{ row.companyName }}</a>
                 </div>
               </td>
-              <td :class="row.tdClass">{{ row.position }}</td>
+              <td :class="row.tdClass">
+                {{ row.position }}
+              </td>
               <td :class="row.tdClass">
                 <span class="text-muted">
-                  <i class="ti ti-map-pin me-1"></i> {{ row.location }}</span
-                >
+                  <i class="ti ti-map-pin me-1" /> {{ row.location }}</span>
               </td>
               <td :class="row.tdClass">
                 <span :class="`badge ${row.badgeClass} rounded-pill`">{{ row.jobType }}</span>
@@ -217,7 +233,9 @@ function handleToDelete(id) {
     <div class="col-xxl-3 col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Acquisitions</div>
+          <div class="card-title">
+            Acquisitions
+          </div>
         </div>
         <div class="card-body">
           <div class="progress progress-md mb-4 mt-2">
@@ -228,7 +246,7 @@ function handleToDelete(id) {
               aria-valuenow="52"
               aria-valuemin="0"
               aria-valuemax="100"
-            ></div>
+            />
             <div
               class="progress-bar bg-secondary"
               role="progressbar"
@@ -236,7 +254,7 @@ function handleToDelete(id) {
               aria-valuenow="12"
               aria-valuemin="0"
               aria-valuemax="100"
-            ></div>
+            />
             <div
               class="progress-bar bg-success"
               role="progressbar"
@@ -244,7 +262,7 @@ function handleToDelete(id) {
               aria-valuenow="16"
               aria-valuemin="0"
               aria-valuemax="100"
-            ></div>
+            />
             <div
               class="progress-bar bg-warning"
               role="progressbar"
@@ -252,7 +270,7 @@ function handleToDelete(id) {
               aria-valuenow="12"
               aria-valuemin="0"
               aria-valuemax="100"
-            ></div>
+            />
             <div
               class="progress-bar bg-danger"
               role="progressbar"
@@ -260,13 +278,13 @@ function handleToDelete(id) {
               aria-valuenow="8"
               aria-valuemin="0"
               aria-valuemax="100"
-            ></div>
+            />
           </div>
           <ul class="list-group acquisitions-list mt-1">
             <li
-              :class="`list-group-item ${idx.liClass}`"
               v-for="idx in JobsData.Acquisitions"
               :key="idx.id"
+              :class="`list-group-item ${idx.liClass}`"
             >
               {{ idx.label }}
               <span :class="`badge float-end bg-${idx.badgeClass}-transparent`">{{
@@ -280,15 +298,17 @@ function handleToDelete(id) {
     <div class="col-xxl-3 col-xl-12">
       <div class="card custom-card overflow-hidden">
         <div class="card-header">
-          <div class="card-title">Recent Jobs</div>
+          <div class="card-title">
+            Recent Jobs
+          </div>
         </div>
         <div class="card-body p-0">
           <ul class="list-group list-group-flush">
-            <simplebar id="recent-jobs">
+            <Simplebar id="recent-jobs">
               <li
-                :class="`list-group-item border-top-0 border-start-0 border-end-0 ${idx.id === 6 ? 'border-bottom-0' : ''}`"
                 v-for="idx in JobsData.JobsRecent"
                 :key="idx.id"
+                :class="`list-group-item border-top-0 border-start-0 border-end-0 ${idx.id === 6 ? 'border-bottom-0' : ''}`"
               >
                 <a href="javascript:void(0);">
                   <div class="d-flex align-items-center flex-wrap">
@@ -310,7 +330,7 @@ function handleToDelete(id) {
                   </div>
                 </a>
               </li>
-            </simplebar>
+            </Simplebar>
           </ul>
         </div>
       </div>
@@ -323,7 +343,9 @@ function handleToDelete(id) {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header justify-content-between">
-          <div class="card-title">Recent Job Postings</div>
+          <div class="card-title">
+            Recent Job Postings
+          </div>
           <div class="d-flex flex-wrap gap-2">
             <div>
               <input
@@ -331,7 +353,7 @@ function handleToDelete(id) {
                 type="text"
                 placeholder="Search Here"
                 aria-label=".form-control-sm example"
-              />
+              >
             </div>
             <div class="dropdown">
               <a
@@ -340,7 +362,7 @@ function handleToDelete(id) {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Sort By<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block"></i>
+                Sort By<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block" />
               </a>
               <ul class="dropdown-menu" role="menu">
                 <li><a class="dropdown-item" href="javascript:void(0);">New</a></li>
@@ -353,7 +375,8 @@ function handleToDelete(id) {
         <div class="card-body p-0">
           <div class="table-responsive">
             <TableComponent
-              tableClass="table text-nowrap"
+              #cell="{ row }"
+              table-class="table text-nowrap"
               :headers="[
                 { text: 'S.No', thClass: '' },
                 { text: 'Job Title', thClass: '' },
@@ -367,7 +390,6 @@ function handleToDelete(id) {
                 { text: 'Actions', thClass: '' },
               ]"
               :rows="Jobs"
-              v-slot:cell="{ row }"
             >
               <td>{{ row.id }}</td>
               <td>{{ row.title }}</td>
@@ -378,8 +400,7 @@ function handleToDelete(id) {
               <td>
                 <span
                   :class="`badge bg-${row.status === 'Active' ? 'success' : 'danger'}-transparent`"
-                  >{{ row.status }}</span
-                >
+                >{{ row.status }}</span>
               </td>
               <td>
                 <div class="d-flex align-items-center gap-2">
@@ -395,13 +416,13 @@ function handleToDelete(id) {
               <td>
                 <div class="btn-list">
                   <button class="btn btn-primary-light btn-icon btn-sm">
-                    <i class="ti ti-edit"></i>
+                    <i class="ti ti-edit" />
                   </button>
                   <button
                     class="btn btn-danger-light btn-icon btn-sm"
                     @click="handleToDelete(row.id)"
                   >
-                    <i class="ti ti-trash"></i>
+                    <i class="ti ti-trash" />
                   </button>
                 </div>
               </td>
@@ -410,23 +431,27 @@ function handleToDelete(id) {
         </div>
         <div class="card-footer border-top-0">
           <div class="d-flex align-items-center flex-wrap">
-            <div>Showing 6 Entries <i class="bi bi-arrow-right ms-2 fw-semibold"></i></div>
+            <div>Showing 6 Entries <i class="bi bi-arrow-right ms-2 fw-semibold" /></div>
             <div class="ms-auto">
               <nav aria-label="Page navigation" class="pagination-style-2">
                 <ul class="pagination mb-0 flex-wrap">
                   <li class="page-item disabled">
                     <a class="page-link" href="javascript:void(0);"> Prev </a>
                   </li>
-                  <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:void(0);">1</a>
+                  </li>
                   <li class="page-item active">
                     <a class="page-link" href="javascript:void(0);">2</a>
                   </li>
                   <li class="page-item">
                     <a class="page-link" href="javascript:void(0);">
-                      <i class="bi bi-three-dots"></i>
+                      <i class="bi bi-three-dots" />
                     </a>
                   </li>
-                  <li class="page-item"><a class="page-link" href="javascript:void(0);">17</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:void(0);">17</a>
+                  </li>
                   <li class="page-item">
                     <a class="page-link text-primary" href="javascript:void(0);"> next </a>
                   </li>

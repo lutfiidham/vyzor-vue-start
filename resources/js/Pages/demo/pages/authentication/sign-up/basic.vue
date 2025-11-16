@@ -1,13 +1,14 @@
 <script setup>
+import { Link, router } from '@inertiajs/vue3'
 import { onBeforeUnmount, onMounted, reactive, ref } from 'vue'
 import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Link, router } from '@inertiajs/vue3'
 import authlayout from '@/layouts/authlayout.vue'
-const baseUrl = __BASE_PATH__
 
 defineOptions({
   layout: authlayout,
 })
+
+const baseUrl = __BASE_PATH__
 
 const values = reactive({
   email: '',
@@ -19,44 +20,48 @@ const errors = reactive({})
 
 const matched = ref('')
 
-const validate = () => {
+function validate() {
   const newErrors = {}
 
   if (!values.email) {
     newErrors.email = 'Email is required.'
-  } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+  }
+  else if (!/\S[^\s@]*@\S+\.\S+/.test(values.email)) {
     newErrors.email = 'Invalid email format.'
   }
 
   if (!values.password) {
     newErrors.password = 'Password is required.'
-  } else if (values.password.length < 6) {
+  }
+  else if (values.password.length < 6) {
     newErrors.password = 'Password must be at least 6 characters.'
   }
 
   // Clear existing errors first
-  Object.keys(errors).forEach((key) => delete errors[key])
+  Object.keys(errors).forEach(key => delete errors[key])
 
   Object.assign(errors, newErrors)
+
   return Object.keys(newErrors).length === 0
 }
 
-const togglePassword = () => {
+function togglePassword() {
   values.showPassword = !values.showPassword
 }
 
-const handleSubmit = () => {
+function handleSubmit() {
   if (validate()) {
     matched.value = 'Save Password successful'
     router.visit(`${baseUrl}/demo/dashboards/sales`) // Replace with your basePath if needed
   }
 }
 
-const setBodyClass = (action) => {
+function setBodyClass(action) {
   if (action === 'add') {
     document.body.classList.add('authentication-background')
     document.body.style.display = 'block'
-  } else {
+  }
+  else {
     document.body.classList.remove('authentication-background')
     document.body.style.display = 'none'
   }
@@ -66,7 +71,8 @@ onMounted(() => {
   // Check if the user has visited before
   if (localStorage.getItem('visited') === 'true') {
     setBodyClass('add')
-  } else {
+  }
+  else {
     setBodyClass('add')
     localStorage.setItem('visited', 'true')
   }
@@ -111,8 +117,12 @@ onMounted(() => {
                 </Link>
               </div>
               <div>
-                <h4 class="mb-1 fw-semibold">Sign Up</h4>
-                <p class="mb-4 text-muted fw-normal">Join us by creating a free account !</p>
+                <h4 class="mb-1 fw-semibold">
+                  Sign Up
+                </h4>
+                <p class="mb-4 text-muted fw-normal">
+                  Join us by creating a free account !
+                </p>
               </div>
               <form @submit.prevent="handleSubmit">
                 <div class="row gy-3">
@@ -120,12 +130,12 @@ onMounted(() => {
                   <div class="col-xl-12">
                     <label for="signin-email" class="text-default">Email</label>
                     <input
+                      id="signup-firstname"
+                      v-model="values.email"
                       type="email"
                       class="form-control"
-                      id="signup-firstname"
                       placeholder="Enter Email ID"
-                      v-model="values.email"
-                    />
+                    >
                     <p v-if="errors.email" class="text-danger text-sm mt-1 mb-0">
                       {{ errors.email }}
                     </p>
@@ -136,12 +146,12 @@ onMounted(() => {
                     <label for="signin-password" class="text-default d-block">Password</label>
                     <div class="position-relative">
                       <input
+                        id="signup-password"
+                        v-model="values.password"
                         :type="values.showPassword ? 'text' : 'password'"
                         class="form-control"
-                        id="signup-password"
                         placeholder="Password"
-                        v-model="values.password"
-                      />
+                      >
                       <a
                         href="#!"
                         class="show-password-button text-muted"
@@ -153,21 +163,25 @@ onMounted(() => {
                               ? 'ri-eye-line align-middle'
                               : 'ri-eye-off-line align-middle'
                           "
-                        ></i>
+                        />
                       </a>
 
                       <p v-if="errors.password" class="text-danger text-sm mt-1 mb-0">
                         {{ errors.password }}
                       </p>
 
-                      <p v-if="matched" class="text-success text-sm mt-1 mb-0">{{ matched }}</p>
+                      <p v-if="matched" class="text-success text-sm mt-1 mb-0">
+                        {{ matched }}
+                      </p>
                     </div>
                   </div>
                 </div>
 
                 <!-- Submit Button -->
                 <div class="d-grid mt-3">
-                  <button type="submit" class="btn btn-primary">Sign Up</button>
+                  <button type="submit" class="btn btn-primary">
+                    Sign Up
+                  </button>
                 </div>
               </form>
               <div class="text-center my-3 authentication-barrier">
@@ -193,9 +207,9 @@ onMounted(() => {
               </div>
               <div class="text-center mt-3 fw-medium">
                 Already have a account?
-                <Link :href="`${baseUrl}/demo/pages/authentication/sign-in/basic`" class="text-primary"
-                  >Sign In</Link
-                >
+                <Link :href="`${baseUrl}/demo/pages/authentication/sign-in/basic`" class="text-primary">
+                  Sign In
+                </Link>
               </div>
             </div>
           </div>

@@ -1,13 +1,13 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
-import * as Stockdata from '@/shared/data/dashboards/stocksdata'
-import { Tooltip } from 'bootstrap'
-import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
-import SwiperjsCards from '@/shared/@spk/swiperjs-cards.vue'
-import SpkStockSwipercard from '@/shared/@spk/dashboards/spk-stock-swipercard.vue'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
+import { Tooltip } from 'bootstrap'
+import { onBeforeUnmount, onMounted } from 'vue'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import SpkStockSwipercard from '@/shared/@spk/dashboards/spk-stock-swipercard.vue'
+import SwiperjsCards from '@/shared/@spk/swiperjs-cards.vue'
+import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
+import * as Stockdata from '@/shared/data/dashboards/stocksdata'
 
 // Header data
 const dataToPass = {
@@ -43,30 +43,32 @@ onMounted(() => {
 // Clean up tooltip
 onBeforeUnmount(() => {
   const tooltips = document.getElementsByClassName('tooltip')
-  Array.from(tooltips).forEach((tooltip) => tooltip.remove())
+  Array.from(tooltips).forEach(tooltip => tooltip.remove())
 })
 
 // Handle stock deletion
-let handleToDelete = (id) => {
-  stock = stock.filter((item) => item.id !== id)
+function handleToDelete(id) {
+  stock = stock.filter(item => item.id !== id)
 }
 </script>
 
 <template>
   <Head title="Stocks | Vyzor - Laravel & Vue " />
 
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xl-12">
-      <h6 class="fw-semibold mb-3">My Portfolio</h6>
+      <h6 class="fw-semibold mb-3">
+        My Portfolio
+      </h6>
       <div class="card custom-card">
         <div class="card-body">
           <SwiperjsCards
-            :swiperItems="Stockdata.StockData"
-            swiperClass="swiper stocks-swiper swiper-initialized swiper-horizontal swiper-backface-hidden"
-            :slidesPerView="1"
-            :spaceBetween="20"
+            :swiper-items="Stockdata.StockData"
+            swiper-class="swiper stocks-swiper swiper-initialized swiper-horizontal swiper-backface-hidden"
+            :slides-per-view="1"
+            :space-between="20"
             :breakpoints="breakpoints"
             :pagination="false"
             :navigation="false"
@@ -87,7 +89,9 @@ let handleToDelete = (id) => {
     <div class="col-xxl-9">
       <div class="card custom-card">
         <div class="card-header justify-content-between">
-          <div class="card-title">Portfolio Analysis</div>
+          <div class="card-title">
+            Portfolio Analysis
+          </div>
           <div class="btn-group">
             <a href="javascript:void(0);" class="btn btn-sm btn-primary-light">1H</a>
             <a href="javascript:void(0);" class="btn btn-sm btn-primary-light">6H</a>
@@ -108,21 +112,21 @@ let handleToDelete = (id) => {
             </div>
             <div class="text-end">
               <div class="d-flex align-items-center mb-1 gap-2">
-                <span class="badge bg-success rounded-pill"
-                  ><i class="ti ti-arrow-narrow-up me-1"></i>0.54%</span
-                >
-                <h4 class="fw-semibold mb-0">$1,63,340</h4>
+                <span class="badge bg-success rounded-pill"><i class="ti ti-arrow-narrow-up me-1" />0.54%</span>
+                <h4 class="fw-semibold mb-0">
+                  $1,63,340
+                </h4>
               </div>
               <span class="fs-13 text-muted">Last Updated 12:24pm</span>
             </div>
           </div>
           <div id="portfolio-analysis">
-            <apexchart
+            <Apexchart
               height="382px"
               type="area"
               :options="Stockdata.PortfolioOptions"
               :series="Stockdata.PortfolioSeries"
-            ></apexchart>
+            />
           </div>
         </div>
       </div>
@@ -130,7 +134,9 @@ let handleToDelete = (id) => {
     <div class="col-xxl-3">
       <div class="card custom-card">
         <div class="card-header justify-content-between">
-          <div class="card-title">My Watchlist</div>
+          <div class="card-title">
+            My Watchlist
+          </div>
           <a href="javascript:void(0);" class="text-muted fs-13">View All</a>
         </div>
         <div class="card-body">
@@ -166,19 +172,21 @@ let handleToDelete = (id) => {
   <!-- Start:: row-3 -->
   <div class="row">
     <div class="col-xl-12">
-      <h6 class="fw-semibold mb-3">Trending Stocks :</h6>
+      <h6 class="fw-semibold mb-3">
+        Trending Stocks :
+      </h6>
       <div class="row">
         <div
-          class="col-xxl-2 col-xl-4 col-lg-6 col-md-6 col-sm-12"
           v-for="idx in Stockdata.Trendingdata"
           :key="idx.id"
+          class="col-xxl-2 col-xl-4 col-lg-6 col-md-6 col-sm-12"
         >
           <div class="p-3 card custom-card border bg-white rounded">
             <div class="d-flex gap-2 flex-wrap align-items-center justify-content-between mb-3">
               <div class="d-flex flex-fill align-items-center">
                 <div class="me-2">
                   <span class="avatar avatar-rounded bg-light p-2">
-                    <i :class="`bi ${idx.icon} text-${idx.iconColor} fs-18`"></i>
+                    <i :class="`bi ${idx.icon} text-${idx.iconColor} fs-18`" />
                   </span>
                 </div>
                 <div class="lh-1">
@@ -187,15 +195,17 @@ let handleToDelete = (id) => {
                 </div>
               </div>
               <div class="text-success fs-12 text-end">
-                <span class="d-block"
-                  >{{ idx.percentChange }}<i class="ti ti-arrow-bear-right"></i
-                ></span>
+                <span class="d-block">{{ idx.percentChange }}<i class="ti ti-arrow-bear-right" /></span>
                 <span class="d-block">{{ idx.amountChange }}</span>
               </div>
             </div>
             <div class="d-flex gap-2">
-              <button type="button" class="btn btn-sm btn-light flex-fill">Short</button>
-              <button type="button" class="btn btn-sm btn-primary-light flex-fill">Buy</button>
+              <button type="button" class="btn btn-sm btn-light flex-fill">
+                Short
+              </button>
+              <button type="button" class="btn btn-sm btn-primary-light flex-fill">
+                Buy
+              </button>
             </div>
           </div>
         </div>
@@ -209,9 +219,11 @@ let handleToDelete = (id) => {
     <div class="col-xxl-3">
       <div class="card custom-card overflow-hidden">
         <div class="card-header justify-content-between">
-          <div class="card-title">Recent Activities</div>
+          <div class="card-title">
+            Recent Activities
+          </div>
           <a href="javascript:void(0);" class="fs-12 text-muted py-1 tag-link">
-            View All<i class="ti ti-arrow-narrow-right ms-1"></i>
+            View All<i class="ti ti-arrow-narrow-right ms-1" />
           </a>
         </div>
         <div class="card-body">
@@ -238,7 +250,7 @@ let handleToDelete = (id) => {
                   <div
                     :class="`progress-bar progress-bar-animated bg-${idx.progressColor} progress-bar-striped progress-bar-animated`"
                     :style="`width: ${idx.progressBarWidth}%;`"
-                  ></div>
+                  />
                 </div>
               </div>
             </li>
@@ -249,7 +261,9 @@ let handleToDelete = (id) => {
     <div class="col-xxl-9">
       <div class="card custom-card overflow-hidden">
         <div class="card-header justify-content-between">
-          <div class="card-title">My Stocks</div>
+          <div class="card-title">
+            My Stocks
+          </div>
           <div class="d-flex flex-wrap gap-2">
             <div>
               <input
@@ -257,7 +271,7 @@ let handleToDelete = (id) => {
                 type="text"
                 placeholder="Search Here"
                 aria-label=".form-control-sm example"
-              />
+              >
             </div>
             <div class="dropdown">
               <a
@@ -266,7 +280,7 @@ let handleToDelete = (id) => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Sort By<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block"></i>
+                Sort By<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block" />
               </a>
               <ul class="dropdown-menu" role="menu">
                 <li><a class="dropdown-item" href="javascript:void(0);">New</a></li>
@@ -279,7 +293,8 @@ let handleToDelete = (id) => {
         <div class="card-body p-0">
           <div class="table-responsive">
             <TableComponent
-              tableClass="table text-nowrap"
+              #cell="{ row }"
+              table-class="table text-nowrap"
               :headers="[
                 { text: 'S.No', thClass: '' },
                 { text: 'Name', thClass: '' },
@@ -291,7 +306,6 @@ let handleToDelete = (id) => {
                 { text: 'Actions', thClass: '' },
               ]"
               :rows="stock"
-              v-slot:cell="{ row }"
             >
               <td>{{ row.id }}</td>
               <td>
@@ -317,21 +331,18 @@ let handleToDelete = (id) => {
               <td>
                 <span
                   :class="`badge bg-${row.change.startsWith('-') ? 'danger' : 'success'}-transparent text-${row.change.startsWith('-') ? 'danger' : 'success'}`"
-                  >{{ row.change }}
+                >{{ row.change }}
                 </span>
               </td>
               <td>{{ row.volume }}</td>
               <td>
                 <div class="btn-list">
-                  <a href="javascript:void(0);" class="btn btn-icon btn-primary-light btn-sm"
-                    ><i class="bi bi-pencil-square"></i
-                  ></a>
+                  <a href="javascript:void(0);" class="btn btn-icon btn-primary-light btn-sm"><i class="bi bi-pencil-square" /></a>
                   <a
                     href="javascript:void(0);"
                     class="btn btn-icon btn-danger-light btn-sm"
                     @click="handleToDelete(row.id)"
-                    ><i class="bi bi-trash"></i
-                  ></a>
+                  ><i class="bi bi-trash" /></a>
                 </div>
               </td>
             </TableComponent>
@@ -339,7 +350,7 @@ let handleToDelete = (id) => {
         </div>
         <div class="card-footer border-top-0">
           <div class="d-flex align-items-center">
-            <div>Showing 6 Entries <i class="bi bi-arrow-right ms-2 fw-semibold"></i></div>
+            <div>Showing 6 Entries <i class="bi bi-arrow-right ms-2 fw-semibold" /></div>
             <div class="ms-auto">
               <nav aria-label="Page navigation" class="pagination-style-4">
                 <ul class="pagination mb-0">
@@ -349,7 +360,9 @@ let handleToDelete = (id) => {
                   <li class="page-item active">
                     <a class="page-link" href="javascript:void(0);">1</a>
                   </li>
-                  <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:void(0);">2</a>
+                  </li>
                   <li class="page-item">
                     <a class="page-link text-primary" href="javascript:void(0);"> next </a>
                   </li>

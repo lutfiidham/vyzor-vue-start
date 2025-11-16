@@ -308,7 +308,7 @@ export const Candbasicoptions = {
   },
 }
 
-//Candlestick Synced With Brush Chart
+// Candlestick Synced With Brush Chart
 const seriesData = [
   {
     x: new Date(2016, 0o1, 0o1),
@@ -643,7 +643,7 @@ export const CandeoptionsBar = {
   },
 }
 
-//Candlestick With Cateory X-axis
+// Candlestick With Cateory X-axis
 const seriesData1 = [
   {
     x: new Date(1538778600000),
@@ -941,7 +941,7 @@ export const Candaxisoptions = {
   xaxis: {
     type: 'category',
     labels: {
-      formatter: function (val) {
+      formatter(val) {
         return dayjs(val).format('MMM DD HH:mm')
       },
       style: {
@@ -1115,7 +1115,7 @@ export const Candlebrush = {
   },
 }
 
-//Candlestick With Line Chart
+// Candlestick With Line Chart
 export const Candlineseries = [
   {
     name: 'line',

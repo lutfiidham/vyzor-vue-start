@@ -1,5 +1,5 @@
 <script setup>
-import { GoogleMap, CustomControl } from 'vue3-google-map'
+import { CustomControl, GoogleMap } from 'vue3-google-map'
 
 const apiKey = import.meta.env.googleMapsApiKey
 const center = { lat: 35, lng: -95 }
@@ -9,7 +9,9 @@ const sayHi = () => alert('Hi!')
 <template>
   <GoogleMap :api-key="apiKey" :center="center" :zoom="3" style="width: 100%; height: 300px">
     <CustomControl position="BOTTOM_CENTER">
-      <button class="custom-btn" @click="sayHi">👋</button>
+      <button class="custom-btn" @click="sayHi">
+        👋
+      </button>
     </CustomControl>
   </GoogleMap>
 </template>

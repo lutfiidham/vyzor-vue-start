@@ -1,10 +1,10 @@
 <script setup>
-import * as badgeData from '@/shared/data/ui-elements/badges'
-import * as prism from '@/shared/data/prismCode/ui-elements/badges'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as prism from '@/shared/data/prismCode/ui-elements/badges'
+import * as badgeData from '@/shared/data/ui-elements/badges'
+import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
 
 const dataToPass = {
   title: 'Ui Elements',
@@ -15,36 +15,34 @@ const dataToPass = {
 
 <template>
   <Head title="Badge | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xl-12">
       <ShowcodeCard
         title="Badges"
-        customCardBodyClass="d-flex flex-wrap gap-2"
+        custom-card-body-class="d-flex flex-wrap gap-2"
         :code="prism.badges"
       >
         <span
-          :class="`badge bg-${idx.color} ${idx.class}`"
           v-for="(idx, index) in badgeData.Badgesdata"
           :key="index"
-          >{{ idx.heading }}</span
-        >
+          :class="`badge bg-${idx.color} ${idx.class}`"
+        >{{ idx.heading }}</span>
       </ShowcodeCard>
     </div>
     <div class="col-xl-12">
       <ShowcodeCard
         title="Light Badges"
-        customCardBodyClass="d-flex flex-wrap gap-2"
+        custom-card-body-class="d-flex flex-wrap gap-2"
         :code="prism.lightBadges"
       >
         <span
-          :class="`badge bg-${badge.color}-transparent ${badge.class}`"
           v-for="(badge, index) in badgeData.Outlinebadgesdata"
           :key="index"
-          >{{ badge.heading }}</span
-        >
+          :class="`badge bg-${badge.color}-transparent ${badge.class}`"
+        >{{ badge.heading }}</span>
       </ShowcodeCard>
     </div>
   </div>
@@ -55,29 +53,27 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard
         title="Pill Badges"
-        customCardBodyClass="d-flex flex-wrap gap-2"
+        custom-card-body-class="d-flex flex-wrap gap-2"
         :code="prism.pillBadges"
       >
         <span
-          :class="`badge rounded-pill bg-${badge.color} ${badge.class}`"
           v-for="(badge, index) in badgeData.Badgesdata"
           :key="index"
-          >{{ badge.heading }}</span
-        >
+          :class="`badge rounded-pill bg-${badge.color} ${badge.class}`"
+        >{{ badge.heading }}</span>
       </ShowcodeCard>
     </div>
     <div class="col-xl-12">
       <ShowcodeCard
         title="Light Pill Badges"
-        customCardBodyClass="d-flex flex-wrap gap-2"
+        custom-card-body-class="d-flex flex-wrap gap-2"
         :code="prism.lightPillBadges"
       >
         <span
-          :class="`badge rounded-pill bg-${badge.color}-transparent ${badge.class}`"
           v-for="(badge, index) in badgeData.Outlinebadgesdata"
           :key="index"
-          >{{ badge.heading }}</span
-        >
+          :class="`badge rounded-pill bg-${badge.color}-transparent ${badge.class}`"
+        >{{ badge.heading }}</span>
       </ShowcodeCard>
     </div>
   </div>
@@ -88,29 +84,27 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard
         title="Gradient Badges"
-        customCardBodyClass="d-flex flex-wrap gap-2"
+        custom-card-body-class="d-flex flex-wrap gap-2"
         :code="prism.gradientBadges"
       >
         <span
-          :class="`badge bg-${badge1.color}-gradient`"
           v-for="(badge1, index) in badgeData.badges1"
           :key="index"
-          >{{ badge1.heading }}</span
-        >
+          :class="`badge bg-${badge1.color}-gradient`"
+        >{{ badge1.heading }}</span>
       </ShowcodeCard>
     </div>
     <div class="col-xl-12">
       <ShowcodeCard
         title="Gradient Pill Badges"
-        customCardBodyClass="d-flex flex-wrap gap-2"
+        custom-card-body-class="d-flex flex-wrap gap-2"
         :code="prism.gradientPillBadges"
       >
         <span
-          :class="`badge rounded-pill bg-${badge1.color}-gradient`"
           v-for="(badge1, index) in badgeData.badges1"
           :key="index"
-          >{{ badge1.heading }}</span
-        >
+          :class="`badge rounded-pill bg-${badge1.color}-gradient`"
+        >{{ badge1.heading }}</span>
       </ShowcodeCard>
     </div>
   </div>
@@ -121,29 +115,27 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard
         title="Outline Badges"
-        customCardBodyClass="d-flex flex-wrap gap-2"
+        custom-card-body-class="d-flex flex-wrap gap-2"
         :code="prism.outlineBadges"
       >
         <span
-          :class="`badge bg-outline-${badge.color} ${badge.class}`"
           v-for="(badge, index) in badgeData.Outlinebadgesdata"
           :key="index"
-          >{{ badge.heading }}</span
-        >
+          :class="`badge bg-outline-${badge.color} ${badge.class}`"
+        >{{ badge.heading }}</span>
       </ShowcodeCard>
     </div>
     <div class="col-xl-12">
       <ShowcodeCard
         title="Outline Pill Badges"
-        customCardBodyClass="d-flex flex-wrap gap-2"
+        custom-card-body-class="d-flex flex-wrap gap-2"
         :code="prism.outlinePillBadges"
       >
         <span
-          :class="`badge rounded-pill bg-outline-${badge.color} ${badge.class}`"
           v-for="(badge, index) in badgeData.Outlinebadgesdata"
           :key="index"
-          >{{ badge.heading }}</span
-        >
+          :class="`badge rounded-pill bg-outline-${badge.color} ${badge.class}`"
+        >{{ badge.heading }}</span>
       </ShowcodeCard>
     </div>
   </div>
@@ -154,7 +146,7 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard
         title="Buttons With Badges"
-        customCardBodyClass="d-flex flex-wrap gap-2"
+        custom-card-body-class="d-flex flex-wrap gap-2"
         :code="prism.buttonsWithBadges"
       >
         <button type="button" class="btn btn-primary my-1 me-2">
@@ -174,7 +166,7 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard
         title="Outline Button Badges"
-        customCardBodyClass="d-flex flex-wrap gap-2"
+        custom-card-body-class="d-flex flex-wrap gap-2"
         :code="prism.outlineButtonBadges"
       >
         <button type="button" class="btn btn-outline-primary my-1 me-2">
@@ -201,7 +193,7 @@ const dataToPass = {
         <div class="col-xl-12">
           <ShowcodeCard
             title="Positioned Badges"
-            customCardBodyClass="d-flex flex-wrap gap-4 pe-4"
+            custom-card-body-class="d-flex flex-wrap gap-4 pe-4"
             :code="prism.positionedBadges"
           >
             <button type="button" class="btn btn-primary position-relative">
@@ -242,7 +234,7 @@ const dataToPass = {
               <BaseImg src="/images/faces/10.jpg" alt="img" />
               <span
                 class="position-absolute top-0 start-100 translate-middle badge bg-secondary rounded-pill shadow-lg"
-                >1000+
+              >1000+
                 <span class="visually-hidden">New alerts</span>
               </span>
             </span>
@@ -254,8 +246,7 @@ const dataToPass = {
               <div>
                 <span
                   class="badge bg-outline-secondary custom-badge fs-15 d-inline-flex align-items-center"
-                  ><i class="ti ti-flame me-1"></i>Hot</span
-                >
+                ><i class="ti ti-flame me-1" />Hot</span>
               </div>
               <div>
                 <span class="icon-badge">
@@ -275,9 +266,7 @@ const dataToPass = {
                 </span>
               </div>
               <div>
-                <span class="badge border bg-light text-default custom-badge"
-                  ><i class="fe fe-eye me-2 d-inline-block"></i>13.2k</span
-                >
+                <span class="badge border bg-light text-default custom-badge"><i class="fe fe-eye me-2 d-inline-block" />13.2k</span>
               </div>
               <div>
                 <span class="text-badge">

@@ -1,5 +1,6 @@
 <script setup>
 import BaseImg from '../../components/Baseimage/BaseImg.vue'
+
 defineProps({
   customCardClass: String,
   cardHeaderClass: String,
@@ -27,18 +28,28 @@ defineProps({
 </script>
 
 <template>
-  <div :class="['card custom-card', customCardClass]">
+  <div class="card custom-card" :class="[customCardClass]">
     <!-- Header -->
-    <div :class="['card-header justify-content-between', cardHeaderClass]">
-      <div class="card-title">{{ title }}</div>
+    <div class="card-header justify-content-between" :class="[cardHeaderClass]">
+      <div class="card-title">
+        {{ title }}
+      </div>
 
       <!-- Optional Button Group -->
       <template v-if="btnGroup">
         <div class="btn-group ms-auto">
-          <button class="btn btn-primary btn-sm" id="one_month">1M</button>
-          <button class="btn btn-primary btn-sm" id="six_months">6M</button>
-          <button class="btn btn-primary btn-sm" id="one_year">1Y</button>
-          <button class="btn btn-primary btn-sm" id="all">ALL</button>
+          <button id="one_month" class="btn btn-primary btn-sm">
+            1M
+          </button>
+          <button id="six_months" class="btn btn-primary btn-sm">
+            6M
+          </button>
+          <button id="one_year" class="btn btn-primary btn-sm">
+            1Y
+          </button>
+          <button id="all" class="btn btn-primary btn-sm">
+            ALL
+          </button>
         </div>
       </template>
 
@@ -46,12 +57,12 @@ defineProps({
     </div>
 
     <!-- Body -->
-    <div :class="['card-body', cardBodyClass]">
+    <div class="card-body" :class="[cardBodyClass]">
       <slot name="showData" />
 
-      <div class="content-wrapper" :id="chartId">
+      <div :id="chartId" class="content-wrapper">
         <!-- Primary Chart -->
-        <apexchart
+        <Apexchart
           v-if="card.chart?.options"
           :height="card.height"
           :type="card.type"
@@ -79,7 +90,7 @@ defineProps({
         </template>
 
         <!-- Secondary Chart -->
-        <apexchart
+        <Apexchart
           v-if="card.chart?.secondaryOptions"
           :height="card.height"
           :type="card.type"
@@ -88,7 +99,7 @@ defineProps({
         />
 
         <!-- Tertiary Chart -->
-        <apexchart
+        <Apexchart
           v-if="card.chart?.tertiaryOptions"
           :height="card.height"
           :type="card.type"
@@ -102,7 +113,7 @@ defineProps({
 
     <!-- Footer -->
     <template v-if="showCardFooter">
-      <div :class="['card-footer', cardFooterClass]">
+      <div class="card-footer" :class="[cardFooterClass]">
         <slot name="cardFooter" />
       </div>
     </template>

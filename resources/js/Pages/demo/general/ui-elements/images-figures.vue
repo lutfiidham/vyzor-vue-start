@@ -1,9 +1,10 @@
 <script setup>
-import * as prism from '@/shared/data/prismCode/ui-elements/image-figure'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as prism from '@/shared/data/prismCode/ui-elements/image-figure'
+import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
+
 const dataToPass = {
   title: 'Ui Elements',
   currentpage: 'Images & Figures',
@@ -13,7 +14,7 @@ const dataToPass = {
 
 <template>
   <Head title="Images-Figures | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xl-6">
@@ -73,7 +74,9 @@ const dataToPass = {
             src="/images/media/media-56.jpg"
             alt="..."
           />
-          <figcaption class="figure-caption mt-2">A caption for the above image.</figcaption>
+          <figcaption class="figure-caption mt-2">
+            A caption for the above image.
+          </figcaption>
         </figure>
         <figure class="figure float-end">
           <BaseImg

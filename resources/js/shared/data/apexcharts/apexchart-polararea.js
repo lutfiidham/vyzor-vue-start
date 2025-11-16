@@ -1,11 +1,11 @@
-//Basic Polar Area Chart
+// Basic Polar Area Chart
 export const Areaseries = [14, 23, 21, 17, 15, 10, 12, 17, 21]
 export const Areaoptions = {
   chart: {
     type: 'polarArea',
     height: 300,
     events: {
-      mounted: (chart) => {
+      mounted: chart => {
         chart.windowResizeHandler()
       },
     },
@@ -52,7 +52,7 @@ export const Monooptions = {
     height: 300,
     type: 'polarArea',
     events: {
-      mounted: (chart) => {
+      mounted: chart => {
         chart.windowResizeHandler()
       },
     },

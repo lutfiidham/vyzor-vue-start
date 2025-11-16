@@ -1,4 +1,4 @@
-//Basic Boxplot Chart
+// Basic Boxplot Chart
 export const Boxplotseries = [
   {
     type: 'boxPlot',
@@ -88,7 +88,7 @@ export const Boxplotoptions = {
   },
 }
 
-//Boxplot With Scatter Chart
+// Boxplot With Scatter Chart
 export const Boxplotsseries = [
   {
     name: 'box',
@@ -181,7 +181,7 @@ export const Boxplotsoptions = {
   xaxis: {
     type: 'datetime',
     tooltip: {
-      formatter: function (val) {
+      formatter(val) {
         return new Date(val).getFullYear().toString()
       },
     },
@@ -212,7 +212,7 @@ export const Boxplotsoptions = {
   },
 }
 
-//Horizontal Boxplot Chart
+// Horizontal Boxplot Chart
 export const Boxplothseries = [
   {
     data: [

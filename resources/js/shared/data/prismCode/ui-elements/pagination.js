@@ -1,5 +1,5 @@
-export let BasicPagination = {
-    script: `
+export const BasicPagination = {
+  script: `
      <nav aria-label="Page navigation">
                     <ul class="pagination mb-0">
                         <li class="page-item disabled"><a class="page-link" href="javascript:void(0);">Previous</a></li>
@@ -8,9 +8,9 @@ export let BasicPagination = {
                         <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
                     </ul>
                 </nav>`,
-  },
-  PaginationWithIcons = {
-    script: `
+}
+export const PaginationWithIcons = {
+  script: `
                     <nav aria-label="Page navigation">
                     <ul class="pagination mb-0">
                         <li class="page-item">
@@ -28,9 +28,9 @@ export let BasicPagination = {
                         </li>
                     </ul>
                 </nav>`,
-  },
-  PaginationSizing = {
-    script: `
+}
+export const PaginationSizing = {
+  script: `
     <nav aria-label="...">
                     <ul class="pagination pagination-sm mb-0">
                         <li class="page-item active" aria-current="page">
@@ -58,9 +58,9 @@ export let BasicPagination = {
                         <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
                     </ul>
                 </nav>`,
-  },
-  CenterRightAlignedPagination = {
-    script: `
+}
+export const CenterRightAlignedPagination = {
+  script: `
    <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center">
                         <li class="page-item disabled">
@@ -87,9 +87,9 @@ export let BasicPagination = {
                         </li>
                     </ul>
                 </nav>`,
-  },
-  ActiveAndDisabledStates = {
-    script: `
+}
+export const ActiveAndDisabledStates = {
+  script: `
      <nav aria-label="..." class="me-3">
                 <ul class="pagination">
                     <li class="page-item disabled">
@@ -118,9 +118,9 @@ export let BasicPagination = {
                     </li>
                 </ul>
             </nav>`,
-  },
-  PaginationStyle1 = {
-    script: `
+}
+export const PaginationStyle1 = {
+  script: `
      <nav aria-label="Page navigation" class="pagination-style-1">
                 <ul class="pagination mb-0 flex-wrap">
                     <li class="page-item disabled">
@@ -143,9 +143,9 @@ export let BasicPagination = {
                     </li>
                 </ul>
             </nav>`,
-  },
-  PaginationStyle2 = {
-    script: `
+}
+export const PaginationStyle2 = {
+  script: `
     <nav aria-label="Page navigation" class="pagination-style-2">
                 <ul class="pagination mb-0 flex-wrap">
                     <li class="page-item disabled">
@@ -168,9 +168,9 @@ export let BasicPagination = {
                     </li>
                 </ul>
             </nav>`,
-  },
-  PaginationStyle3 = {
-    script: `
+}
+export const PaginationStyle3 = {
+  script: `
       <nav aria-label="Page navigation" class="pagination-style-3">
                     <ul class="pagination mb-0 flex-wrap">
                         <li class="page-item disabled">
@@ -193,9 +193,9 @@ export let BasicPagination = {
                         </li>
                     </ul>
                 </nav>`,
-  },
-  PaginationStyle4 = {
-    script: `
+}
+export const PaginationStyle4 = {
+  script: `
     &lt;nav aria-label="Page navigation" class="pagination-style-4">
         &lt;ul class="pagination mb-0 flex-wrap">
             &lt;li class="page-item disabled">
@@ -219,4 +219,4 @@ export let BasicPagination = {
             &lt;/li>
         &lt;/ul>
     &lt;/nav>`,
-  }
+}

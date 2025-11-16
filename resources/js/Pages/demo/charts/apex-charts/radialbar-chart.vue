@@ -1,7 +1,7 @@
 <script setup>
-import * as radialbarData from '@/shared/data/apexcharts/apexchart-radialbar'
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as radialbarData from '@/shared/data/apexcharts/apexchart-radialbar'
 
 const dataToPass = {
   title: 'Charts',
@@ -13,18 +13,20 @@ const dataToPass = {
 
 <template>
   <Head title="Radialbar Charts | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Basic Pie Chart</div>
+          <div class="card-title">
+            Basic Pie Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="radialbar-basic">
-            <apexchart
+            <Apexchart
               height="300"
               type="radialBar"
               :options="radialbarData.Pieoptions"
@@ -37,11 +39,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Multiple Radialbar Chart</div>
+          <div class="card-title">
+            Multiple Radialbar Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="radialbar-multiple">
-            <apexchart
+            <Apexchart
               height="300"
               type="radialBar"
               :options="radialbarData.Multiroptions"
@@ -54,11 +58,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Circle Chart - Custom Angle</div>
+          <div class="card-title">
+            Circle Chart - Custom Angle
+          </div>
         </div>
         <div class="card-body">
           <div id="circle-custom">
-            <apexchart
+            <Apexchart
               height="300"
               type="radialBar"
               :options="radialbarData.Customoptions"
@@ -71,11 +77,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Gradient Circle Chart</div>
+          <div class="card-title">
+            Gradient Circle Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="gradient-circle">
-            <apexchart
+            <Apexchart
               height="300"
               type="radialBar"
               :options="radialbarData.Gradientoptions"
@@ -88,11 +96,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Stroked Circular Gauge</div>
+          <div class="card-title">
+            Stroked Circular Gauge
+          </div>
         </div>
         <div class="card-body">
           <div id="circular-stroked">
-            <apexchart
+            <Apexchart
               height="300"
               type="radialBar"
               :options="radialbarData.Strokeoptions"
@@ -105,11 +115,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Circle Chart With Image</div>
+          <div class="card-title">
+            Circle Chart With Image
+          </div>
         </div>
         <div class="card-body">
           <div id="circle-image">
-            <apexchart
+            <Apexchart
               height="300"
               type="radialBar"
               :options="radialbarData.Circleoptions"
@@ -122,11 +134,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Semi Circular Gauge</div>
+          <div class="card-title">
+            Semi Circular Gauge
+          </div>
         </div>
         <div class="card-body">
           <div id="circular-semi">
-            <apexchart
+            <Apexchart
               height="300"
               type="radialBar"
               :options="radialbarData.Gaugeoptions"
@@ -137,7 +151,7 @@ const dataToPass = {
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

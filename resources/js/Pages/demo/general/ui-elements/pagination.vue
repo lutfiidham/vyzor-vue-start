@@ -1,8 +1,9 @@
 <script setup>
-import * as prism from '@/shared/data/prismCode/ui-elements/pagination'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as prism from '@/shared/data/prismCode/ui-elements/pagination'
+import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
+
 const dataToPass = {
   title: 'Ui Elements',
   currentpage: 'Pagination',
@@ -12,7 +13,7 @@ const dataToPass = {
 
 <template>
   <Head title="Pagination | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
@@ -23,9 +24,15 @@ const dataToPass = {
             <li class="page-item disabled">
               <a class="page-link" href="javascript:void(0);">Previous</a>
             </li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">Next</a>
+            </li>
           </ul>
         </nav>
       </ShowcodeCard>
@@ -36,15 +43,21 @@ const dataToPass = {
           <ul class="pagination mb-0">
             <li class="page-item">
               <a class="page-link" href="javascript:void(0);" aria-label="Previous">
-                <span aria-hidden="true"><i class="bx bx-chevron-left align-middle"></i></span>
+                <span aria-hidden="true"><i class="bx bx-chevron-left align-middle" /></span>
               </a>
             </li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">3</a>
+            </li>
             <li class="page-item">
               <a class="page-link" href="javascript:void(0);" aria-label="Next">
-                <span aria-hidden="true"><i class="bx bx-chevron-right align-middle"></i></span>
+                <span aria-hidden="true"><i class="bx bx-chevron-right align-middle" /></span>
               </a>
             </li>
           </ul>
@@ -62,8 +75,12 @@ const dataToPass = {
             <li class="page-item active" aria-current="page">
               <span class="page-link">1</span>
             </li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">3</a>
+            </li>
           </ul>
         </nav>
         <nav aria-label="...">
@@ -71,8 +88,12 @@ const dataToPass = {
             <li class="page-item active" aria-current="page">
               <span class="page-link">1</span>
             </li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">3</a>
+            </li>
           </ul>
         </nav>
         <nav aria-label="...">
@@ -80,8 +101,12 @@ const dataToPass = {
             <li class="page-item active" aria-current="page">
               <span class="page-link">1</span>
             </li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">3</a>
+            </li>
           </ul>
         </nav>
       </ShowcodeCard>
@@ -102,9 +127,15 @@ const dataToPass = {
             <li class="page-item disabled">
               <a class="page-link">Previous</a>
             </li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">3</a>
+            </li>
             <li class="page-item">
               <a class="page-link" href="javascript:void(0);">Next</a>
             </li>
@@ -115,9 +146,15 @@ const dataToPass = {
             <li class="page-item disabled">
               <a class="page-link">Previous</a>
             </li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">3</a>
+            </li>
             <li class="page-item">
               <a class="page-link" href="javascript:void(0);">Next</a>
             </li>
@@ -136,7 +173,9 @@ const dataToPass = {
             <li class="page-item disabled">
               <a class="page-link">Previous</a>
             </li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">1</a>
+            </li>
             <li class="page-item active" aria-current="page">
               <a class="page-link" href="javascript:void(0);">2</a>
             </li>
@@ -150,7 +189,9 @@ const dataToPass = {
             <li class="page-item disabled">
               <span class="page-link">Previous</span>
             </li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">1</a>
+            </li>
             <li class="page-item active" aria-current="page">
               <span class="page-link">2</span>
             </li>
@@ -172,20 +213,26 @@ const dataToPass = {
           <ul class="pagination mb-0 flex-wrap">
             <li class="page-item disabled">
               <a class="page-link" href="javascript:void(0);">
-                <i class="ri-arrow-left-s-line align-middle"></i>
+                <i class="ri-arrow-left-s-line align-middle" />
               </a>
             </li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
-            <li class="page-item active"><a class="page-link" href="javascript:void(0);">2</a></li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">1</a>
+            </li>
+            <li class="page-item active">
+              <a class="page-link" href="javascript:void(0);">2</a>
+            </li>
             <li class="page-item">
               <a class="page-link" href="javascript:void(0);">
-                <i class="bi bi-three-dots"></i>
+                <i class="bi bi-three-dots" />
               </a>
             </li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">21</a></li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">21</a>
+            </li>
             <li class="page-item">
               <a class="page-link custom-page" href="javascript:void(0);">
-                <i class="ri-arrow-right-s-line align-middle"></i>
+                <i class="ri-arrow-right-s-line align-middle" />
               </a>
             </li>
           </ul>
@@ -199,14 +246,20 @@ const dataToPass = {
             <li class="page-item disabled">
               <a class="page-link" href="javascript:void(0);"> Prev </a>
             </li>
-            <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+            <li class="page-item active">
+              <a class="page-link" href="javascript:void(0);">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">2</a>
+            </li>
             <li class="page-item">
               <a class="page-link" href="javascript:void(0);">
-                <i class="bi bi-three-dots"></i>
+                <i class="bi bi-three-dots" />
               </a>
             </li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">17</a></li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">17</a>
+            </li>
             <li class="page-item">
               <a class="page-link text-primary" href="javascript:void(0);"> next </a>
             </li>
@@ -221,14 +274,20 @@ const dataToPass = {
             <li class="page-item disabled">
               <a class="page-link" href="javascript:void(0);"> Prev </a>
             </li>
-            <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+            <li class="page-item active">
+              <a class="page-link" href="javascript:void(0);">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">2</a>
+            </li>
             <li class="page-item">
               <a class="page-link" href="javascript:void(0);">
-                <i class="bi bi-three-dots"></i>
+                <i class="bi bi-three-dots" />
               </a>
             </li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">16</a></li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">16</a>
+            </li>
             <li class="page-item">
               <a class="page-link text-primary" href="javascript:void(0);"> next </a>
             </li>
@@ -243,15 +302,23 @@ const dataToPass = {
             <li class="page-item disabled">
               <a class="page-link" href="javascript:void(0);"> Prev </a>
             </li>
-            <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+            <li class="page-item active">
+              <a class="page-link" href="javascript:void(0);">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">2</a>
+            </li>
             <li class="page-item">
               <a class="page-link" href="javascript:void(0);">
-                <i class="bi bi-three-dots"></i>
+                <i class="bi bi-three-dots" />
               </a>
             </li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">16</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">17</a></li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">16</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">17</a>
+            </li>
             <li class="page-item">
               <a class="page-link text-primary" href="javascript:void(0);"> next </a>
             </li>

@@ -1,14 +1,15 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import vueFilePond from 'vue-filepond'
-import 'filepond/dist/filepond.min.css'
-import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css'
+import { Head } from '@inertiajs/vue3'
+import Tagify from '@yaireo/tagify'
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type'
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
-import Tagify from '@yaireo/tagify'
-import '@yaireo/tagify/dist/tagify.css'
+import { onMounted, ref } from 'vue'
+import vueFilePond from 'vue-filepond'
 import Pageheader from '@/components/pageheader/pageheader.vue'
-import { Head } from '@inertiajs/vue3'
+import 'filepond/dist/filepond.min.css'
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css'
+import '@yaireo/tagify/dist/tagify.css'
+
 const FilePond = vueFilePond(FilePondPluginFileValidateType, FilePondPluginImagePreview)
 
 const picked = ref(null)
@@ -72,59 +73,63 @@ const myFiles = ref([])
 
 <template>
   <Head title="Create-Project | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Create Project</div>
+          <div class="card-title">
+            Create Project
+          </div>
         </div>
         <div class="card-body">
           <div class="row gy-3">
             <div class="col-xl-4">
               <label for="input-label" class="form-label">Project Name :</label>
               <input
+                id="input-label"
                 type="text"
                 class="form-control"
-                id="input-label"
                 placeholder="Enter Project Name"
-              />
+              >
             </div>
             <div class="col-xl-4">
               <label for="input-label11" class="form-label">Project Manager :</label>
               <input
+                id="input-label11"
                 type="text"
                 class="form-control"
-                id="input-label11"
                 placeholder="Project Manager Name"
-              />
+              >
             </div>
             <div class="col-xl-4">
               <label for="input-label1" class="form-label">Client / Stakeholder :</label>
               <input
+                id="input-label1"
                 type="text"
                 class="form-control"
-                id="input-label1"
                 placeholder="Enter Client Name"
-              />
+              >
             </div>
             <div class="col-xl-12">
               <label class="form-label">Project Description :</label>
               <div id="project-descriptioin-editor">
-                <vue-editor v-model="content"></vue-editor>
+                <VueEditor v-model="content" />
               </div>
             </div>
             <div class="col-xl-6">
               <label class="form-label">Start Date :</label>
               <div class="form-group">
                 <div class="input-group salesDatePicker">
-                  <div class="input-group-text text-muted"><i class="ri-calendar-line"></i></div>
+                  <div class="input-group-text text-muted">
+                    <i class="ri-calendar-line" />
+                  </div>
                   <Datepicker
-                    class="form-control custom-date-picker custom"
-                    autoApply
-                    placeholder="Choose date and time"
                     v-model="picked"
+                    class="form-control custom-date-picker custom"
+                    auto-apply
+                    placeholder="Choose date and time"
                   />
                 </div>
               </div>
@@ -133,12 +138,14 @@ const myFiles = ref([])
               <label class="form-label">End Date :</label>
               <div class="form-group">
                 <div class="input-group salesDatePicker">
-                  <div class="input-group-text text-muted"><i class="ri-calendar-line"></i></div>
+                  <div class="input-group-text text-muted">
+                    <i class="ri-calendar-line" />
+                  </div>
                   <Datepicker
-                    class="form-control custom-date-picker custom"
-                    autoApply
-                    placeholder="Choose date and time"
                     v-model="picked1"
+                    class="form-control custom-date-picker custom"
+                    auto-apply
+                    placeholder="Choose date and time"
                   />
                 </div>
               </div>
@@ -146,74 +153,73 @@ const myFiles = ref([])
             <div class="col-xl-6">
               <label class="form-label">Status :</label>
               <VueMultiselect
+                id="choices-single-default1"
+                v-model="StatusSelectValue"
                 :searchable="true"
                 :show-labels="false"
                 name="choices-single-default1"
-                id="choices-single-default1"
                 :multiple="false"
-                v-model="StatusSelectValue"
                 :options="StatusSelect"
                 :taggable="false"
-              >
-              </VueMultiselect>
+              />
             </div>
             <div class="col-xl-6">
               <label class="form-label">Priority :</label>
               <VueMultiselect
+                id="choices-single-default1"
+                v-model="PrioritySelectValue"
                 :searchable="true"
                 :show-labels="false"
                 name="choices-single-default1"
-                id="choices-single-default1"
-                v-model="PrioritySelectValue"
                 :options="PrioritySelect"
                 :taggable="false"
-              >
-              </VueMultiselect>
+              />
             </div>
             <div class="col-xl-6">
               <label class="form-label">Assigned To</label>
               <VueMultiselect
+                v-model="AssionedSelectValue"
                 :searchable="false"
                 :show-labels="false"
                 :multiple="true"
-                v-model="AssionedSelectValue"
                 :options="AssionedSelect"
                 :taggable="true"
-              >
-              </VueMultiselect>
+              />
             </div>
             <div class="col-xl-6 custom-tag">
               <label class="form-label">Tags</label>
               <input
+                id="choices-text-unique-values"
                 class="form-control"
                 name="tags"
-                id="choices-text-unique-values"
                 type="text"
                 value="Marketing, Sales, Development, Design, Research"
                 placeholder="Add Tags Here "
-              />
+              >
             </div>
             <div class="col-xl-12 custom-product">
               <label class="form-label">Attachments</label>
-              <file-pond
-                name="test"
+              <FilePond
                 ref="pond"
+                name="test"
                 label-idle="Drag & Drop files here or <span class='filepond--label-action'>Browse</span>"
                 allow-multiple="true"
                 max-files="3"
                 accepted-file-types="image/jpeg, image/png"
-                v-bind:files="myFiles"
+                :files="myFiles"
               />
             </div>
           </div>
         </div>
         <div class="card-footer">
-          <button class="btn btn-primary-light btn-wave ms-auto float-end">Create Project</button>
+          <button class="btn btn-primary-light btn-wave ms-auto float-end">
+            Create Project
+          </button>
         </div>
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

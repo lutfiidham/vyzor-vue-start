@@ -526,9 +526,10 @@ export const WaterFallChart = {
     axisPointer: {
       type: 'shadow',
     },
-    formatter: function (params) {
-      var tar = params[1]
-      return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value
+    formatter(params) {
+      const tar = params[1]
+
+      return `${tar.name}<br/>${tar.seriesName} : ${tar.value}`
     },
   },
   grid: {
@@ -663,14 +664,14 @@ export const BarNegativeChart = {
   ],
   color: 'rgb(152, 95, 253)',
 }
-var app = {}
+const app = {}
 app.config = {
   rotate: 90,
   align: 'left',
   verticalAlign: 'middle',
   position: 'insideBottom',
   distance: 15,
-  onChange: function (myChart) {
+  onChange(myChart) {
     const labelOption = {
       rotate: app.config.rotate,
       align: app.config.align,
@@ -1215,14 +1216,14 @@ export const BubbleChart = {
       name: '1990',
       data: data[0],
       type: 'scatter',
-      symbolSize: function (data) {
+      symbolSize(data) {
         return Math.sqrt(data[2]) / 5e2
       },
       emphasis: {
         focus: 'series',
         label: {
           show: true,
-          formatter: function (param) {
+          formatter(param) {
             return param.data[3]
           },
           position: 'top',
@@ -1248,14 +1249,14 @@ export const BubbleChart = {
       name: '2015',
       data: data[1],
       type: 'scatter',
-      symbolSize: function (data) {
+      symbolSize(data) {
         return Math.sqrt(data[2]) / 5e2
       },
       emphasis: {
         focus: 'series',
         label: {
           show: true,
-          formatter: function (param) {
+          formatter(param) {
             return param.data[3]
           },
           position: 'top',
@@ -1370,13 +1371,14 @@ export const RadarChart = {
 
 function getVirtulData(year) {
   year = year || '2017'
-  var date = +echarts.number.parseDate(year + '-01-01')
-  var end = +echarts.number.parseDate(+year + 1 + '-01-01')
-  var dayTime = 3600 * 24 * 1000
-  var data = []
-  for (var time = date; time < end; time += dayTime) {
+  const date = +echarts.number.parseDate(`${year}-01-01`)
+  const end = +echarts.number.parseDate(`${+year + 1}-01-01`)
+  const dayTime = 3600 * 24 * 1000
+  const data = []
+  for (let time = date; time < end; time += dayTime) {
     data.push([echarts.time.format(time, '{yyyy}-{MM}-{dd}'), Math.floor(Math.random() * 10000)])
   }
+
   return data
 }
 export const HeatmapChart = {

@@ -1,10 +1,10 @@
 <script setup>
-import * as prism from '@/shared/data/prismCode/forms/formvalidation'
+import { Head } from '@inertiajs/vue3'
 import { useField, useForm } from 'vee-validate'
 import { ref } from 'vue'
 import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as prism from '@/shared/data/prismCode/forms/formvalidation'
 import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
-import { Head } from '@inertiajs/vue3'
 
 const dataToPass = {
   title: 'Forms',
@@ -16,23 +16,33 @@ const dataToPass = {
 const { handleSubmit, handleReset } = useForm({
   validationSchema: {
     name(value) {
-      if (value?.length >= 2) return true
+      if (value?.length >= 2)
+        return true
+
       return 'Name needs to be at least 2 characters.'
     },
     phone(value) {
-      if (value?.length > 9 && /^[0-9-]+$/.test(value)) return true
+      if (value?.length > 9 && /^[0-9-]+$/.test(value))
+        return true
+
       return 'Phone number needs to be at least 9 digits.'
     },
     email(value) {
-      if (/^[a-z.-]+@[a-z.-]+\.[a-z]+$/i.test(value)) return true
+      if (/^[a-z.-]+@[a-z.-]+\.[a-z]+$/i.test(value))
+        return true
+
       return 'Must be a valid e-mail.'
     },
     select(value) {
-      if (value) return true
+      if (value)
+        return true
+
       return 'Select an item.'
     },
     checkbox(value) {
-      if (value === '1') return true
+      if (value === '1')
+        return true
+
       return 'Must be checked.'
     },
   },
@@ -70,16 +80,23 @@ const zip = ref('')
 const agree = ref(false)
 const errors = ref([])
 
-const checkForm = (e) => {
+function checkForm(e) {
   errors.value = []
 
-  if (!firstname.value) errors.value.push({ firstname: 'First Name required.' })
-  if (!lastname.value) errors.value.push({ lastname: 'Last Name required.' })
-  if (!username.value) errors.value.push({ username: 'Username required.' })
-  if (!city.value) errors.value.push({ city: 'City required.' })
-  if (!state.value) errors.value.push({ state: 'State required.' })
-  if (!zip.value) errors.value.push({ zip: 'Zip required.' })
-  if (!agree.value) errors.value.push({ agree: 'You must agree to terms.' })
+  if (!firstname.value)
+    errors.value.push({ firstname: 'First Name required.' })
+  if (!lastname.value)
+    errors.value.push({ lastname: 'Last Name required.' })
+  if (!username.value)
+    errors.value.push({ username: 'Username required.' })
+  if (!city.value)
+    errors.value.push({ city: 'City required.' })
+  if (!state.value)
+    errors.value.push({ state: 'State required.' })
+  if (!zip.value)
+    errors.value.push({ zip: 'Zip required.' })
+  if (!agree.value)
+    errors.value.push({ agree: 'You must agree to terms.' })
 
   e.preventDefault()
 }
@@ -87,7 +104,7 @@ const checkForm = (e) => {
 
 <template>
   <Head title="Validation | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
@@ -97,12 +114,12 @@ const checkForm = (e) => {
           <div class="col-md-4 mb-3">
             <label for="validationCustom01" class="form-label">First name</label>
             <input
+              id="validationDefault01"
               type="text"
               class="form-control"
-              id="validationDefault01"
               value="Mark"
               required
-            />
+            >
             <div v-if="errors?.[0]?.firstname" class="invalid-feedback d-block">
               {{ errors?.[0]?.firstname }}
             </div>
@@ -110,12 +127,12 @@ const checkForm = (e) => {
           <div class="col-md-4 mb-3">
             <label for="validationCustom02" class="form-label">Last name</label>
             <input
+              id="validationDefault02"
               type="text"
               class="form-control"
-              id="validationDefault02"
               value="Otto"
               required
-            />
+            >
             <div v-if="errors?.[0]?.lastname" class="invalid-feedback d-block">
               {{ errors?.[0]?.lastname }}
             </div>
@@ -123,14 +140,14 @@ const checkForm = (e) => {
           <div class="col-md-4 mb-3">
             <label for="validationCustomUsername" class="form-label">Username</label>
             <div class="input-group has-validation">
-              <span class="input-group-text" id="inputGroupPrepend">@</span>
+              <span id="inputGroupPrepend" class="input-group-text">@</span>
               <input
+                id="validationCustomUsername"
+                v-model="username"
                 type="text"
                 class="form-control"
-                id="validationCustomUsername"
                 aria-describedby="inputGroupPrepend"
-                v-model="username"
-              />
+              >
               <div v-if="errors?.[0]?.username" class="invalid-feedback d-block">
                 {{ errors?.[0]?.username }}
               </div>
@@ -138,15 +155,17 @@ const checkForm = (e) => {
           </div>
           <div class="col-md-6 mb-3">
             <label for="validationCustom03" class="form-label">City</label>
-            <input type="text" class="form-control" id="validationCustom03" v-model="city" />
+            <input id="validationCustom03" v-model="city" type="text" class="form-control">
             <div v-if="errors?.[0]?.city" class="invalid-feedback d-block">
               {{ errors?.[0]?.city }}
             </div>
           </div>
           <div class="col-md-3 mb-3">
             <label for="validationCustom04" class="form-label">State</label>
-            <select class="form-select" id="validationCustom04" v-model="state">
-              <option selected disabled value="">Choose...</option>
+            <select id="validationCustom04" v-model="state" class="form-select">
+              <option selected disabled value="">
+                Choose...
+              </option>
               <option>...</option>
             </select>
             <div v-if="errors?.[0]?.state" class="invalid-feedback d-block">
@@ -155,7 +174,7 @@ const checkForm = (e) => {
           </div>
           <div class="col-md-3">
             <label for="validationCustom05" class="form-label">Zip</label>
-            <input type="text" class="form-control" id="validationCustom05" v-model="zip" />
+            <input id="validationCustom05" v-model="zip" type="text" class="form-control">
             <div v-if="errors?.[0]?.zip" class="invalid-feedback d-block">
               {{ errors?.[0]?.zip }}
             </div>
@@ -163,12 +182,12 @@ const checkForm = (e) => {
           <div class="col-12">
             <div class="form-check mb-2">
               <input
+                id="invalidCheck"
+                v-model="agree"
                 class="form-check-input"
                 type="checkbox"
                 value=""
-                id="invalidCheck"
-                v-model="agree"
-              />
+              >
               <label class="form-check-label" for="invalidCheck">
                 Agree to terms and conditions
               </label>
@@ -178,7 +197,9 @@ const checkForm = (e) => {
             </div>
           </div>
           <div class="col-12">
-            <button class="btn btn-primary mt-2" type="submit">Submit form</button>
+            <button class="btn btn-primary mt-2" type="submit">
+              Submit form
+            </button>
           </div>
         </form>
       </ShowcodeCard>
@@ -189,67 +210,71 @@ const checkForm = (e) => {
           <div class="col-md-4">
             <label for="validationDefault01" class="form-label">First name</label>
             <input
+              id="validationDefault01"
               type="text"
               class="form-control"
-              id="validationDefault01"
               value="Mark"
               required
-            />
+            >
           </div>
           <div class="col-md-4">
             <label for="validationDefault02" class="form-label">Last name</label>
             <input
+              id="validationDefault02"
               type="text"
               class="form-control"
-              id="validationDefault02"
               value="Otto"
               required
-            />
+            >
           </div>
           <div class="col-md-4">
             <label for="validationDefaultUsername" class="form-label">Username</label>
             <div class="input-group">
-              <span class="input-group-text" id="inputGroupPrepend2">@</span>
+              <span id="inputGroupPrepend2" class="input-group-text">@</span>
               <input
+                id="validationDefaultUsername"
                 type="text"
                 class="form-control"
-                id="validationDefaultUsername"
                 aria-describedby="inputGroupPrepend2"
                 required
-              />
+              >
             </div>
           </div>
           <div class="col-md-6">
             <label for="validationDefault03" class="form-label">City</label>
-            <input type="text" class="form-control" id="validationDefault03" required />
+            <input id="validationDefault03" type="text" class="form-control" required>
           </div>
           <div class="col-md-3">
             <label for="validationDefault04" class="form-label">State</label>
-            <select class="form-select" id="validationDefault04" required>
-              <option selected disabled value="">Choose...</option>
+            <select id="validationDefault04" class="form-select" required>
+              <option selected disabled value="">
+                Choose...
+              </option>
               <option>...</option>
             </select>
           </div>
           <div class="col-md-3">
             <label for="validationDefault05" class="form-label">Zip</label>
-            <input type="text" class="form-control" id="validationDefault05" required />
+            <input id="validationDefault05" type="text" class="form-control" required>
           </div>
           <div class="col-12">
             <div class="form-check">
               <input
+                id="invalidCheck2"
                 class="form-check-input"
                 type="checkbox"
                 value=""
-                id="invalidCheck2"
                 required
-              />
+              >
               <label class="form-check-label" for="invalidCheck2">
                 Agree to terms and conditions
               </label>
             </div>
           </div>
           <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
+            <button class="btn btn-primary" type="submit">
+              Submit form
+            </button>
           </div>
         </form>
       </ShowcodeCard>
@@ -267,36 +292,40 @@ const checkForm = (e) => {
               <div class="col-md-4">
                 <label for="validationServer01" class="form-label">First name</label>
                 <input
+                  id="validationServer01"
                   type="text"
                   class="form-control is-valid"
-                  id="validationServer01"
                   value="Mark"
                   required
-                />
-                <div class="valid-feedback">Looks good!</div>
+                >
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
               </div>
               <div class="col-md-4">
                 <label for="validationServer02" class="form-label">Last name</label>
                 <input
+                  id="validationServer02"
                   type="text"
                   class="form-control is-valid"
-                  id="validationServer02"
                   value="Otto"
                   required
-                />
-                <div class="valid-feedback">Looks good!</div>
+                >
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
               </div>
               <div class="col-md-4">
                 <label for="validationServerUsername" class="form-label">Username</label>
                 <div class="input-group has-validation">
-                  <span class="input-group-text" id="inputGroupPrepend3">@</span>
+                  <span id="inputGroupPrepend3" class="input-group-text">@</span>
                   <input
+                    id="validationServerUsername"
                     type="text"
                     class="form-control is-invalid"
-                    id="validationServerUsername"
                     aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
                     required
-                  />
+                  >
                   <div id="validationServerUsernameFeedback" class="invalid-feedback">
                     Please choose a username.
                   </div>
@@ -305,12 +334,12 @@ const checkForm = (e) => {
               <div class="col-md-6">
                 <label for="validationServer03" class="form-label">City</label>
                 <input
+                  id="validationServer03"
                   type="text"
                   class="form-control is-invalid"
-                  id="validationServer03"
                   aria-describedby="validationServer03Feedback"
                   required
-                />
+                >
                 <div id="validationServer03Feedback" class="invalid-feedback">
                   Please provide a valid city.
                 </div>
@@ -318,12 +347,14 @@ const checkForm = (e) => {
               <div class="col-md-3">
                 <label for="validationServer04" class="form-label">State</label>
                 <select
-                  class="form-select is-invalid"
                   id="validationServer04"
+                  class="form-select is-invalid"
                   aria-describedby="validationServer04Feedback"
                   required
                 >
-                  <option selected disabled value="">Choose...</option>
+                  <option selected disabled value="">
+                    Choose...
+                  </option>
                   <option>...</option>
                 </select>
                 <div id="validationServer04Feedback" class="invalid-feedback">
@@ -333,12 +364,12 @@ const checkForm = (e) => {
               <div class="col-md-3">
                 <label for="validationServer05" class="form-label">Zip</label>
                 <input
+                  id="validationServer05"
                   type="text"
                   class="form-control is-invalid"
-                  id="validationServer05"
                   aria-describedby="validationServer05Feedback"
                   required
-                />
+                >
                 <div id="validationServer05Feedback" class="invalid-feedback">
                   Please provide a valid zip.
                 </div>
@@ -346,13 +377,13 @@ const checkForm = (e) => {
               <div class="col-12">
                 <div class="form-check">
                   <input
+                    id="invalidCheck3"
                     class="form-check-input is-invalid"
                     type="checkbox"
                     value=""
-                    id="invalidCheck3"
                     aria-describedby="invalidCheck3Feedback"
                     required
-                  />
+                  >
                   <label class="form-check-label" for="invalidCheck3">
                     Agree to terms and conditions
                   </label>
@@ -362,7 +393,9 @@ const checkForm = (e) => {
                 </div>
               </div>
               <div class="col-12">
-                <button class="btn btn-primary" type="submit">Submit form</button>
+                <button class="btn btn-primary" type="submit">
+                  Submit form
+                </button>
               </div>
             </form>
           </ShowcodeCard>
@@ -370,28 +403,28 @@ const checkForm = (e) => {
         <div class="col-xl-12 custom-valid">
           <ShowcodeCard :code="prism.vutifyValidation" title="Vutify Validation">
             <form @submit.prevent="submit">
-              <v-text-field
+              <VTextField
                 v-model="name.value.value"
                 :counter="10"
                 :error-messages="name.errorMessage.value"
                 label="Name"
-              ></v-text-field>
+              />
 
-              <v-text-field
+              <VTextField
                 v-model="phone.value.value"
                 :counter="7"
                 :error-messages="phone.errorMessage.value"
                 type="number"
                 label="Phone Number"
-              ></v-text-field>
+              />
 
-              <v-text-field
+              <VTextField
                 v-model="email.value.value"
                 :error-messages="email.errorMessage.value"
                 label="E-mail"
-              ></v-text-field>
+              />
 
-              <v-select
+              <VSelect
                 v-model="select.value.value"
                 :items="items"
                 item-title="text"
@@ -400,25 +433,31 @@ const checkForm = (e) => {
                 label="Select"
               />
 
-              <v-checkbox
+              <VCheckbox
                 v-model="checkbox.value.value"
                 :error-messages="checkbox.errorMessage.value"
                 value="1"
                 label="Option"
                 type="checkbox"
-              ></v-checkbox>
+              />
 
-              <v-btn class="me-4" color="primary" type="submit"> submit </v-btn>
+              <VBtn class="me-4" color="primary" type="submit">
+                submit
+              </VBtn>
 
-              <v-btn @click="handleReset" color="error"> clear </v-btn>
+              <VBtn color="error" @click="handleReset">
+                clear
+              </VBtn>
             </form>
           </ShowcodeCard>
           <div class="card custom-card">
             <div class="card-header justify-content-between">
-              <div class="card-title">Tooltips</div>
+              <div class="card-title">
+                Tooltips
+              </div>
               <div class="prism-toggle">
                 <button class="btn btn-sm btn-primary-light">
-                  Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i>
+                  Show Code<i class="ri-code-line ms-2 d-inline-block align-middle" />
                 </button>
               </div>
             </div>
@@ -427,59 +466,75 @@ const checkForm = (e) => {
                 <div class="col-md-4 position-relative">
                   <label for="validationTooltip01" class="form-label">First name</label>
                   <input
+                    id="validationTooltip01"
                     type="text"
                     class="form-control"
-                    id="validationTooltip01"
                     value="Mark"
                     required
-                  />
-                  <div class="valid-tooltip">Looks good!</div>
+                  >
+                  <div class="valid-tooltip">
+                    Looks good!
+                  </div>
                 </div>
                 <div class="col-md-4 position-relative">
                   <label for="validationTooltip02" class="form-label">Last name</label>
                   <input
+                    id="validationTooltip02"
                     type="text"
                     class="form-control"
-                    id="validationTooltip02"
                     value="Otto"
                     required
-                  />
-                  <div class="valid-tooltip">Looks good!</div>
+                  >
+                  <div class="valid-tooltip">
+                    Looks good!
+                  </div>
                 </div>
                 <div class="col-md-4 position-relative">
                   <label for="validationTooltipUsername" class="form-label">Username</label>
                   <div class="input-group has-validation">
-                    <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                    <span id="validationTooltipUsernamePrepend" class="input-group-text">@</span>
                     <input
+                      id="validationTooltipUsername"
                       type="text"
                       class="form-control"
-                      id="validationTooltipUsername"
                       aria-describedby="validationTooltipUsernamePrepend"
                       required
-                    />
-                    <div class="invalid-tooltip">Please choose a unique and valid username.</div>
+                    >
+                    <div class="invalid-tooltip">
+                      Please choose a unique and valid username.
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-6 position-relative">
                   <label for="validationTooltip03" class="form-label">City</label>
-                  <input type="text" class="form-control" id="validationTooltip03" required />
-                  <div class="invalid-tooltip">Please provide a valid city.</div>
+                  <input id="validationTooltip03" type="text" class="form-control" required>
+                  <div class="invalid-tooltip">
+                    Please provide a valid city.
+                  </div>
                 </div>
                 <div class="col-md-3 position-relative">
                   <label for="validationTooltip04" class="form-label">State</label>
-                  <select class="form-select" id="validationTooltip04" required>
-                    <option selected disabled value="">Choose...</option>
+                  <select id="validationTooltip04" class="form-select" required>
+                    <option selected disabled value="">
+                      Choose...
+                    </option>
                     <option>...</option>
                   </select>
-                  <div class="invalid-tooltip">Please select a valid state.</div>
+                  <div class="invalid-tooltip">
+                    Please select a valid state.
+                  </div>
                 </div>
                 <div class="col-md-3 position-relative">
                   <label for="validationTooltip05" class="form-label">Zip</label>
-                  <input type="text" class="form-control" id="validationTooltip05" required />
-                  <div class="invalid-tooltip">Please provide a valid zip.</div>
+                  <input id="validationTooltip05" type="text" class="form-control" required>
+                  <div class="invalid-tooltip">
+                    Please provide a valid zip.
+                  </div>
                 </div>
                 <div class="col-12">
-                  <button class="btn btn-primary" type="submit">Submit form</button>
+                  <button class="btn btn-primary" type="submit">
+                    Submit form
+                  </button>
                 </div>
               </form>
             </div>
@@ -564,61 +619,79 @@ const checkForm = (e) => {
           <div class="mb-3">
             <label for="validationTextarea" class="form-label">Textarea</label>
             <textarea
-              class="form-control is-invalid"
               id="validationTextarea"
+              class="form-control is-invalid"
               placeholder="Required example textarea"
               required
-            ></textarea>
-            <div class="invalid-feedback">Please enter a message in the textarea.</div>
+            />
+            <div class="invalid-feedback">
+              Please enter a message in the textarea.
+            </div>
           </div>
 
           <div class="form-check mb-3">
-            <input type="checkbox" class="form-check-input" id="validationFormCheck1" required />
+            <input id="validationFormCheck1" type="checkbox" class="form-check-input" required>
             <label class="form-check-label" for="validationFormCheck1">Check this checkbox</label>
-            <div class="invalid-feedback">Example invalid feedback text</div>
+            <div class="invalid-feedback">
+              Example invalid feedback text
+            </div>
           </div>
 
           <div class="form-check">
             <input
+              id="validationFormCheck2"
               type="radio"
               class="form-check-input"
-              id="validationFormCheck2"
               name="radio-stacked"
               required
-            />
+            >
             <label class="form-check-label" for="validationFormCheck2">Toggle this radio</label>
           </div>
           <div class="form-check mb-3">
             <input
+              id="validationFormCheck3"
               type="radio"
               class="form-check-input"
-              id="validationFormCheck3"
               name="radio-stacked"
               required
-            />
-            <label class="form-check-label" for="validationFormCheck3"
-              >Or toggle this other radio</label
             >
-            <div class="invalid-feedback">More example invalid feedback text</div>
+            <label class="form-check-label" for="validationFormCheck3">Or toggle this other radio</label>
+            <div class="invalid-feedback">
+              More example invalid feedback text
+            </div>
           </div>
 
           <div class="mb-3">
             <select class="form-select" required aria-label="select example">
-              <option value="">Open this select menu</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option value="">
+                Open this select menu
+              </option>
+              <option value="1">
+                One
+              </option>
+              <option value="2">
+                Two
+              </option>
+              <option value="3">
+                Three
+              </option>
             </select>
-            <div class="invalid-feedback">Example invalid select feedback</div>
+            <div class="invalid-feedback">
+              Example invalid select feedback
+            </div>
           </div>
 
           <div class="mb-3">
-            <input type="file" class="form-control" aria-label="file example" required />
-            <div class="invalid-feedback">Example invalid form file feedback</div>
+            <input type="file" class="form-control" aria-label="file example" required>
+            <div class="invalid-feedback">
+              Example invalid form file feedback
+            </div>
           </div>
 
           <div class="mb-3">
-            <button class="btn btn-primary" type="submit" disabled>Submit form</button>
+            <button class="btn btn-primary" type="submit" disabled>
+              Submit form
+            </button>
           </div>
         </form>
       </ShowcodeCard>

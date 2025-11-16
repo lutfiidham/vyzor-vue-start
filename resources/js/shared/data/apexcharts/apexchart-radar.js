@@ -1,4 +1,4 @@
-//Basic Radar Chart
+// Basic Radar Chart
 export const Radarseries = [
   {
     name: 'Series 1',
@@ -149,7 +149,8 @@ export const Polygonoptions = {
       formatter: (val, i) => {
         if (i % 2 === 0) {
           return val.toString() // Convert to string
-        } else {
+        }
+        else {
           return ''
         }
       },

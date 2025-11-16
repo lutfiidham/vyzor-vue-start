@@ -1,11 +1,11 @@
 <script setup>
-import * as tableData from '@/shared/data/tables'
-import * as prism from '@/shared/data/prismCode/table/tables'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import ShowcodeCard from '../../../../UI/showcodeCard.vue'
-import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
+import * as prism from '@/shared/data/prismCode/table/tables'
+import * as tableData from '@/shared/data/tables'
+import ShowcodeCard from '../../../../UI/showcodeCard.vue'
 
 const dataToPass = {
   title: 'Tables',
@@ -16,13 +16,14 @@ const dataToPass = {
 
 <template>
   <Head title="Tables | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xl-6">
       <ShowcodeCard title="Basic Tables" :code="prism.basicTable">
         <TableComponent
+          #cell="{ row }"
           :headers="[
             { text: 'Name' },
             { text: 'Created On' },
@@ -30,8 +31,7 @@ const dataToPass = {
             { text: 'Status' },
           ]"
           :rows="tableData.basicRows"
-          tableClass="table text-nowrap"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap"
         >
           <td>{{ row.name }}</td>
           <td>{{ row.createdOn }}</td>
@@ -45,16 +45,14 @@ const dataToPass = {
     <div class="col-xl-6">
       <ShowcodeCard title="Bordered Tables" :code="prism.BorderedTables">
         <TableComponent
+          #cell="{ row }"
           :headers="[{ text: 'User' }, { text: 'Status' }, { text: 'Email' }, { text: 'Action' }]"
           :rows="tableData.bordered"
-          tableClass="table text-nowrap table-bordered"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap table-bordered"
         >
           <th>
             <div class="d-flex align-items-center">
-              <span class="avatar avatar-xs me-2 online avatar-rounded"
-                ><BaseImg :src="row.avatar" alt="img" /></span
-              >{{ row.name }}
+              <span class="avatar avatar-xs me-2 online avatar-rounded"><BaseImg :src="row.avatar" alt="img" /></span>{{ row.name }}
             </div>
           </th>
           <td>
@@ -63,12 +61,8 @@ const dataToPass = {
           <td>{{ row.email }}</td>
           <td>
             <div class="hstack gap-2 flex-wrap">
-              <a href="javascript:void(0);" class="text-info fs-14 lh-1"
-                ><i class="ri-edit-line"></i
-              ></a>
-              <a href="javascript:void(0);" class="text-danger fs-14 lh-1"
-                ><i class="ri-delete-bin-5-line"></i
-              ></a>
+              <a href="javascript:void(0);" class="text-info fs-14 lh-1"><i class="ri-edit-line" /></a>
+              <a href="javascript:void(0);" class="text-danger fs-14 lh-1"><i class="ri-delete-bin-5-line" /></a>
             </div>
           </td>
         </TableComponent>
@@ -86,10 +80,10 @@ const dataToPass = {
         class="custom-border-table"
       >
         <TableComponent
+          #cell="{ row }"
           :headers="[{ text: 'Order' }, { text: 'Date' }, { text: 'Customer' }, { text: 'Action' }]"
           :rows="tableData.borderedPrimary"
-          tableClass="table text-nowrap table-bordered border-primary"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap table-bordered border-primary"
         >
           <td>{{ row.id }}</td>
           <td>
@@ -98,8 +92,7 @@ const dataToPass = {
           <td>
             <div class="d-flex align-items-center">
               <span class="avatar avatar-xs me-2 online avatar-rounded">
-                <BaseImg :src="row.avatar" alt="img" /> </span
-              >{{ row.name }}
+                <BaseImg :src="row.avatar" alt="img" /> </span>{{ row.name }}
             </div>
           </td>
           <td>
@@ -111,10 +104,10 @@ const dataToPass = {
     <div class="col-xl-4">
       <ShowcodeCard title="Bordered Success" :code="prism.BorderedSuccess">
         <TableComponent
+          #cell="{ row }"
           :headers="[{ text: 'Order' }, { text: 'Date' }, { text: 'Customer' }, { text: 'Action' }]"
           :rows="tableData.borderedSuccess"
-          tableClass="table text-nowrap table-bordered border-success"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap table-bordered border-success"
         >
           <td>{{ row.id }}</td>
           <td>
@@ -123,8 +116,7 @@ const dataToPass = {
           <td>
             <div class="d-flex align-items-center">
               <span class="avatar avatar-xs me-2 online avatar-rounded">
-                <BaseImg :src="row.avatar" alt="img" /> </span
-              >{{ row.name }}
+                <BaseImg :src="row.avatar" alt="img" /> </span>{{ row.name }}
             </div>
           </td>
           <td>
@@ -136,10 +128,10 @@ const dataToPass = {
     <div class="col-xl-4">
       <ShowcodeCard title="Bordered warning" :code="prism.BorderedWarning">
         <TableComponent
+          #cell="{ row }"
           :headers="[{ text: 'Order' }, { text: 'Date' }, { text: 'Customer' }, { text: 'Action' }]"
           :rows="tableData.borderedWarning"
-          tableClass="table text-nowrap table-bordered border-warning custom-table-warning"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap table-bordered border-warning custom-table-warning"
         >
           <td>{{ row.id }}</td>
           <td>
@@ -148,8 +140,7 @@ const dataToPass = {
           <td>
             <div class="d-flex align-items-center">
               <span class="avatar avatar-xs me-2 online avatar-rounded">
-                <BaseImg :src="row.avatar" alt="img" /> </span
-              >{{ row.name }}
+                <BaseImg :src="row.avatar" alt="img" /> </span>{{ row.name }}
             </div>
           </td>
           <td>
@@ -166,6 +157,7 @@ const dataToPass = {
     <div class="col-xl-6">
       <ShowcodeCard title="Table Without Borders" :code="prism.TableWithoutBorders">
         <TableComponent
+          #cell="{ row }"
           :headers="[
             { text: 'User Name' },
             { text: 'Transaction Id' },
@@ -173,8 +165,7 @@ const dataToPass = {
             { text: 'Status' },
           ]"
           :rows="tableData.withourBorder"
-          tableClass="table text-nowrap table-borderless"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap table-borderless"
         >
           <td>{{ row.name }}</td>
           <td>{{ row.ticketId }}</td>
@@ -188,6 +179,7 @@ const dataToPass = {
     <div class="col-xl-6">
       <ShowcodeCard title=" Table Group Dividers " :code="prism.TableGroupDivideres">
         <TableComponent
+          #cell="{ row }"
           :headers="[
             { text: 'Product' },
             { text: 'Seller' },
@@ -195,15 +187,12 @@ const dataToPass = {
             { text: 'Quantity Sold' },
           ]"
           :rows="tableData.groupDivideres"
-          tableClass="table text-nowrap"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap"
         >
           <td>{{ row.name }}</td>
           <td>{{ row.brand }}</td>
           <td>
-            <a href="javascript:void(0);" :class="`text-${row.color}`"
-              >{{ row.percentage }}<i :class="`ri-arrow-${row.dir}-fill ms-1`"></i
-            ></a>
+            <a href="javascript:void(0);" :class="`text-${row.color}`">{{ row.percentage }}<i :class="`ri-arrow-${row.dir}-fill ms-1`" /></a>
           </td>
           <td>{{ row.stock }}</td>
         </TableComponent>
@@ -217,17 +206,17 @@ const dataToPass = {
     <div class="col-xl-6">
       <ShowcodeCard title="Striped rows" :code="prism.Stripedrows">
         <TableComponent
+          #cell="{ row }"
           :headers="[{ text: 'ID' }, { text: 'Date' }, { text: 'Customer' }, { text: 'Action' }]"
           :rows="tableData.stripedRows"
-          tableClass="table text-nowrap table-striped"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap table-striped"
         >
           <td>{{ row.id }}</td>
           <td>{{ row.date }}</td>
           <td>{{ row.name }}</td>
           <td>
             <button class="btn btn-sm btn-success btn-wave">
-              <i class="ri-download-2-line align-middle me-2 d-inline-block"></i>Download
+              <i class="ri-download-2-line align-middle me-2 d-inline-block" />Download
             </button>
           </td>
         </TableComponent>
@@ -236,17 +225,17 @@ const dataToPass = {
     <div class="col-xl-6">
       <ShowcodeCard title="Striped columns" :code="prism.Stripedcolumns">
         <TableComponent
+          #cell="{ row }"
           :headers="[{ text: 'ID' }, { text: 'Date' }, { text: 'Customer' }, { text: 'Action' }]"
           :rows="tableData.stripedRows"
-          tableClass="table text-nowrap table-striped-columns"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap table-striped-columns"
         >
           <td>{{ row.id }}</td>
           <td>{{ row.date }}</td>
           <td>{{ row.name }}</td>
           <td>
             <button class="btn btn-sm btn-danger btn-wave">
-              <i class="ri-delete-bin-line align-middle me-2 d-inline-block"></i>Delete
+              <i class="ri-delete-bin-line align-middle me-2 d-inline-block" />Delete
             </button>
           </td>
         </TableComponent>
@@ -260,10 +249,10 @@ const dataToPass = {
     <div class="col-xl-4">
       <ShowcodeCard title="Primary Table" :code="prism.PrimaryTable">
         <TableComponent
+          #cell="{ row }"
           :headers="[{ text: '#' }, { text: 'First' }, { text: 'Last' }, { text: 'Handle' }]"
           :rows="tableData.colorTable"
-          tableClass="table text-nowrap table-primary"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap table-primary"
         >
           <td>{{ row.id }}</td>
           <td>{{ row.firstName }}</td>
@@ -275,10 +264,10 @@ const dataToPass = {
     <div class="col-xl-4">
       <ShowcodeCard title="Secondary Table" :code="prism.SecondaryTable">
         <TableComponent
+          #cell="{ row }"
           :headers="[{ text: '#' }, { text: 'First' }, { text: 'Last' }, { text: 'Handle' }]"
           :rows="tableData.colorTable"
-          tableClass="table text-nowrap table-secondary"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap table-secondary"
         >
           <td>{{ row.id }}</td>
           <td>{{ row.firstName }}</td>
@@ -290,10 +279,10 @@ const dataToPass = {
     <div class="col-xl-4">
       <ShowcodeCard title="Warning Table" :code="prism.WarningTable">
         <TableComponent
+          #cell="{ row }"
           :headers="[{ text: '#' }, { text: 'First' }, { text: 'Last' }, { text: 'Handle' }]"
           :rows="tableData.colorTable"
-          tableClass="table text-nowrap table-warning"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap table-warning"
         >
           <td>{{ row.id }}</td>
           <td>{{ row.firstName }}</td>
@@ -305,10 +294,10 @@ const dataToPass = {
     <div class="col-xl-4">
       <ShowcodeCard title="Danger Table" :code="prism.DangerTable">
         <TableComponent
+          #cell="{ row }"
           :headers="[{ text: '#' }, { text: 'First' }, { text: 'Last' }, { text: 'Handle' }]"
           :rows="tableData.colorTable"
-          tableClass="table text-nowrap table-danger"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap table-danger"
         >
           <td>{{ row.id }}</td>
           <td>{{ row.firstName }}</td>
@@ -320,10 +309,10 @@ const dataToPass = {
     <div class="col-xl-4">
       <ShowcodeCard title="Dark Table" :code="prism.DarkTable">
         <TableComponent
+          #cell="{ row }"
           :headers="[{ text: '#' }, { text: 'First' }, { text: 'Last' }, { text: 'Handle' }]"
           :rows="tableData.colorTable"
-          tableClass="table text-nowrap table-dark"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap table-dark"
         >
           <td>{{ row.id }}</td>
           <td>{{ row.firstName }}</td>
@@ -338,10 +327,10 @@ const dataToPass = {
         :code="prism.SuccessTableWithStripedRows"
       >
         <TableComponent
+          #cell="{ row }"
           :headers="[{ text: '#' }, { text: 'First' }, { text: 'Last' }, { text: 'Handle' }]"
           :rows="tableData.colorTable"
-          tableClass="table text-nowrap table-success table-striped"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap table-success table-striped"
         >
           <td>{{ row.id }}</td>
           <td>{{ row.firstName }}</td>
@@ -358,6 +347,7 @@ const dataToPass = {
     <div class="col-xl-6">
       <ShowcodeCard title="Hoverable Rows" :code="prism.HoverableRows">
         <TableComponent
+          #cell="{ row }"
           :headers="[
             { text: 'Product Manager' },
             { text: 'Category' },
@@ -365,8 +355,7 @@ const dataToPass = {
             { text: 'Status' },
           ]"
           :rows="tableData.hoverableRows"
-          tableClass="table text-nowrap table-hover"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap table-hover"
         >
           <td>
             <div class="d-flex align-items-center">
@@ -412,7 +401,7 @@ const dataToPass = {
                 :aria-valuenow="`${row.progress}`"
                 aria-valuemin="0"
                 aria-valuemax="100"
-              ></div>
+              />
             </div>
           </td>
         </TableComponent>
@@ -424,6 +413,7 @@ const dataToPass = {
         :code="prism.HoverablerowsWithstripedrows"
       >
         <TableComponent
+          #cell="{ row }"
           :headers="[
             { text: 'Invoice' },
             { text: 'Customer' },
@@ -431,8 +421,7 @@ const dataToPass = {
             { text: 'Date' },
           ]"
           :rows="tableData.hoverableRow"
-          tableClass="table text-nowrap table-striped table-hover"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap table-striped table-hover"
         >
           <td>{{ row.number }}</td>
           <td>
@@ -452,8 +441,7 @@ const dataToPass = {
           </td>
           <td>
             <span :class="`badge ${row.statusClass}`">
-              <i :class="`${row.statusIcon} align-middle me-1`"></i>{{ row.status }}</span
-            >
+              <i :class="`${row.statusIcon} align-middle me-1`" />{{ row.status }}</span>
           </td>
           <td>{{ row.date }}</td>
         </TableComponent>
@@ -467,6 +455,7 @@ const dataToPass = {
     <div class="col-xl-6">
       <ShowcodeCard title="Table Head Primary" :code="prism.TableHeadPrimary">
         <TableComponent
+          #cell="{ row }"
           :headers="[
             { text: 'User Name' },
             { text: 'Transaction Id' },
@@ -474,9 +463,8 @@ const dataToPass = {
             { text: 'Status' },
           ]"
           :rows="tableData.tableHeadwarning"
-          tableClass="table text-nowrap"
-          theadClass="table-primary"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap"
+          thead-class="table-primary"
         >
           <td>{{ row.name }}</td>
           <td>{{ row.orderNumber }}</td>
@@ -486,18 +474,15 @@ const dataToPass = {
               <a
                 href="javascript:void(0);"
                 class="btn btn-icon btn-sm btn-success-transparent rounded-pill"
-                ><i class="ri-download-2-line"></i
-              ></a>
+              ><i class="ri-download-2-line" /></a>
               <a
                 href="javascript:void(0);"
                 class="btn btn-icon btn-sm btn-info-transparent rounded-pill"
-                ><i class="ri-edit-line"></i
-              ></a>
+              ><i class="ri-edit-line" /></a>
               <a
                 href="javascript:void(0);"
                 class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"
-                ><i class="ri-delete-bin-line"></i
-              ></a>
+              ><i class="ri-delete-bin-line" /></a>
             </div>
           </td>
         </TableComponent>
@@ -506,6 +491,7 @@ const dataToPass = {
     <div class="col-xl-6">
       <ShowcodeCard title="Table Head warning" :code="prism.TableHeadwarning">
         <TableComponent
+          #cell="{ row }"
           :headers="[
             { text: 'User Name' },
             { text: 'Transaction Id' },
@@ -513,15 +499,16 @@ const dataToPass = {
             { text: 'Status' },
           ]"
           :rows="tableData.tableHeadwarning"
-          tableClass="table text-nowrap"
-          theadClass="table-warning"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap"
+          thead-class="table-warning"
         >
           <td>{{ row.name }}</td>
           <td>{{ row.orderNumber }}</td>
           <td>{{ row.date }}</td>
           <td>
-            <button :class="`btn btn-sm btn-${row.statusClass}`">{{ row.status }}</button>
+            <button :class="`btn btn-sm btn-${row.statusClass}`">
+              {{ row.status }}
+            </button>
           </td>
         </TableComponent>
       </ShowcodeCard>
@@ -529,6 +516,7 @@ const dataToPass = {
     <div class="col-xl-6">
       <ShowcodeCard title="Table Head Success" :code="prism.TableHeadSuccess">
         <TableComponent
+          #cell="{ row }"
           :headers="[
             { text: 'User Name' },
             { text: 'Transaction Id' },
@@ -536,15 +524,16 @@ const dataToPass = {
             { text: 'Status' },
           ]"
           :rows="tableData.tableHeadwarning"
-          tableClass="table text-nowrap"
-          theadClass="table-success"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap"
+          thead-class="table-success"
         >
           <td>{{ row.name }}</td>
           <td>{{ row.orderNumber }}</td>
           <td>{{ row.date }}</td>
           <td>
-            <button :class="`btn btn-sm btn-${row.statusClass}`">{{ row.status }}</button>
+            <button :class="`btn btn-sm btn-${row.statusClass}`">
+              {{ row.status }}
+            </button>
           </td>
         </TableComponent>
       </ShowcodeCard>
@@ -552,6 +541,7 @@ const dataToPass = {
     <div class="col-xl-6">
       <ShowcodeCard title="Table Head Info" :code="prism.TableHeadInfo">
         <TableComponent
+          #cell="{ row }"
           :headers="[
             { text: 'User Name' },
             { text: 'Transaction Id' },
@@ -559,15 +549,16 @@ const dataToPass = {
             { text: 'Status' },
           ]"
           :rows="tableData.tableHeadwarning"
-          tableClass="table text-nowrap"
-          theadClass="table-info"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap"
+          thead-class="table-info"
         >
           <td>{{ row.name }}</td>
           <td>{{ row.orderNumber }}</td>
           <td>{{ row.date }}</td>
           <td>
-            <button :class="`btn btn-sm btn-${row.statusClass}`">{{ row.status }}</button>
+            <button :class="`btn btn-sm btn-${row.statusClass}`">
+              {{ row.status }}
+            </button>
           </td>
         </TableComponent>
       </ShowcodeCard>
@@ -575,6 +566,7 @@ const dataToPass = {
     <div class="col-xl-6">
       <ShowcodeCard title="Table Head Secondary" :code="prism.TableHeadSecondary">
         <TableComponent
+          #cell="{ row }"
           :headers="[
             { text: 'User Name' },
             { text: 'Transaction Id' },
@@ -582,15 +574,16 @@ const dataToPass = {
             { text: 'Status' },
           ]"
           :rows="tableData.tableHeadwarning"
-          tableClass="table text-nowrap"
-          theadClass="table-secondary"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap"
+          thead-class="table-secondary"
         >
           <td>{{ row.name }}</td>
           <td>{{ row.orderNumber }}</td>
           <td>{{ row.date }}</td>
           <td>
-            <button :class="`btn btn-sm btn-${row.statusClass}`">{{ row.status }}</button>
+            <button :class="`btn btn-sm btn-${row.statusClass}`">
+              {{ row.status }}
+            </button>
           </td>
         </TableComponent>
       </ShowcodeCard>
@@ -598,6 +591,7 @@ const dataToPass = {
     <div class="col-xl-6">
       <ShowcodeCard title="Table Head Danger" :code="prism.TableHeadDanger">
         <TableComponent
+          #cell="{ row }"
           :headers="[
             { text: 'User Name' },
             { text: 'Transaction Id' },
@@ -605,15 +599,16 @@ const dataToPass = {
             { text: 'Status' },
           ]"
           :rows="tableData.tableHeadwarning"
-          tableClass="table text-nowrap"
-          theadClass="table-danger"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap"
+          thead-class="table-danger"
         >
           <td>{{ row.name }}</td>
           <td>{{ row.orderNumber }}</td>
           <td>{{ row.date }}</td>
           <td>
-            <button :class="`btn btn-sm btn-${row.statusClass}`">{{ row.status }}</button>
+            <button :class="`btn btn-sm btn-${row.statusClass}`">
+              {{ row.status }}
+            </button>
           </td>
         </TableComponent>
       </ShowcodeCard>
@@ -626,7 +621,8 @@ const dataToPass = {
     <div class="col-xl-4">
       <ShowcodeCard title="Table Foot" :code="prism.TableFoot">
         <TableComponent
-          theadClass="table-primary"
+          #cell="{ row }"
+          thead-class="table-primary"
           :headers="[
             { text: 'S.No' },
             { text: 'Team' },
@@ -634,8 +630,7 @@ const dataToPass = {
             { text: 'Win Ratio' },
           ]"
           :rows="tableData.tableFoot"
-          tableClass="table text-nowrap"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap"
         >
           <td>{{ row.id }}</td>
           <td>{{ row.location }}</td>
@@ -649,6 +644,7 @@ const dataToPass = {
     <div class="col-xl-4">
       <ShowcodeCard title="Table With Caption" :code="prism.TableWithCaption">
         <TableComponent
+          #cell="{ row }"
           :headers="[
             { text: 'S.No' },
             { text: 'Country' },
@@ -656,12 +652,11 @@ const dataToPass = {
             { text: 'No Of Athletes' },
           ]"
           :rows="tableData.tableWithCaption"
-          tableClass="table text-nowrap"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap"
         >
           <td>{{ row.rank }}</td>
           <td>{{ row.country }}</td>
-          <td>{{ row.year }}<i class="ri-medal-line mx-2"></i></td>
+          <td>{{ row.year }}<i class="ri-medal-line mx-2" /></td>
           <td>{{ row.value }}</td>
         </TableComponent>
         <caption class="d-flex">
@@ -675,10 +670,10 @@ const dataToPass = {
           Top IT Companies
         </caption>
         <TableComponent
+          #cell="{ row }"
           :headers="[{ text: 'S.No' }, { text: 'Name' }, { text: 'Revenue' }, { text: 'Country' }]"
           :rows="tableData.tableWithTopCaption"
-          tableClass="table text-nowrap caption-top"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap caption-top"
         >
           <td>{{ row.rank }}</td>
           <td>{{ row.name }}</td>
@@ -695,6 +690,7 @@ const dataToPass = {
     <div class="col-xl-6">
       <ShowcodeCard title="Active Tables" :code="prism.ActiveTables">
         <TableComponent
+          #cell="{ row }"
           :headers="[
             { text: 'Name' },
             { text: 'Created On' },
@@ -702,12 +698,13 @@ const dataToPass = {
             { text: 'Status' },
           ]"
           :rows="tableData.activeTables"
-          tableClass="table text-nowrap"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap"
         >
           <td>{{ row.name }}</td>
           <td>{{ row.date }}</td>
-          <td :class="row.tdClass">{{ row.phone }}</td>
+          <td :class="row.tdClass">
+            {{ row.phone }}
+          </td>
           <td>
             <span :class="`badge ${row.statusClass}`">{{ row.status }}</span>
           </td>
@@ -717,6 +714,7 @@ const dataToPass = {
     <div class="col-xl-6">
       <ShowcodeCard title="Small Tables" :code="prism.SmallTables">
         <TableComponent
+          #cell="{ row }"
           :headers="[
             { text: 'Invoice' },
             { text: 'Created Date' },
@@ -724,18 +722,17 @@ const dataToPass = {
             { text: 'Action' },
           ]"
           :rows="tableData.smallTables"
-          tableClass="table text-nowrap table-sm"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap table-sm"
         >
           <td>
             <div class="form-check">
               <input
+                id="checkebox-sm"
                 class="form-check-input"
                 type="checkbox"
                 value=""
-                id="checkebox-sm"
                 :checked="row.cheacked"
-              />
+              >
               <label class="form-check-label" for="checkebox-sm"> {{ row.name }} </label>
             </div>
           </td>
@@ -745,12 +742,8 @@ const dataToPass = {
           </td>
           <td>
             <div class="hstack gap-2 fs-15">
-              <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-light"
-                ><i class="ri-download-2-line"></i
-              ></a>
-              <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-light"
-                ><i class="ri-edit-line"></i
-              ></a>
+              <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-light"><i class="ri-download-2-line" /></a>
+              <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-light"><i class="ri-edit-line" /></a>
             </div>
           </td>
         </TableComponent>
@@ -764,6 +757,7 @@ const dataToPass = {
     <div class="col-xl-6">
       <ShowcodeCard title="Color variants tables" :code="prism.Colorvariantstables">
         <TableComponent
+          #cell="{ row }"
           :headers="[
             { text: 'Color' },
             { text: 'Client' },
@@ -772,8 +766,7 @@ const dataToPass = {
             { text: 'Total Price' },
           ]"
           :rows="tableData.colorvariantsTables"
-          tableClass="table text-nowrap"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap"
         >
           <td>{{ row.type }}</td>
           <td>{{ row.title }}</td>
@@ -791,15 +784,25 @@ const dataToPass = {
           <table class="table text-nowrap table-striped table-bordered">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">
+                  #
+                </th>
+                <th scope="col">
+                  First
+                </th>
+                <th scope="col">
+                  Last
+                </th>
+                <th scope="col">
+                  Handle
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">1</th>
+                <th scope="row">
+                  1
+                </th>
                 <td>Mark</td>
                 <td>Otto</td>
                 <td>@mdo</td>
@@ -809,24 +812,36 @@ const dataToPass = {
                   <table class="table text-nowrap mb-0">
                     <thead>
                       <tr>
-                        <th scope="col">Aplhabets</th>
-                        <th scope="col">Users</th>
-                        <th scope="col">Email</th>
+                        <th scope="col">
+                          Aplhabets
+                        </th>
+                        <th scope="col">
+                          Users
+                        </th>
+                        <th scope="col">
+                          Email
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row">A</th>
+                        <th scope="row">
+                          A
+                        </th>
                         <td>Dino King</td>
                         <td>dinoking231@gmail.com</td>
                       </tr>
                       <tr>
-                        <th scope="row">B</th>
+                        <th scope="row">
+                          B
+                        </th>
                         <td>Poppins sams</td>
                         <td>pops@gmail.com</td>
                       </tr>
                       <tr>
-                        <th scope="row">C</th>
+                        <th scope="row">
+                          C
+                        </th>
                         <td>Brian Shaw</td>
                         <td>swanbrian@gmail.com</td>
                       </tr>
@@ -835,19 +850,25 @@ const dataToPass = {
                 </td>
               </tr>
               <tr>
-                <th scope="row">3</th>
+                <th scope="row">
+                  3
+                </th>
                 <td>Larry</td>
                 <td>the Bird</td>
                 <td>@twitter</td>
               </tr>
               <tr>
-                <th scope="row">4</th>
+                <th scope="row">
+                  4
+                </th>
                 <td>Jimmy</td>
                 <td>the Ostrich</td>
                 <td>Dummy Text</td>
               </tr>
               <tr>
-                <th scope="row">5</th>
+                <th scope="row">
+                  5
+                </th>
                 <td>Cobra Kai</td>
                 <td>the Snake</td>
                 <td>Another Name</td>
@@ -865,6 +886,7 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Always responsive" :code="prism.Alwaysresponsive">
         <TableComponent
+          #cell="{ row }"
           :headers="[
             {
               text: `<input class='form-check-input' type='checkbox' id='checkboxNoLabel1' aria-label='...'>`,
@@ -879,23 +901,21 @@ const dataToPass = {
             { text: 'Action' },
           ]"
           :rows="tableData.alwaysResponsive"
-          tableClass="table text-nowrap"
-          v-slot:cell="{ row }"
+          table-class="table text-nowrap"
         >
           <td>
             <input
+              id="checkboxNoLabel1"
               class="form-check-input"
               type="checkbox"
-              id="checkboxNoLabel1"
               value=""
               aria-label="..."
-            />
+            >
           </td>
           <td>
             <div class="d-flex align-items-center">
               <span class="avatar avatar-xs me-2 online avatar-rounded">
-                <BaseImg :src="row.avatar" alt="img" /> </span
-              >{{ row.name }}
+                <BaseImg :src="row.avatar" alt="img" /> </span>{{ row.name }}
             </div>
           </td>
           <td>{{ row.position }}</td>
@@ -930,18 +950,14 @@ const dataToPass = {
                 aria-valuenow="row.progressValue"
                 aria-valuemin="0"
                 aria-valuemax="100"
-              ></div>
+              />
             </div>
           </td>
           <td>{{ row.salary }}</td>
           <td>
             <div class="hstack gap-2 fs-15">
-              <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success"
-                ><i class="ri-download-2-line"></i
-              ></a>
-              <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-info"
-                ><i class="ri-edit-line"></i
-              ></a>
+              <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success"><i class="ri-download-2-line" /></a>
+              <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-info"><i class="ri-edit-line" /></a>
             </div>
           </td>
         </TableComponent>
@@ -958,10 +974,18 @@ const dataToPass = {
           <table class="table align-middle">
             <thead>
               <tr>
-                <th scope="col" class="w-25">Heading 1</th>
-                <th scope="col" class="w-25">Heading 2</th>
-                <th scope="col" class="w-25">Heading 3</th>
-                <th scope="col" class="w-25">Heading 4</th>
+                <th scope="col" class="w-25">
+                  Heading 1
+                </th>
+                <th scope="col" class="w-25">
+                  Heading 2
+                </th>
+                <th scope="col" class="w-25">
+                  Heading 3
+                </th>
+                <th scope="col" class="w-25">
+                  Heading 4
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -986,7 +1010,9 @@ const dataToPass = {
               <tr>
                 <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
                 <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
-                <td class="align-top">This cell is aligned to the top.</td>
+                <td class="align-top">
+                  This cell is aligned to the top.
+                </td>
                 <td>
                   This here is some placeholder text, intended to take up quite a bit of vertical
                   space, to demonstrate how the vertical alignment works in the preceding cells.

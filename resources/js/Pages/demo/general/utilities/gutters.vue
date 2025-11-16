@@ -1,6 +1,7 @@
 <script setup>
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+
 const dataToPass = {
   title: 'Utilities',
   currentpage: 'Gutters',
@@ -10,14 +11,16 @@ const dataToPass = {
 
 <template>
   <Head title="Gutters | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Horizontal gutters</div>
+          <div class="card-title">
+            Horizontal gutters
+          </div>
         </div>
         <div class="card-body">
           <p>
@@ -31,10 +34,14 @@ const dataToPass = {
           <div class="container px-4 mb-3">
             <div class="row gx-5">
               <div class="col">
-                <div class="p-3 mb-1 border bg-light">Custom column padding</div>
+                <div class="p-3 mb-1 border bg-light">
+                  Custom column padding
+                </div>
               </div>
               <div class="col">
-                <div class="p-3 mb-1 border bg-light">Custom column padding</div>
+                <div class="p-3 mb-1 border bg-light">
+                  Custom column padding
+                </div>
               </div>
             </div>
           </div>
@@ -46,10 +53,14 @@ const dataToPass = {
           <div class="container overflow-hidden">
             <div class="row gx-5">
               <div class="col">
-                <div class="p-3 mb-1 border bg-light">Custom column padding</div>
+                <div class="p-3 mb-1 border bg-light">
+                  Custom column padding
+                </div>
               </div>
               <div class="col">
-                <div class="p-3 mb-1 border bg-light">Custom column padding</div>
+                <div class="p-3 mb-1 border bg-light">
+                  Custom column padding
+                </div>
               </div>
             </div>
           </div>
@@ -59,7 +70,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Vertical gutters</div>
+          <div class="card-title">
+            Vertical gutters
+          </div>
         </div>
         <div class="card-body">
           <p>
@@ -72,16 +85,24 @@ const dataToPass = {
           <div class="container overflow-hidden">
             <div class="row gy-5">
               <div class="col-6">
-                <div class="p-3 border bg-light">Custom column padding</div>
+                <div class="p-3 border bg-light">
+                  Custom column padding
+                </div>
               </div>
               <div class="col-6">
-                <div class="p-3 border bg-light">Custom column padding</div>
+                <div class="p-3 border bg-light">
+                  Custom column padding
+                </div>
               </div>
               <div class="col-6">
-                <div class="p-3 border bg-light">Custom column padding</div>
+                <div class="p-3 border bg-light">
+                  Custom column padding
+                </div>
               </div>
               <div class="col-6">
-                <div class="p-3 border bg-light">Custom column padding</div>
+                <div class="p-3 border bg-light">
+                  Custom column padding
+                </div>
               </div>
             </div>
           </div>
@@ -96,7 +117,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Horizontal & vertical gutters</div>
+          <div class="card-title">
+            Horizontal & vertical gutters
+          </div>
         </div>
         <div class="card-body">
           <p>
@@ -107,16 +130,24 @@ const dataToPass = {
           <div class="container">
             <div class="row g-2">
               <div class="col-6">
-                <div class="p-3 border bg-light">Custom column padding</div>
+                <div class="p-3 border bg-light">
+                  Custom column padding
+                </div>
               </div>
               <div class="col-6">
-                <div class="p-3 border bg-light">Custom column padding</div>
+                <div class="p-3 border bg-light">
+                  Custom column padding
+                </div>
               </div>
               <div class="col-6">
-                <div class="p-3 border bg-light">Custom column padding</div>
+                <div class="p-3 border bg-light">
+                  Custom column padding
+                </div>
               </div>
               <div class="col-6">
-                <div class="p-3 border bg-light">Custom column padding</div>
+                <div class="p-3 border bg-light">
+                  Custom column padding
+                </div>
               </div>
             </div>
           </div>
@@ -126,7 +157,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Row columns gutters</div>
+          <div class="card-title">
+            Row columns gutters
+          </div>
         </div>
         <div class="card-body">
           <p>
@@ -136,34 +169,54 @@ const dataToPass = {
           <div class="container">
             <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
               <div class="col">
-                <div class="p-3 border bg-light">Row column</div>
+                <div class="p-3 border bg-light">
+                  Row column
+                </div>
               </div>
               <div class="col">
-                <div class="p-3 border bg-light">Row column</div>
+                <div class="p-3 border bg-light">
+                  Row column
+                </div>
               </div>
               <div class="col">
-                <div class="p-3 border bg-light">Row column</div>
+                <div class="p-3 border bg-light">
+                  Row column
+                </div>
               </div>
               <div class="col">
-                <div class="p-3 border bg-light">Row column</div>
+                <div class="p-3 border bg-light">
+                  Row column
+                </div>
               </div>
               <div class="col">
-                <div class="p-3 border bg-light">Row column</div>
+                <div class="p-3 border bg-light">
+                  Row column
+                </div>
               </div>
               <div class="col">
-                <div class="p-3 border bg-light">Row column</div>
+                <div class="p-3 border bg-light">
+                  Row column
+                </div>
               </div>
               <div class="col">
-                <div class="p-3 border bg-light">Row column</div>
+                <div class="p-3 border bg-light">
+                  Row column
+                </div>
               </div>
               <div class="col">
-                <div class="p-3 border bg-light">Row column</div>
+                <div class="p-3 border bg-light">
+                  Row column
+                </div>
               </div>
               <div class="col">
-                <div class="p-3 border bg-light">Row column</div>
+                <div class="p-3 border bg-light">
+                  Row column
+                </div>
               </div>
               <div class="col">
-                <div class="p-3 border bg-light">Row column</div>
+                <div class="p-3 border bg-light">
+                  Row column
+                </div>
               </div>
             </div>
           </div>
@@ -173,7 +226,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">No gutters</div>
+          <div class="card-title">
+            No gutters
+          </div>
         </div>
         <div class="card-body">
           <p>
@@ -195,8 +250,12 @@ const dataToPass = {
             predefined grid classes (including column widths, responsive tiers, reorders, and more).
           </p>
           <div class="row g-0">
-            <div class="col-sm-6 col-md-8 bd-example-grid">.col-sm-6 .col-md-8</div>
-            <div class="col-6 col-md-4 bd-example-grid">.col-6 .col-md-4</div>
+            <div class="col-sm-6 col-md-8 bd-example-grid">
+              .col-sm-6 .col-md-8
+            </div>
+            <div class="col-6 col-md-4 bd-example-grid">
+              .col-6 .col-md-4
+            </div>
           </div>
         </div>
       </div>

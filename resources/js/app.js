@@ -1,17 +1,18 @@
 // app.js
 
-import './bootstrap'
-import { createApp, h } from 'vue'
 import { createInertiaApp, router } from '@inertiajs/vue3'
+// Import Bootstrap JS
+import * as bootstrap from 'bootstrap'
+import { createApp, h } from 'vue'
 import maindashboard from '@/layouts/maindashboard.vue'
 import plugins from './plugins'
+import './bootstrap'
 import '../css/app.scss'
 import '../css/scss/switcher.scss'
 import '../css/checkbox-improvements.css'
+
 import '@mdi/font/css/materialdesignicons.css'
 
-// Import Bootstrap JS
-import * as bootstrap from 'bootstrap'
 window.bootstrap = bootstrap
 
 // Progress bar for page transitions
@@ -34,6 +35,7 @@ router.on('finish', () => {
 createInertiaApp({
   title: (title) => {
     const appName = window._appName || 'Vyzor'
+
     return title ? `${title} - ${appName}` : appName
   },
   resolve: (name) => {
@@ -43,12 +45,13 @@ createInertiaApp({
     if (!page.layout) {
       page.layout = maindashboard
     }
+
     return page
   },
   setup({ el, App, props, plugin }) {
     // Store app name globally for title callback
     window._appName = props.initialPage.props.settings?.app_name || 'Vyzor'
-    
+
     createApp({ render: () => h(App, props) })
       .use(plugin)
       .use(plugins)

@@ -1,102 +1,19 @@
-<template>
-  <div id="responsive-overlay" @click="mainContentFn"></div>
-  <!-- Start::app-sidebar -->
-  <aside class="app-sidebar sticky" id="sidebar">
-    <!-- Start::main-sidebar-header -->
-    <div class="main-sidebar-header">
-      <Link :href="logoLink" class="header-logo">
-        <BaseImg src="/images/brand-logos/desktop-logo.png" alt="logo" class="desktop-logo" />
-        <BaseImg src="/images/brand-logos/toggle-logo.png" alt="logo" class="toggle-logo" />
-        <BaseImg src="/images/brand-logos/desktop-dark.png" alt="logo" class="desktop-dark" />
-        <BaseImg src="/images/brand-logos/toggle-dark.png" alt="logo" class="toggle-dark" />
-      </Link>
-    </div>
-    <!-- End::main-sidebar-header -->
-
-    <!-- Start::main-sidebar -->
-    <PerfectScrollbar class="main-sidebar" id="sidebar-scroll">
-      <!-- Start::nav -->
-      <nav class="main-menu-container nav nav-pills flex-column sub-open">
-        <div class="slide-left" id="slide-left" @click="leftArrowFn">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="#7b8191"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
-          </svg>
-        </div>
-        <ul class="main-menu">
-          <li
-            v-for="(mainmenuItem, index) in menuData"
-            :key="`${mainmenuItem.id || mainmenuItem.title || index}-${forceUpdateCounter}`"
-            :class="`${mainmenuItem?.menutitle ? 'slide__category' : ''} ${mainmenuItem?.type == 'link' ? 'slide' : ''} ${mainmenuItem?.type == 'empty' ? 'slide' : ''} ${mainmenuItem?.type == 'sub' ? 'slide has-sub' : ''} ${mainmenuItem?.active ? 'open' : ''} ${mainmenuItem?.selected ? 'active' : ''}`"
-          >
-            <template v-if="mainmenuItem?.menutitle">
-              <span class="category-name">{{ mainmenuItem.menutitle }}</span>
-            </template>
-            <template v-if="mainmenuItem?.type === 'link'">
-              <Link
-                :href="mainmenuItem.path"
-                class="side-menu__item"
-                :class="`${mainmenuItem.selected ? 'active' : ''}`"
-              >
-                <span v-if="mainmenuItem.icon" v-html="mainmenuItem.icon"> </span>
-                <span class="side-menu__label"
-                  >{{ mainmenuItem.title }}
-                  <span v-if="mainmenuItem.badgetxt" v-html="mainmenuItem.badgetxt"></span>
-                </span>
-              </Link>
-            </template>
-            <template v-if="mainmenuItem?.type === 'empty'">
-              <a href="javascript:;" class="side-menu__item">
-                <span v-if="mainmenuItem.icon" v-html="mainmenuItem.icon"> </span>
-                <span class="side-menu__label"
-                  >{{ mainmenuItem.title }}
-                  <span v-if="mainmenuItem.badgetxt" v-html="mainmenuItem.badgetxt"></span>
-                </span>
-              </a>
-            </template>
-            <template v-if="mainmenuItem?.type === 'sub'">
-              <RecursiveMenu
-                :menuData="mainmenuItem"
-                :toggleSubmenu="toggleSubmenu"
-                :HoverToggleInnerMenuFn="HoverToggleInnerMenuFn"
-                :level="level + 1"
-              />
-            </template>
-          </li>
-        </ul>
-      </nav>
-      <!-- End::nav -->
-    </PerfectScrollbar>
-    <!-- End::main-sidebar -->
-  </aside>
-  <!-- End::app-sidebar -->
-</template>
-
 <script setup>
+import { Link, router, usePage } from '@inertiajs/vue3'
 import {
+  computed,
   onBeforeMount,
   onMounted,
-  reactive,
   ref,
   watchEffect,
-  computed,
-  nextTick,
-  triggerRef,
-  shallowRef,
 } from 'vue'
 // Dynamic menu from Inertia shared props
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
-import 'vue3-perfect-scrollbar/style.css'
-import RecursiveMenu from '../../../UI/recursiveMenu.vue'
-import { switcherStore } from '../../../stores/switcher'
-import BaseImg from '../Baseimage/BaseImg.vue'
-import { Link, usePage, router } from '@inertiajs/vue3'
 import { MENUITEMS as staticMenuData } from '@/shared/data/sidebar/nav'
+import { switcherStore } from '../../../stores/switcher'
+import RecursiveMenu from '../../../UI/recursiveMenu.vue'
+import BaseImg from '../Baseimage/BaseImg.vue'
+import 'vue3-perfect-scrollbar/style.css'
 
 // Combine dynamic menu with static menu based on user role
 const menuData = computed(() => {
@@ -109,28 +26,31 @@ const menuData = computed(() => {
       active: menu.active || false,
       selected: menu.selected || false,
       dirchange: menu.dirchange || false,
-      children: menu.children ? menu.children.map((child) => cleanStaticMenu(child)) : [],
+      children: menu.children ? menu.children.map(child => cleanStaticMenu(child)) : [],
     }
+
     return cleaned
   }
 
   // Only combine with static menu if user is admin and demo menu is enabled
   if (shouldShowDemoMenu.value) {
-    const staticMenuDataClean = staticMenuData.map((menu) => cleanStaticMenu(menu))
+    const staticMenuDataClean = staticMenuData.map(menu => cleanStaticMenu(menu))
     const combinedMenus = [...dynamicMenus, ...staticMenuDataClean]
+
     return combinedMenus
-  } else {
+  }
+  else {
     // Non-admin users or demo menu disabled only get dynamic menus
     return dynamicMenus
   }
 })
 
-let level = 0
-let isChild = false
+const level = 0
+const isChild = false
 let setMenu = false
 let hasParent = false
 let hasParentLevel = 0
-let WindowPreSize = [window.innerWidth]
+const WindowPreSize = [window.innerWidth]
 const previousUrl = ref('/')
 const page = usePage()
 const { url } = page
@@ -142,16 +62,17 @@ const currentUser = computed(() => page.props.auth?.user || null)
 // Get current user roles
 const userRoles = computed(() => {
   const roles = page.props.auth?.user?.roles
-  if (!roles) return []
+  if (!roles)
+    return []
 
   // Laravel getRoleNames() returns array of strings
   if (Array.isArray(roles)) {
-    return roles.filter((role) => typeof role === 'string' && role.trim() !== '')
+    return roles.filter(role => typeof role === 'string' && role.trim() !== '')
   }
 
   // If it's an object (like Laravel Collection converted to object)
   if (typeof roles === 'object') {
-    return Object.values(roles).filter((role) => typeof role === 'string' && role.trim() !== '')
+    return Object.values(roles).filter(role => typeof role === 'string' && role.trim() !== '')
   }
 
   return []
@@ -167,9 +88,11 @@ const isSuperAdminLevel = computed(() => {
   return userRoles.value.some((role) => {
     if (typeof role === 'string') {
       const roleLower = role.toLowerCase()
+
       return roleLower === 'super admin'
     }
     const roleName = role.name?.toLowerCase()
+
     return roleName === 'super admin'
   })
 })
@@ -183,11 +106,12 @@ const shouldShowDemoMenu = computed(() => {
 const logoLink = computed(() => {
   const currentPath = page.url
   const isDemoPage = currentPath.startsWith('/demo')
+
   return isDemoPage ? `${baseUrl}/demo/dashboards/sales/` : '/dashboard'
 })
 
 // Logout handler
-const handleLogout = () => {
+function handleLogout() {
   if (confirm('Are you sure you want to logout?')) {
     router.post('/logout')
   }
@@ -197,17 +121,19 @@ const handleLogout = () => {
 const forceUpdateCounter = ref(0)
 
 // Helper function to find and toggle menu by title
-const toggleMenuByTitle = (title) => {
-  const findMenu = (items) => {
+function toggleMenuByTitle(title) {
+  const findMenu = items => {
     for (const item of items) {
       if (item.title === title) {
         return item
       }
       if (item.children && item.children.length > 0) {
         const found = findMenu(item.children)
-        if (found) return found
+        if (found)
+          return found
       }
     }
+
     return null
   }
 
@@ -216,19 +142,21 @@ const toggleMenuByTitle = (title) => {
     menu.active = !menu.active
     // Force update to trigger re-render
     forceUpdateCounter.value++
+
     return true
   }
+
   return false
 }
 
 function toggleSubmenu(event, targetObject, menuList = menuData.value, isChildFlag = isChild) {
-  let html = document.documentElement
-  let element = event.target
+  const html = document.documentElement
+  const element = event.target
   if (
-    (html.getAttribute('data-nav-style') == 'icon-hover' &&
-      html.getAttribute('data-toggled') == 'icon-hover-closed') ||
-    (html.getAttribute('data-toggled') == 'menu-hover-closed' &&
-      html.getAttribute('data-nav-style') == 'menu-hover')
+    (html.getAttribute('data-nav-style') == 'icon-hover'
+      && html.getAttribute('data-toggled') == 'icon-hover-closed')
+    || (html.getAttribute('data-toggled') == 'menu-hover-closed'
+      && html.getAttribute('data-nav-style') == 'menu-hover')
   ) {
     return
   }
@@ -241,21 +169,22 @@ function toggleSubmenu(event, targetObject, menuList = menuData.value, isChildFl
   }
   if (targetObject?.children && targetObject.active) {
     if (
-      html.getAttribute('data-vertical-style') == 'doublemenu' &&
-      html.getAttribute('data-toggled') != 'double-menu-open'
+      html.getAttribute('data-vertical-style') == 'doublemenu'
+      && html.getAttribute('data-toggled') != 'double-menu-open'
     ) {
       if (window.innerWidth < 992) {
         html.setAttribute('data-toggled', 'open')
-      } else {
+      }
+      else {
         html.setAttribute('data-toggled', 'double-menu-open')
       }
     }
   }
   if (
-    element &&
-    html.getAttribute('data-nav-layout') == 'horizontal' &&
-    (html.getAttribute('data-nav-style') == 'menu-click' ||
-      html.getAttribute('data-nav-style') == 'icon-click')
+    element
+    && html.getAttribute('data-nav-layout') == 'horizontal'
+    && (html.getAttribute('data-nav-style') == 'menu-click'
+      || html.getAttribute('data-nav-style') == 'icon-click')
   ) {
     const listItem = element.closest('li')
     if (listItem) {
@@ -271,33 +200,36 @@ function toggleSubmenu(event, targetObject, menuList = menuData.value, isChildFl
       }
       if (siblingUL) {
         // You've found the sibling <ul> element
-        let siblingULRect = listItem.getBoundingClientRect()
+        const siblingULRect = listItem.getBoundingClientRect()
         if (html.getAttribute('dir') == 'rtl') {
           if (
-            siblingULRect.left - siblingULRect.width - outterUlWidth + 150 < 0 &&
-            outterUlWidth < window.innerWidth &&
-            outterUlWidth + siblingULRect.width + siblingULRect.width < window.innerWidth
+            siblingULRect.left - siblingULRect.width - outterUlWidth + 150 < 0
+            && outterUlWidth < window.innerWidth
+            && outterUlWidth + siblingULRect.width + siblingULRect.width < window.innerWidth
           ) {
             targetObject.dirchange = true
-          } else {
+          }
+          else {
             targetObject.dirchange = false
           }
-        } else {
+        }
+        else {
           if (
-            outterUlWidth + siblingULRect.right + siblingULRect.width + 50 > window.innerWidth &&
-            siblingULRect.right >= 0 &&
-            outterUlWidth + siblingULRect.width + siblingULRect.width < window.innerWidth
+            outterUlWidth + siblingULRect.right + siblingULRect.width + 50 > window.innerWidth
+            && siblingULRect.right >= 0
+            && outterUlWidth + siblingULRect.width + siblingULRect.width < window.innerWidth
           ) {
             targetObject.dirchange = true
-          } else {
+          }
+          else {
             targetObject.dirchange = false
           }
         }
       }
       setTimeout(() => {
-        let computedValue = siblingUL.getBoundingClientRect()
+        const computedValue = siblingUL.getBoundingClientRect()
         if (computedValue.bottom > window.innerHeight) {
-          siblingUL.style.height = window.innerHeight - computedValue.top - 8 + 'px'
+          siblingUL.style.height = `${window.innerHeight - computedValue.top - 8}px`
           siblingUL.style.overflow = 'auto'
         }
       }, 100)
@@ -306,7 +238,7 @@ function toggleSubmenu(event, targetObject, menuList = menuData.value, isChildFl
 }
 
 function setAncestorsActive(menuData, targetObject, level) {
-  let html = document.documentElement
+  const html = document.documentElement
   const parent = findParent(menuData, targetObject)
   if (parent) {
     parent.active = true
@@ -314,7 +246,8 @@ function setAncestorsActive(menuData, targetObject, level) {
       html.setAttribute('data-toggled', 'double-menu-open')
     }
     setAncestorsActive(menuData, parent, level)
-  } else {
+  }
+  else {
     if (html.getAttribute('data-vertical-style') == 'doublemenu' && level == 1) {
       html.setAttribute('data-toggled', 'double-menu-close')
     }
@@ -344,17 +277,18 @@ function findParent(menuData, targetObject) {
       }
     }
   }
+
   return null
 }
 
 function HoverToggleInnerMenuFn(event, item) {
-  let html = document.documentElement
-  let element = event.target
+  const html = document.documentElement
+  const element = event.target
   if (
-    element &&
-    html.getAttribute('data-nav-layout') == 'horizontal' &&
-    (html.getAttribute('data-nav-style') == 'menu-hover' ||
-      html.getAttribute('data-nav-style') == 'icon-hover')
+    element
+    && html.getAttribute('data-nav-layout') == 'horizontal'
+    && (html.getAttribute('data-nav-style') == 'menu-hover'
+      || html.getAttribute('data-nav-style') == 'icon-hover')
   ) {
     const listItem = element.closest('li')
     if (listItem) {
@@ -370,25 +304,28 @@ function HoverToggleInnerMenuFn(event, item) {
       }
       if (siblingUL) {
         // You've found the sibling <ul> element
-        let siblingULRect = listItem.getBoundingClientRect()
+        const siblingULRect = listItem.getBoundingClientRect()
         if (html.getAttribute('dir') == 'rtl') {
           if (
-            siblingULRect.left - siblingULRect.width - outterUlWidth + 150 < 0 &&
-            outterUlWidth < window.innerWidth &&
-            outterUlWidth + siblingULRect.width + siblingULRect.width < window.innerWidth
+            siblingULRect.left - siblingULRect.width - outterUlWidth + 150 < 0
+            && outterUlWidth < window.innerWidth
+            && outterUlWidth + siblingULRect.width + siblingULRect.width < window.innerWidth
           ) {
             item.dirchange = true
-          } else {
+          }
+          else {
             item.dirchange = false
           }
-        } else {
+        }
+        else {
           if (
-            outterUlWidth + siblingULRect.right + siblingULRect.width + 50 > window.innerWidth &&
-            siblingULRect.right >= 0 &&
-            outterUlWidth + siblingULRect.width + siblingULRect.width < window.innerWidth
+            outterUlWidth + siblingULRect.right + siblingULRect.width + 50 > window.innerWidth
+            && siblingULRect.right >= 0
+            && outterUlWidth + siblingULRect.width + siblingULRect.width < window.innerWidth
           ) {
             item.dirchange = true
-          } else {
+          }
+          else {
             item.dirchange = false
           }
         }
@@ -398,10 +335,10 @@ function HoverToggleInnerMenuFn(event, item) {
 }
 
 function setSubmenu(event, targetObject, menuList = menuData.value) {
-  let html = document.documentElement
+  const html = document.documentElement
   if (
-    html.getAttribute('data-nav-style') != 'icon-hover' &&
-    html.getAttribute('data-nav-style') != 'menu-hover'
+    html.getAttribute('data-nav-style') != 'icon-hover'
+    && html.getAttribute('data-nav-style') != 'menu-hover'
   ) {
     if (!event?.ctrlKey) {
       setMenu = true
@@ -410,10 +347,12 @@ function setSubmenu(event, targetObject, menuList = menuData.value) {
           item.active = true
           item.selected = true
           setMenuAncestorsActive(item)
-        } else if (!item.active && !item.selected) {
+        }
+        else if (!item.active && !item.selected) {
           item.active = false // Set active to false for items not matching the target
           item.selected = false // Set active to false for items not matching the target
-        } else {
+        }
+        else {
           removeActiveOtherMenus(item)
         }
         if (item.children && item.children.length > 0) {
@@ -429,8 +368,8 @@ function getParentObject(obj, childObject) {
   for (const key in obj) {
     if (Object.hasOwn(obj, key)) {
       if (
-        typeof obj[key] === 'object' &&
-        JSON.stringify(obj[key]) === JSON.stringify(childObject)
+        typeof obj[key] === 'object'
+        && JSON.stringify(obj[key]) === JSON.stringify(childObject)
       ) {
         return obj // Return the parent object
       }
@@ -442,12 +381,13 @@ function getParentObject(obj, childObject) {
       }
     }
   }
+
   return null // Object not found
 }
 
 function setMenuAncestorsActive(targetObject) {
   const parent = getParentObject(menuData.value, targetObject)
-  let html = document.documentElement
+  const html = document.documentElement
   if (parent) {
     if (hasParentLevel > 2) {
       hasParent = true
@@ -456,11 +396,13 @@ function setMenuAncestorsActive(targetObject) {
     parent.selected = true
     hasParentLevel += 1
     setMenuAncestorsActive(parent)
-  } else if (!hasParent) {
+  }
+  else if (!hasParent) {
     if (html.getAttribute('data-vertical-style') == 'doublemenu') {
       if (window.innerWidth < 992) {
         html.setAttribute('data-toggled', 'close')
-      } else {
+      }
+      else {
         html.setAttribute('data-toggled', 'double-menu-close')
       }
     }
@@ -481,8 +423,9 @@ function removeActiveOtherMenus(item) {
     if (item.children && item.children.length > 0) {
       removeActiveOtherMenus(item.children)
     }
-  } else {
-    return
+  }
+  else {
+
   }
 }
 
@@ -496,9 +439,9 @@ function closeMenuFn() {
   closeMenuRecursively(menuData.value)
 }
 const switcher = switcherStore()
-const colorthemeFn = (value) => {
+function colorthemeFn(value) {
   ;(localStorage.setItem('vyzorcolortheme', value),
-    localStorage.removeItem('vyzorbodyBgRGB', value))
+  localStorage.removeItem('vyzorbodyBgRGB', value))
   switcher.colorthemeFn(value)
 }
 
@@ -509,27 +452,29 @@ function menuResizeFn() {
   }
   if (WindowPreSize.length > 1) {
     if (
-      WindowPreSize[WindowPreSize.length - 1] < 992 &&
-      WindowPreSize[WindowPreSize.length - 2] >= 992
+      WindowPreSize[WindowPreSize.length - 1] < 992
+      && WindowPreSize[WindowPreSize.length - 2] >= 992
     ) {
       // less than 992;
-      let html = document.documentElement
+      const html = document.documentElement
       html.setAttribute('data-toggled', 'close')
     }
 
     if (
-      WindowPreSize[WindowPreSize.length - 1] >= 992 &&
-      WindowPreSize[WindowPreSize.length - 2] < 992
+      WindowPreSize[WindowPreSize.length - 1] >= 992
+      && WindowPreSize[WindowPreSize.length - 2] < 992
     ) {
-      let html = document.documentElement
+      const html = document.documentElement
       // greater than 992
       if (html.getAttribute('data-vertical-style') == 'doublemenu') {
         if (document.querySelector('.double-menu-active')) {
           html.setAttribute('data-toggled', 'double-menu-open')
-        } else {
+        }
+        else {
           html.setAttribute('data-toggled', 'double-menu-close')
         }
-      } else {
+      }
+      else {
         html.removeAttribute('data-toggled')
       }
     }
@@ -538,13 +483,14 @@ function menuResizeFn() {
 
 function mainContentFn() {
   // Used to close the menu in Horizontal and small screen
-  let html = document.documentElement
+  const html = document.documentElement
   if (window.innerWidth < 992) {
     html.setAttribute('data-toggled', 'close')
-  } else if (
-    html.getAttribute('data-nav-layout') == 'horizontal' ||
-    html.getAttribute('data-nav-style') == 'menu-click' ||
-    html.getAttribute('data-nav-style') == 'icon-click'
+  }
+  else if (
+    html.getAttribute('data-nav-layout') == 'horizontal'
+    || html.getAttribute('data-nav-style') == 'menu-click'
+    || html.getAttribute('data-nav-style') == 'icon-click'
   ) {
     closeMenuFn()
   }
@@ -553,37 +499,40 @@ function mainContentFn() {
 function leftArrowFn() {
   // Used to move the slide of the menu in Horizontal and also remove the arrows after click  if there was no space
   // Used to Slide the menu to Left side
-  let slideLeft = document.querySelector('.slide-left')
-  let slideRight = document.querySelector('.slide-right')
-  let menuNav = document.querySelector('.main-menu')
-  let mainContainer1 = document.querySelector('.main-sidebar')
-  let marginRightValue = Math.ceil(
-    Number(window.getComputedStyle(menuNav).marginInlineStart.split('px')[0])
+  const slideLeft = document.querySelector('.slide-left')
+  const slideRight = document.querySelector('.slide-right')
+  const menuNav = document.querySelector('.main-menu')
+  const mainContainer1 = document.querySelector('.main-sidebar')
+  const marginRightValue = Math.ceil(
+    Number(window.getComputedStyle(menuNav).marginInlineStart.split('px')[0]),
   )
-  let mainContainer1Width = mainContainer1.offsetWidth
+  const mainContainer1Width = mainContainer1.offsetWidth
   if (menuNav.scrollWidth > mainContainer1.offsetWidth) {
     if (marginRightValue < 0 && !(Math.abs(marginRightValue) < mainContainer1Width)) {
-      menuNav.style.marginInlineStart =
-        Number(menuNav.style.marginInlineStart.split('px')[0]) +
-        Math.abs(mainContainer1Width) +
-        'px'
+      menuNav.style.marginInlineStart
+        = `${Number(menuNav.style.marginInlineStart.split('px')[0])
+        + Math.abs(mainContainer1Width)
+        }px`
       slideRight.classList.remove('d-none')
-    } else if (marginRightValue >= 0) {
-      menuNav.style.marginInlineStart = '0px'
-      slideLeft.classList.add('d-none')
-      slideRight.classList.remove('d-none')
-    } else {
+    }
+    else if (marginRightValue >= 0) {
       menuNav.style.marginInlineStart = '0px'
       slideLeft.classList.add('d-none')
       slideRight.classList.remove('d-none')
     }
-  } else {
+    else {
+      menuNav.style.marginInlineStart = '0px'
+      slideLeft.classList.add('d-none')
+      slideRight.classList.remove('d-none')
+    }
+  }
+  else {
     menuNav.style.marginInlineStart = '0px'
     slideLeft.classList.add('d-none')
   }
 
-  let element = document.querySelector('.main-menu > .slide.open')
-  let element1 = document.querySelector('.main-menu > .slide.open >ul')
+  const element = document.querySelector('.main-menu > .slide.open')
+  const element1 = document.querySelector('.main-menu > .slide.open >ul')
   if (element) {
     element.classList.remove('open')
   }
@@ -595,14 +544,14 @@ function leftArrowFn() {
 function rightArrowFn() {
   // Used to move the slide of the menu in Horizontal and also remove the arrows after click  if there was no space
   // Used to Slide the menu to Right side
-  let slideLeft = document.querySelector('.slide-left')
-  let slideRight = document.querySelector('.slide-right')
-  let menuNav = document.querySelector('.main-menu')
-  let mainContainer1 = document.querySelector('.main-sidebar')
-  let marginRightValue = Math.ceil(
-    Number(window.getComputedStyle(menuNav).marginInlineStart.split('px')[0])
+  const slideLeft = document.querySelector('.slide-left')
+  const slideRight = document.querySelector('.slide-right')
+  const menuNav = document.querySelector('.main-menu')
+  const mainContainer1 = document.querySelector('.main-sidebar')
+  const marginRightValue = Math.ceil(
+    Number(window.getComputedStyle(menuNav).marginInlineStart.split('px')[0]),
   )
-  let check = menuNav.scrollWidth - mainContainer1.offsetWidth
+  const check = menuNav.scrollWidth - mainContainer1.offsetWidth
   let mainContainer1Width = mainContainer1.offsetWidth
 
   if (menuNav.scrollWidth > mainContainer1.offsetWidth) {
@@ -611,16 +560,16 @@ function rightArrowFn() {
         mainContainer1Width = Math.abs(check) - Math.abs(marginRightValue)
         slideRight.classList.add('d-none')
       }
-      menuNav.style.marginInlineStart =
-        Number(menuNav.style.marginInlineStart.split('px')[0]) -
-        Math.abs(mainContainer1Width) +
-        'px'
+      menuNav.style.marginInlineStart
+        = `${Number(menuNav.style.marginInlineStart.split('px')[0])
+        - Math.abs(mainContainer1Width)
+        }px`
       slideLeft.classList.remove('d-none')
     }
   }
 
-  let element = document.querySelector('.main-menu > .slide.open')
-  let element1 = document.querySelector('.main-menu > .slide.open >ul')
+  const element = document.querySelector('.main-menu > .slide.open')
+  const element1 = document.querySelector('.main-menu > .slide.open >ul')
   if (element) {
     element.classList.remove('open')
   }
@@ -630,20 +579,21 @@ function rightArrowFn() {
 }
 
 function checkHoriMenu() {
-  let menuNav = document.querySelector('.main-sidebar')
-  let mainMenu = document.querySelector('.main-menu')
-  let slideLeft = document.querySelector('.slide-left')
-  let slideRight = document.querySelector('.slide-right')
+  const menuNav = document.querySelector('.main-sidebar')
+  const mainMenu = document.querySelector('.main-menu')
+  const slideLeft = document.querySelector('.slide-left')
+  const slideRight = document.querySelector('.slide-right')
 
   // Show/Hide the arrows
   if (mainMenu && menuNav && slideRight && slideLeft) {
-    let marginRightValue = Math.ceil(
-      Number(window.getComputedStyle(mainMenu).marginInlineStart.split('px')[0])
+    const marginRightValue = Math.ceil(
+      Number(window.getComputedStyle(mainMenu).marginInlineStart.split('px')[0]),
     )
     if (mainMenu.scrollWidth > menuNav.offsetWidth) {
       slideRight?.classList.remove('d-none')
       slideLeft?.classList.add('d-none')
-    } else {
+    }
+    else {
       slideRight?.classList.add('d-none')
       slideLeft?.classList.add('d-none')
       mainMenu.style.marginLeft = '0px'
@@ -651,7 +601,8 @@ function checkHoriMenu() {
     }
     if (marginRightValue == 0) {
       slideLeft?.classList.add('d-none')
-    } else {
+    }
+    else {
       slideLeft?.classList.remove('d-none')
     }
   }
@@ -667,7 +618,8 @@ function handleAttributeChange(mutationsList, observer) {
           : window.location.pathname
         currentPath = !currentPath ? '/dashboard/crm' : currentPath
         setMenuUsingUrl(currentPath)
-      } else {
+      }
+      else {
         closeMenuFn()
       }
     }
@@ -682,7 +634,8 @@ function setMenuUsingUrl(currentPath) {
     items?.forEach((item) => {
       if (item.path == '') {
         return
-      } else if (item.path === currentPath) {
+      }
+      else if (item.path === currentPath) {
         setSubmenu(null, item)
       }
       setSubmenuRecursively(item.children)
@@ -695,17 +648,18 @@ const preventpagejump = ref('')
 let menuOverflowed = false
 
 function menuscrollFn() {
-  let html = document.documentElement
-  let navLayout = html.getAttribute('data-nav-layout') == 'horizontal'
-  let menuPosition = html.getAttribute('data-menu-position') == 'scrollable'
-  let header = document.querySelector('.app-header')?.clientHeight || 0
+  const html = document.documentElement
+  const navLayout = html.getAttribute('data-nav-layout') == 'horizontal'
+  const menuPosition = html.getAttribute('data-menu-position') == 'scrollable'
+  const header = document.querySelector('.app-header')?.clientHeight || 0
   window.onscroll = () => {
     if (!menuPosition && preventpagejump.value && navLayout && window.innerWidth >= 992) {
       if (window.scrollY > header) {
-        preventpagejump.value.style.height = header + 'px'
+        preventpagejump.value.style.height = `${header}px`
         menuOverflowed = true
-      } else {
-        preventpagejump.value.style.height = 0 + 'px'
+      }
+      else {
+        preventpagejump.value.style.height = `${0}px`
         menuOverflowed = false
       }
     }
@@ -713,7 +667,7 @@ function menuscrollFn() {
 }
 
 onMounted(() => {
-  let currentUrl = url.endsWith('/') ? url.slice(0, -1) : url
+  const currentUrl = url.endsWith('/') ? url.slice(0, -1) : url
   setMenuUsingUrl(currentUrl)
   // Close menu based on html attribute
   const html = document.documentElement
@@ -745,7 +699,7 @@ onMounted(() => {
   window.addEventListener('scroll', menuscrollFn, {
     passive: true,
   })
-  let mainContent = document.querySelector('.main-content')
+  const mainContent = document.querySelector('.main-content')
   // Adding the mainContentFn after the component created.
   if (mainContent) {
     mainContent.addEventListener('click', mainContentFn, {
@@ -755,7 +709,8 @@ onMounted(() => {
   // Used to check on mounting face to close the menu.
   if (window.innerWidth < 992) {
     document.documentElement.setAttribute('data-toggled', 'close')
-  } else if (document.documentElement.getAttribute('data-nav-layout') == 'horizontal') {
+  }
+  else if (document.documentElement.getAttribute('data-nav-layout') == 'horizontal') {
     closeMenuFn()
   }
 
@@ -778,3 +733,80 @@ onBeforeMount(() => {
   window.removeEventListener('resize', menuResizeFn)
 })
 </script>
+
+<template>
+  <div id="responsive-overlay" @click="mainContentFn" />
+  <!-- Start::app-sidebar -->
+  <aside id="sidebar" class="app-sidebar sticky">
+    <!-- Start::main-sidebar-header -->
+    <div class="main-sidebar-header">
+      <Link :href="logoLink" class="header-logo">
+        <BaseImg src="/images/brand-logos/desktop-logo.png" alt="logo" class="desktop-logo" />
+        <BaseImg src="/images/brand-logos/toggle-logo.png" alt="logo" class="toggle-logo" />
+        <BaseImg src="/images/brand-logos/desktop-dark.png" alt="logo" class="desktop-dark" />
+        <BaseImg src="/images/brand-logos/toggle-dark.png" alt="logo" class="toggle-dark" />
+      </Link>
+    </div>
+    <!-- End::main-sidebar-header -->
+
+    <!-- Start::main-sidebar -->
+    <PerfectScrollbar id="sidebar-scroll" class="main-sidebar">
+      <!-- Start::nav -->
+      <nav class="main-menu-container nav nav-pills flex-column sub-open">
+        <div id="slide-left" class="slide-left" @click="leftArrowFn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="#7b8191"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z" />
+          </svg>
+        </div>
+        <ul class="main-menu">
+          <li
+            v-for="(mainmenuItem, index) in menuData"
+            :key="`${mainmenuItem.id || mainmenuItem.title || index}-${forceUpdateCounter}`"
+            :class="`${mainmenuItem?.menutitle ? 'slide__category' : ''} ${mainmenuItem?.type == 'link' ? 'slide' : ''} ${mainmenuItem?.type == 'empty' ? 'slide' : ''} ${mainmenuItem?.type == 'sub' ? 'slide has-sub' : ''} ${mainmenuItem?.active ? 'open' : ''} ${mainmenuItem?.selected ? 'active' : ''}`"
+          >
+            <template v-if="mainmenuItem?.menutitle">
+              <span class="category-name">{{ mainmenuItem.menutitle }}</span>
+            </template>
+            <template v-if="mainmenuItem?.type === 'link'">
+              <Link
+                :href="mainmenuItem.path"
+                class="side-menu__item"
+                :class="`${mainmenuItem.selected ? 'active' : ''}`"
+              >
+                <span v-if="mainmenuItem.icon" v-html="mainmenuItem.icon" />
+                <span class="side-menu__label">{{ mainmenuItem.title }}
+                  <span v-if="mainmenuItem.badgetxt" v-html="mainmenuItem.badgetxt" />
+                </span>
+              </Link>
+            </template>
+            <template v-if="mainmenuItem?.type === 'empty'">
+              <a href="javascript:;" class="side-menu__item">
+                <span v-if="mainmenuItem.icon" v-html="mainmenuItem.icon" />
+                <span class="side-menu__label">{{ mainmenuItem.title }}
+                  <span v-if="mainmenuItem.badgetxt" v-html="mainmenuItem.badgetxt" />
+                </span>
+              </a>
+            </template>
+            <template v-if="mainmenuItem?.type === 'sub'">
+              <RecursiveMenu
+                :menu-data="mainmenuItem"
+                :toggle-submenu="toggleSubmenu"
+                :HoverToggleInnerMenuFn="HoverToggleInnerMenuFn"
+                :level="level + 1"
+              />
+            </template>
+          </li>
+        </ul>
+      </nav>
+      <!-- End::nav -->
+    </PerfectScrollbar>
+    <!-- End::main-sidebar -->
+  </aside>
+  <!-- End::app-sidebar -->
+</template>

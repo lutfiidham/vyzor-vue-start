@@ -1,5 +1,5 @@
-export let checks = {
-    script: `
+export const checks = {
+  script: `
      <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
@@ -12,9 +12,9 @@ export let checks = {
                         Checked checkbox
                     </label>
                 </div>`,
-  },
-  disabledChecks = {
-    script: `
+}
+export const disabledChecks = {
+  script: `
     <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
                 <label class="form-check-label" for="flexCheckDisabled">
@@ -27,9 +27,9 @@ export let checks = {
                     Disabled checked checkbox
                 </label>
             </div>`,
-  },
-  radios = {
-    script: `
+}
+export const radios = {
+  script: `
      <div class="form-check">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                 <label class="form-check-label" for="flexRadioDefault1">
@@ -42,9 +42,9 @@ export let checks = {
                     Default checked radio
                 </label>
             </div>`,
-  },
-  disabledRadios = {
-    script: `
+}
+export const disabledRadios = {
+  script: `
     <div class="form-check">
                     <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled"
                         disabled>
@@ -59,9 +59,9 @@ export let checks = {
                         Disabled checked radio
                     </label>
                 </div>`,
-  },
-  stacjedDefault = {
-    script: `
+}
+export const stacjedDefault = {
+  script: `
      <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                 <label class="form-check-label" for="defaultCheck1">
@@ -86,9 +86,9 @@ export let checks = {
                     Disabled radio
                 </label>
             </div>`,
-  },
-  switchers = {
-    script: `
+}
+export const switchers = {
+  script: `
     <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Default switch
@@ -111,9 +111,9 @@ export let checks = {
                     <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Disabled
                         checked switch checkbox input</label>
                 </div>`,
-  },
-  checkboxSize = {
-    script: `
+}
+export const checkboxSize = {
+  script: `
      <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="checkebox-sm" checked>
                     <label class="form-check-label" for="checkebox-sm">
@@ -132,9 +132,9 @@ export let checks = {
                         Large
                     </label>
                 </div>`,
-  },
-  radioSizes = {
-    script: `
+}
+export const radioSizes = {
+  script: `
      <div class="form-check">
                 <input class="form-check-input" type="radio" name="Radio" id="Radio-sm">
                 <label class="form-check-label" for="Radio-sm">
@@ -153,9 +153,9 @@ export let checks = {
                     Large
                 </label>
             </div>`,
-  },
-  switchSizes = {
-    script: `
+}
+export const switchSizes = {
+  script: `
     <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="switch-sm">
                     <label class="form-check-label" for="switch-sm">Default</label>
@@ -168,9 +168,9 @@ export let checks = {
                     <input class="form-check-input" type="checkbox" role="switch" id="switch-lg">
                     <label class="form-check-label" for="switch-lg">Large</label>
                 </div>`,
-  },
-  inilne = {
-    script: `
+}
+export const inilne = {
+  script: `
     <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
                     <label class="form-check-label" for="inlineCheckbox1">1</label>
@@ -198,18 +198,18 @@ export let checks = {
                         value="option3" disabled>
                     <label class="form-check-label" for="inlineRadio3">3 (disabled)</label>
                 </div>`,
-  },
-  withoutlabels = {
-    script: `
+}
+export const withoutlabels = {
+  script: `
      <span class="me-3">
                 <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
             </span>
             <span>
                 <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value="" aria-label="...">
             </span>`,
-  },
-  reverse = {
-    script: `
+}
+export const reverse = {
+  script: `
     <div class="form-check form-check-reverse mb-3">
                 <input class="form-check-input" type="checkbox" value="" id="reverseCheck1">
                 <label class="form-check-label" for="reverseCheck1">
@@ -229,9 +229,9 @@ export let checks = {
                     switch
                     checkbox input</label>
             </div>`,
-  },
-  outlinedStyles = {
-    script: `
+}
+export const outlinedStyles = {
+  script: `
      <input type="checkbox" class="btn-check" id="btn-check-outlined">
             <label class="btn btn-outline-primary mb-3" for="btn-check-outlined">Single
                 toggle</label><br>
@@ -245,9 +245,9 @@ export let checks = {
 
             <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined">
             <label class="btn btn-outline-danger m-1" for="danger-outlined">Danger radio</label>`,
-  },
-  radioToggleButtons = {
-    script: `
+}
+export const radioToggleButtons = {
+  script: `
    <input type="radio" class="btn-check" name="options" id="option1" checked>
             <label class="btn btn-primary m-1" for="option1">Checked</label>
 
@@ -259,36 +259,36 @@ export let checks = {
 
             <input type="radio" class="btn-check" name="options" id="option4">
             <label class="btn btn-primary m-1" for="option4">Radio</label>`,
-  },
-  checkboxToggleButtons = {
-    script: `
+}
+export const checkboxToggleButtons = {
+  script: `
     &lt;input type="checkbox" class="btn-check" id="btn-check">
     &lt;label class="btn btn-primary m-1" for="btn-check">Single toggle&lt;/label>
     &lt;input type="checkbox" class="btn-check" id="btn-check-2" checked>
     &lt;label class="btn btn-primary m-1" for="btn-check-2">Checked&lt;/label>
     &lt;input type="checkbox" class="btn-check" id="btn-check-3" disabled>
     &lt;label class="btn btn-primary m-1" for="btn-check-3">Disabled&lt;/label>`,
-  },
-  coloredCheckboxes = {
-    script: `
+}
+export const coloredCheckboxes = {
+  script: `
      <div :class="form-check {idx.class1}" v-for="(idx, index) in Checkdata1" :key="index">
                 <input :class="form-check-input form-checked-{idx.class2}" type="checkbox" value="" id="primaryChecked" checked>
                 <label class="form-check-label" for="primaryChecked">
                     {{idx.text}}
                 </label>
             </div>`,
-  },
-  outlineCheckboxes = {
-    script: `
+}
+export const outlineCheckboxes = {
+  script: `
     <div :class="form-check {idx.class1}" v-for="(idx, index) in Checkdata1" :key="index">
                 <input :class="form-check-input form-checked-outline form-checked-{idx.class2}" type="checkbox" value="" id="primaryoutlineChecked" checked>
                 <label class="form-check-label" for="primaryoutlineChecked">
                     {{idx.text}}
                 </label>
             </div>`,
-  },
-  coloredRadios = {
-    script: `<div class="form-check mb-2">
+}
+export const coloredRadios = {
+  script: `<div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="primaryRadio" id="primaryRadio" checked>
                 <label class="form-check-label" for="primaryRadio">
                     Primary
@@ -330,9 +330,9 @@ export let checks = {
                     Dark
                 </label>
             </div>`,
-  },
-  outlineRadios = {
-    script: `<div class="form-check mb-2">
+}
+export const outlineRadios = {
+  script: `<div class="form-check mb-2">
                     <input class="form-check-input form-checked-outline" type="radio" name="primaryoutlineRadio"
                         id="primaryoutlineRadio" checked>
                     <label class="form-check-label" for="primaryoutlineRadio">
@@ -381,9 +381,9 @@ export let checks = {
                         Dark
                     </label>
                 </div>`,
-  },
-  switchesColors = {
-    script: `<div class="form-check form-switch mb-2">
+}
+export const switchesColors = {
+  script: `<div class="form-check form-switch mb-2">
                     <input class="form-check-input" type="checkbox" role="switch" id="switch-primary" checked>
                     <label class="form-check-label" for="switch-primary">Primary</label>
                 </div>
@@ -417,9 +417,9 @@ export let checks = {
                         checked>
                     <label class="form-check-label" for="switch-dark">Dark</label>
                 </div>`,
-  },
-  toggleSwitchesStyle1 = {
-    script: `
+}
+export const toggleSwitchesStyle1 = {
+  script: `
     <div class="row gy-1">
                 <div class="col-xl-4">
                     <div class="d-flex gap-2">
@@ -445,9 +445,9 @@ export let checks = {
                     <toggleSwitch customClass="toggle-dark mb-3" :isOn="true" title="Dark" ></toggleSwitch>
                 </div>
             </div>`,
-  },
-  toggleSwitchesStyle2 = {
-    script: `
+}
+export const toggleSwitchesStyle2 = {
+  script: `
      <div class="row gy-1">
                     <div class="col-xl-4">
                         <div class="custom-toggle-switch d-flex align-items-center mb-4">
@@ -503,9 +503,9 @@ export let checks = {
                         </div>
                     </div>
                 </div>`,
-  },
-  ToggleSwitch1Sizes = {
-    script: `
+}
+export const ToggleSwitch1Sizes = {
+  script: `
      <div class="d-flex align-items-center flex-wrap mb-3">
                     <div class="">
                         <p class="text-muted m-0">Small size toggle switch <code>toggle-sm</code></p>
@@ -524,9 +524,9 @@ export let checks = {
                     </div>
                     <toggleSwitch customClass="toggle-lg toggle-success mb-0" :isOn="true"></toggleSwitch>
                 </div>`,
-  },
-  ToggleSwitch2Sizes = {
-    script: `
+}
+export const ToggleSwitch2Sizes = {
+  script: `
     <div class="d-flex align-items-center flex-wrap mb-4">
                     <div class="">
                         <p class="text-muted m-0">Small size toggle switch <code>toggle-sm</code></p>
@@ -554,4 +554,4 @@ export let checks = {
                         <label for="size-lg" class="label-success mb-2"></label>
                     </div>
                 </div>`,
-  }
+}

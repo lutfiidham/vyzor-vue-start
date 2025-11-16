@@ -1,7 +1,7 @@
 <script setup>
-import * as treemapData from '@/shared/data/apexcharts/apexchart-treemap'
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as treemapData from '@/shared/data/apexcharts/apexchart-treemap'
 
 const dataToPass = {
   title: 'Charts',
@@ -13,18 +13,20 @@ const dataToPass = {
 
 <template>
   <Head title="Treemap Charts | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Basic Treemap Chart</div>
+          <div class="card-title">
+            Basic Treemap Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="treemap-basic">
-            <apexchart
+            <Apexchart
               height="350"
               type="treemap"
               :options="treemapData.Treebasicoptions"
@@ -37,11 +39,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Multi Dimensional Treemap Chart</div>
+          <div class="card-title">
+            Multi Dimensional Treemap Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="treemap-multi">
-            <apexchart
+            <Apexchart
               height="350"
               type="treemap"
               :options="treemapData.Treemultioptions"
@@ -54,11 +58,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Distributed Treemap Chart</div>
+          <div class="card-title">
+            Distributed Treemap Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="treemap-distributed">
-            <apexchart
+            <Apexchart
               height="350"
               type="treemap"
               :options="treemapData.Treedisoptions"
@@ -71,11 +77,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Treemap with color ranges</div>
+          <div class="card-title">
+            Treemap with color ranges
+          </div>
         </div>
         <div class="card-body">
           <div id="treemap-colorranges">
-            <apexchart
+            <Apexchart
               height="350"
               type="treemap"
               :options="treemapData.Treecoloroptions"
@@ -86,7 +94,7 @@ const dataToPass = {
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

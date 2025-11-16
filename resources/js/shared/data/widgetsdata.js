@@ -92,7 +92,7 @@ export const Salesoptions = {
     },
     y: {
       title: {
-        formatter: function (_seriesName) {
+        formatter(_seriesName) {
           return ''
         },
       },
@@ -131,7 +131,7 @@ export const Revenueoptions = {
     },
     y: {
       title: {
-        formatter: function () {
+        formatter() {
           return ''
         },
       },
@@ -167,7 +167,7 @@ export const Customeroptions = {
     },
     y: {
       title: {
-        formatter: function () {
+        formatter() {
           return ''
         },
       },
@@ -311,28 +311,115 @@ export const Productsdata = [
   },
 ]
 
-//Top Categories
+// Top Categories
 
 export const Categoriesseries = [
   {
     name: 'Electronics',
     data: [
-      52, 51, 56, 57, 62, 59, 56, 55, 56, 56, 58, 62, 63, 68, 65, 62, 62, 57, 60, 65, 64, 69, 70,
-      69, 64, 68, 66, 66, 70, 73, 78,
+      52,
+      51,
+      56,
+      57,
+      62,
+      59,
+      56,
+      55,
+      56,
+      56,
+      58,
+      62,
+      63,
+      68,
+      65,
+      62,
+      62,
+      57,
+      60,
+      65,
+      64,
+      69,
+      70,
+      69,
+      64,
+      68,
+      66,
+      66,
+      70,
+      73,
+      78,
     ],
   },
   {
     name: 'Fashion',
     data: [
-      28, 28, 30, 32, 33, 38, 35, 39, 41, 41, 44, 39, 39, 44, 42, 44, 39, 44, 42, 45, 46, 38, 39,
-      36, 41, 40, 44, 46, 43, 47, 50,
+      28,
+      28,
+      30,
+      32,
+      33,
+      38,
+      35,
+      39,
+      41,
+      41,
+      44,
+      39,
+      39,
+      44,
+      42,
+      44,
+      39,
+      44,
+      42,
+      45,
+      46,
+      38,
+      39,
+      36,
+      41,
+      40,
+      44,
+      46,
+      43,
+      47,
+      50,
     ],
   },
   {
     name: 'Furniture',
     data: [
-      10, 8, 12, 11, 14, 21, 17, 19, 18, 14, 10, 11, 6, 10, 13, 13, 18, 23, 22, 27, 23, 18, 19, 20,
-      19, 23, 20, 25, 29, 29, 28,
+      10,
+      8,
+      12,
+      11,
+      14,
+      21,
+      17,
+      19,
+      18,
+      14,
+      10,
+      11,
+      6,
+      10,
+      13,
+      13,
+      18,
+      23,
+      22,
+      27,
+      23,
+      18,
+      19,
+      20,
+      19,
+      23,
+      20,
+      25,
+      29,
+      29,
+      28,
     ],
   },
 ]
@@ -480,8 +567,8 @@ export const Revenuesoptions = {
       offsetY: 0,
     },
     labels: {
-      formatter: function (y) {
-        return y.toFixed(0) + ''
+      formatter(y) {
+        return `${y.toFixed(0)}`
       },
     },
   },
@@ -590,8 +677,8 @@ export const Categoriesdataoptions = {
             offsetY: 5,
             fontWeight: 600,
             fontFamily: 'Montserrat, sans-serif',
-            formatter: function (val) {
-              return val + '%'
+            formatter(val) {
+              return `${val}%`
             },
           },
           total: {
@@ -759,7 +846,7 @@ export const Ordersdata = [
   },
 ]
 
-//Social Visitors
+// Social Visitors
 
 export const Visitorsseries = [
   {
@@ -772,7 +859,7 @@ export const Visitorsoptions = {
     height: 390,
     type: 'bar',
     events: {
-      click: function () {},
+      click() {},
     },
     toolbar: {
       show: false,
@@ -846,7 +933,7 @@ export const Visitorsoptions = {
   },
 }
 
-//Social Traffic
+// Social Traffic
 
 export const Trafficseries = [
   {
@@ -936,8 +1023,8 @@ export const Trafficoptions = {
       offsetY: 0,
     },
     labels: {
-      formatter: function (y) {
-        return y.toFixed(0) + ''
+      formatter(y) {
+        return `${y.toFixed(0)}`
       },
     },
   },
@@ -964,7 +1051,7 @@ export const Trafficoptions = {
   },
 }
 
-//Recent Orders
+// Recent Orders
 
 export const Recentseries = [1754, 634, 878, 470]
 export const Recentoptions = {
@@ -1010,8 +1097,8 @@ export const Recentoptions = {
             fontSize: '15px',
             color: undefined,
             offsetY: -30,
-            formatter: function (val) {
-              return val + '%'
+            formatter(val) {
+              return `${val}%`
             },
           },
           total: {

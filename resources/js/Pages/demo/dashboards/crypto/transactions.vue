@@ -1,10 +1,10 @@
 <script setup>
-import * as transactionsData from '@/shared/data/dashboards/crypto/transactionsdata.js'
-import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
-import SpkReusebleJobs from '@/shared/@spk/dashboards/jobs/dashboard/spk-reuseble-jobs.vue'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import SpkReusebleJobs from '@/shared/@spk/dashboards/jobs/dashboard/spk-reuseble-jobs.vue'
+import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
+import * as transactionsData from '@/shared/data/dashboards/crypto/transactionsdata.js'
 
 const dataToPass = {
   title: 'Dashboards',
@@ -16,28 +16,30 @@ const dataToPass = {
 
 <template>
   <Head title="Crypto-Transactions | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row">
-    <div class="col-xxl-3 col-lg-6" v-for="idx in transactionsData.transactionCard" :key="idx.id">
+    <div v-for="idx in transactionsData.transactionCard" :key="idx.id" class="col-xxl-3 col-lg-6">
       <SpkReusebleJobs
-        titleClass="mb-2 fs-12"
-        :listCard="true"
-        :imageIcon="false"
-        :cardClass="`card  ${idx.cardClass}`"
+        title-class="mb-2 fs-12"
+        :list-card="true"
+        :image-icon="false"
+        :card-class="`card  ${idx.cardClass}`"
         :list="idx"
         :CountUpValue="true"
       />
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 
   <!-- Start:: row-2 -->
   <div class="row">
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header justify-content-between">
-          <div class="card-title">Transaction History</div>
+          <div class="card-title">
+            Transaction History
+          </div>
           <div class="d-flex flex-wrap gap-2">
             <div>
               <input
@@ -45,7 +47,7 @@ const dataToPass = {
                 type="search"
                 placeholder="Search Here"
                 aria-label=".form-control-sm example"
-              />
+              >
             </div>
             <div class="dropdown">
               <a
@@ -54,7 +56,7 @@ const dataToPass = {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Sort By<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block"></i>
+                Sort By<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block" />
               </a>
               <ul class="dropdown-menu" role="menu">
                 <li><a class="dropdown-item" href="javascript:void(0);">This Week</a></li>
@@ -63,13 +65,16 @@ const dataToPass = {
               </ul>
             </div>
             <div>
-              <button class="btn btn-secondary btn-wave">View All</button>
+              <button class="btn btn-secondary btn-wave">
+                View All
+              </button>
             </div>
           </div>
         </div>
         <div class="card-body p-0">
           <TableComponent
-            tableClass="table text-nowrap"
+            #cell="{ row }"
+            table-class="table text-nowrap"
             :headers="[
               { text: '' },
               { text: 'Sender' },
@@ -82,7 +87,6 @@ const dataToPass = {
               { text: 'Actions' },
             ]"
             :rows="transactionsData.transactionsTable"
-            v-slot:cell="{ row }"
           >
             <td :class="row.tdClass">
               <span
@@ -90,7 +94,7 @@ const dataToPass = {
               >
                 <i
                   :class="`${row.direction === 'up' ? 'ti ti-arrow-narrow-up text-success' : 'ti ti-arrow-narrow-down text-danger'} fw-medium fs-16`"
-                ></i>
+                />
               </span>
             </td>
             <td :class="row.tdClass">
@@ -98,7 +102,9 @@ const dataToPass = {
                 <span class="avatar avatar-xs avatar-rounded">
                   <BaseImg :src="row.user.avatar" alt="" />
                 </span>
-                <div class="fw-medium">{{ row.user.name }}</div>
+                <div class="fw-medium">
+                  {{ row.user.name }}
+                </div>
               </div>
             </td>
             <td :class="row.tdClass">
@@ -109,7 +115,9 @@ const dataToPass = {
                 <span class="avatar avatar-xs avatar-rounded">
                   <BaseImg :src="row.crypto.icon" alt="" />
                 </span>
-                <div class="fw-medium">{{ row.crypto.name }}</div>
+                <div class="fw-medium">
+                  {{ row.crypto.name }}
+                </div>
               </div>
             </td>
             <td :class="row.tdClass">
@@ -131,7 +139,7 @@ const dataToPass = {
                 data-bs-placement="top"
                 data-bs-title="download"
               >
-                <i class="ri-download-2-line"></i>
+                <i class="ri-download-2-line" />
               </button>
               <button
                 class="btn btn-danger-light btn-icon ms-1 btn-sm task-delete-btn"
@@ -139,7 +147,7 @@ const dataToPass = {
                 data-bs-placement="top"
                 data-bs-title="Delete"
               >
-                <i class="ri-delete-bin-5-line"></i>
+                <i class="ri-delete-bin-5-line" />
               </button>
             </td>
           </TableComponent>
@@ -150,16 +158,20 @@ const dataToPass = {
               <li class="page-item disabled">
                 <a class="page-link" href="javascript:void(0);"> Prev </a>
               </li>
-              <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0);">1</a>
+              </li>
               <li class="page-item active">
                 <a class="page-link" href="javascript:void(0);">2</a>
               </li>
               <li class="page-item">
                 <a class="page-link" href="javascript:void(0);">
-                  <i class="bi bi-three-dots"></i>
+                  <i class="bi bi-three-dots" />
                 </a>
               </li>
-              <li class="page-item"><a class="page-link" href="javascript:void(0);">17</a></li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0);">17</a>
+              </li>
               <li class="page-item">
                 <a class="page-link text-primary" href="javascript:void(0);"> next </a>
               </li>

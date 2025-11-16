@@ -1,28 +1,28 @@
-export let animation = {
-    script: `
+export const animation = {
+  script: `
      <p class="placeholder-glow mb-0">
                         <span class="placeholder col-12"></span>
                     </p>
                     <p class="placeholder-wave mb-0">
                         <span class="placeholder col-12"></span>
                     </p>`,
-  },
-  width = {
-    script: `
+}
+export const width = {
+  script: `
      <span class="placeholder bg-primary col-6"></span>
             <span class="placeholder bg-primary w-75"></span>
             <span class="placeholder bg-primary" style="width: 25%;"></span>`,
-  },
-  sizing = {
-    script: `
+}
+export const sizing = {
+  script: `
     <span class="placeholder col-12 placeholder-xl mb-1"></span>
                             <span class="placeholder col-12 placeholder-lg"></span>
                             <span class="placeholder col-12"></span>
                             <span class="placeholder col-12 placeholder-sm"></span>
                             <span class="placeholder col-12 placeholder-xs"></span>`,
-  },
-  colors = {
-    script: `
+}
+export const colors = {
+  script: `
     <span class="placeholder col-12"></span>
                     <span class="placeholder col-12 bg-primary"></span>
                     <span class="placeholder col-12 bg-secondary"></span>
@@ -32,4 +32,4 @@ export let animation = {
                     <span class="placeholder col-12 bg-info"></span>
                     <span class="placeholder col-12 bg-light"></span>
                     <span class="placeholder col-12 bg-dark"></span>`,
-  }
+}

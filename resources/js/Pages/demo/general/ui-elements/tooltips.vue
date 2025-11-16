@@ -1,12 +1,12 @@
 <script lang="js" setup>
-import * as prism from '@/shared/data/prismCode/ui-elements/tooltips'
-import * as tooltipData from '@/shared/data/ui-elements/tooltips'
+import { Head } from '@inertiajs/vue3'
 import * as bootstrap from 'bootstrap'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
 import { onMounted } from 'vue'
 import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as prism from '@/shared/data/prismCode/ui-elements/tooltips'
+import * as tooltipData from '@/shared/data/ui-elements/tooltips'
+import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
 
 const dataToPass = {
   title: 'Ui Elements',
@@ -17,14 +17,14 @@ const dataToPass = {
 onMounted(() => {
   const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
   const tooltipList = [...tooltipTriggerList].map(
-    (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+    tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl),
   )
 })
 </script>
 
 <template>
   <Head title="Tootips | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
@@ -32,13 +32,13 @@ onMounted(() => {
       <ShowcodeCard title="Tooltip Directions" :code="prism.TooltipDirections">
         <div class="btn-list">
           <button
+            v-for="(idx, index) in tooltipData.Tooltipdirtooltip"
+            :key="index"
             type="button"
             class="btn btn-primary btn-wave"
             data-bs-toggle="tooltip"
             :data-bs-placement="idx.text"
             :title="`Tooltip on ${idx.text}`"
-            v-for="(idx, index) in tooltipData.Tooltipdirtooltip"
-            :key="index"
           >
             Tooltip on {{ idx.text }}
           </button>
@@ -54,14 +54,14 @@ onMounted(() => {
       <ShowcodeCard title="Colored Tooltips" :code="prism.ColoredTooltips">
         <div class="btn-list">
           <button
+            v-for="(idx, index) in tooltipData.Coloredtooltip"
+            :key="index"
             type="button"
             :class="`btn btn-${idx.color} btn-wave`"
             data-bs-toggle="tooltip"
             :data-bs-custom-class="`tooltip-${idx.color}`"
             :data-bs-placement="idx.dir"
             :title="`${idx.text} Tooltip`"
-            v-for="(idx, index) in tooltipData.Coloredtooltip"
-            :key="index"
           >
             {{ idx.text }} Tooltip
           </button>
@@ -83,21 +83,20 @@ onMounted(() => {
             data-bs-custom-class="tooltip-primary"
             title="Link Tooltip"
             class="text-primary"
-            >Tooltip</a
-          >
+          >Tooltip</a>
         </p>
       </ShowcodeCard>
     </div>
     <div class="col-xl-6">
       <ShowcodeCard title="With an SVG's" :code="prism.WithAnSVGs">
         <a
+          v-for="(idx, index) in tooltipData.SVGtooltip"
+          :key="index"
           href="javascript:void(0);"
           data-bs-toggle="tooltip"
           :title="idx.text"
           :data-bs-custom-class="`tooltip-${idx.color}`"
           :class="`me-3 svg-${idx.color}`"
-          v-for="(idx, index) in tooltipData.SVGtooltip"
-          :key="index"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

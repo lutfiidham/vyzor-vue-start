@@ -1,6 +1,6 @@
 <script setup>
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
 
 const dataToPass = {
   title: 'Utilities',
@@ -11,14 +11,16 @@ const dataToPass = {
 
 <template>
   <Head title="BreakPoints | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Containers</div>
+          <div class="card-title">
+            Containers
+          </div>
         </div>
         <div class="card-body">
           <div class="table-responsive">
@@ -28,27 +30,39 @@ const dataToPass = {
                   <th>Content</th>
                   <th>
                     Extra small
-                    <div class="fw-normal">&lt;576px</div>
+                    <div class="fw-normal">
+                      &lt;576px
+                    </div>
                   </th>
                   <th>
                     Small
-                    <div class="fw-normal">≥576px</div>
+                    <div class="fw-normal">
+                      ≥576px
+                    </div>
                   </th>
                   <th>
                     Medium
-                    <div class="fw-normal">≥768px</div>
+                    <div class="fw-normal">
+                      ≥768px
+                    </div>
                   </th>
                   <th>
                     Large
-                    <div class="fw-normal">≥992px</div>
+                    <div class="fw-normal">
+                      ≥992px
+                    </div>
                   </th>
                   <th>
                     X-Large
-                    <div class="fw-normal">≥1200px</div>
+                    <div class="fw-normal">
+                      ≥1200px
+                    </div>
                   </th>
                   <th>
                     XX-Large
-                    <div class="fw-normal">≥1400px</div>
+                    <div class="fw-normal">
+                      ≥1400px
+                    </div>
                   </th>
                 </tr>
               </thead>
@@ -125,7 +139,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Available breakpoints</div>
+          <div class="card-title">
+            Available breakpoints
+          </div>
         </div>
         <div class="card-body">
           <div class="table-responsive">

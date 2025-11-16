@@ -17,7 +17,9 @@ defineProps({
               <BaseImg :src="card.imgSrc" alt="" />
             </span>
           </div>
-          <div class="fs-14">{{ card.title }}</div>
+          <div class="fs-14">
+            {{ card.title }}
+          </div>
         </div>
         <div>{{ card.price }}</div>
       </div>
@@ -25,7 +27,9 @@ defineProps({
         <div class="my-1">
           <a href="javascript:void(0);" class="company-name">{{ card.company }}</a>
         </div>
-        <div class="text-muted fs-12">{{ card.date }}</div>
+        <div class="text-muted fs-12">
+          {{ card.date }}
+        </div>
       </div>
     </div>
   </div>

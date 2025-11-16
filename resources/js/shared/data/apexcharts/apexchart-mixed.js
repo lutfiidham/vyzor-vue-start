@@ -97,7 +97,7 @@ export const Mixedlineoptions = {
   ],
 }
 
-//Multiple Y-Axis Chart
+// Multiple Y-Axis Chart
 export const Mixedaxisseries = [
   {
     name: 'Income',
@@ -236,7 +236,7 @@ export const Mixedaxisoptions = {
   },
 }
 
-//Line & Area Chart
+// Line & Area Chart
 export const Mixedareaseries = [
   {
     name: 'TEAM A',
@@ -333,17 +333,18 @@ export const Mixedareaoptions = {
     shared: true,
     intersect: false,
     y: {
-      formatter: function (y) {
+      formatter(y) {
         if (typeof y !== 'undefined') {
-          return y.toFixed(0) + ' points'
+          return `${y.toFixed(0)} points`
         }
+
         return y
       },
     },
   },
 }
 
-//Line,Column & Area Chart
+// Line,Column & Area Chart
 export const Mixedcolumnseries = [
   {
     name: 'TEAM A',
@@ -441,10 +442,11 @@ export const Mixedcolumnoptions = {
     shared: true,
     intersect: false,
     y: {
-      formatter: function (y) {
+      formatter(y) {
         if (typeof y !== 'undefined') {
-          return y.toFixed(0) + ' points'
+          return `${y.toFixed(0)} points`
         }
+
         return y
       },
     },

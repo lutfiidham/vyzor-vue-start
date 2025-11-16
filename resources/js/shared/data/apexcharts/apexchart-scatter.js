@@ -118,7 +118,7 @@ export const Scatterboptions = {
       type: 'xy',
     },
     events: {
-      mounted: (chart) => {
+      mounted: chart => {
         chart.windowResizeHandler()
       },
     },
@@ -152,7 +152,7 @@ export const Scatterboptions = {
   },
 }
 
-//Datetime Scatter Chart
+// Datetime Scatter Chart
 
 function generateDayWiseTimeSeries(baseval, count, yrange) {
   let i = 0
@@ -212,7 +212,7 @@ export const Scatterdateoptions = {
       type: 'xy',
     },
     events: {
-      mounted: (chart) => {
+      mounted: chart => {
         chart.windowResizeHandler()
       },
     },
@@ -250,7 +250,7 @@ export const Scatterdateoptions = {
   },
 }
 
-//Image Fill Scatter Chart
+// Image Fill Scatter Chart
 export const Scatterfillseries = [
   {
     name: 'Messenger',
@@ -311,7 +311,7 @@ export const Scatterfilloptions = {
       show: false,
     },
     events: {
-      mounted: (chart) => {
+      mounted: chart => {
         chart.windowResizeHandler()
       },
     },

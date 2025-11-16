@@ -1,4 +1,4 @@
-export let borderCards = [
+export const borderCards = [
   {
     title: 'Home Page Design',
     badges: [

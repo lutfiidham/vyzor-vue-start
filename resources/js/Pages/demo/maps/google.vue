@@ -1,4 +1,5 @@
 <script setup>
+import { Head } from '@inertiajs/vue3'
 import CustomControl from '@/components/google-maps/customControl.vue'
 import Custommarker from '@/components/google-maps/custommarker.vue'
 import GoogleCircle from '@/components/google-maps/googleCircle.vue'
@@ -8,7 +9,7 @@ import GooglePolyline from '@/components/google-maps/googlePolyline.vue'
 import GoogleRectangle from '@/components/google-maps/googleRectangle.vue'
 import MarkerCluster from '@/components/google-maps/markerCluster.vue'
 import Pageheader from '@/components/pageheader/pageheader.vue'
-import { Head } from '@inertiajs/vue3'
+
 const dataToPass = {
   title: 'Maps',
   currentpage: 'Google Maps',
@@ -18,14 +19,16 @@ const dataToPass = {
 
 <template>
   <Head title="Google Maps | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <div class="row">
     <!-- Map With Marker -->
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Map With Marker</div>
+          <div class="card-title">
+            Map With Marker
+          </div>
         </div>
         <div class="card-body">
           <GoogleMarker />
@@ -37,7 +40,9 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Map with Rectangle</div>
+          <div class="card-title">
+            Map with Rectangle
+          </div>
         </div>
         <div class="card-body">
           <GoogleRectangle />
@@ -49,7 +54,9 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Map with Polygon</div>
+          <div class="card-title">
+            Map with Polygon
+          </div>
         </div>
         <div class="card-body">
           <GooglePolygon />
@@ -61,7 +68,9 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Map With Polyline</div>
+          <div class="card-title">
+            Map With Polyline
+          </div>
         </div>
         <div class="card-body">
           <GooglePolyline />
@@ -73,7 +82,9 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Map With MarkerCluster</div>
+          <div class="card-title">
+            Map With MarkerCluster
+          </div>
         </div>
         <div class="card-body">
           <MarkerCluster />
@@ -85,7 +96,9 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Map With Custom Marker</div>
+          <div class="card-title">
+            Map With Custom Marker
+          </div>
         </div>
         <div class="card-body">
           <Custommarker />
@@ -97,7 +110,9 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Map With Circle</div>
+          <div class="card-title">
+            Map With Circle
+          </div>
         </div>
         <div class="card-body">
           <GoogleCircle />
@@ -109,7 +124,9 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Map With Custom Control</div>
+          <div class="card-title">
+            Map With Custom Control
+          </div>
         </div>
         <div class="card-body">
           <CustomControl />

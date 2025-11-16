@@ -20,8 +20,8 @@ export const Funneloptions = {
   },
   dataLabels: {
     enabled: true,
-    formatter: function (val, opt) {
-      return opt.w.globals.labels[opt.dataPointIndex] + ':  ' + val
+    formatter(val, opt) {
+      return `${opt.w.globals.labels[opt.dataPointIndex]}:  ${val}`
     },
     dropShadow: {
       enabled: true,
@@ -83,7 +83,7 @@ export const Pyramidoptions = {
   ],
   dataLabels: {
     enabled: true,
-    formatter: function (val, opt) {
+    formatter(val, opt) {
       return opt.w.globals.labels[opt.dataPointIndex]
     },
     dropShadow: {

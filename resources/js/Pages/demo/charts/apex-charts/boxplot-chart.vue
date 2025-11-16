@@ -1,7 +1,7 @@
 <script setup>
-import * as boxplotData from '@/shared/data/apexcharts/apexchart-boxplot'
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as boxplotData from '@/shared/data/apexcharts/apexchart-boxplot'
 
 const dataToPass = {
   title: 'Charts',
@@ -13,18 +13,20 @@ const dataToPass = {
 
 <template>
   <Head title="Boxplot Charts | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Basic Boxplot Chart</div>
+          <div class="card-title">
+            Basic Boxplot Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="boxplot-basic">
-            <apexchart
+            <Apexchart
               height="320"
               type="boxPlot"
               :options="boxplotData.Boxplotoptions"
@@ -37,11 +39,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Boxplot With Scatter Chart</div>
+          <div class="card-title">
+            Boxplot With Scatter Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="boxplot-basic">
-            <apexchart
+            <Apexchart
               height="320"
               type="boxPlot"
               :options="boxplotData.Boxplotsoptions"
@@ -52,7 +56,7 @@ const dataToPass = {
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

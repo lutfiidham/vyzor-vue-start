@@ -1,15 +1,15 @@
 <script setup>
+import { defineAsyncComponent } from 'vue'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import Pageheader from '@/components/pageheader/pageheader.vue'
+import SpkBackgroundCard from '@/shared/@spk/reusable-uielements/reusable-cards/spkbgcards.vue'
 import SpkCardComponent from '@/shared/@spk/reusable-uielements/reusable-cards/spkcard.vue'
 import SpkCollapseCard from '@/shared/@spk/reusable-uielements/reusable-cards/spkcollapsecard.vue'
 import SpkImageOverlayCard from '@/shared/@spk/reusable-uielements/reusable-cards/spkimageoverlaycard.vue'
 import SpkTitleComponent from '@/shared/@spk/reusable-uielements/reusable-cards/spktitlecards.vue'
-import SpkBackgroundCard from '@/shared/@spk/reusable-uielements/reusable-cards/spkbgcards.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { defineAsyncComponent } from 'vue'
 
 const VueDraggableNext = defineAsyncComponent(() =>
-  import('vue-draggable-next').then((s) => s.VueDraggableNext)
+  import('vue-draggable-next').then(s => s.VueDraggableNext),
 )
 
 const dataToPass = {
@@ -21,12 +21,12 @@ const dataToPass = {
 
 <template>
   <Head title="Draggable Cards | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row">
-    <VueDraggableNext group="people" itemKey="name" class="col-xl-6" id="draggable-left">
-      <SpkCardComponent :linkTag="true" cardClass="card-bg-primary">
-        <template v-slot:bodyText>
+    <VueDraggableNext id="draggable-left" group="people" item-key="name" class="col-xl-6">
+      <SpkCardComponent :link-tag="true" card-class="card-bg-primary">
+        <template #bodyText>
           <blockquote class="blockquote mb-0 text-center">
             <h6 class="text-fixed-white">
               The best and most beautiful things in the world cannot be seen or even touched — they
@@ -38,26 +38,30 @@ const dataToPass = {
           </blockquote>
         </template>
       </SpkCardComponent>
-      <SpkCollapseCard :fullScreen="true" Text="Card With Fullscreen Button">
-        <template v-slot:FullContent>
+      <SpkCollapseCard :full-screen="true" Text="Card With Fullscreen Button">
+        <template #FullContent>
           <div class="card-body">
-            <h6 class="card-text fw-medium">FullScreen Card</h6>
+            <h6 class="card-text fw-medium">
+              FullScreen Card
+            </h6>
             <p class="card-text mb-0">
               There are many variations of passages of Lorem Ipsum available, but the majority have
               suffered alteration in some form, by injected humour, or randomised words
             </p>
           </div>
           <div class="card-footer">
-            <button class="btn btn-primary">Read More</button>
+            <button class="btn btn-primary">
+              Read More
+            </button>
           </div>
         </template>
       </SpkCollapseCard>
       <SpkCollapseCard
-        :collapseToggle="true"
+        :collapse-toggle="true"
         Text="Card With Collapse Button"
         Customheaderclass="border-bottom-0"
       >
-        <template v-slot:collapseToggle>
+        <template #collapseToggle>
           <a
             href="javascript:void(0);"
             data-bs-toggle="collapse"
@@ -65,34 +69,42 @@ const dataToPass = {
             aria-expanded="false"
             aria-controls="collapseExample"
           >
-            <i class="ri-arrow-down-s-line fs-18 collapse-open"></i>
-            <i class="ri-arrow-up-s-line collapse-close fs-18"></i>
+            <i class="ri-arrow-down-s-line fs-18 collapse-open" />
+            <i class="ri-arrow-up-s-line collapse-close fs-18" />
           </a>
         </template>
-        <template v-slot:collapseContent>
+        <template #collapseContent>
           <div class="card-body">
-            <h6 class="card-text fw-medium">Collapsible Card</h6>
+            <h6 class="card-text fw-medium">
+              Collapsible Card
+            </h6>
             <p class="card-text mb-0">
               There are many variations of passages of Lorem Ipsum available, but the majority have
               suffered alteration in some form, by injected humour, or randomised words
             </p>
           </div>
           <div class="card-footer">
-            <button class="btn btn-primary">Read More</button>
+            <button class="btn btn-primary">
+              Read More
+            </button>
           </div>
         </template>
       </SpkCollapseCard>
-      <SpkCollapseCard :hideToggle="true" Text="Card With Close Button">
-        <template v-slot:hideContent>
+      <SpkCollapseCard :hide-toggle="true" Text="Card With Close Button">
+        <template #hideContent>
           <div class="card-body">
-            <h6 class="card-text fw-medium">Closed Card</h6>
+            <h6 class="card-text fw-medium">
+              Closed Card
+            </h6>
             <p class="card-text mb-0">
               There are many variations of passages of Lorem Ipsum available, but the majority have
               suffered alteration in some form, by injected humour, or randomised words
             </p>
           </div>
           <div class="card-footer">
-            <button class="btn btn-primary">Read More</button>
+            <button class="btn btn-primary">
+              Read More
+            </button>
           </div>
         </template>
       </SpkCollapseCard>
@@ -109,9 +121,15 @@ const dataToPass = {
             </span>
           </div>
           <div>
-            <p class="card-text text-info mb-1 fs-14 fw-medium">Alicia Keys.</p>
-            <div class="card-title fs-12 mb-1">Department Of Commerce</div>
-            <div class="card-title text-muted fs-11 mb-0">24 Years, Female</div>
+            <p class="card-text text-info mb-1 fs-14 fw-medium">
+              Alicia Keys.
+            </p>
+            <div class="card-title fs-12 mb-1">
+              Department Of Commerce
+            </div>
+            <div class="card-title text-muted fs-11 mb-0">
+              24 Years, Female
+            </div>
           </div>
         </div>
       </SpkTitleComponent>
@@ -128,13 +146,17 @@ const dataToPass = {
             </span>
           </div>
           <div>
-            <p class="card-text mb-0 fs-14 fw-medium">Atharva Simon.</p>
-            <div class="card-title text-muted fs-12 mb-0">Correspondent Professor</div>
+            <p class="card-text mb-0 fs-14 fw-medium">
+              Atharva Simon.
+            </p>
+            <div class="card-title text-muted fs-12 mb-0">
+              Correspondent Professor
+            </div>
           </div>
         </div>
       </SpkTitleComponent>
     </VueDraggableNext>
-    <VueDraggableNext group="people" itemKey="name" class="col-xl-6" id="draggable-right">
+    <VueDraggableNext id="draggable-right" group="people" item-key="name" class="col-xl-6">
       <SpkImageOverlayCard
         CustomClass="overlay-card"
         :CardHeader="false"
@@ -146,8 +168,10 @@ const dataToPass = {
         Custombodyclass="text-fixed-white overflow-y-auto"
         Customfooterclass="text-fixed-white"
       >
-        <template v-slot:cardContent>
-          <div class="card-text">Image Overlays Are Awesome!</div>
+        <template #cardContent>
+          <div class="card-text">
+            Image Overlays Are Awesome!
+          </div>
           <div class="card-text mb-2 card-text2">
             There are many variations of passages of Lorem Ipsum available, but the majority have
             suffered alteration in some form, by injected humour, or randomised words which don't
@@ -165,8 +189,12 @@ const dataToPass = {
         Textclass="fixed-white"
         Class="fixed-white"
       >
-        <div class="fs-15 fw-medium">Samantha sid</div>
-        <p class="mb-0 text-fixed-white op-7 fs-12">In leave for 1 month</p>
+        <div class="fs-15 fw-medium">
+          Samantha sid
+        </div>
+        <p class="mb-0 text-fixed-white op-7 fs-12">
+          In leave for 1 month
+        </p>
       </SpkBackgroundCard>
       <SpkImageOverlayCard
         CustomClass="overlay-card"
@@ -178,18 +206,20 @@ const dataToPass = {
         Custombodyclass="text-fixed-white  overflow-y-auto"
         CustomTitleclass="text-fixed-white"
       >
-        <template v-slot:cardContent>
+        <template #cardContent>
           <div class="card-text mb-2">
             There are many variations of passages of Lorem Ipsum available, but the majority have
             suffered alteration in some form, by injected humour, or randomised words which don't
             look even.
           </div>
-          <div class="card-text">Last updated 3 mins ago</div>
+          <div class="card-text">
+            Last updated 3 mins ago
+          </div>
         </template>
       </SpkImageOverlayCard>
     </VueDraggableNext>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

@@ -1,10 +1,11 @@
 <script setup>
-import * as prism from '@/shared/data/prismCode/ui-elements/objectfit'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
+import { Head } from '@inertiajs/vue3'
 import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import BaseVideo from '@/components/BaseVideo/BaseVideo.vue'
-import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as prism from '@/shared/data/prismCode/ui-elements/objectfit'
+import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
+
 const dataToPass = {
   title: 'Ui Elements',
   currentpage: 'Object Fit',
@@ -14,7 +15,7 @@ const dataToPass = {
 
 <template>
   <Head title="Object-Fit | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start::row-1 -->
   <div class="row">
@@ -160,7 +161,7 @@ const dataToPass = {
           autoplay
           loop
           muted
-        ></BaseVideo>
+        />
       </ShowcodeCard>
     </div>
     <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
@@ -175,7 +176,7 @@ const dataToPass = {
           autoplay
           loop
           muted
-        ></BaseVideo>
+        />
       </ShowcodeCard>
     </div>
     <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
@@ -190,7 +191,7 @@ const dataToPass = {
           autoplay
           loop
           muted
-        ></BaseVideo>
+        />
       </ShowcodeCard>
     </div>
     <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
@@ -205,7 +206,7 @@ const dataToPass = {
           autoplay
           loop
           muted
-        ></BaseVideo>
+        />
       </ShowcodeCard>
     </div>
     <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
@@ -220,7 +221,7 @@ const dataToPass = {
           autoplay
           loop
           muted
-        ></BaseVideo>
+        />
       </ShowcodeCard>
     </div>
   </div>

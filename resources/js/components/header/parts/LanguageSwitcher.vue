@@ -1,3 +1,16 @@
+<script setup>
+import { Languages } from '@/shared/data/header.js'
+import BaseImg from '../../Baseimage/BaseImg.vue'
+
+const emit = defineEmits(['language-changed'])
+
+const languages = Languages
+
+function selectLanguage(lang) {
+  emit('language-changed', lang)
+}
+</script>
+
 <template>
   <li class="header-element country-selector dropdown d-sm-block d-none">
     <!-- Start::header-link|dropdown-toggle -->
@@ -61,16 +74,3 @@
     </ul>
   </li>
 </template>
-
-<script setup>
-import { Languages } from '@/shared/data/header.js'
-import BaseImg from '../../Baseimage/BaseImg.vue'
-
-const emit = defineEmits(['language-changed'])
-
-const languages = Languages
-
-const selectLanguage = (lang) => {
-  emit('language-changed', lang)
-}
-</script>

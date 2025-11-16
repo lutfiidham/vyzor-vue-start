@@ -5,6 +5,7 @@ defineProps({
   item: Object,
 })
 </script>
+
 <template>
   <div class="card custom-card">
     <div class="card-header">
@@ -33,8 +34,12 @@ defineProps({
     </div>
     <div class="card-footer">
       <div class="btn-list text-center">
-        <button class="btn btn-primary btn-w-lg btn-wave">Deposit</button>
-        <button class="btn btn-danger btn-w-lg btn-wave">Withdraw</button>
+        <button class="btn btn-primary btn-w-lg btn-wave">
+          Deposit
+        </button>
+        <button class="btn btn-danger btn-w-lg btn-wave">
+          Withdraw
+        </button>
       </div>
     </div>
   </div>

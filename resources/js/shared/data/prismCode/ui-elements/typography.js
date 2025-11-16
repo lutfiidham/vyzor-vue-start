@@ -1,39 +1,39 @@
-export let headingsHtags = {
-    script: `
+export const headingsHtags = {
+  script: `
     <h1 class="mb-3">h1. Bootstrap heading</h1>
             <h2 class="mb-3">h2. Bootstrap heading</h2>
             <h3 class="mb-3">h3. Bootstrap heading</h3>
             <h4 class="mb-3">h4. Bootstrap heading</h4>
             <h5 class="mb-3">h5. Bootstrap heading</h5>
             <h6 class="mb-0">h6. Bootstrap heading</h6>`,
-  },
-  headingClassNames = {
-    script: `
+}
+export const headingClassNames = {
+  script: `
      <p class="h1 mb-3">h1. Bootstrap heading</p>
             <p class="h2 mb-3">h2. Bootstrap heading</p>
             <p class="h3 mb-3">h3. Bootstrap heading</p>
             <p class="h4 mb-3">h4. Bootstrap heading</p>
             <p class="h5 mb-3">h5. Bootstrap heading</p>
             <p class="h6 mb-0">h6. Bootstrap heading</p>`,
-  },
-  displayHeadings = {
-    script: `
+}
+export const displayHeadings = {
+  script: `
    <h1 class="display-1">Display 1</h1>
             <h1 class="display-2">Display 2</h1>
             <h1 class="display-3">Display 3</h1>
             <h1 class="display-4">Display 4</h1>
             <h1 class="display-5">Display 5</h1>
             <h1 class="display-6">Display 6</h1>`,
-  },
-  customizingHeadings = {
-    script: `
+}
+export const customizingHeadings = {
+  script: `
       <h3>
                     Fancy display heading
                     <small class="text-muted">With faded secondary text</small>
                 </h3>`,
-  },
-  inlineTextElements = {
-    script: `
+}
+export const inlineTextElements = {
+  script: `
      <p>You can use the mark tag to <mark>highlight</mark> text.</p>
                 <p><del>This line of text is meant to be treated as deleted text.</del>
                 </p>
@@ -48,18 +48,18 @@ export let headingsHtags = {
                 </p>
                 <p><strong>This line rendered as bold text.</strong></p>
                 <p class="mb-0"><em>This line rendered as italicized text.</em></p>`,
-  },
-  fontSizes = {
-    script: `
+}
+export const fontSizes = {
+  script: `
     <p class="fs-1 mb-2">.fs-1 text</p>
                 <p class="fs-2 mb-2">.fs-2 text</p>
                 <p class="fs-3 mb-2">.fs-3 text</p>
                 <p class="fs-4 mb-2">.fs-4 text</p>
                 <p class="fs-5 mb-2">.fs-5 text</p>
                 <p class="fs-6 mb-0">.fs-6 text</p>`,
-  },
-  leadParagraph = {
-    script: `
+}
+export const leadParagraph = {
+  script: `
     <p class="lead mb-0">
                     <b>This is a lead paragraph. It stands out from regular paragraphs</b>.There are many variations
                     of
@@ -70,9 +70,9 @@ export let headingsHtags = {
                     the
                     middle of text.
                 </p>`,
-  },
-  leftAligned = {
-    script: `
+}
+export const leftAligned = {
+  script: `
    <figure class="blockquote-container">
                     <blockquote class="blockquote mb-2">
                         <h6>The greatest glory in living lies not in never falling, but in rising every time we
@@ -83,9 +83,9 @@ export let headingsHtags = {
                             Mandela</cite>
                     </figcaption>
                 </figure>`,
-  },
-  rightAligned = {
-    script: `
+}
+export const rightAligned = {
+  script: `
    <figure class="blockquote-container text-end">
                     <blockquote class="blockquote mb-2">
                         <h6>The greatest glory in living lies not in never falling, but in rising every time we
@@ -96,63 +96,63 @@ export let headingsHtags = {
                             Mandela</cite>
                     </figcaption>
                 </figure>`,
-  },
-  primaryBlockquote = {
-    script: `
+}
+export const primaryBlockquote = {
+  script: `
     <blockquote class="blockquote custom-blockquote primary mb-0 text-center">
                     <h6>The future belongs to those who believe in the beauty of their dreams..</h6>
                     <footer class="blockquote-footer mt-3 fs-14 text-muted op-7 mb-0">Someone famous as <cite
                             title="Source Title">-Eleanor Roosevelt</cite></footer>
                     <span class="quote-icon"><i class="ri-information-line"></i></span>
                 </blockquote>`,
-  },
-  secondaryBlockquote = {
-    script: `
+}
+export const secondaryBlockquote = {
+  script: `
      <blockquote class="blockquote custom-blockquote secondary mb-0 text-center">
                     <h6>The future belongs to those who believe in the beauty of their dreams..</h6>
                     <footer class="blockquote-footer mt-3 fs-14 text-muted op-7 mb-0">Someone famous as <cite
                             title="Source Title">-Eleanor Roosevelt</cite></footer>
                     <span class="quote-icon"><i class="ri-information-line"></i></span>
                 </blockquote>`,
-  },
-  warningBlockquote = {
-    script: `
+}
+export const warningBlockquote = {
+  script: `
    <blockquote class="blockquote custom-blockquote warning mb-0 text-center">
                     <h6>The future belongs to those who believe in the beauty of their dreams..</h6>
                     <footer class="blockquote-footer mt-3 fs-14 text-muted op-7 mb-0">Someone famous as <cite
                             title="Source Title">-Eleanor Roosevelt</cite></footer>
                     <span class="quote-icon"><i class="ri-information-line"></i></span>
                 </blockquote>`,
-  },
-  successBlockquote = {
-    script: `
+}
+export const successBlockquote = {
+  script: `
      <blockquote class="blockquote custom-blockquote success mb-0 text-center">
                     <h6>The future belongs to those who believe in the beauty of their dreams..</h6>
                     <footer class="blockquote-footer mt-3 fs-14 text-muted op-7 mb-0">Someone famous as <cite
                             title="Source Title">-Eleanor Roosevelt</cite></footer>
                     <span class="quote-icon"><i class="ri-information-line"></i></span>
                 </blockquote>`,
-  },
-  inofBlockquote = {
-    script: `
+}
+export const inofBlockquote = {
+  script: `
     <blockquote class="blockquote custom-blockquote info mb-0 text-center">
                     <h6>The future belongs to those who believe in the beauty of their dreams..</h6>
                     <footer class="blockquote-footer mt-3 fs-14 text-muted op-7 mb-0">Someone famous as <cite
                             title="Source Title">-Eleanor Roosevelt</cite></footer>
                     <span class="quote-icon"><i class="ri-information-line"></i></span>
                 </blockquote>`,
-  },
-  dangerBlockquote = {
-    script: `
+}
+export const dangerBlockquote = {
+  script: `
     <blockquote class="blockquote custom-blockquote danger mb-0 text-center">
                     <h6>The future belongs to those who believe in the beauty of their dreams..</h6>
                     <footer class="blockquote-footer mt-3 fs-14 text-muted op-7 mb-0">Someone famous as <cite
                             title="Source Title">-Eleanor Roosevelt</cite></footer>
                     <span class="quote-icon"><i class="ri-information-line"></i></span>
                 </blockquote>`,
-  },
-  descriptionListAlignment = {
-    script: `
+}
+export const descriptionListAlignment = {
+  script: `
     <dl class="row mb-0">
                     <dt class="col-sm-3">Description lists</dt>
                     <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
@@ -181,9 +181,9 @@ export let headingsHtags = {
                         </dl>
                     </dd>
                 </dl>`,
-  },
-  listUnstyled = {
-    script: ` <ul class="list-unstyled">
+}
+export const listUnstyled = {
+  script: ` <ul class="list-unstyled">
                     <li>This is a list.</li>
                     <li>It appears completely unstyled.</li>
                     <li>Structurally, it's still a list.</li>
@@ -197,20 +197,20 @@ export let headingsHtags = {
                     </li>
                     <li>This may still come in handy in some situations.</li>
                 </ul>`,
-  },
-  sbbreviations = {
-    script: `<p><abbr title="attribute">attr</abbr></p>
+}
+export const sbbreviations = {
+  script: `<p><abbr title="attribute">attr</abbr></p>
             <p class="mb-0"><abbr title="HyperText Markup Language" class="initialism">HTML</abbr></p>`,
-  },
-  listinline = {
-    script: `<ul class="list-inline mb-0">
+}
+export const listinline = {
+  script: `<ul class="list-inline mb-0">
                 <li class="list-inline-item">This is a list item.</li>
                 <li class="list-inline-item">And another one.</li>
                 <li class="list-inline-item">But they're displayed inline.</li>
             </ul>`,
-  },
-  horizontalrules = {
-    script: `<p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolorem fuga iste
+}
+export const horizontalrules = {
+  script: `<p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolorem fuga iste
                 obcaecati natus eos officiis adipisci voluptatibus ipsum, architecto veniam delectus vel dolor
                 magni
                 a vero sunt ut harum.</p>
@@ -225,14 +225,14 @@ export let headingsHtags = {
                 consequatur
                 aut doloremque assumenda voluptatem, id qui vero adipisci! Nostrum ipsam praesentium!</p>
             <hr class="border-primary border-3 opacity-75">`,
-  },
-  texttransform = {
-    script: `<p class="text-lowercase">Lowercased text.</p>
+}
+export const texttransform = {
+  script: `<p class="text-lowercase">Lowercased text.</p>
                 <p class="text-uppercase">Uppercased text.</p>
                 <p class="text-capitalize mb-0">CapiTaliZed text.</p>`,
-  },
-  textDecoration = {
-    script: ` <p class="text-decoration-underline">This text has a line underneath it.
+}
+export const textDecoration = {
+  script: ` <p class="text-decoration-underline">This text has a line underneath it.
             </p>
             <p class="text-decoration-line-through">This text has a line going
                 through
@@ -242,9 +242,9 @@ export let headingsHtags = {
                 decoration
                 removed
             </a>`,
-  },
-  fontWeightAndItalics = {
-    script: `<p class="fw-bold">Bold text.</p>
+}
+export const fontWeightAndItalics = {
+  script: `<p class="fw-bold">Bold text.</p>
             <p class="fw-bolder">Bolder weight text (relative to the parent element).</p>
             <p class="fw-semibold">Semibold weight text.</p>
             <p class="fw-normal">Normal weight text.</p>
@@ -252,9 +252,9 @@ export let headingsHtags = {
             <p class="fw-lighter">Lighter weight text (relative to the parent element).</p>
             <p class="fst-italic">Italic text.</p>
             <p class="fst-normal mb-0">Text with normal font style</p>`,
-  },
-  lineHeight = {
-    script: ` <p class="lh-1">This is a long paragraph written to show how the line-height of
+}
+export const lineHeight = {
+  script: ` <p class="lh-1">This is a long paragraph written to show how the line-height of
                     an
                     element is affected by our utilities. Classes are applied to the element
                     itself
@@ -285,22 +285,22 @@ export let headingsHtags = {
                     with
                     our utility API.
                 </p>`,
-  },
-  monospace = {
-    script: `
+}
+export const monospace = {
+  script: `
     <p class="font-monospace mb-0">This is in monospace</p>`,
-  },
-  resetColor = {
-    script: `
+}
+export const resetColor = {
+  script: `
      <p class="text-muted mb-0">
                     Muted text with a <a href="javascript:void(0);"
                         class="text-reset text-decoration-underline text-dark">reset link</a>.
                 </p>`,
-  },
-  visibleText = { script: ` <p class="visible mb-0">This is visible text</p>` },
-  invisibleText = { script: `<p class="invisible mb-0">This is invisible text</p>` },
-  textAlignment = {
-    script: ` <p class="text-start">Start aligned text on all viewport sizes.</p>
+}
+export const visibleText = { script: ` <p class="visible mb-0">This is visible text</p>` }
+export const invisibleText = { script: `<p class="invisible mb-0">This is invisible text</p>` }
+export const textAlignment = {
+  script: ` <p class="text-start">Start aligned text on all viewport sizes.</p>
                 <p class="text-center">Center aligned text on all viewport sizes.</p>
                 <p class="text-end">End aligned text on all viewport sizes.</p>
 
@@ -316,18 +316,18 @@ export let headingsHtags = {
                 <p class="text-xl-start">Start aligned text on viewports sized XL (extra-large)
                     or
                     wider.</p>>`,
-  },
-  textWrappingAndOverflow = {
-    script: `<div class="badge bg-primary text-wrap mb-3" style="width: 6rem;">
+}
+export const textWrappingAndOverflow = {
+  script: `<div class="badge bg-primary text-wrap mb-3" style="width: 6rem;">
                     This text should wrap.
                 </div>
                 <p class="text-muted mb-2"> use class <code>.text-nowrap</code> to prevent text from wrapping</p>
                 <div class="text-nowrap bg-light border" style="width: 8rem;">
                     This text should overflow the parent.
                 </div>`,
-  },
-  wordBreak = {
-    script: ` <p class="text-break mb-0">
+}
+export const wordBreak = {
+  script: ` <p class="text-break mb-0">
                 mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
             </p>`,
-  }
+}

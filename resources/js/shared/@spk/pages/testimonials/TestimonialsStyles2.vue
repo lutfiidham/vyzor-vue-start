@@ -5,10 +5,13 @@ defineProps({
   card: Object,
 })
 </script>
+
 <template>
   <div :class="`card custom-card testimonial-style-2-card ${card.color}`">
     <div class="card-body p-5">
-      <h5 class="fw-semibold mb-3">{{ card.title }}</h5>
+      <h5 class="fw-semibold mb-3">
+        {{ card.title }}
+      </h5>
       <div class="mb-3 text-muted">
         {{ card.description }}
       </div>
@@ -23,7 +26,7 @@ defineProps({
           <span>{{ card.role }}</span>
         </div>
         <div class="text-warning d-block ms-1">
-          <i :class="`ri-star-${star} me-1`" v-for="(star, index) in card.stars" :key="index"></i>
+          <i v-for="(star, index) in card.stars" :key="index" :class="`ri-star-${star} me-1`" />
         </div>
       </div>
     </div>

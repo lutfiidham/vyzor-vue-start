@@ -1,13 +1,14 @@
 <script setup>
-import { reactive, ref } from 'vue'
-import * as SettingData from '@/shared/data/applications/email/mailsettingsdata'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import ToggleSwitch from '../../../../../UI/toggleSwitch.vue'
 import { Head } from '@inertiajs/vue3'
+import { reactive, ref } from 'vue'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as SettingData from '@/shared/data/applications/email/mailsettingsdata'
+import ToggleSwitch from '../../../../../UI/toggleSwitch.vue'
+
 const toggles = reactive({})
 
-const toggle = (toggleKey) => {
+function toggle(toggleKey) {
   toggles[toggleKey] = toggles[toggleKey] === 'on' ? 'off' : 'on'
 }
 
@@ -47,7 +48,7 @@ const profileImg = ref('/images/faces/9.jpg')
 const avatar = ref('')
 const fileinput = ref(null)
 
-const onFileSelected = (event) => {
+function onFileSelected(event) {
   const file = event.target.files[0]
   if (file) {
     const reader = new FileReader()
@@ -58,47 +59,53 @@ const onFileSelected = (event) => {
   }
 }
 
-const triggerFileInput = () => {
+function triggerFileInput() {
   fileinput.value?.click()
 }
 </script>
 
 <template>
   <Head title="Mail Settings | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row mb-5">
     <div class="col-xl-3">
       <div class="card custom-card">
         <div class="card-body text-center p-4">
           <span class="avatar avatar-xxl avatar-rounded">
-            <img v-if="avatar" loading="lazy" class="avatar" :src="avatar" alt="Avatar" />
-            <BaseImg v-else src="/images/faces/9.jpg" alt="" id="profile-img" />
+            <img v-if="avatar" loading="lazy" class="avatar" :src="avatar" alt="Avatar">
+            <BaseImg v-else id="profile-img" src="/images/faces/9.jpg" alt="" />
             <span class="badge rounded-pill avatar-badge">
               <a
                 href="#!"
                 class="badge rounded-pill bg-primary avatar-badge"
-                @click.prevent="triggerFileInput"
                 aria-label="Change profile picture"
+                @click.prevent="triggerFileInput"
               >
-                <i class="fe fe-camera"></i>
+                <i class="fe fe-camera" />
               </a>
               <input
+                id="profile-change"
+                ref="fileinput"
                 style="display: none"
                 type="file"
                 class="position-absolute w-100 h-100 op-0"
-                id="profile-change"
                 accept=".jpg, .jpeg, .png"
                 @change="onFileSelected"
-                ref="fileinput"
-              />
+              >
             </span>
           </span>
-          <h6 class="fw-semibold mt-3 mb-1">Jhon Doe</h6>
+          <h6 class="fw-semibold mt-3 mb-1">
+            Jhon Doe
+          </h6>
           <span class="d-block fs-13 tex-muted">jhondoe3125@gmail.com</span>
           <div class="btn-list mt-3">
-            <button class="btn btn-sm btn-w-sm btn-primary">Edit</button>
-            <button class="btn btn-sm btn-w-sm btn-danger">Delete</button>
+            <button class="btn btn-sm btn-w-sm btn-primary">
+              Edit
+            </button>
+            <button class="btn btn-sm btn-w-sm btn-danger">
+              Delete
+            </button>
           </div>
         </div>
       </div>
@@ -176,8 +183,7 @@ const triggerFileInput = () => {
                     stroke-width="16"
                   />
                 </svg>
-                Personal Information</a
-              >
+                Personal Information</a>
             </li>
             <li class="nav-item m-1">
               <a
@@ -213,8 +219,7 @@ const triggerFileInput = () => {
                     stroke-width="16"
                   />
                 </svg>
-                Account Settings</a
-              >
+                Account Settings</a>
             </li>
             <li class="nav-item m-1">
               <a
@@ -245,8 +250,7 @@ const triggerFileInput = () => {
                     stroke-width="16"
                   />
                 </svg>
-                Email</a
-              >
+                Email</a>
             </li>
             <li class="nav-item m-1">
               <a
@@ -273,8 +277,7 @@ const triggerFileInput = () => {
                   />
                   <circle cx="84" cy="84" r="12" />
                 </svg>
-                Labels</a
-              >
+                Labels</a>
             </li>
             <li class="nav-item m-1">
               <a
@@ -308,8 +311,7 @@ const triggerFileInput = () => {
                     stroke-width="16"
                   />
                 </svg>
-                Notifications</a
-              >
+                Notifications</a>
             </li>
             <li class="nav-item m-1">
               <a
@@ -345,8 +347,7 @@ const triggerFileInput = () => {
                     stroke-width="16"
                   />
                 </svg>
-                Security</a
-              >
+                Security</a>
             </li>
           </ul>
         </div>
@@ -356,115 +357,120 @@ const triggerFileInput = () => {
       <div class="card custom-card">
         <div class="card-body">
           <div class="tab-content">
-            <div class="tab-pane show active p-0 border-0" id="personal-info" role="tabpanel">
+            <div id="personal-info" class="tab-pane show active p-0 border-0" role="tabpanel">
               <div>
-                <h6 class="fw-medium mb-3">Profile :</h6>
+                <h6 class="fw-medium mb-3">
+                  Profile :
+                </h6>
                 <div class="row gy-4 mb-4">
                   <div class="col-xl-6">
                     <label for="first-name" class="form-label">First Name</label>
                     <input
+                      id="first-name"
                       type="text"
                       class="form-control"
-                      id="first-name"
                       placeholder="First Name"
-                    />
+                    >
                   </div>
                   <div class="col-xl-6">
                     <label for="last-name" class="form-label">Last Name</label>
                     <input
+                      id="last-name"
                       type="text"
                       class="form-control"
-                      id="last-name"
                       placeholder="Last Name"
-                    />
+                    >
                   </div>
                   <div class="col-xl-12">
                     <label class="form-label">User Name</label>
                     <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon3">user2413@gmail.com</span>
+                      <span id="basic-addon3" class="input-group-text">user2413@gmail.com</span>
                       <input
+                        id="basic-url"
                         type="text"
                         class="form-control"
-                        id="basic-url"
                         aria-describedby="basic-addon3"
-                      />
+                      >
                     </div>
                   </div>
                 </div>
-                <h6 class="fw-medium mb-3">Personal information :</h6>
+                <h6 class="fw-medium mb-3">
+                  Personal information :
+                </h6>
                 <div class="row gy-4">
                   <div class="col-xl-6">
                     <label for="email-address" class="form-label">Email Address :</label>
                     <input
+                      id="email-address"
                       type="text"
                       class="form-control"
-                      id="email-address"
                       placeholder="xyz@gmail.com"
-                    />
+                    >
                   </div>
                   <div class="col-xl-6">
                     <label for="phone-no" class="form-label">Phone No :</label>
                     <input
+                      id="phone-no"
                       type="text"
                       class="form-control"
-                      id="phone-no"
                       placeholder="Enter Phone No"
-                    />
+                    >
                   </div>
                   <div class="col-xl-6">
                     <label for="language" class="form-label">Language :</label>
                     <VueMultiselect
+                      v-model="MaildataValue"
                       :searchable="false"
                       :show-labels="false"
                       :multiple="true"
-                      v-model="MaildataValue"
                       :options="Maildata"
                       :taggable="false"
-                    >
-                    </VueMultiselect>
+                    />
                   </div>
                   <div class="col-xl-6">
                     <label class="form-label">Country :</label>
                     <VueMultiselect
+                      v-model="CountryValue"
                       :searchable="false"
                       :show-labels="false"
-                      v-model="CountryValue"
                       :options="CountryData"
                       :taggable="false"
-                    >
-                    </VueMultiselect>
+                    />
                   </div>
                   <div class="col-xl-12">
                     <label for="bio" class="form-label">Bio :</label>
-                    <textarea class="form-control" id="bio" rows="5">
-Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officiis non minima saepe voluptates a magnam enim sequi porro veniam ea suscipit dolorum vel mollitia voluptate iste nemo!</textarea
-                    >
+                    <textarea id="bio" class="form-control" rows="5">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officiis non minima saepe voluptates a magnam enim sequi porro veniam ea suscipit dolorum vel mollitia voluptate iste nemo!</textarea>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="tab-pane border-0 p-0" id="account-settings" role="tabpanel">
+            <div id="account-settings" class="tab-pane border-0 p-0" role="tabpanel">
               <div class="row gy-3">
                 <div class="col-xxl-7">
                   <div class="card custom-card shadow-none mb-0 border">
                     <div class="card-body">
                       <div class="d-sm-flex d-block align-items-top mb-4 justify-content-between">
                         <div class="w-75">
-                          <p class="fs-14 mb-1 fw-medium">Two Step Verification</p>
+                          <p class="fs-14 mb-1 fw-medium">
+                            Two Step Verification
+                          </p>
                           <p class="fs-13 text-muted mb-0">
                             Two step verificatoin is very secured and restricts in happening faulty
                             practices.
                           </p>
                         </div>
                         <ToggleSwitch
-                          customClass="toggle toggle-primary mb-0"
-                          :isOn="true"
+                          custom-class="toggle toggle-primary mb-0"
+                          :is-on="true"
                           title=""
-                        ></ToggleSwitch>
+                        />
                       </div>
                       <div class="d-sm-flex d-block align-items-top mb-4 justify-content-between">
                         <div class="mb-sm-0 mb-2 w-75">
-                          <p class="fs-14 mb-2 fw-medium">Authentication</p>
+                          <p class="fs-14 mb-2 fw-medium">
+                            Authentication
+                          </p>
                           <div class="mb-0 authentication-btn-group">
                             <div
                               class="btn-group"
@@ -472,110 +478,104 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                               aria-label="Basic radio toggle button group"
                             >
                               <input
-                                type="radio"
-                                class="btn-check"
-                                name="btnradio"
                                 id="btnradio1"
+                                type="radio"
+                                class="btn-check"
+                                name="btnradio"
                                 checked=""
-                              />
-                              <label class="btn btn-outline-light" for="btnradio1"
-                                ><i class="ri-lock-unlock-line me-2 d-inline-block"></i>Pin</label
                               >
+                              <label class="btn btn-outline-light" for="btnradio1"><i class="ri-lock-unlock-line me-2 d-inline-block" />Pin</label>
                               <input
-                                type="radio"
-                                class="btn-check"
-                                name="btnradio"
                                 id="btnradio2"
-                              />
-                              <label class="btn btn-outline-light" for="btnradio2"
-                                ><i class="ri-lock-password-line me-2 d-inline-block"></i
-                                >Password</label
-                              >
-                              <input
                                 type="radio"
                                 class="btn-check"
                                 name="btnradio"
-                                id="btnradio3"
-                              />
-                              <label class="btn btn-outline-light" for="btnradio3"
-                                ><i class="ri-fingerprint-line me-2 d-inline-block"></i>Finger
-                                Print</label
                               >
+                              <label class="btn btn-outline-light" for="btnradio2"><i class="ri-lock-password-line me-2 d-inline-block" />Password</label>
+                              <input
+                                id="btnradio3"
+                                type="radio"
+                                class="btn-check"
+                                name="btnradio"
+                              >
+                              <label class="btn btn-outline-light" for="btnradio3"><i class="ri-fingerprint-line me-2 d-inline-block" />Finger
+                                Print</label>
                             </div>
                           </div>
                         </div>
                         <ToggleSwitch
-                          customClass="toggle toggle-primary mb-0"
-                          :isOn="true"
+                          custom-class="toggle toggle-primary mb-0"
+                          :is-on="true"
                           title=""
-                        ></ToggleSwitch>
+                        />
                       </div>
                       <div class="d-sm-flex d-block align-items-top mb-4 justify-content-between">
                         <div class="w-75">
-                          <p class="fs-14 mb-1 fw-medium">Recovery Mail</p>
+                          <p class="fs-14 mb-1 fw-medium">
+                            Recovery Mail
+                          </p>
                           <p class="fs-13 text-muted mb-0">
                             Incase of forgetting password mails are sent to heifo@gmail.com
                           </p>
                         </div>
                         <ToggleSwitch
-                          customClass="toggle toggle-primary mb-0"
-                          :isOn="true"
+                          custom-class="toggle toggle-primary mb-0"
+                          :is-on="true"
                           title=""
-                        ></ToggleSwitch>
+                        />
                       </div>
                       <div class="d-sm-flex d-block align-items-top mb-4 justify-content-between">
                         <div>
-                          <p class="fs-14 mb-1 fw-medium">SMS Recovery</p>
+                          <p class="fs-14 mb-1 fw-medium">
+                            SMS Recovery
+                          </p>
                           <p class="fs-13 text-muted mb-0">
                             SMS are sent to 9102312xx in case of recovery
                           </p>
                         </div>
                         <ToggleSwitch
-                          customClass="toggle toggle-primary mb-0"
-                          :isOn="true"
+                          custom-class="toggle toggle-primary mb-0"
+                          :is-on="true"
                           title=""
-                        ></ToggleSwitch>
+                        />
                       </div>
                       <div class="d-flex align-items-top justify-content-between">
                         <div>
-                          <p class="fs-14 mb-1 fw-medium">Reset Password</p>
+                          <p class="fs-14 mb-1 fw-medium">
+                            Reset Password
+                          </p>
                           <p class="fs-13 text-muted">
                             Password should be min of
-                            <b class="text-success">8 digits<sup>*</sup></b
-                            >,atleast <b class="text-success">One Capital letter<sup>*</sup></b> and
+                            <b class="text-success">8 digits<sup>*</sup></b>,atleast <b class="text-success">One Capital letter<sup>*</sup></b> and
                             <b class="text-success">One Special Character<sup>*</sup></b>
                             included.
                           </p>
                           <div class="mb-2">
-                            <label for="current-password" class="form-label"
-                              >Current Password</label
-                            >
+                            <label for="current-password" class="form-label">Current Password</label>
                             <input
+                              id="current-password"
                               type="text"
                               class="form-control"
-                              id="current-password"
                               placeholder="Current Password"
-                            />
+                            >
                           </div>
                           <div class="mb-2">
                             <label for="new-password" class="form-label">New Password</label>
                             <input
+                              id="new-password"
                               type="text"
                               class="form-control"
-                              id="new-password"
                               placeholder="New Password"
-                            />
+                            >
                           </div>
                           <div class="mb-0">
-                            <label for="confirm-password" class="form-label"
-                              >Confirm Password</label
-                            >
+                            <label for="confirm-password" class="form-label">Confirm Password</label>
                             <input
+                              id="confirm-password"
                               type="text"
                               class="form-control"
-                              id="confirm-password"
                               placeholder="Confirm Password"
-                            />
+                            >
                           </div>
                         </div>
                       </div>
@@ -585,23 +585,27 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                 <div class="col-xxl-5">
                   <div class="card custom-card shadow-none mb-0 border">
                     <div class="card-header justify-content-between d-sm-flex d-block">
-                      <div class="card-title">Registered Devices</div>
+                      <div class="card-title">
+                        Registered Devices
+                      </div>
                       <div class="mt-sm-0 mt-2">
-                        <button class="btn btn-sm btn-primary">Signout from all devices</button>
+                        <button class="btn btn-sm btn-primary">
+                          Signout from all devices
+                        </button>
                       </div>
                     </div>
                     <div class="card-body">
                       <ul class="list-group">
                         <li
-                          :class="`list-group-item ${idx.liclass}`"
                           v-for="idx in SettingData.Devices"
                           :key="idx.id"
+                          :class="`list-group-item ${idx.liclass}`"
                         >
                           <div class="d-sm-flex d-block align-items-top">
                             <div class="lh-1 mb-sm-0 mb-2">
                               <i
                                 :class="`bi bi-${idx.icon} me-3 fs-16 align-middle text-muted`"
-                              ></i>
+                              />
                             </div>
                             <div class="lh-1 flex-fill">
                               <p class="mb-1">
@@ -618,21 +622,17 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
                               >
-                                <i class="ri-more-2-fill"></i>
+                                <i class="ri-more-2-fill" />
                               </a>
                               <ul class="dropdown-menu">
                                 <li>
                                   <a class="dropdown-item" href="javascript:void(0);">Action</a>
                                 </li>
                                 <li>
-                                  <a class="dropdown-item" href="javascript:void(0);"
-                                    >Another action</a
-                                  >
+                                  <a class="dropdown-item" href="javascript:void(0);">Another action</a>
                                 </li>
                                 <li>
-                                  <a class="dropdown-item" href="javascript:void(0);"
-                                    >Something else here</a
-                                  >
+                                  <a class="dropdown-item" href="javascript:void(0);">Something else here</a>
                                 </li>
                               </ul>
                             </div>
@@ -644,7 +644,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                 </div>
               </div>
             </div>
-            <div class="tab-pane p-0" id="email-settings" role="tabpanel">
+            <div id="email-settings" class="tab-pane p-0" role="tabpanel">
               <ul class="list-group list-group-flush rounded">
                 <li class="list-group-item">
                   <div class="row gy-2 d-sm-flex align-items-center justify-content-between">
@@ -654,23 +654,23 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                     <div class="col-xl-4">
                       <div class="form-check">
                         <input
+                          id="flexRadioDefault1"
                           class="form-check-input"
                           type="radio"
                           name="flexRadioDefault"
-                          id="flexRadioDefault1"
-                        />
+                        >
                         <label class="form-check-label" for="flexRadioDefault1">
                           Default View
                         </label>
                       </div>
                       <div class="form-check">
                         <input
+                          id="flexRadioDefault2"
                           class="form-check-input"
                           type="radio"
                           name="flexRadioDefault"
-                          id="flexRadioDefault2"
                           checked=""
-                        />
+                        >
                         <label class="form-check-label" for="flexRadioDefault2">
                           Advanced View
                         </label>
@@ -678,10 +678,10 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                     </div>
                     <div class="col-xl-5">
                       <ToggleSwitch
-                        customClass="toggle toggle-danger mb-0 float-sm-end"
-                        :isOn="true"
+                        custom-class="toggle toggle-danger mb-0 float-sm-end"
+                        :is-on="true"
                         title=""
-                      ></ToggleSwitch>
+                      />
                     </div>
                   </div>
                 </li>
@@ -693,21 +693,20 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                     <div class="col-xl-4">
                       <label for="mail-language" class="form-label">Languages :</label>
                       <VueMultiselect
+                        v-model="MaildataValue1"
                         :searchable="false"
                         :show-labels="false"
                         :multiple="true"
-                        v-model="MaildataValue1"
                         :options="Maildata"
                         :taggable="false"
-                      >
-                      </VueMultiselect>
+                      />
                     </div>
                     <div class="col-xl-5">
                       <ToggleSwitch
-                        customClass="toggle toggle-success mb-0 float-sm-end"
-                        :isOn="false"
+                        custom-class="toggle toggle-success mb-0 float-sm-end"
+                        :is-on="false"
                         title=""
-                      ></ToggleSwitch>
+                      />
                     </div>
                   </div>
                 </li>
@@ -719,23 +718,23 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                     <div class="col-xl-4">
                       <div class="form-check">
                         <input
+                          id="images-open1"
                           class="form-check-input"
                           type="radio"
                           name="images-open"
-                          id="images-open1"
-                        />
+                        >
                         <label class="form-check-label" for="images-open1">
                           Always Open Images
                         </label>
                       </div>
                       <div class="form-check">
                         <input
+                          id="images-hide2"
                           class="form-check-input"
                           type="radio"
                           name="images-open"
-                          id="images-hide2"
                           checked=""
-                        />
+                        >
                         <label class="form-check-label" for="images-hide2">
                           Ask For Permission
                         </label>
@@ -743,10 +742,10 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                     </div>
                     <div class="col-xl-5">
                       <ToggleSwitch
-                        customClass="toggle toggle-success mb-0 float-sm-end"
-                        :isOn="false"
+                        custom-class="toggle toggle-success mb-0 float-sm-end"
+                        :is-on="false"
                         title=""
-                      ></ToggleSwitch>
+                      />
                     </div>
                   </div>
                 </li>
@@ -758,23 +757,23 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                     <div class="col-xl-4">
                       <div class="form-check">
                         <input
+                          id="keyboard-enable1"
                           class="form-check-input"
                           type="radio"
                           name="keyboard-enable"
-                          id="keyboard-enable1"
-                        />
+                        >
                         <label class="form-check-label" for="keyboard-enable1">
                           Keyboard Shortcuts Enable
                         </label>
                       </div>
                       <div class="form-check">
                         <input
+                          id="keyboard-disable2"
                           class="form-check-input"
                           type="radio"
                           name="keyboard-enable"
-                          id="keyboard-disable2"
                           checked=""
-                        />
+                        >
                         <label class="form-check-label" for="keyboard-disable2">
                           Keyboard Shortcuts Disable
                         </label>
@@ -782,10 +781,10 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                     </div>
                     <div class="col-xl-5">
                       <ToggleSwitch
-                        customClass="toggle toggle-success mb-0 float-sm-end"
-                        :isOn="false"
+                        custom-class="toggle toggle-success mb-0 float-sm-end"
+                        :is-on="false"
                         title=""
-                      ></ToggleSwitch>
+                      />
                     </div>
                   </div>
                 </li>
@@ -797,23 +796,23 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                     <div class="col-xl-4">
                       <div class="form-check">
                         <input
+                          id="desktop-notifications"
                           class="form-check-input"
                           type="checkbox"
                           value=""
-                          id="desktop-notifications"
                           checked=""
-                        />
+                        >
                         <label class="form-check-label" for="desktop-notifications">
                           Desktop Notifications
                         </label>
                       </div>
                       <div class="form-check">
                         <input
+                          id="mobile-notifications"
                           class="form-check-input"
                           type="checkbox"
                           value=""
-                          id="mobile-notifications"
-                        />
+                        >
                         <label class="form-check-label" for="mobile-notifications">
                           Mobile Notifications
                         </label>
@@ -821,9 +820,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                     </div>
                     <div class="col-xl-5">
                       <div class="float-sm-end">
-                        <a href="javascript:void(0)" class="btn btn-success-ghost btn-sm"
-                          >Learn-more</a
-                        >
+                        <a href="javascript:void(0)" class="btn btn-success-ghost btn-sm">Learn-more</a>
                       </div>
                     </div>
                   </div>
@@ -835,20 +832,19 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                     </div>
                     <div class="col-xl-4">
                       <VueMultiselect
+                        v-model="MaximumValue"
                         :searchable="false"
                         :show-labels="false"
-                        v-model="MaximumValue"
                         :options="MaximumData"
                         :taggable="false"
-                      >
-                      </VueMultiselect>
+                      />
                     </div>
                     <div class="col-xl-5">
                       <ToggleSwitch
-                        customClass="toggle toggle-success mb-0 float-sm-end"
-                        :isOn="false"
+                        custom-class="toggle toggle-success mb-0 float-sm-end"
+                        :is-on="false"
                         title=""
-                      ></ToggleSwitch>
+                      />
                     </div>
                   </div>
                 </li>
@@ -860,23 +856,23 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                     <div class="col-xl-4">
                       <div class="form-check">
                         <input
+                          id="mail-composeron1"
                           class="form-check-input"
                           type="radio"
                           name="mail-composer"
-                          id="mail-composeron1"
-                        />
+                        >
                         <label class="form-check-label" for="mail-composeron1">
                           Mail Composer On
                         </label>
                       </div>
                       <div class="form-check">
                         <input
+                          id="mail-composeroff2"
                           class="form-check-input"
                           type="radio"
                           name="mail-composer"
-                          id="mail-composeroff2"
                           checked=""
-                        />
+                        >
                         <label class="form-check-label" for="mail-composeroff2">
                           Mail Composer Off
                         </label>
@@ -884,10 +880,10 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                     </div>
                     <div class="col-xl-5">
                       <ToggleSwitch
-                        customClass="toggle toggle-success mb-0 float-sm-end"
-                        :isOn="false"
+                        custom-class="toggle toggle-success mb-0 float-sm-end"
+                        :is-on="false"
                         title=""
-                      ></ToggleSwitch>
+                      />
                     </div>
                   </div>
                 </li>
@@ -899,23 +895,23 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                     <div class="col-xl-4">
                       <div class="form-check">
                         <input
+                          id="auto-correcton1"
                           class="form-check-input"
                           type="radio"
                           name="auto-correct"
-                          id="auto-correcton1"
-                        />
+                        >
                         <label class="form-check-label" for="auto-correcton1">
                           Auto Correct On
                         </label>
                       </div>
                       <div class="form-check">
                         <input
+                          id="auto-correctoff2"
                           class="form-check-input"
                           type="radio"
                           name="auto-correct"
-                          id="auto-correctoff2"
                           checked=""
-                        />
+                        >
                         <label class="form-check-label" for="auto-correctoff2">
                           Auto Correct Off
                         </label>
@@ -923,10 +919,10 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                     </div>
                     <div class="col-xl-5">
                       <ToggleSwitch
-                        customClass="toggle toggle-success mb-0 float-sm-end"
-                        :isOn="false"
+                        custom-class="toggle toggle-success mb-0 float-sm-end"
+                        :is-on="false"
                         title=""
-                      ></ToggleSwitch>
+                      />
                     </div>
                   </div>
                 </li>
@@ -938,23 +934,23 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                     <div class="col-xl-4">
                       <div class="form-check">
                         <input
+                          id="on-keyboard"
                           class="form-check-input"
                           type="checkbox"
                           value=""
-                          id="on-keyboard"
                           checked=""
-                        />
+                        >
                         <label class="form-check-label" for="on-keyboard">
                           On Keyboard Action
                         </label>
                       </div>
                       <div class="form-check">
                         <input
+                          id="on-buttonclick"
                           class="form-check-input"
                           type="checkbox"
                           value=""
-                          id="on-buttonclick"
-                        />
+                        >
                         <label class="form-check-label" for="on-buttonclick">
                           On Button Click
                         </label>
@@ -962,22 +958,22 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                     </div>
                     <div class="col-xl-5">
                       <div class="float-sm-end">
-                        <a href="javascript:void(0)" class="btn btn-success-ghost btn-sm"
-                          >Learn-more</a
-                        >
+                        <a href="javascript:void(0)" class="btn btn-success-ghost btn-sm">Learn-more</a>
                       </div>
                     </div>
                   </div>
                 </li>
               </ul>
             </div>
-            <div class="tab-pane" id="labels" role="tabpanel">
-              <p class="fs-14 fw-medium mb-3">Mail Labels :</p>
+            <div id="labels" class="tab-pane" role="tabpanel">
+              <p class="fs-14 fw-medium mb-3">
+                Mail Labels :
+              </p>
               <div class="row gy-2">
                 <div
-                  class="col-xxl-3 col-xl-6 col-lg-4 col-md-4 col-sm-6 col-12"
                   v-for="(idx, index) in SettingData.MailCategories"
                   :key="index"
+                  class="col-xxl-3 col-xl-6 col-lg-4 col-md-4 col-sm-6 col-12"
                 >
                   <div class="card custom-card shadow-none">
                     <div
@@ -986,18 +982,20 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                       <label class="form-check-label" :for="idx.id">{{ idx.label }}</label>
                       <div class="form-check form-check-md form-switch mb-0">
                         <input
+                          id="label-all-mails"
                           class="form-check-input"
                           type="checkbox"
                           role="switch"
-                          id="label-all-mails"
                           :checked="idx.defaultChecked"
-                        />
+                        >
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <p class="fs-14 fw-medium mb-3">Settings :</p>
+              <p class="fs-14 fw-medium mb-3">
+                Settings :
+              </p>
               <div class="row gy-2">
                 <div class="col-xxl-3 col-xl-6 col-lg-4 col-md-4 col-sm-6 col-12">
                   <div class="card custom-card shadow-none">
@@ -1007,23 +1005,25 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                       <label class="form-check-label" for="label-settings">Settings</label>
                       <div class="form-check form-check-md form-switch mb-0">
                         <input
+                          id="label-settings"
                           class="form-check-input"
                           type="checkbox"
                           role="switch"
-                          id="label-settings"
                           checked=""
-                        />
+                        >
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <p class="fs-14 fw-medium mb-3">Custom Labels :</p>
+              <p class="fs-14 fw-medium mb-3">
+                Custom Labels :
+              </p>
               <div class="row gy-2">
                 <div
-                  class="col-xxl-3 col-xl-6 col-lg-4 col-md-4 col-sm-6 col-12"
                   v-for="(idx, index) in SettingData.Categories"
                   :key="index"
+                  class="col-xxl-3 col-xl-6 col-lg-4 col-md-4 col-sm-6 col-12"
                 >
                   <div class="card custom-card shadow-none">
                     <div
@@ -1032,24 +1032,26 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                       <label class="form-check-label" for="label-mail">{{ idx.label }}</label>
                       <div class="form-check form-check-md form-switch mb-0">
                         <input
+                          id="label-mail"
                           class="form-check-input"
                           type="checkbox"
                           role="switch"
-                          id="label-mail"
                           :checked="idx.defaultChecked"
-                        />
+                        >
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="tab-pane p-0" id="notification-settings" role="tabpanel">
+            <div id="notification-settings" class="tab-pane p-0" role="tabpanel">
               <ul class="list-group list-group-flush list-unstyled rounded">
                 <li class="list-group-item">
                   <div class="row gx-5 gy-3">
                     <div class="col-xl-5">
-                      <p class="fs-16 mb-1 fw-medium">Email Notifications</p>
+                      <p class="fs-16 mb-1 fw-medium">
+                        Email Notifications
+                      </p>
                       <p class="fs-13 mb-0 text-muted">
                         Email notifications are the notifications you will receeive when you are
                         offline, you can customize them by enabling or disabling them.
@@ -1058,67 +1060,79 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                     <div class="col-xl-7">
                       <div class="d-flex align-items-top justify-content-between mt-sm-0 mt-3">
                         <div class="mail-notification-settings">
-                          <p class="fs-14 mb-1 fw-medium">Updates & Features</p>
+                          <p class="fs-14 mb-1 fw-medium">
+                            Updates & Features
+                          </p>
                           <p class="fs-13 mb-0 text-muted">
                             Notifications about new updates and their features.
                           </p>
                         </div>
                         <ToggleSwitch
-                          customClass="toggle toggle-success mb-0 float-sm-end"
-                          :isOn="true"
+                          custom-class="toggle toggle-success mb-0 float-sm-end"
+                          :is-on="true"
                           title=""
-                        ></ToggleSwitch>
+                        />
                       </div>
                       <div class="d-flex align-items-top justify-content-between mt-3">
                         <div class="mail-notification-settings">
-                          <p class="fs-14 mb-1 fw-medium">Early Access</p>
+                          <p class="fs-14 mb-1 fw-medium">
+                            Early Access
+                          </p>
                           <p class="fs-13 mb-0 text-muted">
                             Users are selected for beta testing of new update,notifications relating
                             or participate in any of paid product promotion.
                           </p>
                         </div>
                         <ToggleSwitch
-                          customClass="toggle toggle-success mb-0 float-sm-end"
-                          :isOn="false"
+                          custom-class="toggle toggle-success mb-0 float-sm-end"
+                          :is-on="false"
                           title=""
-                        ></ToggleSwitch>
+                        />
                       </div>
                       <div class="d-flex align-items-top justify-content-between mt-3">
                         <div class="mail-notification-settings">
-                          <p class="fs-14 mb-1 fw-medium">Email Shortcuts</p>
-                          <p class="fs-13 mb-0 text-muted">Shortcut notifications for email.</p>
+                          <p class="fs-14 mb-1 fw-medium">
+                            Email Shortcuts
+                          </p>
+                          <p class="fs-13 mb-0 text-muted">
+                            Shortcut notifications for email.
+                          </p>
                         </div>
                         <ToggleSwitch
-                          customClass="toggle toggle-success mb-0 float-sm-end"
-                          :isOn="true"
+                          custom-class="toggle toggle-success mb-0 float-sm-end"
+                          :is-on="true"
                           title=""
-                        ></ToggleSwitch>
+                        />
                       </div>
                       <div class="d-flex align-items-top justify-content-between mt-3">
                         <div class="mail-notification-settings">
-                          <p class="fs-14 mb-1 fw-medium">New Mails</p>
+                          <p class="fs-14 mb-1 fw-medium">
+                            New Mails
+                          </p>
                           <p class="fs-13 mb-0 text-muted">
                             Notifications related to new mails received.
                           </p>
                         </div>
                         <ToggleSwitch
-                          customClass="toggle toggle-success mb-0 float-sm-end"
-                          :isOn="true"
+                          custom-class="toggle toggle-success mb-0 float-sm-end"
+                          :is-on="true"
                           title=""
-                        ></ToggleSwitch>
+                        />
                       </div>
                       <div class="d-flex align-items-top justify-content-between mt-3">
                         <div class="mail-notification-settings">
-                          <p class="fs-14 mb-1 fw-medium">Mail Chat Messages</p>
+                          <p class="fs-14 mb-1 fw-medium">
+                            Mail Chat Messages
+                          </p>
                           <p class="fs-13 mb-0 text-muted">
                             Any of new messages are received will be updated through notifications.
                           </p>
                         </div>
                         <ToggleSwitch
-                          customClass="toggle toggle-success mb-0 float-sm-end"
-                          :isOn="true"
+                          custom-class="toggle toggle-success mb-0 float-sm-end"
+                          :is-on="true"
                           title=""
-                        ></ToggleSwitch>
+                        />
                       </div>
                     </div>
                   </div>
@@ -1126,7 +1140,9 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                 <li class="list-group-item">
                   <div class="row gx-5 gy-3">
                     <div class="col-xl-5">
-                      <p class="fs-16 mb-1 fw-medium">Push Notifications</p>
+                      <p class="fs-16 mb-1 fw-medium">
+                        Push Notifications
+                      </p>
                       <p class="fs-13 mb-0 text-muted">
                         Push notifications are recieved when you are online, you can customize them
                         by enabling or disabling them.
@@ -1135,55 +1151,63 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                     <div class="col-xl-7">
                       <div class="d-flex align-items-top justify-content-between mt-sm-0 mt-3">
                         <div class="mail-notification-settings">
-                          <p class="fs-14 mb-1 fw-medium">New Mails</p>
+                          <p class="fs-14 mb-1 fw-medium">
+                            New Mails
+                          </p>
                           <p class="fs-13 mb-0 text-muted">
                             Notifications related to new mails received.
                           </p>
                         </div>
                         <ToggleSwitch
-                          customClass="toggle toggle-success mb-0 float-sm-end"
-                          :isOn="true"
+                          custom-class="toggle toggle-success mb-0 float-sm-end"
+                          :is-on="true"
                           title=""
-                        ></ToggleSwitch>
+                        />
                       </div>
                       <div class="d-flex align-items-top justify-content-between mt-3">
                         <div class="mail-notification-settings">
-                          <p class="fs-14 mb-1 fw-medium">Mail Chat Messages</p>
+                          <p class="fs-14 mb-1 fw-medium">
+                            Mail Chat Messages
+                          </p>
                           <p class="fs-13 mb-0 text-muted">
                             Any of new messages are received will be updated through notifications.
                           </p>
                         </div>
                         <ToggleSwitch
-                          customClass="toggle toggle-success mb-0 float-sm-end"
-                          :isOn="true"
+                          custom-class="toggle toggle-success mb-0 float-sm-end"
+                          :is-on="true"
                           title=""
-                        ></ToggleSwitch>
+                        />
                       </div>
                       <div class="d-flex align-items-top justify-content-between mt-3">
                         <div class="mail-notification-settings">
-                          <p class="fs-14 mb-1 fw-medium">Mail Extensions</p>
+                          <p class="fs-14 mb-1 fw-medium">
+                            Mail Extensions
+                          </p>
                           <p class="fs-13 mb-0 text-muted">
                             Notifications related to the extensions received by new emails and thier
                             propertied also been displayed.
                           </p>
                         </div>
                         <ToggleSwitch
-                          customClass="toggle toggle-success mb-0 float-sm-end"
-                          :isOn="true"
+                          custom-class="toggle toggle-success mb-0 float-sm-end"
+                          :is-on="true"
                           title=""
-                        ></ToggleSwitch>
+                        />
                       </div>
                     </div>
                   </div>
                 </li>
               </ul>
             </div>
-            <div class="tab-pane p-0" id="security" role="tabpanel">
+            <div id="security" class="tab-pane p-0" role="tabpanel">
               <ul class="list-group list-group-flush list-unstyled rounded">
                 <li class="list-group-item">
                   <div class="row gx-5 gy-3">
                     <div class="col-xl-4">
-                      <p class="fs-16 mb-1 fw-medium">Logging In</p>
+                      <p class="fs-16 mb-1 fw-medium">
+                        Logging In
+                      </p>
                       <p class="fs-13 mb-0 text-muted">
                         Security settings related to logging into our email account and taking down
                         account if any mischevious action happended.
@@ -1194,7 +1218,9 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                         class="d-sm-flex d-block align-items-top justify-content-between mt-sm-0 mt-3"
                       >
                         <div class="mail-security-settings">
-                          <p class="fs-14 mb-1 fw-medium">Max Limit for login attempts</p>
+                          <p class="fs-14 mb-1 fw-medium">
+                            Max Limit for login attempts
+                          </p>
                           <p class="fs-13 mb-0 text-muted mb-sm-0 mb-2">
                             Account will freeze for 24hrs while attempt to login with wrong
                             credentials for selected number of times
@@ -1202,33 +1228,33 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                         </div>
                         <div>
                           <VueMultiselect
-                            :show-labels="false"
                             v-model="AttemptsValue"
+                            :show-labels="false"
                             placeholder="Search or add a tag"
                             label="name"
                             track-by="code"
                             :options="AttemptsData"
-                          >
-                          </VueMultiselect>
+                          />
                         </div>
                       </div>
                       <div class="d-sm-flex d-block align-items-top justify-content-between mt-3">
                         <div>
-                          <p class="fs-14 mb-1 fw-medium">Account Freeze time management</p>
+                          <p class="fs-14 mb-1 fw-medium">
+                            Account Freeze time management
+                          </p>
                           <p class="fs-13 mb-0 text-muted mb-sm-0 mb-2">
                             You can change the time for the account freeze when attempts for
                           </p>
                         </div>
                         <div>
                           <VueMultiselect
-                            :show-labels="false"
                             v-model="DayValue"
+                            :show-labels="false"
                             placeholder="Search or add a tag"
                             label="name"
                             track-by="code"
                             :options="DayData"
-                          >
-                          </VueMultiselect>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1237,7 +1263,9 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                 <li class="list-group-item">
                   <div class="row gx-5 gy-3">
                     <div class="col-xl-4">
-                      <p class="fs-16 mb-1 fw-medium">Password Requirements</p>
+                      <p class="fs-16 mb-1 fw-medium">
+                        Password Requirements
+                      </p>
                       <p class="fs-13 mb-0 text-muted">
                         Security settings related to password strength.
                       </p>
@@ -1256,55 +1284,65 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                           </p>
                         </div>
                         <div>
-                          <input type="text" class="form-control" value="8" />
+                          <input type="text" class="form-control" value="8">
                         </div>
                       </div>
                       <div class="d-sm-flex d-block align-items-top justify-content-between mt-3">
                         <div>
-                          <p class="fs-14 mb-1 fw-medium">Contain A Number</p>
-                          <p class="fs-13 mb-0 text-muted">Password should contain a number.</p>
+                          <p class="fs-14 mb-1 fw-medium">
+                            Contain A Number
+                          </p>
+                          <p class="fs-13 mb-0 text-muted">
+                            Password should contain a number.
+                          </p>
                         </div>
                         <ToggleSwitch
-                          customClass="toggle toggle-success mb-0 float-sm-end"
-                          :isOn="false"
+                          custom-class="toggle toggle-success mb-0 float-sm-end"
+                          :is-on="false"
                           title=""
-                        ></ToggleSwitch>
+                        />
                       </div>
                       <div class="d-sm-flex d-block align-items-top justify-content-between mt-3">
                         <div>
-                          <p class="fs-14 mb-1 fw-medium">Contain A Special Character</p>
+                          <p class="fs-14 mb-1 fw-medium">
+                            Contain A Special Character
+                          </p>
                           <p class="fs-13 mb-0 text-muted">
                             Password should contain a special Character.
                           </p>
                         </div>
                         <ToggleSwitch
-                          customClass="toggle toggle-success mb-0 float-sm-end"
-                          :isOn="true"
+                          custom-class="toggle toggle-success mb-0 float-sm-end"
+                          :is-on="true"
                           title=""
-                        ></ToggleSwitch>
+                        />
                       </div>
                       <div class="d-sm-flex d-block align-items-top justify-content-between mt-3">
                         <div>
-                          <p class="fs-14 mb-1 fw-medium">Atleast One Capital Letter</p>
+                          <p class="fs-14 mb-1 fw-medium">
+                            Atleast One Capital Letter
+                          </p>
                           <p class="fs-13 mb-0 text-muted">
                             Password should contain atleast one capital letter.
                           </p>
                         </div>
                         <ToggleSwitch
-                          customClass="toggle toggle-success mb-0 float-sm-end"
-                          :isOn="false"
+                          custom-class="toggle toggle-success mb-0 float-sm-end"
+                          :is-on="false"
                           title=""
-                        ></ToggleSwitch>
+                        />
                       </div>
                       <div class="d-sm-flex d-block align-items-top justify-content-between mt-3">
                         <div>
-                          <p class="fs-14 mb-1 fw-medium">Maximum Password Length</p>
+                          <p class="fs-14 mb-1 fw-medium">
+                            Maximum Password Length
+                          </p>
                           <p class="fs-13 mb-0 text-muted">
                             Maximum password lenth should be selected here.
                           </p>
                         </div>
                         <div>
-                          <input type="text" class="form-control" value="16" />
+                          <input type="text" class="form-control" value="16">
                         </div>
                       </div>
                     </div>
@@ -1313,7 +1351,9 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                 <li class="list-group-item">
                   <div class="row gx-5 gy-3">
                     <div class="col-xl-4">
-                      <p class="fs-16 mb-1 fw-medium">Unknown Chats</p>
+                      <p class="fs-16 mb-1 fw-medium">
+                        Unknown Chats
+                      </p>
                       <p class="fs-13 mb-0 text-muted">
                         Security settings related to unknown chats.
                       </p>
@@ -1325,19 +1365,19 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
                         aria-label="Basic radio toggle button group"
                       >
                         <input
+                          id="unknown-chats-show"
                           type="radio"
                           class="btn-check"
                           name="btnunknownchats"
-                          id="unknown-chats-show"
                           checked=""
-                        />
+                        >
                         <label class="btn btn-outline-light" for="unknown-chats-show">Show</label>
                         <input
+                          id="unknown-chats-hide"
                           type="radio"
                           class="btn-check"
                           name="btnunknownchats"
-                          id="unknown-chats-hide"
-                        />
+                        >
                         <label class="btn btn-outline-light" for="unknown-chats-hide">Hide</label>
                       </div>
                     </div>
@@ -1349,14 +1389,18 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officii
         </div>
         <div class="card-footer">
           <div class="float-end">
-            <button class="btn btn-light m-1">Restore Defaults</button>
-            <button class="btn btn-primary m-1">Save Changes</button>
+            <button class="btn btn-light m-1">
+              Restore Defaults
+            </button>
+            <button class="btn btn-primary m-1">
+              Save Changes
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

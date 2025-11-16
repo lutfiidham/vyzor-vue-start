@@ -1,8 +1,8 @@
 <script setup>
-import * as prism from '@/shared/data/prismCode/ui-elements/breadcrumb'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as prism from '@/shared/data/prismCode/ui-elements/breadcrumb'
+import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
 
 const dataToPass = {
   title: 'Ui Elements',
@@ -13,30 +13,42 @@ const dataToPass = {
 
 <template>
   <Head title="Breadcrumbs | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
-  <!--ROW-START-->
+  <!-- ROW-START -->
   <div class="row">
     <div class="col-xl-12">
       <ShowcodeCard title="Example" :code="prism.example">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page">Home</li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Home
+            </li>
           </ol>
         </nav>
 
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Library</li>
+            <li class="breadcrumb-item">
+              <a href="javascript:void(0);">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Library
+            </li>
           </ol>
         </nav>
 
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
-            <li class="breadcrumb-item"><a href="javascript:void(0);">Library</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Data</li>
+            <li class="breadcrumb-item">
+              <a href="javascript:void(0);">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="javascript:void(0);">Library</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Data
+            </li>
           </ol>
         </nav>
       </ShowcodeCard>
@@ -45,22 +57,34 @@ const dataToPass = {
       <ShowcodeCard title="Example1" :code="prism.example1">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb breadcrumb-example1">
-            <li class="breadcrumb-item active" aria-current="page">Home</li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Home
+            </li>
           </ol>
         </nav>
 
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb breadcrumb-example1">
-            <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Library</li>
+            <li class="breadcrumb-item">
+              <a href="javascript:void(0);">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Library
+            </li>
           </ol>
         </nav>
 
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb breadcrumb-example1 mb-0">
-            <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
-            <li class="breadcrumb-item"><a href="javascript:void(0);">Library</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Data</li>
+            <li class="breadcrumb-item">
+              <a href="javascript:void(0);">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="javascript:void(0);">Library</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Data
+            </li>
           </ol>
         </nav>
       </ShowcodeCard>
@@ -69,8 +93,12 @@ const dataToPass = {
       <ShowcodeCard title="Dividers" :code="prism.dividers">
         <nav style="--bs-breadcrumb-divider: '~'" aria-label="breadcrumb">
           <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Library</li>
+            <li class="breadcrumb-item">
+              <a href="javascript:void(0);">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Library
+            </li>
           </ol>
         </nav>
       </ShowcodeCard>
@@ -87,8 +115,12 @@ const dataToPass = {
           aria-label="breadcrumb"
         >
           <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
-            <li class="breadcrumb-item active embedded-breadcrumb" aria-current="page">Library</li>
+            <li class="breadcrumb-item">
+              <a href="javascript:void(0);">Home</a>
+            </li>
+            <li class="breadcrumb-item active embedded-breadcrumb" aria-current="page">
+              Library
+            </li>
           </ol>
         </nav>
       </ShowcodeCard>
@@ -97,9 +129,15 @@ const dataToPass = {
       <ShowcodeCard title="Breadcrumb Style-1" :code="prism.breadcrumbStyle1">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb breadcrumb-style1 mb-0">
-            <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
-            <li class="breadcrumb-item"><a href="javascript:void(0);">Library</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Data</li>
+            <li class="breadcrumb-item">
+              <a href="javascript:void(0);">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="javascript:void(0);">Library</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Data
+            </li>
           </ol>
         </nav>
       </ShowcodeCard>
@@ -109,22 +147,20 @@ const dataToPass = {
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb breadcrumb-style2 mb-0">
             <li class="breadcrumb-item">
-              <a href="javascript:void(0);"
-                ><i class="ti ti-home-2 me-1 fs-15 d-inline-block"></i>Home</a
-              >
+              <a href="javascript:void(0);"><i class="ti ti-home-2 me-1 fs-15 d-inline-block" />Home</a>
             </li>
             <li class="breadcrumb-item">
-              <a href="javascript:void(0);"
-                ><i class="ti ti-apps me-1 fs-15 d-inline-block"></i>About</a
-              >
+              <a href="javascript:void(0);"><i class="ti ti-apps me-1 fs-15 d-inline-block" />About</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Services</li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Services
+            </li>
           </ol>
         </nav>
       </ShowcodeCard>
     </div>
   </div>
-  <!--ROW-END-->
+  <!-- ROW-END -->
 </template>
 
 <style scoped>

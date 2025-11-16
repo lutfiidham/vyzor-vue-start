@@ -1,10 +1,10 @@
 <script setup>
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import { Head } from '@inertiajs/vue3'
-import { defineAsyncComponent, ref, onMounted, onBeforeUnmount } from 'vue'
+import { defineAsyncComponent, onBeforeUnmount, onMounted, ref } from 'vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
 
 const vue3starRatings = defineAsyncComponent(() =>
-  import('vue3-star-ratings').then((m) => m.default)
+  import('vue3-star-ratings').then(m => m.default),
 )
 
 const myRating = ref(4.5)
@@ -14,25 +14,27 @@ const starColor = ref('#ff9800')
 const inactiveColor = ref('#d3d3d3')
 
 // Clamp the number of stars between 1 and 10
-const clampStars = () => {
+function clampStars() {
   if (numberOfStars.value < 1) {
     numberOfStars.value = 1
-  } else if (numberOfStars.value > 10) {
+  }
+  else if (numberOfStars.value > 10) {
     numberOfStars.value = 10
   }
 }
 
 // Clamp the star size between 1 and 50
-const clampSize = () => {
+function clampSize() {
   if (starSize.value < 1) {
     starSize.value = 1
-  } else if (starSize.value > 50) {
+  }
+  else if (starSize.value > 50) {
     starSize.value = 50
   }
 }
 
 // Responsive star size
-const updateStarSizeForMobile = () => {
+function updateStarSizeForMobile() {
   const screenWidth = window.innerWidth
   if (screenWidth < 576) {
     // Auto-reduce star size on small screens
@@ -60,47 +62,49 @@ const dataToPass = {
 
 <template>
   <Head title="Ratings | Vyzor - Laravel & Vue" />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <div class="row d-flex justify-content-center">
     <div class="col-xxl-6 col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Vue3 Star Ratings</div>
+          <div class="card-title">
+            Vue3 Star Ratings
+          </div>
         </div>
         <div class="card-body">
           <div class="mb-4 row gy-3">
             <div class="col-12 col-md-6">
               <label for="input-label" class="form-label">Number of Stars:</label>
               <input
+                v-model.number="numberOfStars"
                 type="number"
                 class="form-control"
                 placeholder="Number"
-                v-model.number="numberOfStars"
                 min="1"
                 max="10"
                 @input="clampStars"
-              />
+              >
             </div>
             <div class="col-12 col-md-6">
               <label for="input-label" class="form-label">Star Size (px):</label>
               <input
+                v-model.number="starSize"
                 type="number"
                 class="form-control"
                 placeholder="Size"
-                v-model.number="starSize"
                 min="1"
                 max="50"
                 @input="clampSize"
-              />
+              >
             </div>
             <div class="col-12 col-md-6">
               <label for="input-label" class="form-label">Active Star Color:</label>
-              <input class="form-control form-input-color" type="color" v-model="starColor" />
+              <input v-model="starColor" class="form-control form-input-color" type="color">
             </div>
             <div class="col-12 col-md-6">
               <label for="input-label" class="form-label">Inactive Star Color:</label>
-              <input class="form-control form-input-color" type="color" v-model="inactiveColor" />
+              <input v-model="inactiveColor" class="form-control form-input-color" type="color">
             </div>
           </div>
 
@@ -109,12 +113,12 @@ const dataToPass = {
               Show Some <span class="text-danger">&#10084;</span> with rating:
             </p>
             <div id="rater-basic" class="star-scroll-wrapper">
-              <vue3starRatings
+              <Vue3starRatings
                 v-model="myRating"
-                :numberOfStars="numberOfStars"
-                :starSize="starSize"
-                :starColor="starColor"
-                :inactiveColor="inactiveColor"
+                :number-of-stars="numberOfStars"
+                :star-size="starSize"
+                :star-color="starColor"
+                :inactive-color="inactiveColor"
               />
             </div>
           </div>

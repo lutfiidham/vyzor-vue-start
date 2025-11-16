@@ -1,24 +1,24 @@
 <script setup>
+import { Head } from '@inertiajs/vue3'
+import { computed, defineAsyncComponent, ref } from 'vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
 import {
-  tasks,
   Drag1,
   Drag2,
-  Drag9,
-  Drag8,
   Drag3,
-  Drag5,
-  Drag10,
-  sortlist,
   Drag4,
-  Drag7,
+  Drag5,
   Drag6,
+  Drag7,
+  Drag8,
+  Drag9,
+  Drag10,
   Drag11,
+  sortlist,
+  tasks,
 } from '@/shared/data/sortable'
-import { ref, defineAsyncComponent, computed } from 'vue'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import { Head } from '@inertiajs/vue3'
 
-const Sortable = defineAsyncComponent(() => import('sortablejs-vue3').then((m) => m.Sortable))
+const Sortable = defineAsyncComponent(() => import('sortablejs-vue3').then(m => m.Sortable))
 
 const item = ref(tasks)
 const item1 = ref(Drag1)
@@ -64,16 +64,18 @@ const options = ref({
   draggable: '.draggable', // Make elements with class 'draggable' draggable
 })
 const Netsedsortable = ref(null)
-const logEvent = (evt, evt2) => {
+function logEvent(evt, evt2) {
   if (evt2) {
     console.log(evt, evt2)
-  } else {
+  }
+  else {
     console.log(evt)
   }
 }
 
-const logClick = (evt) => {
-  if (Netsedsortable.value?.isDragging) return
+function logClick(evt) {
+  if (Netsedsortable.value?.isDragging)
+    return
   logEvent(evt)
 }
 const nestedOptions = computed(() => {
@@ -106,19 +108,23 @@ const dataToPass = {
 
 <template>
   <Head title="Sortable | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xl-4">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">SIMPLE LIST</div>
+          <div class="card-title">
+            SIMPLE LIST
+          </div>
         </div>
         <div class="card-body">
-          <ol class="list-group sortable-list list-group-numbered" id="simple-list">
+          <ol id="simple-list" class="list-group sortable-list list-group-numbered">
             <Sortable :list="item" item-key="id">
               <template #item="{ element }">
-                <li class="list-group-item">{{ element.name }}</li>
+                <li class="list-group-item">
+                  {{ element.name }}
+                </li>
               </template>
             </Sortable>
           </ol>
@@ -128,24 +134,30 @@ const dataToPass = {
     <div class="col-xl-8">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">SHARED LISTS</div>
+          <div class="card-title">
+            SHARED LISTS
+          </div>
         </div>
         <div class="card-body">
           <div class="row">
             <div class="col-xl-6">
-              <ol class="list-group sortable-list list-group-numbered" id="shared-left">
+              <ol id="shared-left" class="list-group sortable-list list-group-numbered">
                 <Sortable :list="item1" item-key="id" :options="sortableOptionGroup">
                   <template #item="{ element }">
-                    <li class="list-group-item">{{ element.name }}</li>
+                    <li class="list-group-item">
+                      {{ element.name }}
+                    </li>
                   </template>
                 </Sortable>
               </ol>
             </div>
             <div class="col-xl-6">
-              <ol class="list-group sortable-list list-group-numbered" id="shared-right">
+              <ol id="shared-right" class="list-group sortable-list list-group-numbered">
                 <Sortable :list="item2" item-key="id" :options="sortableOptionGroup">
                   <template #item="{ element }">
-                    <li class="list-group-item">{{ element.name }}</li>
+                    <li class="list-group-item">
+                      {{ element.name }}
+                    </li>
                   </template>
                 </Sortable>
               </ol>
@@ -155,31 +167,37 @@ const dataToPass = {
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 
   <!-- Start:: row-2 -->
   <div class="row">
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">CLONING</div>
+          <div class="card-title">
+            CLONING
+          </div>
         </div>
         <div class="card-body">
           <div class="row">
             <div class="col-xl-6">
-              <ul class="list-group sortable-list" id="cloning-left">
+              <ul id="cloning-left" class="list-group sortable-list">
                 <Sortable :list="cloneItem1" item-key="id" :options="sortableOptionGroupClone">
                   <template #item="{ element }">
-                    <li class="list-group-item">{{ element.name }}</li>
+                    <li class="list-group-item">
+                      {{ element.name }}
+                    </li>
                   </template>
                 </Sortable>
               </ul>
             </div>
             <div class="col-xl-6">
-              <ul class="list-group sortable-list" id="cloning-right">
+              <ul id="cloning-right" class="list-group sortable-list">
                 <Sortable :list="cloneItem2" item-key="id" :options="sortableOptionGroupClone">
                   <template #item="{ element }">
-                    <li class="list-group-item">{{ element.name }}</li>
+                    <li class="list-group-item">
+                      {{ element.name }}
+                    </li>
                   </template>
                 </Sortable>
               </ul>
@@ -191,24 +209,30 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">DISABLING SORTING</div>
+          <div class="card-title">
+            DISABLING SORTING
+          </div>
         </div>
         <div class="card-body">
           <div class="row">
             <div class="col-xl-6">
-              <ul class="list-group sortable-list" id="disabling-sorting-left">
+              <ul id="disabling-sorting-left" class="list-group sortable-list">
                 <Sortable :list="disableItem1" item-key="id" :options="sortableOptionGroupDisable">
                   <template #item="{ element }">
-                    <li class="list-group-item">{{ element.name }}</li>
+                    <li class="list-group-item">
+                      {{ element.name }}
+                    </li>
                   </template>
                 </Sortable>
               </ul>
             </div>
             <div class="col-xl-6">
-              <ul class="list-group sortable-list" id="disabling-sorting-right">
+              <ul id="disabling-sorting-right" class="list-group sortable-list">
                 <Sortable :list="disableItem2" item-key="id" :options="sortableOptionGroupDisable">
                   <template #item="{ element }">
-                    <li class="list-group-item">{{ element.name }}</li>
+                    <li class="list-group-item">
+                      {{ element.name }}
+                    </li>
                   </template>
                 </Sortable>
               </ul>
@@ -225,20 +249,22 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">SORTING WITH HANDLE</div>
+          <div class="card-title">
+            SORTING WITH HANDLE
+          </div>
         </div>
         <div class="card-body">
-          <ol class="list-group sortable-list list-item-numbered" id="sorting-with-handle">
+          <ol id="sorting-with-handle" class="list-group sortable-list list-item-numbered">
             <Sortable
               :list="sortList"
               item-key="id"
-              :handle="'.handle'"
+              handle=".handle"
               :options="sortableOptionhandle"
             >
               <template #item="{ element }">
                 <li class="list-group-item">
                   <!-- The handle will be used to drag the item -->
-                  <i class="ri-drag-move-2-fill me-2 text-dark fs-16 handle lh-1"></i>
+                  <i class="ri-drag-move-2-fill me-2 text-dark fs-16 handle lh-1" />
                   {{ element.text }}
                 </li>
               </template>
@@ -250,11 +276,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">SORTING WITH FILTER</div>
+          <div class="card-title">
+            SORTING WITH FILTER
+          </div>
         </div>
         <div class="card-body">
-          <ul class="list-group sortable-list" id="sorting-with-filter">
-            <Sortable :list="sortFilter" item-key="id" :filter="'.addImageButtonContainer'">
+          <ul id="sorting-with-filter" class="list-group sortable-list">
+            <Sortable :list="sortFilter" item-key="id" filter=".addImageButtonContainer">
               <template #item="{ element }">
                 <li :class="`list-group-item ${element.filter}`">
                   {{ element.name }}
@@ -273,10 +301,12 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">SORTABLE GRID</div>
+          <div class="card-title">
+            SORTABLE GRID
+          </div>
         </div>
-        <div class="card-body" id="sortable-grid">
-          <Sortable :list="GridSort" item-key="id" :filter="'.addImageButtonContainer'">
+        <div id="sortable-grid" class="card-body">
+          <Sortable :list="GridSort" item-key="id" filter=".addImageButtonContainer">
             <template #item="{ element }">
               <div class="grid-square">
                 <span class="fw-medium">{{ element.name }}</span>
@@ -294,7 +324,9 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">NESTED SORTABLE</div>
+          <div class="card-title">
+            NESTED SORTABLE
+          </div>
         </div>
         <div class="card-body">
           <div id="nestedSortables" class="list-group col nested-sortable">
@@ -304,6 +336,7 @@ const dataToPass = {
               :options="nestedOptions"
               @change="logEvent"
               @choose="logEvent"
+              ref="sortable"
               @unchoose="logEvent"
               @start="logEvent"
               @end="logEvent"
@@ -314,12 +347,11 @@ const dataToPass = {
               @filter="logEvent"
               @move="logEvent"
               @clone="logEvent"
-              ref="sortable"
             >
               <template #item="{ element, index }">
                 <div
-                  :class="`draggable list-group-item ${element ? 'nested-1' : ''}`"
                   :key="element.id"
+                  :class="`draggable list-group-item ${element ? 'nested-1' : ''}`"
                   @click="logClick"
                 >
                   {{ element.text }}
@@ -344,8 +376,8 @@ const dataToPass = {
                     >
                       <template #item="{ element, index }">
                         <div
-                          :class="`draggable list-group-item ${element.children ? 'nested-2' : ''} nested-2`"
                           :key="element.id"
+                          :class="`draggable list-group-item ${element.children ? 'nested-2' : ''} nested-2`"
                         >
                           {{ element.text }}
                           <div class="list-group nested-sortable">
@@ -369,8 +401,8 @@ const dataToPass = {
                             >
                               <template #item="{ element, index }">
                                 <div
-                                  :class="`draggable list-group-item ${element.children ? 'nested-3' : ''} nested-3`"
                                   :key="element.id"
+                                  :class="`draggable list-group-item ${element.children ? 'nested-3' : ''} nested-3`"
                                 >
                                   {{ element.text }}
                                 </div>
@@ -393,18 +425,22 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">MULTIPLE DRAG</div>
+              <div class="card-title">
+                MULTIPLE DRAG
+              </div>
             </div>
             <div class="card-body">
-              <ul class="list-group sortable-list" id="multiple-drag">
+              <ul id="multiple-drag" class="list-group sortable-list">
                 <Sortable
                   :list="multiDrag"
                   item-key="id"
-                  :filter="'.addImageButtonContainer'"
+                  filter=".addImageButtonContainer"
                   :options="multiuDragOptions"
                 >
                   <template #item="{ element }">
-                    <li class="list-group-item">{{ element.name }}</li>
+                    <li class="list-group-item">
+                      {{ element.name }}
+                    </li>
                   </template>
                 </Sortable>
               </ul>
@@ -414,19 +450,23 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">SWAP</div>
+              <div class="card-title">
+                SWAP
+              </div>
             </div>
             <div class="card-body">
-              <ul class="list-group sortable-list" id="sortable-swap">
+              <ul id="sortable-swap" class="list-group sortable-list">
                 <Sortable
                   :list="swapDrag"
                   item-key="id"
-                  :filter="'.addImageButtonContainer'"
-                  :dragClass="`darg`"
+                  filter=".addImageButtonContainer"
+                  drag-class="darg"
                   :swap="true"
                 >
                   <template #item="{ element }">
-                    <li class="list-group-item">{{ element.name }}</li>
+                    <li class="list-group-item">
+                      {{ element.name }}
+                    </li>
                   </template>
                 </Sortable>
               </ul>

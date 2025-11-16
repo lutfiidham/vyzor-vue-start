@@ -1,9 +1,10 @@
 <script setup>
+import { Head } from '@inertiajs/vue3'
 import { defineAsyncComponent, ref } from 'vue'
-import * as echartData from '@/shared/data/chartjs/echartdata'
 // import VChart from 'vue-echarts';
 import Pageheader from '@/components/pageheader/pageheader.vue'
-import { Head } from '@inertiajs/vue3'
+import * as echartData from '@/shared/data/chartjs/echartdata'
+
 const VChart = defineAsyncComponent(() => import('vue-echarts'))
 
 const dataToPass = {
@@ -43,13 +44,15 @@ const chartOptions = ref([
 
 <template>
   <Head title="Echarts | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row">
     <div v-for="(chart, index) in chartOptions" :key="index" class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">{{ chart.title }}</div>
+          <div class="card-title">
+            {{ chart.title }}
+          </div>
         </div>
         <div class="card-body">
           <VChart class="echart-charts" :option="chart.option" autoresize />
@@ -57,7 +60,7 @@ const chartOptions = ref([
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

@@ -1,5 +1,5 @@
-export let slidesOnly = {
-    script: `
+export const slidesOnly = {
+  script: `
     <Carousel id="carouselExampleSlidesOnly">
                 <Slide>
                     <div class="carousel__item">
@@ -17,9 +17,9 @@ export let slidesOnly = {
                     </div>
                 </Slide>
             </Carousel>`,
-  },
-  withControls = {
-    script: `
+}
+export const withControls = {
+  script: `
     <Carousel id="carouselExampleControls">
                 <Slide>
                     <div class="carousel__item">
@@ -40,9 +40,9 @@ export let slidesOnly = {
                     <Navigation/>
                 </template>
             </Carousel>`,
-  },
-  withIndicators = {
-    script: `<Carousel v-bind="carouselConfig" id="carouselExampleIndicators">
+}
+export const withIndicators = {
+  script: `<Carousel v-bind="carouselConfig" id="carouselExampleIndicators">
                 <Slide>
                     <div class="carousel__item">
                         <img src="/images/media/media-25.jpg" class="d-block w-100" alt="...">
@@ -63,9 +63,9 @@ export let slidesOnly = {
                     <Pagination />
                 </template>
             </Carousel>`,
-  },
-  withCaptions = {
-    script: `<Carousel v-bind="carouselConfig" id="carouselExampleCaptions">
+}
+export const withCaptions = {
+  script: `<Carousel v-bind="carouselConfig" id="carouselExampleCaptions">
                 <Slide>
                     <div class="carousel__item">
                         <img src="/images/media/media-59.jpg" class="d-block w-100" alt="...">
@@ -98,9 +98,9 @@ export let slidesOnly = {
                     <Pagination />
                 </template>
             </Carousel>`,
-  },
-  crossfade = {
-    script: `<Carousel v-bind="{slideEffect:'fade',autoplay:5000}" id="carouselExampleCaptions">
+}
+export const crossfade = {
+  script: `<Carousel v-bind="{slideEffect:'fade',autoplay:5000}" id="carouselExampleCaptions">
                 <Slide>
                     <div class="carousel__item">
                         <img src="/images/media/media-43.jpg" class="d-block w-100" alt="...">
@@ -120,9 +120,9 @@ export let slidesOnly = {
                     <Navigation/>
                 </template>
             </Carousel>`,
-  },
-  individualCarouselItemInterval = {
-    script: `<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+}
+export const individualCarouselItemInterval = {
+  script: `<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active" data-bs-interval="10000">
                             <img src="/images/media/media-40.jpg" class="d-block w-100" alt="...">
@@ -143,9 +143,9 @@ export let slidesOnly = {
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>`,
-  },
-  disableTouchSwiping = {
-    script: `<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+}
+export const disableTouchSwiping = {
+  script: `<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <img src="/images/media/media-13.jpg" class="d-block w-100" alt="...">
@@ -166,9 +166,9 @@ export let slidesOnly = {
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>`,
-  },
-  darkVariant = {
-    script: `<div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
+}
+export const darkVariant = {
+  script: `<div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -206,9 +206,9 @@ export let slidesOnly = {
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>`,
-  },
-  WrapAround = {
-    script: `
+}
+export const WrapAround = {
+  script: `
                      <Carousel v-bind="{itemsToShow: 2,
   autoplay: 4000,
   wrapAround: true,
@@ -232,9 +232,9 @@ export let slidesOnly = {
                     <Navigation />
                 </template>
             </Carousel>`,
-  },
-  Vertical = {
-    script: ` <Carousel v-bind="{dir: 'ttb',height: '400px',
+}
+export const Vertical = {
+  script: ` <Carousel v-bind="{dir: 'ttb',height: '400px',
 }" id="carouselExampleCaptions">
                 <Slide>
                     <div class="carousel__item">
@@ -255,9 +255,9 @@ export let slidesOnly = {
                     <Navigation />
                 </template>
             </Carousel>`,
-  },
-  MouseWheel = {
-    script: `<Carousel v-bind="{mouseWheel: true,
+}
+export const MouseWheel = {
+  script: `<Carousel v-bind="{mouseWheel: true,
 }" id="carouselExampleCaptions">
                 <Slide>
                     <div class="carousel__item">
@@ -278,9 +278,9 @@ export let slidesOnly = {
                     <Navigation />
                 </template>
             </Carousel>`,
-  },
-  CustomNavigation = {
-    script: `<Carousel v-bind="{autoplay:5000,
+}
+export const CustomNavigation = {
+  script: `<Carousel v-bind="{autoplay:5000,
 }" id="carouselExampleCaptions" ref="carouselRef" v-model="currentSlide">
                 <Slide>
                     <div class="carousel__item">
@@ -306,4 +306,4 @@ export let slidesOnly = {
                 <input type="number" min="0" max="9" v-model="currentSlide" />
                 <button @click="next">Next</button>
             </div>`,
-  }
+}

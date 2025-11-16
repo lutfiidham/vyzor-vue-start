@@ -1,12 +1,12 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
-import * as SystemData from '@/shared/data/dashboards/pos-systemdata.js'
-import SwiperjsCardComponent from '@/shared/@spk/swiperjs-cards.vue'
+import { Head } from '@inertiajs/vue3'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import Pageheader from '@/components/pageheader/pageheader.vue'
 import SpkPosSwiperCard from '@/shared/@spk/dashboards/spk-posSwiperCard.vue'
+import SwiperjsCardComponent from '@/shared/@spk/swiperjs-cards.vue'
+import * as SystemData from '@/shared/data/dashboards/pos-systemdata.js'
 import Quantity from '../../../../UI/quantity.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head } from '@inertiajs/vue3'
 
 // DOM refs and Isotope
 const grid = ref(null)
@@ -36,7 +36,7 @@ onBeforeUnmount(() => {
 })
 
 // Filter handler
-const handleTabClick = (filter) => {
+function handleTabClick(filter) {
   activeFilter.value = filter
   if (isotope.value) {
     isotope.value.arrange({ filter })
@@ -65,7 +65,7 @@ const breakpoints = {
 
 <template>
   <Head title="Pos-System | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xxl-9">
@@ -75,11 +75,11 @@ const breakpoints = {
             Orders<span class="badge bg-primary ms-2 rounded-pill">08</span>
           </h5>
           <SwiperjsCardComponent
-            :swiperItems="SystemData.Orders"
-            swiperClass="swiper swiper-navigation pos-orders-swiper"
+            :swiper-items="SystemData.Orders"
+            swiper-class="swiper swiper-navigation pos-orders-swiper"
             :breakpoints="breakpoints"
-            :slidesPerView="4"
-            :spaceBetween="20"
+            :slides-per-view="4"
+            :space-between="20"
             :pagination="false"
             :navigation="true"
             :autoplay="true"
@@ -94,18 +94,16 @@ const breakpoints = {
             <h5 class="fw-semibold mb-0 d-flex align-items-center">
               Categories<span class="badge bg-success ms-2 rounded-pill">07</span>
             </h5>
-            <a href="javascript:void(0);" class="text-muted fs-13"
-              >View All<i class="ti ti-arrow-narrow-right ms-1"></i
-            ></a>
+            <a href="javascript:void(0);" class="text-muted fs-13">View All<i class="ti ti-arrow-narrow-right ms-1" /></a>
           </div>
           <div
-            class="d-flex align-items-center gap-2 mb-4 flex-wrap pos-category pos-categories-list"
             id="filter"
+            class="d-flex align-items-center gap-2 mb-4 flex-wrap pos-category pos-categories-list"
           >
             <div
-              :class="`nft-tag nft-tag-${idx.class} ${activeFilter === idx.filter ? 'active' : ''}`"
               v-for="idx in SystemData.Tags"
               :key="idx.id"
+              :class="`nft-tag nft-tag-${idx.class} ${activeFilter === idx.filter ? 'active' : ''}`"
               @click="handleTabClick(idx.filter)"
             >
               <a href="javascript:void(0);" class="stretched-link categories" data-filter="*">
@@ -118,12 +116,12 @@ const breakpoints = {
           </div>
         </div>
         <div class="col-xl-12">
-          <div class="row list-wrapper" ref="grid">
+          <div ref="grid" class="row list-wrapper">
             <div
-              :class="`col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 card-item ${idx.category}`"
-              data-category="Soups"
               v-for="idx in SystemData.Systemcards"
               :key="idx.id"
+              :class="`col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 card-item ${idx.category}`"
+              data-category="Soups"
             >
               <div class="card custom-card">
                 <BaseImg :src="idx.image" class="card-img-top bg-light" alt="..." />
@@ -133,10 +131,10 @@ const breakpoints = {
                   </div>
                   <div class="d-flex align-items-end justify-content-between flex-wrap gap-2">
                     <div class="d-flex align-items-center gap-2">
-                      <h5 class="fw-semibold mb-0">${{ idx.price }}</h5>
-                      <span class="text-muted fs-13 text-decoration-line-through"
-                        >${{ idx.originalPrice }}</span
-                      >
+                      <h5 class="fw-semibold mb-0">
+                        ${{ idx.price }}
+                      </h5>
+                      <span class="text-muted fs-13 text-decoration-line-through">${{ idx.originalPrice }}</span>
                     </div>
                     <div>
                       <button
@@ -145,7 +143,7 @@ const breakpoints = {
                         data-bs-placement="top"
                         title="Add Item"
                       >
-                        Add Item<i class="ti ti-plus ms-1"></i>
+                        Add Item<i class="ti ti-plus ms-1" />
                       </button>
                     </div>
                   </div>
@@ -159,7 +157,9 @@ const breakpoints = {
     <div class="col-xxl-3">
       <div class="card custom-card">
         <div class="card-header justify-content-between">
-          <div class="card-title">Orders Details</div>
+          <div class="card-title">
+            Orders Details
+          </div>
           <span class="badge bg-primary-transparent">4 Items</span>
         </div>
         <div class="card-body">
@@ -181,20 +181,21 @@ const breakpoints = {
                     <span class="fw-semibold text-truncate flex-fill">{{ idx.title }}</span>
                     <div class="d-flex align-items-center order-qnt gap-2">
                       <Quantity
-                        decClass="badge bg-white p-1 border text-muted fs-13 product-quantity-minus"
-                        inputClass="form-control form-control-cart border-0 text-center w-100"
-                        incClass="badge bg-white p-1 border text-muted fs-13 product-quantity-plus"
+                        dec-class="badge bg-white p-1 border text-muted fs-13 product-quantity-minus"
+                        input-class="form-control form-control-cart border-0 text-center w-100"
+                        inc-class="badge bg-white p-1 border text-muted fs-13 product-quantity-plus"
                       />
                     </div>
                   </div>
                   <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
-                    <div class="flex-grow-1 mb-0 text-primary">${{ idx.price }}</div>
+                    <div class="flex-grow-1 mb-0 text-primary">
+                      ${{ idx.price }}
+                    </div>
                     <div class="lh-1">
                       <a
                         href="javascript:void(0);"
                         class="text-danger fs-12 text-decoration-underline"
-                        >Remove</a
-                      >
+                      >Remove</a>
                     </div>
                   </div>
                 </div>
@@ -230,34 +231,38 @@ const breakpoints = {
             <span>$45.00</span>
           </div>
           <div class="p-3">
-            <h6 class="fw-semibold mb-3">Payment Methods:</h6>
+            <h6 class="fw-semibold mb-3">
+              Payment Methods:
+            </h6>
             <div
               class="btn-group flex-wrap"
               role="group"
               aria-label="Basic radio toggle button group"
             >
-              <input type="radio" class="btn-check" name="btnradio" id="btnradio1" checked />
+              <input id="btnradio1" type="radio" class="btn-check" name="btnradio" checked>
               <label class="btn btn-outline-primary btn-w-sm" for="btnradio1">
-                <span class="d-block"><i class="ti ti-cash fs-5"></i></span>
+                <span class="d-block"><i class="ti ti-cash fs-5" /></span>
                 <span class="d-block">Cash</span>
               </label>
 
-              <input type="radio" class="btn-check" name="btnradio" id="btnradio2" />
+              <input id="btnradio2" type="radio" class="btn-check" name="btnradio">
               <label class="btn btn-outline-primary btn-w-sm" for="btnradio2">
-                <span class="d-block"><i class="ti ti-qrcode fs-5"></i></span>
+                <span class="d-block"><i class="ti ti-qrcode fs-5" /></span>
                 <span class="d-block">UPI</span>
               </label>
 
-              <input type="radio" class="btn-check" name="btnradio" id="btnradio3" />
+              <input id="btnradio3" type="radio" class="btn-check" name="btnradio">
               <label class="btn btn-outline-primary" for="btnradio3">
-                <span class="d-block"><i class="ti ti-credit-card fs-5"></i></span>
+                <span class="d-block"><i class="ti ti-credit-card fs-5" /></span>
                 <span class="d-block">Debit Card</span>
               </label>
             </div>
           </div>
         </div>
         <div class="card-footer d-grid">
-          <button class="btn btn-primary btn-lg">Pay - $45.00</button>
+          <button class="btn btn-primary btn-lg">
+            Pay - $45.00
+          </button>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 <script setup>
-import * as candleData from '@/shared/data/apexcharts/apexchart-candlestick'
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as candleData from '@/shared/data/apexcharts/apexchart-candlestick'
 
 const dataToPass = {
   title: 'Charts',
@@ -13,18 +13,20 @@ const dataToPass = {
 
 <template>
   <Head title="Candlestick Charts | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Basic Candlestick Chart</div>
+          <div class="card-title">
+            Basic Candlestick Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="candlestick-basic">
-            <apexchart
+            <Apexchart
               height="300"
               type="candlestick"
               :options="candleData.Candbasicoptions"
@@ -37,11 +39,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Candlestick Synced With Brush Chart</div>
+          <div class="card-title">
+            Candlestick Synced With Brush Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="chart-candlestick">
-            <apexchart
+            <Apexchart
               height="166"
               type="candlestick"
               :options="candleData.Candsyncoptions"
@@ -49,7 +53,7 @@ const dataToPass = {
             />
           </div>
           <div id="chart-candlestick">
-            <apexchart
+            <Apexchart
               height="120"
               type="bar"
               :options="candleData.CandeoptionsBar"
@@ -62,11 +66,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Candlestick With Category X-axis</div>
+          <div class="card-title">
+            Candlestick With Category X-axis
+          </div>
         </div>
         <div class="card-body">
           <div id="candlestick-categoryx">
-            <apexchart
+            <Apexchart
               height="300"
               type="candlestick"
               :options="candleData.Candaxisoptions"
@@ -79,11 +85,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Candlestick With Line Chart</div>
+          <div class="card-title">
+            Candlestick With Line Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="candlestick-line">
-            <apexchart
+            <Apexchart
               height="300"
               type="candlestick"
               :options="candleData.Candlineoptions"
@@ -94,7 +102,7 @@ const dataToPass = {
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

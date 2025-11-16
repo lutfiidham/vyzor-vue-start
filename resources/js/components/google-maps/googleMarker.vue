@@ -1,6 +1,6 @@
 <script setup>
-import { GoogleMap, Marker } from 'vue3-google-map'
 import { reactive } from 'vue'
+import { GoogleMap, Marker } from 'vue3-google-map'
 
 const apiKey = import.meta.env.googleMapsApiKey
 const center = { lat: 42.35805, lng: -71.0636 }

@@ -1,7 +1,7 @@
 <script setup>
+import { Head } from '@inertiajs/vue3'
 import { ref } from 'vue'
 import Pageheader from '@/components/pageheader/pageheader.vue'
-import { Head } from '@inertiajs/vue3'
 
 // Page meta info
 const dataToPass = {
@@ -24,9 +24,10 @@ const formatting5 = ref('')
 
 // Currency formatting options
 const options = {
-  preProcess: (val) => val.replace(/[$,]/g, ''),
-  postProcess: (val) => {
-    if (!val) return ''
+  preProcess: val => val.replace(/[$,]/g, ''),
+  postProcess: val => {
+    if (!val)
+      return ''
 
     const sub = 3 - (val.includes('.') ? val.length - val.indexOf('.') : 0)
 
@@ -42,62 +43,70 @@ const options = {
 
 <template>
   <Head title="Input-Masks | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Date Format-1</div>
+          <div class="card-title">
+            Date Format-1
+          </div>
         </div>
         <div class="card-body">
           <input
-            class="form-control date-format"
-            placeholder="DD-MM-YYYY"
             v-model="formatting"
             v-maska
+            class="form-control date-format"
+            placeholder="DD-MM-YYYY"
             data-maska="##-##-####"
-          />
+          >
         </div>
       </div>
     </div>
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Date Format-2</div>
+          <div class="card-title">
+            Date Format-2
+          </div>
         </div>
         <div class="card-body">
           <input
-            class="form-control date-format-1"
-            placeholder="MM-DD-YYYY"
             v-model="formatting1"
             v-maska
+            class="form-control date-format-1"
+            placeholder="MM-DD-YYYY"
             data-maska="##-##-####"
-          />
+          >
         </div>
       </div>
     </div>
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Date Format-3</div>
+          <div class="card-title">
+            Date Format-3
+          </div>
         </div>
         <div class="card-body">
           <input
-            class="form-control date-format-2"
-            placeholder="MM-YY"
             v-model="formatting2"
             v-maska
+            class="form-control date-format-2"
+            placeholder="MM-YY"
             data-maska="##-##"
-          />
+          >
         </div>
       </div>
     </div>
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Number Formatting</div>
+          <div class="card-title">
+            Number Formatting
+          </div>
         </div>
         <div class="card-body">
           <input
@@ -107,119 +116,133 @@ const options = {
             data-maska-number
             data-maska-tokens="0:\d:multiple|9:\d:optional"
             placeholder="Number Here"
-          />
+          >
         </div>
       </div>
     </div>
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Time Format-1</div>
+          <div class="card-title">
+            Time Format-1
+          </div>
         </div>
         <div class="card-body">
           <input
-            class="form-control time-format-1"
-            placeholder="hh:mm:ss"
             v-model="formatting3"
             v-maska
+            class="form-control time-format-1"
+            placeholder="hh:mm:ss"
             data-maska="##:##:##"
-          />
+          >
         </div>
       </div>
     </div>
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Time Format-2</div>
+          <div class="card-title">
+            Time Format-2
+          </div>
         </div>
         <div class="card-body">
           <input
-            class="form-control time-format-2"
-            placeholder="hh:mm"
             v-model="formatting4"
             v-maska
+            class="form-control time-format-2"
+            placeholder="hh:mm"
             data-maska="##:##"
-          />
+          >
         </div>
       </div>
     </div>
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Formatting Into Blocks</div>
+          <div class="card-title">
+            Formatting Into Blocks
+          </div>
         </div>
         <div class="card-body">
           <input
-            class="form-control formatting-blocks"
-            placeholder="ABCD EFG HIJ KLMN"
             v-model="formatting5"
             v-maska
+            class="form-control formatting-blocks"
+            placeholder="ABCD EFG HIJ KLMN"
             data-maska="@@@ @@@ @@@ @@@@"
-          />
+          >
         </div>
       </div>
     </div>
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Delimiter</div>
+          <div class="card-title">
+            Delimiter
+          </div>
         </div>
         <div class="card-body">
           <input
-            class="form-control delimiters"
-            placeholder="ABC.DEF.GHi"
             v-model="delimiters"
             v-maska
+            class="form-control delimiters"
+            placeholder="ABC.DEF.GHi"
             data-maska="@@@.@@@.@@@"
-          />
+          >
         </div>
       </div>
     </div>
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Delimiters</div>
+          <div class="card-title">
+            Delimiters
+          </div>
         </div>
         <div class="card-body">
           <input
-            class="form-control delimiters"
-            placeholder="ABC/DEF/GHi-JK"
             v-model="delimiters1"
             v-maska
+            class="form-control delimiters"
+            placeholder="ABC/DEF/GHi-JK"
             data-maska="@@@/@@@/@@@-@@"
-          />
+          >
         </div>
       </div>
     </div>
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Prefix</div>
+          <div class="card-title">
+            Prefix
+          </div>
         </div>
         <div class="card-body">
           <input
+            v-maska
             placeholder="With default prefix"
             class="form-control prefix-element"
-            v-maska
             data-maska="!Prefix-HHHHHH-HHHH-HHHH"
             data-maska-tokens="H:[0-9a-fA-F]"
-          />
+          >
         </div>
       </div>
     </div>
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Phone Number Formatting</div>
+          <div class="card-title">
+            Phone Number Formatting
+          </div>
         </div>
         <div class="card-body">
           <input
-            class="form-control phone-number"
-            placeholder="US(+1)"
             v-model="value"
             v-maska
+            class="form-control phone-number"
+            placeholder="US(+1)"
             data-maska="+1 ### ###-##-##"
-          />
+          >
         </div>
       </div>
     </div>

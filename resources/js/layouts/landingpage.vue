@@ -1,20 +1,11 @@
-<template>
-  <div :class="initialLoad ? 'd-block' : 'd-none'">
-    <customswitcher />
-    <slot />
-    <BackToTop />
-  </div>
-</template>
-
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import customswitcher from '../components/customswitcher/customswitcher.vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import BackToTop from '../components/backtotop/backtotop.vue'
 
 const initialLoad = ref(false)
 
 onMounted(() => {
-  let html = document.querySelector('html')
+  const html = document.querySelector('html')
   html.removeAttribute('data-page-style')
   html.removeAttribute('data-width')
   html.removeAttribute('data-menu-position')
@@ -39,3 +30,11 @@ onUnmounted(() => {
   initialLoad.value = false
 })
 </script>
+
+<template>
+  <div :class="initialLoad ? 'd-block' : 'd-none'">
+    <Customswitcher />
+    <slot />
+    <BackToTop />
+  </div>
+</template>

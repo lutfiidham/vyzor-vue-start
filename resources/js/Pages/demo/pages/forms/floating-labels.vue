@@ -1,8 +1,9 @@
 <script setup>
-import * as prism from '@/shared/data/prismCode/forms/float-labels'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as prism from '@/shared/data/prismCode/forms/float-labels'
+import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
+
 const dataToPass = {
   title: 'Forms',
   currentpage: 'Floating labels',
@@ -12,7 +13,7 @@ const dataToPass = {
 
 <template>
   <Head title="Floating-Labels | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
@@ -20,20 +21,20 @@ const dataToPass = {
       <ShowcodeCard :code="prism.basicExamples" title="Basic Examples">
         <div class="form-floating mb-3">
           <input
+            id="floatingInput"
             type="email"
             class="form-control"
-            id="floatingInput"
             placeholder="name@example.com"
-          />
+          >
           <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating">
           <input
+            id="floatingPassword"
             type="password"
             class="form-control"
-            id="floatingPassword"
             placeholder="Password"
-          />
+          >
           <label for="floatingPassword">Password</label>
         </div>
       </ShowcodeCard>
@@ -43,23 +44,23 @@ const dataToPass = {
         <div class="readonly-float-text">
           <div class="form-floating mb-3">
             <input
+              id="floatingEmptyPlaintextInput"
               type="email"
               readonly
               class="form-control-plaintext"
-              id="floatingEmptyPlaintextInput"
               placeholder="name@example.com"
-            />
+            >
             <label for="floatingEmptyPlaintextInput">Empty input</label>
           </div>
           <div class="form-floating">
             <input
+              id="floatingPlaintextInput"
               type="email"
               readonly
               class="form-control-plaintext"
-              id="floatingPlaintextInput"
               placeholder="name@example.com"
               value="name@example.com"
-            />
+            >
             <label for="floatingPlaintextInput">Input with value</label>
           </div>
         </div>
@@ -77,22 +78,22 @@ const dataToPass = {
       >
         <form class="form-floating my-3">
           <input
+            id="floatingInputValue"
             type="email"
             class="form-control"
-            id="floatingInputValue"
             placeholder="name@example.com"
             value="test@example.com"
-          />
+          >
           <label for="floatingInputValue">Input with value</label>
         </form>
         <form class="form-floatin">
           <input
+            id="floatingInputInvalid"
             type="email"
             class="form-control is-invalid"
-            id="floatingInputInvalid"
             placeholder="name@example.com"
             value="test@example.com"
-          />
+          >
           <label for="floatingInputInvalid">Invalid input</label>
         </form>
       </ShowcodeCard>
@@ -101,20 +102,20 @@ const dataToPass = {
       <ShowcodeCard :code="prism.textareas" title="Textareas">
         <div class="form-floating mb-4">
           <textarea
+            id="floatingTextarea"
             class="form-control"
             placeholder="Leave a comment here"
-            id="floatingTextarea"
-          ></textarea>
+          />
           <label for="floatingTextarea">Description</label>
         </div>
         <div class="form-floating">
           <textarea
+            id="floatingTextarea2"
             class="form-control"
             placeholder="Leave a comment here"
-            id="floatingTextarea2"
             rows="1"
             disabled
-          ></textarea>
+          />
           <label for="floatingTextarea2">Disabled</label>
         </div>
       </ShowcodeCard>
@@ -128,14 +129,22 @@ const dataToPass = {
       <ShowcodeCard :code="prism.floatingLabelsInSelect" title="Floating Labels In Select">
         <div class="form-floating">
           <select
-            class="form-select"
             id="floatingSelect"
+            class="form-select"
             aria-label="Floating label select example"
           >
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <option selected>
+              Open this select menu
+            </option>
+            <option value="1">
+              One
+            </option>
+            <option value="2">
+              Two
+            </option>
+            <option value="3">
+              Three
+            </option>
           </select>
           <label for="floatingSelect">Works with selects</label>
         </div>
@@ -147,22 +156,30 @@ const dataToPass = {
           <div class="col-md">
             <div class="form-floating">
               <input
+                id="floatingInputGrid"
                 type="email"
                 class="form-control"
-                id="floatingInputGrid"
                 placeholder="name@example.com"
                 value="mdo@example.com"
-              />
+              >
               <label for="floatingInputGrid">Email address</label>
             </div>
           </div>
           <div class="col-md">
             <div class="form-floating">
-              <select class="form-select" id="floatingSelectGrid">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+              <select id="floatingSelectGrid" class="form-select">
+                <option selected>
+                  Open this select menu
+                </option>
+                <option value="1">
+                  One
+                </option>
+                <option value="2">
+                  Two
+                </option>
+                <option value="3">
+                  Three
+                </option>
               </select>
               <label for="floatingSelectGrid">Works with selects</label>
             </div>
@@ -181,66 +198,66 @@ const dataToPass = {
           <div class="col-xl-4">
             <div class="form-floating mb-4 floating-primary">
               <input
+                id="floatingInputprimary"
                 type="email"
                 class="form-control"
-                id="floatingInputprimary"
                 placeholder="name@example.com"
-              />
+              >
               <label for="floatingInputprimary">primary</label>
             </div>
           </div>
           <div class="col-xl-4">
             <div class="form-floating mb-4 floating-secondary">
               <input
+                id="floatingInputsecondary"
                 type="email"
                 class="form-control"
-                id="floatingInputsecondary"
                 placeholder="name@example.com"
-              />
+              >
               <label for="floatingInputsecondary">secondary</label>
             </div>
           </div>
           <div class="col-xl-4">
             <div class="form-floating mb-4 floating-warning">
               <input
+                id="floatingInputwarning"
                 type="email"
                 class="form-control"
-                id="floatingInputwarning"
                 placeholder="name@example.com"
-              />
+              >
               <label for="floatingInputwarning">warning</label>
             </div>
           </div>
           <div class="col-xl-4">
             <div class="form-floating mb-4 floating-info">
               <input
+                id="floatingInputinfo"
                 type="email"
                 class="form-control"
-                id="floatingInputinfo"
                 placeholder="name@example.com"
-              />
+              >
               <label for="floatingInputinfo">info</label>
             </div>
           </div>
           <div class="col-xl-4">
             <div class="form-floating mb-4 floating-success">
               <input
+                id="floatingInputsuccess"
                 type="email"
                 class="form-control"
-                id="floatingInputsuccess"
                 placeholder="name@example.com"
-              />
+              >
               <label for="floatingInputsuccess">success</label>
             </div>
           </div>
           <div class="col-xl-4">
             <div class="form-floating mb-4 floating-danger">
               <input
+                id="floatingInputdanger"
                 type="email"
                 class="form-control"
-                id="floatingInputdanger"
                 placeholder="name@example.com"
-              />
+              >
               <label for="floatingInputdanger">danger</label>
             </div>
           </div>

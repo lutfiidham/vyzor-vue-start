@@ -1,4 +1,4 @@
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
 export const data = ref([0, 10, 5, 2, 20, 30, 45])
 

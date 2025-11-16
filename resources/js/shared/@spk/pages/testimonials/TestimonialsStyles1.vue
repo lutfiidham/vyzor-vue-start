@@ -5,13 +5,16 @@ defineProps({
   card: Object,
 })
 </script>
+
 <template>
   <div class="card custom-card mb-0">
     <div class="card-body p-5 pb-4">
       <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap">
-        <h5 class="fw-semibold mb-0">{{ card.title }}</h5>
+        <h5 class="fw-semibold mb-0">
+          {{ card.title }}
+        </h5>
         <div class="text-warning fs-14 my-auto">
-          <i :class="`ri-star-${star} me-1`" v-for="(star, index) in card.stars" :key="index"></i>
+          <i v-for="(star, index) in card.stars" :key="index" :class="`ri-star-${star} me-1`" />
         </div>
       </div>
       <p class="mb-3 text-muted">

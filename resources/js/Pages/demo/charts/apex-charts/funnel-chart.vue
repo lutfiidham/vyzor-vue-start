@@ -1,7 +1,7 @@
 <script setup>
-import * as funnelData from '@/shared/data/apexcharts/apexchart-funnel'
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as funnelData from '@/shared/data/apexcharts/apexchart-funnel'
 
 const dataToPass = {
   title: 'Charts',
@@ -13,18 +13,20 @@ const dataToPass = {
 
 <template>
   <Head title="Funnel Charts | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Funnel Chart</div>
+          <div class="card-title">
+            Funnel Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="funnel-chart">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="funnelData.Funneloptions"
@@ -37,11 +39,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Pyramid Chart</div>
+          <div class="card-title">
+            Pyramid Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="pyramid-chart">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="funnelData.Pyramidoptions"
@@ -52,7 +56,7 @@ const dataToPass = {
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

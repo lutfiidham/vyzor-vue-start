@@ -1,6 +1,6 @@
 <script setup>
-import { onMounted, onUnmounted } from 'vue'
 import PhotoSwipeLightbox from 'photoswipe/lightbox'
+import { onMounted, onUnmounted } from 'vue'
 import 'photoswipe/style.css'
 
 let lightbox = null
@@ -93,8 +93,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="row" id="RandomUniqueId">
-    <div class="col-lg-4 col-md-4 col-sm-6 col-12 px-0" v-for="(image, key) in items" :key="key">
+  <div id="RandomUniqueId" class="row">
+    <div v-for="(image, key) in items" :key="key" class="col-lg-4 col-md-4 col-sm-6 col-12 px-0">
       <a
         :href="image.src"
         class="glightbox card"
@@ -108,7 +108,7 @@ onUnmounted(() => {
           :src="image.thumbnail"
           alt=""
           style="width: 100%; border-radius: 0.25rem; overflow: hidden"
-        />
+        >
       </a>
     </div>
   </div>

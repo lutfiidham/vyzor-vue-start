@@ -1,5 +1,5 @@
-export let DefaultSelect = {
-    script: `
+export const DefaultSelect = {
+  script: `
      <select class="form-select" aria-label="Default select example">
                     <option selected>Open this select menu
                     </option>
@@ -7,18 +7,18 @@ export let DefaultSelect = {
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                 </select>`,
-  },
-  DisabledSelect = {
-    script: `
+}
+export const DisabledSelect = {
+  script: `
     <select class="form-select" aria-label="Disabled select example" disabled>
                 <option selected>Open this select menu</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
             </select>`,
-  },
-  RoundedSelect = {
-    script: `
+}
+export const RoundedSelect = {
+  script: `
     <select class="form-select rounded-pill" aria-label="Default select example">
                 <option selected>Open this select menu
                 </option>
@@ -26,18 +26,18 @@ export let DefaultSelect = {
                 <option value="2">Two</option>
                 <option value="3">Three</option>
             </select>`,
-  },
-  MultipleAttributeSelect = {
-    script: `
+}
+export const MultipleAttributeSelect = {
+  script: `
     <select class="form-select" multiple aria-label="multiple select example">
                 <option selected>Open this select menu</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
             </select>`,
-  },
-  UsingSizeAttribute = {
-    script: `
+}
+export const UsingSizeAttribute = {
+  script: `
     <select class="form-select" size="4" aria-label="size 3 select example">
                 <option selected>Open this select menu</option>
                 <option value="1">One</option>
@@ -46,9 +46,9 @@ export let DefaultSelect = {
                 <option value="4">Four</option>
                 <option value="5">Five</option>
             </select>`,
-  },
-  SelectSizes = {
-    script: `
+}
+export const SelectSizes = {
+  script: `
     <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example">
                 <option selected>Open this select menu</option>
                 <option value="1">One</option>
@@ -67,4 +67,4 @@ export let DefaultSelect = {
                 <option value="2">Two</option>
                 <option value="3">Three</option>
             </select>`,
-  }
+}

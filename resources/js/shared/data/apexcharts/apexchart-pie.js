@@ -45,7 +45,7 @@ export const Donutoptions = {
   },
 }
 
-//Updating Donut Chart
+// Updating Donut Chart
 export const Updatedseries = [44, 55, 13, 33]
 export const Updatedoptions = {
   chart: {
@@ -73,7 +73,7 @@ export const Updatedoptions = {
   },
 }
 
-//Monochrome Pie Chart
+// Monochrome Pie Chart
 export const Piemonoseries = [25, 15, 44, 55, 41, 17]
 export const Piemonooptions = {
   chart: {
@@ -119,7 +119,7 @@ export const Piemonooptions = {
   },
 }
 
-//Gradient Donut Chart
+// Gradient Donut Chart
 export const Piegradientseries = [44, 55, 41, 17, 15]
 export const Piegardientoptions = {
   chart: {
@@ -144,8 +144,8 @@ export const Piegardientoptions = {
     type: 'gradient',
   },
   legend: {
-    formatter: function (val, opts) {
-      return val + ' - ' + opts.w.globals.series[opts.seriesIndex]
+    formatter(val, opts) {
+      return `${val} - ${opts.w.globals.series[opts.seriesIndex]}`
     },
     position: 'bottom',
   },
@@ -161,7 +161,7 @@ export const Piegardientoptions = {
   },
 }
 
-//Donut Chart With Patterns
+// Donut Chart With Patterns
 export const Piechartseries = [44, 55, 41, 17, 15]
 export const Piechartoptions = {
   chart: {
@@ -245,7 +245,7 @@ export const Piechartoptions = {
   ],
 }
 
-//Image Filled Pie Chart
+// Image Filled Pie Chart
 export const Pieimgseries = [44, 33, 54, 45]
 export const Pieimgoptions = {
   chart: {

@@ -1,16 +1,16 @@
 <script setup>
-import * as cardData from '@/shared/data/ui-elements/cards'
-import SpkCardComponent from '@/shared/@spk/reusable-uielements/reusable-cards/spkcard.vue'
-import SpkCollapseCard from '@/shared/@spk/reusable-uielements/reusable-cards/spkcollapsecard.vue'
-import SpkNavigationCard from '@/shared/@spk/reusable-uielements/reusable-cards/spknavigationcard.vue'
-import SpkImageOverlayCard from '@/shared/@spk/reusable-uielements/reusable-cards/spkimageoverlaycard.vue'
-import SpkHorizontalCard from '@/shared/@spk/reusable-uielements/reusable-cards/spkhorizontalcard.vue'
+import { Head } from '@inertiajs/vue3'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
 import SpkBackgroundCard from '@/shared/@spk/reusable-uielements/reusable-cards/spkbgcards.vue'
 import SpkBorderdCard from '@/shared/@spk/reusable-uielements/reusable-cards/spkborderedcards.vue'
-import Pageheader from '@/components/pageheader/pageheader.vue'
+import SpkCardComponent from '@/shared/@spk/reusable-uielements/reusable-cards/spkcard.vue'
+import SpkCollapseCard from '@/shared/@spk/reusable-uielements/reusable-cards/spkcollapsecard.vue'
+import SpkHorizontalCard from '@/shared/@spk/reusable-uielements/reusable-cards/spkhorizontalcard.vue'
+import SpkImageOverlayCard from '@/shared/@spk/reusable-uielements/reusable-cards/spkimageoverlaycard.vue'
 
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head } from '@inertiajs/vue3'
+import SpkNavigationCard from '@/shared/@spk/reusable-uielements/reusable-cards/spknavigationcard.vue'
+import * as cardData from '@/shared/data/ui-elements/cards'
 
 const dataToPass = {
   title: 'Ui Elements',
@@ -21,46 +21,48 @@ const dataToPass = {
 
 <template>
   <Head title="Cards | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
       <SpkCardComponent
-        titleClass="fw-medium"
-        imgClass="card-img-top"
-        imgSrc="/images/media/media-24.jpg"
+        title-class="fw-medium"
+        img-class="card-img-top"
+        img-src="/images/media/media-24.jpg"
         title="Card title"
       >
-        <template v-slot:bodyText>
+        <template #bodyText>
           <p class="card-text">
             Some quick example text to build on the card title and make up the bulk of the card's
             content.
           </p>
         </template>
-        <template v-slot:outBodyText>
+        <template #outBodyText>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
+            <li class="list-group-item">
+              An item
+            </li>
+            <li class="list-group-item">
+              A second item
+            </li>
           </ul>
           <div class="card-body">
             <a href="javascript:void(0);" class="card-link text-primary">Card link</a>
-            <a href="javascript:void(0);" class="card-link text-secondary d-inline-block"
-              >Another link</a
-            >
+            <a href="javascript:void(0);" class="card-link text-secondary d-inline-block">Another link</a>
           </div>
         </template>
       </SpkCardComponent>
     </div>
     <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
       <SpkCardComponent
-        titleClass="fw-medium"
-        imgClass="card-img-top"
+        title-class="fw-medium"
+        img-class="card-img-top"
         footer="<span class='card-text'>Last updated 3 mins ago</span>"
-        imgSrc="/images/media/media-22.jpg"
+        img-src="/images/media/media-22.jpg"
         title="Card title"
       >
-        <template v-slot:bodyText>
+        <template #bodyText>
           <p class="card-text text-muted">
             when an unknown printer took a galley of type and scrambled it to make a type specimen
             book. It has survived not only five centuries, but also the leap into electronic.
@@ -70,17 +72,19 @@ const dataToPass = {
       </SpkCardComponent>
     </div>
     <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-      <SpkCardComponent imgClass="card-img-top" imgSrc="/images/media/media-23.jpg">
-        <template v-slot:bodyText>
+      <SpkCardComponent img-class="card-img-top" img-src="/images/media/media-23.jpg">
+        <template #bodyText>
           <p class="card-text">
             Some quick example text to build on the card title and make up the bulk of the card's
             content.
           </p>
         </template>
       </SpkCardComponent>
-      <h6 class="mb-3">Only Card Body:</h6>
+      <h6 class="mb-3">
+        Only Card Body:
+      </h6>
       <SpkCardComponent>
-        <template v-slot:bodyText>
+        <template #bodyText>
           <p class="mb-0">
             It is a long established fact that a reader will be distracted by the readable content.
           </p>
@@ -88,8 +92,8 @@ const dataToPass = {
       </SpkCardComponent>
     </div>
     <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-      <SpkCardComponent headerText="Featured" :header="true" title="Special title treatment">
-        <template v-slot:bodyText>
+      <SpkCardComponent header-text="Featured" :header="true" title="Special title treatment">
+        <template #bodyText>
           <p class="card-text">
             Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up
             one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage
@@ -97,15 +101,15 @@ const dataToPass = {
           <a href="javascript:void(0);" class="btn btn-primary">Read More</a>
         </template>
       </SpkCardComponent>
-      <SpkCardComponent title="Card title" subTitle="Card subtitle" :footer="true">
-        <template v-slot:bodyText>
+      <SpkCardComponent title="Card title" sub-title="Card subtitle" :footer="true">
+        <template #bodyText>
           <p class="card-text">
             There are many variations of passages of Lorem Ipsum available, but the majority have
             suffered alteration many variations of passages of Lorem Ipsum available there are so
             many ways to solve but the majority.
           </p>
         </template>
-        <template v-slot:footer>
+        <template #footer>
           <a href="javascript:void(0);" class="card-link text-danger m-1">Buy Now</a>
           <a href="javascript:void(0);" class="card-link text-success m-1"><u>Review</u></a>
         </template>
@@ -117,13 +121,17 @@ const dataToPass = {
   <!-- Start::row-2 -->
   <div class="row">
     <div class="col-xxl-6 col-xl-6 col-lg-12">
-      <h6 class="mb-3">Using Grid Markups:</h6>
+      <h6 class="mb-3">
+        Using Grid Markups:
+      </h6>
       <div class="row row-cols-12">
         <div class="col">
           <SpkCardComponent>
-            <template v-slot:bodyText>
+            <template #bodyText>
               <BaseImg src="/images/media/media-25.jpg" class="card-img mb-3" alt="..." />
-              <h6 class="card-title fw-medium">Product A</h6>
+              <h6 class="card-title fw-medium">
+                Product A
+              </h6>
               <p class="card-text">
                 With supporting text below as a natural lead-in to additional content.
               </p>
@@ -133,9 +141,11 @@ const dataToPass = {
         </div>
         <div class="col">
           <SpkCardComponent>
-            <template v-slot:bodyText>
+            <template #bodyText>
               <BaseImg src="/images/media/media-26.jpg" class="card-img mb-3" alt="..." />
-              <h6 class="card-title fw-medium">Product B</h6>
+              <h6 class="card-title fw-medium">
+                Product B
+              </h6>
               <p class="card-text">
                 With supporting text below as a natural lead-in to additional content.
               </p>
@@ -145,9 +155,11 @@ const dataToPass = {
         </div>
         <div class="col">
           <SpkCardComponent>
-            <template v-slot:bodyText>
+            <template #bodyText>
               <BaseImg src="/images/media/media-27.jpg" class="card-img mb-3" alt="..." />
-              <h6 class="card-title fw-medium">Product-C</h6>
+              <h6 class="card-title fw-medium">
+                Product-C
+              </h6>
               <p class="card-text">
                 With supporting text below as a natural lead-in to additional content.
               </p>
@@ -159,10 +171,12 @@ const dataToPass = {
     </div>
     <div class="col-xxl-6 col-xl-6 col-lg-12">
       <div class="row">
-        <h6 class="mb-3">Quote:</h6>
+        <h6 class="mb-3">
+          Quote:
+        </h6>
         <div class="col-xl-12">
           <SpkCardComponent>
-            <template v-slot:bodyText>
+            <template #bodyText>
               <blockquote class="blockquote mb-0 text-center p-0">
                 <h6>
                   The greatest glory in living lies not in never falling, but in rising every time
@@ -176,49 +190,71 @@ const dataToPass = {
           </SpkCardComponent>
         </div>
         <div class="col-xl-12">
-          <h6 class="mb-3">List Group:</h6>
+          <h6 class="mb-3">
+            List Group:
+          </h6>
           <div class="row">
             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4">
-              <SpkCardComponent cardClass="overflow-hidden" :bodyText="false">
-                <template v-slot:outBodyText>
+              <SpkCardComponent card-class="overflow-hidden" :body-text="false">
+                <template #outBodyText>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
-                    <li class="list-group-item">A fourth item</li>
+                    <li class="list-group-item">
+                      An item
+                    </li>
+                    <li class="list-group-item">
+                      A second item
+                    </li>
+                    <li class="list-group-item">
+                      A third item
+                    </li>
+                    <li class="list-group-item">
+                      A fourth item
+                    </li>
                   </ul>
                 </template>
               </SpkCardComponent>
             </div>
             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4">
               <SpkCardComponent
-                cardClass="overflow-hidden"
-                headerText="Featured"
+                card-class="overflow-hidden"
+                header-text="Featured"
                 :header="true"
-                :useDivHeader="true"
-                :bodyText="false"
+                :use-div-header="true"
+                :body-text="false"
               >
-                <template v-slot:outBodyText>
+                <template #outBodyText>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">
+                      An item
+                    </li>
+                    <li class="list-group-item">
+                      A second item
+                    </li>
+                    <li class="list-group-item">
+                      A third item
+                    </li>
                   </ul>
                 </template>
               </SpkCardComponent>
             </div>
             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4">
               <SpkCardComponent
-                cardClass="overflow-hidden"
+                card-class="overflow-hidden"
                 footer="Card footer"
-                cardFooter="border-top-0"
-                :bodyText="false"
+                card-footer="border-top-0"
+                :body-text="false"
               >
-                <template v-slot:outBodyText>
+                <template #outBodyText>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">
+                      An item
+                    </li>
+                    <li class="list-group-item">
+                      A second item
+                    </li>
+                    <li class="list-group-item">
+                      A third item
+                    </li>
                   </ul>
                 </template>
               </SpkCardComponent>
@@ -230,35 +266,41 @@ const dataToPass = {
   </div>
   <!-- End::row-2 -->
 
-  <!-- Start::row-3-->
-  <h6 class="mb-3">Card Header & Footer:</h6>
+  <!-- Start::row-3 -->
+  <h6 class="mb-3">
+    Card Header & Footer:
+  </h6>
   <div class="row">
     <div class="col-xl-3">
       <SpkCardComponent
-        cardClass="text-center"
-        cardHeader="border-bottom-0 pb-0"
-        :useDivHeader="true"
-        bodyClass="pt-1"
+        card-class="text-center"
+        card-header="border-bottom-0 pb-0"
+        :use-div-header="true"
+        body-class="pt-1"
         :header="true"
       >
-        <template v-slot:header>
-          <span class="ms-auto shadow-lg fs-17"><i class="ri-heart-fill text-danger"></i></span>
+        <template #header>
+          <span class="ms-auto shadow-lg fs-17"><i class="ri-heart-fill text-danger" /></span>
         </template>
-        <template v-slot:bodyText>
+        <template #bodyText>
           <span class="avatar avatar-xl avatar-rounded me-2 mb-2">
             <BaseImg src="/images/faces/5.jpg" alt="img" />
           </span>
-          <div class="fw-medium fs-16">Sasha Max</div>
-          <p class="mb-4 text-muted fs-11">Web Developer</p>
+          <div class="fw-medium fs-16">
+            Sasha Max
+          </div>
+          <p class="mb-4 text-muted fs-11">
+            Web Developer
+          </p>
           <div class="btn-list">
             <button class="btn btn-icon btn-facebook btn-wave">
-              <i class="ri-facebook-line"></i>
+              <i class="ri-facebook-line" />
             </button>
             <button class="btn btn-icon btn-twitter btn-wave">
-              <i class="ri-twitter-x-line"></i>
+              <i class="ri-twitter-x-line" />
             </button>
             <button class="btn btn-icon btn-instagram btn-wave">
-              <i class="ri-instagram-line"></i>
+              <i class="ri-instagram-line" />
             </button>
           </div>
         </template>
@@ -266,10 +308,10 @@ const dataToPass = {
     </div>
     <div class="col-xl-3">
       <SpkCardComponent
-        cardClass="border border-primary"
+        card-class="border border-primary"
         footer="Lorem Ipsum is therefore always free from repetition, injected humour."
       >
-        <template v-slot:bodyText>
+        <template #bodyText>
           <svg class="footer-card-icon my-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path
               fill="#C6CDD1"
@@ -336,13 +378,15 @@ const dataToPass = {
               d="M21 11.11V3a2 2 0 0 0-2-2H3a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8.11A6.974 6.974 0 0 0 16 23c3.86 0 7-3.14 7-7a6.974 6.974 0 0 0-2-4.89z"
             />
           </svg>
-          <p class="mb-0 mt-3 fs-20 fw-medium lh-1">Calculations</p>
+          <p class="mb-0 mt-3 fs-20 fw-medium lh-1">
+            Calculations
+          </p>
         </template>
       </SpkCardComponent>
     </div>
     <div class="col-xl-3">
-      <SpkCardComponent :useDivHeader="true" :header="true" :footer="true">
-        <template v-slot:header>
+      <SpkCardComponent :use-div-header="true" :header="true" :footer="true">
+        <template #header>
           <div class="d-flex align-items-center w-100">
             <div class="me-2">
               <span class="avatar avatar-rounded">
@@ -350,8 +394,12 @@ const dataToPass = {
               </span>
             </div>
             <div class="">
-              <div class="fs-15 fw-medium">Adam Smith</div>
-              <p class="mb-0 text-muted fs-11">28 Years, Male</p>
+              <div class="fs-15 fw-medium">
+                Adam Smith
+              </div>
+              <p class="mb-0 text-muted fs-11">
+                28 Years, Male
+              </p>
             </div>
             <div class="dropdown ms-auto">
               <a
@@ -359,7 +407,7 @@ const dataToPass = {
                 class="btn btn-icon btn-sm btn-light"
                 data-bs-toggle="dropdown"
               >
-                <i class="ri-more-2-fill"></i>
+                <i class="ri-more-2-fill" />
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="javascript:void(0);">Week</a></li>
@@ -369,62 +417,74 @@ const dataToPass = {
             </div>
           </div>
         </template>
-        <template v-slot:bodyText>
+        <template #bodyText>
           If you are going to use, you need to be sure there isn't anything embarrassing hidden in
           the middle of text. All the Lorem Ipsum generators.
         </template>
-        <template v-slot:footer>
+        <template #footer>
           <div class="d-flex justify-content-between flex-wrap gap-2">
-            <div class="fs-semibold fs-14">28,Nov 2024</div>
-            <div class="fw-medium text-success">Assistant Professor</div>
+            <div class="fs-semibold fs-14">
+              28,Nov 2024
+            </div>
+            <div class="fw-medium text-success">
+              Assistant Professor
+            </div>
           </div>
         </template>
       </SpkCardComponent>
     </div>
     <div class="col-xl-3">
       <SpkCardComponent
-        :useDivHeader="true"
+        :use-div-header="true"
         :header="true"
         :footer="true"
-        bodyClass="pt-3"
-        cardHeader="border-bottom-0 pb-0"
+        body-class="pt-3"
+        card-header="border-bottom-0 pb-0"
       >
-        <template v-slot:header>
+        <template #header>
           <div>
-            <span class="text-warning me-1"><i class="bi bi-star-fill"></i></span>
-            <span class="text-warning me-1"><i class="bi bi-star-fill"></i></span>
-            <span class="text-warning me-1"><i class="bi bi-star-fill"></i></span>
-            <span class="text-warning me-1"><i class="bi bi-star-fill"></i></span>
-            <span class="text-black op-1"><i class="bi bi-star-fill"></i></span>
-            <p class="d-block text-muted mb-0 fs-12 fw-medium">1 year ago</p>
+            <span class="text-warning me-1"><i class="bi bi-star-fill" /></span>
+            <span class="text-warning me-1"><i class="bi bi-star-fill" /></span>
+            <span class="text-warning me-1"><i class="bi bi-star-fill" /></span>
+            <span class="text-warning me-1"><i class="bi bi-star-fill" /></span>
+            <span class="text-black op-1"><i class="bi bi-star-fill" /></span>
+            <p class="d-block text-muted mb-0 fs-12 fw-medium">
+              1 year ago
+            </p>
           </div>
         </template>
-        <template v-slot:bodyText>
-          <div class="fw-medium fs-15 mb-2">Very Great!</div>
+        <template #bodyText>
+          <div class="fw-medium fs-15 mb-2">
+            Very Great!
+          </div>
           There are many variations of passages of Lorem Ipsum available, but the majority have
           suffered alteration in some form, by injected humour
         </template>
-        <template v-slot:footer>
+        <template #footer>
           <div class="d-flex align-items-center">
             <span class="avatar avatar-sm avatar-rounded me-2">
               <BaseImg src="/images/faces/12.jpg" alt="img" />
             </span>
-            <div class="fw-medium fs-14">Corey Anderson</div>
+            <div class="fw-medium fs-14">
+              Corey Anderson
+            </div>
           </div>
         </template>
       </SpkCardComponent>
     </div>
     <div class="col-xl-3">
       <SpkCardComponent
-        headerText="Featured"
+        header-text="Featured"
         :header="true"
-        titleClass="fw-medium mb-2"
-        cardClass="text-center"
-        cardFooter="text-muted"
+        title-class="fw-medium mb-2"
+        card-class="text-center"
+        card-footer="text-muted"
         footer="11.32pm"
       >
-        <template v-slot:bodyText>
-          <h6 class="card-title fw-medium mb-2">Breaking News !</h6>
+        <template #bodyText>
+          <h6 class="card-title fw-medium mb-2">
+            Breaking News !
+          </h6>
           <p class="card-text mb-4">
             With supporting text below as a natural lead-in to additional content.
           </p>
@@ -434,8 +494,8 @@ const dataToPass = {
       </SpkCardComponent>
     </div>
     <div class="col-xl-3">
-      <SpkCardComponent :useDivHeader="true" :header="true">
-        <template v-slot:header>
+      <SpkCardComponent :use-div-header="true" :header="true">
+        <template #header>
           <div class="d-flex w-100">
             <div class="me-4">
               <span class="avatar avatar-lg avatar-rounded">
@@ -444,24 +504,42 @@ const dataToPass = {
             </div>
             <div class="d-flex align-items-center justify-content-between w-100 flex-wrap">
               <div class="me-3">
-                <p class="text-muted mb-0">Posts</p>
-                <p class="fw-medium fs-16 mb-0">25</p>
+                <p class="text-muted mb-0">
+                  Posts
+                </p>
+                <p class="fw-medium fs-16 mb-0">
+                  25
+                </p>
               </div>
               <div class="me-3">
-                <p class="text-muted mb-0">Followers</p>
-                <p class="fw-medium fs-16 mb-0">1253</p>
+                <p class="text-muted mb-0">
+                  Followers
+                </p>
+                <p class="fw-medium fs-16 mb-0">
+                  1253
+                </p>
               </div>
               <div class="me-3">
-                <p class="text-muted mb-0">Following</p>
-                <p class="fw-medium fs-16 mb-0">367</p>
+                <p class="text-muted mb-0">
+                  Following
+                </p>
+                <p class="fw-medium fs-16 mb-0">
+                  367
+                </p>
               </div>
             </div>
           </div>
         </template>
-        <template v-slot:bodyText>
-          <div class="fw-medium fs-16">Angelina Caprio</div>
-          <div class="text-muted fs-11 mb-4">Angular Developer</div>
-          <p class="fs-14 fw-medium mb-1">About:</p>
+        <template #bodyText>
+          <div class="fw-medium fs-16">
+            Angelina Caprio
+          </div>
+          <div class="text-muted fs-11 mb-4">
+            Angular Developer
+          </div>
+          <p class="fs-14 fw-medium mb-1">
+            About:
+          </p>
           <p class="mb-0 card-text">
             Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form,
             accompanied by English versions
@@ -471,44 +549,50 @@ const dataToPass = {
     </div>
     <div class="col-xl-2">
       <SpkCardComponent>
-        <template v-slot:bodyText>
+        <template #bodyText>
           <BaseImg src="/images/media/media-4.jpg" class="card-img mb-3" alt="..." />
           <h6 class="card-title fw-medium mb-3">
             Mountains<span class="badge bg-primary float-end fs-10">New</span>
           </h6>
-          <p class="card-text">With supporting text below as a natural lead-in.</p>
+          <p class="card-text">
+            With supporting text below as a natural lead-in.
+          </p>
         </template>
       </SpkCardComponent>
     </div>
     <div class="col-xl-2">
       <SpkCardComponent>
-        <template v-slot:bodyText>
+        <template #bodyText>
           <BaseImg src="/images/media/media-9.jpg" class="card-img mb-3" alt="..." />
           <h6 class="card-title fw-medium mb-3">
             Hills<span class="badge bg-secondary float-end fs-10">Hot</span>
           </h6>
-          <p class="card-text">With supporting text below as a natural lead-in.</p>
+          <p class="card-text">
+            With supporting text below as a natural lead-in.
+          </p>
         </template>
       </SpkCardComponent>
     </div>
     <div class="col-xl-2">
       <SpkCardComponent>
-        <template v-slot:bodyText>
+        <template #bodyText>
           <BaseImg src="/images/media/media-15.jpg" class="card-img mb-3" alt="..." />
           <h6 class="card-title fw-medium mb-3">
             Nature<span class="badge bg-light text-dark float-end fs-10">Offer</span>
           </h6>
-          <p class="card-text">With supporting text below as a natural lead-in.</p>
+          <p class="card-text">
+            With supporting text below as a natural lead-in.
+          </p>
         </template>
       </SpkCardComponent>
     </div>
     <div class="col-xl-4">
       <SpkCollapseCard
-        :collapseToggle="true"
+        :collapse-toggle="true"
         Text="Card With Collapse Button"
         Customheaderclass="border-bottom-0"
       >
-        <template v-slot:collapseToggle>
+        <template #collapseToggle>
           <a
             href="javascript:void(0);"
             data-bs-toggle="collapse"
@@ -516,77 +600,93 @@ const dataToPass = {
             aria-expanded="false"
             aria-controls="collapseExample"
           >
-            <i class="ri-arrow-down-s-line fs-18 collapse-open"></i>
-            <i class="ri-arrow-up-s-line collapse-close fs-18"></i>
+            <i class="ri-arrow-down-s-line fs-18 collapse-open" />
+            <i class="ri-arrow-up-s-line collapse-close fs-18" />
           </a>
         </template>
-        <template v-slot:collapseContent>
+        <template #collapseContent>
           <div class="card-body">
-            <h6 class="card-text fw-medium">Collapsible Card</h6>
+            <h6 class="card-text fw-medium">
+              Collapsible Card
+            </h6>
             <p class="card-text mb-0">
               There are many variations of passages of Lorem Ipsum available, but the majority have
               suffered alteration in some form, by injected humour, or randomised words
             </p>
           </div>
           <div class="card-footer">
-            <button class="btn btn-primary">Read More</button>
+            <button class="btn btn-primary">
+              Read More
+            </button>
           </div>
         </template>
       </SpkCollapseCard>
     </div>
     <div class="col-xl-4">
-      <SpkCollapseCard :hideToggle="true" Text="Card With Close Button">
-        <template v-slot:hideContent>
+      <SpkCollapseCard :hide-toggle="true" Text="Card With Close Button">
+        <template #hideContent>
           <div class="card-body">
-            <h6 class="card-text fw-medium">Closed Card</h6>
+            <h6 class="card-text fw-medium">
+              Closed Card
+            </h6>
             <p class="card-text mb-0">
               There are many variations of passages of Lorem Ipsum available, but the majority have
               suffered alteration in some form, by injected humour, or randomised words
             </p>
           </div>
           <div class="card-footer">
-            <button class="btn btn-primary">Read More</button>
+            <button class="btn btn-primary">
+              Read More
+            </button>
           </div>
         </template>
       </SpkCollapseCard>
     </div>
     <div class="col-xl-4">
-      <SpkCollapseCard :fullScreen="true" Text="Card With Fullscreen Button">
-        <template v-slot:FullContent>
+      <SpkCollapseCard :full-screen="true" Text="Card With Fullscreen Button">
+        <template #FullContent>
           <div class="card-body">
-            <h6 class="card-text fw-medium">FullScreen Card</h6>
+            <h6 class="card-text fw-medium">
+              FullScreen Card
+            </h6>
             <p class="card-text mb-0">
               There are many variations of passages of Lorem Ipsum available, but the majority have
               suffered alteration in some form, by injected humour, or randomised words
             </p>
           </div>
           <div class="card-footer">
-            <button class="btn btn-primary">Read More</button>
+            <button class="btn btn-primary">
+              Read More
+            </button>
           </div>
         </template>
       </SpkCollapseCard>
     </div>
   </div>
-  <!-- End::row-3-->
+  <!-- End::row-3 -->
 
   <!-- Start::row-4 -->
   <div class="row">
     <div class="col-xl-3">
       <div class="row">
-        <h6 class="mb-3">Mixins utilities:</h6>
+        <h6 class="mb-3">
+          Mixins utilities:
+        </h6>
         <div class="col-xl-12">
           <SpkCardComponent
-            :useDivHeader="true"
-            cardClass="border border-success mb-3"
+            :use-div-header="true"
+            card-class="border border-success mb-3"
             :header="true"
-            headerText="Header"
-            cardHeader="bg-transparent border-bottom border-success"
-            bodyClass="text-success"
-            cardFooter="bg-transparent border-top border-success"
+            header-text="Header"
+            card-header="bg-transparent border-bottom border-success"
+            body-class="text-success"
+            card-footer="bg-transparent border-top border-success"
             footer="Footer"
           >
-            <template v-slot:bodyText>
-              <h6 class="card-title fw-medium">Looking For Success?</h6>
+            <template #bodyText>
+              <h6 class="card-title fw-medium">
+                Looking For Success?
+              </h6>
               <p class="card-text">
                 If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't
                 anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators
@@ -598,17 +698,21 @@ const dataToPass = {
       </div>
     </div>
     <div class="col-xl-9">
-      <h6 class="mb-3">Text Alignment:</h6>
+      <h6 class="mb-3">
+        Text Alignment:
+      </h6>
       <div class="row">
         <div class="col-xl-4">
           <SpkCardComponent>
-            <template v-slot:bodyText>
+            <template #bodyText>
               <div class="mb-2">
                 <span class="avatar avatar-md">
                   <BaseImg src="/images/faces/15.jpg" alt="img" />
                 </span>
               </div>
-              <h6 class="card-title fw-medium">Where it come from</h6>
+              <h6 class="card-title fw-medium">
+                Where it come from
+              </h6>
               <p class="card-text">
                 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
                 piece of classical Latin literature.
@@ -618,14 +722,16 @@ const dataToPass = {
           </SpkCardComponent>
         </div>
         <div class="col-xl-4">
-          <SpkCardComponent cardClass="text-end">
-            <template v-slot:bodyText>
+          <SpkCardComponent card-class="text-end">
+            <template #bodyText>
               <div class="mb-2">
                 <span class="avatar avatar-md">
                   <BaseImg src="/images/faces/11.jpg" alt="img" />
                 </span>
               </div>
-              <h6 class="card-title fw-medium">What is special?</h6>
+              <h6 class="card-title fw-medium">
+                What is special?
+              </h6>
               <p class="card-text">
                 There are many variations of passages of Lorem Ipsum available, but the majority
                 have suffered alteration in some form.
@@ -635,14 +741,16 @@ const dataToPass = {
           </SpkCardComponent>
         </div>
         <div class="col-xl-4">
-          <SpkCardComponent cardClass="text-center">
-            <template v-slot:bodyText>
+          <SpkCardComponent card-class="text-center">
+            <template #bodyText>
               <div class="mb-2">
                 <span class="avatar avatar-md">
                   <BaseImg src="/images/faces/3.jpg" alt="img" />
                 </span>
               </div>
-              <h6 class="card-title fw-medium">Why do we use it?</h6>
+              <h6 class="card-title fw-medium">
+                Why do we use it?
+              </h6>
               <p class="card-text">
                 Many desktop publishing packages and web page editors now use Lorem Ipsum as their
                 default model text.
@@ -659,16 +767,18 @@ const dataToPass = {
   <!-- Start::row-5 -->
   <div class="row">
     <div class="col-xxl-6 col-xl-12">
-      <h6 class="mb-3">Using Utilities:</h6>
+      <h6 class="mb-3">
+        Using Utilities:
+      </h6>
       <div class="row">
         <div class="col-xl-6">
           <SpkCardComponent
             :header="true"
-            headerText="Using Width 75%"
+            header-text="Using Width 75%"
             footer="<a href='#!' class='btn btn-primary d-grid'>Button</a>"
-            cardClass="w-75"
+            card-class="w-75"
           >
-            <template v-slot:bodyText>
+            <template #bodyText>
               <div class="card-text">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Id nostrum omnis excepturi
                 consequatur molestiae
@@ -679,19 +789,23 @@ const dataToPass = {
         <div class="col-xl-6">
           <SpkCardComponent
             :header="true"
-            headerText="Using Width 50%"
+            header-text="Using Width 50%"
             footer="<a href='#!' class='btn btn-primary d-grid'>Button</a>"
-            cardClass="w-50"
+            card-class="w-50"
           >
-            <template v-slot:bodyText>
-              <div class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit</div>
+            <template #bodyText>
+              <div class="card-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit
+              </div>
             </template>
           </SpkCardComponent>
         </div>
       </div>
     </div>
     <div class="col-xxl-6 col-xl-12">
-      <h6 class="mb-3">Navigation:</h6>
+      <h6 class="mb-3">
+        Navigation:
+      </h6>
       <div class="row">
         <div class="col-xl-6">
           <SpkNavigationCard
@@ -709,42 +823,52 @@ const dataToPass = {
   <!-- End::row-5 -->
 
   <!-- Start::row-6 -->
-  <h6 class="mb-3">Image Caps:</h6>
+  <h6 class="mb-3">
+    Image Caps:
+  </h6>
   <div class="row">
     <div class="col-xl-4">
-      <SpkCardComponent imgSrc="/images/media/media-29.jpg" imgClass="card-img-top">
-        <template v-slot:bodyText>
-          <h6 class="card-title fw-medium">Image caps are widely used in Blog's</h6>
+      <SpkCardComponent img-src="/images/media/media-29.jpg" img-class="card-img-top">
+        <template #bodyText>
+          <h6 class="card-title fw-medium">
+            Image caps are widely used in Blog's
+          </h6>
           <p class="card-text mb-3 text-muted">
             But I must explain to you how all this mistaken idea of denouncing pleasure and praising
             pain was born and I will give you a complete account of the system, and expound the
             actual teachings.
           </p>
-          <p class="card-text mb-0"><small>Last updated 3 mins ago</small></p>
+          <p class="card-text mb-0">
+            <small>Last updated 3 mins ago</small>
+          </p>
         </template>
       </SpkCardComponent>
     </div>
     <div class="col-xl-4">
-      <SpkCardComponent imgSrcB="/images/media/media-28.jpg" imgClassB="card-img-bottom">
-        <template v-slot:bodyText>
-          <h6 class="card-title fw-medium">Image caps are widely used in Blog's</h6>
+      <SpkCardComponent img-src-b="/images/media/media-28.jpg" img-class-b="card-img-bottom">
+        <template #bodyText>
+          <h6 class="card-title fw-medium">
+            Image caps are widely used in Blog's
+          </h6>
           <p class="card-text mb-3 text-muted">
             But I must explain to you how all this mistaken idea of denouncing pleasure and praising
             pain was born and I will give you a complete account of the system, and expound.
           </p>
-          <p class="card-text mb-0"><small>Last updated 3 mins ago</small></p>
+          <p class="card-text mb-0">
+            <small>Last updated 3 mins ago</small>
+          </p>
         </template>
       </SpkCardComponent>
     </div>
     <div class="col-xl-4">
       <SpkCardComponent
-        imgSrcB="/images/media/media-31.jpg"
-        imgClassB="card-img rounded-0"
+        img-src-b="/images/media/media-31.jpg"
+        img-class-b="card-img rounded-0"
         :header="true"
-        headerText="Image caps are widely used in Blog's"
+        header-text="Image caps are widely used in Blog's"
         footer="<p class='card-text mb-0'><small>Last updated 3 mins ago</small></p>"
       >
-        <template v-slot:bodyText>
+        <template #bodyText>
           <p class="card-text mb-1 text-muted">
             This is a wider card with supporting text below as a natural lead-in to additional
             content. This content is a little bit longer.
@@ -754,13 +878,13 @@ const dataToPass = {
     </div>
     <div class="col-xl-4">
       <SpkCardComponent
-        imgSrcA="/images/media/media-32.jpg"
-        imgClassA="card-img-top"
+        img-src-a="/images/media/media-32.jpg"
+        img-class-a="card-img-top"
         :header="true"
-        headerText="Image caps are widely used in Blog's"
+        header-text="Image caps are widely used in Blog's"
         footer="<p class='card-text mb-0'><small>Last updated 3 mins ago</small></p>"
       >
-        <template v-slot:bodyText>
+        <template #bodyText>
           <p class="card-text mb-1 text-muted">
             This is a wider card with supporting text below as a natural lead-in to additional
             content. This content is a little bit longer.
@@ -770,12 +894,14 @@ const dataToPass = {
     </div>
     <div class="col-xl-4">
       <SpkCardComponent
-        imgSrcB="/images/media/media-30.jpg"
-        imgClassB="card-img rounded-0"
+        img-src-b="/images/media/media-30.jpg"
+        img-class-b="card-img rounded-0"
         footer="<p class='card-text mb-0'><small>Last updated 3 mins ago</small></p>"
       >
-        <template v-slot:bodyText>
-          <h6 class="card-title fw-medium mb-1">Image caps are widely used in Blog's</h6>
+        <template #bodyText>
+          <h6 class="card-title fw-medium mb-1">
+            Image caps are widely used in Blog's
+          </h6>
           <p class="card-text mb-1 text-muted">
             This is a wider card with supporting text below as a natural lead-in to additional
             content. This content is a little bit longer.
@@ -785,16 +911,18 @@ const dataToPass = {
     </div>
     <div class="col-xl-4">
       <SpkCardComponent
-        imgSrcC="/images/media/media-33.jpg"
-        imgClassC="card-img-bottom"
+        img-src-c="/images/media/media-33.jpg"
+        img-class-c="card-img-bottom"
         :footer="true"
         :header="true"
-        headerText="Image caps are widely used in Blog's"
+        header-text="Image caps are widely used in Blog's"
       >
-        <template v-slot:footer>
-          <p class="card-text mb-0"><small>Last updated 3 mins ago</small></p>
+        <template #footer>
+          <p class="card-text mb-0">
+            <small>Last updated 3 mins ago</small>
+          </p>
         </template>
-        <template v-slot:bodyText>
+        <template #bodyText>
           <p class="card-text mb-1 text-muted">
             This is a wider card with supporting text below as a natural lead-in to additional
             content. This content is a little bit longer.
@@ -806,7 +934,9 @@ const dataToPass = {
   <!-- End::row-6 -->
 
   <!-- Start::row-7 -->
-  <h6 class="mb-3">Image Overlays:</h6>
+  <h6 class="mb-3">
+    Image Overlays:
+  </h6>
   <div class="row">
     <div class="col-xl-4">
       <SpkImageOverlayCard
@@ -818,13 +948,15 @@ const dataToPass = {
         :CardFooter="false"
         Custombodyclass="text-fixed-white overflow-y-auto"
       >
-        <template v-slot:cardContent>
+        <template #cardContent>
           <div class="card-text mb-2">
             There are many variations of passages of Lorem Ipsum available, but the majority have
             suffered alteration in some form, by injected humour, or randomised words which don't
             look even.
           </div>
-          <div class="card-text">Last updated 3 mins ago</div>
+          <div class="card-text">
+            Last updated 3 mins ago
+          </div>
         </template>
       </SpkImageOverlayCard>
     </div>
@@ -839,14 +971,18 @@ const dataToPass = {
         :CardHeader="false"
         :CardFooter="true"
       >
-        <template v-slot:cardContent>
-          <div class="card-text text-fixed-white">Image Overlays Are Awesome!</div>
+        <template #cardContent>
+          <div class="card-text text-fixed-white">
+            Image Overlays Are Awesome!
+          </div>
           <div class="card-text card-text1 mb-2">
             There are many variations of passages of Lorem Ipsum available, but the majority have
             suffered alteration in some form, by injected humour, or randomised words which don't
             look even.
           </div>
-          <div class="card-text">Last updated 3 mins ago</div>
+          <div class="card-text">
+            Last updated 3 mins ago
+          </div>
         </template>
       </SpkImageOverlayCard>
     </div>
@@ -863,7 +999,7 @@ const dataToPass = {
         :CardFooter="true"
         Footertext="Last updated 3 mins ago"
       >
-        <template v-slot:cardContent>
+        <template #cardContent>
           <div class="card-text">
             There are many variations of passages of Lorem Ipsum available, but the majority have
             suffered alteration in some form, by injected humour, or randomised words which don't
@@ -876,7 +1012,9 @@ const dataToPass = {
   <!-- End::row-7 -->
 
   <!-- Start::row-8 -->
-  <h6 class="mb-3">Horizontal Cards:</h6>
+  <h6 class="mb-3">
+    Horizontal Cards:
+  </h6>
   <div class="row">
     <div class="col-xl-4">
       <SpkHorizontalCard
@@ -889,9 +1027,13 @@ const dataToPass = {
         CardFooter="true"
         Footertext="Last updated 3 mins ago"
       >
-        <template v-slot:cardContent>
-          <h6 class="card-title fw-medium">Horizontal cards are awesome!</h6>
-          <p class="card-text">This is a wider card with supporting text below as a natural .</p>
+        <template #cardContent>
+          <h6 class="card-title fw-medium">
+            Horizontal cards are awesome!
+          </h6>
+          <p class="card-text">
+            This is a wider card with supporting text below as a natural .
+          </p>
         </template>
       </SpkHorizontalCard>
     </div>
@@ -903,13 +1045,17 @@ const dataToPass = {
         Imagesrc="/images/media/media-38.jpg"
         Title="Horizontal Cards"
       >
-        <template v-slot:cardContent>
-          <h6 class="card-title fw-medium">Horizontal cards are awesome!</h6>
+        <template #cardContent>
+          <h6 class="card-title fw-medium">
+            Horizontal cards are awesome!
+          </h6>
           <p class="card-text mb-3">
             This is a wider card with suppo rting text below as a natural lead-in to additional
             content. This content is a little bit longer.
           </p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <p class="card-text">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </p>
         </template>
       </SpkHorizontalCard>
     </div>
@@ -921,9 +1067,13 @@ const dataToPass = {
         Imgposition="after"
         Imagesrc="/images/media/media-39.jpg"
       >
-        <template v-slot:cardContent>
-          <h6 class="card-title fw-medium mb-2">Horizontal Cards</h6>
-          <div class="card-title mb-3">Horizontal cards are awesome!</div>
+        <template #cardContent>
+          <h6 class="card-title fw-medium mb-2">
+            Horizontal Cards
+          </h6>
+          <div class="card-title mb-3">
+            Horizontal cards are awesome!
+          </div>
           <p class="card-text">
             This is a wider card with supporting text below as a natural lead-in to additional
             content. This content is a little bit longer.
@@ -935,7 +1085,9 @@ const dataToPass = {
   <!-- End::row-8 -->
 
   <!-- Start::row-9 -->
-  <h6 class="mb-3">Background Colored Cards:</h6>
+  <h6 class="mb-3">
+    Background Colored Cards:
+  </h6>
   <div class="row">
     <div class="col-xl-3">
       <SpkBackgroundCard
@@ -1029,9 +1181,11 @@ const dataToPass = {
   <!-- End::row-9 -->
 
   <!-- Start::row-10 -->
-  <h6 class="mb-3">Colored Border Cards:</h6>
+  <h6 class="mb-3">
+    Colored Border Cards:
+  </h6>
   <div class="row">
-    <div class="col-xl-3" v-for="(idx, index) in cardData.borderCards" :key="index">
+    <div v-for="(idx, index) in cardData.borderCards" :key="index" class="col-xl-3">
       <SpkBorderdCard
         Navigate="javascript:void(0);"
         :Title="idx.title"
@@ -1045,17 +1199,21 @@ const dataToPass = {
   <!-- End::row-10 -->
 
   <!-- Start::row-11 -->
-  <h6 class="mb-3">Card Groups With Footer:</h6>
+  <h6 class="mb-3">
+    Card Groups With Footer:
+  </h6>
   <div class="row">
     <div class="col-xl-12">
       <div class="card-group">
         <SpkCardComponent
-          imgSrcA="/images/media/media-40.jpg"
-          imgClassA="card-img-top"
+          img-src-a="/images/media/media-40.jpg"
+          img-class-a="card-img-top"
           footer="<small class='text-muted'>Last updated 3 mins ago</small>"
         >
-          <template v-slot:bodyText>
-            <h6 class="card-title fw-medium">Delecious food is a blessing!</h6>
+          <template #bodyText>
+            <h6 class="card-title fw-medium">
+              Delecious food is a blessing!
+            </h6>
             <p class="card-text">
               This is a wider card with supporting text below as a natural lead-in to additional
               content. This content is a little bit longer.
@@ -1063,12 +1221,14 @@ const dataToPass = {
           </template>
         </SpkCardComponent>
         <SpkCardComponent
-          imgSrcA="/images/media/media-42.jpg"
-          imgClassA="card-img-top"
+          img-src-a="/images/media/media-42.jpg"
+          img-class-a="card-img-top"
           footer="<small class='text-muted'>Last updated 3 mins ago</small>"
         >
-          <template v-slot:bodyText>
-            <h6 class="card-title fw-medium">Writing is an art.</h6>
+          <template #bodyText>
+            <h6 class="card-title fw-medium">
+              Writing is an art.
+            </h6>
             <p class="card-text">
               This is a wider card with supporting text below as a natural lead-in to additional
               content. This card has even longer content than the first to show that equal height
@@ -1077,12 +1237,14 @@ const dataToPass = {
           </template>
         </SpkCardComponent>
         <SpkCardComponent
-          imgSrcA="/images/media/media-41.jpg"
-          imgClassA="card-img-top"
+          img-src-a="/images/media/media-41.jpg"
+          img-class-a="card-img-top"
           footer="<small class='text-muted'>Last updated 3 mins ago</small>"
         >
-          <template v-slot:bodyText>
-            <h6 class="card-title fw-medium">Is office the best place to earn knowledge?</h6>
+          <template #bodyText>
+            <h6 class="card-title fw-medium">
+              Is office the best place to earn knowledge?
+            </h6>
             <p class="card-text">
               This card has supporting text below as a natural lead-in to additional content.
             </p>
@@ -1094,14 +1256,18 @@ const dataToPass = {
   <!-- End::row-11 -->
 
   <!-- Start::row-12 -->
-  <h6 class="mb-3">Grid Cards:</h6>
+  <h6 class="mb-3">
+    Grid Cards:
+  </h6>
   <div class="row">
     <div class="col-xl-12">
       <div class="row row-cols-1 row-cols-md-4 g-4">
         <div class="col">
-          <SpkCardComponent imgSrcA="/images/media/media-44.jpg" imgClassA="card-img-top">
-            <template v-slot:bodyText>
-              <h6 class="card-title fw-medium">Morphology of a typical fruit.</h6>
+          <SpkCardComponent img-src-a="/images/media/media-44.jpg" img-class-a="card-img-top">
+            <template #bodyText>
+              <h6 class="card-title fw-medium">
+                Morphology of a typical fruit.
+              </h6>
               <p class="card-text">
                 If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't
                 anything embarrassing hidden in the middle of text.
@@ -1110,9 +1276,11 @@ const dataToPass = {
           </SpkCardComponent>
         </div>
         <div class="col">
-          <SpkCardComponent imgSrcA="/images/media/media-43.jpg" imgClassA="card-img-top">
-            <template v-slot:bodyText>
-              <h6 class="card-title fw-medium">Research improves ability & agility !</h6>
+          <SpkCardComponent img-src-a="/images/media/media-43.jpg" img-class-a="card-img-top">
+            <template #bodyText>
+              <h6 class="card-title fw-medium">
+                Research improves ability & agility !
+              </h6>
               <p class="card-text">
                 If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't
                 anything embarrassing hidden in the middle of text.
@@ -1121,9 +1289,11 @@ const dataToPass = {
           </SpkCardComponent>
         </div>
         <div class="col">
-          <SpkCardComponent imgSrcA="/images/media/media-45.jpg" imgClassA="card-img-top">
-            <template v-slot:bodyText>
-              <h6 class="card-title fw-medium">Most tropical areas are suitable</h6>
+          <SpkCardComponent img-src-a="/images/media/media-45.jpg" img-class-a="card-img-top">
+            <template #bodyText>
+              <h6 class="card-title fw-medium">
+                Most tropical areas are suitable
+              </h6>
               <p class="card-text">
                 If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't
                 anything embarrassing hidden in the middle of text.
@@ -1132,9 +1302,11 @@ const dataToPass = {
           </SpkCardComponent>
         </div>
         <div class="col">
-          <SpkCardComponent imgSrcA="/images/media/media-46.jpg" imgClassA="card-img-top">
-            <template v-slot:bodyText>
-              <h6 class="card-title fw-medium">Are They seasonal fruits ?</h6>
+          <SpkCardComponent img-src-a="/images/media/media-46.jpg" img-class-a="card-img-top">
+            <template #bodyText>
+              <h6 class="card-title fw-medium">
+                Are They seasonal fruits ?
+              </h6>
               <p class="card-text">
                 If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't
                 anything embarrassing hidden in the middle of text.
@@ -1148,22 +1320,24 @@ const dataToPass = {
   <!-- End::row-12 -->
 
   <!-- Start::row-13 -->
-  <h6 class="mb-3">Cards With Link:</h6>
+  <h6 class="mb-3">
+    Cards With Link:
+  </h6>
   <div class="row">
     <div class="col-xxl-3 col-xl-12">
       <SpkCardComponent
-        imgSrcA="/images/media/media-23.jpg"
-        imgClassA="card-img-top"
-        linkTag="{true}"
-        titleClass="fw-medium mb-0"
+        img-src-a="/images/media/media-23.jpg"
+        img-class-a="card-img-top"
+        link-tag="{true}"
+        title-class="fw-medium mb-0"
         title="Forests are Awesome."
       />
     </div>
     <div class="col-xxl-6 col-xl-6">
       <div class="row">
         <div class="col-xxl-12 col-xl-12">
-          <SpkCardComponent cardClass="card-bg-primary" :linkTag="true">
-            <template v-slot:bodyText>
+          <SpkCardComponent card-class="card-bg-primary" :link-tag="true">
+            <template #bodyText>
               <blockquote class="blockquote mb-0 text-center">
                 <h6 class="text-fixed-white">
                   The best and most beautiful things in the world cannot be seen or even touched —
@@ -1177,8 +1351,8 @@ const dataToPass = {
           </SpkCardComponent>
         </div>
         <div class="col-xxl-5 col-xl-12">
-          <SpkCardComponent :linkTag="true">
-            <template v-slot:bodyText>
+          <SpkCardComponent :link-tag="true">
+            <template #bodyText>
               <div class="d-flex align-items-center">
                 <div class="me-3">
                   <span class="avatar avatar-md">
@@ -1186,14 +1360,18 @@ const dataToPass = {
                   </span>
                 </div>
                 <div>
-                  <p class="card-text mb-0 fs-14 fw-medium">Atharva Simon.</p>
-                  <div class="card-title text-muted fs-12 mb-0">Correspondent Professor</div>
+                  <p class="card-text mb-0 fs-14 fw-medium">
+                    Atharva Simon.
+                  </p>
+                  <div class="card-title text-muted fs-12 mb-0">
+                    Correspondent Professor
+                  </div>
                 </div>
               </div>
             </template>
           </SpkCardComponent>
-          <SpkCardComponent cardClass="border border-info" :linkTag="true">
-            <template v-slot:bodyText>
+          <SpkCardComponent card-class="border border-info" :link-tag="true">
+            <template #bodyText>
               <div class="d-flex align-items-center">
                 <div class="me-3">
                   <span class="avatar avatar-xl">
@@ -1201,9 +1379,15 @@ const dataToPass = {
                   </span>
                 </div>
                 <div>
-                  <p class="card-text text-info mb-1 fs-14 fw-medium">Alicia Keys.</p>
-                  <div class="card-title fs-12 mb-1">Department Of Commerce</div>
-                  <div class="card-title text-muted fs-11 mb-0">24 Years, Female</div>
+                  <p class="card-text text-info mb-1 fs-14 fw-medium">
+                    Alicia Keys.
+                  </p>
+                  <div class="card-title fs-12 mb-1">
+                    Department Of Commerce
+                  </div>
+                  <div class="card-title text-muted fs-11 mb-0">
+                    24 Years, Female
+                  </div>
                 </div>
               </div>
             </template>
@@ -1218,8 +1402,10 @@ const dataToPass = {
             Imagesrc="/images/media/media-39.jpg"
             Footertext="Last updated 3 mins ago"
           >
-            <template v-slot:cardContent>
-              <h6 class="card-title mb-2 fw-medium">Fox is Beautiful ?</h6>
+            <template #cardContent>
+              <h6 class="card-title mb-2 fw-medium">
+                Fox is Beautiful ?
+              </h6>
               <p class="card-text mb-0">
                 This is a wild animal with supporting tactics and are very efficient at kill,they
                 are very Dangerous.
@@ -1234,12 +1420,14 @@ const dataToPass = {
     </div>
     <div class="col-xxl-3 col-xl-6">
       <SpkCardComponent
-        imgSrcA="/images/media/media-47.jpg"
-        imgClassA="card-img-top"
-        :linkTag="true"
+        img-src-a="/images/media/media-47.jpg"
+        img-class-a="card-img-top"
+        :link-tag="true"
       >
-        <template v-slot:bodyText>
-          <h6 class="card-title fw-medium">Most tropical areas are suitable</h6>
+        <template #bodyText>
+          <h6 class="card-title fw-medium">
+            Most tropical areas are suitable
+          </h6>
           <p class="card-text">
             If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't
             anything embarrassing hidden in the middle of text.

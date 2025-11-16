@@ -1,5 +1,5 @@
-export let LiveDemo = {
-    script: `<a class="btn btn-primary mb-1 me-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+export const LiveDemo = {
+  script: `<a class="btn btn-primary mb-1 me-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
                     aria-controls="offcanvasExample">
                     Link with href
                 </a>
@@ -244,9 +244,9 @@ export let LiveDemo = {
                         </div>
                     </div>
                 </div>`,
-  },
-  BodyScrolling = {
-    script: `<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+}
+export const BodyScrolling = {
+  script: `<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Enable
                     body scrolling
                 </button>
@@ -486,9 +486,9 @@ export let LiveDemo = {
                             </ul>
                         </div>
                     </div>`,
-  },
-  StaticBackdrop = {
-    script: `<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+}
+export const StaticBackdrop = {
+  script: `<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
                     Toggle static offcanvas
                 </button>
@@ -729,9 +729,9 @@ export let LiveDemo = {
                         </div>
                     </div>
                 </div>`,
-  },
-  BodyScrollingAndBackdrop = {
-    script: `<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Enable both
+}
+export const BodyScrollingAndBackdrop = {
+  script: `<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Enable both
                 scrolling &amp;
                 backdrop</button>
             <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
@@ -958,9 +958,9 @@ export let LiveDemo = {
                         </ul>
                     </div>
                 </div>`,
-  },
-  Placement = {
-    script: ` <button class="btn btn-primary mb-1  me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Toggle top
+}
+export const Placement = {
+  script: ` <button class="btn btn-primary mb-1  me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Toggle top
                 offcanvas</button>
             <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
                 <div class="offcanvas-header">
@@ -1212,4 +1212,4 @@ export let LiveDemo = {
                     ...
                 </div>
             </div>`,
-  }
+}

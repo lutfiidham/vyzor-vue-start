@@ -1,10 +1,11 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { Head } from '@inertiajs/vue3'
 import Tagify from '@yaireo/tagify'
-import '@yaireo/tagify/dist/tagify.css'
+import { onMounted, ref } from 'vue'
 
 import Pageheader from '@/components/pageheader/pageheader.vue'
-import { Head } from '@inertiajs/vue3'
+import '@yaireo/tagify/dist/tagify.css'
+
 const tagifyRef = ref(null)
 const tagifyWishListRef = ref(null)
 const dragSortRef = ref(null)
@@ -68,19 +69,21 @@ const dataToPass = {
 
 <template>
   <Head title="Form-Advance | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <div class="row">
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Tagify Js</div>
+          <div class="card-title">
+            Tagify Js
+          </div>
         </div>
         <div class="card-body">
           <div class="row gy-3">
             <div class="col-xl-6 custom-tag1">
               <label class="form-label d-block">Basic Tagify</label>
-              <input name="basic" value="tag1, tag2" autofocus class="form-control" />
+              <input name="basic" value="tag1, tag2" autofocus class="form-control">
             </div>
             <div class="col-xl-6 custom-tag">
               <label class="form-label d-block">Tagify With Custom Suggestions</label>
@@ -89,7 +92,7 @@ const dataToPass = {
                 class="form-control some_class_name"
                 placeholder="write some tags"
                 value="css, html, javascript"
-              />
+              >
             </div>
             <div class="col-xl-6">
               <label class="form-label d-block">Diasbled User Input</label>
@@ -98,7 +101,7 @@ const dataToPass = {
                 placeholder="Select tags from the list"
                 class="form-control"
                 disabled
-              />
+              >
             </div>
             <div class="col-xl-6 custom-tag">
               <label class="form-label d-block">Drag & Sort</label>
@@ -106,7 +109,7 @@ const dataToPass = {
                 name="drag-sort"
                 class="form-control"
                 value="tag 1, tag 2, tag 3, tag 4, tag 5, tag 6"
-              />
+              >
             </div>
           </div>
         </div>

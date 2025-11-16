@@ -1,10 +1,10 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import * as MailData from '@/shared/data/applications/email/mailappdata'
-import { Tooltip } from 'bootstrap'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
+import { Tooltip } from 'bootstrap'
+import { onMounted, onUnmounted, ref } from 'vue'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as MailData from '@/shared/data/applications/email/mailappdata'
 // Correct typing & declaration of reactive variables:
 const dataToPass = {
   title: 'Applications',
@@ -22,13 +22,13 @@ const Maildata = ref(['jay@gmail.com', 'kia@gmail.com', 'don@gmail.com', 'kimo@g
 
 let pop = null
 
-const toggleVisibility = () => {
+function toggleVisibility() {
   if (isMobile.value) {
     isVisible.value = !isVisible.value
   }
 }
 
-const handleResize = () => {
+function handleResize() {
   isMobile.value = window.innerWidth < 992
 }
 
@@ -48,7 +48,7 @@ onUnmounted(() => {
 
   // Remove all tooltips
   const popovers = document.getElementsByClassName('tooltip')
-  Array.from(popovers).forEach((item) => {
+  Array.from(popovers).forEach(item => {
     item.remove()
   })
 
@@ -58,33 +58,33 @@ onUnmounted(() => {
 })
 
 const mails = ref(
-  MailData.Mailstable.map((mail) => ({
+  MailData.Mailstable.map(mail => ({
     ...mail,
     checked: mail.checked ?? false,
-  }))
+  })),
 )
 
 const selectAll = ref(false)
 
 function toggleAll() {
-  mails.value.forEach((mail) => (mail.checked = selectAll.value))
+  mails.value.forEach(mail => (mail.checked = selectAll.value))
 }
 
 function updateSelectAll() {
-  selectAll.value = mails.value.every((mail) => mail.checked)
+  selectAll.value = mails.value.every(mail => mail.checked)
 }
 
-selectAll.value = mails.value.every((mail) => mail.checked)
+selectAll.value = mails.value.every(mail => mail.checked)
 </script>
 
 <template>
   <Head title="Email | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <div class="main-mail-container mb-3 gap-2 d-flex">
     <div
       class="mail-navigation border"
-      @click="toggleVisibility"
       :style="{ display: isMobile ? (isVisible ? 'block' : 'none') : 'block' }"
+      @click="toggleVisibility"
     >
       <div class="d-grid align-items-top p-3 pb-0">
         <button
@@ -92,7 +92,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
           data-bs-toggle="modal"
           data-bs-target="#mail-Compose"
         >
-          <i class="ri-add-circle-line fs-16 align-middle me-1"></i>New Mail
+          <i class="ri-add-circle-line fs-16 align-middle me-1" />New Mail
         </button>
       </div>
       <div>
@@ -102,19 +102,19 @@ selectAll.value = mails.value.every((mail) => mail.checked)
               <span class="fs-11 text-muted op-7 fw-medium">MAILS</span>
             </li>
             <li
-              :class="`${idx.isActive ? 'active' : ''} mail-type`"
               v-for="idx in MailData.MailMenuItems"
               :key="idx.id"
+              :class="`${idx.isActive ? 'active' : ''} mail-type`"
             >
               <a href="javascript:void(0);">
                 <div class="d-flex gap-2 align-items-center">
                   <div class="lh-1">
-                    <span class="mail-menu-icon" v-html="idx.icon"></span>
+                    <span class="mail-menu-icon" v-html="idx.icon" />
                   </div>
                   <span class="flex-fill text-nowrap">
                     {{ idx.label }}
                   </span>
-                  <span class="badge bg-primary" v-if="idx.count">5</span>
+                  <span v-if="idx.count" class="badge bg-primary">5</span>
                 </div>
               </a>
             </li>
@@ -166,7 +166,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
                   <span class="me-2 lh-1">
                     <i
                       :class="`ri-circle-line align-middle fs-10 fw-semibold text-${idx.colorClass}`"
-                    ></i>
+                    />
                   </span>
                   <span class="flex-fill text-nowrap">
                     {{ idx.label }}
@@ -186,7 +186,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
                   aria-valuenow="58"
                   aria-valuemin="0"
                   aria-valuemax="100"
-                ></div>
+                />
               </div>
             </li>
           </ul>
@@ -200,16 +200,18 @@ selectAll.value = mails.value.every((mail) => mail.checked)
       <div class="total-mails-header d-flex align-items-center border-bottom flex-wrap gap-2">
         <div>
           <input
+            id="checkAll"
+            v-model="selectAll"
             class="form-check-input"
             type="checkbox"
-            id="checkAll"
             aria-label="Select All"
-            v-model="selectAll"
             @change="toggleAll"
-          />
+          >
         </div>
         <div class="flex-fill d-flex align-items-center gap-3 flex-wrap">
-          <h6 class="fw-medium mb-0">All Mails</h6>
+          <h6 class="fw-medium mb-0">
+            All Mails
+          </h6>
           <div class="d-flex gap-2">
             <div class="btn-list">
               <button
@@ -218,7 +220,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
                 data-bs-placement="top"
                 data-bs-title="Reload"
               >
-                <i class="ti ti-refresh"></i>
+                <i class="ti ti-refresh" />
               </button>
               <button
                 class="btn btn-icon btn-sm btn-light"
@@ -226,7 +228,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
                 data-bs-placement="top"
                 data-bs-title="Archive"
               >
-                <i class="ti ti-archive"></i>
+                <i class="ti ti-archive" />
               </button>
               <button
                 class="btn btn-icon btn-sm btn-light"
@@ -234,7 +236,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
                 data-bs-placement="top"
                 data-bs-title="Delete"
               >
-                <i class="ti ti-trash"></i>
+                <i class="ti ti-trash" />
               </button>
               <button
                 class="btn btn-icon btn-sm btn-light"
@@ -242,7 +244,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
                 data-bs-placement="top"
                 data-bs-title="Report Spam"
               >
-                <i class="ti ti-alert-circle"></i>
+                <i class="ti ti-alert-circle" />
               </button>
             </div>
             <div class="dropdown">
@@ -252,7 +254,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <i class="ti ti-dots-vertical"></i>
+                <i class="ti ti-dots-vertical" />
               </button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="javascript:void(0);">Recent</a></li>
@@ -271,33 +273,33 @@ selectAll.value = mails.value.every((mail) => mail.checked)
               class="form-control shadow-none"
               placeholder="Search Email"
               aria-describedby="button-addon"
-            />
-            <button class="btn btn-primary" type="button" id="button-addon">
-              <i class="ri-search-line"></i>
+            >
+            <button id="button-addon" class="btn btn-primary" type="button">
+              <i class="ri-search-line" />
             </button>
           </div>
           <button
             class="btn btn-icon btn-light d-lg-none d-block total-mails-close"
             @click="toggleVisibility"
           >
-            <i class="ri-close-line"></i>
+            <i class="ri-close-line" />
           </button>
         </div>
       </div>
-      <PerfectScrollbar class="mail-messages" id="mail-messages">
+      <PerfectScrollbar id="mail-messages" class="mail-messages">
         <div class="table-responsive mail-messages-container">
           <table class="table text-nowrap table-borderless table-hover">
             <tbody>
               <tr v-for="idx in mails" :key="idx.id" :class="idx.isActive ? 'mail-selected' : ''">
                 <td>
                   <input
+                    :id="`mail${idx.id}`"
+                    v-model="idx.checked"
                     class="form-check-input mail-check-input"
                     type="checkbox"
-                    :id="'mail' + idx.id"
-                    v-model="idx.checked"
-                    @change="updateSelectAll"
                     aria-label="Select Mail"
-                  />
+                    @change="updateSelectAll"
+                  >
                 </td>
                 <td>
                   <div class="d-flex align-items-center gap-4">
@@ -308,7 +310,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
                       data-bs-placement="top"
                       data-bs-title="Star"
                     >
-                      <i class="ti ti-star-filled"></i>
+                      <i class="ti ti-star-filled" />
                     </a>
                     <a
                       :class="`mail-important ${idx.important}`"
@@ -317,7 +319,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
                       data-bs-placement="top"
                       data-bs-title="Mark As Important"
                     >
-                      <i class="ti ti-bookmark"></i>
+                      <i class="ti ti-bookmark" />
                     </a>
                   </div>
                 </td>
@@ -343,12 +345,10 @@ selectAll.value = mails.value.every((mail) => mail.checked)
                     data-bs-target="#offcanvasRight"
                     aria-controls="offcanvasRight"
                   >
-                    <span class="d-block mb-0 fw-medium text-truncate w-75"
-                      >{{ idx.subject }}
-                      <span :class="`badge ${idx.badge.className} ms-2`" v-if="idx.badge">{{
+                    <span class="d-block mb-0 fw-medium text-truncate w-75">{{ idx.subject }}
+                      <span v-if="idx.badge" :class="`badge ${idx.badge.className} ms-2`">{{
                         idx.badge.text
-                      }}</span></span
-                    >
+                      }}</span></span>
                     <div class="text-muted text-wrap text-truncate mail-msg-content">
                       {{ idx.content }}
                     </div>
@@ -365,7 +365,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
     </div>
   </div>
   <!-- Start::mail information offcanvas -->
-  <div class="offcanvas offcanvas-end mail-info-offcanvas" tabindex="-1" id="offcanvasRight">
+  <div id="offcanvasRight" class="offcanvas offcanvas-end mail-info-offcanvas" tabindex="-1">
     <div class="offcanvas-body p-0">
       <div class="mails-information">
         <div class="mail-info-header d-flex flex-wrap gap-2 align-items-center">
@@ -376,7 +376,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
               data-bs-placement="top"
               data-bs-title="Print"
             >
-              <i class="ri-printer-line"></i>
+              <i class="ri-printer-line" />
             </button>
             <button
               class="btn btn-icon btn-light ms-1"
@@ -384,7 +384,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
               data-bs-placement="top"
               data-bs-title="Mark as read"
             >
-              <i class="ri-mail-open-line"></i>
+              <i class="ri-mail-open-line" />
             </button>
             <button
               class="btn btn-icon btn-light ms-1"
@@ -392,7 +392,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
               data-bs-placement="top"
               data-bs-title="Reload"
             >
-              <i class="ri-refresh-line"></i>
+              <i class="ri-refresh-line" />
             </button>
           </div>
           <button
@@ -400,12 +400,14 @@ selectAll.value = mails.value.every((mail) => mail.checked)
             class="btn-close btn btn-sm btn-icon border"
             data-bs-dismiss="offcanvas"
             aria-label="Close"
-          ></button>
+          />
         </div>
-        <div class="mail-info-body p-4" id="mail-info-body">
+        <div id="mail-info-body" class="mail-info-body p-4">
           <div class="d-sm-flex d-block align-items-center justify-content-between mb-4">
             <div>
-              <p class="fs-20 fw-medium mb-0">Invoice #45678 – Payment Due Soon</p>
+              <p class="fs-20 fw-medium mb-0">
+                Invoice #45678 – Payment Due Soon
+              </p>
             </div>
             <div class="float-end">
               <span class="fs-13 fw-medium text-muted">Feb 22 2025,03:05PM</span>
@@ -418,7 +420,9 @@ selectAll.value = mails.value.every((mail) => mail.checked)
               </span>
             </div>
             <div class="flex-fill">
-              <h6 class="mb-0 fw-medium">Sarah Smith</h6>
+              <h6 class="mb-0 fw-medium">
+                Sarah Smith
+              </h6>
               <span class="text-muted fs-12">to:me</span>
             </div>
             <div class="d-flex align-items-center gap-2 fs-14">
@@ -429,7 +433,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
                 data-bs-placement="top"
                 data-bs-title="Starred"
               >
-                <i class="ri-star-line"></i>
+                <i class="ri-star-line" />
               </a>
               <a
                 href="javascript:void(0);"
@@ -438,7 +442,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
                 data-bs-placement="top"
                 data-bs-title="Archive"
               >
-                <i class="ri-inbox-archive-line"></i>
+                <i class="ri-inbox-archive-line" />
               </a>
               <a
                 href="javascript:void(0);"
@@ -447,7 +451,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
                 data-bs-placement="top"
                 data-bs-title="Report spam"
               >
-                <i class="ri-spam-2-line"></i>
+                <i class="ri-spam-2-line" />
               </a>
               <a
                 href="javascript:void(0);"
@@ -456,7 +460,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
                 data-bs-placement="top"
                 data-bs-title="Delete"
               >
-                <i class="ri-delete-bin-line"></i>
+                <i class="ri-delete-bin-line" />
               </a>
               <a
                 href="javascript:void(0);"
@@ -465,19 +469,23 @@ selectAll.value = mails.value.every((mail) => mail.checked)
                 data-bs-placement="top"
                 data-bs-title="Reply"
               >
-                <i class="ri-reply-line"></i>
+                <i class="ri-reply-line" />
               </a>
             </div>
           </div>
           <div class="main-mail-content mb-4">
-            <p class="text-muted mb-2">Dear Sarah</p>
+            <p class="text-muted mb-2">
+              Dear Sarah
+            </p>
             <p class="mb-2 text-muted">
               Thank you for your prompt attention to this matter. As we approach the end of the
               month, please ensure that the payment is made by the 28th to avoid any late fees. You
               can find the invoice attached to this email. If you require any further clarification
               or need assistance with the payment process, don't hesitate to reach out.
             </p>
-            <p class="mb-2 text-muted">Looking forward to your confirmation.</p>
+            <p class="mb-2 text-muted">
+              Looking forward to your confirmation.
+            </p>
             <p class="mb-0 mt-4">
               <span class="d-block fs-13 text-muted">Best Regards,</span>
               <span class="d-block">Finance Team</span>
@@ -489,9 +497,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
                 <div class="card custom-card">
                   <BaseImg src="/images/media/media-43.jpg" class="card-img-top" alt="..." />
                   <div class="card-body p-2 text-center">
-                    <a href="javascript:void(0);" class="text-decoration-underline"
-                      >Download <i class="ti ti-download"></i
-                    ></a>
+                    <a href="javascript:void(0);" class="text-decoration-underline">Download <i class="ti ti-download" /></a>
                   </div>
                 </div>
               </div>
@@ -499,9 +505,7 @@ selectAll.value = mails.value.every((mail) => mail.checked)
                 <div class="card custom-card">
                   <BaseImg src="/images/media/media-44.jpg" class="card-img-top" alt="..." />
                   <div class="card-body p-2 text-center">
-                    <a href="javascript:void(0);" class="text-decoration-underline"
-                      >Download <i class="ti ti-download"></i
-                    ></a>
+                    <a href="javascript:void(0);" class="text-decoration-underline">Download <i class="ti ti-download" /></a>
                   </div>
                 </div>
               </div>
@@ -509,15 +513,15 @@ selectAll.value = mails.value.every((mail) => mail.checked)
           </div>
           <div class="mail-reply">
             <div id="mail-reply-editor">
-              <vue-editor v-model="content1"></vue-editor>
+              <VueEditor v-model="content1" />
             </div>
             <div class="mail-info-footer">
               <div class="float-end">
                 <button class="btn btn-primary">
-                  <i class="ri-share-forward-line me-1 d-inline-block align-middle"></i>Forward
+                  <i class="ri-share-forward-line me-1 d-inline-block align-middle" />Forward
                 </button>
                 <button class="btn btn-danger ms-1">
-                  <i class="ri-reply-all-line me-1 d-inline-block align-middle"></i>Reply
+                  <i class="ri-reply-all-line me-1 d-inline-block align-middle" />Reply
                 </button>
               </div>
             </div>
@@ -529,8 +533,8 @@ selectAll.value = mails.value.every((mail) => mail.checked)
   <!-- End::mail information offcanvas -->
   <!-- Start::compose mail modal -->
   <div
-    class="modal modal-lg fade"
     id="mail-Compose"
+    class="modal modal-lg fade"
     tabindex="-1"
     aria-labelledby="mail-ComposeLabel"
     aria-hidden="true"
@@ -538,66 +542,67 @@ selectAll.value = mails.value.every((mail) => mail.checked)
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h6 class="modal-title" id="mail-ComposeLabel">Compose Mail</h6>
+          <h6 id="mail-ComposeLabel" class="modal-title">
+            Compose Mail
+          </h6>
           <button
             type="button"
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
-          ></button>
+          />
         </div>
         <div class="modal-body px-4">
           <div class="row">
             <div class="col-xl-6 mb-2">
-              <label for="fromMail" class="form-label"
-                >From<sup><i class="ri-star-s-fill text-success fs-8"></i></sup
-              ></label>
+              <label for="fromMail" class="form-label">From<sup><i class="ri-star-s-fill text-success fs-8" /></sup></label>
               <input
+                id="fromMail"
                 type="email"
                 class="form-control"
-                id="fromMail"
                 value="jackmiller2345@gmail.com"
-              />
+              >
             </div>
             <div class="col-xl-6 mb-2">
-              <label for="toMail" class="form-label"
-                >To<sup><i class="ri-star-s-fill text-success fs-8"></i></sup
-              ></label>
+              <label for="toMail" class="form-label">To<sup><i class="ri-star-s-fill text-success fs-8" /></sup></label>
               <VueMultiselect
+                v-model="MaildataValue"
                 :searchable="false"
                 :show-labels="false"
                 :multiple="true"
-                v-model="MaildataValue"
                 :options="Maildata"
                 :taggable="false"
-              >
-              </VueMultiselect>
+              />
             </div>
             <div class="col-xl-6 mb-2">
               <label for="mailCC" class="form-label text-dark fw-medium">Cc</label>
-              <input type="email" class="form-control" id="mailCC" />
+              <input id="mailCC" type="email" class="form-control">
             </div>
             <div class="col-xl-6 mb-2">
               <label for="mailBcc" class="form-label text-dark fw-medium">Bcc</label>
-              <input type="email" class="form-control" id="mailBcc" />
+              <input id="mailBcc" type="email" class="form-control">
             </div>
             <div class="col-xl-12 mb-2">
               <label for="Subject" class="form-label">Subject</label>
-              <input type="text" class="form-control" id="Subject" placeholder="Subject" />
+              <input id="Subject" type="text" class="form-control" placeholder="Subject">
             </div>
             <div class="col-xl-12">
               <label class="col-form-label">Content :</label>
               <div class="mail-compose">
                 <div id="mail-compose-editor">
-                  <vue-editor v-model="content1"></vue-editor>
+                  <VueEditor v-model="content1" />
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Send</button>
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+            Cancel
+          </button>
+          <button type="button" class="btn btn-primary">
+            Send
+          </button>
         </div>
       </div>
     </div>

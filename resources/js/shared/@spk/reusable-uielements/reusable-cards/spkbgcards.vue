@@ -23,11 +23,15 @@ defineProps({
           </span>
         </div>
         <div class="">
-          <div class="fs-15 fw-medium">{{ Title }}</div>
-          <p :class="`mb-0 text-${Textclass} op-7 fs-12`">{{ Value }}</p>
+          <div class="fs-15 fw-medium">
+            {{ Title }}
+          </div>
+          <p :class="`mb-0 text-${Textclass} op-7 fs-12`">
+            {{ Value }}
+          </p>
         </div>
         <div class="ms-auto">
-          <a :href="Navigate" :class="`text-${Class}`"><i class="bi bi-three-dots-vertical"></i></a>
+          <a :href="Navigate" :class="`text-${Class}`"><i class="bi bi-three-dots-vertical" /></a>
         </div>
       </div>
     </div>

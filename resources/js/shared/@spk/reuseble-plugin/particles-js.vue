@@ -1,6 +1,6 @@
 <script setup>
-import { onMounted, ref } from 'vue'
 import { tsParticles } from 'tsparticles-engine'
+import { onMounted, ref } from 'vue'
 
 const particlesContainer = ref(null)
 
@@ -115,7 +115,7 @@ const particlesOptions = {
   retina_detect: false,
 }
 
-const particlesLoaded = async (container) => {
+async function particlesLoaded(container) {
   // console.log('Particles container loaded', container)
 }
 
@@ -126,10 +126,11 @@ onMounted(async () => {
   }
 })
 </script>
+
 <template>
   <div
-    ref="particlesContainer"
     id="particles-js"
+    ref="particlesContainer"
     style="
       position: fixed;
       width: 100%;
@@ -139,7 +140,7 @@ onMounted(async () => {
       z-index: 0;
       pointer-events: none;
     "
-  ></div>
+  />
 </template>
 
 <style scoped>

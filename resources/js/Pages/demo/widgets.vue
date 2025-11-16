@@ -1,14 +1,14 @@
 <script setup>
-import { onMounted } from 'vue'
-import * as widgetsData from '@/shared/data/widgetsdata'
-import SpkEmployeeStatCard from '@/shared/@spk/reusable-widgets/spk-employeecard.vue'
-import SpkSalesCard from '@/shared/@spk/reusable-widgets/spk-salescard.vue'
-import SpkProductscard from '@/shared/@spk/reusable-widgets/spk-productscard.vue'
-import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
-const jsVectorMap = window.jsVectorMap
+import { onMounted } from 'vue'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import SpkEmployeeStatCard from '@/shared/@spk/reusable-widgets/spk-employeecard.vue'
+import SpkProductscard from '@/shared/@spk/reusable-widgets/spk-productscard.vue'
+import SpkSalesCard from '@/shared/@spk/reusable-widgets/spk-salescard.vue'
+import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
+import * as widgetsData from '@/shared/data/widgetsdata'
+import jsVectorMap from 'jsvectormap'
 
 const dataToPass = {
   title: 'Widgets',
@@ -25,7 +25,7 @@ const data = [
   },
 ]
 
-let windowWidth = window.innerWidth
+const windowWidth = window.innerWidth
 
 onMounted(() => {
   // Map with Markers
@@ -66,7 +66,7 @@ onMounted(() => {
         },
       },
     },
-    markers: markers,
+    markers,
     markerStyle: {
       initial: {
         r: 5,
@@ -88,7 +88,7 @@ onMounted(() => {
 
 <template>
   <Head title="Widgets | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row row-cols-xxl-5">
@@ -127,14 +127,16 @@ onMounted(() => {
     <div class="col-xxl-3 col-xl-6">
       <div class="card custom-card overflow-hidden">
         <div class="card-header justify-content-between">
-          <div class="card-title">Top Categories</div>
+          <div class="card-title">
+            Top Categories
+          </div>
           <a href="javascript:void(0);" class="fs-12 text-muted">
-            View All<i class="ti ti-arrow-narrow-right ms-1"></i>
+            View All<i class="ti ti-arrow-narrow-right ms-1" />
           </a>
         </div>
         <div class="card-body">
           <div id="top-categories">
-            <apexchart
+            <Apexchart
               height="155px"
               type="line"
               :options="widgetsData.Categoriesoptions"
@@ -147,12 +149,10 @@ onMounted(() => {
             <li class="list-group-item">
               <div class="d-flex align-items-start justify-content-between">
                 <div class="top-category-type one">
-                  <div class="fw-medium">Electronics</div>
-                  <span class="fs-13 text-muted"
-                    >Increased By<span class="text-success ms-1 fw-medium d-inline-block"
-                      >18.67%</span
-                    ></span
-                  >
+                  <div class="fw-medium">
+                    Electronics
+                  </div>
+                  <span class="fs-13 text-muted">Increased By<span class="text-success ms-1 fw-medium d-inline-block">18.67%</span></span>
                 </div>
                 <div class="text-end">
                   <span class="d-block fs-13 text-muted">Sales</span>
@@ -163,12 +163,10 @@ onMounted(() => {
             <li class="list-group-item">
               <div class="d-flex align-items-start justify-content-between">
                 <div class="top-category-type two">
-                  <div class="fw-medium">Fashion</div>
-                  <span class="fs-13 text-muted"
-                    >Increased By<span class="text-success ms-1 fw-medium d-inline-block"
-                      >35.46%</span
-                    ></span
-                  >
+                  <div class="fw-medium">
+                    Fashion
+                  </div>
+                  <span class="fs-13 text-muted">Increased By<span class="text-success ms-1 fw-medium d-inline-block">35.46%</span></span>
                 </div>
                 <div class="text-end">
                   <span class="d-block fs-13 text-muted">Sales</span>
@@ -179,12 +177,10 @@ onMounted(() => {
             <li class="list-group-item">
               <div class="d-flex align-items-start justify-content-between">
                 <div class="top-category-type three">
-                  <div class="fw-medium">Furniture</div>
-                  <span class="fs-13 text-muted"
-                    >Decresed By<span class="text-danger ms-1 fw-medium d-inline-block"
-                      >23.43%</span
-                    ></span
-                  >
+                  <div class="fw-medium">
+                    Furniture
+                  </div>
+                  <span class="fs-13 text-muted">Decresed By<span class="text-danger ms-1 fw-medium d-inline-block">23.43%</span></span>
                 </div>
                 <div class="text-end">
                   <span class="d-block fs-13 text-muted">Sales</span>
@@ -199,10 +195,12 @@ onMounted(() => {
     <div class="col-xxl-3 col-xl-6">
       <div class="card custom-card overflow-hidden">
         <div class="card-header">
-          <div class="card-title">Top Country Sales</div>
+          <div class="card-title">
+            Top Country Sales
+          </div>
         </div>
-        <div class="card-body" v-for="(map, index) in data" :key="index">
-          <div :id="map.chartid"></div>
+        <div v-for="(map, index) in data" :key="index" class="card-body">
+          <div :id="map.chartid" />
           <div class="mt-4">
             <ul class="list-unstyled sales-locations-list">
               <li v-for="(country, index) in widgetsData.Countries" :key="index">
@@ -212,7 +210,9 @@ onMounted(() => {
                       <BaseImg :src="country.flag" alt="" />
                     </span>
                   </div>
-                  <div class="flex-fill">{{ country.name }}</div>
+                  <div class="flex-fill">
+                    {{ country.name }}
+                  </div>
                   <div>{{ country.population.toLocaleString() }}</div>
                 </div>
                 <div
@@ -225,7 +225,7 @@ onMounted(() => {
                   <div
                     class="progress-bar progress-bar-striped progress-bar-animated"
                     :style="{ width: `${country.now}%` }"
-                  ></div>
+                  />
                 </div>
               </li>
             </ul>
@@ -236,11 +236,13 @@ onMounted(() => {
     <div class="col-xxl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Sales Revenue</div>
+          <div class="card-title">
+            Sales Revenue
+          </div>
         </div>
         <div class="card-body">
           <div id="salesOverview">
-            <apexchart
+            <Apexchart
               height="365px"
               width="100%"
               type="bar"
@@ -259,7 +261,9 @@ onMounted(() => {
     <div class="col-xxl-4 col-xl-6">
       <div class="card custom-card">
         <div class="card-header justify-content-between">
-          <div class="card-title">Top Categories</div>
+          <div class="card-title">
+            Top Categories
+          </div>
           <div class="dropdown">
             <a
               href="javascript:void(0);"
@@ -267,7 +271,7 @@ onMounted(() => {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              This Week<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block"></i>
+              This Week<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block" />
             </a>
             <ul class="dropdown-menu" role="menu">
               <li><a class="dropdown-item" href="javascript:void(0);">Today</a></li>
@@ -280,7 +284,7 @@ onMounted(() => {
           <div class="row align-items-center justify-content-center">
             <div class="col">
               <div id="top-categories1" class="py-3 text-center">
-                <apexchart
+                <Apexchart
                   height="228px"
                   type="donut"
                   :options="widgetsData.Categoriesdataoptions"
@@ -293,41 +297,51 @@ onMounted(() => {
                 <li vfor>
                   <div class="d-flex align-items-center gap-2 justify-content-between">
                     <div class="d-flex align-items-center gap-2">
-                      <i class="ri-circle-fill fs-10 text-primary"></i>Electronics
+                      <i class="ri-circle-fill fs-10 text-primary" />Electronics
                     </div>
-                    <div class="fw-semibold text-primary">31%</div>
+                    <div class="fw-semibold text-primary">
+                      31%
+                    </div>
                   </div>
                 </li>
                 <li>
                   <div class="d-flex align-items-center gap-2 justify-content-between">
                     <div class="d-flex align-items-center gap-2">
-                      <i class="ri-circle-fill fs-10 text-secondary"></i>Fashion
+                      <i class="ri-circle-fill fs-10 text-secondary" />Fashion
                     </div>
-                    <div class="fw-semibold text-secondary">26%</div>
+                    <div class="fw-semibold text-secondary">
+                      26%
+                    </div>
                   </div>
                 </li>
                 <li>
                   <div class="d-flex align-items-center gap-2 justify-content-between">
                     <div class="d-flex align-items-center gap-2">
-                      <i class="ri-circle-fill fs-10 text-info"></i>Furniture
+                      <i class="ri-circle-fill fs-10 text-info" />Furniture
                     </div>
-                    <div class="fw-semibold text-info">18%</div>
+                    <div class="fw-semibold text-info">
+                      18%
+                    </div>
                   </div>
                 </li>
                 <li>
                   <div class="d-flex align-items-center gap-2 justify-content-between">
                     <div class="d-flex align-items-center gap-2">
-                      <i class="ri-circle-fill fs-10 text-warning"></i>Appliances
+                      <i class="ri-circle-fill fs-10 text-warning" />Appliances
                     </div>
-                    <div class="fw-semibold text-warning">14%</div>
+                    <div class="fw-semibold text-warning">
+                      14%
+                    </div>
                   </div>
                 </li>
                 <li>
                   <div class="d-flex align-items-center gap-2 justify-content-between">
                     <div class="d-flex align-items-center gap-2">
-                      <i class="ri-circle-fill fs-10 text-success"></i>Gaming
+                      <i class="ri-circle-fill fs-10 text-success" />Gaming
                     </div>
-                    <div class="fw-semibold text-success">11%</div>
+                    <div class="fw-semibold text-success">
+                      11%
+                    </div>
                   </div>
                 </li>
               </ul>
@@ -339,13 +353,17 @@ onMounted(() => {
             <div class="col border-end border-inline-end-dashed">
               <div class="text-center">
                 <span class="text-muted">Last Month</span>
-                <h4 class="fw-semibold mb-0">13,965</h4>
+                <h4 class="fw-semibold mb-0">
+                  13,965
+                </h4>
               </div>
             </div>
             <div class="col">
               <div class="text-center">
                 <span class="d-block text-muted mb-1">This Month</span>
-                <h4 class="fw-semibold mb-0">15,367</h4>
+                <h4 class="fw-semibold mb-0">
+                  15,367
+                </h4>
               </div>
             </div>
           </div>
@@ -355,14 +373,15 @@ onMounted(() => {
     <div class="col-xxl-5 col-xl-6">
       <div class="card custom-card overflow-hidden">
         <div class="card-header justify-content-between">
-          <div class="card-title">Recent Orders</div>
-          <a href="javascript:void(0);" class="link-primary fw-semibold"
-            >View All Orders<i class="ri-arrow-right-s-line ms-1 align-middle"></i
-          ></a>
+          <div class="card-title">
+            Recent Orders
+          </div>
+          <a href="javascript:void(0);" class="link-primary fw-semibold">View All Orders<i class="ri-arrow-right-s-line ms-1 align-middle" /></a>
         </div>
         <div class="card-body p-0">
           <TableComponent
-            tableClass="table text-nowrap"
+            #cell="{ row }"
+            table-class="table text-nowrap"
             :headers="[
               { text: 'Order ID' },
               { text: 'Payment Mode' },
@@ -371,7 +390,6 @@ onMounted(() => {
               { text: 'Action' },
             ]"
             :rows="widgetsData.Ordersdata"
-            v-slot:cell="{ row }"
           >
             <td :class="row.tdclass">
               <span class="fw-semibold">{{ row.id }}</span>
@@ -393,7 +411,7 @@ onMounted(() => {
             </td>
             <td :class="row.tdclass">
               <button class="btn btn-sm btn-outline-light btn-wave waves-effect waves-light">
-                <i class="fe fe-eye text-muted align-middle me-1"></i>
+                <i class="fe fe-eye text-muted align-middle me-1" />
                 View
               </button>
             </td>
@@ -404,11 +422,13 @@ onMounted(() => {
     <div class="col-xxl-3">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Social Visitors</div>
+          <div class="card-title">
+            Social Visitors
+          </div>
         </div>
         <div class="card-body py-0">
           <div id="social-visitors">
-            <apexchart
+            <Apexchart
               height="390px"
               type="bar"
               :options="widgetsData.Visitorsoptions"
@@ -426,11 +446,13 @@ onMounted(() => {
     <div class="col-xxl-3 col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Social Traffic</div>
+          <div class="card-title">
+            Social Traffic
+          </div>
         </div>
         <div class="card-body pb-0 px-0">
           <div id="social-traffic1">
-            <apexchart
+            <Apexchart
               height="315px"
               type="bar"
               :options="widgetsData.Trafficoptions"
@@ -443,11 +465,13 @@ onMounted(() => {
     <div class="col-xxl-3 col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Recent Orders</div>
+          <div class="card-title">
+            Recent Orders
+          </div>
         </div>
         <div class="card-body">
           <div id="recent-orders">
-            <apexchart
+            <Apexchart
               height="260px"
               type="donut"
               :options="widgetsData.Recentoptions"
@@ -457,11 +481,10 @@ onMounted(() => {
         </div>
         <div class="card-footer">
           <div class="row gy-4">
-            <div class="col-xl-6" v-for="(item, index) in widgetsData.StatusData" :key="index">
+            <div v-for="(item, index) in widgetsData.StatusData" :key="index" class="col-xl-6">
               <div class="d-flex align-items-start gap-3 flex-wrap">
                 <div>
-                  <span :class="`avatar avatar-rounded ${item.colorClass}`" v-html="item.svg">
-                  </span>
+                  <span :class="`avatar avatar-rounded ${item.colorClass}`" v-html="item.svg" />
                 </div>
                 <div>
                   <span class="d-block text-muted fs-13">{{ item.label }}</span>
@@ -476,9 +499,11 @@ onMounted(() => {
     <div class="col-xxl-3 col-xl-6">
       <div class="card custom-card">
         <div class="card-header justify-content-between">
-          <div class="card-title">Recent Transactions</div>
+          <div class="card-title">
+            Recent Transactions
+          </div>
           <a href="javascript:void(0);" class="fs-12 text-muted fw-medium">
-            View All<i class="ti ti-arrow-narrow-right ms-1"></i>
+            View All<i class="ti ti-arrow-narrow-right ms-1" />
           </a>
         </div>
         <div class="card-body">
@@ -489,8 +514,7 @@ onMounted(() => {
                   <span
                     :class="`avatar avatar-md avatar-rounded ${item.bgClass}`"
                     v-html="item.svg"
-                  >
-                  </span>
+                  />
                 </div>
                 <div class="flex-fill">
                   <span class="d-block fw-semibold">{{ item.name }}</span>
@@ -509,21 +533,23 @@ onMounted(() => {
     <div class="col-xxl-3 col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Recent Activity</div>
+          <div class="card-title">
+            Recent Activity
+          </div>
         </div>
         <div class="card-body">
           <ul class="list-unstyled mb-0 ecommerce-recent-activity">
             <li
-              class="ecommerce-recent-activity-content"
               v-for="(item, index) in widgetsData.ActivityItems"
               :key="index"
+              class="ecommerce-recent-activity-content"
             >
               <div class="d-flex align-items-start">
                 <div class="me-3">
                   <span
                     :class="`avatar avatar-sm avatar-rounded bg-light ${item.avatarTextClass} fw-semibold`"
                   >
-                    <i :class="item.iconClass"></i>
+                    <i :class="item.iconClass" />
                   </span>
                 </div>
                 <div class="activity-content">

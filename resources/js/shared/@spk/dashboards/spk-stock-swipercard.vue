@@ -7,6 +7,7 @@ defineProps({
   width: String,
 })
 </script>
+
 <template>
   <div class="card custom-card mb-0">
     <div class="card-body">
@@ -23,24 +24,24 @@ defineProps({
         </div>
         <div class="fs-12 text-end">
           <span class="text-uppercase fw-semibold">{{ card.subtitle }}</span>
-          <span :class="`text-${card.percentColor} d-block`"
-            >{{ card.percent }}<i class="ti ti-arrow-bear-right"></i
-          ></span>
+          <span :class="`text-${card.percentColor} d-block`">{{ card.percent }}<i class="ti ti-arrow-bear-right" /></span>
         </div>
       </div>
       <div class="d-flex align-items-end justify-content-between">
         <div>
           <span class="d-block text-muted fs-12">Current Value</span>
-          <h6 class="fw-semibold mb-0">{{ card.value }}</h6>
+          <h6 class="fw-semibold mb-0">
+            {{ card.value }}
+          </h6>
         </div>
         <div :id="card.chartId">
-          <apexchart
+          <Apexchart
             :height="height"
             :type="card.type"
             :width="width"
             :options="card.chartOptions"
             :series="card.chartSeries"
-          ></apexchart>
+          />
         </div>
       </div>
     </div>

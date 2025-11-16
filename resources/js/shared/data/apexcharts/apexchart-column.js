@@ -75,14 +75,14 @@ export const Columnbasicoptions = {
   },
   tooltip: {
     y: {
-      formatter: function (val) {
-        return '$ ' + val + ' thousands'
+      formatter(val) {
+        return `$ ${val} thousands`
       },
     },
   },
 }
 
-//Column Chart With Datalabels
+// Column Chart With Datalabels
 export const Columnchartseries = [
   {
     name: 'Inflation',
@@ -112,8 +112,8 @@ export const Columnchartoptions = {
   },
   dataLabels: {
     enabled: true,
-    formatter: function (val) {
-      return val + '%'
+    formatter(val) {
+      return `${val}%`
     },
     offsetY: -20,
     style: {
@@ -178,8 +178,8 @@ export const Columnchartoptions = {
     },
     labels: {
       show: false,
-      formatter: function (val) {
-        return val + '%'
+      formatter(val) {
+        return `${val}%`
       },
     },
   },
@@ -194,7 +194,7 @@ export const Columnchartoptions = {
   },
 }
 
-//Stacked Column Chart
+// Stacked Column Chart
 export const Stackcolumnseries = [
   {
     name: 'PRODUCT A',
@@ -286,7 +286,7 @@ export const Stackcolumnoptions = {
   },
 }
 
-//100% Stacked Column Chart
+// 100% Stacked Column Chart
 export const Columnstack1series = [
   {
     name: 'PRODUCT A',
@@ -380,7 +380,7 @@ export const Columnstack1options = {
   },
 }
 
-//Column Chart With Markers
+// Column Chart With Markers
 export const Columnmakerseries = [
   {
     name: 'Actual',
@@ -536,7 +536,7 @@ export const Columnmakeroptions = {
   },
 }
 
-//Column Chart With Rotated Labels
+// Column Chart With Rotated Labels
 export const Columnrotateseries = [
   {
     name: 'Servings',
@@ -640,14 +640,44 @@ export const Columnrotateoptions = {
   },
 }
 
-//Column Chart With Negative Values
+// Column Chart With Negative Values
 export const Columnvalueseries = [
   {
     name: 'Cash Flow',
     data: [
-      1.45, 5.42, 5.9, -0.42, -12.6, -18.1, -18.2, -14.16, -11.1, -6.09, 0.34, 3.88, 13.07, 5.8, 2,
-      7.37, 8.1, 13.57, 15.75, 17.1, 19.8, -27.03, -54.4, -47.2, -43.3, -18.6, -48.6, -41.1, -39.6,
-      -37.6, -29.4, -21.4, -2.4,
+      1.45,
+      5.42,
+      5.9,
+      -0.42,
+      -12.6,
+      -18.1,
+      -18.2,
+      -14.16,
+      -11.1,
+      -6.09,
+      0.34,
+      3.88,
+      13.07,
+      5.8,
+      2,
+      7.37,
+      8.1,
+      13.57,
+      15.75,
+      17.1,
+      19.8,
+      -27.03,
+      -54.4,
+      -47.2,
+      -43.3,
+      -18.6,
+      -48.6,
+      -41.1,
+      -39.6,
+      -37.6,
+      -29.4,
+      -21.4,
+      -2.4,
     ],
   },
 ]
@@ -690,8 +720,8 @@ export const Columnvalueoptions = {
       },
     },
     labels: {
-      formatter: function (y) {
-        return y.toFixed(0) + '%'
+      formatter(y) {
+        return `${y.toFixed(0)}%`
       },
     },
   },
@@ -744,7 +774,7 @@ export const Columnvalueoptions = {
   },
 }
 
-//Range Column Chart
+// Range Column Chart
 export const Columnseries = [
   {
     data: [
@@ -828,7 +858,7 @@ export const Columnoptions = {
   },
 }
 
-//Dynamic Loaded Chart
+// Dynamic Loaded Chart
 const colors = ['#985ffd', '#e354d4', '#ff8e6f', '#0ca3e7', '#fe5454', '#0cd7b1', '#7b76fe']
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -837,6 +867,7 @@ function shuffleArray(array) {
     array[i] = array[j]
     array[j] = temp
   }
+
   return array
 }
 const arrayData = [
@@ -1039,7 +1070,7 @@ export const Columndynamixoptions = {
     style: {
       colors: ['#fff'],
     },
-    formatter: function (_val, opt) {
+    formatter(_val, opt) {
       return opt.w.globals.labels[opt.dataPointIndex]
     },
     offsetX: 0,
@@ -1048,7 +1079,7 @@ export const Columndynamixoptions = {
     },
   },
 
-  colors: colors,
+  colors,
 
   states: {
     normal: {
@@ -1129,14 +1160,14 @@ export const optionsQuarter = {
   },
   tooltip: {
     x: {
-      formatter: function (_val, opts) {
+      formatter(_val, opts) {
         return opts.w.globals.seriesNames[opts.seriesIndex]
       },
     },
   },
 }
 
-//Distributed Columns Chart
+// Distributed Columns Chart
 export const Column1series = [
   {
     data: [21, 22, 10, 28, 16, 21, 13, 30],
@@ -1147,7 +1178,7 @@ export const Column1options = {
     height: 320,
     type: 'bar',
     events: {
-      click: function () {},
+      click() {},
       mounted: (chart) => {
         chart.windowResizeHandler()
       },
@@ -1191,7 +1222,7 @@ export const Column1options = {
     ],
     labels: {
       style: {
-        colors: colors,
+        colors,
         fontSize: '12px',
       },
     },

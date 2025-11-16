@@ -1,47 +1,5 @@
-<template>
-  <div :class="['table-responsive', tableReponsiveClass]">
-    <table :class="tableClass">
-      <thead :class="theadClass">
-        <tr>
-          <th v-if="showCheckbox" :class="Customcheckclass">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="checkboxNoLabel02"
-              ref="checkall"
-              :checked="isAllChecked"
-              @change="selectAllProducts"
-            />
-          </th>
-          <th
-            v-for="(header, index) in headers"
-            :key="index"
-            v-html="header.text"
-            :class="header.thClass"
-          ></th>
-        </tr>
-      </thead>
-      <tbody :class="tbodyClass">
-        <tr v-for="(row, rowIndex) in rows" :key="rowIndex" :class="row.trClass">
-          <td v-if="showCheckbox" :class="`${row.tdClass} ${TdClass}`">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              :value="row.id"
-              v-model="checkedItems"
-            />
-
-            <!-- <input class="form-check-input" type="checkbox" ref="checkOption" :value="row.id" v-model="checkedItems" @change="checkFn" /> -->
-          </td>
-          <slot name="cell" :row="row" :index="rowIndex" />
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</template>
-
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { computed, ref } from 'vue'
 
 // Define Props
 interface Header {
@@ -72,7 +30,7 @@ const props = defineProps<{
 
 // State
 const checkedItems = ref<Array<string | number>>(
-  props.rows.filter((r) => r.checked).map((r) => r.id)
+  props.rows.filter(r => r.checked).map(r => r.id),
 )
 
 const isAllChecked = computed(() => {
@@ -81,6 +39,48 @@ const isAllChecked = computed(() => {
 
 function selectAllProducts(event: Event) {
   const isChecked = (event.target as HTMLInputElement).checked
-  checkedItems.value = isChecked ? props.rows.map((r) => r.id) : []
+  checkedItems.value = isChecked ? props.rows.map(r => r.id) : []
 }
 </script>
+
+<template>
+  <div class="table-responsive" :class="[tableReponsiveClass]">
+    <table :class="tableClass">
+      <thead :class="theadClass">
+        <tr>
+          <th v-if="showCheckbox" :class="Customcheckclass">
+            <input
+              id="checkboxNoLabel02"
+              ref="checkall"
+              class="form-check-input"
+              type="checkbox"
+              :checked="isAllChecked"
+              @change="selectAllProducts"
+            >
+          </th>
+          <th
+            v-for="(header, index) in headers"
+            :key="index"
+            :class="header.thClass"
+            v-html="header.text"
+          />
+        </tr>
+      </thead>
+      <tbody :class="tbodyClass">
+        <tr v-for="(row, rowIndex) in rows" :key="rowIndex" :class="row.trClass">
+          <td v-if="showCheckbox" :class="`${row.tdClass} ${TdClass}`">
+            <input
+              v-model="checkedItems"
+              class="form-check-input"
+              type="checkbox"
+              :value="row.id"
+            >
+
+            <!-- <input class="form-check-input" type="checkbox" ref="checkOption" :value="row.id" v-model="checkedItems" @change="checkFn" /> -->
+          </td>
+          <slot name="cell" :row="row" :index="rowIndex" />
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>

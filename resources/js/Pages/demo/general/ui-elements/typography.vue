@@ -1,8 +1,8 @@
 <script setup>
-import * as prism from '@/shared/data/prismCode/ui-elements/typography'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as prism from '@/shared/data/prismCode/ui-elements/typography'
+import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
 
 const dataToPass = {
   title: 'Ui Elements',
@@ -13,36 +13,72 @@ const dataToPass = {
 
 <template>
   <Head title="Typography | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xl-12">
       <ShowcodeCard title="Headings H tags" :code="prism.headingsHtags">
-        <h1 class="mb-3">h1. Bootstrap heading</h1>
-        <h2 class="mb-3">h2. Bootstrap heading</h2>
-        <h3 class="mb-3">h3. Bootstrap heading</h3>
-        <h4 class="mb-3">h4. Bootstrap heading</h4>
-        <h5 class="mb-3">h5. Bootstrap heading</h5>
-        <h6 class="mb-0">h6. Bootstrap heading</h6>
+        <h1 class="mb-3">
+          h1. Bootstrap heading
+        </h1>
+        <h2 class="mb-3">
+          h2. Bootstrap heading
+        </h2>
+        <h3 class="mb-3">
+          h3. Bootstrap heading
+        </h3>
+        <h4 class="mb-3">
+          h4. Bootstrap heading
+        </h4>
+        <h5 class="mb-3">
+          h5. Bootstrap heading
+        </h5>
+        <h6 class="mb-0">
+          h6. Bootstrap heading
+        </h6>
       </ShowcodeCard>
       <ShowcodeCard title="Heading Class Names" :code="prism.headingClassNames">
-        <p class="h1 mb-3">h1. Bootstrap heading</p>
-        <p class="h2 mb-3">h2. Bootstrap heading</p>
-        <p class="h3 mb-3">h3. Bootstrap heading</p>
-        <p class="h4 mb-3">h4. Bootstrap heading</p>
-        <p class="h5 mb-3">h5. Bootstrap heading</p>
-        <p class="h6 mb-0">h6. Bootstrap heading</p>
+        <p class="h1 mb-3">
+          h1. Bootstrap heading
+        </p>
+        <p class="h2 mb-3">
+          h2. Bootstrap heading
+        </p>
+        <p class="h3 mb-3">
+          h3. Bootstrap heading
+        </p>
+        <p class="h4 mb-3">
+          h4. Bootstrap heading
+        </p>
+        <p class="h5 mb-3">
+          h5. Bootstrap heading
+        </p>
+        <p class="h6 mb-0">
+          h6. Bootstrap heading
+        </p>
       </ShowcodeCard>
     </div>
     <div class="col-xl-12">
       <ShowcodeCard title="Display headings" :code="prism.displayHeadings">
-        <h1 class="display-1">Display 1</h1>
-        <h1 class="display-2">Display 2</h1>
-        <h1 class="display-3">Display 3</h1>
-        <h1 class="display-4">Display 4</h1>
-        <h1 class="display-5">Display 5</h1>
-        <h1 class="display-6">Display 6</h1>
+        <h1 class="display-1">
+          Display 1
+        </h1>
+        <h1 class="display-2">
+          Display 2
+        </h1>
+        <h1 class="display-3">
+          Display 3
+        </h1>
+        <h1 class="display-4">
+          Display 4
+        </h1>
+        <h1 class="display-5">
+          Display 5
+        </h1>
+        <h1 class="display-6">
+          Display 6
+        </h1>
       </ShowcodeCard>
       <ShowcodeCard title="Customizing headings" :code="prism.customizingHeadings">
         <h3>
@@ -65,17 +101,31 @@ const dataToPass = {
         <p><u>This line of text will render as underlined.</u></p>
         <p><small>This line of text is meant to be treated as fine print.</small></p>
         <p><strong>This line rendered as bold text.</strong></p>
-        <p class="mb-0"><em>This line rendered as italicized text.</em></p>
+        <p class="mb-0">
+          <em>This line rendered as italicized text.</em>
+        </p>
       </ShowcodeCard>
     </div>
     <div class="col-xl-12">
       <ShowcodeCard title="Font Sizes" :code="prism.fontSizes">
-        <p class="fs-1 mb-2">.fs-1 text</p>
-        <p class="fs-2 mb-2">.fs-2 text</p>
-        <p class="fs-3 mb-2">.fs-3 text</p>
-        <p class="fs-4 mb-2">.fs-4 text</p>
-        <p class="fs-5 mb-2">.fs-5 text</p>
-        <p class="fs-6 mb-0">.fs-6 text</p>
+        <p class="fs-1 mb-2">
+          .fs-1 text
+        </p>
+        <p class="fs-2 mb-2">
+          .fs-2 text
+        </p>
+        <p class="fs-3 mb-2">
+          .fs-3 text
+        </p>
+        <p class="fs-4 mb-2">
+          .fs-4 text
+        </p>
+        <p class="fs-5 mb-2">
+          .fs-5 text
+        </p>
+        <p class="fs-6 mb-0">
+          .fs-6 text
+        </p>
       </ShowcodeCard>
     </div>
   </div>
@@ -98,7 +148,9 @@ const dataToPass = {
   <!-- End:: row-3 -->
 
   <!-- Start:: row-4 -->
-  <h6 class="mb-3">Blockquotes</h6>
+  <h6 class="mb-3">
+    Blockquotes
+  </h6>
   <div class="row">
     <div class="col-xl-12">
       <ShowcodeCard title="Left Aligned" :code="prism.leftAligned">
@@ -134,7 +186,9 @@ const dataToPass = {
   <!-- End:: row-4 -->
 
   <!-- Start:: row-5 -->
-  <h6 class="mb-3">Custom Blockquotes</h6>
+  <h6 class="mb-3">
+    Custom Blockquotes
+  </h6>
   <div class="row">
     <div class="col-xl-6">
       <ShowcodeCard title="Primary Blockquote" :code="prism.primaryBlockquote">
@@ -143,7 +197,7 @@ const dataToPass = {
           <footer class="blockquote-footer mt-3 fs-14 text-muted op-7 mb-0">
             Someone famous as <cite title="Source Title">-Eleanor Roosevelt</cite>
           </footer>
-          <span class="quote-icon"><i class="ri-information-line"></i></span>
+          <span class="quote-icon"><i class="ri-information-line" /></span>
         </blockquote>
       </ShowcodeCard>
     </div>
@@ -154,7 +208,7 @@ const dataToPass = {
           <footer class="blockquote-footer mt-3 fs-14 text-muted op-7 mb-0">
             Someone famous as <cite title="Source Title">-Eleanor Roosevelt</cite>
           </footer>
-          <span class="quote-icon"><i class="ri-information-line"></i></span>
+          <span class="quote-icon"><i class="ri-information-line" /></span>
         </blockquote>
       </ShowcodeCard>
     </div>
@@ -165,7 +219,7 @@ const dataToPass = {
           <footer class="blockquote-footer mt-3 fs-14 text-muted op-7 mb-0">
             Someone famous as <cite title="Source Title">-Eleanor Roosevelt</cite>
           </footer>
-          <span class="quote-icon"><i class="ri-information-line"></i></span>
+          <span class="quote-icon"><i class="ri-information-line" /></span>
         </blockquote>
       </ShowcodeCard>
     </div>
@@ -176,7 +230,7 @@ const dataToPass = {
           <footer class="blockquote-footer mt-3 fs-14 text-muted op-7 mb-0">
             Someone famous as <cite title="Source Title">-Eleanor Roosevelt</cite>
           </footer>
-          <span class="quote-icon"><i class="ri-information-line"></i></span>
+          <span class="quote-icon"><i class="ri-information-line" /></span>
         </blockquote>
       </ShowcodeCard>
     </div>
@@ -187,7 +241,7 @@ const dataToPass = {
           <footer class="blockquote-footer mt-3 fs-14 text-muted op-7 mb-0">
             Someone famous as <cite title="Source Title">-Eleanor Roosevelt</cite>
           </footer>
-          <span class="quote-icon"><i class="ri-information-line"></i></span>
+          <span class="quote-icon"><i class="ri-information-line" /></span>
         </blockquote>
       </ShowcodeCard>
     </div>
@@ -198,7 +252,7 @@ const dataToPass = {
           <footer class="blockquote-footer mt-3 fs-14 text-muted op-7 mb-0">
             Someone famous as <cite title="Source Title">-Eleanor Roosevelt</cite>
           </footer>
-          <span class="quote-icon"><i class="ri-information-line"></i></span>
+          <span class="quote-icon"><i class="ri-information-line" /></span>
         </blockquote>
       </ShowcodeCard>
     </div>
@@ -210,27 +264,43 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Description list alignment" :code="prism.descriptionListAlignment">
         <dl class="row mb-0">
-          <dt class="col-sm-3">Description lists</dt>
-          <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
+          <dt class="col-sm-3">
+            Description lists
+          </dt>
+          <dd class="col-sm-9">
+            A description list is perfect for defining terms.
+          </dd>
 
-          <dt class="col-sm-3">Term</dt>
+          <dt class="col-sm-3">
+            Term
+          </dt>
           <dd class="col-sm-9">
             <p>Definition for the term.</p>
             <p>And some more placeholder definition text.</p>
           </dd>
 
-          <dt class="col-sm-3">Another term</dt>
-          <dd class="col-sm-9">This definition is short, so no extra paragraphs or anything.</dd>
+          <dt class="col-sm-3">
+            Another term
+          </dt>
+          <dd class="col-sm-9">
+            This definition is short, so no extra paragraphs or anything.
+          </dd>
 
-          <dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
+          <dt class="col-sm-3 text-truncate">
+            Truncated term is truncated
+          </dt>
           <dd class="col-sm-9">
             This can be useful when space is tight. Adds an ellipsis at the end.
           </dd>
 
-          <dt class="col-sm-3">Nesting</dt>
+          <dt class="col-sm-3">
+            Nesting
+          </dt>
           <dd class="col-sm-9 mb-0">
             <dl class="row mb-0">
-              <dt class="col-sm-4">Nested definition list</dt>
+              <dt class="col-sm-4">
+                Nested definition list
+              </dt>
               <dd class="col-sm-8 mb-0">
                 I heard you like definition lists. Let me put a definition list inside your
                 definition list.
@@ -267,14 +337,22 @@ const dataToPass = {
     <div class="col-xl-6">
       <ShowcodeCard title="Abbreviations" :code="prism.sbbreviations">
         <p><abbr title="attribute">attr</abbr></p>
-        <p class="mb-0"><abbr title="HyperText Markup Language" class="initialism">HTML</abbr></p>
+        <p class="mb-0">
+          <abbr title="HyperText Markup Language" class="initialism">HTML</abbr>
+        </p>
       </ShowcodeCard>
 
       <ShowcodeCard title="List inline" :code="prism.listinline">
         <ul class="list-inline mb-0">
-          <li class="list-inline-item">This is a list item.</li>
-          <li class="list-inline-item">And another one.</li>
-          <li class="list-inline-item">But they're displayed inline.</li>
+          <li class="list-inline-item">
+            This is a list item.
+          </li>
+          <li class="list-inline-item">
+            And another one.
+          </li>
+          <li class="list-inline-item">
+            But they're displayed inline.
+          </li>
         </ul>
       </ShowcodeCard>
     </div>
@@ -286,19 +364,19 @@ const dataToPass = {
           a vero sunt ut harum.
         </p>
         <div class="text-success">
-          <hr />
+          <hr>
         </div>
         <p class="mb-1">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto perspiciatis, magni
           numquam quos perferendis nulla magnam odit amet excepturi quisquam provident.
         </p>
 
-        <hr class="text-danger border-2 opacity-50" />
+        <hr class="text-danger border-2 opacity-50">
         <p class="mb-0">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus aliquid consequatur
           aut doloremque assumenda voluptatem, id qui vero adipisci! Nostrum ipsam praesentium!
         </p>
-        <hr class="border-primary border-3 opacity-75" />
+        <hr class="border-primary border-3 opacity-75">
       </ShowcodeCard>
     </div>
   </div>
@@ -308,17 +386,26 @@ const dataToPass = {
   <div class="row">
     <div class="col-xl-6">
       <ShowcodeCard title="Text transform" :code="prism.texttransform">
-        <p class="text-lowercase">Lowercased text.</p>
-        <p class="text-uppercase">Uppercased text.</p>
-        <p class="text-capitalize mb-0">CapiTaliZed text.</p>
+        <p class="text-lowercase">
+          Lowercased text.
+        </p>
+        <p class="text-uppercase">
+          Uppercased text.
+        </p>
+        <p class="text-capitalize mb-0">
+          CapiTaliZed text.
+        </p>
       </ShowcodeCard>
     </div>
     <div class="col-xl-6">
       <ShowcodeCard title="Text decoration" :code="prism.textDecoration">
-        <p class="text-decoration-underline">This text has a line underneath it.</p>
-        <p class="text-decoration-line-through">This text has a line going through it.</p>
-        <a href="javascript:void(0);" class="text-decoration-none"
-          >This link has its text decoration removed
+        <p class="text-decoration-underline">
+          This text has a line underneath it.
+        </p>
+        <p class="text-decoration-line-through">
+          This text has a line going through it.
+        </p>
+        <a href="javascript:void(0);" class="text-decoration-none">This link has its text decoration removed
         </a>
       </ShowcodeCard>
     </div>
@@ -329,14 +416,30 @@ const dataToPass = {
   <div class="row">
     <div class="col-xl-12">
       <ShowcodeCard title="Font weight and italics" :code="prism.fontWeightAndItalics">
-        <p class="fw-bold">Bold text.</p>
-        <p class="fw-bolder">Bolder weight text (relative to the parent element).</p>
-        <p class="fw-semibold">Semibold weight text.</p>
-        <p class="fw-normal">Normal weight text.</p>
-        <p class="fw-light">Light weight text.</p>
-        <p class="fw-lighter">Lighter weight text (relative to the parent element).</p>
-        <p class="fst-italic">Italic text.</p>
-        <p class="fst-normal mb-0">Text with normal font style</p>
+        <p class="fw-bold">
+          Bold text.
+        </p>
+        <p class="fw-bolder">
+          Bolder weight text (relative to the parent element).
+        </p>
+        <p class="fw-semibold">
+          Semibold weight text.
+        </p>
+        <p class="fw-normal">
+          Normal weight text.
+        </p>
+        <p class="fw-light">
+          Light weight text.
+        </p>
+        <p class="fw-lighter">
+          Lighter weight text (relative to the parent element).
+        </p>
+        <p class="fst-italic">
+          Italic text.
+        </p>
+        <p class="fst-normal mb-0">
+          Text with normal font style
+        </p>
       </ShowcodeCard>
     </div>
     <div class="col-xl-12">
@@ -370,27 +473,31 @@ const dataToPass = {
   <div class="row">
     <div class="col-xl-6">
       <ShowcodeCard title="Monospace" :code="prism.monospace">
-        <p class="font-monospace mb-0">This is in monospace</p>
+        <p class="font-monospace mb-0">
+          This is in monospace
+        </p>
       </ShowcodeCard>
     </div>
     <div class="col-xl-6">
       <ShowcodeCard title="Reset color" :code="prism.resetColor">
         <p class="text-muted mb-0">
           Muted text with a
-          <a href="javascript:void(0);" class="text-reset text-decoration-underline text-dark"
-            >reset link</a
-          >.
+          <a href="javascript:void(0);" class="text-reset text-decoration-underline text-dark">reset link</a>.
         </p>
       </ShowcodeCard>
     </div>
     <div class="col-xl-6">
       <ShowcodeCard title="Visible text" :code="prism.visibleText">
-        <p class="visible mb-0">This is visible text</p>
+        <p class="visible mb-0">
+          This is visible text
+        </p>
       </ShowcodeCard>
     </div>
     <div class="col-xl-6">
       <ShowcodeCard title="Invisible text" :code="prism.invisibleText">
-        <p class="invisible mb-0">This is invisible text</p>
+        <p class="invisible mb-0">
+          This is invisible text
+        </p>
       </ShowcodeCard>
     </div>
   </div>
@@ -400,13 +507,25 @@ const dataToPass = {
   <div class="row">
     <div class="col-xl-12">
       <ShowcodeCard title="Text alignment" :code="prism.textAlignment">
-        <p class="text-start">Start aligned text on all viewport sizes.</p>
-        <p class="text-center">Center aligned text on all viewport sizes.</p>
-        <p class="text-end">End aligned text on all viewport sizes.</p>
+        <p class="text-start">
+          Start aligned text on all viewport sizes.
+        </p>
+        <p class="text-center">
+          Center aligned text on all viewport sizes.
+        </p>
+        <p class="text-end">
+          End aligned text on all viewport sizes.
+        </p>
 
-        <p class="text-sm-start">Start aligned text on viewports sized SM (small) or wider.</p>
-        <p class="text-md-start">Start aligned text on viewports sized MD (medium) or wider.</p>
-        <p class="text-lg-start">Start aligned text on viewports sized LG (large) or wider.</p>
+        <p class="text-sm-start">
+          Start aligned text on viewports sized SM (small) or wider.
+        </p>
+        <p class="text-md-start">
+          Start aligned text on viewports sized MD (medium) or wider.
+        </p>
+        <p class="text-lg-start">
+          Start aligned text on viewports sized LG (large) or wider.
+        </p>
         <p class="text-xl-start">
           Start aligned text on viewports sized XL (extra-large) or wider.
         </p>
@@ -414,7 +533,7 @@ const dataToPass = {
     </div>
     <div class="col-xl-12">
       <ShowcodeCard
-        customCardBodyClass="p-sm-3 p-2"
+        custom-card-body-class="p-sm-3 p-2"
         title="Text wrapping and overflow"
         :code="prism.textWrappingAndOverflow"
       >

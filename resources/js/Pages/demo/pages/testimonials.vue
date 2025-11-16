@@ -1,13 +1,13 @@
 <script setup>
-import SwiperjsCardComponent from '@/shared/@spk/swiperjs-cards.vue'
-import * as TestimonialData from '@/shared/data/pages/testimonialsdata'
+import { Head } from '@inertiajs/vue3'
+import { reactive } from 'vue'
 import Pageheader from '@/components/pageheader/pageheader.vue'
 import TestimonialsStyles1 from '@/shared/@spk/pages/testimonials/TestimonialsStyles1.vue'
 import TestimonialsStyles2 from '@/shared/@spk/pages/testimonials/TestimonialsStyles2.vue'
 import TestimonialsStyles3 from '@/shared/@spk/pages/testimonials/TestimonialsStyles3.vue'
 import TestimonialsStyles4 from '@/shared/@spk/pages/testimonials/TestimonialsStyles4.vue'
-import { reactive } from 'vue'
-import { Head } from '@inertiajs/vue3'
+import SwiperjsCardComponent from '@/shared/@spk/swiperjs-cards.vue'
+import * as TestimonialData from '@/shared/data/pages/testimonialsdata'
 
 const dataToPass = reactive({
   title: 'Pages',
@@ -47,22 +47,22 @@ const breakpoints3 = reactive({
 
 <template>
   <Head title="Testimonials | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row gy-5">
     <div class="col-xl-12">
       <div class="testimonials-heading-section text-center mb-5">
         <span class="badge bg-primary-transparent rounded-pill"> Testimonials Style 1 </span>
-        <h2 class="fw-semibold mt-2 mb-1">What Our Clients Say</h2>
-        <span class="d-block text-muted fs-16 mb-3"
-          >Real feedback from customers who trust our services.</span
-        >
+        <h2 class="fw-semibold mt-2 mb-1">
+          What Our Clients Say
+        </h2>
+        <span class="d-block text-muted fs-16 mb-3">Real feedback from customers who trust our services.</span>
       </div>
       <SwiperjsCardComponent
-        :swiperItems="TestimonialData.Reviews"
-        swiperClass="swiper testimonialSwiperService1 testimonial-style1"
-        :slidesPerView="3"
-        :spaceBetween="20"
+        :swiper-items="TestimonialData.Reviews"
+        swiper-class="swiper testimonialSwiperService1 testimonial-style1"
+        :slides-per-view="3"
+        :space-between="20"
         :breakpoints="breakpoints"
         :pagination="false"
         :navigation="false"
@@ -76,16 +76,16 @@ const breakpoints3 = reactive({
     <div class="col-xl-12">
       <div class="testimonials-heading-section text-center mb-5">
         <span class="badge bg-primary-transparent rounded-pill"> Testimonials Style 2 </span>
-        <h2 class="fw-semibold mt-2 mb-1">Customer Testimonials</h2>
-        <span class="d-block text-muted fs-16 mb-3"
-          >Hear how we've made a difference in our clients’ lives.</span
-        >
+        <h2 class="fw-semibold mt-2 mb-1">
+          Customer Testimonials
+        </h2>
+        <span class="d-block text-muted fs-16 mb-3">Hear how we've made a difference in our clients’ lives.</span>
       </div>
       <SwiperjsCardComponent
-        :swiperItems="TestimonialData.CustomReviews"
-        swiperClass="swiper pagination-dynamic testimonialSwiperService testimonials-swiper-2"
-        :slidesPerView="3"
-        :spaceBetween="20"
+        :swiper-items="TestimonialData.CustomReviews"
+        swiper-class="swiper pagination-dynamic testimonialSwiperService testimonials-swiper-2"
+        :slides-per-view="3"
+        :space-between="20"
         :breakpoints="breakpoints1"
         :pagination="false"
         :navigation="false"
@@ -99,16 +99,16 @@ const breakpoints3 = reactive({
     <div class="col-xl-12">
       <div class="testimonials-heading-section text-center mb-5">
         <span class="badge bg-primary-transparent rounded-pill"> Testimonials Style 3 </span>
-        <h2 class="fw-semibold mt-2 mb-1">Client Feedback</h2>
-        <span class="d-block text-muted fs-16 mb-3"
-          >Discover why our clients choose us time and again.</span
-        >
+        <h2 class="fw-semibold mt-2 mb-1">
+          Client Feedback
+        </h2>
+        <span class="d-block text-muted fs-16 mb-3">Discover why our clients choose us time and again.</span>
       </div>
       <SwiperjsCardComponent
-        :swiperItems="TestimonialData.Testimonials3"
-        swiperClass="swiper testimonialSwiper3"
-        :slidesPerView="4"
-        :spaceBetween="20"
+        :swiper-items="TestimonialData.Testimonials3"
+        swiper-class="swiper testimonialSwiper3"
+        :slides-per-view="4"
+        :space-between="20"
         :breakpoints="breakpoints2"
         :pagination="false"
         :navigation="false"
@@ -122,16 +122,16 @@ const breakpoints3 = reactive({
     <div class="col-xl-12">
       <div class="testimonials-heading-section text-center mb-5">
         <span class="badge bg-primary-transparent rounded-pill"> Testimonials Style 4 </span>
-        <h2 class="fw-semibold mt-2 mb-1">Real Stories from Real Clients</h2>
-        <span class="d-block text-muted fs-16 mb-3"
-          >Authentic testimonials from customers sharing their success.</span
-        >
+        <h2 class="fw-semibold mt-2 mb-1">
+          Real Stories from Real Clients
+        </h2>
+        <span class="d-block text-muted fs-16 mb-3">Authentic testimonials from customers sharing their success.</span>
       </div>
       <SwiperjsCardComponent
-        :swiperItems="TestimonialData.Testimonialsdata"
-        swiperClass="swiper testimonialSwiper1 testimonial-style4"
-        :slidesPerView="3"
-        :spaceBetween="20"
+        :swiper-items="TestimonialData.Testimonialsdata"
+        swiper-class="swiper testimonialSwiper1 testimonial-style4"
+        :slides-per-view="3"
+        :space-between="20"
         :breakpoints="breakpoints3"
         :pagination="false"
         :navigation="false"
@@ -143,7 +143,7 @@ const breakpoints3 = reactive({
       </SwiperjsCardComponent>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

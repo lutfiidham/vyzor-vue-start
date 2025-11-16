@@ -5,6 +5,7 @@ defineProps({
   currencyCards: Object,
 })
 </script>
+
 <template>
   <div v-for="(item, index) in currencyCards" :key="index" class="col-xl-3 col-lg-6">
     <div class="card custom-card overflow-hidden">
@@ -17,13 +18,12 @@ defineProps({
                   <BaseImg :src="item.imgSrc" alt="" />
                 </span>
               </div>
-              <h6 class="fw-medium mb-0">{{ item.title }}</h6>
+              <h6 class="fw-medium mb-0">
+                {{ item.title }}
+              </h6>
             </div>
-            <span class="fs-25 d-flex align-items-center"
-              >{{ item.percent
-              }}<span class="fs-12 text-warning op-7 ms-2"
-                >{{ item.inc }}<i class="ti ti-arrow-big-up-line ms-1 d-inline-flex"></i
-              ></span>
+            <span class="fs-25 d-flex align-items-center">{{ item.percent
+            }}<span class="fs-12 text-warning op-7 ms-2">{{ item.inc }}<i class="ti ti-arrow-big-up-line ms-1 d-inline-flex" /></span>
               <!-- <span v-if="item.hcount" class="badge bg-success-transparent fs-10 ms-2">24H</span> -->
             </span>
           </div>
@@ -34,7 +34,7 @@ defineProps({
         </div>
       </div>
       <div id="btc-currency-chart" class="mt-1 w-100">
-        <apexchart
+        <Apexchart
           height="60px"
           type="area"
           :options="item.chartOptions"

@@ -5,6 +5,7 @@ defineProps({
   item: Object,
 })
 </script>
+
 <template>
   <div class="card custom-card">
     <div class="card-header justify-content-between">
@@ -12,7 +13,9 @@ defineProps({
         {{ item.title }}
       </div>
       <div>
-        <button class="btn btn-primary-ghost btn-wave">Connect</button>
+        <button class="btn btn-primary-ghost btn-wave">
+          Connect
+        </button>
       </div>
     </div>
     <div class="card-body">
@@ -21,13 +24,15 @@ defineProps({
           <label for="btc-wallet-address1" class="form-label">Wallet Address</label>
           <div class="input-group">
             <input
+              :id="item.id"
               type="text"
               class="form-control"
-              :id="item.id"
               :value="item.walletAddress"
               placeholder="Placeholder"
-            />
-            <button class="btn btn-primary">Copy</button>
+            >
+            <button class="btn btn-primary">
+              Copy
+            </button>
           </div>
         </div>
         <div>
@@ -42,15 +47,13 @@ defineProps({
             <div class="d-flex align-items-center gap-3 flex-wrap">
               <div class="lh-1">
                 <span class="avatar bg-success">
-                  <i class="ti ti-arrow-narrow-down fs-20"></i>
+                  <i class="ti ti-arrow-narrow-down fs-20" />
                 </span>
               </div>
               <div>
                 <span class="d-block text-muted">Received</span>
-                <span class="d-block fw-medium"
-                  >{{ item.received
-                  }}<span class="fs-12 text-muted fw-normal mx-1">{{ item.currency }}</span></span
-                >
+                <span class="d-block fw-medium">{{ item.received
+                }}<span class="fs-12 text-muted fw-normal mx-1">{{ item.currency }}</span></span>
               </div>
             </div>
           </div>
@@ -60,15 +63,13 @@ defineProps({
             <div class="d-flex align-items-center gap-3 flex-wrap">
               <div class="lh-1">
                 <span class="avatar bg-danger">
-                  <i class="ti ti-caret-up fs-20"></i>
+                  <i class="ti ti-caret-up fs-20" />
                 </span>
               </div>
               <div>
                 <span class="d-block text-muted">Sent</span>
-                <span class="d-block fw-medium"
-                  >{{ item.sent
-                  }}<span class="fs-12 text-muted fw-normal mx-1">{{ item.currency }}</span></span
-                >
+                <span class="d-block fw-medium">{{ item.sent
+                }}<span class="fs-12 text-muted fw-normal mx-1">{{ item.currency }}</span></span>
               </div>
             </div>
           </div>
@@ -78,15 +79,13 @@ defineProps({
             <div class="d-flex align-items-center gap-3 flex-wrap">
               <div class="lh-1">
                 <span class="avatar bg-warning">
-                  <i class="ti ti-wallet fs-20"></i>
+                  <i class="ti ti-wallet fs-20" />
                 </span>
               </div>
               <div>
                 <span class="d-block text-muted">Wallet Balance</span>
-                <span class="d-block fw-medium"
-                  >{{ item.balance
-                  }}<span class="fs-12 text-muted fw-normal mx-1">{{ item.currency }}</span></span
-                >
+                <span class="d-block fw-medium">{{ item.balance
+                }}<span class="fs-12 text-muted fw-normal mx-1">{{ item.currency }}</span></span>
               </div>
             </div>
           </div>

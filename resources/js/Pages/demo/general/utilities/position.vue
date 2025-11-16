@@ -1,6 +1,6 @@
 <script setup>
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
 
 const dataToPass = {
   title: 'Utilities',
@@ -11,23 +11,25 @@ const dataToPass = {
 
 <template>
   <Head title="Positions | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Positions</div>
+          <div class="card-title">
+            Positions
+          </div>
         </div>
         <div class="card-body bd-example-position-utils">
           <div class="position-relative">
-            <div class="position-absolute top-0 start-0"></div>
-            <div class="position-absolute top-0 end-0"></div>
-            <div class="position-absolute top-50 start-50"></div>
-            <div class="position-absolute bottom-50 end-50"></div>
-            <div class="position-absolute bottom-0 start-0"></div>
-            <div class="position-absolute bottom-0 end-0"></div>
+            <div class="position-absolute top-0 start-0" />
+            <div class="position-absolute top-0 end-0" />
+            <div class="position-absolute top-50 start-50" />
+            <div class="position-absolute bottom-50 end-50" />
+            <div class="position-absolute bottom-0 start-0" />
+            <div class="position-absolute bottom-0 end-0" />
           </div>
         </div>
       </div>
@@ -35,19 +37,21 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Centering Elements With Positions</div>
+          <div class="card-title">
+            Centering Elements With Positions
+          </div>
         </div>
         <div class="card-body bd-example-position-utils">
           <div class="position-relative">
-            <div class="position-absolute top-0 start-0 translate-middle"></div>
-            <div class="position-absolute top-0 start-50 translate-middle"></div>
-            <div class="position-absolute top-0 start-100 translate-middle"></div>
-            <div class="position-absolute top-50 start-0 translate-middle"></div>
-            <div class="position-absolute top-50 start-50 translate-middle"></div>
-            <div class="position-absolute top-50 start-100 translate-middle"></div>
-            <div class="position-absolute top-100 start-0 translate-middle"></div>
-            <div class="position-absolute top-100 start-50 translate-middle"></div>
-            <div class="position-absolute top-100 start-100 translate-middle"></div>
+            <div class="position-absolute top-0 start-0 translate-middle" />
+            <div class="position-absolute top-0 start-50 translate-middle" />
+            <div class="position-absolute top-0 start-100 translate-middle" />
+            <div class="position-absolute top-50 start-0 translate-middle" />
+            <div class="position-absolute top-50 start-50 translate-middle" />
+            <div class="position-absolute top-50 start-100 translate-middle" />
+            <div class="position-absolute top-100 start-0 translate-middle" />
+            <div class="position-absolute top-100 start-50 translate-middle" />
+            <div class="position-absolute top-100 start-100 translate-middle" />
           </div>
         </div>
       </div>
@@ -60,19 +64,21 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">By adding .translate-middle-x or .translate-middle-y classes</div>
+          <div class="card-title">
+            By adding .translate-middle-x or .translate-middle-y classes
+          </div>
         </div>
         <div class="card-body bd-example-position-utils">
           <div class="position-relative">
-            <div class="position-absolute top-0 start-0"></div>
-            <div class="position-absolute top-0 start-50 translate-middle-x"></div>
-            <div class="position-absolute top-0 end-0"></div>
-            <div class="position-absolute top-50 start-0 translate-middle-y"></div>
-            <div class="position-absolute top-50 start-50 translate-middle"></div>
-            <div class="position-absolute top-50 end-0 translate-middle-y"></div>
-            <div class="position-absolute bottom-0 start-0"></div>
-            <div class="position-absolute bottom-0 start-50 translate-middle-x"></div>
-            <div class="position-absolute bottom-0 end-0"></div>
+            <div class="position-absolute top-0 start-0" />
+            <div class="position-absolute top-0 start-50 translate-middle-x" />
+            <div class="position-absolute top-0 end-0" />
+            <div class="position-absolute top-50 start-0 translate-middle-y" />
+            <div class="position-absolute top-50 start-50 translate-middle" />
+            <div class="position-absolute top-50 end-0 translate-middle-y" />
+            <div class="position-absolute bottom-0 start-0" />
+            <div class="position-absolute bottom-0 start-50 translate-middle-x" />
+            <div class="position-absolute bottom-0 end-0" />
           </div>
         </div>
       </div>
@@ -82,7 +88,9 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Examples:</div>
+              <div class="card-title">
+                Examples:
+              </div>
             </div>
             <div
               class="card-body bd-example-position-examples d-flex justify-content-around flex-wrap gap-4"
@@ -91,8 +99,7 @@ const dataToPass = {
                 Mails
                 <span
                   class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
-                  >+99 <span class="visually-hidden">unread messages</span></span
-                >
+                >+99 <span class="visually-hidden">unread messages</span></span>
               </button>
 
               <button type="button" class="btn btn-dark position-relative about text-white">
@@ -107,7 +114,7 @@ const dataToPass = {
                 >
                   <path
                     d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"
-                  ></path>
+                  />
                 </svg>
               </button>
 
@@ -115,8 +122,7 @@ const dataToPass = {
                 Alerts
                 <span
                   class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2"
-                  ><span class="visually-hidden">unread messages</span></span
-                >
+                ><span class="visually-hidden">unread messages</span></span>
               </button>
             </div>
           </div>
@@ -124,7 +130,9 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Example With Buttons</div>
+              <div class="card-title">
+                Example With Buttons
+              </div>
             </div>
             <div class="card-body bd-example-position-examples">
               <div class="position-relative m-4">
@@ -136,7 +144,7 @@ const dataToPass = {
                     aria-valuenow="50"
                     aria-valuemin="0"
                     aria-valuemax="100"
-                  ></div>
+                  />
                 </div>
                 <button
                   type="button"

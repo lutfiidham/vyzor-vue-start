@@ -1,7 +1,8 @@
 <script setup>
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+
 const dataToPass = {
   title: 'Utilities',
   currentpage: 'Additional Content',
@@ -11,7 +12,7 @@ const dataToPass = {
 
 <template>
   <Head title="Additional Content | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
@@ -20,19 +21,33 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Vertical alignment With table cells</div>
+              <div class="card-title">
+                Vertical alignment With table cells
+              </div>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table style="height: 100px">
                   <tbody>
                     <tr>
-                      <td class="align-baseline">baseline</td>
-                      <td class="align-top">top</td>
-                      <td class="align-middle">middle</td>
-                      <td class="align-bottom">bottom</td>
-                      <td class="align-text-top">text-top</td>
-                      <td class="align-text-bottom">text-bottom</td>
+                      <td class="align-baseline">
+                        baseline
+                      </td>
+                      <td class="align-top">
+                        top
+                      </td>
+                      <td class="align-middle">
+                        middle
+                      </td>
+                      <td class="align-bottom">
+                        bottom
+                      </td>
+                      <td class="align-text-top">
+                        text-top
+                      </td>
+                      <td class="align-text-bottom">
+                        text-bottom
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -43,7 +58,9 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Vertical alignment With inline elements</div>
+              <div class="card-title">
+                Vertical alignment With inline elements
+              </div>
             </div>
             <div class="card-body">
               <span class="align-baseline">baseline </span>
@@ -62,22 +79,32 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Opacity</div>
+              <div class="card-title">
+                Opacity
+              </div>
             </div>
             <div class="card-body d-sm-flex">
               <div class="opacity-100 p-3 m-2 bg-primary text-fixed-white fw-bold rounded">
                 100%
               </div>
-              <div class="opacity-75 p-3 m-2 bg-primary text-fixed-white fw-bold rounded">75%</div>
-              <div class="opacity-50 p-3 m-2 bg-primary text-fixed-white fw-bold rounded">50%</div>
-              <div class="opacity-25 p-3 m-2 bg-primary text-fixed-white fw-bold rounded">25%</div>
+              <div class="opacity-75 p-3 m-2 bg-primary text-fixed-white fw-bold rounded">
+                75%
+              </div>
+              <div class="opacity-50 p-3 m-2 bg-primary text-fixed-white fw-bold rounded">
+                50%
+              </div>
+              <div class="opacity-25 p-3 m-2 bg-primary text-fixed-white fw-bold rounded">
+                25%
+              </div>
             </div>
           </div>
         </div>
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Horizontal centering</div>
+              <div class="card-title">
+                Horizontal centering
+              </div>
             </div>
             <div class="card-body">
               <div
@@ -104,15 +131,27 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Relative to the parent</div>
+          <div class="card-title">
+            Relative to the parent
+          </div>
         </div>
         <div class="card-body overflow-x-auto">
           <div class="mb-5">
-            <div class="w-25 p-3 bg-light">Width 25%</div>
-            <div class="w-50 p-3 bg-light">Width 50%</div>
-            <div class="w-75 p-3 bg-light">Width 75%</div>
-            <div class="w-100 p-3 bg-light">Width 100%</div>
-            <div class="w-auto p-3 bg-light">Width auto</div>
+            <div class="w-25 p-3 bg-light">
+              Width 25%
+            </div>
+            <div class="w-50 p-3 bg-light">
+              Width 50%
+            </div>
+            <div class="w-75 p-3 bg-light">
+              Width 75%
+            </div>
+            <div class="w-100 p-3 bg-light">
+              Width 100%
+            </div>
+            <div class="w-auto p-3 bg-light">
+              Width auto
+            </div>
           </div>
           <div style="height: 100px; background-color: rgba(255, 0, 0, 0.1)" class="d-flex">
             <div
@@ -189,10 +228,14 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Display Inline</div>
+              <div class="card-title">
+                Display Inline
+              </div>
             </div>
             <div class="card-body">
-              <div class="d-inline p-2 bg-primary text-fixed-white rounded m-1">d-inline</div>
+              <div class="d-inline p-2 bg-primary text-fixed-white rounded m-1">
+                d-inline
+              </div>
               <div class="d-inline p-2 bg-primary-transparent text-primary rounded m-1">
                 d-inline
               </div>
@@ -202,7 +245,9 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">D-block</div>
+              <div class="card-title">
+                D-block
+              </div>
             </div>
             <div class="card-body">
               <span class="d-block p-2 bg-secondary-transparent mb-1 rounded">d-block</span>
@@ -218,32 +263,48 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Float</div>
+              <div class="card-title">
+                Float
+              </div>
             </div>
             <div class="card-body">
               <div class="float-start p-2 bg-primary text-fixed-white rounded mb-2">
                 Float start
               </div>
-              <br />
-              <div class="float-end p-2 bg-primary text-fixed-white rounded">Float end</div>
-              <br />
-              <div class="float-none p-2 bg-primary text-fixed-white rounded mt-4">Don't float</div>
+              <br>
+              <div class="float-end p-2 bg-primary text-fixed-white rounded">
+                Float end
+              </div>
+              <br>
+              <div class="float-none p-2 bg-primary text-fixed-white rounded mt-4">
+                Don't float
+              </div>
             </div>
           </div>
         </div>
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Float Responsive</div>
+              <div class="card-title">
+                Float Responsive
+              </div>
             </div>
             <div class="card-body">
-              <div class="float-sm-start p-1 bg-light">Float sm</div>
-              <br />
-              <div class="float-md-end p-1 bg-light">Float md</div>
-              <br />
-              <div class="float-lg-start p-1 bg-light">Float lg</div>
-              <br />
-              <div class="float-xl-end p-1 bg-light">Float xl</div>
+              <div class="float-sm-start p-1 bg-light">
+                Float sm
+              </div>
+              <br>
+              <div class="float-md-end p-1 bg-light">
+                Float md
+              </div>
+              <br>
+              <div class="float-lg-start p-1 bg-light">
+                Float lg
+              </div>
+              <br>
+              <div class="float-xl-end p-1 bg-light">
+                Float xl
+              </div>
             </div>
           </div>
         </div>
@@ -254,13 +315,17 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Text selection</div>
+              <div class="card-title">
+                Text selection
+              </div>
             </div>
             <div class="card-body">
               <p class="user-select-all">
                 This paragraph will be entirely selected when clicked by the user.
               </p>
-              <p class="user-select-auto">This paragraph has default select behavior.</p>
+              <p class="user-select-auto">
+                This paragraph has default select behavior.
+              </p>
               <p class="user-select-none mb-0">
                 This paragraph will not be selectable when clicked by the user.
               </p>
@@ -270,25 +335,21 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Pointer events</div>
+              <div class="card-title">
+                Pointer events
+              </div>
             </div>
             <div class="card-body">
               <p>
-                <a href="javascript:void(0);" class="pe-none" tabindex="-1" aria-disabled="false"
-                  ><code class="text-primary fw-medium">This link</code></a
-                >
+                <a href="javascript:void(0);" class="pe-none" tabindex="-1" aria-disabled="false"><code class="text-primary fw-medium">This link</code></a>
                 can not be clicked.
               </p>
               <p>
-                <a href="javascript:void(0);" class="pe-auto"
-                  ><code class="text-primary fw-medium">This link</code></a
-                >
+                <a href="javascript:void(0);" class="pe-auto"><code class="text-primary fw-medium">This link</code></a>
                 can be clicked (this is default behavior).
               </p>
               <p class="pe-none mb-0">
-                <a href="javascript:void(0);" tabindex="-1" aria-disabled="false"
-                  ><code>This link</code></a
-                >
+                <a href="javascript:void(0);" tabindex="-1" aria-disabled="false"><code>This link</code></a>
                 can not be clicked because the
                 <code class="text-primary fw-medium">pointer-events</code> property is inherited
                 from its parent. However,
@@ -309,13 +370,21 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Gap</div>
+          <div class="card-title">
+            Gap
+          </div>
         </div>
         <div class="card-body">
           <div class="d-grid gap-3">
-            <div class="p-2 bg-light border">Grid item 1</div>
-            <div class="p-2 bg-light border">Grid item 2</div>
-            <div class="p-2 bg-light border">Grid item 3</div>
+            <div class="p-2 bg-light border">
+              Grid item 1
+            </div>
+            <div class="p-2 bg-light border">
+              Grid item 2
+            </div>
+            <div class="p-2 bg-light border">
+              Grid item 3
+            </div>
           </div>
         </div>
       </div>
@@ -323,13 +392,23 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Examples</div>
+          <div class="card-title">
+            Examples
+          </div>
         </div>
         <div class="card-body">
-          <div class="shadow-none p-3 mb-4 bg-light rounded">No shadow</div>
-          <div class="shadow-sm p-3 mb-4 bg-body rounded">Small shadow</div>
-          <div class="shadow p-3 mb-4 bg-body rounded">Regular shadow</div>
-          <div class="shadow-lg p-3 mb-4 bg-body rounded">Larger shadow</div>
+          <div class="shadow-none p-3 mb-4 bg-light rounded">
+            No shadow
+          </div>
+          <div class="shadow-sm p-3 mb-4 bg-body rounded">
+            Small shadow
+          </div>
+          <div class="shadow p-3 mb-4 bg-body rounded">
+            Regular shadow
+          </div>
+          <div class="shadow-lg p-3 mb-4 bg-body rounded">
+            Larger shadow
+          </div>
         </div>
       </div>
     </div>
@@ -341,7 +420,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Overflow</div>
+          <div class="card-title">
+            Overflow
+          </div>
         </div>
         <div class="card-body d-md-flex">
           <div

@@ -14,7 +14,7 @@ defineProps({
 
 <template>
   <div class="card custom-card">
-    <a href="javascript:void(0);" class="text-fixed-white" v-if="Linktag"></a>
+    <a v-if="Linktag" href="javascript:void(0);" class="text-fixed-white" />
     <div class="row g-0">
       <template v-if="Imgposition === 'before'">
         <div class="col-md-4">
@@ -24,7 +24,9 @@ defineProps({
       <div class="col-md-8">
         <template v-if="CardHeader">
           <div class="card-header">
-            <div class="card-title">{{ Title }}</div>
+            <div class="card-title">
+              {{ Title }}
+            </div>
           </div>
         </template>
         <div class="card-body">

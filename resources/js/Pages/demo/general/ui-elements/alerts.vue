@@ -1,17 +1,17 @@
 <script setup>
-import * as alertsData from '@/shared/data/ui-elements/alerts'
-import * as prism from '@/shared/data/prismCode/ui-elements/alerts'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
+import { Head } from '@inertiajs/vue3'
 import { ref } from 'vue'
 import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as prism from '@/shared/data/prismCode/ui-elements/alerts'
+import * as alertsData from '@/shared/data/ui-elements/alerts'
+import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
 
 // Reactive state for alerts
 const alerts = ref([])
 
 // Function to handle the alert showing
-const handleShowAlert = () => {
+function handleShowAlert() {
   const newAlert = {
     id: new Date().getTime(), // Unique ID for each alert
   }
@@ -27,15 +27,15 @@ const dataToPass = {
 
 <template>
   <Head title="Alerts | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
-  <!--ROW-START-->
+  <Pageheader :prop-data="dataToPass" />
+  <!-- ROW-START -->
   <div class="row">
     <div class="col-xl-12">
       <ShowcodeCard title="Basic Alerts" :code="prism.basic">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
           <strong>Holy guacamole!</strong> You should check in on some of those fields below.
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-            <i class="bi bi-x"></i>
+            <i class="bi bi-x" />
           </button>
         </div>
       </ShowcodeCard>
@@ -50,13 +50,13 @@ const dataToPass = {
         >
           <div>Nice, you triggered this alert message!</div>
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-            <i class="bi bi-x"></i>
+            <i class="bi bi-x" />
           </button>
         </div>
         <button
+          id="liveAlertBtn"
           type="button"
           class="btn btn-primary my-1"
-          id="liveAlertBtn"
           @click="handleShowAlert"
         >
           Show live alert
@@ -66,9 +66,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Outline Alerts" :code="prism.outlineAlerts">
         <div
-          :class="`alert alert-${idx.class} alert-dismissible fade show`"
           v-for="(idx, index) in alertsData.Outlinealerts"
           :key="index"
+          :class="`alert alert-${idx.class} alert-dismissible fade show`"
         >
           {{ idx.text }}
           <button
@@ -77,7 +77,7 @@ const dataToPass = {
             data-bs-dismiss="alert"
             aria-label="Close"
           >
-            <i class="bi bi-x"></i>
+            <i class="bi bi-x" />
           </button>
         </div>
       </ShowcodeCard>
@@ -88,13 +88,13 @@ const dataToPass = {
         :code="prism.solidAlertsWithDifferentShadows"
       >
         <div
-          :class="`alert alert-${idx.class} shadow-${idx.size} alert-dismissible fade show`"
           v-for="(idx, index) in alertsData.Shadowsolidalerts"
           :key="index"
+          :class="`alert alert-${idx.class} shadow-${idx.size} alert-dismissible fade show`"
         >
           {{ idx.text }}
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-            <i class="bi bi-x"></i>
+            <i class="bi bi-x" />
           </button>
         </div>
       </ShowcodeCard>
@@ -105,9 +105,9 @@ const dataToPass = {
         :code="prism.defaultAlertsWithDifferentShadows"
       >
         <div
-          :class="`alert alert-${idx.class} shadow-${idx.size}`"
           v-for="(idx, index) in alertsData.Defaultsolidalerts"
           :key="index"
+          :class="`alert alert-${idx.class} shadow-${idx.size}`"
         >
           {{ idx.text }}
         </div>
@@ -116,10 +116,10 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Default alerts" :code="prism.defaultAlerts">
         <div
-          :class="`alert alert-${idx.class}`"
-          role="alert"
           v-for="(idx, index) in alertsData.Defaultalerts"
           :key="index"
+          :class="`alert alert-${idx.class}`"
+          role="alert"
         >
           {{ idx.text }}
         </div>
@@ -128,13 +128,12 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Links in alerts" :code="prism.linksInAlerts">
         <div
-          :class="`alert alert-${idx.class}`"
-          role="alert"
           v-for="(idx, index) in alertsData.Linkalerts"
           :key="index"
+          :class="`alert alert-${idx.class}`"
+          role="alert"
         >
-          {{ idx.text1 }} <a href="javascript:void(0);" class="alert-link">{{ idx.text2 }}</a
-          >.
+          {{ idx.text1 }} <a href="javascript:void(0);" class="alert-link">{{ idx.text2 }}</a>.
           {{ idx.text3 }}
         </div>
       </ShowcodeCard>
@@ -142,9 +141,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Solid Colored Alerts" :code="prism.solidColoredAlerts">
         <div
-          :class="`alert alert-${idx.class} alert-dismissible fade show ${idx.color} `"
           v-for="(idx, index) in alertsData.Solidalerts"
           :key="index"
+          :class="`alert alert-${idx.class} alert-dismissible fade show ${idx.color} `"
         >
           {{ idx.text }}
           <button
@@ -153,7 +152,7 @@ const dataToPass = {
             data-bs-dismiss="alert"
             aria-label="Close"
           >
-            <i class="bi bi-x"></i>
+            <i class="bi bi-x" />
           </button>
         </div>
       </ShowcodeCard>
@@ -161,13 +160,13 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Rounded Solid Alerts" :code="prism.roundedSolidAlerts">
         <div
-          :class="`alert alert-${idx.class} rounded-pill alert-dismissible fade show`"
           v-for="(idx, index) in alertsData.Roundedsolidalerts"
           :key="index"
+          :class="`alert alert-${idx.class} rounded-pill alert-dismissible fade show`"
         >
           {{ idx.text }}
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-            <i class="bi bi-x"></i>
+            <i class="bi bi-x" />
           </button>
         </div>
       </ShowcodeCard>
@@ -175,13 +174,13 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Rounded Outline Alerts" :code="prism.roundedOutlineAlerts">
         <div
-          :class="`alert alert-${idx.class} rounded-pill alert-dismissible fade show`"
           v-for="(idx, index) in alertsData.Roundedoutlinealerts"
           :key="index"
+          :class="`alert alert-${idx.class} rounded-pill alert-dismissible fade show`"
         >
           {{ idx.text }}
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-            <i class="bi bi-x"></i>
+            <i class="bi bi-x" />
           </button>
         </div>
       </ShowcodeCard>
@@ -189,12 +188,12 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Rounded Default Alerts" :code="prism.roundedDefaultAlerts">
         <div
-          :class="`alert alert-${idx.class} rounded-pill alert-dismissible fade show`"
           v-for="(idx, index) in alertsData.Roundedefaultalerts"
+          :class="`alert alert-${idx.class} rounded-pill alert-dismissible fade show`"
         >
           {{ idx.text }}
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-            <i class="bi bi-x"></i>
+            <i class="bi bi-x" />
           </button>
         </div>
       </ShowcodeCard>
@@ -205,9 +204,9 @@ const dataToPass = {
         :code="prism.roundedAlertsWithCustomCloseButton"
       >
         <div
-          :class="`alert alert-${idx.class} rounded-pill alert-dismissible fade show`"
           v-for="(idx, index) in alertsData.Roundewithbtnalerts"
           :key="index"
+          :class="`alert alert-${idx.class} rounded-pill alert-dismissible fade show`"
         >
           {{ idx.text }}
           <button
@@ -216,7 +215,7 @@ const dataToPass = {
             data-bs-dismiss="alert"
             aria-label="Close"
           >
-            <i class="bi bi-x"></i>
+            <i class="bi bi-x" />
           </button>
         </div>
       </ShowcodeCard>
@@ -224,10 +223,10 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Customized Alerts With SVG's" :code="prism.customizedAlertsWithSVGs">
         <div
-          :class="`alert svg-${idx.color} alert-${idx.color} alert-dismissible fade show custom-alert-icon shadow-sm`"
-          role="alert"
           v-for="(idx, index) in alertsData.Customizedalert1"
           :key="index"
+          :class="`alert svg-${idx.color} alert-${idx.color} alert-dismissible fade show custom-alert-icon shadow-sm`"
+          role="alert"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -241,7 +240,7 @@ const dataToPass = {
           </svg>
           A customized primary alert with an icon
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-            <i class="bi bi-x"></i>
+            <i class="bi bi-x" />
           </button>
         </div>
       </ShowcodeCard>
@@ -337,10 +336,10 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Alerts With Images" :code="prism.alertsWithImages">
         <div
-          :class="`alert alert-img alert-${idx.color} alert-dismissible fase show rounded-pill flex-wrap`"
-          role="alert"
           v-for="(idx, index) in alertsData.Imagealerts"
           :key="index"
+          :class="`alert alert-img alert-${idx.color} alert-dismissible fase show rounded-pill flex-wrap`"
+          role="alert"
         >
           <div class="avatar avatar-sm me-3 avatar-rounded">
             <BaseImg :src="idx.src1" alt="img" />
@@ -352,7 +351,7 @@ const dataToPass = {
             data-bs-dismiss="alert"
             aria-label="Close"
           >
-            <i class="bi bi-x"></i>
+            <i class="bi bi-x" />
           </button>
         </div>
       </ShowcodeCard>
@@ -363,17 +362,17 @@ const dataToPass = {
         :code="prism.alertsWithDifferentSizeImages"
       >
         <div
-          :class="`alert alert-img alert-${idx.color} alert-dismissible fase show flex-wrap`"
-          role="alert"
           v-for="(idx, index) in alertsData.avatarsizealert"
           :key="index"
+          :class="`alert alert-img alert-${idx.color} alert-dismissible fase show flex-wrap`"
+          role="alert"
         >
           <div :class="`avatar avatar-${idx.class} me-3`">
             <BaseImg :src="idx.src1" alt="img" />
           </div>
           <div>A simple {{ idx.color }} alert with image—check it out!</div>
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-            <i :class="`bi bi-x ${idx.class1}`"></i>
+            <i :class="`bi bi-x ${idx.class1}`" />
           </button>
         </div>
       </ShowcodeCard>
@@ -382,23 +381,25 @@ const dataToPass = {
       <ShowcodeCard title="Additional content" :code="prism.additionalContent">
         <div class="row gy-3">
           <div
-            class="col-xl-6"
             v-for="(idx, index) in alertsData.Additionalcontentalerts"
             :key="index"
+            class="col-xl-6"
           >
             <div :class="`alert alert-${idx.class} overflow-hidden p-0`" role="alert">
               <div :class="`p-3 bg-${idx.class} text-fixed-white d-flex justify-content-between`">
-                <h6 class="aletr-heading mb-0 text-fixed-white">Thank you for reporting this.</h6>
+                <h6 class="aletr-heading mb-0 text-fixed-white">
+                  Thank you for reporting this.
+                </h6>
                 <button
                   type="button"
                   class="btn-close p-0 text-fixed-white"
                   data-bs-dismiss="alert"
                   aria-label="Close"
                 >
-                  <i class="bi bi-x"></i>
+                  <i class="bi bi-x" />
                 </button>
               </div>
-              <hr class="my-0" />
+              <hr class="my-0">
               <div class="p-3">
                 <p class="mb-0">
                   {{ idx.text2 }}
@@ -414,11 +415,11 @@ const dataToPass = {
     </div>
     <div class="col-xl-12">
       <div class="row">
-        <div class="col-xl-3" v-for="(idx, index) in alertsData.Svgalert1" :key="index">
+        <div v-for="(idx, index) in alertsData.Svgalert1" :key="index" class="col-xl-3">
           <div class="card border-0">
             <div :class="`alert alert-solid-${idx.color} border border-${idx.color} mb-0 p-2`">
               <div class="d-flex align-items-start">
-                <div class="me-2 svg-white" v-html="idx.class1"></div>
+                <div class="me-2 svg-white" v-html="idx.class1" />
                 <div class="text-fixed-white w-100">
                   <div class="fw-medium d-flex justify-content-between">
                     {{ idx.text1
@@ -428,16 +429,17 @@ const dataToPass = {
                       data-bs-dismiss="alert"
                       aria-label="Close"
                     >
-                      <i class="bi bi-x"></i>
+                      <i class="bi bi-x" />
                     </button>
                   </div>
-                  <div class="fs-12 op-8 mb-1">{{ idx.text2 }}</div>
+                  <div class="fs-12 op-8 mb-1">
+                    {{ idx.text2 }}
+                  </div>
                   <div class="fs-12 d-inline-flex">
                     <a
                       href="javascript:void(0);"
                       :class="`text-fixed-white fw-medium me-2 op-7 ${idx.class}`"
-                      >{{ idx.btn1 }}</a
-                    >
+                    >{{ idx.btn1 }}</a>
                     <a href="javascript:void(0);" class="text-fixed-white fw-medium">{{
                       idx.btn2
                     }}</a>
@@ -451,11 +453,11 @@ const dataToPass = {
     </div>
     <div class="col-xl-12">
       <div class="row">
-        <div class="col-xl-3" v-for="(idx, index) in alertsData.Svgalert" :key="index">
+        <div v-for="(idx, index) in alertsData.Svgalert" :key="index" class="col-xl-3">
           <div class="card border-0">
             <div :class="`alert alert-${idx.color} border border-${idx.color} mb-0 p-2`">
               <div class="d-flex align-items-start">
-                <div :class="`me-2 svg-${idx.color}`" v-html="idx.class1"></div>
+                <div :class="`me-2 svg-${idx.color}`" v-html="idx.class1" />
                 <div :class="`text-${idx.color} w-100`">
                   <div class="fw-medium d-flex justify-content-between">
                     {{ idx.text1
@@ -465,16 +467,17 @@ const dataToPass = {
                       data-bs-dismiss="alert"
                       aria-label="Close"
                     >
-                      <i class="bi bi-x"></i>
+                      <i class="bi bi-x" />
                     </button>
                   </div>
-                  <div class="fs-12 op-8 mb-1">{{ idx.text2 }}</div>
+                  <div class="fs-12 op-8 mb-1">
+                    {{ idx.text2 }}
+                  </div>
                   <div class="fs-12 d-inline-flex">
                     <a
                       href="javascript:void(0);"
                       :class="`text-${idx.class} fw-medium me-2 d-inline-block`"
-                      >cancel</a
-                    >
+                    >cancel</a>
                     <a href="javascript:void(0);" :class="`text-${idx.color} fw-medium`">open</a>
                   </div>
                 </div>
@@ -494,7 +497,7 @@ const dataToPass = {
               data-bs-dismiss="alert"
               aria-label="Close"
             >
-              <i class="bi bi-x"></i>
+              <i class="bi bi-x" />
             </button>
             <div class="text-center px-5 pb-0 svg-primary">
               <svg
@@ -510,10 +513,16 @@ const dataToPass = {
                 />
               </svg>
               <h5>Information?</h5>
-              <p class="">This alert is created to just show the related information.</p>
+              <p class="">
+                This alert is created to just show the related information.
+              </p>
               <div class="">
-                <button class="btn btn-sm btn-outline-danger m-1">Decline</button>
-                <button class="btn btn-sm btn-primary m-1">Accept</button>
+                <button class="btn btn-sm btn-outline-danger m-1">
+                  Decline
+                </button>
+                <button class="btn btn-sm btn-primary m-1">
+                  Accept
+                </button>
               </div>
             </div>
           </div>
@@ -526,7 +535,7 @@ const dataToPass = {
               data-bs-dismiss="alert"
               aria-label="Close"
             >
-              <i class="bi bi-x"></i>
+              <i class="bi bi-x" />
             </button>
             <div class="text-center px-5 pb-0 svg-secondary">
               <svg
@@ -543,9 +552,13 @@ const dataToPass = {
                 />
               </svg>
               <h5>Confirmed</h5>
-              <p class="">This alert is created to just show the confirmation message.</p>
+              <p class="">
+                This alert is created to just show the confirmation message.
+              </p>
               <div class="">
-                <button class="btn btn-sm btn-secondary m-1">Close</button>
+                <button class="btn btn-sm btn-secondary m-1">
+                  Close
+                </button>
               </div>
             </div>
           </div>
@@ -558,7 +571,7 @@ const dataToPass = {
               data-bs-dismiss="alert"
               aria-label="Close"
             >
-              <i class="bi bi-x"></i>
+              <i class="bi bi-x" />
             </button>
             <div class="text-center px-5 pb-0 svg-warning">
               <svg
@@ -573,10 +586,16 @@ const dataToPass = {
                 <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
               </svg>
               <h5>Warning</h5>
-              <p class="">This alert is created to just show the warning message.</p>
+              <p class="">
+                This alert is created to just show the warning message.
+              </p>
               <div class="">
-                <button class="btn btn-sm btn-outline-secondary m-1">Back</button>
-                <button class="btn btn-sm btn-warning m-1">Continue</button>
+                <button class="btn btn-sm btn-outline-secondary m-1">
+                  Back
+                </button>
+                <button class="btn btn-sm btn-warning m-1">
+                  Continue
+                </button>
               </div>
             </div>
           </div>
@@ -589,7 +608,7 @@ const dataToPass = {
               data-bs-dismiss="alert"
               aria-label="Close"
             >
-              <i class="bi bi-x"></i>
+              <i class="bi bi-x" />
             </button>
             <div class="text-center px-5 pb-0 svg-danger">
               <svg
@@ -606,9 +625,13 @@ const dataToPass = {
                 />
               </svg>
               <h5>danger</h5>
-              <p class="">This alert is created to just show the danger message.</p>
+              <p class="">
+                This alert is created to just show the danger message.
+              </p>
               <div class="">
-                <button class="btn btn-sm btn-danger m-1">Delete</button>
+                <button class="btn btn-sm btn-danger m-1">
+                  Delete
+                </button>
               </div>
             </div>
           </div>
@@ -616,7 +639,7 @@ const dataToPass = {
       </div>
     </div>
   </div>
-  <!--ROW-END-->
+  <!-- ROW-END -->
 </template>
 
 <style scoped>

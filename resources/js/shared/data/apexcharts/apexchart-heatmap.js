@@ -5,12 +5,13 @@ function generateData(count, yrange) {
   const series = []
 
   while (i < count) {
-    const x = 'w' + (i + 1).toString()
+    const x = `w${(i + 1).toString()}`
     const y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min
 
     series.push({ x, y })
     i++
   }
+
   return series
 }
 
@@ -84,7 +85,7 @@ export const Heatboptions = {
     height: 350,
     type: 'heatmap',
     events: {
-      mounted: (chart) => {
+      mounted: chart => {
         chart.windowResizeHandler()
       },
     },
@@ -129,7 +130,7 @@ export const Heatboptions = {
   },
 }
 
-//Multi Series Heatmap Chart
+// Multi Series Heatmap Chart
 const data = [
   {
     name: 'W1',
@@ -260,7 +261,7 @@ export const Heatmultioptions = {
     height: 350,
     type: 'heatmap',
     events: {
-      mounted: (chart) => {
+      mounted: chart => {
         chart.windowResizeHandler()
       },
     },
@@ -268,7 +269,7 @@ export const Heatmultioptions = {
   dataLabels: {
     enabled: false,
   },
-  colors: colors,
+  colors,
   xaxis: {
     type: 'category',
     categories: ['10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '01:00', '01:30'],
@@ -381,7 +382,7 @@ export const Heatrangeoptions = {
     height: 350,
     type: 'heatmap',
     events: {
-      mounted: (chart) => {
+      mounted: chart => {
         chart.windowResizeHandler()
       },
     },
@@ -534,7 +535,7 @@ export const Heatshadeoptions = {
     height: 350,
     type: 'heatmap',
     events: {
-      mounted: (chart) => {
+      mounted: chart => {
         chart.windowResizeHandler()
       },
     },

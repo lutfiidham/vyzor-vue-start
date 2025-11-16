@@ -82,7 +82,7 @@ export const Treebasicoptions = {
   },
 }
 
-//Multi Dimensional Treemap Chart
+// Multi Dimensional Treemap Chart
 export const Treemultiseries = [
   {
     // name: "Desktops",
@@ -335,7 +335,7 @@ export const Treecoloroptions = {
     style: {
       fontSize: '12px',
     },
-    formatter: function (text, op) {
+    formatter(text, op) {
       return [text, op.value]
     },
     offsetY: -4,

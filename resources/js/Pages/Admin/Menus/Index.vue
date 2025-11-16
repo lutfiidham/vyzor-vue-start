@@ -1,9 +1,9 @@
 <script setup>
-import { ref, computed, onMounted, nextTick, watch } from 'vue'
 import { Head, router } from '@inertiajs/vue3'
-import { useToast } from '@/composables/useToast'
-import { useConfirm } from '@/composables/useConfirm'
 import Sortable from 'sortablejs'
+import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { useConfirm } from '@/composables/useConfirm'
+import { useToast } from '@/composables/useToast'
 import ToggleSwitch from '../../../../UI/toggleSwitch.vue'
 
 const props = defineProps({
@@ -38,30 +38,32 @@ const form = ref({
 // Computed
 const stats = computed(() => ({
   total: props.menuList.length,
-  active: props.menuList.filter((m) => m.is_active).length,
-  inactive: props.menuList.filter((m) => m.is_active === false).length,
-  withChildren: props.menuList.filter((m) => m.children && m.children.length > 0).length,
+  active: props.menuList.filter(m => m.is_active).length,
+  inactive: props.menuList.filter(m => m.is_active === false).length,
+  withChildren: props.menuList.filter(m => m.children && m.children.length > 0).length,
 }))
 
 const availableParentMenus = computed(() => {
   if (!editingMenu.value) {
     return props.parentMenus
   }
-  return props.parentMenus.filter((p) => p.id !== editingMenu.value.id)
+
+  return props.parentMenus.filter(p => p.id !== editingMenu.value.id)
 })
 
 // Methods
-const getTypeBadge = (type) => {
+function getTypeBadge(type) {
   const badges = {
     menutitle: 'bg-info-transparent',
     link: 'bg-primary-transparent',
     sub: 'bg-warning-transparent',
   }
+
   return badges[type] || 'bg-secondary-transparent'
 }
 
 // Toggle demo menu visibility
-const toggleDemoMenu = (value) => {
+function toggleDemoMenu(value) {
   router.post(
     '/admin/menus/toggle-demo-menu',
     {
@@ -76,11 +78,11 @@ const toggleDemoMenu = (value) => {
         const errorMessage = Object.values(errors)[0] || 'Failed to update demo menu setting'
         toast.error(errorMessage)
       },
-    }
+    },
   )
 }
 
-const openCreateModal = () => {
+function openCreateModal() {
   editingMenu.value = null
   viewingMenu.value = null
   form.value = {
@@ -102,7 +104,7 @@ const openCreateModal = () => {
   }
 }
 
-const viewMenu = (menu) => {
+function viewMenu(menu) {
   viewingMenu.value = menu
   editingMenu.value = null
   form.value = {
@@ -117,7 +119,7 @@ const viewMenu = (menu) => {
     is_active: menu.is_active,
     target: menu.target,
     description: menu.description,
-    role_ids: menu.roles?.map((r) => r.id) || [],
+    role_ids: menu.roles?.map(r => r.id) || [],
   }
 
   if (menuModal.value) {
@@ -125,15 +127,15 @@ const viewMenu = (menu) => {
   }
 }
 
-const editMenu = (menu) => {
+function editMenu(menu) {
   editingMenu.value = menu
   viewingMenu.value = null
 
   // Ensure parent_id is correct type (number or null)
-  const parentId = menu.parent_id ? parseInt(menu.parent_id) : null
+  const parentId = menu.parent_id ? Number.parseInt(menu.parent_id) : null
 
   // Ensure role_ids are numbers
-  const roleIds = menu.roles?.map((r) => parseInt(r.id)) || []
+  const roleIds = menu.roles?.map(r => Number.parseInt(r.id)) || []
 
   form.value = {
     title: menu.title || '',
@@ -155,9 +157,10 @@ const editMenu = (menu) => {
   }
 }
 
-const confirmDeleteMenu = async (menu) => {
+async function confirmDeleteMenu(menu) {
   if (menu.children_count > 0) {
     toast.error(`Cannot delete menu. It has ${menu.children_count} child menus.`)
+
     return
   }
 
@@ -177,7 +180,7 @@ const confirmDeleteMenu = async (menu) => {
   }
 }
 
-const clearCache = () => {
+function clearCache() {
   router.post(
     '/admin/menus/clear-cache',
     {},
@@ -194,11 +197,11 @@ const clearCache = () => {
         const errorMessage = Object.values(errors)[0] || 'Failed to clear cache'
         toast.error(errorMessage)
       },
-    }
+    },
   )
 }
 
-const toggleStatus = (menu) => {
+function toggleStatus(menu) {
   router.post(
     `/admin/menus/${menu.id}/toggle`,
     {},
@@ -210,18 +213,20 @@ const toggleStatus = (menu) => {
       onError: (errors) => {
         toast.error('Failed to update menu status')
       },
-    }
+    },
   )
 }
 
-const saveMenu = () => {
+function saveMenu() {
   if (!form.value.title) {
     toast.error('Please enter menu title')
+
     return
   }
 
   if (!form.value.role_ids || form.value.role_ids.length === 0) {
     toast.error('Please select at least one role')
+
     return
   }
 
@@ -239,7 +244,8 @@ const saveMenu = () => {
         toast.error(errorMessage)
       },
     })
-  } else {
+  }
+  else {
     router.post('/admin/menus', form.value, {
       preserveScroll: true,
       onSuccess: () => {
@@ -259,7 +265,7 @@ const saveMenu = () => {
 // Initialize Sortable for drag and drop
 let menuSortable = null
 
-const initializeSortable = () => {
+function initializeSortable() {
   nextTick(() => {
     const menuTable = document.querySelector('table tbody')
 
@@ -307,7 +313,7 @@ const initializeSortable = () => {
 }
 
 // Handle menu reorder
-const handleMenuReorder = (evt) => {
+function handleMenuReorder(evt) {
   const menuId = evt.item.dataset.menuId
   const newParentId = evt.item.dataset.parentId
   const newIndex = evt.newIndex
@@ -323,18 +329,18 @@ const handleMenuReorder = (evt) => {
 
     if (id && id !== menuId) {
       menuItems.push({
-        id: parseInt(id),
+        id: Number.parseInt(id),
         order: index,
-        parent_id: parentId ? parseInt(parentId) : null,
+        parent_id: parentId ? Number.parseInt(parentId) : null,
       })
     }
   })
 
   // Add the moved menu item
   menuItems.splice(newIndex, 0, {
-    id: parseInt(menuId),
+    id: Number.parseInt(menuId),
     order: newIndex,
-    parent_id: newParentId ? parseInt(newParentId) : null,
+    parent_id: newParentId ? Number.parseInt(newParentId) : null,
   })
 
   // Renumber all items
@@ -360,7 +366,7 @@ const handleMenuReorder = (evt) => {
         // Reload to restore original order
         router.reload({ only: ['menuList'] })
       },
-    }
+    },
   )
 }
 
@@ -388,7 +394,7 @@ watch(
       initializeSortable()
     })
   },
-  { deep: true }
+  { deep: true },
 )
 </script>
 
@@ -400,15 +406,25 @@ watch(
       class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb"
     >
       <div>
-        <h1 class="page-title fw-semibold fs-20 mb-0">Menu Management</h1>
-        <p class="mb-0 text-muted">Manage application menus and navigation</p>
+        <h1 class="page-title fw-semibold fs-20 mb-0">
+          Menu Management
+        </h1>
+        <p class="mb-0 text-muted">
+          Manage application menus and navigation
+        </p>
       </div>
       <div class="ms-md-1 ms-0">
         <nav>
           <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-            <li class="breadcrumb-item"><a href="javascript:void(0);">Admin</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Menus</li>
+            <li class="breadcrumb-item">
+              <a href="/dashboard">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="javascript:void(0);">Admin</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Menus
+            </li>
           </ol>
         </nav>
       </div>
@@ -421,15 +437,19 @@ watch(
           <div class="card-body">
             <div class="d-flex align-items-start justify-content-between">
               <div>
-                <p class="mb-1 text-muted">Total Menus</p>
-                <h3 class="fw-semibold mb-1">{{ stats.total }}</h3>
+                <p class="mb-1 text-muted">
+                  Total Menus
+                </p>
+                <h3 class="fw-semibold mb-1">
+                  {{ stats.total }}
+                </h3>
                 <span class="badge bg-primary-transparent">
-                  <i class="ri-menu-line me-1"></i>Items
+                  <i class="ri-menu-line me-1" />Items
                 </span>
               </div>
               <div>
                 <span class="avatar avatar-lg bg-primary-transparent">
-                  <i class="ri-menu-line fs-4"></i>
+                  <i class="ri-menu-line fs-4" />
                 </span>
               </div>
             </div>
@@ -442,15 +462,19 @@ watch(
           <div class="card-body">
             <div class="d-flex align-items-start justify-content-between">
               <div>
-                <p class="mb-1 text-muted">Active Menus</p>
-                <h3 class="fw-semibold mb-1">{{ stats.active }}</h3>
+                <p class="mb-1 text-muted">
+                  Active Menus
+                </p>
+                <h3 class="fw-semibold mb-1">
+                  {{ stats.active }}
+                </h3>
                 <span class="badge bg-success-transparent">
-                  <i class="ri-checkbox-circle-line me-1"></i>Enabled
+                  <i class="ri-checkbox-circle-line me-1" />Enabled
                 </span>
               </div>
               <div>
                 <span class="avatar avatar-lg bg-success-transparent">
-                  <i class="ri-checkbox-circle-line fs-4"></i>
+                  <i class="ri-checkbox-circle-line fs-4" />
                 </span>
               </div>
             </div>
@@ -463,15 +487,19 @@ watch(
           <div class="card-body">
             <div class="d-flex align-items-start justify-content-between">
               <div>
-                <p class="mb-1 text-muted">Inactive Menus</p>
-                <h3 class="fw-semibold mb-1">{{ stats.inactive }}</h3>
+                <p class="mb-1 text-muted">
+                  Inactive Menus
+                </p>
+                <h3 class="fw-semibold mb-1">
+                  {{ stats.inactive }}
+                </h3>
                 <span class="badge bg-secondary-transparent">
-                  <i class="ri-close-circle-line me-1"></i>Disabled
+                  <i class="ri-close-circle-line me-1" />Disabled
                 </span>
               </div>
               <div>
                 <span class="avatar avatar-lg bg-secondary-transparent">
-                  <i class="ri-close-circle-line fs-4"></i>
+                  <i class="ri-close-circle-line fs-4" />
                 </span>
               </div>
             </div>
@@ -484,15 +512,19 @@ watch(
           <div class="card-body">
             <div class="d-flex align-items-start justify-content-between">
               <div>
-                <p class="mb-1 text-muted">With Children</p>
-                <h3 class="fw-semibold mb-1">{{ stats.withChildren }}</h3>
+                <p class="mb-1 text-muted">
+                  With Children
+                </p>
+                <h3 class="fw-semibold mb-1">
+                  {{ stats.withChildren }}
+                </h3>
                 <span class="badge bg-info-transparent">
-                  <i class="ri-node-tree me-1"></i>Parents
+                  <i class="ri-node-tree me-1" />Parents
                 </span>
               </div>
               <div>
                 <span class="avatar avatar-lg bg-info-transparent">
-                  <i class="ri-node-tree fs-4"></i>
+                  <i class="ri-node-tree fs-4" />
                 </span>
               </div>
             </div>
@@ -506,14 +538,16 @@ watch(
       <div class="col-xl-12">
         <div class="card custom-card">
           <div class="card-header justify-content-between">
-            <div class="card-title">Menus List</div>
+            <div class="card-title">
+              Menus List
+            </div>
             <div class="d-flex align-items-center gap-3">
               <!-- Demo Menu Toggle -->
               <div class="d-flex align-items-center">
                 <ToggleSwitch
-                  customClass="toggle-warning"
-                  mainClass="d-flex align-items-center gap-2"
-                  :isOn="showDemoMenu"
+                  custom-class="toggle-warning"
+                  main-class="d-flex align-items-center gap-2"
+                  :is-on="showDemoMenu"
                   title="md"
                   @toggle="toggleDemoMenu($event)"
                 />
@@ -521,15 +555,15 @@ watch(
               </div>
 
               <!-- Divider -->
-              <div class="border-start" style="height: 24px; width: 1px;"></div>
+              <div class="border-start" style="height: 24px; width: 1px;" />
 
               <!-- Action Buttons -->
               <div class="d-flex align-items-center gap-2">
                 <button class="btn btn-sm btn-secondary btn-wave" @click="clearCache">
-                  <i class="ri-refresh-line me-1"></i>Clear Cache
+                  <i class="ri-refresh-line me-1" />Clear Cache
                 </button>
                 <button class="btn btn-sm btn-primary btn-wave" @click="openCreateModal">
-                  <i class="ri-add-line me-1"></i>Create Menu
+                  <i class="ri-add-line me-1" />Create Menu
                 </button>
               </div>
             </div>
@@ -539,7 +573,7 @@ watch(
               <table class="table text-nowrap table-hover">
                 <thead>
                   <tr>
-                    <th style="width: 40px"></th>
+                    <th style="width: 40px" />
                     <th>Order</th>
                     <th>Title</th>
                     <th>Type</th>
@@ -554,13 +588,13 @@ watch(
                     <tr :data-menu-id="menu.id" :data-parent-id="menu.parent_id" class="menu-item">
                       <td>
                         <div class="drag-handle cursor-move text-center">
-                          <i class="ri-drag-move-2-line text-muted"></i>
+                          <i class="ri-drag-move-2-line text-muted" />
                         </div>
                       </td>
                       <td>{{ menu.order }}</td>
                       <td>
                         <div class="d-flex align-items-center">
-                          <span v-if="menu.icon" v-html="menu.icon" class="me-2"></span>
+                          <span v-if="menu.icon" class="me-2" v-html="menu.icon" />
                           <span class="fw-semibold">{{ menu.title }}</span>
                         </div>
                       </td>
@@ -589,33 +623,33 @@ watch(
                       <td>
                         <div class="btn-group" role="group">
                           <button
-                            @click="viewMenu(menu)"
                             class="btn btn-sm btn-info-light"
                             title="View"
+                            @click="viewMenu(menu)"
                           >
-                            <i class="ri-eye-line"></i>
+                            <i class="ri-eye-line" />
                           </button>
                           <button
-                            @click="editMenu(menu)"
                             class="btn btn-sm btn-primary-light"
                             title="Edit"
+                            @click="editMenu(menu)"
                           >
-                            <i class="ri-edit-line"></i>
+                            <i class="ri-edit-line" />
                           </button>
                           <button
-                            @click="toggleStatus(menu)"
                             class="btn btn-sm btn-warning-light"
                             :title="menu.is_active ? 'Deactivate' : 'Activate'"
+                            @click="toggleStatus(menu)"
                           >
-                            <i :class="menu.is_active ? 'ri-eye-off-line' : 'ri-eye-line'"></i>
+                            <i :class="menu.is_active ? 'ri-eye-off-line' : 'ri-eye-line'" />
                           </button>
                           <button
-                            @click="confirmDeleteMenu(menu)"
                             class="btn btn-sm btn-danger-light"
                             :disabled="menu.children_count > 0"
                             title="Delete"
+                            @click="confirmDeleteMenu(menu)"
                           >
-                            <i class="ri-delete-bin-line"></i>
+                            <i class="ri-delete-bin-line" />
                           </button>
                         </div>
                       </td>
@@ -631,7 +665,7 @@ watch(
                       >
                         <td>
                           <div class="drag-handle cursor-move text-center">
-                            <i class="ri-drag-move-2-line text-muted"></i>
+                            <i class="ri-drag-move-2-line text-muted" />
                           </div>
                         </td>
                         <td>
@@ -639,7 +673,7 @@ watch(
                         </td>
                         <td>
                           <div class="d-flex align-items-center ms-4">
-                            <span v-if="child.icon" v-html="child.icon" class="me-2"></span>
+                            <span v-if="child.icon" class="me-2" v-html="child.icon" />
                             <span>{{ child.title }}</span>
                           </div>
                         </td>
@@ -667,23 +701,23 @@ watch(
                         </td>
                         <td>
                           <div class="btn-group" role="group">
-                            <button @click="viewMenu(child)" class="btn btn-sm btn-info-light">
-                              <i class="ri-eye-line"></i>
+                            <button class="btn btn-sm btn-info-light" @click="viewMenu(child)">
+                              <i class="ri-eye-line" />
                             </button>
-                            <button @click="editMenu(child)" class="btn btn-sm btn-primary-light">
-                              <i class="ri-edit-line"></i>
+                            <button class="btn btn-sm btn-primary-light" @click="editMenu(child)">
+                              <i class="ri-edit-line" />
                             </button>
                             <button
-                              @click="toggleStatus(child)"
                               class="btn btn-sm btn-warning-light"
+                              @click="toggleStatus(child)"
                             >
-                              <i :class="child.is_active ? 'ri-eye-off-line' : 'ri-eye-line'"></i>
+                              <i :class="child.is_active ? 'ri-eye-off-line' : 'ri-eye-line'" />
                             </button>
                             <button
-                              @click="confirmDeleteMenu(child)"
                               class="btn btn-sm btn-danger-light"
+                              @click="confirmDeleteMenu(child)"
                             >
-                              <i class="ri-delete-bin-line"></i>
+                              <i class="ri-delete-bin-line" />
                             </button>
                           </div>
                         </td>
@@ -694,10 +728,12 @@ watch(
               </table>
 
               <div v-if="menuList.length === 0" class="text-center py-5">
-                <i class="ri-menu-line fs-1 text-muted"></i>
-                <p class="text-muted mt-3">No menus found</p>
+                <i class="ri-menu-line fs-1 text-muted" />
+                <p class="text-muted mt-3">
+                  No menus found
+                </p>
                 <button class="btn btn-primary btn-sm" @click="openCreateModal">
-                  <i class="ri-add-line me-1"></i>Create First Menu
+                  <i class="ri-add-line me-1" />Create First Menu
                 </button>
               </div>
             </div>
@@ -708,8 +744,8 @@ watch(
 
     <!-- Menu Modal -->
     <div
-      class="modal fade"
       id="menuModal"
+      class="modal fade"
       tabindex="-1"
       aria-labelledby="menuModalLabel"
       aria-hidden="true"
@@ -717,7 +753,7 @@ watch(
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h6 class="modal-title" id="menuModalLabel">
+            <h6 id="menuModalLabel" class="modal-title">
               {{ viewingMenu ? 'View Menu' : editingMenu ? 'Edit Menu' : 'Create Menu' }}
             </h6>
             <button
@@ -725,7 +761,7 @@ watch(
               class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
-            ></button>
+            />
           </div>
           <div class="modal-body">
             <form @submit.prevent="saveMenu">
@@ -739,16 +775,22 @@ watch(
                     class="form-control"
                     :disabled="viewingMenu"
                     required
-                  />
+                  >
                 </div>
 
                 <!-- Type -->
                 <div class="col-md-6">
                   <label class="form-label">Type <span class="text-danger">*</span></label>
                   <select v-model="form.type" class="form-select" :disabled="viewingMenu" required>
-                    <option value="menutitle">Menu Title</option>
-                    <option value="link">Link</option>
-                    <option value="sub">Sub Menu</option>
+                    <option value="menutitle">
+                      Menu Title
+                    </option>
+                    <option value="link">
+                      Link
+                    </option>
+                    <option value="sub">
+                      Sub Menu
+                    </option>
                   </select>
                 </div>
 
@@ -756,7 +798,9 @@ watch(
                 <div class="col-md-6">
                   <label class="form-label">Parent Menu</label>
                   <select v-model="form.parent_id" class="form-select" :disabled="viewingMenu">
-                    <option :value="null">None (Root Menu)</option>
+                    <option :value="null">
+                      None (Root Menu)
+                    </option>
                     <option
                       v-for="parent in availableParentMenus"
                       :key="parent.id"
@@ -776,7 +820,7 @@ watch(
                     class="form-control"
                     :disabled="viewingMenu"
                     placeholder="/admin/example"
-                  />
+                  >
                 </div>
 
                 <!-- Icon -->
@@ -787,7 +831,7 @@ watch(
                     class="form-control"
                     :disabled="viewingMenu"
                     rows="2"
-                  ></textarea>
+                  />
                 </div>
 
                 <!-- Order & Target -->
@@ -799,14 +843,18 @@ watch(
                     class="form-control"
                     :disabled="viewingMenu"
                     min="0"
-                  />
+                  >
                 </div>
 
                 <div class="col-md-4">
                   <label class="form-label">Target</label>
                   <select v-model="form.target" class="form-select" :disabled="viewingMenu">
-                    <option value="_self">Same Tab</option>
-                    <option value="_blank">New Tab</option>
+                    <option value="_self">
+                      Same Tab
+                    </option>
+                    <option value="_blank">
+                      New Tab
+                    </option>
                   </select>
                 </div>
 
@@ -814,12 +862,12 @@ watch(
                   <label class="form-label">Status</label>
                   <div class="form-check form-switch mt-2">
                     <input
+                      id="is_active"
                       v-model="form.is_active"
                       type="checkbox"
                       class="form-check-input"
                       :disabled="viewingMenu"
-                      id="is_active"
-                    />
+                    >
                     <label class="form-check-label" for="is_active">
                       {{ form.is_active ? 'Active' : 'Inactive' }}
                     </label>
@@ -834,18 +882,30 @@ watch(
                     type="text"
                     class="form-control"
                     :disabled="viewingMenu"
-                  />
+                  >
                 </div>
 
                 <div class="col-md-6">
                   <label class="form-label">Badge Color</label>
                   <select v-model="form.badge_color" class="form-select" :disabled="viewingMenu">
-                    <option value="">Select color</option>
-                    <option value="primary">Primary</option>
-                    <option value="success">Success</option>
-                    <option value="danger">Danger</option>
-                    <option value="warning">Warning</option>
-                    <option value="info">Info</option>
+                    <option value="">
+                      Select color
+                    </option>
+                    <option value="primary">
+                      Primary
+                    </option>
+                    <option value="success">
+                      Success
+                    </option>
+                    <option value="danger">
+                      Danger
+                    </option>
+                    <option value="warning">
+                      Warning
+                    </option>
+                    <option value="info">
+                      Info
+                    </option>
                   </select>
                 </div>
 
@@ -856,13 +916,13 @@ watch(
                     <div v-for="role in roles" :key="role.id" class="col-md-4">
                       <div class="form-check">
                         <input
+                          :id="`role_${role.id}`"
                           v-model="form.role_ids"
                           :value="role.id"
                           type="checkbox"
                           class="form-check-input"
                           :disabled="viewingMenu"
-                          :id="`role_${role.id}`"
-                        />
+                        >
                         <label class="form-check-label" :for="`role_${role.id}`">
                           {{ role.name }}
                         </label>
@@ -879,7 +939,7 @@ watch(
                     class="form-control"
                     :disabled="viewingMenu"
                     rows="2"
-                  ></textarea>
+                  />
                 </div>
               </div>
             </form>

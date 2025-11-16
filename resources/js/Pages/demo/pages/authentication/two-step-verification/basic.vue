@@ -1,13 +1,14 @@
 <script setup>
+import { Head, Link, router } from '@inertiajs/vue3'
 import { nextTick, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
 import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head, Link, router } from '@inertiajs/vue3'
 import authlayout from '@/layouts/authlayout.vue'
-const baseUrl = __BASE_PATH__
 
 defineOptions({
   layout: authlayout,
 })
+
+const baseUrl = __BASE_PATH__
 
 const inputValues = reactive({
   one: '',
@@ -26,21 +27,23 @@ const refs = {
   four: ref(null),
 }
 
-const handleChange = (currentId, nextId, value) => {
+function handleChange(currentId, nextId, value) {
   // Allow only digits
-  if (!/^\d?$/.test(value)) return
+  if (!/^\d?$/.test(value))
+    return
 
   inputValues[currentId] = value
 
   if (value && nextId) {
     nextTick(() => {
       const nextInput = document.getElementById(nextId)
-      if (nextInput) nextInput.focus()
+      if (nextInput)
+        nextInput.focus()
     })
   }
 }
 
-const handlePaste = (e) => {
+function handlePaste(e) {
   e.preventDefault()
   const paste = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, 4)
 
@@ -54,12 +57,13 @@ const handlePaste = (e) => {
   }
 }
 
-const handleSubmit = () => {
+function handleSubmit() {
   const { one, two, three, four } = inputValues
 
   if (!one || !two || !three || !four) {
     error.value = 'All fields are required.'
     verify.value = ''
+
     return
   }
 
@@ -74,11 +78,12 @@ const handleSubmit = () => {
   // TODO: call your backend API with fullOTP here
 }
 
-const setBodyClass = (action) => {
+function setBodyClass(action) {
   if (action === 'add') {
     document.body.classList.add('authentication-background')
     document.body.style.display = 'block'
-  } else {
+  }
+  else {
     document.body.classList.remove('authentication-background')
     document.body.style.display = 'none'
   }
@@ -88,7 +93,8 @@ onMounted(() => {
   // Check if the user has visited before
   if (localStorage.getItem('visited') === 'true') {
     setBodyClass('add')
-  } else {
+  }
+  else {
     setBodyClass('add')
     localStorage.setItem('visited', 'true')
   }
@@ -132,7 +138,9 @@ onMounted(() => {
                   />
                 </Link>
               </div>
-              <p class="h4 mb-2 fw-semibold">Verify Your Account</p>
+              <p class="h4 mb-2 fw-semibold">
+                Verify Your Account
+              </p>
               <p class="mb-4 text-muted fw-normal">
                 Enter the 4 digit code sent to the registered email Id.
               </p>
@@ -143,48 +151,48 @@ onMounted(() => {
                       <div class="col-3">
                         <input
                           id="one"
+                          v-model="inputValues.one"
                           type="text"
                           maxlength="1"
-                          v-model="inputValues.one"
+                          class="form-control form-control-lg text-center"
                           @input="handleChange('one', 'two', inputValues.one)"
                           @paste="handlePaste"
-                          class="form-control form-control-lg text-center"
-                        />
+                        >
                       </div>
                       <div class="col-3">
                         <input
                           id="two"
+                          v-model="inputValues.two"
                           type="text"
                           maxlength="1"
-                          v-model="inputValues.two"
-                          @input="handleChange('two', 'three', inputValues.two)"
                           class="form-control form-control-lg text-center"
-                        />
+                          @input="handleChange('two', 'three', inputValues.two)"
+                        >
                       </div>
                       <div class="col-3">
                         <input
                           id="three"
+                          v-model="inputValues.three"
                           type="text"
                           maxlength="1"
-                          v-model="inputValues.three"
-                          @input="handleChange('three', 'four', inputValues.three)"
                           class="form-control form-control-lg text-center"
-                        />
+                          @input="handleChange('three', 'four', inputValues.three)"
+                        >
                       </div>
                       <div class="col-3">
                         <input
                           id="four"
+                          v-model="inputValues.four"
                           type="text"
                           maxlength="1"
-                          v-model="inputValues.four"
-                          @input="handleChange('four', null, inputValues.four)"
                           class="form-control form-control-lg text-center"
-                        />
+                          @input="handleChange('four', null, inputValues.four)"
+                        >
                       </div>
                     </div>
 
                     <div class="form-check mt-3">
-                      <input class="form-check-input" type="checkbox" id="defaultCheck1" />
+                      <input id="defaultCheck1" class="form-check-input" type="checkbox">
                       <label class="form-check-label" for="defaultCheck1">
                         Did not receive a code ?
                         <Link
@@ -198,16 +206,22 @@ onMounted(() => {
                   </div>
 
                   <div class="col-xl-12 d-grid mt-3">
-                    <p v-if="error" class="text-danger text-sm text-center mb-2">{{ error }}</p>
-                    <p v-if="verify" class="text-success text-sm text-center mb-2">{{ verify }}</p>
+                    <p v-if="error" class="text-danger text-sm text-center mb-2">
+                      {{ error }}
+                    </p>
+                    <p v-if="verify" class="text-success text-sm text-center mb-2">
+                      {{ verify }}
+                    </p>
 
-                    <button type="submit" class="btn btn-lg btn-primary">Verify</button>
+                    <button type="submit" class="btn btn-lg btn-primary">
+                      Verify
+                    </button>
                   </div>
                 </div>
               </form>
               <div class="text-center">
                 <p class="text-danger mt-3 mb-0 fw-medium">
-                  <sup><i class="ri-asterisk"></i></sup>Keep the verification code private!
+                  <sup><i class="ri-asterisk" /></sup>Keep the verification code private!
                 </p>
               </div>
             </div>

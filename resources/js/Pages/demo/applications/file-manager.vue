@@ -1,9 +1,9 @@
 <script setup>
-import simplebar from 'simplebar-vue'
-import * as FileMenuData from '@/shared/data/applications/filemanagerdata'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as FileMenuData from '@/shared/data/applications/filemanagerdata'
+
 const dataToPass = {
   title: 'Applications',
   currentpage: 'File Manager',
@@ -13,7 +13,7 @@ const dataToPass = {
 
 <template>
   <Head title="File Manager | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xxl-3 col-xl-12">
@@ -21,16 +21,16 @@ const dataToPass = {
         <div class="col-xxl-12 col-xl-6">
           <div class="card custom-card">
             <div class="card-body">
-              <simplebar id="files-main-nav">
+              <Simplebar id="files-main-nav">
                 <ul class="list-unstyled files-main-nav">
                   <li
-                    :class="`${idx.active ? 'active' : ''} files-type`"
                     v-for="idx in FileMenuData.FileMenuItems"
                     :key="idx.id"
+                    :class="`${idx.active ? 'active' : ''} files-type`"
                   >
                     <a href="javascript:void(0)">
                       <div class="d-flex align-items-center">
-                        <div class="me-2" v-html="idx.icon"></div>
+                        <div class="me-2" v-html="idx.icon" />
                         <span class="flex-fill text-nowrap">
                           {{ idx.label }}
                         </span>
@@ -38,7 +38,7 @@ const dataToPass = {
                     </a>
                   </li>
                 </ul>
-              </simplebar>
+              </Simplebar>
             </div>
           </div>
         </div>
@@ -50,11 +50,11 @@ const dataToPass = {
                   <BaseImg src="/images/media/file-manager/2.png" alt="" class="img-fluid" />
                 </span>
                 <span class="fs-15 fw-semibold text-default">Upgrade To PRO</span>
-                <span class="fs-13 fw-medium d-block text-muted mt-2"
-                  >Unlock Pro for faster transfers, stronger security, and unlimited storage.</span
-                >
+                <span class="fs-13 fw-medium d-block text-muted mt-2">Unlock Pro for faster transfers, stronger security, and unlimited storage.</span>
                 <div class="mt-3 d-grid">
-                  <button class="btn btn-lg btn-primary">Upgrade Now</button>
+                  <button class="btn btn-lg btn-primary">
+                    Upgrade Now
+                  </button>
                 </div>
               </div>
             </div>
@@ -75,7 +75,7 @@ const dataToPass = {
                   type="text"
                   placeholder="Search Files Here"
                   aria-label="files-search"
-                />
+                >
               </div>
               <div class="d-flex gap-2 flex-wrap justify-content-sm-end">
                 <button
@@ -83,11 +83,11 @@ const dataToPass = {
                   data-bs-toggle="modal"
                   data-bs-target="#create-folder"
                 >
-                  <i class="ri-add-circle-line align-middle me-1"></i>Upload File
+                  <i class="ri-add-circle-line align-middle me-1" />Upload File
                 </button>
                 <div
-                  class="modal fade"
                   id="create-folder"
+                  class="modal fade"
                   tabindex="-1"
                   aria-labelledby="create-folder"
                   data-bs-keyboard="false"
@@ -96,22 +96,24 @@ const dataToPass = {
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h6 class="modal-title" id="staticBackdropLabel">Upload File</h6>
+                        <h6 id="staticBackdropLabel" class="modal-title">
+                          Upload File
+                        </h6>
                         <button
                           type="button"
                           class="btn-close"
                           data-bs-dismiss="modal"
                           aria-label="Close"
-                        ></button>
+                        />
                       </div>
                       <div class="modal-body">
                         <label for="create-folder1" class="form-label">File Name</label>
                         <input
+                          id="create-folder1"
                           type="text"
                           class="form-control"
-                          id="create-folder1"
                           placeholder="File Name"
-                        />
+                        >
                       </div>
                       <div class="modal-footer">
                         <button
@@ -119,9 +121,11 @@ const dataToPass = {
                           class="btn btn-sm btn-icon btn-light"
                           data-bs-dismiss="modal"
                         >
-                          <i class="ri-close-fill"></i>
+                          <i class="ri-close-fill" />
                         </button>
-                        <button type="button" class="btn btn-sm btn-success">Create</button>
+                        <button type="button" class="btn btn-sm btn-success">
+                          Create
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -130,30 +134,32 @@ const dataToPass = {
             </div>
             <div class="p-3 file-folders-container">
               <div class="d-flex mb-3 align-items-center justify-content-between">
-                <p class="mb-0 fw-medium fs-14">Categories</p>
+                <p class="mb-0 fw-medium fs-14">
+                  Categories
+                </p>
                 <a href="javascript:void(0);" class="fs-12 text-muted fw-medium">
-                  View All<i class="ti ti-arrow-narrow-right ms-1"></i>
+                  View All<i class="ti ti-arrow-narrow-right ms-1" />
                 </a>
               </div>
               <div class="row">
                 <div
-                  class="col-xxl-4 col-xl-4 col-lg-6 col-md-6"
                   v-for="idx in FileMenuData.FileCategories"
                   :key="idx.id"
+                  class="col-xxl-4 col-xl-4 col-lg-6 col-md-6"
                 >
                   <div :class="`card custom-card shadow-none file-category-card ${idx.colorClass}`">
                     <div class="card-body text-center">
-                      <a href="javascript:void(0)" class="stretched-link"></a>
+                      <a href="javascript:void(0)" class="stretched-link" />
                       <div
                         class="d-flex align-items-center gap-2 lh-1 justify-content-end file-icons"
                       >
                         <div class="file-important">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                            <rect width="256" height="256" fill="none"></rect>
+                            <rect width="256" height="256" fill="none" />
                             <path
                               d="M128,189.09l54.72,33.65a8.4,8.4,0,0,0,12.52-9.17l-14.88-62.79,48.7-42A8.46,8.46,0,0,0,224.27,94L160.36,88.8,135.74,29.2a8.36,8.36,0,0,0-15.48,0L95.64,88.8,31.73,94a8.46,8.46,0,0,0-4.79,14.83l48.7,42L60.76,213.57a8.4,8.4,0,0,0,12.52,9.17Z"
                               opacity="0.2"
-                            ></path>
+                            />
                             <path
                               d="M128,189.09l54.72,33.65a8.4,8.4,0,0,0,12.52-9.17l-14.88-62.79,48.7-42A8.46,8.46,0,0,0,224.27,94L160.36,88.8,135.74,29.2a8.36,8.36,0,0,0-15.48,0L95.64,88.8,31.73,94a8.46,8.46,0,0,0-4.79,14.83l48.7,42L60.76,213.57a8.4,8.4,0,0,0,12.52,9.17Z"
                               fill="none"
@@ -161,7 +167,7 @@ const dataToPass = {
                               stroke-linecap="round"
                               stroke-linejoin="round"
                               stroke-width="16"
-                            ></path>
+                            />
                           </svg>
                         </div>
                         <div class="dropdown">
@@ -170,7 +176,7 @@ const dataToPass = {
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
                           >
-                            <i class="ri-more-2-fill fw-semibold fs-16 text-muted"></i>
+                            <i class="ri-more-2-fill fw-semibold fs-16 text-muted" />
                           </a>
                           <ul class="dropdown-menu custom-filedropdown">
                             <li><a class="dropdown-item" href="javascript:void(0);">Delete</a></li>
@@ -184,28 +190,32 @@ const dataToPass = {
                       <div
                         :class="`mb-2 text-${idx.colorClass} svg-${idx.colorClass} file-img`"
                         v-html="idx.icon"
-                      ></div>
-                      <h6 class="fw-semibold mb-1">{{ idx.title }}</h6>
+                      />
+                      <h6 class="fw-semibold mb-1">
+                        {{ idx.title }}
+                      </h6>
                       <span class="d-block text-muted">{{ idx.fileCount }} Files</span>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="d-flex mb-3 align-items-center justify-content-between">
-                <p class="mb-0 fw-medium fs-14">Folders</p>
+                <p class="mb-0 fw-medium fs-14">
+                  Folders
+                </p>
                 <a href="javascript:void(0);" class="fs-12 text-muted fw-medium">
-                  View All<i class="ti ti-arrow-narrow-right ms-1"></i>
+                  View All<i class="ti ti-arrow-narrow-right ms-1" />
                 </a>
               </div>
               <div class="row">
                 <div
-                  class="col-xxl-4 col-xl-4 col-lg-6 col-md-6"
                   v-for="idx in FileMenuData.Folders"
                   :key="idx.id"
+                  class="col-xxl-4 col-xl-4 col-lg-6 col-md-6"
                 >
                   <div class="card custom-card">
                     <div class="card-body">
-                      <a href="javascript:void(0);" class="stretched-link"></a>
+                      <a href="javascript:void(0);" class="stretched-link" />
                       <div
                         class="mb-4 folder-svg-container d-flex flex-wrap justify-content-between align-items-start"
                       >
@@ -241,7 +251,7 @@ const dataToPass = {
                               data-bs-toggle="dropdown"
                               aria-expanded="false"
                             >
-                              <i class="ri-more-2-fill fw-semibold fs-16 text-muted"></i>
+                              <i class="ri-more-2-fill fw-semibold fs-16 text-muted" />
                             </a>
                             <ul class="dropdown-menu">
                               <li>
@@ -275,9 +285,11 @@ const dataToPass = {
                 </div>
               </div>
               <div class="d-flex mb-3 align-items-center justify-content-between">
-                <p class="mb-0 fw-medium fs-14">Recent Files</p>
+                <p class="mb-0 fw-medium fs-14">
+                  Recent Files
+                </p>
                 <a href="javascript:void(0);" class="fs-12 text-muted fw-medium">
-                  View All<i class="ti ti-arrow-narrow-right ms-1"></i>
+                  View All<i class="ti ti-arrow-narrow-right ms-1" />
                 </a>
               </div>
               <div class="row">
@@ -286,11 +298,21 @@ const dataToPass = {
                     <table class="table text-nowrap table-hover">
                       <thead>
                         <tr>
-                          <th scope="col">File Name</th>
-                          <th scope="col">Category</th>
-                          <th scope="col">Size</th>
-                          <th scope="col">Date Modified</th>
-                          <th scope="col">Action</th>
+                          <th scope="col">
+                            File Name
+                          </th>
+                          <th scope="col">
+                            Category
+                          </th>
+                          <th scope="col">
+                            Size
+                          </th>
+                          <th scope="col">
+                            Date Modified
+                          </th>
+                          <th scope="col">
+                            Action
+                          </th>
                         </tr>
                       </thead>
                       <tbody class="files-list">
@@ -301,7 +323,7 @@ const dataToPass = {
                                 <span
                                   :class="`avatar avatar-sm svg-${idx.avatarClass} text-${idx.avatarClass}`"
                                   v-html="idx.icon"
-                                ></span>
+                                />
                               </div>
                               <div>
                                 <a
@@ -309,8 +331,7 @@ const dataToPass = {
                                   data-bs-toggle="offcanvas"
                                   data-bs-target="#offcanvasRight"
                                   aria-controls="offcanvasRight"
-                                  >{{ idx.fileName }}</a
-                                >
+                                >{{ idx.fileName }}</a>
                               </div>
                             </div>
                           </th>
@@ -319,12 +340,8 @@ const dataToPass = {
                           <td>{{ idx.fileDate }}</td>
                           <td>
                             <div class="hstack gap-2 fs-15">
-                              <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-light"
-                                ><i class="ri-eye-line"></i
-                              ></a>
-                              <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-light"
-                                ><i class="ri-delete-bin-line"></i
-                              ></a>
+                              <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-light"><i class="ri-eye-line" /></a>
+                              <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-light"><i class="ri-delete-bin-line" /></a>
                             </div>
                           </td>
                         </tr>
@@ -344,7 +361,7 @@ const dataToPass = {
           <div class="p-1 rounded bg-light mb-4">
             <div class="d-flex align-items-center">
               <div id="available-storage">
-                <apexchart
+                <Apexchart
                   height="80px"
                   type="radialBar"
                   width="80px"
@@ -365,12 +382,16 @@ const dataToPass = {
                   <span
                     :class="`avatar avatar-md avatar-rounded svg-${idx.color} bg-${idx.color}-transparent`"
                     v-html="idx.icon"
-                  ></span>
+                  />
                 </div>
                 <div class="flex-fill">
                   <div class="d-flex align-items-center justify-content-between mb-1">
-                    <div class="fw-medium">{{ idx.name }}</div>
-                    <div class="text-muted fs-13">{{ idx.size }}</div>
+                    <div class="fw-medium">
+                      {{ idx.name }}
+                    </div>
+                    <div class="text-muted fs-13">
+                      {{ idx.size }}
+                    </div>
                   </div>
                   <div class="progress progress-xs">
                     <div
@@ -380,7 +401,7 @@ const dataToPass = {
                       aria-valuenow="58"
                       aria-valuemin="0"
                       aria-valuemax="100"
-                    ></div>
+                    />
                   </div>
                 </div>
               </div>
@@ -390,7 +411,9 @@ const dataToPass = {
       </div>
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Recent Activity</div>
+          <div class="card-title">
+            Recent Activity
+          </div>
         </div>
         <div class="card-body">
           <ul class="list-unstyled file-manager-activity-list">
@@ -398,7 +421,7 @@ const dataToPass = {
               <div class="d-flex align-items-center gap-2">
                 <div class="lh-1">
                   <span class="avatar avatar-md avatar-rounded bg-light text-muted">
-                    <i :class="`ti ti-${idx.icon} fs-18`"></i>
+                    <i :class="`ti ti-${idx.icon} fs-18`" />
                   </span>
                 </div>
                 <div class="flex-fill w-75">
@@ -420,12 +443,14 @@ const dataToPass = {
   <!-- End:: row-1 -->
 
   <!-- Start::mail information offcanvas -->
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight">
+  <div id="offcanvasRight" class="offcanvas offcanvas-end" tabindex="-1">
     <div class="offcanvas-body p-0">
       <div class="selected-file-details">
         <div class="d-flex p-3 align-items-center justify-content-between border-bottom">
           <div>
-            <h6 class="fw-medium mb-0">File Details</h6>
+            <h6 class="fw-medium mb-0">
+              File Details
+            </h6>
           </div>
           <div class="d-flex align-items-center">
             <div class="dropdown me-1">
@@ -435,7 +460,7 @@ const dataToPass = {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <i class="ri-more-2-fill"></i>
+                <i class="ri-more-2-fill" />
               </button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="javascript:void(0);">Share</a></li>
@@ -451,47 +476,52 @@ const dataToPass = {
               data-bs-dismiss="offcanvas"
               aria-label="Close"
             >
-              <i class="ri-close-line"></i>
+              <i class="ri-close-line" />
             </button>
           </div>
         </div>
-        <div class="filemanager-file-details" id="filemanager-file-details">
+        <div id="filemanager-file-details" class="filemanager-file-details">
           <div class="p-3 text-center border-bottom border-block-end-dashed">
             <div class="file-details mb-3">
               <BaseImg src="/images/media/blog/9.jpg" alt="" />
             </div>
             <div>
-              <p class="mb-0 fw-medium fs-16">IMG-09123878-SPK734.jpeg</p>
-              <p class="mb-0 text-muted fs-10">422KB | 23,Nov 2025</p>
+              <p class="mb-0 fw-medium fs-16">
+                IMG-09123878-SPK734.jpeg
+              </p>
+              <p class="mb-0 text-muted fs-10">
+                422KB | 23,Nov 2025
+              </p>
             </div>
           </div>
           <div class="p-3 border-bottom border-block-end-dashed">
             <ul class="list-group">
               <li class="list-group-item">
                 <div>
-                  <span class="fw-medium">File Format : </span
-                  ><span class="fs-12 text-muted">jpeg</span>
+                  <span class="fw-medium">File Format : </span><span class="fs-12 text-muted">jpeg</span>
                 </div>
               </li>
               <li class="list-group-item">
                 <div>
-                  <p class="fw-medium mb-0">File Description :</p>
-                  <span class="fs-12 text-muted"
-                    >This file contains 3 folder VYZOR.main & VYZOR.premium & VYZOR.featured and 42
-                    images and layout styles are added in this update.</span
-                  >
+                  <p class="fw-medium mb-0">
+                    File Description :
+                  </p>
+                  <span class="fs-12 text-muted">This file contains 3 folder VYZOR.main & VYZOR.premium & VYZOR.featured and 42
+                    images and layout styles are added in this update.</span>
                 </div>
               </li>
               <li class="list-group-item">
-                <p class="fw-medium mb-0">File Location :</p>
-                <span class="fs-12 text-muted"
-                  >Device/Storage/Archives/IMG-09123878-SPK734.jpeg</span
-                >
+                <p class="fw-medium mb-0">
+                  File Location :
+                </p>
+                <span class="fs-12 text-muted">Device/Storage/Archives/IMG-09123878-SPK734.jpeg</span>
               </li>
             </ul>
           </div>
           <div class="p-3 border-bottom border-block-end-dashed">
-            <p class="mb-1 fw-medium fs-14">Downloaded from :</p>
+            <p class="mb-1 fw-medium fs-14">
+              Downloaded from :
+            </p>
             <a
               class="text-primary fw-medium text-break"
               href="https://themeforest.net/user/spruko/portfolio"
@@ -501,7 +531,9 @@ const dataToPass = {
             </a>
           </div>
           <div class="p-3">
-            <p class="mb-2 fw-medium fs-14">Shared With :</p>
+            <p class="mb-2 fw-medium fs-14">
+              Shared With :
+            </p>
             <a href="javascript:void(0);">
               <div class="d-flex align-items-center p-2 mb-1">
                 <span class="avatar avatar-sm me-2 avatar-rounded">

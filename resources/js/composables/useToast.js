@@ -10,7 +10,7 @@ export function useToast() {
       hideProgressBar: false,
       autoClose: 3000,
       position: 'top-right',
-      ...options
+      ...options,
     }
 
     proxy.$toast[type](message, defaultOptions)

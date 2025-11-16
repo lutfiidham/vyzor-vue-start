@@ -1,7 +1,7 @@
 <script setup>
-import * as mixedData from '@/shared/data/apexcharts/apexchart-mixed'
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as mixedData from '@/shared/data/apexcharts/apexchart-mixed'
 
 const dataToPass = {
   title: 'Charts',
@@ -13,17 +13,19 @@ const dataToPass = {
 
 <template>
   <Head title="Mixed Charts | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Line & Column Chart</div>
+          <div class="card-title">
+            Line & Column Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="mixed-linecolumn">
-            <apexchart
+            <Apexchart
               height="300"
               type="line"
               :options="mixedData.Mixedlineoptions"
@@ -36,11 +38,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Multiple Y-Axis Chart</div>
+          <div class="card-title">
+            Multiple Y-Axis Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="mixed-multiple-y">
-            <apexchart
+            <Apexchart
               height="300"
               type="line"
               :options="mixedData.Mixedaxisoptions"
@@ -53,11 +57,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Line & Area Chart</div>
+          <div class="card-title">
+            Line & Area Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="mixed-linearea">
-            <apexchart
+            <Apexchart
               height="300"
               type="line"
               :options="mixedData.Mixedareaoptions"
@@ -70,11 +76,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Line, Column & Area Chart</div>
+          <div class="card-title">
+            Line, Column & Area Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="mixed-all">
-            <apexchart
+            <Apexchart
               height="300"
               type="line"
               :options="mixedData.Mixedcolumnoptions"
@@ -85,7 +93,7 @@ const dataToPass = {
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

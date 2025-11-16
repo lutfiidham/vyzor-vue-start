@@ -1,10 +1,11 @@
 <script setup>
-import * as dashboardData from '@/shared/data/dashboards/crm/dashboarddata'
-import SpkReusableCrmCard from '@/shared/@spk/dashboards/crm/spk-reusable-crmCard.vue'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import SpkReusableCrmCard from '@/shared/@spk/dashboards/crm/spk-reusable-crmCard.vue'
+import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
+import * as dashboardData from '@/shared/data/dashboards/crm/dashboarddata'
+
 const dataToPass = {
   title: 'Dashboards',
   subtitle: 'CRM',
@@ -15,7 +16,7 @@ const dataToPass = {
 
 <template>
   <Head title="Dashboards-CRM | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xxl-5">
@@ -26,11 +27,13 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Revenue Analytics</div>
+              <div class="card-title">
+                Revenue Analytics
+              </div>
             </div>
             <div class="card-body pb-0">
               <div id="crm-revenue-analytics">
-                <apexchart
+                <Apexchart
                   height="318px"
                   type="line"
                   :options="dashboardData.crmOptions"
@@ -47,7 +50,9 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card overflow-hidden">
             <div class="card-header justify-content-between">
-              <div class="card-title">Tasks List</div>
+              <div class="card-title">
+                Tasks List
+              </div>
               <ul
                 class="nav nav-tabs justify-content-end nav-tabs-header card-headertabs"
                 role="tablist"
@@ -61,8 +66,7 @@ const dataToPass = {
                     href="#today"
                     aria-selected="false"
                     tabindex="-1"
-                    >Today</a
-                  >
+                  >Today</a>
                 </li>
                 <li class="nav-item" role="presentation">
                   <a
@@ -72,14 +76,13 @@ const dataToPass = {
                     aria-current="page"
                     href="#Upcoming"
                     aria-selected="true"
-                    >Upcoming</a
-                  >
+                  >Upcoming</a>
                 </li>
               </ul>
             </div>
             <div class="card-body todo-tab p-0">
               <div class="tab-content">
-                <div class="tab-pane border-0" id="today" role="tabpanel">
+                <div id="today" class="tab-pane border-0" role="tabpanel">
                   <ul class="list-unstyled task-list-tab">
                     <li v-for="(item, index) in dashboardData.tasks" :key="index">
                       <div class="d-flex align-items-start gap-2 flex-wrap">
@@ -88,7 +91,7 @@ const dataToPass = {
                             type="checkbox"
                             class="form-check-input"
                             :checked="item.completed"
-                          />
+                          >
                         </div>
                         <div class="flex-fill">
                           <div class="d-flex align-items-center gap-2 mb-1">
@@ -99,20 +102,17 @@ const dataToPass = {
                               title="in-progress"
                               data-bs-original-title="Progress"
                             >
-                              <i class="ti ti-info-circle fs-11"></i>
+                              <i class="ti ti-info-circle fs-11" />
                             </span>
                           </div>
                           <div class="d-flex align-items-center gap-2 lh-1">
                             <a href="javascript:void(0);" class="fs-12">{{ item.code }}</a>
-                            <div class="vr"></div>
-                            <span class="text-muted mb-0 fs-12"
-                              ><i class="ti ti-user me-1 fw-medium"></i>{{ item.assignee }}</span
-                            >
-                            <div class="vr"></div>
+                            <div class="vr" />
+                            <span class="text-muted mb-0 fs-12"><i class="ti ti-user me-1 fw-medium" />{{ item.assignee }}</span>
+                            <div class="vr" />
                             <span
                               :class="`badge ${item.priority === 'High' ? 'bg-danger-transparent' : `${item.priority === 'Low' ? 'bg-success-transparent' : 'bg-warning-transparent'}`}`"
-                              >{{ item.priority }}</span
-                            >
+                            >{{ item.priority }}</span>
                           </div>
                         </div>
                         <div class="text-end">
@@ -123,7 +123,7 @@ const dataToPass = {
                     </li>
                   </ul>
                 </div>
-                <div class="tab-pane border-0 active show" id="Upcoming" role="tabpanel">
+                <div id="Upcoming" class="tab-pane border-0 active show" role="tabpanel">
                   <ul class="list-unstyled task-list-tab">
                     <li v-for="(item, index) in dashboardData.upcomming" :key="index">
                       <div class="d-flex align-items-start gap-2 flex-wrap">
@@ -132,7 +132,7 @@ const dataToPass = {
                             type="checkbox"
                             class="form-check-input"
                             :checked="item.completed"
-                          />
+                          >
                         </div>
                         <div class="flex-fill">
                           <div class="d-flex align-items-center gap-2 mb-1">
@@ -143,20 +143,17 @@ const dataToPass = {
                               title="Not Started"
                               data-bs-original-title="Not Started"
                             >
-                              <i class="ti ti-info-circle fs-11"></i>
+                              <i class="ti ti-info-circle fs-11" />
                             </span>
                           </div>
                           <div class="d-flex align-items-center gap-2 lh-1">
                             <a href="javascript:void(0);" class="fs-12">{{ item.code }}</a>
-                            <div class="vr"></div>
-                            <span class="text-muted mb-0 fs-12"
-                              ><i class="ti ti-user me-1 fw-medium"></i>{{ item.assignee }}</span
-                            >
-                            <div class="vr"></div>
+                            <div class="vr" />
+                            <span class="text-muted mb-0 fs-12"><i class="ti ti-user me-1 fw-medium" />{{ item.assignee }}</span>
+                            <div class="vr" />
                             <span
                               :class="`badge ${item.priority === 'High' ? 'bg-danger-transparent' : `${item.priority === 'Low' ? 'bg-success-transparent' : 'bg-warning-transparent'}`}`"
-                              >{{ item.priority }}</span
-                            >
+                            >{{ item.priority }}</span>
                           </div>
                         </div>
                         <div class="text-end">
@@ -175,8 +172,12 @@ const dataToPass = {
           <div class="card custom-card">
             <div class="card-body">
               <div class="d-flex align-items-center justify-content-between flex-wrap">
-                <div class="lead-title total">Total Leads</div>
-                <div class="lead-title target">Leads Target</div>
+                <div class="lead-title total">
+                  Total Leads
+                </div>
+                <div class="lead-title target">
+                  Leads Target
+                </div>
               </div>
               <div class="progress-stacked progress-animate progress-sm my-3">
                 <div
@@ -186,7 +187,7 @@ const dataToPass = {
                   aria-valuenow="68"
                   aria-valuemin="0"
                   aria-valuemax="100"
-                ></div>
+                />
                 <div
                   class="progress-bar bg-success"
                   role="progressbar"
@@ -194,19 +195,15 @@ const dataToPass = {
                   aria-valuenow="32"
                   aria-valuemin="0"
                   aria-valuemax="100"
-                ></div>
+                />
               </div>
               <div class="d-flex align-items-center gap-3 justify-content-between flex-wrap">
                 <div>
-                  <span class="text-success fw-medium me-2"
-                    ><i class="ti ti-arrow-up me-1"></i>3.25%</span
-                  >
+                  <span class="text-success fw-medium me-2"><i class="ti ti-arrow-up me-1" />3.25%</span>
                   Compared to last week
                 </div>
                 <div>
-                  <a href="javascript:void(0);" class="link-primary text-decoration-underline"
-                    >Leads Report <i class="ti ti-arrow-narrow-right"></i
-                  ></a>
+                  <a href="javascript:void(0);" class="link-primary text-decoration-underline">Leads Report <i class="ti ti-arrow-narrow-right" /></a>
                 </div>
               </div>
             </div>
@@ -217,11 +214,13 @@ const dataToPass = {
     <div class="col-xxl-3">
       <div class="card custom-card overflow-hidden">
         <div class="card-header">
-          <div class="card-title">Leads By Source</div>
+          <div class="card-title">
+            Leads By Source
+          </div>
         </div>
         <div class="card-body">
           <div id="leads-source">
-            <apexchart
+            <Apexchart
               height="205px"
               type="polarArea"
               :options="dashboardData.leadOptions"
@@ -237,17 +236,15 @@ const dataToPass = {
               class="list-group-item"
             >
               <div class="d-flex align-items-center justify-content-between">
-                <div class="fw-semibold">{{ item.name }}</div>
+                <div class="fw-semibold">
+                  {{ item.name }}
+                </div>
                 <div class="lh-1 text-end">
-                  <span class="d-block fw-semibold mb-0"
-                    ><span
-                      :class="` ${item.trend === 'up' ? 'text-success' : 'text-danger'} d-inline-flex align-items-center fw-medium me-2 fs-12`"
-                      ><i
-                        :class="`${item.trend === 'up' ? 'ti ti-arrow-up' : 'ti ti-arrow-down'} me-1`"
-                      ></i
-                      >{{ item.percentage }}</span
-                    >{{ item.count }}</span
-                  >
+                  <span class="d-block fw-semibold mb-0"><span
+                    :class="` ${item.trend === 'up' ? 'text-success' : 'text-danger'} d-inline-flex align-items-center fw-medium me-2 fs-12`"
+                  ><i
+                    :class="`${item.trend === 'up' ? 'ti ti-arrow-up' : 'ti ti-arrow-down'} me-1`"
+                  />{{ item.percentage }}</span>{{ item.count }}</span>
                 </div>
               </div>
             </li>
@@ -263,7 +260,9 @@ const dataToPass = {
     <div class="col-xxl-3">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Top Deals</div>
+          <div class="card-title">
+            Top Deals
+          </div>
         </div>
         <div class="card-body">
           <ul class="list-unstyled crm-top-deals">
@@ -281,10 +280,14 @@ const dataToPass = {
                   </span>
                 </div>
                 <div class="flex-fill">
-                  <p class="fw-semibold mb-0">{{ item.name }}</p>
+                  <p class="fw-semibold mb-0">
+                    {{ item.name }}
+                  </p>
                   <span class="text-muted fs-12">{{ item.email }}</span>
                 </div>
-                <div class="fw-semibold fs-15">{{ item.amount }}</div>
+                <div class="fw-semibold fs-15">
+                  {{ item.amount }}
+                </div>
               </div>
             </li>
           </ul>
@@ -294,11 +297,13 @@ const dataToPass = {
     <div class="col-xxl-3">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Deals Statistics</div>
+          <div class="card-title">
+            Deals Statistics
+          </div>
         </div>
         <div class="card-body py-0">
           <div id="deals-statistics">
-            <apexchart
+            <Apexchart
               height="351px"
               type="bar"
               :options="dashboardData.staticOptions"
@@ -311,11 +316,14 @@ const dataToPass = {
     <div class="col-xxl-6">
       <div class="card custom-card overflow-hidden">
         <div class="card-header">
-          <div class="card-title">Leads Overview</div>
+          <div class="card-title">
+            Leads Overview
+          </div>
         </div>
         <div class="card-body p-0">
           <TableComponent
-            tableClass="table text-nowrap"
+            #cell="{ row }"
+            table-class="table text-nowrap"
             :headers="[
               { text: 'Lead Name' },
               { text: 'Company' },
@@ -323,7 +331,6 @@ const dataToPass = {
               { text: 'Source' },
             ]"
             :rows="dashboardData.overviewtable"
-            v-slot:cell="{ row }"
           >
             <td :class="row.tdClass">
               <div class="d-flex align-items-center gap-2">
@@ -335,7 +342,9 @@ const dataToPass = {
                 <div>{{ row.name }}</div>
               </div>
             </td>
-            <td :class="row.tdClass">{{ row.company }}</td>
+            <td :class="row.tdClass">
+              {{ row.company }}
+            </td>
             <td :class="row.tdClass">
               <span :class="`badge ${row.status.colorClass}`">{{ row.status.label }}</span>
             </td>
@@ -354,11 +363,14 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card overflow-hidden">
         <div class="card-header">
-          <div class="card-title">Top Deals</div>
+          <div class="card-title">
+            Top Deals
+          </div>
         </div>
         <div class="card-body p-0">
           <TableComponent
-            tableClass="table text-nowrap"
+            #cell="{ row }"
+            table-class="table text-nowrap"
             :headers="[
               { text: 'Deal ID' },
               { text: 'Deal Name' },
@@ -371,15 +383,16 @@ const dataToPass = {
               { text: 'Actions' },
             ]"
             :rows="dashboardData.topdealsTable"
-            v-slot:cell="{ row }"
           >
             <td :class="row.tdClass">
               <a href="javascript:void(0);">{{ row.id }}</a>
             </td>
-            <td :class="row.tdClass">{{ row.title }}</td>
+            <td :class="row.tdClass">
+              {{ row.title }}
+            </td>
             <td :class="row.tdClass">
               <div class="d-flex align-items-center gap-2 position-relative">
-                <a href="javascript:void(0);" class="stretched-link"></a>
+                <a href="javascript:void(0);" class="stretched-link" />
                 <div class="lh-1">
                   <span class="avatar avatar-sm avatar-rounded">
                     <BaseImg :src="row.companyLogo" alt="" />
@@ -390,20 +403,28 @@ const dataToPass = {
                 </div>
               </div>
             </td>
-            <td :class="row.tdClass">{{ row.amount }}</td>
+            <td :class="row.tdClass">
+              {{ row.amount }}
+            </td>
             <td :class="row.tdClass">
               <span :class="`badge ${row.status.colorClass}`">{{ row.status.label }}</span>
             </td>
-            <td :class="row.tdClass">{{ row.closeDate }}</td>
-            <td :class="row.tdClass">{{ row.owner }}</td>
-            <td :class="row.tdClass">{{ row.priority }}</td>
+            <td :class="row.tdClass">
+              {{ row.closeDate }}
+            </td>
+            <td :class="row.tdClass">
+              {{ row.owner }}
+            </td>
+            <td :class="row.tdClass">
+              {{ row.priority }}
+            </td>
             <td :class="row.tdClass">
               <div class="btn-list">
                 <button class="btn btn-icon btn-primary-light btn-sm">
-                  <i class="ti ti-edit"></i>
+                  <i class="ti ti-edit" />
                 </button>
                 <button class="btn btn-icon btn-danger-light btn-sm">
-                  <i class="ti ti-trash"></i>
+                  <i class="ti ti-trash" />
                 </button>
               </div>
             </td>
@@ -411,23 +432,27 @@ const dataToPass = {
         </div>
         <div class="card-footer">
           <div class="d-flex align-items-center flex-wrap">
-            <div>Showing 6 Entries <i class="bi bi-arrow-right ms-2 fw-semibold"></i></div>
+            <div>Showing 6 Entries <i class="bi bi-arrow-right ms-2 fw-semibold" /></div>
             <div class="ms-auto">
               <nav aria-label="Page navigation" class="pagination-style-2">
                 <ul class="pagination mb-0 flex-wrap">
                   <li class="page-item disabled">
                     <a class="page-link" href="javascript:void(0);"> Prev </a>
                   </li>
-                  <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:void(0);">1</a>
+                  </li>
                   <li class="page-item active">
                     <a class="page-link" href="javascript:void(0);">2</a>
                   </li>
                   <li class="page-item">
                     <a class="page-link" href="javascript:void(0);">
-                      <i class="bi bi-three-dots"></i>
+                      <i class="bi bi-three-dots" />
                     </a>
                   </li>
-                  <li class="page-item"><a class="page-link" href="javascript:void(0);">17</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:void(0);">17</a>
+                  </li>
                   <li class="page-item">
                     <a class="page-link text-primary" href="javascript:void(0);"> next </a>
                   </li>

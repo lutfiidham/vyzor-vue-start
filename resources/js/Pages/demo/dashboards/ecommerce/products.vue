@@ -1,12 +1,13 @@
 <script setup>
-import { ref, computed } from 'vue'
-import * as productsData from '@/shared/data/dashboards/ecommerce/productsdata'
+import { Head, Link } from '@inertiajs/vue3'
 import Swal from 'sweetalert2'
-import 'sweetalert2/dist/sweetalert2.min.css'
+import { computed, ref } from 'vue'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import Pageheader from '@/components/pageheader/pageheader.vue'
 import SpkReusebleJobs from '@/shared/@spk/dashboards/jobs/dashboard/spk-reuseble-jobs.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head, Link } from '@inertiajs/vue3'
+import * as productsData from '@/shared/data/dashboards/ecommerce/productsdata'
+import 'sweetalert2/dist/sweetalert2.min.css'
+
 const baseUrl = __BASE_PATH__
 // Page metadata
 const dataToPass = {
@@ -35,15 +36,15 @@ const products = ref([...productsData.users])
 // Computed filtered & sorted products
 const filteredProducts = computed(() => {
   return products.value
-    .filter((product) => {
-      const matchesCategory =
-        CategoriesValue.value === 'All Categories' || product.category === CategoriesValue.value
+    .filter(product => {
+      const matchesCategory
+        = CategoriesValue.value === 'All Categories' || product.category === CategoriesValue.value
 
-      const matchesStatus =
-        StatusValue.value === 'All Status' || product.status === StatusValue.value
+      const matchesStatus
+        = StatusValue.value === 'All Status' || product.status === StatusValue.value
 
-      const matchesStock =
-        StockValue.value === 'All Stock' || product.stockStatus === StockValue.value
+      const matchesStock
+        = StockValue.value === 'All Stock' || product.stockStatus === StockValue.value
 
       const matchesSearch = product.name.toLowerCase().includes(searchQuery.value.toLowerCase())
 
@@ -51,14 +52,14 @@ const filteredProducts = computed(() => {
     })
     .sort((a, b) => {
       switch (SortValue.value) {
-        case 'Price':
-          return parseFloat(a.price) - parseFloat(b.price)
-        case 'Product Name':
-          return a.name.localeCompare(b.name)
-        case 'Date Added':
-          return new Date(b.date).getTime() - new Date(a.date).getTime()
-        default:
-          return 0
+      case 'Price':
+        return Number.parseFloat(a.price) - Number.parseFloat(b.price)
+      case 'Product Name':
+        return a.name.localeCompare(b.name)
+      case 'Date Added':
+        return new Date(b.date).getTime() - new Date(a.date).getTime()
+      default:
+        return 0
       }
     })
 })
@@ -72,9 +73,9 @@ function deleteProduct(id) {
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
     confirmButtonText: 'Yes, delete it!',
-  }).then((result) => {
+  }).then(result => {
     if (result.isConfirmed) {
-      products.value = products.value.filter((product) => product.id !== id)
+      products.value = products.value.filter(product => product.id !== id)
       Swal.fire('Deleted!', 'The product has been deleted.', 'success')
     }
   })
@@ -83,21 +84,21 @@ function deleteProduct(id) {
 
 <template>
   <Head title="Ecommerce-Products | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row row-cols-xxl-5 row-cols-md-3 row-cols-1">
-    <div className="col" v-for="idx in productsData.productCards" :key="idx.id">
+    <div v-for="idx in productsData.productCards" :key="idx.id" className="col">
       <SpkReusebleJobs
-        :listCard="true"
-        :imageIcon="false"
-        :cardClass="`dashboard-main-card card ${idx.priceColor}`"
+        :list-card="true"
+        :image-icon="false"
+        :card-class="`dashboard-main-card card ${idx.priceColor}`"
         :list="idx"
         :NoCountUp="true"
-        :titleClass="`fs-13 fw-medium`"
+        title-class="fs-13 fw-medium"
       />
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 
   <!-- Start::row-2 -->
   <div class="row">
@@ -107,71 +108,68 @@ function deleteProduct(id) {
           <!-- Search Bar -->
           <div class="w-sm-25 w-100 w-sm-auto">
             <input
+              id="search-input"
+              v-model="searchQuery"
               class="form-control"
               type="search"
-              id="search-input"
               placeholder="Search Product"
-              v-model="searchQuery"
               aria-label="search-product"
-            />
+            >
           </div>
           <!-- Filters Section -->
           <div class="row gy-2 w-sm-50">
             <!-- Category Filter -->
             <div class="col-sm col-12">
               <VueMultiselect
+                v-model="CategoriesValue"
                 :searchable="true"
                 :allow-empty="false"
                 :show-labels="false"
                 placeholder="Select Category"
-                v-model="CategoriesValue"
                 :options="Categories"
               />
             </div>
             <!-- Status Filter -->
             <div class="col-sm col-12">
               <VueMultiselect
+                id="blockchain"
+                v-model="StatusValue"
                 :searchable="true"
                 :allow-empty="false"
                 :show-labels="false"
-                id="blockchain"
                 placeholder="Sort By"
                 :multiple="false"
-                v-model="StatusValue"
                 :options="Status"
                 :taggable="false"
-              >
-              </VueMultiselect>
+              />
             </div>
             <!-- Stock Filter -->
             <div class="col-sm col-12">
               <VueMultiselect
+                id="blockchain"
+                v-model="StockValue"
                 :searchable="true"
                 :allow-empty="false"
                 :show-labels="false"
-                id="blockchain"
                 placeholder="Sort By"
                 :multiple="false"
-                v-model="StockValue"
                 :options="Stock"
                 :taggable="false"
-              >
-              </VueMultiselect>
+              />
             </div>
             <!-- Sort By Filter -->
             <div class="col-sm col-12">
               <VueMultiselect
+                id="blockchain"
+                v-model="SortValue"
                 :searchable="true"
                 :allow-empty="false"
                 :show-labels="false"
-                id="blockchain"
                 placeholder="Sort By"
                 :multiple="false"
-                v-model="SortValue"
                 :options="Sort"
                 :taggable="false"
-              >
-              </VueMultiselect>
+              />
             </div>
           </div>
         </div>
@@ -179,37 +177,54 @@ function deleteProduct(id) {
         <!-- Table inside the card-body -->
         <div class="card-body p-0 custom-product-table">
           <div id="product-table" class="grid-card-table">
-            <v-table :data="filteredProducts">
+            <VTable :data="filteredProducts">
               <template #head>
-                <v-th class="gridjs-th gridjs-th-sort" sortKey="id" defaultSort="asc">#</v-th>
-                <v-th class="gridjs-th gridjs-th-sort" sortKey="id">Product ID</v-th>
-                <v-th class="gridjs-th gridjs-th-sort" sortKey="name">Product Name</v-th>
-                <v-th class="gridjs-th gridjs-th-sort" sortKey="price">Price</v-th>
-                <v-th class="gridjs-th gridjs-th-sort" sortKey="stockStatus">Stock Status</v-th>
-                <v-th class="gridjs-th gridjs-th-sort" sortKey="date">Quantity</v-th>
-                <v-th class="gridjs-th gridjs-th-sort" sortKey="status">Status</v-th>
-                <v-th class="gridjs-th gridjs-th-sort" sortKey="status">Date Added</v-th>
-                <v-th class="gridjs-th gridjs-th-sort" sortKey="status">Actions</v-th>
+                <VTh class="gridjs-th gridjs-th-sort" sort-key="id" default-sort="asc">
+                  #
+                </VTh>
+                <VTh class="gridjs-th gridjs-th-sort" sort-key="id">
+                  Product ID
+                </VTh>
+                <VTh class="gridjs-th gridjs-th-sort" sort-key="name">
+                  Product Name
+                </VTh>
+                <VTh class="gridjs-th gridjs-th-sort" sort-key="price">
+                  Price
+                </VTh>
+                <VTh class="gridjs-th gridjs-th-sort" sort-key="stockStatus">
+                  Stock Status
+                </VTh>
+                <VTh class="gridjs-th gridjs-th-sort" sort-key="date">
+                  Quantity
+                </VTh>
+                <VTh class="gridjs-th gridjs-th-sort" sort-key="status">
+                  Status
+                </VTh>
+                <VTh class="gridjs-th gridjs-th-sort" sort-key="status">
+                  Date Added
+                </VTh>
+                <VTh class="gridjs-th gridjs-th-sort" sort-key="status">
+                  Actions
+                </VTh>
               </template>
               <template #body="{ rows }">
                 <tr v-if="rows.length === 0">
-                  <td colspan="9" class="text-center py-4 gridjs-td">No matching records found</td>
+                  <td colspan="9" class="text-center py-4 gridjs-td">
+                    No matching records found
+                  </td>
                 </tr>
                 <tr v-for="row in rows" :key="row.id">
                   <td class="gridjs-td">
-                    <span
-                      ><input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="product-SPK001"
-                        value=""
-                        aria-label="..."
-                    /></span>
+                    <span><input
+                      id="product-SPK001"
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      aria-label="..."
+                    ></span>
                   </td>
                   <td class="gridjs-td">
-                    <span
-                      ><a href="javascript:void(0);">{{ row.id }}</a></span
-                    >
+                    <span><a href="javascript:void(0);">{{ row.id }}</a></span>
                   </td>
                   <td class="gridjs-td">
                     <span>
@@ -228,12 +243,14 @@ function deleteProduct(id) {
                       </Link>
                     </span>
                   </td>
-                  <td class="gridjs-td">{{ row.price }}</td>
+                  <td class="gridjs-td">
+                    {{ row.price }}
+                  </td>
                   <td class="gridjs-td">
                     <span>
                       <span
                         :class="`badge bg-${row.stockStatusColor ? 'success' : 'danger'}-transparent`"
-                        >{{ row.stockStatus }}
+                      >{{ row.stockStatus }}
                       </span>
                     </span>
                   </td>
@@ -245,7 +262,9 @@ function deleteProduct(id) {
                       <span :class="`text-${row.statusColor}`">{{ row.status }}</span>
                     </span>
                   </td>
-                  <td class="gridjs-td">{{ row.date }}</td>
+                  <td class="gridjs-td">
+                    {{ row.date }}
+                  </td>
                   <td class="gridjs-td">
                     <span>
                       <div class="dropdown">
@@ -255,23 +274,21 @@ function deleteProduct(id) {
                           data-bs-toggle="dropdown"
                           aria-expanded="false"
                         >
-                          <i class="ri-more-2-fill"></i>
+                          <i class="ri-more-2-fill" />
                         </a>
                         <ul class="dropdown-menu">
                           <li>
                             <Link
                               class="dropdown-item"
                               :href="`${baseUrl}/demo/dashboards/ecommerce/product-details`"
-                              ><i class="ri-eye-line me-2"></i>View</Link
-                            >
+                            ><i class="ri-eye-line me-2" />View</Link>
                           </li>
                           <li>
                             <a
                               class="dropdown-item btn-delete"
                               href="javascript:void(0);"
                               @click="deleteProduct(row.id)"
-                              ><i class="ri-delete-bin-line me-2"></i>Delete</a
-                            >
+                            ><i class="ri-delete-bin-line me-2" />Delete</a>
                           </li>
                         </ul>
                       </div>
@@ -279,7 +296,7 @@ function deleteProduct(id) {
                   </td>
                 </tr>
               </template>
-            </v-table>
+            </VTable>
           </div>
           <div class="gridjs-footer">
             <div class="gridjs-pagination">

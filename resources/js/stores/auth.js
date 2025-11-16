@@ -1,21 +1,23 @@
-import { defineStore } from 'pinia'
 import { usePage } from '@inertiajs/vue3'
+import { defineStore } from 'pinia'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
     loading: false,
-    errors: null
+    errors: null,
   }),
 
   getters: {
     isAuthenticated: () => {
       const page = usePage()
+
       return !!page.props.auth?.user
     },
     currentUser: () => {
       const page = usePage()
+
       return page.props.auth?.user
-    }
+    },
   },
 
   actions: {
@@ -33,7 +35,7 @@ export const useAuthStore = defineStore('auth', {
           .catch((error) => {
             this.loading = false
             this.errors = error.response?.data?.errors || {
-              username: ['Invalid credentials']
+              username: ['Invalid credentials'],
             }
             resolve({ authenticated: false, errors: this.errors })
           })
@@ -42,6 +44,6 @@ export const useAuthStore = defineStore('auth', {
 
     clearErrors() {
       this.errors = null
-    }
-  }
+    },
+  },
 })

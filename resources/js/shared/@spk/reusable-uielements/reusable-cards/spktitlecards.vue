@@ -42,7 +42,7 @@ defineProps({
       <BaseImg :src="Imgsrc" class="card-img-top" alt="..." />
     </template>
     <template v-if="Anchortagbefore">
-      <a :href="AnchortagNavigate" class="card-anchor"></a>
+      <a :href="AnchortagNavigate" class="card-anchor" />
     </template>
     <template v-if="Cardheader">
       <div :class="`card-header ${CustomHeaderclass}`">
@@ -53,12 +53,12 @@ defineProps({
           <a
             :href="Navigate"
             data-bs-toggle="card-remove"
-            @click="OnclickFunc"
             :class="LinkClass"
-          ></a>
+            @click="OnclickFunc"
+          />
         </template>
         <template v-if="Icontag">
-          <i :class="Icon"></i>
+          <i :class="Icon" />
         </template>
       </div>
     </template>
@@ -68,7 +68,9 @@ defineProps({
     <template v-if="Cardfooter">
       <div :class="`card-footer ${Customfooterclass}`">
         <template v-if="ButtonTag">
-          <button class="btn btn-primary">Read More</button>
+          <button class="btn btn-primary">
+            Read More
+          </button>
         </template>
       </div>
     </template>

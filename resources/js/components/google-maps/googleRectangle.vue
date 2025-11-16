@@ -1,5 +1,5 @@
 <script setup>
-import { GoogleMap, Marker, Rectangle } from 'vue3-google-map'
+import { GoogleMap, Rectangle } from 'vue3-google-map'
 
 const apiKey = import.meta.env.googleMapsApiKey
 const center = { lat: 33.678, lng: -116.243 }
@@ -24,7 +24,7 @@ const rectangle = {
     :center="center"
     :zoom="3"
     style="width: 100%; height: 300px"
-    mapTypeId="terrain"
+    map-type-id="terrain"
   >
     <Rectangle :options="rectangle" />
   </GoogleMap>

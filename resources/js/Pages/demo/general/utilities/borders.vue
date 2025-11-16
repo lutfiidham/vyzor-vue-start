@@ -1,10 +1,11 @@
 <script setup>
-import * as prism from '@/shared/data/prismCode/utilities/borders'
-
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
 import { Head } from '@inertiajs/vue3'
+
 import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as prism from '@/shared/data/prismCode/utilities/borders'
+import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
+
 const dataToPass = {
   title: 'Utilities',
   currentpage: 'Borders',
@@ -14,26 +15,26 @@ const dataToPass = {
 
 <template>
   <Head title="Borders | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xl-12">
       <ShowcodeCard :code="prism.borders" title="Borders">
-        <span class="border border-container"></span>
-        <span class="border-top border-container"></span>
-        <span class="border-end border-container"></span>
-        <span class="border-bottom border-container"></span>
-        <span class="border-start border-container"></span>
+        <span class="border border-container" />
+        <span class="border-top border-container" />
+        <span class="border-end border-container" />
+        <span class="border-bottom border-container" />
+        <span class="border-start border-container" />
       </ShowcodeCard>
     </div>
     <div class="col-xl-12">
       <ShowcodeCard :code="prism.removeBorders" title="Remove borders">
-        <span class="border-0 border-container"></span>
-        <span class="border border-top-0 border-container"></span>
-        <span class="border border-end-0 border-container"></span>
-        <span class="border border-bottom-0 border-container"></span>
-        <span class="border border-start-0 border-container"></span>
+        <span class="border-0 border-container" />
+        <span class="border border-top-0 border-container" />
+        <span class="border border-end-0 border-container" />
+        <span class="border border-bottom-0 border-container" />
+        <span class="border border-start-0 border-container" />
       </ShowcodeCard>
     </div>
   </div>
@@ -43,24 +44,24 @@ const dataToPass = {
   <div class="row">
     <div class="col-xl-12">
       <ShowcodeCard :code="prism.borderWidths" title="Border Widths">
-        <span class="border border-container border-1"></span>
-        <span class="border border-container border-2"></span>
-        <span class="border border-container border-3"></span>
-        <span class="border border-container border-4"></span>
-        <span class="border border-container border-5"></span>
+        <span class="border border-container border-1" />
+        <span class="border border-container border-2" />
+        <span class="border border-container border-3" />
+        <span class="border border-container border-4" />
+        <span class="border border-container border-5" />
       </ShowcodeCard>
     </div>
     <div class="col-xl-12">
       <ShowcodeCard :code="prism.borderColors" title="Border colors">
-        <span class="border border-container border-primary"></span>
-        <span class="border border-container border-secondary"></span>
-        <span class="border border-container border-success"></span>
-        <span class="border border-container border-danger"></span>
-        <span class="border border-container border-warning"></span>
-        <span class="border border-container border-info"></span>
-        <span class="border border-container border-light"></span>
-        <span class="border border-container border-dark"></span>
-        <span class="border border-container border-white"></span>
+        <span class="border border-container border-primary" />
+        <span class="border border-container border-secondary" />
+        <span class="border border-container border-success" />
+        <span class="border border-container border-danger" />
+        <span class="border border-container border-warning" />
+        <span class="border border-container border-info" />
+        <span class="border border-container border-light" />
+        <span class="border border-container border-dark" />
+        <span class="border border-container border-white" />
       </ShowcodeCard>
     </div>
   </div>
@@ -73,11 +74,11 @@ const dataToPass = {
         <div class="mb-4">
           <label for="exampleFormControlInput1" class="form-label">Email address</label>
           <input
+            id="exampleFormControlInput1"
             type="email"
             class="form-control border-success"
-            id="exampleFormControlInput1"
             placeholder="name@example.com"
-          />
+          >
         </div>
         <div class="h4 pb-3 mb-4 text-danger border-bottom border-danger">
           Below Shows Danger Border
@@ -91,7 +92,9 @@ const dataToPass = {
     </div>
     <div class="col-xl-12">
       <ShowcodeCard :code="prism.borderWithOpacity" title="Border with opacity">
-        <div class="border border-success p-2 mb-2">This is default success border</div>
+        <div class="border border-success p-2 mb-2">
+          This is default success border
+        </div>
         <div class="border border-success p-2 mb-2 border-opacity-75">
           This is 75% opacity success border
         </div>

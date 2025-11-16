@@ -1,11 +1,11 @@
 <script setup>
+import { Head } from '@inertiajs/vue3'
 import { ref } from 'vue'
-import * as ProjectDashboard from '@/shared/data/dashboards/projects/dashboarddata'
-import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import Pageheader from '@/components/pageheader/pageheader.vue'
 import SpkProjectDashboard from '@/shared/@spk/dashboards/projects/spk-project-dashboard.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head } from '@inertiajs/vue3'
+import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
+import * as ProjectDashboard from '@/shared/data/dashboards/projects/dashboarddata'
 
 const dataToPass = {
   activepage: 'Projects',
@@ -16,29 +16,31 @@ const dataToPass = {
 
 const projects = ref([...ProjectDashboard.ProjectsSummary])
 
-const handleToDelete = (id) => {
-  projects.value = projects.value.filter((project) => project.id !== id)
+function handleToDelete(id) {
+  projects.value = projects.value.filter(project => project.id !== id)
 }
 </script>
 
 <template>
   <Head title="Projects-Dashboards | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xxl-9">
       <div class="row">
-        <div class="col-xl-3" v-for="idx in ProjectDashboard.DashboardCards" :key="idx.id">
+        <div v-for="idx in ProjectDashboard.DashboardCards" :key="idx.id" class="col-xl-3">
           <SpkProjectDashboard :card="idx" />
         </div>
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Projects Overview</div>
+              <div class="card-title">
+                Projects Overview
+              </div>
             </div>
             <div class="card-body">
               <div id="projects-overview">
-                <apexchart
+                <Apexchart
                   type="area"
                   height="408px"
                   :options="ProjectDashboard.ProjectOptions"
@@ -53,11 +55,13 @@ const handleToDelete = (id) => {
     <div class="col-xxl-3">
       <div class="card custom-card overflow-hidden">
         <div class="card-header">
-          <div class="card-title">Task Activity</div>
+          <div class="card-title">
+            Task Activity
+          </div>
         </div>
         <div class="card-body">
           <div id="task-activity">
-            <apexchart
+            <Apexchart
               type="radialBar"
               height="235px"
               :options="ProjectDashboard.TaskOptions"
@@ -67,22 +71,21 @@ const handleToDelete = (id) => {
         </div>
         <div class="card-footer p-0">
           <ul class="list-group list-group-flush project-task-activity-list">
-            <li class="list-group-item" v-for="idx in ProjectDashboard.TaskList" :key="idx.id">
+            <li v-for="idx in ProjectDashboard.TaskList" :key="idx.id" class="list-group-item">
               <div class="d-flex align-items-start gap-2">
                 <div class="flex-fill">
                   <span :class="`d-block fw-semibold task-type ${idx.className}`">{{
                     idx.type
                   }}</span>
-                  <span class="fs-12 text-muted"
-                    >{{ idx.trend }} by
+                  <span class="fs-12 text-muted">{{ idx.trend }} by
                     <span
                       :class="`text-${idx.trend === 'Increased' ? 'success' : 'danger'} mx-1`"
-                      >{{ idx.percentage }}</span
-                    >
-                    This year</span
-                  >
+                    >{{ idx.percentage }}</span>
+                    This year</span>
                 </div>
-                <div class="fw-semibold">{{ idx.count }}</div>
+                <div class="fw-semibold">
+                  {{ idx.count }}
+                </div>
               </div>
             </li>
           </ul>
@@ -97,7 +100,9 @@ const handleToDelete = (id) => {
     <div class="col-xxl-3">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Recent Activity</div>
+          <div class="card-title">
+            Recent Activity
+          </div>
         </div>
         <div class="card-body">
           <ul class="list-unstyled projects-recent-activity-list">
@@ -110,12 +115,16 @@ const handleToDelete = (id) => {
                 </div>
                 <div class="flex-fill">
                   <div class="d-flex align-items-start justify-content-between mb-1 flex-wrap">
-                    <div class="d-block fw-semibold">{{ idx.name }}</div>
+                    <div class="d-block fw-semibold">
+                      {{ idx.name }}
+                    </div>
                     <span class="badge bg-light text-muted border">{{ idx.date }}</span>
                   </div>
-                  <div :class="`descrption ${idx.file ? 'mb-1' : ''}`">{{ idx.description }}</div>
+                  <div :class="`descrption ${idx.file ? 'mb-1' : ''}`">
+                    {{ idx.description }}
+                  </div>
                   <div v-if="idx.file" class="p-1 border border-dotted rounded position-relative">
-                    <a href="javascript:void(0);" class="stretched-link"></a>
+                    <a href="javascript:void(0);" class="stretched-link" />
                     <div class="d-flex align-items-center gap-2">
                       <span class="badge bg-success">PPT</span>
                       <span class="fs-11">Project_discussion</span>
@@ -131,7 +140,9 @@ const handleToDelete = (id) => {
     <div class="col-xxl-6">
       <div class="card custom-card overflow-hidden">
         <div class="card-header justify-content-between">
-          <div class="card-title">Urgent Tasks</div>
+          <div class="card-title">
+            Urgent Tasks
+          </div>
           <div class="dropdown">
             <a
               href="javascript:void(0);"
@@ -139,7 +150,7 @@ const handleToDelete = (id) => {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Today<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block"></i>
+              Today<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block" />
             </a>
             <ul class="dropdown-menu" role="menu">
               <li><a class="dropdown-item" href="javascript:void(0);">Week</a></li>
@@ -150,7 +161,8 @@ const handleToDelete = (id) => {
         </div>
         <div class="card-body p-0">
           <TableComponent
-            tableClass="table text-nowrap"
+            #cell="{ row }"
+            table-class="table text-nowrap"
             :headers="[
               { text: 'Task', thClass: '' },
               { text: 'Deadline', thClass: '' },
@@ -159,17 +171,16 @@ const handleToDelete = (id) => {
               { text: 'Status', thClass: '' },
             ]"
             :rows="ProjectDashboard.UrgentTasks"
-            v-slot:cell="{ row }"
           >
             <td :class="row.tdClass">
               <div class="d-flex align-items-center gap-2">
                 <div class="form-check mb-0">
                   <input
+                    :id="`urgent-task${row.id}`"
                     class="form-check-input"
                     type="checkbox"
                     value=""
-                    :id="`urgent-task${row.id}`"
-                  />
+                  >
                 </div>
                 <a href="javascript:void(0);" class="urgent-task-title">{{ row.title }}</a>
               </div>
@@ -180,9 +191,9 @@ const handleToDelete = (id) => {
             <td :class="row.tdClass">
               <div class="avatar-list-stacked">
                 <span
-                  class="avatar avatar-xs avatar-rounded mx-2"
                   v-for="(img, index) in row.avatars"
                   :key="index"
+                  class="avatar avatar-xs avatar-rounded mx-2"
                 >
                   <BaseImg :src="img" alt="img" />
                 </span>
@@ -198,23 +209,27 @@ const handleToDelete = (id) => {
         </div>
         <div class="card-footer">
           <div class="d-flex align-items-center">
-            <div>Showing 6 Entries <i class="bi bi-arrow-right ms-2 fw-semibold"></i></div>
+            <div>Showing 6 Entries <i class="bi bi-arrow-right ms-2 fw-semibold" /></div>
             <div class="ms-auto">
               <nav aria-label="Page navigation" class="pagination-style-2">
                 <ul class="pagination mb-0 flex-wrap">
                   <li class="page-item disabled">
                     <a class="page-link" href="javascript:void(0);"> Prev </a>
                   </li>
-                  <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:void(0);">1</a>
+                  </li>
                   <li class="page-item active">
                     <a class="page-link" href="javascript:void(0);">2</a>
                   </li>
                   <li class="page-item">
                     <a class="page-link" href="javascript:void(0);">
-                      <i class="bi bi-three-dots"></i>
+                      <i class="bi bi-three-dots" />
                     </a>
                   </li>
-                  <li class="page-item"><a class="page-link" href="javascript:void(0);">17</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:void(0);">17</a>
+                  </li>
                   <li class="page-item">
                     <a class="page-link text-primary" href="javascript:void(0);"> next </a>
                   </li>
@@ -228,7 +243,9 @@ const handleToDelete = (id) => {
     <div class="col-xxl-3">
       <div class="card custom-card overflow-hidden">
         <div class="card-header">
-          <div class="card-title">Recent Transactions</div>
+          <div class="card-title">
+            Recent Transactions
+          </div>
         </div>
         <div class="card-body">
           <ul class="list-unstyled projects-recent-transactions-list">
@@ -248,9 +265,7 @@ const handleToDelete = (id) => {
                 <div class="text-end">
                   <span class="d-block fw-semibold">{{ transaction.amount }}</span>
                   <span
-                    :class="[
-                      'fw-medium',
-                      'fs-13',
+                    class="fw-medium fs-13" :class="[
                       transaction.status === 'Completed'
                         ? 'text-success'
                         : transaction.status === 'Pending'
@@ -275,7 +290,9 @@ const handleToDelete = (id) => {
     <div class="col-xl-12">
       <div class="card custom-card custom-project-table">
         <div class="card-header justify-content-between">
-          <div class="card-title">Projects Summary</div>
+          <div class="card-title">
+            Projects Summary
+          </div>
           <div class="d-flex flex-wrap gap-2">
             <div>
               <input
@@ -283,7 +300,7 @@ const handleToDelete = (id) => {
                 type="text"
                 placeholder="Search Here"
                 aria-label=".form-control-sm example"
-              />
+              >
             </div>
             <div class="dropdown">
               <a
@@ -292,7 +309,7 @@ const handleToDelete = (id) => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Sort By<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block"></i>
+                Sort By<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block" />
               </a>
               <ul class="dropdown-menu" role="menu">
                 <li><a class="dropdown-item" href="javascript:void(0);">New</a></li>
@@ -305,8 +322,9 @@ const handleToDelete = (id) => {
         <div class="card-body p-0">
           <div class="table-responsive">
             <TableComponent
-              tableClass="table text-nowrap"
-              :showCheckbox="true"
+              #cell="{ row }"
+              table-class="table text-nowrap"
+              :show-checkbox="true"
               :headers="[
                 { text: 'Project Name', thClass: '' },
                 { text: 'Start Date', thClass: '' },
@@ -318,7 +336,6 @@ const handleToDelete = (id) => {
                 { text: 'Actions', thClass: '' },
               ]"
               :rows="projects"
-              v-slot:cell="{ row }"
             >
               <td :class="row.tdClass">
                 {{ row.name }}
@@ -331,8 +348,7 @@ const handleToDelete = (id) => {
               </td>
               <td :class="row.tdClass">
                 <span
-                  :class="[
-                    'badge',
+                  class="badge" :class="[
                     `bg-${row.status === 'Completed' ? 'success' : 'primary'}-transparent`,
                   ]"
                 >
@@ -351,9 +367,11 @@ const handleToDelete = (id) => {
                     <div
                       :class="`progress-bar progress-bar-striped progress-bar-animated bg-${row.progressColor}`"
                       :style="`width: ${row.progress}%`"
-                    ></div>
+                    />
                   </div>
-                  <div class="ms-2">{{ row.progress }}%</div>
+                  <div class="ms-2">
+                    {{ row.progress }}%
+                  </div>
                 </div>
               </td>
               <td :class="row.tdClass">
@@ -380,13 +398,13 @@ const handleToDelete = (id) => {
               <td :class="row.tdClass">
                 <div class="btn-list">
                   <button class="btn btn-sm btn-icon btn-primary-light btn-wave">
-                    <i class="ri-edit-line"></i>
+                    <i class="ri-edit-line" />
                   </button>
                   <button
                     class="btn btn-sm btn-icon btn-danger-light btn-wave"
                     @click="handleToDelete(row.id)"
                   >
-                    <i class="ri-delete-bin-line"></i>
+                    <i class="ri-delete-bin-line" />
                   </button>
                 </div>
               </td>
@@ -395,23 +413,27 @@ const handleToDelete = (id) => {
         </div>
         <div class="card-footer">
           <div class="d-flex align-items-center">
-            <div>Showing 6 Entries <i class="bi bi-arrow-right ms-2 fw-semibold"></i></div>
+            <div>Showing 6 Entries <i class="bi bi-arrow-right ms-2 fw-semibold" /></div>
             <div class="ms-auto">
               <nav aria-label="Page navigation" class="pagination-style-2">
                 <ul class="pagination mb-0 flex-wrap">
                   <li class="page-item disabled">
                     <a class="page-link" href="javascript:void(0);"> Prev </a>
                   </li>
-                  <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:void(0);">1</a>
+                  </li>
                   <li class="page-item active">
                     <a class="page-link" href="javascript:void(0);">2</a>
                   </li>
                   <li class="page-item">
                     <a class="page-link" href="javascript:void(0);">
-                      <i class="bi bi-three-dots"></i>
+                      <i class="bi bi-three-dots" />
                     </a>
                   </li>
-                  <li class="page-item"><a class="page-link" href="javascript:void(0);">17</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:void(0);">17</a>
+                  </li>
                   <li class="page-item">
                     <a class="page-link text-primary" href="javascript:void(0);"> next </a>
                   </li>

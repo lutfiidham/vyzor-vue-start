@@ -1,10 +1,11 @@
 <script setup>
-import { ref } from 'vue'
-import * as ProjectList from '@/shared/data/dashboards/projects/projectlist'
-import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Link } from '@inertiajs/vue3'
+import { ref } from 'vue'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
+import * as ProjectList from '@/shared/data/dashboards/projects/projectlist'
+
 const baseUrl = __BASE_PATH__
 const dataToPass = {
   activepage: 'Projects List',
@@ -19,7 +20,7 @@ const Projectselectdata = ['Newest', 'Date Added', 'Type', 'A - Z']
 
 <template>
   <Head title="Projects List | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xl-12">
@@ -34,25 +35,25 @@ const Projectselectdata = ['Newest', 'Date Added', 'Type', 'A - Z']
               <Link
                 :href="`${baseUrl}/demo/dashboards/projects/create-project`"
                 class="btn btn-primary me-2"
-                ><i class="ri-add-line me-1 fw-medium align-middle"></i>New Project</Link
               >
+                <i class="ri-add-line me-1 fw-medium align-middle" />New Project
+              </Link>
               <VueMultiselect
+                id="choices-single-default"
+                v-model="ProjectselectValue"
                 :searchable="true"
                 :show-labels="false"
                 name="choices-single-default"
-                id="choices-single-default"
                 :multiple="false"
-                v-model="ProjectselectValue"
                 :options="Projectselectdata"
                 :taggable="false"
-              >
-              </VueMultiselect>
+              />
             </div>
             <div class="avatar-list-stacked">
               <span
-                class="avatar avatar-sm avatar-rounded"
                 v-for="(img, index) in ProjectList.AvatarImages"
                 :key="index"
+                class="avatar avatar-sm avatar-rounded"
               >
                 <BaseImg :src="img" alt="img" />
               </span>
@@ -69,8 +70,10 @@ const Projectselectdata = ['Newest', 'Date Added', 'Type', 'A - Z']
                 type="search"
                 placeholder="Search Project"
                 aria-label="Search"
-              />
-              <button class="btn btn-light" type="submit">Search</button>
+              >
+              <button class="btn btn-light" type="submit">
+                Search
+              </button>
             </div>
           </div>
         </div>
@@ -86,7 +89,8 @@ const Projectselectdata = ['Newest', 'Date Added', 'Type', 'A - Z']
       <div class="card custom-card overflow-hidden">
         <div class="card-body p-0">
           <TableComponent
-            tableClass="table text-nowrap"
+            #cell="{ row }"
+            table-class="table text-nowrap"
             :headers="[
               { text: 'Project Name', thClass: '' },
               { text: 'Client Name', thClass: '' },
@@ -99,9 +103,10 @@ const Projectselectdata = ['Newest', 'Date Added', 'Type', 'A - Z']
               { text: 'Actions', thClass: '' },
             ]"
             :rows="ProjectList.ProjectListDat"
-            v-slot:cell="{ row }"
           >
-            <td :class="row.tdClass">{{ row.name }}</td>
+            <td :class="row.tdClass">
+              {{ row.name }}
+            </td>
             <td :class="row.tdClass">
               <div class="d-flex align-items-center gap-1">
                 <div class="lh-1">
@@ -114,18 +119,24 @@ const Projectselectdata = ['Newest', 'Date Added', 'Type', 'A - Z']
                 </div>
               </div>
             </td>
-            <td :class="row.tdClass">{{ row.startDate }}</td>
-            <td :class="row.tdClass">{{ row.endDate }}</td>
+            <td :class="row.tdClass">
+              {{ row.startDate }}
+            </td>
+            <td :class="row.tdClass">
+              {{ row.endDate }}
+            </td>
             <td :class="row.tdClass">
               <span :class="`badge bg-${row.statucolor}`">{{ row.status }}</span>
             </td>
-            <td :class="row.tdClass">{{ row.budget }}</td>
+            <td :class="row.tdClass">
+              {{ row.budget }}
+            </td>
             <td :class="row.tdClass">
               <div class="avatar-list-stacked">
                 <span
-                  class="avatar avatar-sm avatar-rounded"
                   v-for="(img, index) in row.team"
                   :key="index"
+                  class="avatar avatar-sm avatar-rounded"
                 >
                   <BaseImg :src="img" alt="img" />
                 </span>
@@ -138,9 +149,7 @@ const Projectselectdata = ['Newest', 'Date Added', 'Type', 'A - Z']
               </div>
             </td>
             <td :class="row.tdClass">
-              <span :class="`text-${row.PriorityColor} d-flex align-items-center`"
-                ><i class="ri-circle-fill me-1 fs-10 lh-1"></i>{{ row.priority }}</span
-              >
+              <span :class="`text-${row.PriorityColor} d-flex align-items-center`"><i class="ri-circle-fill me-1 fs-10 lh-1" />{{ row.priority }}</span>
             </td>
             <td :class="row.tdClass">
               <div class="dropdown">
@@ -151,29 +160,26 @@ const Projectselectdata = ['Newest', 'Date Added', 'Type', 'A - Z']
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <i class="ri-more-2-fill"></i>
+                  <i class="ri-more-2-fill" />
                 </a>
                 <ul class="dropdown-menu">
                   <li>
                     <a
                       class="dropdown-item d-inline-flex align-items-center"
                       href="javascript:void(0);"
-                      ><i class="ti ti-eye me-1 align-middle"></i>View</a
-                    >
+                    ><i class="ti ti-eye me-1 align-middle" />View</a>
                   </li>
                   <li>
                     <a
                       class="dropdown-item d-inline-flex align-items-center"
                       href="javascript:void(0);"
-                      ><i class="ti ti-edit me-1 align-middle"></i>Edit</a
-                    >
+                    ><i class="ti ti-edit me-1 align-middle" />Edit</a>
                   </li>
                   <li>
                     <a
                       class="dropdown-item d-inline-flex align-items-center"
                       href="javascript:void(0);"
-                      ><i class="ti ti-trash me-1 align-middle"></i>Delete</a
-                    >
+                    ><i class="ti ti-trash me-1 align-middle" />Delete</a>
                   </li>
                 </ul>
               </div>
@@ -188,8 +194,12 @@ const Projectselectdata = ['Newest', 'Date Added', 'Type', 'A - Z']
     <li class="page-item disabled">
       <a class="page-link">Previous</a>
     </li>
-    <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
-    <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+    <li class="page-item">
+      <a class="page-link" href="javascript:void(0);">1</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="javascript:void(0);">2</a>
+    </li>
     <li class="page-item">
       <a class="page-link" href="javascript:void(0);">Next</a>
     </li>

@@ -1,13 +1,13 @@
-export let basic = {
-    script: `
+export const basic = {
+  script: `
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
         <strong>Holy guacamole!</strong> You should check in on some of those fields
             below.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
     </div>`,
-  },
-  live = {
-    script: `
+}
+export const live = {
+  script: `
         <div v-if="showLive" class="alert alert-success alert-dismissible fade show" role="alert">
           <strong>Holy guacamole!</strong> You should check in on some of those fields
               below.
@@ -17,14 +17,14 @@ export let basic = {
                 alert
         </button>
             `,
-  },
-  defaultAlerts = {
-    script: `
+}
+export const defaultAlerts = {
+  script: `
     <div :class="alert alert-{idx.class}" role="alert" v-for="(idx,index) in alertsData.Defaultalerts" :key="index">
                 {{idx.text}}
     </div>
    `,
-    data: `
+  data: `
    Defaultalerts = [
         { id: 1, text: " A simple primary alert—check it out!", class: "primary" },
         { id: 5, text: " A simple secondary alert—check it out!", class: "secondary" },
@@ -36,14 +36,14 @@ export let basic = {
         { id: 11, text: " A simple dark alert—check it out!", class: "dark" },
     ]
    `,
-  },
-  linksInAlerts = {
-    script: `
+}
+export const linksInAlerts = {
+  script: `
     <div :class="alert alert-{idx.class}" role="alert" v-for="(idx,index) in alertsData.Linkalerts" :key="index">
                 {{idx.text1}} <a href="javascript:void(0);" class="alert-link">{{ idx.text2 }}</a>.
                 {{idx.text3}}
             </div>`,
-    data: `
+  data: `
             Linkalerts = [
         { text1: "A simple primary alert with ", text2: "an example link. ", text3: "Give it a click if you like.", class: "primary" },
         { text1: "A simple secondary alert with", text2: "an example link. ", text3: "Give it a click if you like.", class: "secondary" },
@@ -55,15 +55,15 @@ export let basic = {
         { text1: "A simple dark alert with", text2: "an example link. ", text3: "Give it a click if you like.", class: "dark" },
     ]
             `,
-  },
-  solidColoredAlerts = {
-    script: `
+}
+export const solidColoredAlerts = {
+  script: `
              <div :class="alert alert-{idx.class} alert-dismissible fade show{idx.color} " v-for="(idx,index) in alertsData.Solidalerts" :key="index">
                 {{idx.text}}
                 <button type="button" :class="btn-close {idx.color}" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
             </div>
            `,
-    data: `
+  data: `
            Solidalerts = [
         { id: 1, text: "A simple solid primary alert—check it out! ", class: "solid-primary", color: "" },
         { id: 5, text: "A simple solid secondary alert—check it out!", class: "solid-secondary", color: "" },
@@ -75,15 +75,15 @@ export let basic = {
         { id: 11, text: "A simple solid dark alert—check it out!", class: "solid-dark", color: "text-white" },
     ]
            `,
-  },
-  outlineAlerts = {
-    script: `
+}
+export const outlineAlerts = {
+  script: `
     <div :class="alert alert-{idx.class} alert-dismissible fade show" v-for="(idx,index) in alertsData.Outlinealerts" :key="index">
                 {{idx.text}}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
             </div>
     `,
-    data: `
+  data: `
     Outlinealerts = [
         { id: 1, text: "A simple outline primary alert—check it out! ", class: "outline-primary", color: "" },
         { id: 5, text: "A simple outline secondary alert—check it out!", class: "outline-secondary", color: "" },
@@ -95,15 +95,15 @@ export let basic = {
         { id: 11, text: "A simple outline dark alert—check it out!", class: "outline-dark", color: "" },
     ]
     `,
-  },
-  solidAlertsWithDifferentShadows = {
-    script: `
+}
+export const solidAlertsWithDifferentShadows = {
+  script: `
      <div :class="alert alert-{idx.class} shadow-{idx.size} alert-dismissible fade show" v-for="(idx,index) in alertsData.Shadowsolidalerts" :key="index">
                 {{ idx.text }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
     </div>
    `,
-    data: `
+  data: `
    Shadowsolidalerts = [
         { id: 1, text: "A simple solid primary alert with small shadow—check it out! ", class: "solid-primary", size: "sm" },
         { id: 2, text: "A simple solid primary alert with normal shadow—check it out! ", class: "solid-primary", size: "" },
@@ -113,15 +113,15 @@ export let basic = {
         { id: 6, text: "A simple solid secondary alert with large shadow—check it out!", class: "solid-secondary", size: "lg" },
     ]
    `,
-  },
-  defaultAlertsWithDifferentShadows = {
-    script: `
+}
+export const defaultAlertsWithDifferentShadows = {
+  script: `
    <div :class="alert alert-{idx.class} shadow-{idx.size}" v-for="(idx,index) in alertsData.Defaultsolidalerts" :key="index">
                 {{idx.text}}
             </div>
     `,
 
-    data: `
+  data: `
     Defaultsolidalerts = [
         { text: "A simple solid primary alert with small shadow—check it out! ", class: "primary", size: "sm" },
         { text: "A simple solid primary alert with normal shadow—check it out! ", class: "primary", size: "lg" },
@@ -131,15 +131,15 @@ export let basic = {
         { text: "A simple solid secondary alert with large shadow—check it out!", class: "secondary", size: "lg" },
     ]
     `,
-  },
-  roundedSolidAlerts = {
-    script: `
+}
+export const roundedSolidAlerts = {
+  script: `
     <div :class="alert alert-{idx.class} rounded-pill alert-dismissible fade show" v-for="(idx,index) in alertsData.Roundedsolidalerts" :key="index">
                 {{idx.text}}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
             </div>
     `,
-    data: `
+  data: `
     Roundedsolidalerts = [
         { id: 1, text: "A simple solid rounded primary alert—check it out! ", class: "solid-primary" },
         { id: 5, text: "A simple solid rounded secondary alert—check it out! ", class: "solid-secondary" },
@@ -147,15 +147,15 @@ export let basic = {
         { id: 7, text: "A simple solid rounded danger alert—check it out!", class: "solid-danger" }
     ]
     `,
-  },
-  roundedOutlineAlerts = {
-    script: `
+}
+export const roundedOutlineAlerts = {
+  script: `
         <div :class="alert alert-{idx.class} rounded-pill alert-dismissible fade show" v-for="(idx,index) in alertsData.Roundedoutlinealerts" :key="index">
                 {{idx.text}}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
             </div>
        `,
-    data: `
+  data: `
        Roundedoutlinealerts = [
         { id: 1, text: "A simple outline rounded primary alert—check it out! ", class: "outline-primary" },
         { id: 5, text: "A simple outline rounded secondary alert—check it out! ", class: "outline-secondary" },
@@ -163,16 +163,16 @@ export let basic = {
         { id: 7, text: "A simple outline rounded danger alert—check it out!", class: "outline-danger" }
     ]
        `,
-  },
-  roundedDefaultAlerts = {
-    script: `
+}
+export const roundedDefaultAlerts = {
+  script: `
      <div :class="alert alert-{idx.class} rounded-pill alert-dismissible fade show" v-for="(idx,index) in alertsData.Roundedefaultalerts">
                 {{idx.text}}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
             </div>
    `,
 
-    data: `
+  data: `
    Roundedefaultalerts = [
         { id: 1, text: "A simple rounded primary alert—check it out! ", class: "primary" },
         { id: 5, text: "A simple rounded secondary alert—check it out! ", class: "info" },
@@ -180,15 +180,15 @@ export let basic = {
         { id: 7, text: "A simple rounded danger alert—check it out!", class: "danger" }
     ]
    `,
-  },
-  roundedAlertsWithCustomCloseButton = {
-    script: `
+}
+export const roundedAlertsWithCustomCloseButton = {
+  script: `
    <div :class="alert alert-{idx.class} rounded-pill alert-dismissible fade show" v-for="(idx,index) in alertsData.Roundewithbtnalerts" :key="index">
                 {{idx.text}}
                 <button type="button" class="btn-close custom-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
             </div>
     `,
-    data: `
+  data: `
     Roundewithbtnalerts = [
         { id: 1, text: "A simple rounded primary alert—check it out! ", class: "primary" },
         { id: 2, text: "A simple rounded secondary alert—check it out! ", class: "secondary" },
@@ -196,9 +196,9 @@ export let basic = {
         { id: 4, text: "A simple rounded danger alert—check it out!", class: "danger" }
     ]
     `,
-  },
-  alertsWithIcons = {
-    script: `
+}
+export const alertsWithIcons = {
+  script: `
     <div class="alert alert-primary svg-primary d-flex align-items-center" role="alert">
                 <svg class="flex-shrink-0 me-2" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000">
                     <path d="M0 0h24v24H0V0z" fill="none" />
@@ -253,9 +253,9 @@ export let basic = {
                     An example danger alert with an icon
                 </div>
             </div>`,
-  },
-  customizedAlertsWithSVGs = {
-    script: `
+}
+export const customizedAlertsWithSVGs = {
+  script: `
     <div :class="alert svg-{idx.color} alert-{idx.color} alert-dismissible fade show custom-alert-icon shadow-sm" role="alert" v-for="(idx,index) in alertsData.Customizedalert1" :key="index">
                 <svg xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000">
                     <path d="M0 0h24v24H0z" fill="none" />
@@ -264,7 +264,7 @@ export let basic = {
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
     </div>
     `,
-    data: `
+  data: `
     Customizedalert1 = [
         { id: 1, class1: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z", color: "primary" },
         { id: 2, class1: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z", color: "secondary", },
@@ -272,9 +272,9 @@ export let basic = {
         { id: 4, class1: "M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27L15.73 3zM12 17.3c-.72 0-1.3-.58-1.3-1.3 0-.72.58-1.3 1.3-1.3.72 0 1.3.58 1.3 1.3 0 .72-.58 1.3-1.3 1.3zm1-4.3h-2V7h2v6z", color: "danger", },
     ]
     `,
-  },
-  alertsWithImages = {
-    script: `
+}
+export const alertsWithImages = {
+  script: `
      <div :class="alert alert-img alert-{idx.color} alert-dismissible fase show rounded-pill flex-wrap" role="alert" v-for="(idx,index) in alertsData.Imagealerts" :key="index">
                 <div class="avatar avatar-sm me-3 avatar-rounded">
                     <img :src="idx.src1" alt="img">
@@ -283,7 +283,7 @@ export let basic = {
                 <button type="button" :class="btn-close {idx.class}" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
             </div>
     `,
-    data: `
+  data: `
 
 
     Imagealerts = [
@@ -296,9 +296,9 @@ export let basic = {
             { id: 7, src1: '/images/faces/15.jpg', color: "dark", class: "text-muted" },
         ]
     `,
-  },
-  alertsWithDifferentSizeImages = {
-    script: `
+}
+export const alertsWithDifferentSizeImages = {
+  script: `
      <div :class="alert alert-img alert-{idx.color} alert-dismissible fase show flex-wrap" role="alert" v-for="(idx,index) in alertsData.avatarsizealert" :key="index">
                 <div :class="avatar avatar-{idx.class} me-3">
                     <img :src="idx.src1" alt="img">
@@ -307,7 +307,7 @@ export let basic = {
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i :class="bi bi-x {idx.class1}"></i></button>
             </div>
    `,
-    data: `
+  data: `
 
 
    avatarsizealert = [
@@ -319,9 +319,9 @@ export let basic = {
            { id: 6, src1: '/images/faces/14.jpg', color: "dark", class: "xl", class1: "text-muted" },
        ]
    `,
-  },
-  additionalContent = {
-    script: `
+}
+export const additionalContent = {
+  script: `
         &lt;div class="row gy-3">
             &lt;div class="col-xl-6" v-for="(idx,index) in alertsData.Additionalcontentalerts" :key="index">
                 &lt;div:class="alert alert-{idx.class} overflow-hidden p-0" role="alert">
@@ -337,7 +337,7 @@ export let basic = {
                 </div>
             </div>
         </div>`,
-    data: `
+  data: `
         Additionalcontentalerts = [
         { id: 1, text1: "Thank you for reporting this.", text2: "We appreciate you to let us know the bug in the template and for warning us about future consequences ", text3: "Visit for support for queries ?", class: "primary" },
         { id: 2, text1: "Thank you for reporting this.", text2: "We appreciate you to let us know the bug in the template and for warning us about future consequences ", text3: "Visit for support for queries ?", class: "secondary" },
@@ -345,4 +345,4 @@ export let basic = {
         { id: 4, text1: "Thank you for reporting this.", text2: "We appreciate you to let us know the bug in the template and for warning us about future consequences ", text3: "Visit for support for queries ?", class: "warning" }
     ]
         `,
-  }
+}

@@ -1,11 +1,11 @@
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { switcherStore } from '../../stores/switcher'
+import BackToTop from '../components/backtotop/backtotop.vue'
+import Footer from '../components/footer/footer.vue'
 import Header from '../components/header/header.vue'
 import Sidebar from '../components/sidebar/sidebar.vue'
-import Footer from '../components/footer/footer.vue'
 import Switcher from '../components/switcher/switcher.vue'
-import BackToTop from '../components/backtotop/backtotop.vue'
 
 // Store
 const switcher = switcherStore()
@@ -19,7 +19,7 @@ const customClass = computed(() => {
 const progressRef = ref(null) // no need for the type, Vue will infer it
 
 // Scroll handler for updating progress
-const handleScroll = () => {
+function handleScroll() {
   const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
   const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
 
@@ -46,14 +46,14 @@ onBeforeUnmount(() => {
 </script>
 
 <template lang="html">
-  <div ref="progressRef" class="progress-top-bar"></div>
+  <div ref="progressRef" class="progress-top-bar" />
   <Switcher />
   <div class="page">
     <Header />
     <Sidebar />
     <!-- Start::app-content -->
     <div class="main-content app-content">
-      <div :class="['container-fluid', 'page-container', customClass]">
+      <div class="container-fluid page-container" :class="[customClass]">
         <slot />
       </div>
     </div>

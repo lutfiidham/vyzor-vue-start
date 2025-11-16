@@ -11,12 +11,14 @@ defineProps({
         <div :class="`d-flex align-items-start gap-3 flex-wrap ${widget.divClass}`">
           <div class="lh-1">
             <span :class="`avatar avatar-md bg-${widget.color}`">
-              <i :class="`${widget.iconClass} fs-5`"></i>
+              <i :class="`${widget.iconClass} fs-5`" />
             </span>
           </div>
           <div class="flex-fill">
             <span class="d-block">{{ widget.title }}</span>
-            <h5 :class="`fw-semibold ${widget.valueClass}`">{{ widget.value }}</h5>
+            <h5 :class="`fw-semibold ${widget.valueClass}`">
+              {{ widget.value }}
+            </h5>
             <template v-if="widget.badge">
               <span :class="`badge bg-${widget.color}-transparent`">{{ widget.badgeText }}</span>
             </template>
@@ -24,13 +26,16 @@ defineProps({
           <div :class="widget.endText">
             <template v-if="widget.crmbadge">
               <div :class="`fw-semibold text-${widget.crmiconColor}`">
-                <i :class="`ti ti-arrow-narrow-${widget.crmicon} me-1`"></i
-                >{{ widget.crmpercentChange }}
+                <i :class="`ti ti-arrow-narrow-${widget.crmicon} me-1`" />{{ widget.crmpercentChange }}
               </div>
             </template>
-            <div :class="`${widget.percentageColorClass}`">{{ widget.percentChange }}</div>
+            <div :class="`${widget.percentageColorClass}`">
+              {{ widget.percentChange }}
+            </div>
             <template v-if="widget.crmbadge">
-              <div class="text-muted fs-12">This Year</div>
+              <div class="text-muted fs-12">
+                This Year
+              </div>
             </template>
           </div>
         </div>

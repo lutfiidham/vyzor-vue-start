@@ -1,19 +1,17 @@
 <script setup>
-import { getCurrentInstance, onMounted, onUnmounted, ref } from 'vue'
+import { Head, Link, useForm, usePage } from '@inertiajs/vue3'
+import { getCurrentInstance, onMounted, onUnmounted } from 'vue'
 import PasswordInput from '../../UI/passwordInput.vue'
-import ParticlesJs from '../shared/@spk/reuseble-plugin/particles-js.vue'
 import BaseImg from '../components/Baseimage/BaseImg.vue'
 import authlayout from '../layouts/authlayout.vue'
-import { Link, router, useForm, usePage } from '@inertiajs/vue3'
-import { Head } from '@inertiajs/vue3'
-
-const baseUrl = __BASE_PATH__
-const { proxy } = getCurrentInstance()
-const page = usePage()
+import ParticlesJs from '../shared/@spk/reuseble-plugin/particles-js.vue'
 
 defineOptions({
   layout: authlayout,
 })
+const baseUrl = __BASE_PATH__
+const { proxy } = getCurrentInstance()
+const page = usePage()
 
 const form = useForm({
   username: '',
@@ -23,22 +21,22 @@ const form = useForm({
 
 const theme = localStorage.getItem('vyzorcolortheme') || 'light'
 
-const login = () => {
+function login() {
   form.post('/login', {
     preserveScroll: true,
     onSuccess: () => {
       proxy.$toast.success('Welcome back!', {
-        theme: theme,
+        theme,
         icon: true,
         hideProgressBar: false,
         autoClose: 2000,
         position: 'top-right',
       })
     },
-    onError: (errors) => {
+    onError: errors => {
       const errorMessage = errors.username || errors.password || 'Invalid credentials'
       proxy.$toast.error(errorMessage, {
-        theme: theme,
+        theme,
         icon: true,
         hideProgressBar: false,
         autoClose: 3000,
@@ -53,7 +51,8 @@ onMounted(() => {
     if (action === 'add') {
       document.body.classList.add('authentication-background')
       document.body.style.display = 'block'
-    } else {
+    }
+    else {
       document.body.classList.remove('authentication-background')
       document.body.style.display = 'none'
     }
@@ -99,58 +98,59 @@ onMounted(() => {
               </Link>
             </div>
             <div>
-              <h4 class="mb-1 fw-semibold">Hi,Welcome back!</h4>
-              <p class="mb-4 text-muted fw-normal">Please enter your credentials</p>
+              <h4 class="mb-1 fw-semibold">
+                Hi,Welcome back!
+              </h4>
+              <p class="mb-4 text-muted fw-normal">
+                Please enter your credentials
+              </p>
             </div>
             <form @submit.prevent="login">
               <div class="row gy-3">
                 <div class="col-xl-12">
-                  <label for="signin-email" class="form-label text-default"
-                    >Username or Email</label
-                  >
+                  <label for="signin-email" class="form-label text-default">Username or Email</label>
                   <input
+                    id="signin-email"
+                    v-model="form.username"
                     type="text"
                     class="form-control"
                     :class="{ 'is-invalid': form.errors.username }"
-                    id="signin-email"
-                    v-model="form.username"
                     placeholder="Enter Username or Email"
-                  />
-                  <div class="invalid-feedback" v-if="form.errors.username">
+                  >
+                  <div v-if="form.errors.username" class="invalid-feedback">
                     {{ form.errors.username }}
                   </div>
                 </div>
                 <div class="col-xl-12 mb-2">
-                  <label for="signin-password" class="form-label text-default d-block"
-                    >Password</label
-                  >
+                  <label for="signin-password" class="form-label text-default d-block">Password</label>
                   <div class="position-relative">
                     <PasswordInput
+                      id="password"
                       v-model="form.password"
                       name="password"
-                      id="password"
                       placeholder="Password"
                       :class="{ 'is-invalid': form.errors.password }"
                       required
                     />
-                    <div class="invalid-feedback d-block" v-if="form.errors.password">
+                    <div v-if="form.errors.password" class="invalid-feedback d-block">
                       {{ form.errors.password }}
                     </div>
                   </div>
                   <div class="mt-2">
                     <div class="form-check d-flex gap-2 flex-wrap">
                       <input
+                        id="defaultCheck1"
+                        v-model="form.remember"
                         class="form-check-input"
                         type="checkbox"
-                        v-model="form.remember"
-                        id="defaultCheck1"
-                      />
+                      >
                       <label class="form-check-label grow" for="defaultCheck1"> Remember me </label>
                       <Link
                         :href="`${baseUrl}/demo/pages/authentication/reset-password/basic`"
                         class="float-end link-danger fw-medium fs-12"
-                        >Forget password ?</Link
                       >
+                        Forget password ?
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -162,7 +162,7 @@ onMounted(() => {
                       class="spinner-border spinner-border-sm"
                       role="status"
                       aria-hidden="true"
-                    ></span>
+                    />
                     Signing in...
                   </span>
                   <span v-else>Sign In</span>
@@ -195,7 +195,8 @@ onMounted(() => {
               <Link
                 :href="`${baseUrl}/demo/pages/authentication/sign-up/basic`"
                 class="text-primary"
-                >Sign Up
+              >
+                Sign Up
               </Link>
             </div>
           </div>

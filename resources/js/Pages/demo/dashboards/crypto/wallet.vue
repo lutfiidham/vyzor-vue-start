@@ -1,9 +1,10 @@
 <script setup>
-import * as walletData from '@/shared/data/dashboards/crypto/wallletdata'
-import SpkReusableWalletCard from '@/shared/@spk/dashboards/crypto/spk-reusable-walletCard.vue'
-import SpkReusableWalletAddressCard from '@/shared/@spk/dashboards/crypto/spk-reusable-walletAddressCard.vue'
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import SpkReusableWalletAddressCard from '@/shared/@spk/dashboards/crypto/spk-reusable-walletAddressCard.vue'
+import SpkReusableWalletCard from '@/shared/@spk/dashboards/crypto/spk-reusable-walletCard.vue'
+import * as walletData from '@/shared/data/dashboards/crypto/wallletdata'
+
 const dataToPass = {
   title: 'Dashboards',
   subtitle: 'Crypto',
@@ -14,7 +15,7 @@ const dataToPass = {
 
 <template>
   <Head title="Crypto-Wallet | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start:: row-1 -->
   <div class="row">
     <div v-for="(item, index) in walletData.wallets" :key="index" class="col-xxl-3 col-xl-6">
@@ -29,7 +30,7 @@ const dataToPass = {
       <SpkReusableWalletAddressCard :item="item" />
     </div>
   </div>
-  <!--End::row-2 -->
+  <!-- End::row-2 -->
 </template>
 
 <style scoped>

@@ -1,13 +1,12 @@
 <script setup>
+import { Head } from '@inertiajs/vue3'
 import { ref } from 'vue'
-import * as ListViewdata from '@/shared/data/applications/task/listviewdata'
-import simplebar from 'simplebar-vue'
-import 'simplebar-vue/dist/simplebar.min.css'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import Pageheader from '@/components/pageheader/pageheader.vue'
 import SpkReusebleJobs from '@/shared/@spk/dashboards/jobs/dashboard/spk-reuseble-jobs.vue'
 import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head } from '@inertiajs/vue3'
+import * as ListViewdata from '@/shared/data/applications/task/listviewdata'
+import 'simplebar-vue/dist/simplebar.min.css'
 // Reactive variables
 const picked = ref(null)
 const picked1 = ref(null)
@@ -33,24 +32,24 @@ const ListviewassigneddataValue = ref(null)
 const Listviewassigneddata = ['Angelina May', 'Kiara advain', 'Hercules Jhon', 'Mayor Kim']
 
 // Method to delete an item by ID
-const handleToDelete = (id) => {
-  listview.value = listview.value.filter((list) => list.id !== id)
+function handleToDelete(id) {
+  listview.value = listview.value.filter(list => list.id !== id)
 }
 </script>
 
 <template>
   <Head title="Tasks-List View | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-2 -->
   <div class="row">
     <div class="col-xl-12">
       <div class="row">
-        <div class="col-xl-3 col-lg-6" v-for="idx in ListViewdata.TaskData" :key="idx.id">
+        <div v-for="idx in ListViewdata.TaskData" :key="idx.id" class="col-xl-3 col-lg-6">
           <SpkReusebleJobs
-            titleClass="mb-2 fs-12"
-            :imageIcon="false"
-            :listCard="true"
-            :cardClass="`card ${idx.cardClass}`"
+            title-class="mb-2 fs-12"
+            :image-icon="false"
+            :list-card="true"
+            :card-class="`card ${idx.cardClass}`"
             :list="idx"
             :CountUpValue="true"
           />
@@ -61,14 +60,16 @@ const handleToDelete = (id) => {
   <div class="col-xxl-12 col-xl-12">
     <div class="card custom-card">
       <div class="card-header justify-content-between">
-        <div class="card-title">Total Tasks</div>
+        <div class="card-title">
+          Total Tasks
+        </div>
         <div class="d-flex">
           <button
             class="btn btn-sm btn-primary btn-wave waves-light"
             data-bs-toggle="modal"
             data-bs-target="#create-task"
           >
-            <i class="ri-add-line fw-medium align-middle me-1"></i> Create Task
+            <i class="ri-add-line fw-medium align-middle me-1" /> Create Task
           </button>
           <div class="dropdown ms-2">
             <button
@@ -77,7 +78,7 @@ const handleToDelete = (id) => {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <i class="ti ti-dots-vertical"></i>
+              <i class="ti ti-dots-vertical" />
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="javascript:void(0);">New Tasks</a></li>
@@ -91,9 +92,10 @@ const handleToDelete = (id) => {
       <div class="card-body p-0">
         <div class="table-responsive">
           <TableComponent
-            theadClass="table-light"
-            tableClass="table text-nowrap"
-            :showCheckbox="true"
+            #cell="{ row }"
+            thead-class="table-light"
+            table-class="table text-nowrap"
+            :show-checkbox="true"
             :headers="[
               { text: 'Task', thClass: '' },
               { text: 'Task ID', thClass: '' },
@@ -105,7 +107,6 @@ const handleToDelete = (id) => {
               { text: 'Actions', thClass: '' },
             ]"
             :rows="listview"
-            v-slot:cell="{ row }"
           >
             <td>
               <a
@@ -114,8 +115,7 @@ const handleToDelete = (id) => {
                 data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasRight"
                 aria-controls="offcanvasRight"
-                >{{ row.title }}</a
-              >
+              >{{ row.title }}</a>
             </td>
             <td>
               <span class="fw-medium">{{ row.code }}</span>
@@ -135,16 +135,16 @@ const handleToDelete = (id) => {
             <td>
               <div class="avatar-list-stacked">
                 <span
-                  class="avatar avatar-sm avatar-rounded mx-1"
                   v-for="(img, index) in row.avatars"
                   :key="index"
+                  class="avatar avatar-sm avatar-rounded mx-1"
                 >
                   <BaseImg :src="img" alt="img" />
                 </span>
                 <a
+                  v-if="row.extraMembers > 0"
                   class="avatar avatar-sm bg-primary avatar-rounded text-fixed-white mx-1"
                   href="javascript:void(0);"
-                  v-if="row.extraMembers > 0"
                 >
                   +{{ row.extraMembers }}
                 </a>
@@ -157,13 +157,13 @@ const handleToDelete = (id) => {
                 data-bs-placement="top"
                 data-bs-title="Edit"
               >
-                <i class="ri-edit-line"></i>
+                <i class="ri-edit-line" />
               </button>
               <button
                 class="btn btn-danger-light btn-icon ms-1 btn-sm task-delete-btn"
                 @click="handleToDelete(row.id)"
               >
-                <i class="ri-delete-bin-5-line"></i>
+                <i class="ri-delete-bin-5-line" />
               </button>
             </td>
           </TableComponent>
@@ -175,14 +175,20 @@ const handleToDelete = (id) => {
             <li class="page-item disabled">
               <a class="page-link" href="javascript:void(0);"> Prev </a>
             </li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
-            <li class="page-item active"><a class="page-link" href="javascript:void(0);">2</a></li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">1</a>
+            </li>
+            <li class="page-item active">
+              <a class="page-link" href="javascript:void(0);">2</a>
+            </li>
             <li class="page-item">
               <a class="page-link" href="javascript:void(0);">
-                <i class="bi bi-three-dots"></i>
+                <i class="bi bi-three-dots" />
               </a>
             </li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0);">17</a></li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">17</a>
+            </li>
             <li class="page-item">
               <a class="page-link text-primary" href="javascript:void(0);"> next </a>
             </li>
@@ -191,26 +197,30 @@ const handleToDelete = (id) => {
       </div>
     </div>
   </div>
-  <!--End::row-2 -->
+  <!-- End::row-2 -->
 
   <!-- Task Details Offcanvas -->
   <div
+    id="offcanvasRight"
     class="offcanvas offcanvas-end"
     tabindex="-1"
-    id="offcanvasRight"
     aria-labelledby="offcanvasRightLabel"
   >
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title task-title" id="offcanvasRightLabel">Redesign Product Page</h5>
+      <h5 id="offcanvasRightLabel" class="offcanvas-title task-title">
+        Redesign Product Page
+      </h5>
       <button
         type="button"
         class="btn-close"
         data-bs-dismiss="offcanvas"
         aria-label="Close"
-      ></button>
+      />
     </div>
     <div class="offcanvas-body">
-      <div class="fs-15 fw-medium mb-2">Task Description :</div>
+      <div class="fs-15 fw-medium mb-2">
+        Task Description :
+      </div>
       <p class="text-muted task-description mb-4 fs-13">
         The current product page layout is outdated and does not provide a smooth user experience
         across all devices. This task involves redesigning the product page to make it more visually
@@ -227,7 +237,7 @@ const handleToDelete = (id) => {
                       class="avatar avatar-sm avatar-rounded bg-primary-transparent svg-primary text-primary"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                        <rect width="256" height="256" fill="none"></rect>
+                        <rect width="256" height="256" fill="none" />
                         <polyline
                           points="88 136 112 160 168 104"
                           fill="none"
@@ -235,7 +245,7 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></polyline>
+                        />
                         <circle
                           cx="128"
                           cy="128"
@@ -245,7 +255,7 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></circle>
+                        />
                       </svg>
                     </span>
                   </div>
@@ -264,7 +274,7 @@ const handleToDelete = (id) => {
                       class="avatar avatar-sm avatar-rounded bg-secondary-transparent svg-secondary text-secondary"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                        <rect width="256" height="256" fill="none"></rect>
+                        <rect width="256" height="256" fill="none" />
                         <path
                           d="M32,200H187.72a8,8,0,0,0,6.65-3.56L240,128,194.37,59.56A8,8,0,0,0,187.72,56H32l48,72Z"
                           fill="none"
@@ -272,7 +282,7 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></path>
+                        />
                       </svg>
                     </span>
                   </div>
@@ -294,7 +304,7 @@ const handleToDelete = (id) => {
                       class="avatar avatar-sm avatar-rounded bg-warning-transparent svg-warning text-warning"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                        <rect width="256" height="256" fill="none"></rect>
+                        <rect width="256" height="256" fill="none" />
                         <path
                           d="M200,224H56a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h96l56,56V216A8,8,0,0,1,200,224Z"
                           fill="none"
@@ -302,7 +312,7 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></path>
+                        />
                         <polyline
                           points="148 32 148 92 208 92"
                           fill="none"
@@ -310,7 +320,7 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></polyline>
+                        />
                       </svg>
                     </span>
                   </div>
@@ -329,7 +339,7 @@ const handleToDelete = (id) => {
                       class="avatar avatar-sm avatar-rounded bg-info-transparent svg-info-transparent text-info-transparent"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                        <rect width="256" height="256" fill="none"></rect>
+                        <rect width="256" height="256" fill="none" />
                         <path
                           d="M42.34,138.34A8,8,0,0,1,40,132.69V40h92.69a8,8,0,0,1,5.65,2.34l99.32,99.32a8,8,0,0,1,0,11.31L153,237.66a8,8,0,0,1-11.31,0Z"
                           fill="none"
@@ -337,8 +347,8 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></path>
-                        <circle cx="88" cy="88" r="16"></circle>
+                        />
+                        <circle cx="88" cy="88" r="16" />
                       </svg>
                     </span>
                   </div>
@@ -359,7 +369,7 @@ const handleToDelete = (id) => {
                       class="avatar avatar-sm avatar-rounded bg-success-transparent svg-success text-success"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                        <rect width="256" height="256" fill="none"></rect>
+                        <rect width="256" height="256" fill="none" />
                         <line
                           x1="48"
                           y1="224"
@@ -370,7 +380,7 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></line>
+                        />
                         <path
                           d="M48,176c64-55.43,112,55.43,176,0V56C160,111.43,112,.57,48,56"
                           fill="none"
@@ -378,7 +388,7 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></path>
+                        />
                       </svg>
                     </span>
                   </div>
@@ -399,7 +409,7 @@ const handleToDelete = (id) => {
                       class="avatar avatar-sm avatar-rounded bg-danger-transparent svg-danger text-danger"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                        <rect width="256" height="256" fill="none"></rect>
+                        <rect width="256" height="256" fill="none" />
                         <rect
                           x="40"
                           y="40"
@@ -411,7 +421,7 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></rect>
+                        />
                         <line
                           x1="176"
                           y1="24"
@@ -422,7 +432,7 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></line>
+                        />
                         <line
                           x1="80"
                           y1="24"
@@ -433,7 +443,7 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></line>
+                        />
                         <line
                           x1="40"
                           y1="88"
@@ -444,7 +454,7 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></line>
+                        />
                       </svg>
                     </span>
                   </div>
@@ -463,7 +473,7 @@ const handleToDelete = (id) => {
                       class="avatar avatar-sm avatar-rounded bg-teal-transparent svg-teal text-teal"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                        <rect width="256" height="256" fill="none"></rect>
+                        <rect width="256" height="256" fill="none" />
                         <rect
                           x="40"
                           y="40"
@@ -475,7 +485,7 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></rect>
+                        />
                         <line
                           x1="176"
                           y1="24"
@@ -486,7 +496,7 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></line>
+                        />
                         <line
                           x1="80"
                           y1="24"
@@ -497,7 +507,7 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></line>
+                        />
                         <line
                           x1="40"
                           y1="88"
@@ -508,7 +518,7 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></line>
+                        />
                       </svg>
                     </span>
                   </div>
@@ -527,7 +537,7 @@ const handleToDelete = (id) => {
                       class="avatar avatar-sm avatar-rounded bg-pink-transparent svg-pink text-pink"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                        <rect width="256" height="256" fill="none"></rect>
+                        <rect width="256" height="256" fill="none" />
                         <circle
                           cx="84"
                           cy="108"
@@ -537,7 +547,7 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></circle>
+                        />
                         <path
                           d="M13,196a88,88,0,0,1,142,0"
                           fill="none"
@@ -545,7 +555,7 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></path>
+                        />
                         <path
                           d="M172,160a87.86,87.86,0,0,1,71,36"
                           fill="none"
@@ -553,7 +563,7 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></path>
+                        />
                         <path
                           d="M158.62,57.74A52,52,0,1,1,172,160"
                           fill="none"
@@ -561,7 +571,7 @@ const handleToDelete = (id) => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="24"
-                        ></path>
+                        />
                       </svg>
                     </span>
                   </div>
@@ -611,8 +621,8 @@ const handleToDelete = (id) => {
       <div class="card custom-card overflow-hidden">
         <div class="card-header p-0">
           <ul
-            class="nav nav-tabs nav-justified w-100 tab-style-8 scaleX activity-details-tabs"
             id="myTab4"
+            class="nav nav-tabs nav-justified w-100 tab-style-8 scaleX activity-details-tabs"
             role="tablist"
           >
             <li class="nav-item" role="presentation">
@@ -659,10 +669,10 @@ const handleToDelete = (id) => {
           </ul>
         </div>
         <div class="card-body">
-          <div class="tab-content" id="myTabContent3">
+          <div id="myTabContent3" class="tab-content">
             <div
-              class="tab-pane overflow-hidden active show p-0 border-0"
               id="sub-task"
+              class="tab-pane overflow-hidden active show p-0 border-0"
               role="tabpanel"
               aria-labelledby="sub-task"
               tabindex="0"
@@ -671,121 +681,107 @@ const handleToDelete = (id) => {
                 <li>
                   <div class="form-check mb-0">
                     <input
+                      id="subtask1"
                       class="form-check-input form-checked-gray"
                       type="checkbox"
                       value=""
-                      id="subtask1"
                       checked
-                    />
-                    <label class="form-check-label" for="subtask1"
-                      >Creating new wireframes for the product page</label
                     >
+                    <label class="form-check-label" for="subtask1">Creating new wireframes for the product page</label>
                   </div>
                 </li>
                 <li>
                   <div class="form-check mb-0">
                     <input
+                      id="subtask2"
                       class="form-check-input form-checked-gray"
                       type="checkbox"
                       value=""
-                      id="subtask2"
-                    />
+                    >
                     <label class="form-check-label" for="subtask2">Updating the UI/UX design</label>
                   </div>
                 </li>
                 <li>
                   <div class="form-check mb-0">
                     <input
-                      class="form-check-input form-checked-gray"
-                      type="checkbox"
-                      value=""
                       id="subtask3"
-                    />
-                    <label class="form-check-label" for="subtask3"
-                      >Integrating customer reviews section</label
+                      class="form-check-input form-checked-gray"
+                      type="checkbox"
+                      value=""
                     >
+                    <label class="form-check-label" for="subtask3">Integrating customer reviews section</label>
                   </div>
                 </li>
                 <li>
                   <div class="form-check mb-0">
                     <input
-                      class="form-check-input form-checked-gray"
-                      type="checkbox"
-                      value=""
                       id="subtask4"
+                      class="form-check-input form-checked-gray"
+                      type="checkbox"
+                      value=""
                       checked
-                    />
-                    <label class="form-check-label" for="subtask4"
-                      >Optimizing for mobile devices</label
                     >
+                    <label class="form-check-label" for="subtask4">Optimizing for mobile devices</label>
                   </div>
                 </li>
                 <li>
                   <div class="form-check mb-0">
                     <input
-                      class="form-check-input form-checked-gray"
-                      type="checkbox"
-                      value=""
                       id="subtask5"
+                      class="form-check-input form-checked-gray"
+                      type="checkbox"
+                      value=""
                       checked
-                    />
-                    <label class="form-check-label" for="subtask5"
-                      >Testing performance and functionality across browsers</label
                     >
+                    <label class="form-check-label" for="subtask5">Testing performance and functionality across browsers</label>
                   </div>
                 </li>
                 <li>
                   <div class="form-check mb-0">
                     <input
-                      class="form-check-input form-checked-gray"
-                      type="checkbox"
-                      value=""
                       id="subtask6"
-                    />
-                    <label class="form-check-label" for="subtask6"
-                      >Set up user authentication backend</label
+                      class="form-check-input form-checked-gray"
+                      type="checkbox"
+                      value=""
                     >
+                    <label class="form-check-label" for="subtask6">Set up user authentication backend</label>
                   </div>
                 </li>
                 <li>
                   <div class="form-check mb-0">
                     <input
-                      class="form-check-input form-checked-gray"
-                      type="checkbox"
-                      value=""
                       id="subtask7"
+                      class="form-check-input form-checked-gray"
+                      type="checkbox"
+                      value=""
                       checked
-                    />
-                    <label class="form-check-label" for="subtask7"
-                      >Set up user authentication backend</label
                     >
+                    <label class="form-check-label" for="subtask7">Set up user authentication backend</label>
                   </div>
                 </li>
                 <li>
                   <div class="form-check mb-0">
                     <input
+                      id="subtask8"
                       class="form-check-input form-checked-gray"
                       type="checkbox"
                       value=""
-                      id="subtask8"
-                    />
-                    <label class="form-check-label" for="subtask8"
-                      >Implement password strength validation</label
                     >
+                    <label class="form-check-label" for="subtask8">Implement password strength validation</label>
                   </div>
                 </li>
               </ul>
             </div>
             <div
-              class="tab-pane overflow-hidden p-0 border-0"
               id="comments"
+              class="tab-pane overflow-hidden p-0 border-0"
               role="tabpanel"
               aria-labelledby="comments"
               tabindex="0"
             >
               <ul
-                class="list-unstyled profile-timeline task-profile-timeline"
                 id="task-comments-area"
+                class="list-unstyled profile-timeline task-profile-timeline"
               >
                 <li>
                   <div class="d-flex align-items-start">
@@ -799,11 +795,11 @@ const handleToDelete = (id) => {
                     <div>
                       <div class="d-flex align-items-center justify-content-between mb-1">
                         <div class="fw-medium d-flex align-items-center">
-                          John Doe<span class="badge bg-primary-transparent ms-2"
-                            >Project Manager</span
-                          >
+                          John Doe<span class="badge bg-primary-transparent ms-2">Project Manager</span>
                         </div>
-                        <div class="text-muted fs-13">10:15 AM</div>
+                        <div class="text-muted fs-13">
+                          10:15 AM
+                        </div>
                       </div>
                       <div class="fs-13 text-muted">
                         Let's make sure we prioritize the mobile responsiveness for this feature. We
@@ -824,11 +820,11 @@ const handleToDelete = (id) => {
                     <div>
                       <div class="d-flex align-items-center justify-content-between mb-1">
                         <div class="fw-medium d-flex align-items-center">
-                          Jane Smith<span class="badge bg-secondary-transparent ms-2"
-                            >Developer</span
-                          >
+                          Jane Smith<span class="badge bg-secondary-transparent ms-2">Developer</span>
                         </div>
-                        <div class="text-muted fs-13">11:00 AM</div>
+                        <div class="text-muted fs-13">
+                          11:00 AM
+                        </div>
                       </div>
                       <div class="fs-13 text-muted">
                         The design is a bit tricky. I'm facing some alignment issues with the
@@ -849,11 +845,11 @@ const handleToDelete = (id) => {
                     <div>
                       <div class="d-flex align-items-center justify-content-between mb-1">
                         <div class="fw-medium d-flex align-items-center">
-                          Alice Cooper<span class="badge bg-warning-transparent ms-2"
-                            >UI Designer</span
-                          >
+                          Alice Cooper<span class="badge bg-warning-transparent ms-2">UI Designer</span>
                         </div>
-                        <div class="text-muted fs-13">1:45 PM</div>
+                        <div class="text-muted fs-13">
+                          1:45 PM
+                        </div>
                       </div>
                       <div class="fs-13 text-muted">
                         I’ve updated the mockups to better fit the requirements. Check them out and
@@ -876,7 +872,9 @@ const handleToDelete = (id) => {
                         <div class="fw-medium d-flex align-items-center">
                           Bob Brown<span class="badge bg-info-transparent ms-2">QA Tester</span>
                         </div>
-                        <div class="text-muted fs-13">2:30 PM</div>
+                        <div class="text-muted fs-13">
+                          2:30 PM
+                        </div>
                       </div>
                       <div class="fs-13 text-muted">
                         I’ve tested the task on all browsers. The issue on Safari is resolved, but
@@ -897,11 +895,11 @@ const handleToDelete = (id) => {
                     <div>
                       <div class="d-flex align-items-center justify-content-between mb-1">
                         <div class="fw-medium d-flex align-items-center">
-                          Charlie Evans<span class="badge bg-success-transparent ms-2"
-                            >Developer</span
-                          >
+                          Charlie Evans<span class="badge bg-success-transparent ms-2">Developer</span>
                         </div>
-                        <div class="text-muted fs-13">3:00 PM</div>
+                        <div class="text-muted fs-13">
+                          3:00 PM
+                        </div>
                       </div>
                       <div class="fs-13 text-muted">
                         I’ve fixed the issue and pushed the update. The styling should be consistent
@@ -924,27 +922,27 @@ const handleToDelete = (id) => {
                       class="form-control shadow-none border"
                       placeholder="Post Anything"
                       aria-label="Recipient's username with two button addons"
-                    />
+                    >
                     <button
                       type="button"
                       aria-label="button"
                       class="btn btn-outline-light px-3 border btn-wave border-start-0 waves-effect waves-light"
                     >
-                      <i class="bi bi-emoji-smile"></i>
+                      <i class="bi bi-emoji-smile" />
                     </button>
                     <button
                       type="button"
                       aria-label="button"
                       class="btn btn-outline-light px-3 border btn-wave border-start-0 waves-effect waves-light"
                     >
-                      <i class="bi bi-paperclip"></i>
+                      <i class="bi bi-paperclip" />
                     </button>
                     <button
                       type="button"
                       aria-label="button"
                       class="btn btn-outline-light px-3 border btn-wave border-start-0 waves-effect waves-light"
                     >
-                      <i class="bi bi-camera"></i>
+                      <i class="bi bi-camera" />
                     </button>
                     <button class="btn btn-primary btn-wave waves-effect waves-light" type="button">
                       Post
@@ -954,13 +952,13 @@ const handleToDelete = (id) => {
               </div>
             </div>
             <div
-              class="tab-pane overflow-hidden p-0 border-0"
               id="files"
+              class="tab-pane overflow-hidden p-0 border-0"
               role="tabpanel"
               aria-labelledby="files"
               tabindex="0"
             >
-              <simplebar>
+              <Simplebar>
                 <ul class="list-unstyled task-files-list">
                   <li>
                     <div class="d-flex align-items-center flex-wrap gap-2">
@@ -970,16 +968,14 @@ const handleToDelete = (id) => {
                         </span>
                       </div>
                       <div class="flex-fill">
-                        <a href="javascript:void(0);"
-                          ><span class="d-block fw-medium">Full Project</span></a
-                        >
+                        <a href="javascript:void(0);"><span class="d-block fw-medium">Full Project</span></a>
                         <span class="d-block text-muted fs-12 fw-normal">0.45MB</span>
                       </div>
                       <a
                         href="javascript:void(0)"
                         class="btn btn-light btn-icon btn-sm border rounded-circle"
                       >
-                        <i class="ti ti-download"></i>
+                        <i class="ti ti-download" />
                       </a>
                     </div>
                   </li>
@@ -991,16 +987,14 @@ const handleToDelete = (id) => {
                         </span>
                       </div>
                       <div class="flex-fill">
-                        <a href="javascript:void(0);"
-                          ><span class="d-block fw-medium">assets.zip</span></a
-                        >
+                        <a href="javascript:void(0);"><span class="d-block fw-medium">assets.zip</span></a>
                         <span class="d-block text-muted fs-12 fw-normal">0.99MB</span>
                       </div>
                       <a
                         href="javascript:void(0)"
                         class="btn btn-light btn-icon btn-sm border rounded-circle"
                       >
-                        <i class="ti ti-download"></i>
+                        <i class="ti ti-download" />
                       </a>
                     </div>
                   </li>
@@ -1012,16 +1006,14 @@ const handleToDelete = (id) => {
                         </span>
                       </div>
                       <div class="flex-fill">
-                        <a href="javascript:void(0);"
-                          ><span class="d-block fw-medium">image-1.png</span></a
-                        >
+                        <a href="javascript:void(0);"><span class="d-block fw-medium">image-1.png</span></a>
                         <span class="d-block text-muted fs-12 fw-normal">245KB</span>
                       </div>
                       <a
                         href="javascript:void(0)"
                         class="btn btn-light btn-icon btn-sm border rounded-circle"
                       >
-                        <i class="ti ti-download"></i>
+                        <i class="ti ti-download" />
                       </a>
                     </div>
                   </li>
@@ -1033,16 +1025,14 @@ const handleToDelete = (id) => {
                         </span>
                       </div>
                       <div class="flex-fill">
-                        <a href="javascript:void(0);"
-                          ><span class="d-block fw-medium">documentation.zip</span></a
-                        >
+                        <a href="javascript:void(0);"><span class="d-block fw-medium">documentation.zip</span></a>
                         <span class="d-block text-muted fs-12 fw-normal">2MB</span>
                       </div>
                       <a
                         href="javascript:void(0)"
                         class="btn btn-light btn-icon btn-sm border rounded-circle"
                       >
-                        <i class="ti ti-download"></i>
+                        <i class="ti ti-download" />
                       </a>
                     </div>
                   </li>
@@ -1054,16 +1044,14 @@ const handleToDelete = (id) => {
                         </span>
                       </div>
                       <div class="flex-fill">
-                        <a href="javascript:void(0);"
-                          ><span class="d-block fw-medium">landing.zip</span></a
-                        >
+                        <a href="javascript:void(0);"><span class="d-block fw-medium">landing.zip</span></a>
                         <span class="d-block text-muted fs-12 fw-normal">3.46MB</span>
                       </div>
                       <a
                         href="javascript:void(0)"
                         class="btn btn-light btn-icon btn-sm border rounded-circle"
                       >
-                        <i class="ti ti-download"></i>
+                        <i class="ti ti-download" />
                       </a>
                     </div>
                   </li>
@@ -1075,21 +1063,19 @@ const handleToDelete = (id) => {
                         </span>
                       </div>
                       <div class="flex-fill">
-                        <a href="javascript:void(0);"
-                          ><span class="d-block fw-medium">image-1.png</span></a
-                        >
+                        <a href="javascript:void(0);"><span class="d-block fw-medium">image-1.png</span></a>
                         <span class="d-block text-muted fs-12 fw-normal">245KB</span>
                       </div>
                       <a
                         href="javascript:void(0)"
                         class="btn btn-light btn-icon btn-sm border rounded-circle"
                       >
-                        <i class="ti ti-download"></i>
+                        <i class="ti ti-download" />
                       </a>
                     </div>
                   </li>
                 </ul>
-              </simplebar>
+              </Simplebar>
             </div>
           </div>
         </div>
@@ -1099,37 +1085,41 @@ const handleToDelete = (id) => {
   <!-- Task Details Offcanvas -->
 
   <!-- Start::add task modal -->
-  <div class="modal fade" id="create-task" tabindex="-1" aria-hidden="true">
+  <div id="create-task" class="modal fade" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h6 class="modal-title">Add Task</h6>
+          <h6 class="modal-title">
+            Add Task
+          </h6>
           <button
             type="button"
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
-          ></button>
+          />
         </div>
         <div class="modal-body px-4">
           <div class="row gy-2">
             <div class="col-xl-6">
               <label for="task-name" class="form-label">Task Name</label>
-              <input type="text" class="form-control" id="task-name" placeholder="Task Name" />
+              <input id="task-name" type="text" class="form-control" placeholder="Task Name">
             </div>
             <div class="col-xl-6">
               <label for="task-id" class="form-label">Task ID</label>
-              <input type="text" class="form-control" id="task-id" placeholder="Task ID" />
+              <input id="task-id" type="text" class="form-control" placeholder="Task ID">
             </div>
             <div class="col-xl-6">
               <label class="form-label">Assigned Date</label>
               <div class="form-group">
                 <div class="input-group">
-                  <div class="input-group-text text-muted"><i class="ri-calendar-line"></i></div>
+                  <div class="input-group-text text-muted">
+                    <i class="ri-calendar-line" />
+                  </div>
                   <Datepicker
-                    placeholder="Choose date and time"
-                    autoApply
                     v-model="picked"
+                    placeholder="Choose date and time"
+                    auto-apply
                     class="form-control custom-date-picker custom"
                   />
                 </div>
@@ -1139,11 +1129,13 @@ const handleToDelete = (id) => {
               <label class="form-label">Due Date</label>
               <div class="form-group">
                 <div class="input-group">
-                  <div class="input-group-text text-muted"><i class="ri-calendar-line"></i></div>
+                  <div class="input-group-text text-muted">
+                    <i class="ri-calendar-line" />
+                  </div>
                   <Datepicker
-                    placeholder="Choose date and time"
-                    autoApply
                     v-model="picked1"
+                    placeholder="Choose date and time"
+                    auto-apply
                     class="form-control custom-date-picker custom"
                   />
                 </div>
@@ -1152,50 +1144,51 @@ const handleToDelete = (id) => {
             <div class="col-xl-6">
               <label class="form-label">Status</label>
               <VueMultiselect
+                id="choices-single-default"
+                v-model="StatusdataValue"
                 :searchable="true"
                 :show-labels="false"
                 name="choices-single-default"
-                id="choices-single-default"
                 :multiple="false"
-                v-model="StatusdataValue"
                 :options="Statusdata"
                 :taggable="false"
-              >
-              </VueMultiselect>
+              />
             </div>
             <div class="col-xl-6">
               <label class="form-label">Priority</label>
               <VueMultiselect
+                id="choices-single-default1"
+                v-model="PrioritydataValue"
                 :searchable="true"
                 :show-labels="false"
                 name="choices-single-default"
-                id="choices-single-default1"
                 :multiple="false"
-                v-model="PrioritydataValue"
                 :options="Prioritydata"
                 :taggable="false"
-              >
-              </VueMultiselect>
+              />
             </div>
             <div class="col-xl-12">
               <label class="form-label">Assigned To</label>
               <VueMultiselect
+                id="choices-multiple-remove-button1"
+                v-model="ListviewassigneddataValue"
                 :searchable="true"
                 :show-labels="false"
                 name="choices-multiple-remove-button1"
-                id="choices-multiple-remove-button1"
                 :multiple="true"
-                v-model="ListviewassigneddataValue"
                 :options="Listviewassigneddata"
                 :taggable="false"
-              >
-              </VueMultiselect>
+              />
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Add Task</button>
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+            Cancel
+          </button>
+          <button type="button" class="btn btn-primary">
+            Add Task
+          </button>
         </div>
       </div>
     </div>

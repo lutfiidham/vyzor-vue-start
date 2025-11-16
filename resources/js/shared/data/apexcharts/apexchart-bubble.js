@@ -15,7 +15,7 @@ function generateData(baseval, count, yrange) {
   return series
 }
 
-//Simple Bubble Chart
+// Simple Bubble Chart
 export const Bubbleseries = [
   {
     name: 'Bubble1',
@@ -51,7 +51,7 @@ export const Bubbleoptions = {
     height: 320,
     type: 'bubble',
     events: {
-      mounted: (chart) => {
+      mounted: chart => {
         chart.windowResizeHandler()
       },
     },
@@ -138,7 +138,7 @@ export const Bubble3doptions = {
     height: 320,
     type: 'bubble',
     events: {
-      mounted: (chart) => {
+      mounted: chart => {
         chart.windowResizeHandler()
       },
     },

@@ -1,30 +1,30 @@
 <script setup>
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import SimpleCard from '@/shared/@spk/simple-card.vue'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import 'swiper/swiper-bundle.css'
+import { Head } from '@inertiajs/vue3'
 import {
   Autoplay,
+  EffectCoverflow,
+  EffectCube,
+  EffectFade,
+  EffectFlip,
+  FreeMode,
+  Keyboard,
+  Mousewheel,
   Navigation,
   Pagination,
   Scrollbar,
-  Mousewheel,
-  Keyboard,
-  EffectCube,
-  EffectFade,
-  EffectCoverflow,
-  EffectFlip,
-  FreeMode,
   Thumbs,
 } from 'swiper/modules'
-import * as swiperData from '@/shared/data/swiper'
+import { Swiper, SwiperSlide } from 'swiper/vue'
 import { ref } from 'vue'
 import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import SimpleCard from '@/shared/@spk/simple-card.vue'
+import * as swiperData from '@/shared/data/swiper'
+import 'swiper/swiper-bundle.css'
 
 const thumbsSwiper = ref(null)
 
-const setThumbsSwiper = (swiper) => {
+function setThumbsSwiper(swiper) {
   thumbsSwiper.value = swiper
 }
 
@@ -33,8 +33,8 @@ const pagination = {
 }
 const custompagination = {
   clickable: true,
-  renderBullet: function (index, className) {
-    return '<span class="' + className + '">' + (index + 1) + '</span>'
+  renderBullet(index, className) {
+    return `<span class="${className}">${index + 1}</span>`
   },
 }
 const modules = [
@@ -60,39 +60,39 @@ const dataToPass = {
 
 <template>
   <Head title="Swiper | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
       <SimpleCard title="Basic Swiper">
-        <swiper :autoplay="true" class="">
-          <swiper-slide v-for="(idx, index) in swiperData.Basicdata" :key="index">
+        <Swiper :autoplay="true" class="">
+          <SwiperSlide v-for="(idx, index) in swiperData.Basicdata" :key="index">
             <BaseImg :src="idx.src" alt="" />
-          </swiper-slide>
-        </swiper>
+          </SwiperSlide>
+        </Swiper>
       </SimpleCard>
     </div>
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
       <SimpleCard title="Swiper With Navigation">
-        <swiper :autoplay="true" :navigation="true" :modules="modules" class="">
-          <swiper-slide v-for="(idx, index) in swiperData.Navigationdata" :key="index">
+        <Swiper :autoplay="true" :navigation="true" :modules="modules" class="">
+          <SwiperSlide v-for="(idx, index) in swiperData.Navigationdata" :key="index">
             <BaseImg :src="idx" alt="" />
-          </swiper-slide>
-        </swiper>
+          </SwiperSlide>
+        </Swiper>
       </SimpleCard>
     </div>
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
       <SimpleCard title="Swiper with Pagination">
-        <swiper :autoplay="true" class="" :pagination="pagination" :modules="modules">
-          <swiper-slide v-for="(idx, index) in swiperData.Paginationdata" :key="index">
+        <Swiper :autoplay="true" class="" :pagination="pagination" :modules="modules">
+          <SwiperSlide v-for="(idx, index) in swiperData.Paginationdata" :key="index">
             <BaseImg :src="idx" alt="" />
-          </swiper-slide>
-        </swiper>
+          </SwiperSlide>
+        </Swiper>
       </SimpleCard>
     </div>
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
       <SimpleCard title="Dynamic Pagination">
-        <swiper
+        <Swiper
           :autoplay="true"
           class=""
           :pagination="{
@@ -100,15 +100,15 @@ const dataToPass = {
           }"
           :modules="modules"
         >
-          <swiper-slide v-for="(idx, index) in swiperData.Dynamicdata" :key="index">
+          <SwiperSlide v-for="(idx, index) in swiperData.Dynamicdata" :key="index">
             <BaseImg :src="idx" alt="" />
-          </swiper-slide>
-        </swiper>
+          </SwiperSlide>
+        </Swiper>
       </SimpleCard>
     </div>
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
       <SimpleCard title="Pagination With Progress">
-        <swiper
+        <Swiper
           :autoplay="true"
           class=""
           :pagination="{
@@ -117,15 +117,15 @@ const dataToPass = {
           :navigation="true"
           :modules="modules"
         >
-          <swiper-slide v-for="(idx, index) in swiperData.Progressdata" :key="index">
+          <SwiperSlide v-for="(idx, index) in swiperData.Progressdata" :key="index">
             <BaseImg :src="idx" alt="" />
-          </swiper-slide>
-        </swiper>
+          </SwiperSlide>
+        </Swiper>
       </SimpleCard>
     </div>
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
       <SimpleCard title="Pagination Fraction">
-        <swiper
+        <Swiper
           :autoplay="true"
           class="pagination-fraction"
           :pagination="{
@@ -134,29 +134,29 @@ const dataToPass = {
           :navigation="true"
           :modules="modules"
         >
-          <swiper-slide v-for="(idx, index) in swiperData.FractionData" :key="index">
+          <SwiperSlide v-for="(idx, index) in swiperData.FractionData" :key="index">
             <BaseImg :src="idx" alt="" />
-          </swiper-slide>
-        </swiper>
+          </SwiperSlide>
+        </Swiper>
       </SimpleCard>
     </div>
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
       <SimpleCard title="Custom Paginatioin">
-        <swiper
+        <Swiper
           :autoplay="true"
           class="custom-pagination"
           :pagination="custompagination"
           :modules="modules"
         >
-          <swiper-slide v-for="(idx, index) in swiperData.CustomPaginatioin" :key="index">
+          <SwiperSlide v-for="(idx, index) in swiperData.CustomPaginatioin" :key="index">
             <BaseImg :src="idx" alt="" />
-          </swiper-slide>
-        </swiper>
+          </SwiperSlide>
+        </Swiper>
       </SimpleCard>
     </div>
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
       <SimpleCard title="Scrollbar Swiper">
-        <swiper
+        <Swiper
           :autoplay="true"
           class=""
           :scrollbar="{
@@ -164,10 +164,10 @@ const dataToPass = {
           }"
           :modules="modules"
         >
-          <swiper-slide v-for="(idx, index) in swiperData.ScrollbarSwiper" :key="index">
+          <SwiperSlide v-for="(idx, index) in swiperData.ScrollbarSwiper" :key="index">
             <BaseImg :src="idx" alt="" />
-          </swiper-slide>
-        </swiper>
+          </SwiperSlide>
+        </Swiper>
       </SimpleCard>
     </div>
     <!-- <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
@@ -183,30 +183,30 @@ const dataToPass = {
     </div> -->
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
       <SimpleCard title="Mouse Wheel Control">
-        <swiper
+        <Swiper
           :autoplay="true"
           class=""
-          :slidesPerView="1"
-          :spaceBetween="30"
+          :slides-per-view="1"
+          :space-between="30"
           :mousewheel="true"
           :pagination="{
             clickable: true,
           }"
           :modules="modules"
         >
-          <swiper-slide v-for="(idx, index) in swiperData.MouseWheelControl" :key="index">
+          <SwiperSlide v-for="(idx, index) in swiperData.MouseWheelControl" :key="index">
             <BaseImg :src="idx" alt="" />
-          </swiper-slide>
-        </swiper>
+          </SwiperSlide>
+        </Swiper>
       </SimpleCard>
     </div>
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
       <SimpleCard title="Keyboard Control">
-        <swiper
+        <Swiper
           :autoplay="true"
           class=""
-          :slidesPerView="1"
-          :spaceBetween="30"
+          :slides-per-view="1"
+          :space-between="30"
           :keyboard="{
             enabled: true,
           }"
@@ -216,63 +216,63 @@ const dataToPass = {
           :navigation="true"
           :modules="modules"
         >
-          <swiper-slide v-for="(idx, index) in swiperData.KeyboardControl" :key="index">
+          <SwiperSlide v-for="(idx, index) in swiperData.KeyboardControl" :key="index">
             <BaseImg :src="idx" alt="" />
-          </swiper-slide>
-        </swiper>
+          </SwiperSlide>
+        </Swiper>
       </SimpleCard>
     </div>
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
       <SimpleCard title="Nested Swiper">
-        <swiper
+        <Swiper
           :autoplay="true"
           class="nested-swiper"
-          :slidesPerView="1"
-          :spaceBetween="30"
+          :slides-per-view="1"
+          :space-between="30"
           :keyboard="{ enabled: true }"
           :pagination="{ clickable: true }"
           :navigation="true"
           :modules="modules"
         >
-          <swiper-slide>
+          <SwiperSlide>
             <BaseImg src="/images/media/media-30.jpg" alt="" />
-          </swiper-slide>
-          <swiper-slide>
-            <swiper
+          </SwiperSlide>
+          <SwiperSlide>
+            <Swiper
               :autoplay="{
                 delay: 2500,
                 disableOnInteraction: false,
               }"
               class="mySwiper2 swiper-v swiper vertical"
-              :spaceBetween="50"
+              :space-between="50"
               :pagination="{
                 clickable: true,
               }"
               :modules="modules"
               direction="vertical"
             >
-              <swiper-slide><BaseImg src="/images/media/media-25.jpg" alt="" /></swiper-slide>
-              <swiper-slide><BaseImg src="/images/media/media-31.jpg" alt="" /></swiper-slide>
-              <swiper-slide><BaseImg src="/images/media/media-32.jpg" alt="" /></swiper-slide>
-            </swiper>
-          </swiper-slide>
-          <swiper-slide>
+              <SwiperSlide><BaseImg src="/images/media/media-25.jpg" alt="" /></SwiperSlide>
+              <SwiperSlide><BaseImg src="/images/media/media-31.jpg" alt="" /></SwiperSlide>
+              <SwiperSlide><BaseImg src="/images/media/media-32.jpg" alt="" /></SwiperSlide>
+            </Swiper>
+          </SwiperSlide>
+          <SwiperSlide>
             <BaseImg src="/images/media/media-28.jpg" alt="" />
-          </swiper-slide>
-          <swiper-slide>
+          </SwiperSlide>
+          <SwiperSlide>
             <BaseImg src="/images/media/media-29.jpg" alt="" />
-          </swiper-slide>
-        </swiper>
+          </SwiperSlide>
+        </Swiper>
       </SimpleCard>
     </div>
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
       <SimpleCard title="Effect Cube">
-        <swiper
+        <Swiper
           :autoplay="true"
           class=""
-          :effect="'cube'"
-          :grabCursor="true"
-          :cubeEffect="{
+          effect="cube"
+          :grab-cursor="true"
+          :cube-effect="{
             shadow: true,
             slideShadows: true,
             shadowOffset: 20,
@@ -281,64 +281,64 @@ const dataToPass = {
           :pagination="pagination"
           :modules="modules"
         >
-          <swiper-slide v-for="(idx, index) in swiperData.EffectCube" :key="index">
+          <SwiperSlide v-for="(idx, index) in swiperData.EffectCube" :key="index">
             <BaseImg :src="idx" alt="" />
-          </swiper-slide>
-        </swiper>
+          </SwiperSlide>
+        </Swiper>
       </SimpleCard>
     </div>
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
       <SimpleCard title="Effect Fade">
-        <swiper
+        <Swiper
           :autoplay="true"
           class=""
-          :spaceBetween="30"
-          :effect="'fade'"
+          :space-between="30"
+          effect="fade"
           :navigation="true"
           :pagination="{
             clickable: true,
           }"
           :modules="modules"
         >
-          <swiper-slide v-for="(idx, index) in swiperData.EffectFade" :key="index">
+          <SwiperSlide v-for="(idx, index) in swiperData.EffectFade" :key="index">
             <BaseImg :src="idx" alt="" />
-          </swiper-slide>
-        </swiper>
+          </SwiperSlide>
+        </Swiper>
       </SimpleCard>
     </div>
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
       <SimpleCard title="Effect Flip">
-        <swiper
+        <Swiper
           :autoplay="true"
           class=""
-          :effect="'flip'"
-          :grabCursor="true"
+          effect="flip"
+          :grab-cursor="true"
           :pagination="pagination"
           :navigation="true"
           :modules="modules"
         >
-          <swiper-slide v-for="(idx, index) in swiperData.EffectFlip" :key="index">
+          <SwiperSlide v-for="(idx, index) in swiperData.EffectFlip" :key="index">
             <BaseImg :src="idx" alt="" />
-          </swiper-slide>
-        </swiper>
+          </SwiperSlide>
+        </Swiper>
       </SimpleCard>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 
   <!-- Start:: row-2 -->
   <div class="row">
     <div class="col-xl-12">
       <SimpleCard title="Effect Coverflow">
-        <swiper
+        <Swiper
           :autoplay="true"
           class="swiper-overflow"
-          :effect="'coverflow'"
-          :grabCursor="true"
-          :centeredSlides="false"
-          :autoHeight="true"
-          :slidesPerView="4"
-          :coverflowEffect="{
+          effect="coverflow"
+          :grab-cursor="true"
+          :centered-slides="false"
+          :auto-height="true"
+          :slides-per-view="4"
+          :coverflow-effect="{
             rotate: 50,
             stretch: 0,
             depth: 100,
@@ -348,10 +348,10 @@ const dataToPass = {
           :pagination="pagination"
           :modules="modules"
         >
-          <swiper-slide height="100px" v-for="(idx, index) in swiperData.coverFlow" :key="index">
+          <SwiperSlide v-for="(idx, index) in swiperData.coverFlow" :key="index" height="100px">
             <BaseImg class="img-fluid" :src="idx" alt="" />
-          </swiper-slide>
-        </swiper>
+          </SwiperSlide>
+        </Swiper>
       </SimpleCard>
     </div>
   </div>
@@ -361,60 +361,60 @@ const dataToPass = {
   <div class="row">
     <div class="col-xl-12">
       <SimpleCard title="Thumbs Gallery">
-        <swiper
+        <Swiper
           :autoplay="true"
           :style="{
             '--swiper-navigation-color': '#fff',
             '--swiper-pagination-color': '#fff',
           }"
-          :spaceBetween="10"
+          :space-between="10"
           :navigation="true"
           :thumbs="{ swiper: thumbsSwiper }"
           :loop="true"
           :modules="modules"
           class="mySwiper2"
         >
-          <swiper-slide
-            ><BaseImg class="img-fluid rounded" src="/images/media/media-1.jpg"
-          /></swiper-slide>
-          <swiper-slide
-            ><BaseImg class="img-fluid rounded" src="/images/media/media-2.jpg"
-          /></swiper-slide>
-          <swiper-slide
-            ><BaseImg class="img-fluid rounded" src="/images/media/media-6.jpg"
-          /></swiper-slide>
-          <swiper-slide
-            ><BaseImg class="img-fluid rounded" src="/images/media/media-7.jpg"
-          /></swiper-slide>
-          <swiper-slide
-            ><BaseImg class="img-fluid rounded" src="/images/media/media-10.jpg"
-          /></swiper-slide>
-          <swiper-slide
-            ><BaseImg class="img-fluid rounded" src="/images/media/media-11.jpg"
-          /></swiper-slide>
-        </swiper>
-        <swiper
+          <SwiperSlide>
+            <BaseImg class="img-fluid rounded" src="/images/media/media-1.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <BaseImg class="img-fluid rounded" src="/images/media/media-2.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <BaseImg class="img-fluid rounded" src="/images/media/media-6.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <BaseImg class="img-fluid rounded" src="/images/media/media-7.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <BaseImg class="img-fluid rounded" src="/images/media/media-10.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <BaseImg class="img-fluid rounded" src="/images/media/media-11.jpg" />
+          </SwiperSlide>
+        </Swiper>
+        <Swiper
           :autoplay="true"
-          @swiper="setThumbsSwiper"
-          :spaceBetween="10"
+          :space-between="10"
           :loop="true"
-          :slidesPerView="4"
-          :freeMode="true"
-          :watchSlidesProgress="true"
+          :slides-per-view="4"
+          :free-mode="true"
+          :watch-slides-progress="true"
           :modules="modules"
           class="mySwiper custom-swiper mt-2"
+          @swiper="setThumbsSwiper"
         >
-          <swiper-slide><BaseImg class="img-fluid" src="/images/media/media-1.jpg" /></swiper-slide>
-          <swiper-slide><BaseImg class="img-fluid" src="/images/media/media-2.jpg" /></swiper-slide>
-          <swiper-slide><BaseImg class="img-fluid" src="/images/media/media-6.jpg" /></swiper-slide>
-          <swiper-slide><BaseImg class="img-fluid" src="/images/media/media-7.jpg" /></swiper-slide>
-          <swiper-slide
-            ><BaseImg class="img-fluid" src="/images/media/media-10.jpg"
-          /></swiper-slide>
-          <swiper-slide
-            ><BaseImg class="img-fluid" src="/images/media/media-11.jpg"
-          /></swiper-slide>
-        </swiper>
+          <SwiperSlide><BaseImg class="img-fluid" src="/images/media/media-1.jpg" /></SwiperSlide>
+          <SwiperSlide><BaseImg class="img-fluid" src="/images/media/media-2.jpg" /></SwiperSlide>
+          <SwiperSlide><BaseImg class="img-fluid" src="/images/media/media-6.jpg" /></SwiperSlide>
+          <SwiperSlide><BaseImg class="img-fluid" src="/images/media/media-7.jpg" /></SwiperSlide>
+          <SwiperSlide>
+            <BaseImg class="img-fluid" src="/images/media/media-10.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <BaseImg class="img-fluid" src="/images/media/media-11.jpg" />
+          </SwiperSlide>
+        </Swiper>
       </SimpleCard>
     </div>
   </div>

@@ -1,20 +1,10 @@
-<template>
-  <div ref="galleryRef" class="gallery row g-3">
-    <div v-for="(img, index) in images" :key="index" class="col-xl-3 col-md-4 col-sm-6">
-      <a :href="img.url" :data-sub-html="img.subHtml">
-        <img :src="img.thumb" alt="Image thumbnail" class="img-fluid rounded" />
-      </a>
-    </div>
-  </div>
-</template>
-
 <script setup>
-import { onMounted, ref } from 'vue'
 import lightGallery from 'lightgallery'
-
 // Plugins
 import lgThumbnail from 'lightgallery/plugins/thumbnail'
+
 import lgZoom from 'lightgallery/plugins/zoom'
+import { onMounted, ref } from 'vue'
 
 // Styles
 import 'lightgallery/css/lightgallery.css'
@@ -54,6 +44,16 @@ onMounted(() => {
   })
 })
 </script>
+
+<template>
+  <div ref="galleryRef" class="gallery row g-3">
+    <div v-for="(img, index) in images" :key="index" class="col-xl-3 col-md-4 col-sm-6">
+      <a :href="img.url" :data-sub-html="img.subHtml">
+        <img :src="img.thumb" alt="Image thumbnail" class="img-fluid rounded">
+      </a>
+    </div>
+  </div>
+</template>
 
 <style scoped>
 .gallery img {

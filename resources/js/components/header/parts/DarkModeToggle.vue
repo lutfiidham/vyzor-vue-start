@@ -1,3 +1,18 @@
+<script setup>
+import { switcherStore } from '../../../../stores/switcher.js'
+
+const emit = defineEmits(['theme-changed'])
+
+const switcher = switcherStore()
+
+function toggleTheme(theme) {
+  localStorage.setItem('vyzorcolortheme', theme)
+  localStorage.removeItem('vyzorbodyBgRGB')
+  switcher.colorthemeFn(theme)
+  emit('theme-changed', theme)
+}
+</script>
+
 <template>
   <li class="header-element header-theme-mode">
     <!-- Start::header-link|layout-setting -->
@@ -139,18 +154,3 @@
     <!-- End::header-link|layout-setting -->
   </li>
 </template>
-
-<script setup>
-import { switcherStore } from '../../../../stores/switcher.js'
-
-const emit = defineEmits(['theme-changed'])
-
-const switcher = switcherStore()
-
-const toggleTheme = (theme) => {
-  localStorage.setItem('vyzorcolortheme', theme)
-  localStorage.removeItem('vyzorbodyBgRGB')
-  switcher.colorthemeFn(theme)
-  emit('theme-changed', theme)
-}
-</script>

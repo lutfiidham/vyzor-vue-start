@@ -58,7 +58,7 @@ export const Barbasicoptions = {
   },
 }
 
-//Grouped Bar Chart
+// Grouped Bar Chart
 export const Bargroupseries = [
   {
     data: [44, 55, 41, 64, 22, 43, 21],
@@ -131,7 +131,7 @@ export const Bargroupoptions = {
   },
 }
 
-//Stacked Bar Chart
+// Stacked Bar Chart
 export const Barstackseries = [
   {
     name: 'Marine Sprite',
@@ -184,8 +184,8 @@ export const Barstackoptions = {
   xaxis: {
     categories: [2008, 2009, 2010, 2011, 2012, 2013, 2014],
     labels: {
-      formatter: function (val) {
-        return val + 'K'
+      formatter(val) {
+        return `${val}K`
       },
       style: {
         colors: '#8c9097',
@@ -211,8 +211,8 @@ export const Barstackoptions = {
   },
   tooltip: {
     y: {
-      formatter: function (val) {
-        return val + 'K'
+      formatter(val) {
+        return `${val}K`
       },
     },
   },
@@ -226,7 +226,7 @@ export const Barstackoptions = {
   },
 }
 
-//100% Stacked Bar Chart
+// 100% Stacked Bar Chart
 export const Barstck1series = [
   {
     name: 'Marine Sprite',
@@ -316,7 +316,7 @@ export const Barstack1options = {
   },
 }
 
-//Bar Chart With Negative Values
+// Bar Chart With Negative Values
 export const Barchartseries = [
   {
     name: 'Males',
@@ -325,8 +325,24 @@ export const Barchartseries = [
   {
     name: 'Females',
     data: [
-      -0.8, -1.05, -1.06, -1.18, -1.4, -2.2, -2.85, -3.7, -3.96, -4.22, -4.3, -4.4, -4.1, -4, -4.1,
-      -3.4, -3.1, -2.8,
+      -0.8,
+      -1.05,
+      -1.06,
+      -1.18,
+      -1.4,
+      -2.2,
+      -2.85,
+      -3.7,
+      -3.96,
+      -4.22,
+      -4.3,
+      -4.4,
+      -4.1,
+      -4,
+      -4.1,
+      -3.4,
+      -3.1,
+      -2.8,
     ],
   },
 ]
@@ -371,10 +387,10 @@ export const Barchartoptions = {
   tooltip: {
     shared: false,
     x: {
-      formatter: (val) => val.toString(),
+      formatter: val => val.toString(),
     },
     y: {
-      formatter: (val) => Math.abs(val) + '%',
+      formatter: val => `${Math.abs(val)}%`,
     },
   },
   title: {
@@ -411,7 +427,7 @@ export const Barchartoptions = {
   },
 }
 
-//Bar Chart With Markers
+// Bar Chart With Markers
 export const Barmakerseries = [
   {
     name: 'Actual',
@@ -521,12 +537,13 @@ export const Barmakeroptions = {
   },
   colors: ['#ff49cd'],
   dataLabels: {
-    formatter: function (val, opt) {
+    formatter(val, opt) {
       const goals = opt.w.config.series[opt.seriesIndex].data[opt.dataPointIndex].goals
 
       if (goals && goals.length) {
         return `${val} / ${goals[0].value}`
       }
+
       return val
     },
   },
@@ -562,7 +579,7 @@ export const Barmakeroptions = {
   },
 }
 
-//Reversed Bar Chart
+// Reversed Bar Chart
 export const Barreverseseries = [
   {
     data: [400, 430, 448, 470, 540, 580, 690],
@@ -649,7 +666,7 @@ export const Barreverseoptions = {
   },
 }
 
-//Bar With Categogry DataLabels
+// Bar With Categogry DataLabels
 export const Barlabelseries = [
   {
     data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380],
@@ -685,8 +702,8 @@ export const Barlableoptions = {
     style: {
       colors: ['#fff'],
     },
-    formatter: function (val, opt) {
-      return opt.w.globals.labels[opt.dataPointIndex] + ':  ' + val
+    formatter(val, opt) {
+      return `${opt.w.globals.labels[opt.dataPointIndex]}:  ${val}`
     },
     offsetX: 5,
     dropShadow: {
@@ -746,7 +763,7 @@ export const Barlableoptions = {
     },
     y: {
       title: {
-        formatter: function () {
+        formatter() {
           return ''
         },
       },
@@ -754,7 +771,7 @@ export const Barlableoptions = {
   },
 }
 
-//Patterned Bar Chart
+// Patterned Bar Chart
 export const Barpatternseries = [
   {
     name: 'Marine Sprite',
@@ -855,13 +872,43 @@ export const Barpatternoptions = {
   },
 }
 
-//Bar With Image Fill
+// Bar With Image Fill
 export const Barimgseries = [
   {
     name: 'coins',
     data: [
-      2, 4, 3, 4, 3, 5, 5, 6.5, 6, 5, 4, 5, 8, 7, 7, 8, 8, 10, 9, 9, 12, 12, 11, 12, 13, 14, 16, 14,
-      15, 17, 19, 21,
+      2,
+      4,
+      3,
+      4,
+      3,
+      5,
+      5,
+      6.5,
+      6,
+      5,
+      4,
+      5,
+      8,
+      7,
+      7,
+      8,
+      8,
+      10,
+      9,
+      9,
+      12,
+      12,
+      11,
+      12,
+      13,
+      14,
+      16,
+      14,
+      15,
+      17,
+      19,
+      21,
     ],
   },
 ]

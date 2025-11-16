@@ -13,8 +13,7 @@ defineProps({
             <span
               :class="`avatar avatar-md bg-${sales.color}-transparent svg-${sales.color}`"
               v-html="sales.svgIcon"
-            >
-            </span>
+            />
           </div>
           <span class="fs-16">{{ sales.title }}</span>
         </div>
@@ -24,7 +23,7 @@ defineProps({
             <span class="fs-13 text-muted">{{ sales.inc }}</span>
           </div>
           <div :id="sales.id">
-            <apexchart
+            <Apexchart
               :height="`${sales.height}px`"
               :width="`${sales.width}px`"
               :type="sales.type"

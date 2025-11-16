@@ -1,11 +1,11 @@
 <script setup>
+import { Head } from '@inertiajs/vue3'
+import { Popover, Tooltip } from 'bootstrap'
+import { onBeforeUnmount, onMounted } from 'vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
 import * as prism from '@/shared/data/prismCode/ui-elements/popover'
 import * as popoverData from '@/shared/data/ui-elements/popover'
-import { Popover, Tooltip } from 'bootstrap'
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
-import { onBeforeUnmount, onMounted } from 'vue'
-import { Head } from '@inertiajs/vue3'
 
 let tooltipInstances = []
 let popoverInstances = []
@@ -29,14 +29,14 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  tooltipInstances.forEach((instance) => instance.dispose())
+  tooltipInstances.forEach(instance => instance.dispose())
   tooltipInstances = []
 
-  popoverInstances.forEach((instance) => instance.dispose())
+  popoverInstances.forEach(instance => instance.dispose())
   popoverInstances = []
 })
 
-let dataToPass = {
+const dataToPass = {
   title: 'Ui Elements',
   currentpage: 'Popovers',
   activepage: 'Popovers',
@@ -45,7 +45,7 @@ let dataToPass = {
 
 <template>
   <Head title="Popovers | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
@@ -53,6 +53,8 @@ let dataToPass = {
       <ShowcodeCard title="Default Popovers" :code="prism.defaultPopovers">
         <div class="btn-list">
           <a
+            v-for="(idx, index) in popoverData.Defaultalerts"
+            :key="index"
             tabindex="0"
             class="btn btn-outline-primary btn-wave"
             role="button"
@@ -60,9 +62,7 @@ let dataToPass = {
             :data-bs-placement="idx.class"
             :title="`Popover ${idx.text} `"
             data-bs-content="And here's some amazing content. It's very engaging. Right?"
-            v-for="(idx, index) in popoverData.Defaultalerts"
-            :key="index"
-            >Popover
+          >Popover
             {{ idx.text }}
           </a>
         </div>
@@ -72,6 +72,8 @@ let dataToPass = {
       <ShowcodeCard title="Colored Headers" :code="prism.coloredHeaders">
         <div class="btn-list">
           <button
+            v-for="(idx, index) in popoverData.Colorheaderalerts"
+            :key="index"
             type="button"
             :class="`btn btn-${idx.color} btn-wave`"
             data-bs-toggle="popover"
@@ -79,8 +81,6 @@ let dataToPass = {
             :data-bs-custom-class="`header-${idx.color1}`"
             title="Color Header"
             :data-bs-content="`Popover with ${idx.color1} header.`"
-            v-for="(idx, index) in popoverData.Colorheaderalerts"
-            :key="index"
           >
             Header {{ idx.text }}
           </button>
@@ -96,6 +96,8 @@ let dataToPass = {
       <ShowcodeCard title="Colored Popovers" :code="prism.coloredPopovers">
         <div class="btn-list">
           <button
+            v-for="(idx, index) in popoverData.Colredalerts"
+            :key="index"
             type="button"
             :class="`btn btn-${idx.color1} btn-wave`"
             data-bs-toggle="popover"
@@ -103,8 +105,6 @@ let dataToPass = {
             :data-bs-custom-class="`popover-${idx.color1}`"
             title="Color Background"
             :data-bs-content="`Popover with ${idx.text} background.`"
-            v-for="(idx, index) in popoverData.Colredalerts"
-            :key="index"
           >
             {{ idx.text }}
           </button>
@@ -120,6 +120,8 @@ let dataToPass = {
       <ShowcodeCard title="Light Popovers" :code="prism.lightPopovers">
         <div class="btn-list">
           <button
+            v-for="(idx, index) in popoverData.Colredalerts"
+            :key="index"
             type="button"
             :class="`btn btn-${idx.color1}-light btn-wave`"
             data-bs-toggle="popover"
@@ -127,8 +129,6 @@ let dataToPass = {
             :data-bs-custom-class="`popover-${idx.color1}-light`"
             title="Light Background"
             :data-bs-content="`Popover with light ${idx.text} background.`"
-            v-for="(idx, index) in popoverData.Colredalerts"
-            :key="index"
           >
             {{ idx.text }}
           </button>
@@ -144,9 +144,11 @@ let dataToPass = {
       <ShowcodeCard
         title="Dismissible Popovers"
         :code="prism.DismissiblePopovers"
-        customCardBodyClass="d-flex flex-wrap justify-content-between"
+        custom-card-body-class="d-flex flex-wrap justify-content-between"
       >
         <a
+          v-for="(idx, index) in popoverData.Dismissiblealerts"
+          :key="index"
           tabindex="0"
           :class="`btn btn-${idx.color} m-1`"
           role="button"
@@ -155,9 +157,7 @@ let dataToPass = {
           :data-bs-placement="idx.class"
           title="Dismissible popover"
           :data-bs-content="`And here's some amazing content. It's very engaging. ${idx.class}?`"
-          v-for="(idx, index) in popoverData.Dismissiblealerts"
-          :key="index"
-          >Popover Dismiss
+        >Popover Dismiss
         </a>
       </ShowcodeCard>
     </div>

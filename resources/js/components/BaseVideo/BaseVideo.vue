@@ -1,20 +1,4 @@
 <!-- components/BaseVideo.vue -->
-<template>
-  <video
-    :src="videoUrl"
-    :alt="alt"
-    :class="class"
-    :id="id"
-    :height="height"
-    :width="width"
-    v-bind="$attrs"
-    :style="style"
-    :controls="false"
-  >
-    Your browser does not support the video tag.
-  </video>
-</template>
-
 <script setup>
 const props = defineProps({
   src: {
@@ -57,3 +41,19 @@ const basePath = __BASE_PATH__
 const basePathValue = !isExternalUrl && process.env.NODE_ENV === 'production' ? basePath : ''
 const videoUrl = `${basePathValue}${props.src}`
 </script>
+
+<template>
+  <video
+    :id="id"
+    :src="videoUrl"
+    :alt="alt"
+    :class="class"
+    :height="height"
+    :width="width"
+    v-bind="$attrs"
+    :style="style"
+    :controls="false"
+  >
+    Your browser does not support the video tag.
+  </video>
+</template>

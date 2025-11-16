@@ -1,16 +1,16 @@
 <script setup>
-import { ref } from 'vue'
-import { Leadsdata as InitialLeadsdata } from '@/shared/data/dashboards/crm/leads'
-import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
+import { ref } from 'vue'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
+import { Leadsdata as InitialLeadsdata } from '@/shared/data/dashboards/crm/leads'
 // Reactive state
 const Leadsdata = ref(
-  InitialLeadsdata.map((item) => ({
+  InitialLeadsdata.map(item => ({
     ...item,
     checked: false,
-  }))
+  })),
 )
 
 const profileImg = ref('/images/faces/9.jpg')
@@ -43,13 +43,13 @@ const dataToPass = {
 
 // Methods
 function handleToDelete(id) {
-  Leadsdata.value = Leadsdata.value.filter((item) => item.id !== id)
+  Leadsdata.value = Leadsdata.value.filter(item => item.id !== id)
 }
 
 const avatar = ref('')
 const fileinput = ref(null)
 
-const onFileSelected = (event) => {
+function onFileSelected(event) {
   const file = event.target.files[0]
   if (file) {
     const reader = new FileReader()
@@ -60,25 +60,29 @@ const onFileSelected = (event) => {
   }
 }
 
-const triggerFileInput = () => {
+function triggerFileInput() {
   fileinput.value?.click()
 }
 </script>
 
 <template>
   <Head title="CRM-Leads | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header d-flex align-items-center justify-content-between flex-wrap gap-3">
-          <div class="card-title">Leads</div>
+          <div class="card-title">
+            Leads
+          </div>
           <div class="d-flex flex-wrap gap-2">
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create-contact">
-              <i class="ri-add-line me-1 fw-medium align-middle"></i>Create Lead
+              <i class="ri-add-line me-1 fw-medium align-middle" />Create Lead
             </button>
-            <button class="btn btn-success">Export As CSV</button>
+            <button class="btn btn-success">
+              Export As CSV
+            </button>
             <div class="dropdown">
               <a
                 href="javascript:void(0);"
@@ -86,7 +90,7 @@ const triggerFileInput = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Sort By<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block"></i>
+                Sort By<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block" />
               </a>
               <ul class="dropdown-menu" role="menu">
                 <li><a class="dropdown-item" href="javascript:void(0);">Newest</a></li>
@@ -99,9 +103,10 @@ const triggerFileInput = () => {
         <div class="card-body p-0">
           <div class="table-responsive">
             <TableComponent
-              tableClass="table leads-table"
-              :showCheckbox="true"
-              theadClass="table-header-light"
+              #cell="{ row }"
+              table-class="table leads-table"
+              :show-checkbox="true"
+              thead-class="table-header-light"
               :headers="[
                 { text: 'Contact Name', thClass: '' },
                 { text: 'Email', thClass: '' },
@@ -113,7 +118,6 @@ const triggerFileInput = () => {
                 { text: 'Actions', thClass: '' },
               ]"
               :rows="Leadsdata"
-              v-slot:cell="{ row }"
             >
               <td>
                 <div class="d-flex align-items-center gap-2">
@@ -129,18 +133,12 @@ const triggerFileInput = () => {
               </td>
               <td>
                 <div>
-                  <span class="d-block mb-1"
-                    ><i class="ri-mail-line me-2 align-middle fs-14 text-muted d-inline-block"></i
-                    >{{ row.email }}</span
-                  >
+                  <span class="d-block mb-1"><i class="ri-mail-line me-2 align-middle fs-14 text-muted d-inline-block" />{{ row.email }}</span>
                 </div>
               </td>
               <td>
                 <div>
-                  <span class="d-block"
-                    ><i class="ri-phone-line me-2 align-middle fs-14 text-muted"></i
-                    >{{ row.phone }}</span
-                  >
+                  <span class="d-block"><i class="ri-phone-line me-2 align-middle fs-14 text-muted" />{{ row.phone }}</span>
                 </div>
               </td>
               <td>
@@ -165,21 +163,20 @@ const triggerFileInput = () => {
                     v-for="(badge, index) in row.tags"
                     :key="index"
                     :class="`badge bg-${badge.color}`"
-                    >{{ badge.label }}</span
-                  >
+                  >{{ badge.label }}</span>
                 </div>
               </td>
               <td>
                 <div class="btn-list">
-                  <a class="btn btn-sm btn-warning-light btn-icon"><i class="ri-eye-line"></i></a>
+                  <a class="btn btn-sm btn-warning-light btn-icon"><i class="ri-eye-line" /></a>
                   <button class="btn btn-sm btn-info-light btn-icon">
-                    <i class="ri-pencil-line"></i>
+                    <i class="ri-pencil-line" />
                   </button>
                   <button
                     class="btn btn-sm btn-danger-light btn-icon contact-delete"
                     @click="handleToDelete(row.id)"
                   >
-                    <i class="ri-delete-bin-line"></i>
+                    <i class="ri-delete-bin-line" />
                   </button>
                 </div>
               </td>
@@ -188,7 +185,7 @@ const triggerFileInput = () => {
         </div>
         <div class="card-footer border-top-0">
           <div class="d-flex align-items-center flex-wrap">
-            <div>Showing 10 Entries <i class="bi bi-arrow-right ms-2 fw-medium"></i></div>
+            <div>Showing 10 Entries <i class="bi bi-arrow-right ms-2 fw-medium" /></div>
             <div class="ms-auto">
               <nav aria-label="Page navigation" class="pagination-style-4">
                 <ul class="pagination mb-0">
@@ -198,7 +195,9 @@ const triggerFileInput = () => {
                   <li class="page-item active">
                     <a class="page-link" href="javascript:void(0);">1</a>
                   </li>
-                  <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:void(0);">2</a>
+                  </li>
                   <li class="page-item">
                     <a class="page-link text-primary" href="javascript:void(0);"> next </a>
                   </li>
@@ -210,134 +209,137 @@ const triggerFileInput = () => {
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 
   <!-- Start:: Create Contact -->
-  <div class="modal fade" id="create-contact" tabindex="-1" aria-hidden="true">
+  <div id="create-contact" class="modal fade" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h6 class="modal-title">Create Lead</h6>
+          <h6 class="modal-title">
+            Create Lead
+          </h6>
           <button
             type="button"
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
-          ></button>
+          />
         </div>
         <div class="modal-body px-4">
           <div class="row gy-3">
             <div class="col-xl-12">
               <div class="mb-0 text-center">
                 <span class="avatar avatar-xxl avatar-rounded">
-                  <img v-if="avatar" loading="lazy" class="avatar" :src="avatar" alt="Avatar" />
-                  <BaseImg v-else src="/images/faces/9.jpg" alt="" id="profile-img" />
+                  <img v-if="avatar" loading="lazy" class="avatar" :src="avatar" alt="Avatar">
+                  <BaseImg v-else id="profile-img" src="/images/faces/9.jpg" alt="" />
                   <a
                     href="#!"
                     class="badge rounded-pill bg-primary avatar-badge"
-                    @click.prevent="triggerFileInput"
                     aria-label="Change profile picture"
+                    @click.prevent="triggerFileInput"
                   >
-                    <i class="fe fe-camera"></i>
+                    <i class="fe fe-camera" />
                   </a>
 
                   <input
+                    id="profile-change"
+                    ref="fileinput"
                     style="display: none"
                     type="file"
                     class="position-absolute w-100 h-100 op-0"
-                    id="profile-change"
                     accept=".jpg, .jpeg, .png"
                     @change="onFileSelected"
-                    ref="fileinput"
-                  />
+                  >
                 </span>
               </div>
             </div>
             <div class="col-xl-12">
               <label for="contact-name" class="form-label">Contact Name</label>
               <input
+                id="contact-name"
                 type="text"
                 class="form-control"
-                id="contact-name"
                 placeholder="Contact Name"
-              />
+              >
             </div>
             <div class="col-xl-12">
               <label for="contact-mail" class="form-label">Email</label>
               <input
+                id="contact-mail"
                 type="email"
                 class="form-control"
-                id="contact-mail"
                 placeholder="Enter Email"
-              />
+              >
             </div>
             <div class="col-xl-12">
               <label for="contact-phone" class="form-label">Phone No</label>
               <input
+                id="contact-phone"
                 type="tel"
                 class="form-control"
-                id="contact-phone"
                 placeholder="Enter Phone Number"
-              />
+              >
             </div>
             <div class="col-xl-12">
               <label for="company-name" class="form-label">Company Name</label>
               <input
+                id="company-name"
                 type="text"
                 class="form-control"
-                id="company-name"
                 placeholder="Company Name"
-              />
+              >
             </div>
             <div class="col-xl-12">
               <label class="form-label">Lead Status</label>
               <VueMultiselect
+                id="choices-multiple-remove-button3"
+                v-model="Data2Value"
                 :searchable="true"
                 :show-labels="false"
                 :multiple="false"
-                v-model="Data2Value"
                 :options="Data2"
                 :taggable="false"
                 name="choices-multiple-remove-button3"
-                id="choices-multiple-remove-button3"
                 placeholder="Select Status"
-              >
-              </VueMultiselect>
+              />
             </div>
             <div class="col-xl-12">
               <label class="form-label">Lead Source</label>
               <VueMultiselect
+                id="choices-multiple-remove-button1"
+                v-model="Data1Value"
                 :searchable="true"
                 :show-labels="false"
                 :multiple="false"
-                v-model="Data1Value"
                 :options="Data1"
                 :taggable="false"
                 name="choices-multiple-remove-button1"
-                id="choices-multiple-remove-button1"
-              >
-              </VueMultiselect>
+              />
             </div>
             <div class="col-xl-12 custom-leads">
               <label class="form-label">Tags</label>
               <VueMultiselect
+                id="choices-multiple-remove-button2"
+                v-model="DataValue"
                 :searchable="true"
                 :show-labels="false"
                 :multiple="true"
-                v-model="DataValue"
                 :options="Data"
                 :taggable="false"
                 name="choices-multiple-remove-button2"
-                id="choices-multiple-remove-button2"
                 placeholder="Select Tag"
-              >
-              </VueMultiselect>
+              />
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Create Contact</button>
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+            Cancel
+          </button>
+          <button type="button" class="btn btn-primary">
+            Create Contact
+          </button>
         </div>
       </div>
     </div>

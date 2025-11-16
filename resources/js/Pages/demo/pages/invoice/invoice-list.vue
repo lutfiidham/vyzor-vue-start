@@ -1,12 +1,13 @@
 <script setup>
-import { ref } from 'vue'
-import * as InvoiceListData from '@/shared/data/pages/invoice/invoicelistdata'
-import { defineAsyncComponent } from 'vue'
-const CountUp = defineAsyncComponent(() => import('vue-countup-v3'))
-import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head, Link } from '@inertiajs/vue3'
+import { defineAsyncComponent, ref } from 'vue'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
+import * as InvoiceListData from '@/shared/data/pages/invoice/invoicelistdata'
+
+const CountUp = defineAsyncComponent(() => import('vue-countup-v3'))
+
 const baseUrl = __BASE_PATH__
 // reactive invoice list
 const Invoice = ref([...InvoiceListData.Invoices])
@@ -21,35 +22,35 @@ const dataToPass = {
 
 // method to delete invoice by id
 function handleToDelete(id) {
-  Invoice.value = Invoice.value.filter((invoice) => invoice.id !== id)
+  Invoice.value = Invoice.value.filter(invoice => invoice.id !== id)
 }
 </script>
 
 <template>
   <Head title="Invoice-List | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row">
-    <div class="col-xxl-3 col-xl-6" v-for="idx in InvoiceListData.Invoicedata" :key="idx.id">
+    <div v-for="idx in InvoiceListData.Invoicedata" :key="idx.id" class="col-xxl-3 col-xl-6">
       <div :class="`card custom-card dashboard-main-card ${idx.cardClass}`">
         <div class="card-body p-4">
           <div class="d-flex align-items-start gap-3">
             <div class="flex-fill">
-              <h6 class="mb-2 fs-12">{{ idx.title }}</h6>
+              <h6 class="mb-2 fs-12">
+                {{ idx.title }}
+              </h6>
               <div class="pb-0 mt-0">
                 <div>
                   <div class="d-flex align-items-center gap-2 mb-2">
                     <h4 class="fw-medium mb-0 d-flex flex-wrap">
                       {{ idx.dollar
-                      }}<span class="count-up"> <CountUp :end-val="idx.price"></CountUp> </span
-                      >{{ idx.kelvin }}
+                      }}<span class="count-up"> <CountUp :end-val="idx.price" /> </span>{{ idx.kelvin }}
                     </h4>
                     <span :class="`badge bg-${idx.color} text-fixed-white`">{{ idx.value }}</span>
                   </div>
                   <p class="text-muted fs-11 mb-0 lh-1">
                     <span :class="`text-${idx.percentColor} me-1 fw-medium d-inline-block`">
-                      <i :class="`ri-arrow-${idx.arrow}-s-line me-1 align-middle`"></i
-                      >{{ idx.percent }}
+                      <i :class="`ri-arrow-${idx.arrow}-s-line me-1 align-middle`" />{{ idx.percent }}
                     </span>
                     <span>this month</span>
                   </p>
@@ -59,7 +60,7 @@ function handleToDelete(id) {
             <div
               :class="`avatar avatar-lg bg-${idx.cardClass}-transparent svg-${idx.cardClass}`"
               v-html="idx.svgIcon"
-            ></div>
+            />
           </div>
         </div>
       </div>
@@ -67,13 +68,16 @@ function handleToDelete(id) {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header justify-content-between">
-          <div class="card-title">Manage Invoices</div>
+          <div class="card-title">
+            Manage Invoices
+          </div>
           <div class="d-flex">
             <Link
               :href="`${baseUrl}/demo/pages/invoice/create-invoice`"
               class="btn btn-sm btn-primary btn-wave waves-light"
-              ><i class="ri-add-line fw-medium align-middle me-1"></i> Create Invoice</Link
             >
+              <i class="ri-add-line fw-medium align-middle me-1" /> Create Invoice
+            </Link>
             <div class="dropdown ms-2">
               <button
                 class="btn btn-icon btn-secondary-light btn-sm btn-wave waves-light"
@@ -81,7 +85,7 @@ function handleToDelete(id) {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <i class="ti ti-dots-vertical"></i>
+                <i class="ti ti-dots-vertical" />
               </button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="javascript:void(0);">All Invoices</a></li>
@@ -95,8 +99,9 @@ function handleToDelete(id) {
         <div class="card-body p-0">
           <div class="table-responsive">
             <TableComponent
-              trClass="invoice-list"
-              tableClass="table text-nowrap"
+              #cell="{ row }"
+              tr-class="invoice-list"
+              table-class="table text-nowrap"
               :headers="[
                 { text: 'Client', thClass: '' },
                 { text: 'Invoice ID', thClass: '' },
@@ -107,7 +112,6 @@ function handleToDelete(id) {
                 { text: 'Action', thClass: '' },
               ]"
               :rows="Invoice"
-              v-slot:cell="{ row }"
             >
               <td>
                 <div class="d-flex align-items-center">
@@ -117,8 +121,12 @@ function handleToDelete(id) {
                     </span>
                   </div>
                   <div>
-                    <p class="mb-0 fw-medium">{{ row.name }}</p>
-                    <p class="mb-0 fs-11 text-muted">{{ row.email }}</p>
+                    <p class="mb-0 fw-medium">
+                      {{ row.name }}
+                    </p>
+                    <p class="mb-0 fs-11 text-muted">
+                      {{ row.email }}
+                    </p>
                   </div>
                 </div>
               </td>
@@ -141,13 +149,13 @@ function handleToDelete(id) {
               </td>
               <td>
                 <button class="btn btn-primary-light btn-icon btn-sm">
-                  <i class="ri-printer-line"></i>
+                  <i class="ri-printer-line" />
                 </button>
                 <button
                   class="btn btn-danger-light btn-icon ms-1 btn-sm invoice-btn"
                   @click="handleToDelete(row.id)"
                 >
-                  <i class="ri-delete-bin-5-line"></i>
+                  <i class="ri-delete-bin-5-line" />
                 </button>
               </td>
             </TableComponent>
@@ -160,16 +168,20 @@ function handleToDelete(id) {
                 <li class="page-item disabled">
                   <a class="page-link" href="javascript:void(0);"> Prev </a>
                 </li>
-                <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="javascript:void(0);">1</a>
+                </li>
                 <li class="page-item active">
                   <a class="page-link" href="javascript:void(0);">2</a>
                 </li>
                 <li class="page-item">
                   <a class="page-link" href="javascript:void(0);">
-                    <i class="bi bi-three-dots"></i>
+                    <i class="bi bi-three-dots" />
                   </a>
                 </li>
-                <li class="page-item"><a class="page-link" href="javascript:void(0);">17</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="javascript:void(0);">17</a>
+                </li>
                 <li class="page-item">
                   <a class="page-link text-primary" href="javascript:void(0);"> next </a>
                 </li>
@@ -180,7 +192,7 @@ function handleToDelete(id) {
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

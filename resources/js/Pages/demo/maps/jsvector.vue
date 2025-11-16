@@ -1,9 +1,8 @@
 <script setup>
+import { Head } from '@inertiajs/vue3'
 import { onMounted } from 'vue'
 import Pageheader from '@/components/pageheader/pageheader.vue'
-import { Head } from '@inertiajs/vue3'
-
-const jsVectorMap = window.jsVectorMap
+import jsVectorMap from 'jsvectormap'
 
 const dataToPass = {
   title: 'Maps',
@@ -77,7 +76,7 @@ onMounted(() => {
         },
       },
     },
-    markers: markers,
+    markers,
     markerStyle: {
       hover: { stroke: '#DDD', strokeWidth: 3, fill: '#FFF' },
       selected: { fill: '#ff525d' },
@@ -168,7 +167,7 @@ onMounted(() => {
       },
     },
     markers: linesmarkers,
-    lines: lines,
+    lines,
     lineStyle: { animation: true, strokeDasharray: '6 3 6' },
     markerStyle: {
       initial: { r: 6, fill: '#1266f1', stroke: '#fff', strokeWidth: 3 },
@@ -200,17 +199,19 @@ onMounted(() => {
 
 <template>
   <Head title="Vectors Maps | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start::row-1 -->
   <div class="row">
-    <div class="col-xl-6" v-for="(map, index) in data" :key="index">
+    <div v-for="(map, index) in data" :key="index" class="col-xl-6">
       <div :class="`card custom-card ${map.cardclass}`">
         <div class="card-header">
-          <div class="card-title">{{ map.name }}</div>
+          <div class="card-title">
+            {{ map.name }}
+          </div>
         </div>
         <div :class="`card-body scrollable-card-body ${map.bodyclass}`">
-          <div :id="map.chartid" style="width: 100%; height: 350px"></div>
+          <div :id="map.chartid" style="width: 100%; height: 350px" />
         </div>
       </div>
     </div>

@@ -20,6 +20,7 @@ defineProps({
   Footertext: String,
 })
 </script>
+
 <template>
   <div :class="`card custom-card ${CustomClass}`">
     <BaseImg :src="Imgsrc" class="card-img" alt="..." />
@@ -35,7 +36,9 @@ defineProps({
         <slot name="cardContent" />
       </div>
       <template v-if="CardFooter">
-        <div :class="`card-footer ${Customfooterclass}`">{{ Footertext }}</div>
+        <div :class="`card-footer ${Customfooterclass}`">
+          {{ Footertext }}
+        </div>
       </template>
     </div>
   </div>

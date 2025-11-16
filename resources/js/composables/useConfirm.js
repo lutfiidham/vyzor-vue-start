@@ -6,7 +6,7 @@ export function useConfirm() {
   const confirm = async (options = {}) => {
     const defaultOptions = {
       title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      text: 'You won\'t be able to revert this!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -18,6 +18,7 @@ export function useConfirm() {
     }
 
     const result = await proxy.$swal(defaultOptions)
+
     return result.isConfirmed
   }
 

@@ -1,13 +1,14 @@
 <script lang="js" setup>
-import { ref, onMounted, defineAsyncComponent } from 'vue'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin, { Draggable } from '@fullcalendar/interaction'
-import timeGridPlugin from '@fullcalendar/timegrid'
 import rrulePlugin from '@fullcalendar/rrule'
-import { INITIAL_EVENTS } from '@/shared/data/applications/calendar'
-import { Modal } from 'bootstrap'
-import Pageheader from '@/components/pageheader/pageheader.vue'
+import timeGridPlugin from '@fullcalendar/timegrid'
 import { Head } from '@inertiajs/vue3'
+import { Modal } from 'bootstrap'
+import { defineAsyncComponent, onMounted, ref } from 'vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import { INITIAL_EVENTS } from '@/shared/data/applications/calendar'
+
 const fullCalendar = ref(null)
 
 const FullCalendar = defineAsyncComponent(() => import('@fullcalendar/vue3'))
@@ -73,7 +74,7 @@ const calendarOptions = {
   weekends: true,
   droppable: true,
   eventReceive: handleEventReceive,
-  select: function (arg) {
+  select(arg) {
     // Fill newEvent dates
     newEvent.value.start = arg.start
     newEvent.value.end = arg.end
@@ -85,7 +86,7 @@ const calendarOptions = {
     // Unselect dates after selection
     fullCalendar.value.getApi().unselect()
   },
-  eventClick: function (arg) {
+  eventClick(arg) {
     openDeleteModal(arg.event)
   },
 }
@@ -98,10 +99,10 @@ function handleEventReceive(info) {
 
     // Add the event to FullCalendar
     fullCalendar.value?.getApi().addEvent({
-      title: title,
+      title,
       start: info.event.start,
       allDay: info.event.allDay,
-      className: className, // Optional: Add the className to style the event
+      className, // Optional: Add the className to style the event
     })
   }
 }
@@ -109,11 +110,12 @@ function handleEventReceive(info) {
 onMounted(() => {
   new Draggable(document.getElementById('external-events'), {
     itemSelector: '.fc-event',
-    eventData: (eventEl) => {
-      let event = {
+    eventData: eventEl => {
+      const event = {
         title: eventEl.innerText,
         duration: '01:00',
       }
+
       return event
     },
   })
@@ -144,6 +146,7 @@ const titleError = ref(false)
 function saveEvent() {
   if (!newEvent.value.title.trim()) {
     titleError.value = true
+
     return
   }
   titleError.value = false
@@ -197,37 +200,36 @@ onMounted(() => {
 
 <template>
   <Head title="Full Calendar | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xxl-3">
       <div class="card custom-card">
         <div class="card-header justify-content-between">
-          <div class="card-title">All Events</div>
+          <div class="card-title">
+            All Events
+          </div>
           <button
             class="btn btn-primary btn-wave"
             data-bs-toggle="modal"
             data-bs-target="#addEvent"
           >
-            <i class="ri-add-line align-middle me-1 fw-medium d-inline-block"></i>Create New Event
+            <i class="ri-add-line align-middle me-1 fw-medium d-inline-block" />Create New Event
           </button>
         </div>
         <div class="card-body p-0">
           <ul id="external-events" class="mb-0 p-3 list-unstyled column-list">
             <template v-for="event in events" :key="event.id">
               <li
-                :class="[
-                  'fc-event',
-                  'mb-2',
-                  'fc-h-event',
-                  'fc-daygrid-event',
-                  'fc-daygrid-block-event',
+                class="fc-event mb-2 fc-h-event fc-daygrid-event fc-daygrid-block-event" :class="[
                   `bg-${event.bg}`,
                 ]"
                 :data-class="`bg-${event.bg}`"
                 :data-event="JSON.stringify({ title: event.title })"
               >
-                <div :class="`fc-event-main text-fixed-white`">{{ event.title }}</div>
+                <div class="fc-event-main text-fixed-white">
+                  {{ event.title }}
+                </div>
               </li>
             </template>
           </ul>
@@ -237,10 +239,10 @@ onMounted(() => {
         <div class="card-body p-0">
           <div class="p-3">
             <div class="d-flex align-items-center justify-content-between">
-              <h6 class="fw-medium mb-0">Upcoming Events</h6>
-              <a href="javascript:void(0);" class="fs-13 text-muted text-decoration-underline"
-                >View All<i class="ti ti-arrow-narrow-right"></i
-              ></a>
+              <h6 class="fw-medium mb-0">
+                Upcoming Events
+              </h6>
+              <a href="javascript:void(0);" class="fs-13 text-muted text-decoration-underline">View All<i class="ti ti-arrow-narrow-right" /></a>
             </div>
           </div>
           <div id="full-calendar-activity">
@@ -248,7 +250,9 @@ onMounted(() => {
               <ul class="list-unstyled mb-0 fullcalendar-events-activity">
                 <li>
                   <div class="d-flex align-items-center justify-content-between flex-wrap">
-                    <p class="mb-1 fw-medium">Annual School Day</p>
+                    <p class="mb-1 fw-medium">
+                      Annual School Day
+                    </p>
                     <span class="badge bg-primary mb-1">02 Mar, 2025</span>
                   </div>
                   <p class="mb-0 text-muted fs-13">
@@ -258,7 +262,9 @@ onMounted(() => {
                 </li>
                 <li>
                   <div class="d-flex align-items-center justify-content-between flex-wrap">
-                    <p class="mb-1 fw-medium">Science Fair</p>
+                    <p class="mb-1 fw-medium">
+                      Science Fair
+                    </p>
                     <span class="badge bg-secondary mb-1">17 Mar, 2025</span>
                   </div>
                   <p class="mb-0 text-muted fs-13">
@@ -267,7 +273,9 @@ onMounted(() => {
                 </li>
                 <li>
                   <div class="d-flex align-items-center justify-content-between flex-wrap">
-                    <p class="mb-1 fw-medium">Parent-Teacher Meeting</p>
+                    <p class="mb-1 fw-medium">
+                      Parent-Teacher Meeting
+                    </p>
                     <span class="badge bg-warning mb-1">15 Mar, 2025</span>
                   </div>
                   <p class="mb-0 text-muted fs-13">
@@ -277,7 +285,9 @@ onMounted(() => {
                 </li>
                 <li>
                   <div class="d-flex align-items-center justify-content-between flex-wrap">
-                    <p class="mb-1 fw-medium">Spring Break</p>
+                    <p class="mb-1 fw-medium">
+                      Spring Break
+                    </p>
                     <span class="badge bg-info mb-1">13 Mar,2025</span>
                   </div>
                   <p class="mb-0 text-muted fs-13">
@@ -286,7 +296,9 @@ onMounted(() => {
                 </li>
                 <li>
                   <div class="d-flex align-items-center justify-content-between flex-wrap">
-                    <p class="mb-1 fw-medium">Holiday Celebrations</p>
+                    <p class="mb-1 fw-medium">
+                      Holiday Celebrations
+                    </p>
                     <span class="badge bg-success mb-1">Due Date</span>
                   </div>
                   <p class="mb-0 text-muted fs-13">
@@ -303,7 +315,9 @@ onMounted(() => {
     <div class="col-xxl-9">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Full Calendar</div>
+          <div class="card-title">
+            Full Calendar
+          </div>
         </div>
         <div class="card-body">
           <div id="calendar2">
@@ -315,64 +329,80 @@ onMounted(() => {
   </div>
 
   <div
-    class="modal fade"
     id="createEventModal"
-    aria-labelledby="createEventModalLabel"
     ref="eventModal"
+    class="modal fade"
+    aria-labelledby="createEventModalLabel"
   >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h6 class="modal-title" id="createEventModalLabel">Create Event</h6>
-          <button type="button" class="btn-close" @click="closeModal" aria-label="Close"></button>
+          <h6 id="createEventModalLabel" class="modal-title">
+            Create Event
+          </h6>
+          <button type="button" class="btn-close" aria-label="Close" @click="closeModal" />
         </div>
         <div class="modal-body">
           <form id="eventForm" @submit.prevent="saveEvent">
             <div class="mb-3">
               <label for="eventTitle" class="form-label">Event Title</label>
               <input
+                id="eventTitle"
+                v-model="newEvent.title"
                 type="text"
                 class="form-control"
                 placeholder="Enter Event"
-                id="eventTitle"
-                v-model="newEvent.title"
                 autocomplete="off"
                 required
-              />
-              <div class="invalid-feedback" v-if="titleError">Please enter an event title.</div>
+              >
+              <div v-if="titleError" class="invalid-feedback">
+                Please enter an event title.
+              </div>
             </div>
             <div class="mb-3">
               <label for="eventDateRange" class="form-label">Event Date Range</label>
               <Datepicker
-                class="form-control custom-date-picker"
-                autoApply
-                placeholder="Choose date"
                 v-model="picked"
+                class="form-control custom-date-picker"
+                auto-apply
+                placeholder="Choose date"
               />
             </div>
             <div class="my-3">
               <label for="eventColor" class="form-label">Event Color:</label>
               <select
                 id="eventColor"
-                class="form-control"
                 v-model="newEvent.color"
+                class="form-control"
                 name="Event-Color"
               >
-                <option value="bg-primary-transparent" selected>Primary</option>
-                <option value="bg-success-transparent">Success</option>
-                <option value="bg-danger-transparent">Danger</option>
-                <option value="bg-warning-transparent">Warning</option>
-                <option value="bg-secondary-transparent">Secondary</option>
-                <option value="bg-info-transparent">Info</option>
+                <option value="bg-primary-transparent" selected>
+                  Primary
+                </option>
+                <option value="bg-success-transparent">
+                  Success
+                </option>
+                <option value="bg-danger-transparent">
+                  Danger
+                </option>
+                <option value="bg-warning-transparent">
+                  Warning
+                </option>
+                <option value="bg-secondary-transparent">
+                  Secondary
+                </option>
+                <option value="bg-info-transparent">
+                  Info
+                </option>
               </select>
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" @click="closeModal" data-bs-dismiss="modal">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal" @click="closeModal">
             Cancel
           </button>
-          <button type="button" class="btn btn-primary" id="saveEventButton" @click="saveEvent">
+          <button id="saveEventButton" type="button" class="btn btn-primary" @click="saveEvent">
             Save Event
           </button>
         </div>
@@ -380,36 +410,40 @@ onMounted(() => {
     </div>
   </div>
   <div
-    class="modal fade"
     id="deleteEventModal"
-    aria-labelledby="deleteEventModalLabel"
     ref="deleteModal"
+    class="modal fade"
+    aria-labelledby="deleteEventModalLabel"
   >
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h6 class="modal-title" id="deleteEventModalLabel">Delete Event</h6>
+          <h6 id="deleteEventModalLabel" class="modal-title">
+            Delete Event
+          </h6>
           <button
             type="button"
             class="btn-close"
-            @click="closeDeleteModal"
             aria-label="Close"
-          ></button>
+            @click="closeDeleteModal"
+          />
         </div>
-        <div class="modal-body">Are you sure you want to delete this event?</div>
+        <div class="modal-body">
+          Are you sure you want to delete this event?
+        </div>
         <div class="modal-footer">
           <button
             type="button"
             class="btn btn-primary"
-            @click="closeDeleteModal"
             data-bs-dismiss="modal"
+            @click="closeDeleteModal"
           >
             Cancel
           </button>
           <button
+            id="deleteEventButton"
             type="button"
             class="btn btn-danger"
-            id="deleteEventButton"
             @click="confirmDeleteEvent"
           >
             Delete
@@ -419,12 +453,12 @@ onMounted(() => {
     </div>
   </div>
 
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 
   <!-- Add Event Modal -->
   <div
-    class="modal fade"
     id="addEvent"
+    class="modal fade"
     tabindex="-1"
     aria-labelledby="addEventLabel"
     aria-hidden="true"
@@ -432,34 +466,50 @@ onMounted(() => {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h6 class="modal-title" id="addEventLabel1">Add Event</h6>
+          <h6 id="addEventLabel1" class="modal-title">
+            Add Event
+          </h6>
           <button
             type="button"
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
-          ></button>
+          />
         </div>
         <div class="modal-body">
           <div class="row gy-3">
             <div class="col-md-12">
               <div class="form-group">
                 <label class="form-label" for="eventType">Event Type:</label>
-                <select class="form-control" data-trigger id="eventType">
-                  <option value="bg-primary">Primary</option>
-                  <option value="bg-secondary">Secondary</option>
-                  <option value="bg-success">Success</option>
-                  <option value="bg-info">Info</option>
-                  <option value="bg-warning">Warning</option>
-                  <option value="bg-danger">Danger</option>
-                  <option value="bg-teal">Teal</option>
+                <select id="eventType" class="form-control" data-trigger>
+                  <option value="bg-primary">
+                    Primary
+                  </option>
+                  <option value="bg-secondary">
+                    Secondary
+                  </option>
+                  <option value="bg-success">
+                    Success
+                  </option>
+                  <option value="bg-info">
+                    Info
+                  </option>
+                  <option value="bg-warning">
+                    Warning
+                  </option>
+                  <option value="bg-danger">
+                    Danger
+                  </option>
+                  <option value="bg-teal">
+                    Teal
+                  </option>
                 </select>
               </div>
             </div>
             <div class="col-md-12">
               <div class="form-group">
                 <label class="form-label" for="eventName">Event Name:</label>
-                <input type="text" class="form-control" placeholder="Enter event" id="eventName" />
+                <input id="eventName" type="text" class="form-control" placeholder="Enter event">
               </div>
             </div>
             <div class="col-md-6">
@@ -467,12 +517,14 @@ onMounted(() => {
                 <label class="form-label" for="fromDate">From:</label>
                 <div class="form-group">
                   <div class="input-group salesDatePicker">
-                    <div class="input-group-text text-muted"><i class="ri-calendar-line"></i></div>
+                    <div class="input-group-text text-muted">
+                      <i class="ri-calendar-line" />
+                    </div>
                     <Datepicker
+                      v-model="picked"
                       placeholder="From Date"
                       class="form-control custom-date-picker"
-                      autoApply
-                      v-model="picked"
+                      auto-apply
                       time-picker-inline
                     />
                   </div>
@@ -484,12 +536,14 @@ onMounted(() => {
                 <label class="form-label" for="toDate">To:</label>
                 <div class="form-group">
                   <div class="input-group salesDatePicker">
-                    <div class="input-group-text text-muted"><i class="ri-calendar-line"></i></div>
+                    <div class="input-group-text text-muted">
+                      <i class="ri-calendar-line" />
+                    </div>
                     <Datepicker
+                      v-model="picked1"
                       placeholder="To Date"
                       class="form-control custom-date-picker"
-                      autoApply
-                      v-model="picked1"
+                      auto-apply
                       time-picker-inline
                     />
                   </div>
@@ -499,13 +553,15 @@ onMounted(() => {
             <div class="col-xl-12">
               <div class="form-group">
                 <label class="form-label" for="description">Description:</label>
-                <textarea class="form-control" id="event-description" rows="3"></textarea>
+                <textarea id="event-description" class="form-control" rows="3" />
               </div>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" id="addEventButton">Add Event</button>
+          <button id="addEventButton" type="button" class="btn btn-primary">
+            Add Event
+          </button>
         </div>
       </div>
     </div>

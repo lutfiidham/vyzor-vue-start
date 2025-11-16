@@ -1,28 +1,29 @@
 <script setup>
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import 'swiper/swiper-bundle.css'
+import { Head } from '@inertiajs/vue3'
 import {
   Autoplay,
+  EffectCoverflow,
+  EffectCube,
+  EffectFade,
+  EffectFlip,
+  FreeMode,
+  Keyboard,
+  Mousewheel,
   Navigation,
   Pagination,
   Scrollbar,
-  Mousewheel,
-  Keyboard,
-  EffectCube,
-  EffectFade,
-  EffectCoverflow,
-  EffectFlip,
-  FreeMode,
   Thumbs,
 } from 'swiper/modules'
-import * as NftDetailsData from '@/shared/data/dashboards/nft/nftdetailsdata'
+import { Swiper, SwiperSlide } from 'swiper/vue'
 import { ref } from 'vue'
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as NftDetailsData from '@/shared/data/dashboards/nft/nftdetailsdata'
+import 'swiper/swiper-bundle.css'
+
 const thumbsSwiper = ref(null)
 
-const setThumbsSwiper = (swiper) => {
+function setThumbsSwiper(swiper) {
   thumbsSwiper.value = swiper
 }
 const pagination = {
@@ -52,7 +53,7 @@ const dataToPass = {
 
 <template>
   <Head title="NFT-Details | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row justify-content-center">
     <div class="col-xl-12">
@@ -63,70 +64,72 @@ const dataToPass = {
             <div class="col-xxl-4 col-xl-12">
               <div class="row">
                 <div class="col-xxl-12 col-sm-12 mb-md-5 mb-3">
-                  <swiper
+                  <Swiper
                     :autoplay="true"
                     :style="{
                       '--swiper-navigation-color': '#fff',
                       '--swiper-pagination-color': '#fff',
                     }"
-                    :spaceBetween="10"
+                    :space-between="10"
                     :navigation="true"
                     :thumbs="{ swiper: thumbsSwiper }"
                     :modules="modules"
                     class="swiper swiper-preview-details bg-light product-details-page"
                   >
-                    <swiper-slide
-                      ><BaseImg class="img-fluid rounded" src="/images/nft-images/14.png"
-                    /></swiper-slide>
-                    <swiper-slide
-                      ><BaseImg class="img-fluid rounded" src="/images/nft-images/13.png"
-                    /></swiper-slide>
-                    <swiper-slide
-                      ><BaseImg class="img-fluid rounded" src="/images/nft-images/12.png"
-                    /></swiper-slide>
-                    <swiper-slide
-                      ><BaseImg class="img-fluid rounded" src="/images/nft-images/10.png"
-                    /></swiper-slide>
-                  </swiper>
-                  <swiper
+                    <SwiperSlide>
+                      <BaseImg class="img-fluid rounded" src="/images/nft-images/14.png" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <BaseImg class="img-fluid rounded" src="/images/nft-images/13.png" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <BaseImg class="img-fluid rounded" src="/images/nft-images/12.png" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <BaseImg class="img-fluid rounded" src="/images/nft-images/10.png" />
+                    </SwiperSlide>
+                  </Swiper>
+                  <Swiper
                     :autoplay="true"
-                    @swiper="setThumbsSwiper"
-                    :spaceBetween="10"
-                    :slidesPerView="4"
-                    :freeMode="true"
-                    :watchSlidesProgress="true"
+                    :space-between="10"
+                    :slides-per-view="4"
+                    :free-mode="true"
+                    :watch-slides-progress="true"
                     :modules="modules"
                     class="swiper swiper-view-details mt-2"
+                    @swiper="setThumbsSwiper"
                   >
-                    <swiper-slide
-                      ><BaseImg class="img-fluid" src="/images/nft-images/14.png"
-                    /></swiper-slide>
-                    <swiper-slide
-                      ><BaseImg class="img-fluid" src="/images/nft-images/13.png"
-                    /></swiper-slide>
-                    <swiper-slide
-                      ><BaseImg class="img-fluid" src="/images/nft-images/12.png"
-                    /></swiper-slide>
-                    <swiper-slide
-                      ><BaseImg class="img-fluid" src="/images/nft-images/10.png"
-                    /></swiper-slide>
-                  </swiper>
+                    <SwiperSlide>
+                      <BaseImg class="img-fluid" src="/images/nft-images/14.png" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <BaseImg class="img-fluid" src="/images/nft-images/13.png" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <BaseImg class="img-fluid" src="/images/nft-images/12.png" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <BaseImg class="img-fluid" src="/images/nft-images/10.png" />
+                    </SwiperSlide>
+                  </Swiper>
                   <div class="d-grid mt-4">
-                    <button class="btn btn-primary btn-wave">Place a bid</button>
+                    <button class="btn btn-primary btn-wave">
+                      Place a bid
+                    </button>
                   </div>
                 </div>
                 <div class="col-xxl-12 col-sm-12 d-md-block d-none">
                   <div class="d-flex align-items-center justify-content-between mb-2">
-                    <div class="fs-15 fw-medium mb-0">Top Bids</div>
-                    <a href="javascript:void(0);" class="d-block text-muted fs-13"
-                      >View All<i class="ti ti-arrow-narrow-right ms-1"></i
-                    ></a>
+                    <div class="fs-15 fw-medium mb-0">
+                      Top Bids
+                    </div>
+                    <a href="javascript:void(0);" class="d-block text-muted fs-13">View All<i class="ti ti-arrow-narrow-right ms-1" /></a>
                   </div>
                   <ul class="list-group">
                     <li
-                      :class="`list-group-item ${idx.liClass}`"
                       v-for="idx in NftDetailsData.NftList"
                       :key="idx.id"
+                      :class="`list-group-item ${idx.liClass}`"
                     >
                       <div class="d-flex align-items-center gap-2">
                         <div class="lh-1">
@@ -154,34 +157,42 @@ const dataToPass = {
               <div class="row gx-5">
                 <div class="col-xl-12 mt-xxl-0 mt-3">
                   <div>
-                    <h4 class="fw-semibold">NFT-12345 - Cyber Samurai</h4>
+                    <h4 class="fw-semibold">
+                      NFT-12345 - Cyber Samurai
+                    </h4>
                     <div class="fs-13 mb-4">
-                      <span class="fw-medium text-muted"
-                        ><i class="ri-heart-3-fill text-danger align-middle me-2"></i>(2.4k
-                        Likes)</span
-                      >
+                      <span class="fw-medium text-muted"><i class="ri-heart-3-fill text-danger align-middle me-2" />(2.4k
+                        Likes)</span>
                     </div>
                     <div class="row mb-4">
                       <div class="col-xxl-3 col-xl-12">
-                        <p class="mb-1 lh-1 fs-11 text-success fw-medium">Current Bid</p>
-                        <h3 class="fw-semibold mb-0">2.0 ETH</h3>
+                        <p class="mb-1 lh-1 fs-11 text-success fw-medium">
+                          Current Bid
+                        </p>
+                        <h3 class="fw-semibold mb-0">
+                          2.0 ETH
+                        </h3>
                       </div>
                       <div class="col-xxl-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 mt-xxl-0 mt-3">
-                        <p class="mb-2 fs-15 fw-medium">Creator</p>
+                        <p class="mb-2 fs-15 fw-medium">
+                          Creator
+                        </p>
                         <div class="d-flex align-items-center">
-                          <span class="avatar avatar-xs avatar-rounded lh-1 me-1"
-                            ><BaseImg src="/images/faces/9.jpg" alt=""
-                          /></span>
+                          <span class="avatar avatar-xs avatar-rounded lh-1 me-1"><BaseImg src="/images/faces/9.jpg" alt="" /></span>
                           PixelWarrior
                         </div>
                       </div>
                       <div class="col-xxl-5 col-xl-6 col-lg-6 col-md-6 col-sm-12 mt-xxl-0 mt-3">
-                        <p class="mb-2 fs-15 fw-medium">Published</p>
+                        <p class="mb-2 fs-15 fw-medium">
+                          Published
+                        </p>
                         <span class="d-block fs-13">24, Mar 2025 - 10:18PM</span>
                       </div>
                     </div>
                     <div class="mb-4">
-                      <p class="fs-15 fw-medium mb-1">Description :</p>
+                      <p class="fs-15 fw-medium mb-1">
+                        Description :
+                      </p>
                       <p class="text-muted mb-0">
                         "Digital Dreamscape" is a mesmerizing NFT artwork created by a renowned
                         digital artist. This unique piece takes viewers on a journey through a vivid
@@ -236,7 +247,9 @@ const dataToPass = {
                                 />
                               </svg>
                             </p>
-                            <p class="fs-14 fw-medium mb-0">Featured NFT</p>
+                            <p class="fs-14 fw-medium mb-0">
+                              Featured NFT
+                            </p>
                           </div>
                         </div>
                         <div
@@ -279,7 +292,9 @@ const dataToPass = {
                                 />
                               </svg>
                             </p>
-                            <p class="fs-14 fw-medium mb-0">Total 15 Bids</p>
+                            <p class="fs-14 fw-medium mb-0">
+                              Total 15 Bids
+                            </p>
                           </div>
                         </div>
                         <div
@@ -320,7 +335,9 @@ const dataToPass = {
                                 />
                               </svg>
                             </p>
-                            <p class="fs-14 fw-medium mb-0">In Auction</p>
+                            <p class="fs-14 fw-medium mb-0">
+                              In Auction
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -328,7 +345,9 @@ const dataToPass = {
                     <div class="mb-4">
                       <div class="row">
                         <div class="col-xl-7">
-                          <p class="fs-15 fw-medium mb-2">Product Details :</p>
+                          <p class="fs-15 fw-medium mb-2">
+                            Product Details :
+                          </p>
                           <div class="table-responsive">
                             <table class="table table-bordered text-nowrap product-details-table">
                               <tbody>
@@ -343,12 +362,14 @@ const dataToPass = {
                           </div>
                         </div>
                         <div class="col-xl-5">
-                          <p class="fs-15 fw-medium mb-2 mt-2">Features :</p>
+                          <p class="fs-15 fw-medium mb-2 mt-2">
+                            Features :
+                          </p>
                           <ul class="mb-0 ps-3">
                             <li
-                              class="text-muted mb-2"
                               v-for="idx in NftDetailsData.NftInfo"
                               :key="idx.id"
+                              class="text-muted mb-2"
                             >
                               <span class="text-default">{{ idx.label }} :</span> {{ idx.value }}
                             </li>
@@ -357,25 +378,31 @@ const dataToPass = {
                       </div>
                     </div>
                     <div class="mb-0">
-                      <p class="fs-15 fw-medium mb-3">Reviews & Ratings :</p>
+                      <p class="fs-15 fw-medium mb-3">
+                        Reviews & Ratings :
+                      </p>
                       <div class="row">
                         <div class="col-xxl-4 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                           <div class="d-flex align-items-top mb-3">
                             <div class="me-2 lh-1">
-                              <i class="ri-star-fill fs-25 text-warning"></i>
+                              <i class="ri-star-fill fs-25 text-warning" />
                             </div>
                             <div class="lh-1">
-                              <p class="mb-1">4.2 out of 5</p>
-                              <p class="mb-0 text-muted fs-11">Based on (23) ratings</p>
+                              <p class="mb-1">
+                                4.2 out of 5
+                              </p>
+                              <p class="mb-0 text-muted fs-11">
+                                Based on (23) ratings
+                              </p>
                             </div>
                           </div>
                           <div
-                            :class="`d-flex align-items-center ${idx.class}`"
                             v-for="idx in NftDetailsData.NftRatings"
                             :key="idx.id"
+                            :class="`d-flex align-items-center ${idx.class}`"
                           >
                             <div class="fs-12 me-2 fw-medium">
-                              {{ idx.stars }} <i class="ri-star-fill fs-10"></i>
+                              {{ idx.stars }} <i class="ri-star-fill fs-10" />
                             </div>
                             <div class="progress progress-xs flex-fill">
                               <div
@@ -385,9 +412,11 @@ const dataToPass = {
                                 aria-valuenow="55"
                                 aria-valuemin="0"
                                 aria-valuemax="100"
-                              ></div>
+                              />
                             </div>
-                            <div class="text-muted ms-2 fs-12">({{ idx.count }})</div>
+                            <div class="text-muted ms-2 fs-12">
+                              ({{ idx.count }})
+                            </div>
                           </div>
                         </div>
                         <div
@@ -402,23 +431,27 @@ const dataToPass = {
                                   </span>
                                 </div>
                                 <div class="lh-1 me-2">
-                                  <p class="mb-1 fw-medium fs-14">@User123</p>
+                                  <p class="mb-1 fw-medium fs-14">
+                                    @User123
+                                  </p>
                                   <div class="mb-1">
                                     <i
                                       class="ri-star-fill text-warning align-middle fs-12 me-1"
-                                    ></i>
+                                    />
                                     <i
                                       class="ri-star-fill text-warning align-middle fs-12 me-1"
-                                    ></i>
+                                    />
                                     <i
                                       class="ri-star-fill text-warning align-middle fs-12 me-1"
-                                    ></i>
+                                    />
                                     <i
                                       class="ri-star-fill text-warning align-middle fs-12 me-1"
-                                    ></i>
-                                    <i class="ri-star-line text-warning align-middle fs-12"></i>
+                                    />
+                                    <i class="ri-star-line text-warning align-middle fs-12" />
                                   </div>
-                                  <div class="fs-11 text-muted">Reviewed on 24 nov,2024</div>
+                                  <div class="fs-11 text-muted">
+                                    Reviewed on 24 nov,2024
+                                  </div>
                                 </div>
                               </div>
                               <div class="ps-sm-0 mt-sm-0 mt-3 ps-sm-0 ps-2">
@@ -426,7 +459,9 @@ const dataToPass = {
                               </div>
                             </div>
                             <div class="mb-3">
-                              <p class="fw-medium mb-1">Love the artwork! It's amazing!&#128512;</p>
+                              <p class="fw-medium mb-1">
+                                Love the artwork! It's amazing!&#128512;
+                              </p>
                               <p class="mb-0 fs-12 text-muted">
                                 Absolutely stunning! This NFT is a true masterpiece that blends
                                 creativity and technology in a way that’s both captivating and
@@ -453,10 +488,10 @@ const dataToPass = {
                                     Report abuse
                                   </button>
                                   <button class="btn btn-sm btn-icon btn-success-light me-2">
-                                    <i class="ri-thumb-up-line"></i>
+                                    <i class="ri-thumb-up-line" />
                                   </button>
                                   <button class="btn btn-sm btn-icon btn-danger-light">
-                                    <i class="ri-thumb-down-line"></i>
+                                    <i class="ri-thumb-down-line" />
                                   </button>
                                 </div>
                               </div>
@@ -474,7 +509,7 @@ const dataToPass = {
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

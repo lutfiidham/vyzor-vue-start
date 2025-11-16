@@ -1,10 +1,11 @@
 <script setup>
-import * as SocialMediaData from '@/shared/data/dashboards/socialmediadata'
-import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
+import { Head } from '@inertiajs/vue3'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import Pageheader from '@/components/pageheader/pageheader.vue'
 import SpkReusableSocialmediaCard from '@/shared/@spk/dashboards/spk-reusable-socialmediaCard.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head } from '@inertiajs/vue3'
+import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
+import * as SocialMediaData from '@/shared/data/dashboards/socialmediadata'
+
 const dataToPass = {
   title: 'Dashboards',
   currentpage: 'Social Media',
@@ -14,22 +15,24 @@ const dataToPass = {
 
 <template>
   <Head title="Social Media | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xxl-9">
       <div class="row">
-        <div class="col-xxl-3 col-md-6" v-for="idx in SocialMediaData.SocialCards" :key="idx.id">
+        <div v-for="idx in SocialMediaData.SocialCards" :key="idx.id" class="col-xxl-3 col-md-6">
           <SpkReusableSocialmediaCard :card="idx" />
         </div>
         <div class="col-xl-8">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Profile Visits</div>
+              <div class="card-title">
+                Profile Visits
+              </div>
             </div>
             <div class="card-body">
               <div id="profile-analysis">
-                <apexchart
+                <Apexchart
                   type="line"
                   height="320px"
                   :options="SocialMediaData.SocialMediaOptions"
@@ -42,11 +45,13 @@ const dataToPass = {
         <div class="col-xl-4">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Audience By Gender</div>
+              <div class="card-title">
+                Audience By Gender
+              </div>
             </div>
             <div class="card-body">
               <div id="audience-by-gender">
-                <apexchart
+                <Apexchart
                   type="radar"
                   height="280px"
                   :options="SocialMediaData.SocialGenderoptions"
@@ -55,12 +60,20 @@ const dataToPass = {
               </div>
               <div class="row mt-0">
                 <div class="col-6 border-end border-inline-end-dashed text-center">
-                  <p class="text-muted mb-1 fs-12">Male</p>
-                  <h6 class="text-primary mb-0">12.34K</h6>
+                  <p class="text-muted mb-1 fs-12">
+                    Male
+                  </p>
+                  <h6 class="text-primary mb-0">
+                    12.34K
+                  </h6>
                 </div>
                 <div class="col-6 text-center">
-                  <p class="text-muted mb-1 fs-12">Female</p>
-                  <h6 class="text-secondary mb-0">10.19K</h6>
+                  <p class="text-muted mb-1 fs-12">
+                    Female
+                  </p>
+                  <h6 class="text-secondary mb-0">
+                    10.19K
+                  </h6>
                 </div>
               </div>
             </div>
@@ -69,12 +82,15 @@ const dataToPass = {
         <div class="col-xl-6">
           <div class="card custom-card overflow-hidden">
             <div class="card-header">
-              <div class="card-title">Top Audience Countries</div>
+              <div class="card-title">
+                Top Audience Countries
+              </div>
             </div>
             <div class="card-body p-0">
               <div class="table-responsive custom-table-list">
                 <TableComponent
-                  tableClass="table text-nowrap"
+                  #cell="{ row }"
+                  table-class="table text-nowrap"
                   :headers="[
                     { text: 'S.No', thClass: '' },
                     { text: 'Country', thClass: '' },
@@ -82,9 +98,10 @@ const dataToPass = {
                     { text: 'Followers', thClass: '' },
                   ]"
                   :rows="SocialMediaData.Audiencedata"
-                  v-slot:cell="{ row }"
                 >
-                  <td :class="row.tdClass">{{ row.id }}</td>
+                  <td :class="row.tdClass">
+                    {{ row.id }}
+                  </td>
                   <td :class="row.tdClass">
                     <div class="d-flex align-items-center gap-2">
                       <div class="lh-1">
@@ -92,13 +109,15 @@ const dataToPass = {
                           <BaseImg :src="row.flag" alt="" />
                         </span>
                       </div>
-                      <div class="fw-semibold">{{ row.country }}</div>
+                      <div class="fw-semibold">
+                        {{ row.country }}
+                      </div>
                     </div>
                   </td>
                   <td :class="row.tdClass">
                     <span class="d-block">
                       {{ row.likes
-                      }}<i class="ti ti-thumb-up text-muted fs-18 mx-1 d-inline-block"></i>
+                      }}<i class="ti ti-thumb-up text-muted fs-18 mx-1 d-inline-block" />
                     </span>
                   </td>
                   <td :class="row.tdClass">
@@ -107,8 +126,7 @@ const dataToPass = {
                       <span
                         :class="`fs-12 text-${row.arrow === 'up' ? 'success' : 'danger'}  ms-1 d-inline-flex`"
                       >
-                        <i :class="`ti ti-trending-${row.arrow} me-1 align-middle`"></i
-                        >{{ row.change }}%
+                        <i :class="`ti ti-trending-${row.arrow} me-1 align-middle`" />{{ row.change }}%
                       </span>
                     </div>
                   </td>
@@ -120,12 +138,15 @@ const dataToPass = {
         <div class="col-xl-6">
           <div class="card custom-card overflow-hidden">
             <div class="card-header">
-              <div class="card-title">Post Insights</div>
+              <div class="card-title">
+                Post Insights
+              </div>
             </div>
             <div class="card-body p-0">
               <div class="table-responsive">
                 <TableComponent
-                  tableClass="table text-nowrap"
+                  #cell="{ row }"
+                  table-class="table text-nowrap"
                   :headers="[
                     { text: 'Post Name', thClass: '' },
                     { text: 'Posted', thClass: '' },
@@ -134,7 +155,6 @@ const dataToPass = {
                     { text: 'Action', thClass: 'text-center' },
                   ]"
                   :rows="SocialMediaData.Insightsdata"
-                  v-slot:cell="{ row }"
                 >
                   <td :class="row.tdClass">
                     <div class="d-flex align-items-center gap-2">
@@ -166,22 +186,20 @@ const dataToPass = {
                         aria-expanded="false"
                         class="btn btn-icon btn-sm btn-primary-light"
                       >
-                        <i class="ti ti-dots-vertical"></i>
+                        <i class="ti ti-dots-vertical" />
                       </a>
                       <ul class="dropdown-menu" role="menu">
                         <li>
                           <a
                             class="dropdown-item d-inline-flex align-items-center"
                             href="javascript:void(0);"
-                            ><i class="ti ti-edit me-2"></i>Edit</a
-                          >
+                          ><i class="ti ti-edit me-2" />Edit</a>
                         </li>
                         <li>
                           <a
                             class="dropdown-item d-inline-flex align-items-center"
                             href="javascript:void(0);"
-                            ><i class="ti ti-trash me-2"></i>Delete</a
-                          >
+                          ><i class="ti ti-trash me-2" />Delete</a>
                         </li>
                       </ul>
                     </div>
@@ -194,7 +212,9 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header justify-content-between">
-              <div class="card-title">Social Media Performance Overview</div>
+              <div class="card-title">
+                Social Media Performance Overview
+              </div>
               <div class="d-flex flex-wrap gap-2">
                 <div>
                   <input
@@ -202,7 +222,7 @@ const dataToPass = {
                     type="text"
                     placeholder="Search Here"
                     aria-label=".form-control-sm example"
-                  />
+                  >
                 </div>
                 <div class="dropdown">
                   <a
@@ -211,7 +231,7 @@ const dataToPass = {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    Sort By<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block"></i>
+                    Sort By<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block" />
                   </a>
                   <ul class="dropdown-menu" role="menu">
                     <li><a class="dropdown-item" href="javascript:void(0);">New</a></li>
@@ -224,8 +244,9 @@ const dataToPass = {
             <div class="card-body p-0">
               <div class="table-responsive">
                 <TableComponent
-                  tableClass="table text-nowrap"
-                  :showCheckbox="true"
+                  #cell="{ row }"
+                  table-class="table text-nowrap"
+                  :show-checkbox="true"
                   :headers="[
                     { text: 'Platform', thClass: '' },
                     { text: 'Posts', thClass: '' },
@@ -238,13 +259,12 @@ const dataToPass = {
                     { text: 'Actions', thClass: '' },
                   ]"
                   :rows="SocialMediaData.SocialMediaData"
-                  v-slot:cell="{ row }"
                 >
                   <td>
                     <div class="d-flex align-items-center gap-2">
                       <div class="lh-1">
                         <span :class="`avatar avatar-sm bg-${row.color}-transparent`">
-                          <i :class="`ri-${row.avatar} fs-5`"></i>
+                          <i :class="`ri-${row.avatar} fs-5`" />
                         </span>
                       </div>
                       <div>{{ row.platform }}</div>
@@ -268,29 +288,26 @@ const dataToPass = {
                         aria-expanded="false"
                         class="btn btn-icon btn-sm btn-light"
                       >
-                        <i class="ti ti-dots-vertical"></i>
+                        <i class="ti ti-dots-vertical" />
                       </a>
                       <ul class="dropdown-menu" role="menu">
                         <li>
                           <a
                             class="dropdown-item d-inline-flex align-items-center"
                             href="javascript:void(0);"
-                            ><i class="ti ti-eye me-2"></i>View</a
-                          >
+                          ><i class="ti ti-eye me-2" />View</a>
                         </li>
                         <li>
                           <a
                             class="dropdown-item d-inline-flex align-items-center"
                             href="javascript:void(0);"
-                            ><i class="ti ti-edit me-2"></i>Edit</a
-                          >
+                          ><i class="ti ti-edit me-2" />Edit</a>
                         </li>
                         <li>
                           <a
                             class="dropdown-item d-inline-flex align-items-center"
                             href="javascript:void(0);"
-                            ><i class="ti ti-trash me-2"></i>Delete</a
-                          >
+                          ><i class="ti ti-trash me-2" />Delete</a>
                         </li>
                       </ul>
                     </div>
@@ -300,7 +317,7 @@ const dataToPass = {
             </div>
             <div class="card-footer border-top-0">
               <div class="d-flex align-items-center">
-                <div>Showing 6 Entries <i class="bi bi-arrow-right ms-2 fw-semibold"></i></div>
+                <div>Showing 6 Entries <i class="bi bi-arrow-right ms-2 fw-semibold" /></div>
                 <div class="ms-auto">
                   <nav aria-label="Page navigation" class="pagination-style-2">
                     <ul class="pagination mb-0 flex-wrap">
@@ -315,7 +332,7 @@ const dataToPass = {
                       </li>
                       <li class="page-item">
                         <a class="page-link" href="javascript:void(0);">
-                          <i class="bi bi-three-dots"></i>
+                          <i class="bi bi-three-dots" />
                         </a>
                       </li>
                       <li class="page-item">
@@ -338,7 +355,9 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Recent Activity</div>
+              <div class="card-title">
+                Recent Activity
+              </div>
             </div>
             <div class="card-body">
               <ul class="list-unstyled social-recent-activity-list">
@@ -348,7 +367,7 @@ const dataToPass = {
                       <span
                         :class="`avatar avatar-md avatar-rounded bg-${idx.badgeColor}-transparent`"
                       >
-                        <i :class="`ri-${idx.icon} fs-5`"></i>
+                        <i :class="`ri-${idx.icon} fs-5`" />
                       </span>
                     </div>
                     <div class="flex-fill">
@@ -358,7 +377,9 @@ const dataToPass = {
                           idx.time
                         }}</span>
                       </div>
-                      <div class="fs-13 text-muted social-activity">{{ idx.activity }}</div>
+                      <div class="fs-13 text-muted social-activity">
+                        {{ idx.activity }}
+                      </div>
                     </div>
                   </div>
                 </li>
@@ -369,11 +390,13 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Audience Age Metrics</div>
+              <div class="card-title">
+                Audience Age Metrics
+              </div>
             </div>
             <div class="card-body py-0">
               <div id="audience-age-metrics">
-                <apexchart
+                <Apexchart
                   type="bar"
                   height="375px"
                   :options="SocialMediaData.MetricsOptions"
@@ -386,10 +409,10 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header justify-content-between">
-              <div class="card-title">Suggestions</div>
-              <a href="javascript:void(0);" class="text-muted"
-                >View All<i class="ti ti-arrow-narrow-right ms-1"></i
-              ></a>
+              <div class="card-title">
+                Suggestions
+              </div>
+              <a href="javascript:void(0);" class="text-muted">View All<i class="ti ti-arrow-narrow-right ms-1" /></a>
             </div>
             <div class="card-body">
               <ul class="list-unstyled social-suggestions-list">
@@ -410,7 +433,7 @@ const dataToPass = {
                         type="button"
                         class="btn btn-sm btn-icon btn-light border"
                       >
-                        <i class="ri-user-add-line"></i>
+                        <i class="ri-user-add-line" />
                       </button>
                     </div>
                   </div>
@@ -422,15 +445,19 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header justify-content-between">
-              <div class="card-title">Engagement</div>
+              <div class="card-title">
+                Engagement
+              </div>
               <div class="d-flex align-items-center gap-2">
-                <span class="fs-12 text-success"><i class="ti ti-arrow-up"></i>2.45%</span>
-                <h5 class="fw-semibold mb-0">231,232</h5>
+                <span class="fs-12 text-success"><i class="ti ti-arrow-up" />2.45%</span>
+                <h5 class="fw-semibold mb-0">
+                  231,232
+                </h5>
               </div>
             </div>
             <div class="card-body p-0">
               <div id="social-engagement">
-                <apexchart
+                <Apexchart
                   type="heatmap"
                   height="195px"
                   :options="SocialMediaData.EngagementOptions"

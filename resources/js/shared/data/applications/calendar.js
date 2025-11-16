@@ -29,6 +29,7 @@ const officeEventTitles = [
 export const INITIAL_EVENTS = Array.from({ length: 10 }, (_, i) => {
   const day = Math.floor(Math.random() * 28) + 1 // Days 1 to 28 of the month
   const color = transparentColors[i % transparentColors.length]
+
   return {
     title: officeEventTitles[i],
     rrule: {

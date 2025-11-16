@@ -1,20 +1,3 @@
-<template>
-  <button type="button" aria-label="button" :class="decClass" @click="decrementValue">
-    <i class="ri-subtract-line"></i>
-  </button>
-  <input
-    type="text"
-    :class="inputClass"
-    aria-label="quantity"
-    :placeholder="placeholder"
-    :name="name"
-    v-model="inputValue"
-  />
-  <button type="button" aria-label="button" :class="incClass" @click="incrementValue">
-    <i class="ri-add-line"></i>
-  </button>
-</template>
-
 <script setup>
 import { ref, watch } from 'vue'
 
@@ -34,7 +17,7 @@ const emit = defineEmits(['input'])
 const inputValue = ref(props.initialValue ?? 1)
 
 // Increment function
-const incrementValue = () => {
+function incrementValue() {
   if (isNaN(inputValue.value)) {
     inputValue.value = 1
   }
@@ -42,10 +25,11 @@ const incrementValue = () => {
 }
 
 // Decrement function
-const decrementValue = () => {
+function decrementValue() {
   if (isNaN(inputValue.value)) {
     inputValue.value = 1
-  } else if (inputValue.value > 1) {
+  }
+  else if (inputValue.value > 1) {
     inputValue.value = Number(inputValue.value) - 1
   }
 }
@@ -55,3 +39,20 @@ watch(inputValue, () => {
   emit('input', inputValue.value)
 })
 </script>
+
+<template>
+  <button type="button" aria-label="button" :class="decClass" @click="decrementValue">
+    <i class="ri-subtract-line" />
+  </button>
+  <input
+    v-model="inputValue"
+    type="text"
+    :class="inputClass"
+    aria-label="quantity"
+    :placeholder="placeholder"
+    :name="name"
+  >
+  <button type="button" aria-label="button" :class="incClass" @click="incrementValue">
+    <i class="ri-add-line" />
+  </button>
+</template>

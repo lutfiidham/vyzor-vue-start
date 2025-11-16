@@ -1,8 +1,8 @@
 <script setup>
-import * as flexData from '@/shared/data/utilities/flex'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as flexData from '@/shared/data/utilities/flex'
 
 const dataToPass = {
   title: 'Utilities',
@@ -13,21 +13,27 @@ const dataToPass = {
 
 <template>
   <Head title="Flex | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Enable flex behaviors</div>
+          <div class="card-title">
+            Enable flex behaviors
+          </div>
         </div>
         <div class="card-body">
           <div class="bd-example flex-container mb-3">
-            <div class="d-flex p-2">I'm a flexbox container!</div>
+            <div class="d-flex p-2">
+              I'm a flexbox container!
+            </div>
           </div>
           <div class="bd-example flex-container">
-            <div class="d-inline-flex p-2">I'm an inline flexbox container!</div>
+            <div class="d-inline-flex p-2">
+              I'm an inline flexbox container!
+            </div>
           </div>
         </div>
       </div>
@@ -35,19 +41,33 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Direction</div>
+          <div class="card-title">
+            Direction
+          </div>
         </div>
         <div class="card-body">
           <div class="bd-example flex-container">
             <div class="d-flex flex-row mb-3">
-              <div class="p-2">Flex item 1</div>
-              <div class="p-2">Flex item 2</div>
-              <div class="p-2">Flex item 3</div>
+              <div class="p-2">
+                Flex item 1
+              </div>
+              <div class="p-2">
+                Flex item 2
+              </div>
+              <div class="p-2">
+                Flex item 3
+              </div>
             </div>
             <div class="d-flex flex-row-reverse">
-              <div class="p-2">Flex item 1</div>
-              <div class="p-2">Flex item 2</div>
-              <div class="p-2">Flex item 3</div>
+              <div class="p-2">
+                Flex item 1
+              </div>
+              <div class="p-2">
+                Flex item 2
+              </div>
+              <div class="p-2">
+                Flex item 3
+              </div>
             </div>
           </div>
         </div>
@@ -61,21 +81,35 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Direction flex-column and flex-column-reverse</div>
+          <div class="card-title">
+            Direction flex-column and flex-column-reverse
+          </div>
         </div>
         <div class="card-body">
           <div class="bd-example flex-container mb-3">
             <p>Direction Column</p>
             <div class="d-flex flex-column mb-3">
-              <div class="p-2">Flex item 1</div>
-              <div class="p-2">Flex item 2</div>
-              <div class="p-2">Flex item 3</div>
+              <div class="p-2">
+                Flex item 1
+              </div>
+              <div class="p-2">
+                Flex item 2
+              </div>
+              <div class="p-2">
+                Flex item 3
+              </div>
             </div>
             <p>Column Reverse</p>
             <div class="d-flex flex-column-reverse">
-              <div class="p-2">Flex item 1</div>
-              <div class="p-2">Flex item 2</div>
-              <div class="p-2">Flex item 3</div>
+              <div class="p-2">
+                Flex item 1
+              </div>
+              <div class="p-2">
+                Flex item 2
+              </div>
+              <div class="p-2">
+                Flex item 3
+              </div>
             </div>
           </div>
         </div>
@@ -84,18 +118,26 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Justify content</div>
+          <div class="card-title">
+            Justify content
+          </div>
         </div>
         <div class="card-body">
           <div class="bd-example flex-container mb-3">
             <div
-              :class="`d-flex justify-content-${idx.class} mb-3`"
               v-for="(idx, index) in flexData.Contentdata"
               :key="index"
+              :class="`d-flex justify-content-${idx.class} mb-3`"
             >
-              <div class="p-2">Flex item</div>
-              <div class="p-2">Flex item</div>
-              <div class="p-2">Flex item</div>
+              <div class="p-2">
+                Flex item
+              </div>
+              <div class="p-2">
+                Flex item
+              </div>
+              <div class="p-2">
+                Flex item
+              </div>
             </div>
           </div>
         </div>
@@ -109,19 +151,27 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Align items</div>
+          <div class="card-title">
+            Align items
+          </div>
         </div>
         <div class="card-body">
           <div class="bd-example flex-container mb-3">
             <div
-              :class="`d-flex align-items-${idx.class} mb-3`"
-              style="height: 100px"
               v-for="(idx, index) in flexData.Contentdata1"
               :key="index"
+              :class="`d-flex align-items-${idx.class} mb-3`"
+              style="height: 100px"
             >
-              <div class="p-2">Flex item</div>
-              <div class="p-2">Flex item</div>
-              <div class="p-2">Flex item</div>
+              <div class="p-2">
+                Flex item
+              </div>
+              <div class="p-2">
+                Flex item
+              </div>
+              <div class="p-2">
+                Flex item
+              </div>
             </div>
           </div>
         </div>
@@ -130,19 +180,27 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Align self</div>
+          <div class="card-title">
+            Align self
+          </div>
         </div>
         <div class="card-body">
           <div class="bd-example flex-container mb-3">
             <div
-              class="d-flex mb-3"
-              style="height: 100px"
               v-for="(idx, index) in flexData.Contentdata3"
               :key="index"
+              class="d-flex mb-3"
+              style="height: 100px"
             >
-              <div class="p-2">Flex item</div>
-              <div :class="`align-self-${idx.class} p-2`">Aligned flex item</div>
-              <div class="p-2">Flex item</div>
+              <div class="p-2">
+                Flex item
+              </div>
+              <div :class="`align-self-${idx.class} p-2`">
+                Aligned flex item
+              </div>
+              <div class="p-2">
+                Flex item
+              </div>
             </div>
           </div>
         </div>
@@ -165,26 +223,56 @@ const dataToPass = {
             <div class="card-body">
               <div class="bd-example flex-container mb-3 align-flex-container">
                 <div
-                  :class="`d-flex align-content-${idx.class} flex-wrap mb-3`"
-                  style="height: 200px"
                   v-for="(idx, index) in flexData.Contentdata4"
                   :key="index"
+                  :class="`d-flex align-content-${idx.class} flex-wrap mb-3`"
+                  style="height: 200px"
                 >
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
                 </div>
               </div>
             </div>
@@ -193,14 +281,22 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Order</div>
+              <div class="card-title">
+                Order
+              </div>
             </div>
             <div class="card-body">
               <div class="bd-example flex-container mb-3">
                 <div class="d-flex flex-nowrap">
-                  <div class="order-3 p-2">First flex item</div>
-                  <div class="order-2 p-2">Second flex item</div>
-                  <div class="order-1 p-2">Third flex item</div>
+                  <div class="order-3 p-2">
+                    First flex item
+                  </div>
+                  <div class="order-2 p-2">
+                    Second flex item
+                  </div>
+                  <div class="order-1 p-2">
+                    Third flex item
+                  </div>
                 </div>
               </div>
             </div>
@@ -213,14 +309,22 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Fill</div>
+              <div class="card-title">
+                Fill
+              </div>
             </div>
             <div class="card-body">
               <div class="bd-example flex-container mb-3">
                 <div class="d-flex">
-                  <div class="p-2 flex-fill">Flex item with a lot of content</div>
-                  <div class="p-2 flex-fill">Flex item</div>
-                  <div class="p-2 flex-fill">Flex item</div>
+                  <div class="p-2 flex-fill">
+                    Flex item with a lot of content
+                  </div>
+                  <div class="p-2 flex-fill">
+                    Flex item
+                  </div>
+                  <div class="p-2 flex-fill">
+                    Flex item
+                  </div>
                 </div>
               </div>
             </div>
@@ -229,18 +333,30 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Grow and shrink</div>
+              <div class="card-title">
+                Grow and shrink
+              </div>
             </div>
             <div class="card-body">
               <div class="bd-example flex-container mb-3">
                 <div class="d-flex mb-3">
-                  <div class="p-2 flex-grow-1">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Third flex item</div>
+                  <div class="p-2 flex-grow-1">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Third flex item
+                  </div>
                 </div>
                 <div class="d-flex">
-                  <div class="p-2 w-100">Flex item</div>
-                  <div class="p-2 flex-shrink-1">Flex item</div>
+                  <div class="p-2 w-100">
+                    Flex item
+                  </div>
+                  <div class="p-2 flex-shrink-1">
+                    Flex item
+                  </div>
                 </div>
               </div>
             </div>
@@ -249,26 +365,46 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Auto margins</div>
+              <div class="card-title">
+                Auto margins
+              </div>
             </div>
             <div class="card-body">
               <div class="bd-example flex-container mb-3">
                 <div class="d-flex mb-3">
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
                 </div>
 
                 <div class="d-flex mb-3">
-                  <div class="me-auto p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
+                  <div class="me-auto p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
                 </div>
 
                 <div class="d-flex mb-3">
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="ms-auto p-2">Flex item</div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="ms-auto p-2">
+                    Flex item
+                  </div>
                 </div>
               </div>
             </div>
@@ -277,51 +413,123 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Wrap</div>
+              <div class="card-title">
+                Wrap
+              </div>
             </div>
             <div class="card-body">
               <div class="bd-example flex-container mb-3">
                 <div class="d-flex flex-nowrap" style="width: 8rem">
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
                 </div>
 
                 <div class="d-flex flex-wrap">
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
                 </div>
                 <div class="d-flex flex-wrap-reverse">
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
                 </div>
               </div>
             </div>
@@ -330,20 +538,34 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">With align-items</div>
+              <div class="card-title">
+                With align-items
+              </div>
             </div>
             <div class="card-body">
               <div class="bd-example flex-container mb-3">
                 <div class="d-flex align-items-start flex-column mb-3" style="height: 200px">
-                  <div class="mb-auto p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
+                  <div class="mb-auto p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
                 </div>
 
                 <div class="d-flex align-items-end flex-column mb-3" style="height: 200px">
-                  <div class="p-2">Flex item</div>
-                  <div class="p-2">Flex item</div>
-                  <div class="mt-auto p-2">Flex item</div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="p-2">
+                    Flex item
+                  </div>
+                  <div class="mt-auto p-2">
+                    Flex item
+                  </div>
                 </div>
               </div>
             </div>
@@ -359,7 +581,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Media object</div>
+          <div class="card-title">
+            Media object
+          </div>
         </div>
         <div class="card-body">
           <div class="d-sm-flex mb-3">

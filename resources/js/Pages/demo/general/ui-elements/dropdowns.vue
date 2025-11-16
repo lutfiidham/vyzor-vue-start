@@ -1,9 +1,10 @@
 <script setup>
+import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
 import * as prism from '@/shared/data/prismCode/ui-elements/dropdown'
 import * as dropdownData from '@/shared/data/ui-elements/dropdown'
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
-import { Head } from '@inertiajs/vue3'
+
 const dataToPass = {
   title: 'Ui Elements',
   currentpage: 'Dropdowns',
@@ -13,18 +14,18 @@ const dataToPass = {
 
 <template>
   <Head title="Dropdowns | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
-  <!--Start:: row-1-->
+  <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xl-12">
       <ShowcodeCard title="Dropdowns" :code="prism.dropdowns">
         <div class="btn-list d-flex align-items-center flex-wrap">
           <div class="dropdown">
             <button
+              id="dropdownMenuButton1"
               class="btn btn-primary dropdown-toggle"
               type="button"
-              id="dropdownMenuButton1"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
@@ -38,10 +39,10 @@ const dataToPass = {
           </div>
           <div class="dropdown">
             <a
+              id="dropdownMenuLink"
               class="btn btn-secondary dropdown-toggle"
               href="javascript:void(0);"
               role="button"
-              id="dropdownMenuLink"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
@@ -57,7 +58,7 @@ const dataToPass = {
       </ShowcodeCard>
     </div>
   </div>
-  <!--End:: row-1-->
+  <!-- End:: row-1 -->
 
   <!-- Start:: row-2 -->
   <div class="row">
@@ -65,9 +66,9 @@ const dataToPass = {
       <ShowcodeCard title="Single dropdown buttons" :code="prism.singleDropdownButtons">
         <div class="btn-list">
           <div
-            class="btn-group"
             v-for="(idx, index) in dropdownData.singleDropdownButtons"
             :key="index"
+            class="btn-group"
           >
             <button
               type="button"
@@ -82,7 +83,7 @@ const dataToPass = {
               <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
               <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
               <li>
-                <hr class="dropdown-divider" />
+                <hr class="dropdown-divider">
               </li>
               <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
             </ul>
@@ -94,9 +95,9 @@ const dataToPass = {
       <ShowcodeCard title="Rounded Button Dropdowns" :code="prism.roundedButtonDropdowns">
         <div class="btn-list">
           <div
-            class="btn-group"
             v-for="(idx, index) in dropdownData.singleDropdownButtons"
             :key="index"
+            class="btn-group"
           >
             <button
               type="button"
@@ -111,7 +112,7 @@ const dataToPass = {
               <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
               <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
               <li>
-                <hr class="dropdown-divider" />
+                <hr class="dropdown-divider">
               </li>
               <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
             </ul>
@@ -127,7 +128,7 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Outline Button Dropdowns" :code="prism.outlineButtonDropdowns">
         <div class="btn-list">
-          <div class="btn-group" v-for="(idx, index) in dropdownData.OutlineButtons" :key="index">
+          <div v-for="(idx, index) in dropdownData.OutlineButtons" :key="index" class="btn-group">
             <button
               type="button"
               :class="`btn btn-${idx.class} dropdown-toggle`"
@@ -141,7 +142,7 @@ const dataToPass = {
               <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
               <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
               <li>
-                <hr class="dropdown-divider" />
+                <hr class="dropdown-divider">
               </li>
               <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
             </ul>
@@ -152,7 +153,7 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Rounded Outline Dropdowns" :code="prism.roundedOutlineDropdowns">
         <div class="btn-list">
-          <div class="btn-group" v-for="(idx, index) in dropdownData.OutlineButtons" :key="index">
+          <div v-for="(idx, index) in dropdownData.OutlineButtons" :key="index" class="btn-group">
             <button
               type="button"
               :class="`btn btn-${idx.class} dropdown-toggle rounded-pill`"
@@ -166,7 +167,7 @@ const dataToPass = {
               <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
               <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
               <li>
-                <hr class="dropdown-divider" />
+                <hr class="dropdown-divider">
               </li>
               <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
             </ul>
@@ -182,11 +183,13 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Split buttons" :code="prism.splitButtons">
         <div
-          class="btn-group my-1"
           v-for="(idx, index) in dropdownData.SplitButtonsdata"
           :key="index"
+          class="btn-group my-1"
         >
-          <button type="button" :class="`btn btn-${idx.class}`">Action</button>
+          <button type="button" :class="`btn btn-${idx.class}`">
+            Action
+          </button>
           <button
             type="button"
             :class="`btn btn-${idx.class} dropdown-toggle dropdown-toggle-split me-2`"
@@ -200,7 +203,7 @@ const dataToPass = {
             <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
             <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
             <li>
-              <hr class="dropdown-divider" />
+              <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
           </ul>
@@ -223,13 +226,15 @@ const dataToPass = {
             <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
             <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
             <li>
-              <hr class="dropdown-divider" />
+              <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
           </ul>
         </div>
         <div class="btn-group my-1 me-2">
-          <button class="btn btn-light btn-lg" type="button">Large split button</button>
+          <button class="btn btn-light btn-lg" type="button">
+            Large split button
+          </button>
           <button
             type="button"
             class="btn btn-lg btn-light dropdown-toggle dropdown-toggle-split"
@@ -243,7 +248,7 @@ const dataToPass = {
             <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
             <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
             <li>
-              <hr class="dropdown-divider" />
+              <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
           </ul>
@@ -263,13 +268,15 @@ const dataToPass = {
             <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
             <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
             <li>
-              <hr class="dropdown-divider" />
+              <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
           </ul>
         </div>
         <div class="btn-group my-1">
-          <button class="btn btn-light btn-sm" type="button">Small split button</button>
+          <button class="btn btn-light btn-sm" type="button">
+            Small split button
+          </button>
           <button
             type="button"
             class="btn btn-sm btn-light dropdown-toggle dropdown-toggle-split"
@@ -283,7 +290,7 @@ const dataToPass = {
             <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
             <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
             <li>
-              <hr class="dropdown-divider" />
+              <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
           </ul>
@@ -311,13 +318,15 @@ const dataToPass = {
             <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
             <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
             <li>
-              <hr class="dropdown-divider" />
+              <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
           </ul>
         </div>
         <div class="btn-group dropup my-1">
-          <button type="button" class="btn btn-info">Split dropup</button>
+          <button type="button" class="btn btn-info">
+            Split dropup
+          </button>
           <button
             type="button"
             class="btn btn-info dropdown-toggle dropdown-toggle-split"
@@ -331,7 +340,7 @@ const dataToPass = {
             <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
             <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
             <li>
-              <hr class="dropdown-divider" />
+              <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
           </ul>
@@ -354,13 +363,15 @@ const dataToPass = {
             <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
             <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
             <li>
-              <hr class="dropdown-divider" />
+              <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
           </ul>
         </div>
         <div class="btn-group dropend my-1">
-          <button type="button" class="btn btn-info">Split dropend</button>
+          <button type="button" class="btn btn-info">
+            Split dropend
+          </button>
           <button
             type="button"
             class="btn btn-info dropdown-toggle dropdown-toggle-split"
@@ -374,7 +385,7 @@ const dataToPass = {
             <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
             <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
             <li>
-              <hr class="dropdown-divider" />
+              <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
           </ul>
@@ -394,9 +405,7 @@ const dataToPass = {
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="javascript:void(0);">Regular link</a></li>
           <li>
-            <a class="dropdown-item active" href="javascript:void(0);" aria-current="true"
-              >Active link</a
-            >
+            <a class="dropdown-item active" href="javascript:void(0);" aria-current="true">Active link</a>
           </li>
           <li><a class="dropdown-item" href="javascript:void(0);">Another link</a></li>
         </ul>
@@ -418,7 +427,7 @@ const dataToPass = {
             <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
             <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
             <li>
-              <hr class="dropdown-divider" />
+              <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
           </ul>
@@ -438,12 +447,14 @@ const dataToPass = {
               <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
               <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
               <li>
-                <hr class="dropdown-divider" />
+                <hr class="dropdown-divider">
               </li>
               <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
             </ul>
           </div>
-          <button type="button" class="btn btn-info my-1">Split dropleft</button>
+          <button type="button" class="btn btn-info my-1">
+            Split dropleft
+          </button>
         </div>
       </ShowcodeCard>
     </div>
@@ -465,9 +476,7 @@ const dataToPass = {
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="javascript:void(0);">Regular link</a></li>
           <li>
-            <a class="dropdown-item disabled" href="javascript:void(0);" aria-current="true"
-              >Active link</a
-            >
+            <a class="dropdown-item disabled" href="javascript:void(0);" aria-current="true">Active link</a>
           </li>
           <li><a class="dropdown-item" href="javascript:void(0);">Another link</a></li>
         </ul>
@@ -476,11 +485,11 @@ const dataToPass = {
     <div class="col-xl-6">
       <ShowcodeCard title="Auto close behavior" :code="prism.autoCloseBehavior">
         <div class="btn-list">
-          <div class="btn-group" v-for="(idx, index) in dropdownData.AutocloseButtons" :key="index">
+          <div v-for="(idx, index) in dropdownData.AutocloseButtons" :key="index" class="btn-group">
             <button
+              id="defaultDropdown"
               :class="`btn btn-${idx.class} dropdown-toggle`"
               type="button"
-              id="defaultDropdown"
               data-bs-toggle="dropdown"
               :data-bs-auto-close="idx.autoClose"
               aria-expanded="false"
@@ -500,9 +509,9 @@ const dataToPass = {
       <ShowcodeCard title="dropdowns with Forms" :code="prism.dropdownsWithForms">
         <div class="dropdown">
           <button
+            id="dropdownMenu2"
             class="btn btn-secondary dropdown-toggle"
             type="button"
-            id="dropdownMenu2"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
@@ -513,30 +522,32 @@ const dataToPass = {
               <div class="mb-3">
                 <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
                 <input
+                  id="exampleDropdownFormEmail1"
                   type="email"
                   class="form-control"
-                  id="exampleDropdownFormEmail1"
                   placeholder="email@example.com"
-                />
+                >
               </div>
               <div class="mb-3">
                 <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
                 <input
+                  id="exampleDropdownFormPassword1"
                   type="password"
                   class="form-control"
-                  id="exampleDropdownFormPassword1"
                   placeholder="Password"
-                />
+                >
               </div>
               <div class="mb-3">
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="dropdownCheck" />
+                  <input id="dropdownCheck" type="checkbox" class="form-check-input">
                   <label class="form-check-label" for="dropdownCheck"> Remember me </label>
                 </div>
               </div>
-              <button class="btn btn-primary">Sign in</button>
+              <button class="btn btn-primary">
+                Sign in
+              </button>
             </form>
-            <div class="dropdown-divider"></div>
+            <div class="dropdown-divider" />
             <a class="dropdown-item" href="javascript:void(0);">New around here? Sign up</a>
             <a class="dropdown-item" href="javascript:void(0);">Forgot password?</a>
           </div>
@@ -550,12 +561,14 @@ const dataToPass = {
   <div class="row">
     <div class="col-xl-6">
       <ShowcodeCard title="Dropdown menu centered" :code="prism.dropdownMenuCentered">
-        <p class="card-title mb-3">Use <code>.dropdown-center</code> on the parent element.</p>
+        <p class="card-title mb-3">
+          Use <code>.dropdown-center</code> on the parent element.
+        </p>
         <div class="dropdown-center">
           <button
+            id="dropdownCenterBtn"
             class="btn btn-primary dropdown-toggle"
             type="button"
-            id="dropdownCenterBtn"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
@@ -577,9 +590,9 @@ const dataToPass = {
         </p>
         <div class="dropup-center dropup">
           <button
+            id="dropupCenterBtn"
             class="btn btn-secondary dropdown-toggle"
             type="button"
-            id="dropupCenterBtn"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
@@ -600,18 +613,30 @@ const dataToPass = {
         </p>
         <div class="dropdown">
           <button
+            id="dropdownMenu1"
             class="btn btn-info dropdown-toggle"
             type="button"
-            id="dropdownMenu1"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
             Dropdown
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><button class="dropdown-item" type="button">Action</button></li>
-            <li><button class="dropdown-item" type="button">Another action</button></li>
-            <li><button class="dropdown-item" type="button">Something else here</button></li>
+            <li>
+              <button class="dropdown-item" type="button">
+                Action
+              </button>
+            </li>
+            <li>
+              <button class="dropdown-item" type="button">
+                Another action
+              </button>
+            </li>
+            <li>
+              <button class="dropdown-item" type="button">
+                Something else here
+              </button>
+            </li>
           </ul>
         </div>
       </ShowcodeCard>
@@ -625,9 +650,9 @@ const dataToPass = {
         <div class="d-flex align-items-center gap-2 flex-wrap">
           <div class="dropdown me-1">
             <button
+              id="dropdownMenuOffset"
               type="button"
               class="btn btn-primary dropdown-toggle"
-              id="dropdownMenuOffset"
               data-bs-toggle="dropdown"
               aria-expanded="false"
               data-bs-offset="10,20"
@@ -641,11 +666,13 @@ const dataToPass = {
             </ul>
           </div>
           <div class="btn-group">
-            <button type="button" class="btn btn-info">Reference</button>
+            <button type="button" class="btn btn-info">
+              Reference
+            </button>
             <button
+              id="dropdownMenuReference"
               type="button"
               class="btn btn-info dropdown-toggle dropdown-toggle-split"
-              id="dropdownMenuReference"
               data-bs-toggle="dropdown"
               aria-expanded="false"
               data-bs-reference="parent"
@@ -657,7 +684,7 @@ const dataToPass = {
               <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
               <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
               <li>
-                <hr class="dropdown-divider" />
+                <hr class="dropdown-divider">
               </li>
               <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
             </ul>
@@ -674,14 +701,14 @@ const dataToPass = {
       <ShowcodeCard title="Alignment options" :code="prism.alignmentOptions">
         <div class="btn-list">
           <div
-            :class="`btn-group ${idx.drop}`"
             v-for="(idx, index) in dropdownData.AlignmentButtons"
             :key="index"
+            :class="`btn-group ${idx.drop}`"
           >
             <button
+              id="dropdownMenuButton"
               :class="`btn btn-${idx.class} dropdown-toggle mb-0`"
               type="button"
-              id="dropdownMenuButton"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
@@ -700,9 +727,9 @@ const dataToPass = {
       <ShowcodeCard title="Dark Dropdowns" :code="prism.darkDropdowns">
         <div class="dropdown">
           <button
+            id="dropdownMenuButton3"
             class="btn btn-dark dropdown-toggle"
             type="button"
-            id="dropdownMenuButton3"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
@@ -733,9 +760,21 @@ const dataToPass = {
             Right-aligned example
           </button>
           <ul class="dropdown-menu dropdown-menu-end">
-            <li><button class="dropdown-item" type="button">Action</button></li>
-            <li><button class="dropdown-item" type="button">Another action</button></li>
-            <li><button class="dropdown-item" type="button">Something else here</button></li>
+            <li>
+              <button class="dropdown-item" type="button">
+                Action
+              </button>
+            </li>
+            <li>
+              <button class="dropdown-item" type="button">
+                Another action
+              </button>
+            </li>
+            <li>
+              <button class="dropdown-item" type="button">
+                Something else here
+              </button>
+            </li>
           </ul>
         </div>
       </ShowcodeCard>
@@ -753,9 +792,21 @@ const dataToPass = {
             Left-aligned but right aligned when large screen
           </button>
           <ul class="dropdown-menu dropdown-menu-lg-end">
-            <li><button class="dropdown-item" type="button">Action</button></li>
-            <li><button class="dropdown-item" type="button">Another action</button></li>
-            <li><button class="dropdown-item" type="button">Something else here</button></li>
+            <li>
+              <button class="dropdown-item" type="button">
+                Action
+              </button>
+            </li>
+            <li>
+              <button class="dropdown-item" type="button">
+                Another action
+              </button>
+            </li>
+            <li>
+              <button class="dropdown-item" type="button">
+                Something else here
+              </button>
+            </li>
           </ul>
         </div>
       </ShowcodeCard>
@@ -773,9 +824,21 @@ const dataToPass = {
             Left-aligned but right aligned when large screen
           </button>
           <ul class="dropdown-menu dropdown-menu-lg-start">
-            <li><button class="dropdown-item" type="button">Action</button></li>
-            <li><button class="dropdown-item" type="button">Another action</button></li>
-            <li><button class="dropdown-item" type="button">Something else here</button></li>
+            <li>
+              <button class="dropdown-item" type="button">
+                Action
+              </button>
+            </li>
+            <li>
+              <button class="dropdown-item" type="button">
+                Another action
+              </button>
+            </li>
+            <li>
+              <button class="dropdown-item" type="button">
+                Something else here
+              </button>
+            </li>
           </ul>
         </div>
       </ShowcodeCard>
@@ -788,7 +851,7 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Custom Dropdown Menu's" :code="prism.customDropdownMenus">
         <div class="btn-list">
-          <div class="btn-group" v-for="(idx, index) in dropdownData.CustomButtons" :key="index">
+          <div v-for="(idx, index) in dropdownData.CustomButtons" :key="index" class="btn-group">
             <button
               :class="`btn btn-${idx.class} dropdown-toggle`"
               type="button"
@@ -809,7 +872,7 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Ghost Button Dropdowns" :code="prism.ghostButtonDropdowns">
         <div class="btn-list">
-          <div class="btn-group" v-for="(idx, index) in dropdownData.GhostButtons" :key="index">
+          <div v-for="(idx, index) in dropdownData.GhostButtons" :key="index" class="btn-group">
             <button
               type="button"
               :class="`btn btn-${idx.class} dropdown-toggle`"
@@ -823,7 +886,7 @@ const dataToPass = {
               <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
               <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
               <li>
-                <hr class="dropdown-divider" />
+                <hr class="dropdown-divider">
               </li>
               <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
             </ul>
@@ -862,7 +925,9 @@ const dataToPass = {
         <div class="bd-example">
           <ul class="dropdown-menu">
             <li>
-              <h6 class="dropdown-header">Dropdown header</h6>
+              <h6 class="dropdown-header">
+                Dropdown header
+              </h6>
             </li>
             <li><a class="dropdown-item" href="javascript:void(0);">Action</a></li>
             <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
@@ -880,7 +945,7 @@ const dataToPass = {
             <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
             <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
             <li>
-              <hr class="dropdown-divider" />
+              <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
           </ul>
@@ -892,7 +957,9 @@ const dataToPass = {
         <div class="bd-example">
           <div class="dropdown-menu p-4 text-muted" style="max-width: 200px">
             <p>Some example text that's free-flowing within the dropdown menu.</p>
-            <p class="mb-0">And this is more example text.</p>
+            <p class="mb-0">
+              And this is more example text.
+            </p>
           </div>
         </div>
       </ShowcodeCard>

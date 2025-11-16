@@ -1,13 +1,14 @@
 <script setup>
+import { Head, Link, router } from '@inertiajs/vue3'
 import { onBeforeUnmount, onMounted, reactive, ref } from 'vue'
 import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head, Link, router } from '@inertiajs/vue3'
 import authlayout from '@/layouts/authlayout.vue'
-const baseUrl = __BASE_PATH__
 
 defineOptions({
   layout: authlayout,
 })
+
+const baseUrl = __BASE_PATH__
 
 const currentPassword = ref('')
 const newPassword = ref('')
@@ -61,11 +62,12 @@ function onSubmit() {
   }
 }
 
-const setBodyClass = (action) => {
+function setBodyClass(action) {
   if (action === 'add') {
     document.body.classList.add('authentication-background')
     document.body.style.display = 'block'
-  } else {
+  }
+  else {
     document.body.classList.remove('authentication-background')
     document.body.style.display = 'none'
   }
@@ -75,7 +77,8 @@ onMounted(() => {
   // Check if the user has visited before
   if (localStorage.getItem('visited') === 'true') {
     setBodyClass('add')
-  } else {
+  }
+  else {
     setBodyClass('add')
     localStorage.setItem('visited', 'true')
   }
@@ -120,34 +123,36 @@ onMounted(() => {
                 </Link>
               </div>
               <div>
-                <h4 class="mb-1 fw-semibold">Reset Password</h4>
-                <p class="mb-4 text-muted fw-normal">Set your new password here.</p>
+                <h4 class="mb-1 fw-semibold">
+                  Reset Password
+                </h4>
+                <p class="mb-4 text-muted fw-normal">
+                  Set your new password here.
+                </p>
               </div>
               <form @submit.prevent="onSubmit">
                 <div class="row gy-3">
                   <!-- Current Password -->
                   <div class="col-xl-12">
-                    <label for="reset-password" class="form-label text-default"
-                      >Current Password</label
-                    >
+                    <label for="reset-password" class="form-label text-default">Current Password</label>
                     <div class="position-relative">
                       <input
-                        :type="passwordVisibility.current ? 'text' : 'password'"
                         id="currentPassword"
+                        v-model="currentPassword"
+                        :type="passwordVisibility.current ? 'text' : 'password'"
                         placeholder="Current password"
                         class="form-control form-control-lg"
-                        v-model="currentPassword"
-                      />
+                      >
                       <a
-                        href="#!"
-                        @click.prevent="togglePasswordVisibility('current')"
-                        class="show-password-button text-muted"
                         id="button-addon2"
+                        href="#!"
+                        class="show-password-button text-muted"
+                        @click.prevent="togglePasswordVisibility('current')"
                       >
                         <i
                           :class="passwordVisibility.current ? 'ri-eye-line' : 'ri-eye-off-line'"
                           class="align-middle"
-                        ></i>
+                        />
                       </a>
                     </div>
                     <p v-if="errors.currentPassword" class="text-danger text-sm mb-0 mt-1">
@@ -157,27 +162,25 @@ onMounted(() => {
 
                   <!-- New Password -->
                   <div class="col-xl-12">
-                    <label for="reset-newpassword" class="form-label text-default"
-                      >New Password</label
-                    >
+                    <label for="reset-newpassword" class="form-label text-default">New Password</label>
                     <div class="position-relative">
                       <input
-                        :type="passwordVisibility.new ? 'text' : 'password'"
                         id="newPassword"
+                        v-model="newPassword"
+                        :type="passwordVisibility.new ? 'text' : 'password'"
                         placeholder="New password"
                         class="form-control form-control-lg"
-                        v-model="newPassword"
-                      />
+                      >
                       <a
-                        href="#!"
-                        @click.prevent="togglePasswordVisibility('new')"
-                        class="show-password-button text-muted"
                         id="button-addon21"
+                        href="#!"
+                        class="show-password-button text-muted"
+                        @click.prevent="togglePasswordVisibility('new')"
                       >
                         <i
                           :class="passwordVisibility.new ? 'ri-eye-line' : 'ri-eye-off-line'"
                           class="align-middle"
-                        ></i>
+                        />
                       </a>
                     </div>
                     <p v-if="errors.newPassword" class="text-danger text-sm mb-0 mt-1">
@@ -187,27 +190,25 @@ onMounted(() => {
 
                   <!-- Confirm Password -->
                   <div class="col-xl-12">
-                    <label for="reset-confirmpassword" class="form-label text-default"
-                      >Confirm Password</label
-                    >
+                    <label for="reset-confirmpassword" class="form-label text-default">Confirm Password</label>
                     <div class="position-relative">
                       <input
-                        :type="passwordVisibility.confirm ? 'text' : 'password'"
                         id="confirmPassword"
+                        v-model="confirmPassword"
+                        :type="passwordVisibility.confirm ? 'text' : 'password'"
                         placeholder="Confirm password"
                         class="form-control form-control-lg"
-                        v-model="confirmPassword"
-                      />
+                      >
                       <a
-                        href="#!"
-                        @click.prevent="togglePasswordVisibility('confirm')"
-                        class="show-password-button text-muted"
                         id="button-addon22"
+                        href="#!"
+                        class="show-password-button text-muted"
+                        @click.prevent="togglePasswordVisibility('confirm')"
                       >
                         <i
                           :class="passwordVisibility.confirm ? 'ri-eye-line' : 'ri-eye-off-line'"
                           class="align-middle"
-                        ></i>
+                        />
                       </a>
                     </div>
                     <p v-if="errors.confirmPassword" class="text-danger text-sm mb-0 mt-1">
@@ -222,7 +223,9 @@ onMounted(() => {
 
                 <div class="d-grid mt-3">
                   <!-- Replace SpkButton with your actual component or native button -->
-                  <button type="submit" class="btn btn-primary">Reset Password</button>
+                  <button type="submit" class="btn btn-primary">
+                    Reset Password
+                  </button>
                 </div>
               </form>
               <div class="text-center my-3 authentication-barrier">
@@ -248,9 +251,9 @@ onMounted(() => {
               </div>
               <div class="text-center mt-3 fw-medium">
                 Dont want to reset?
-                <Link :href="`${baseUrl}/demo/pages/authentication/sign-in/basic`" class="text-primary"
-                  >Sign In</Link
-                >
+                <Link :href="`${baseUrl}/demo/pages/authentication/sign-in/basic`" class="text-primary">
+                  Sign In
+                </Link>
               </div>
             </div>
           </div>

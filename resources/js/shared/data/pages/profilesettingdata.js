@@ -352,7 +352,7 @@ export const timezones = [
     code: 'Pacific/Chatham',
   },
   {
-    name: "(GMT+13:00) Nuku'alofa",
+    name: '(GMT+13:00) Nuku\'alofa',
     code: 'Pacific/Tongatapu',
   },
   {

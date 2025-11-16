@@ -1,12 +1,12 @@
-export let vue3CircleWithDisabledAlphaColorPicker = {
-    script: `<color-picker v-model:pureColor="pureColor" shape="circle" format="rgb" pickerType="chrome"
+export const vue3CircleWithDisabledAlphaColorPicker = {
+  script: `<color-picker v-model:pureColor="pureColor" shape="circle" format="rgb" pickerType="chrome"
                     useType="pure" :disableAlpha="true" />`,
-  },
-  vue3GradientColorPicker = {
-    script: ` <color-picker v-model:gradientColor="gradientColor" useType="both" lang="en" />`,
-  },
-  vuetifyColorPicker = {
-    script: `<div class="row g-3">
+}
+export const vue3GradientColorPicker = {
+  script: ` <color-picker v-model:gradientColor="gradientColor" useType="both" lang="en" />`,
+}
+export const vuetifyColorPicker = {
+  script: `<div class="row g-3">
                 <div class="col">
                     <v-color-picker></v-color-picker>
                 </div>
@@ -14,4 +14,4 @@ export let vue3CircleWithDisabledAlphaColorPicker = {
                     <v-color-picker hide-canvas show-swatches></v-color-picker>
                 </div>
             </div>`,
-  }
+}

@@ -1,10 +1,11 @@
 <script setup>
-import * as marketCapData from '@/shared/data/dashboards/crypto/marketCapdata.js'
-import SpkReusableMarketCapCard from '@/shared/@spk/dashboards/crypto/spk-reusable-marketCapCard.vue'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import SpkReusableMarketCapCard from '@/shared/@spk/dashboards/crypto/spk-reusable-marketCapCard.vue'
+import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
+import * as marketCapData from '@/shared/data/dashboards/crypto/marketCapdata.js'
+
 const dataToPass = {
   title: 'Dashboards',
   subtitle: 'Crypto',
@@ -15,7 +16,7 @@ const dataToPass = {
 
 <template>
   <Head title="Crypto-Market Cap | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row">
     <div
@@ -29,13 +30,14 @@ const dataToPass = {
     <div class="col-xxl-3 col-xl-6 col-lg-12">
       <div class="card custom-card overflow-hidden">
         <div class="card-header justify-content-between">
-          <div class="card-title">My Top Currencies</div>
+          <div class="card-title">
+            My Top Currencies
+          </div>
           <div>
             <a
               href="javascript:void(0);"
               class="fw-medium text-success fs-13 text-decoration-underline"
-              >View All</a
-            >
+            >View All</a>
           </div>
         </div>
         <div class="card-body p-0">
@@ -69,14 +71,16 @@ const dataToPass = {
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 
   <!-- Start::row-2  -->
   <div class="row">
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header justify-content-between">
-          <div class="card-title">Crypto MarketCap</div>
+          <div class="card-title">
+            Crypto MarketCap
+          </div>
           <div class="d-flex flex-wrap gap-2">
             <div>
               <input
@@ -84,7 +88,7 @@ const dataToPass = {
                 type="text"
                 placeholder="Search Here"
                 aria-label=".form-control-sm example"
-              />
+              >
             </div>
             <div class="dropdown">
               <a
@@ -93,7 +97,7 @@ const dataToPass = {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Sort By<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block"></i>
+                Sort By<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block" />
               </a>
               <ul class="dropdown-menu" role="menu">
                 <li><a class="dropdown-item" href="javascript:void(0);">Market Cap</a></li>
@@ -106,13 +110,16 @@ const dataToPass = {
               </ul>
             </div>
             <div>
-              <button class="btn btn-light btn-sm btn-wave border">View All</button>
+              <button class="btn btn-light btn-sm btn-wave border">
+                View All
+              </button>
             </div>
           </div>
         </div>
         <div class="card-body p-0">
           <TableComponent
-            tableClass="table text-nowrap"
+            #cell="{ row }"
+            table-class="table text-nowrap"
             :headers="[
               { text: '' },
               { text: '#' },
@@ -127,10 +134,9 @@ const dataToPass = {
               { text: 'Trade' },
             ]"
             :rows="marketCapData.marketTable"
-            v-slot:cell="{ row }"
           >
             <td class="text-center">
-              <a href="javascript:void(0);"><i class="ri-star-line fs-16 text-muted"></i></a>
+              <a href="javascript:void(0);"><i class="ri-star-line fs-16 text-muted" /></a>
             </td>
             <td>{{ row.id }}</td>
             <td>
@@ -154,20 +160,14 @@ const dataToPass = {
               </span>
             </td>
             <td>
-              <span :class="`text-${row.priceChangeColor} fw-medium`"
-                ><i
-                  :class="`${row.priceChangeColor === 'success' ? 'ti ti-arrow-narrow-up' : 'ti ti-arrow-narrow-down'} fs-15 fw-medium`"
-                ></i
-                >{{ row.priceChange1h }}</span
-              >
+              <span :class="`text-${row.priceChangeColor} fw-medium`"><i
+                :class="`${row.priceChangeColor === 'success' ? 'ti ti-arrow-narrow-up' : 'ti ti-arrow-narrow-down'} fs-15 fw-medium`"
+              />{{ row.priceChange1h }}</span>
             </td>
             <td>
-              <span :class="`text-${row.priceChange24hColor} fw-medium`"
-                ><i
-                  :class="`${row.priceChange24hColor === 'success' ? 'ti ti-arrow-narrow-up' : 'ti ti-arrow-narrow-down'} fs-15 fw-medium`"
-                ></i
-                >{{ row.priceChange24h }}</span
-              >
+              <span :class="`text-${row.priceChange24hColor} fw-medium`"><i
+                :class="`${row.priceChange24hColor === 'success' ? 'ti ti-arrow-narrow-up' : 'ti ti-arrow-narrow-down'} fs-15 fw-medium`"
+              />{{ row.priceChange24h }}</span>
             </td>
             <td>
               <a href="javascript:void(0)">
@@ -183,7 +183,7 @@ const dataToPass = {
             </td>
             <td>
               <div :id="row.chartId">
-                <apexchart
+                <Apexchart
                   height="30px"
                   type="line"
                   :options="row.chartOptions"
@@ -192,7 +192,9 @@ const dataToPass = {
               </div>
             </td>
             <td>
-              <button class="btn btn-success-light btn-sm">Trade</button>
+              <button class="btn btn-success-light btn-sm">
+                Trade
+              </button>
             </td>
           </TableComponent>
         </div>
@@ -202,16 +204,20 @@ const dataToPass = {
               <li class="page-item disabled">
                 <a class="page-link" href="javascript:void(0);"> Prev </a>
               </li>
-              <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0);">1</a>
+              </li>
               <li class="page-item active">
                 <a class="page-link" href="javascript:void(0);">2</a>
               </li>
               <li class="page-item">
                 <a class="page-link" href="javascript:void(0);">
-                  <i class="bi bi-three-dots"></i>
+                  <i class="bi bi-three-dots" />
                 </a>
               </li>
-              <li class="page-item"><a class="page-link" href="javascript:void(0);">17</a></li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0);">17</a>
+              </li>
               <li class="page-item">
                 <a class="page-link text-primary" href="javascript:void(0);"> next </a>
               </li>

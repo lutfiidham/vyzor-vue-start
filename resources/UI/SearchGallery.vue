@@ -1,7 +1,7 @@
 <script setup>
 import PhotoSwipeLightbox from 'photoswipe/lightbox'
-import 'photoswipe/style.css'
 import { onMounted, onUnmounted } from 'vue'
+import 'photoswipe/style.css'
 
 const items = [
   {
@@ -111,8 +111,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="row" id="RandomUniqueId">
-    <div class="col-lg-3 col-md-3 col-sm-6 col-12" v-for="(image, key) in items" :key="key">
+  <div id="RandomUniqueId" class="row">
+    <div v-for="(image, key) in items" :key="key" class="col-lg-3 col-md-3 col-sm-6 col-12">
       <a
         :href="image.src"
         class="glightbox card search-images-card"
@@ -126,11 +126,11 @@ onUnmounted(() => {
           :src="image.thumbnail"
           alt="image"
           style="width: 100%; border-radius: 0.25rem; overflow: hidden"
-        />
+        >
         <div class="p-2">
           <div class="d-flex align-items-center gap-1">
             <div class="avatar avatar-xs">
-              <img :src="image.companyLogo" alt="" />
+              <img :src="image.companyLogo" alt="">
             </div>
             <div class="figure-caption fs-13 fw-medium text-default">{{ image.title }}</div>
           </div>
@@ -141,7 +141,7 @@ onUnmounted(() => {
     <div class="col-xl-12 mb-4">
       <button class="btn btn-info-light btn-loader mx-auto">
         <span class="me-2">Loading</span>
-        <span class="loading"><i class="ri-loader-4-line fs-16"></i></span>
+        <span class="loading"><i class="ri-loader-4-line fs-16" /></span>
       </button>
     </div>
   </div>

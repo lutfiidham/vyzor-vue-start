@@ -1,8 +1,8 @@
 <script setup>
-import * as lineData from '@/shared/data/apexcharts/apexchart-linemap'
+import { Head } from '@inertiajs/vue3'
 import { onMounted, onUnmounted } from 'vue'
 import Pageheader from '@/components/pageheader/pageheader.vue'
-import { Head } from '@inertiajs/vue3'
+import * as lineData from '@/shared/data/apexcharts/apexchart-linemap'
 
 const dataToPass = {
   title: 'Charts',
@@ -11,7 +11,7 @@ const dataToPass = {
   activepage: 'Apex Line Charts',
 }
 
-const setDataLineChart = () => {
+function setDataLineChart() {
   const intervalId = setInterval(() => {}, 3000)
   onUnmounted(() => {
     clearInterval(intervalId)
@@ -25,17 +25,19 @@ onMounted(() => {
 
 <template>
   <Head title="Line Charts | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Basic Line Chart</div>
+          <div class="card-title">
+            Basic Line Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="line-chart">
-            <apexchart
+            <Apexchart
               height="300"
               type="line"
               :options="lineData.Linebasicoptions"
@@ -48,14 +50,16 @@ onMounted(() => {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Line Chart With Data Labels</div>
+          <div class="card-title">
+            Line Chart With Data Labels
+          </div>
         </div>
         <div class="card-body">
           <div id="line-chart-datalabels">
-            <apexchart
+            <Apexchart
+              id="line-chart-datalabels"
               height="300"
               type="line"
-              id="line-chart-datalabels"
               :options="lineData.Linedataoptions"
               :series="lineData.Linedataseries"
             />
@@ -66,11 +70,13 @@ onMounted(() => {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Zoomable Time Series</div>
+          <div class="card-title">
+            Zoomable Time Series
+          </div>
         </div>
         <div class="card-body">
           <div id="line-chart">
-            <apexchart
+            <Apexchart
               height="300"
               type="area"
               :options="lineData.Linezoomoptions"
@@ -83,11 +89,13 @@ onMounted(() => {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Line With Annotations</div>
+          <div class="card-title">
+            Line With Annotations
+          </div>
         </div>
         <div class="card-body">
           <div id="annotation-chart">
-            <apexchart
+            <Apexchart
               height="300"
               type="line"
               :options="lineData.Lineannotationoptions"
@@ -100,12 +108,14 @@ onMounted(() => {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Brush Chart</div>
+          <div class="card-title">
+            Brush Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="wrapper">
             <div id="brush-chart1">
-              <apexchart
+              <Apexchart
                 height="157"
                 type="line"
                 :options="lineData.Linebrushoptions"
@@ -113,7 +123,7 @@ onMounted(() => {
               />
             </div>
             <div id="brush-chart">
-              <apexchart
+              <Apexchart
                 height="130"
                 type="area"
                 :options="lineData.optionsLine"
@@ -127,11 +137,13 @@ onMounted(() => {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">StepLine Chart</div>
+          <div class="card-title">
+            StepLine Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="stepline-chart">
-            <apexchart
+            <Apexchart
               height="300"
               type="line"
               :options="lineData.Linestepoptions"
@@ -144,11 +156,13 @@ onMounted(() => {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Gradient Line Chart</div>
+          <div class="card-title">
+            Gradient Line Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="gradient-chart">
-            <apexchart
+            <Apexchart
               height="300"
               type="line"
               :options="lineData.Linegardientoptions"
@@ -161,11 +175,13 @@ onMounted(() => {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Missing/Null Values Chart</div>
+          <div class="card-title">
+            Missing/Null Values Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="null-chart">
-            <apexchart
+            <Apexchart
               height="300"
               type="line"
               :options="lineData.Linenulloptions"
@@ -178,11 +194,13 @@ onMounted(() => {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Real Time Chart</div>
+          <div class="card-title">
+            Real Time Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="dynamic-chart">
-            <apexchart
+            <Apexchart
               height="300"
               type="line"
               :options="lineData.Linerealoptions"
@@ -195,11 +213,13 @@ onMounted(() => {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Dashed Line Chart</div>
+          <div class="card-title">
+            Dashed Line Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="dashed-chart">
-            <apexchart
+            <Apexchart
               height="300"
               type="line"
               :options="lineData.Linedashoptions"
@@ -212,12 +232,14 @@ onMounted(() => {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Syncing Charts</div>
+          <div class="card-title">
+            Syncing Charts
+          </div>
         </div>
         <div class="card-body">
           <div id="wrapper">
             <div id="chart-line">
-              <apexchart
+              <Apexchart
                 height="166"
                 type="line"
                 :options="lineData.Linesyncoptions"
@@ -225,7 +247,7 @@ onMounted(() => {
               />
             </div>
             <div id="chart-line2">
-              <apexchart
+              <Apexchart
                 height="166"
                 type="line"
                 :options="lineData.optionsLine2"
@@ -233,7 +255,7 @@ onMounted(() => {
               />
             </div>
             <div id="chart-area">
-              <apexchart
+              <Apexchart
                 height="166"
                 type="line"
                 :options="lineData.optionsArea"
@@ -245,7 +267,7 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 
 // Extend the Document interface for fullscreen vendor prefixes
 interface ExtendedDocument extends Document {
@@ -31,27 +31,35 @@ function removeCard() {
 function toggleFullscreen() {
   const cardEl = termsCard.value
 
-  if (!cardEl) return
+  if (!cardEl)
+    return
 
   if (!isFullscreen.value) {
     if (cardEl.requestFullscreen) {
       cardEl.requestFullscreen()
-    } else if ((cardEl as any).mozRequestFullScreen) {
+    }
+    else if ((cardEl as any).mozRequestFullScreen) {
       ;(cardEl as any).mozRequestFullScreen()
-    } else if ((cardEl as any).webkitRequestFullscreen) {
+    }
+    else if ((cardEl as any).webkitRequestFullscreen) {
       ;(cardEl as any).webkitRequestFullscreen()
-    } else if ((cardEl as any).msRequestFullscreen) {
+    }
+    else if ((cardEl as any).msRequestFullscreen) {
       ;(cardEl as any).msRequestFullscreen()
     }
-  } else {
+  }
+  else {
     const doc = document as ExtendedDocument
     if (document.exitFullscreen) {
       document.exitFullscreen()
-    } else if (doc.mozCancelFullScreen) {
+    }
+    else if (doc.mozCancelFullScreen) {
       doc.mozCancelFullScreen()
-    } else if (doc.webkitExitFullscreen) {
+    }
+    else if (doc.webkitExitFullscreen) {
       doc.webkitExitFullscreen()
-    } else if (doc.msExitFullscreen) {
+    }
+    else if (doc.msExitFullscreen) {
       doc.msExitFullscreen()
     }
   }
@@ -62,9 +70,9 @@ function toggleFullscreen() {
 
 <template>
   <div
-    :class="['card', 'custom-card', { fullscreen: isFullscreen }]"
-    v-if="isVisible"
-    ref="termsCard"
+    v-if="isVisible" ref="termsCard"
+    class="card custom-card"
+    :class="[{ fullscreen: isFullscreen }]"
   >
     <div :class="`card-header justify-content-between ${Customheaderclass}`">
       <div class="card-title">
@@ -75,17 +83,17 @@ function toggleFullscreen() {
       </template>
       <template v-if="hideToggle">
         <a href="javascript:void(0);" data-bs-toggle="card-remove" @click="removeCard">
-          <i class="ri-close-line fs-18"></i>
+          <i class="ri-close-line fs-18" />
         </a>
       </template>
       <template v-if="fullScreen">
         <a href="javascript:void(0);" data-bs-toggle="card-fullscreen" @click="toggleFullscreen">
-          <i class="ri-fullscreen-line"></i>
+          <i class="ri-fullscreen-line" />
         </a>
       </template>
     </div>
     <template v-if="collapseToggle">
-      <div class="collapse show border-top" id="collapseExample">
+      <div id="collapseExample" class="collapse show border-top">
         <slot name="collapseContent" />
       </div>
     </template>

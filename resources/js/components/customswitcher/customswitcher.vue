@@ -1,27 +1,27 @@
 <script setup>
+import { onMounted, ref } from 'vue'
 import { switcherStore } from '../../../stores/switcher.js'
-import { ref, onMounted } from 'vue'
 
 const switcher = switcherStore()
 const dynamicPrimaryColor = ref('black')
 
-const convertRgbToIndividual = (value) => {
+function convertRgbToIndividual(value) {
   // Use a regular expression to extract the numeric values
   const numericValues = value.match(/\d+/g)
   // Join the numeric values with spaces to get the desired format
   return numericValues ? numericValues.join(' ') : ''
 }
 
-const themePrimaryFn = (value) => {
+function themePrimaryFn(value) {
   switcher.themePrimaryFn(value)
 }
 
-const primaryColorFn = (color) => {
+function primaryColorFn(color) {
   const primaryRgb = convertRgbToIndividual(color)
   themePrimaryFn(primaryRgb)
 }
 
-const colorthemeFn = (value) => {
+function colorthemeFn(value) {
   switcher.colorthemeFn(value)
   localStorage.setItem('vyzorcolortheme', value)
   if (value === 'dark') {
@@ -30,16 +30,16 @@ const colorthemeFn = (value) => {
   }
 }
 
-const directionFn = (value) => {
+function directionFn(value) {
   switcher.directionFn(value)
   localStorage.setItem('vyzordirection', value)
 }
 
-const custompageLocalStorage = () => {
+function custompageLocalStorage() {
   switcher.custompageLocalStorage()
 }
 
-const reset = async () => {
+async function reset() {
   await switcher.$reset()
   await switcher.custompageReset()
 }
@@ -51,153 +51,165 @@ onMounted(() => {
 
 <template>
   <div
+    id="switcher-canvas"
     class="offcanvas offcanvas-end"
     tabindex="-1"
-    id="switcher-canvas"
     aria-labelledby="offcanvasRightLabel"
   >
     <div class="offcanvas-header border-bottom">
-      <h5 class="offcanvas-title" id="offcanvasRightLabel">Switcher</h5>
+      <h5 id="offcanvasRightLabel" class="offcanvas-title">
+        Switcher
+      </h5>
       <button
         type="button"
         class="btn-close"
         data-bs-dismiss="offcanvas"
         aria-label="Close"
-      ></button>
+      />
     </div>
     <div class="offcanvas-body">
       <div class="">
-        <p class="switcher-style-head">Theme Color Mode:</p>
+        <p class="switcher-style-head">
+          Theme Color Mode:
+        </p>
         <div class="row switcher-style">
           <div class="col-4">
             <div class="form-check switch-select">
               <label class="form-check-label" for="switcher-light-theme"> Light </label>
               <input
-                @click="colorthemeFn('light')"
+                id="switcher-light-theme"
                 :checked="switcher.colortheme == 'light' ? true : false"
                 class="form-check-input"
                 type="radio"
                 name="theme-style"
-                id="switcher-light-theme"
-              />
+                @click="colorthemeFn('light')"
+              >
             </div>
           </div>
           <div class="col-4">
             <div class="form-check switch-select">
               <label class="form-check-label" for="switcher-dark-theme"> Dark </label>
               <input
-                @click="colorthemeFn('dark')"
+                id="switcher-dark-theme"
                 class="form-check-input"
                 type="radio"
                 name="theme-style"
-                id="switcher-dark-theme"
                 :checked="switcher.colortheme == 'dark' ? true : false"
-              />
+                @click="colorthemeFn('dark')"
+              >
             </div>
           </div>
         </div>
       </div>
       <div class="">
-        <p class="switcher-style-head">Directions:</p>
+        <p class="switcher-style-head">
+          Directions:
+        </p>
         <div class="row switcher-style">
           <div class="col-4">
             <div class="form-check switch-select">
               <label class="form-check-label" for="switcher-ltr"> LTR </label>
               <input
-                @click="directionFn('ltr')"
+                id="switcher-ltr"
                 class="form-check-input"
                 type="radio"
                 name="direction"
-                id="switcher-ltr"
                 :checked="switcher.direction == 'ltr' ? true : false"
-              />
+                @click="directionFn('ltr')"
+              >
             </div>
           </div>
           <div class="col-4">
             <div class="form-check switch-select">
               <label class="form-check-label" for="switcher-rtl"> RTL </label>
               <input
-                @click="directionFn('rtl')"
+                id="switcher-rtl"
                 class="form-check-input"
                 type="radio"
                 name="direction"
-                id="switcher-rtl"
                 :checked="switcher.direction == 'rtl' ? true : false"
-              />
+                @click="directionFn('rtl')"
+              >
             </div>
           </div>
         </div>
       </div>
       <div class="theme-colors">
-        <p class="switcher-style-head">Theme Primary:</p>
+        <p class="switcher-style-head">
+          Theme Primary:
+        </p>
         <div class="d-flex align-items-center switcher-style">
           <div class="form-check switch-select me-3">
             <input
-              @click="themePrimaryFn('42 ,16, 164')"
+              id="switcher-primary"
               class="form-check-input color-input color-primary-1"
               type="radio"
               name="theme-primary"
-              id="switcher-primary"
               :checked="switcher.themePrimary == '42 ,16, 164' ? true : false"
-            />
+              @click="themePrimaryFn('42 ,16, 164')"
+            >
           </div>
           <div class="form-check switch-select me-3">
             <input
-              @click="themePrimaryFn('125 ,0, 189')"
+              id="switcher-primary1"
               class="form-check-input color-input color-primary-2"
               type="radio"
               name="theme-primary"
-              id="switcher-primary1"
               :checked="switcher.themePrimary == '125 ,0, 189' ? true : false"
-            />
+              @click="themePrimaryFn('125 ,0, 189')"
+            >
           </div>
           <div class="form-check switch-select me-3">
             <input
-              @click="themePrimaryFn('4, 118, 141')"
+              id="switcher-primary2"
               class="form-check-input color-input color-primary-3"
               type="radio"
               name="theme-primary"
-              id="switcher-primary2"
               :checked="switcher.themePrimary == '4, 118, 141' ? true : false"
-            />
+              @click="themePrimaryFn('4, 118, 141')"
+            >
           </div>
           <div class="form-check switch-select me-3">
             <input
-              @click="themePrimaryFn('138, 0, 32')"
+              id="switcher-primary3"
               class="form-check-input color-input color-primary-4"
               type="radio"
               name="theme-primary"
-              id="switcher-primary3"
               :checked="switcher.themePrimary == '138, 0, 32' ? true : false"
-            />
+              @click="themePrimaryFn('138, 0, 32')"
+            >
           </div>
           <div class="form-check switch-select me-3">
             <input
-              @click="themePrimaryFn('9 ,124, 103')"
+              id="switcher-primary4"
               class="form-check-input color-input color-primary-5"
               type="radio"
               name="theme-primary"
-              id="switcher-primary4"
               :checked="switcher.themePrimary == '9 ,124, 103' ? true : false"
-            />
+              @click="themePrimaryFn('9 ,124, 103')"
+            >
           </div>
           <div class="form-check switch-select ps-0 mt-1 color-primary-light">
-            <color-picker
-              @update:pureColor="primaryColorFn"
-              v-model:dynamicPrimaryColor="dynamicPrimaryColor"
+            <ColorPicker
+              v-model:dynamic-primary-color="dynamicPrimaryColor"
               shape="circle"
               format="rgb"
-              pickerType="chrome"
-              useType="pure"
-              :disableAlpha="true"
+              picker-type="chrome"
+              use-type="pure"
+              :disable-alpha="true"
+              @update:pure-color="primaryColorFn"
             />
           </div>
         </div>
       </div>
       <div>
-        <p class="switcher-style-head">reset:</p>
+        <p class="switcher-style-head">
+          reset:
+        </p>
         <div class="text-center">
-          <button id="reset-all" @click="reset()" class="btn btn-danger mt-3">Reset</button>
+          <button id="reset-all" class="btn btn-danger mt-3" @click="reset()">
+            Reset
+          </button>
         </div>
       </div>
     </div>

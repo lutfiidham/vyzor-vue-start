@@ -1,11 +1,3 @@
-<template>
-  <div :class="mainClass">
-    <div class="toggle" :class="[customClass, { on: isActive }, `toggle-${title || 'md'}`]" @click="toggleState">
-      <span></span>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref, watch } from 'vue'
 
@@ -28,15 +20,23 @@ watch(
   () => props.isOn,
   (newVal) => {
     isActive.value = newVal ?? false
-  }
+  },
 )
 
 // Toggle function
-const toggleState = () => {
+function toggleState() {
   isActive.value = !isActive.value
   emit('toggle', isActive.value)
 }
 </script>
+
+<template>
+  <div :class="mainClass">
+    <div class="toggle" :class="[customClass, { on: isActive }, `toggle-${title || 'md'}`]" @click="toggleState">
+      <span />
+    </div>
+  </div>
+</template>
 
 <style scoped>
 .toggle {

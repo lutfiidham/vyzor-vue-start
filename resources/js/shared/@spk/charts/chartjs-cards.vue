@@ -16,12 +16,14 @@ defineProps({
 </script>
 
 <template>
-  <div :class="['card custom-card', customCardClass]">
-    <div :class="['card-header', cardHeaderClass]">
-      <div class="card-title">{{ title }}</div>
+  <div class="card custom-card" :class="[customCardClass]">
+    <div class="card-header" :class="[cardHeaderClass]">
+      <div class="card-title">
+        {{ title }}
+      </div>
     </div>
-    <div :class="['card-body', cardBodyClass]">
-      <component :is="type" :chartData="data" style="height: 300px" />
+    <div class="card-body" :class="[cardBodyClass]">
+      <component :is="type" :chart-data="data" style="height: 300px" />
     </div>
   </div>
 </template>

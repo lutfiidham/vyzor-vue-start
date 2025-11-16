@@ -1,8 +1,9 @@
 <script setup>
-import * as prism from '@/shared/data/prismCode/advancedUi/accordion'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as prism from '@/shared/data/prismCode/advancedUi/accordion'
+import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
+
 const dataToPass = {
   title: 'Advanced Ui',
   currentpage: 'Accordions',
@@ -12,13 +13,13 @@ const dataToPass = {
 
 <template>
   <Head title="Accordions Collapse | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <div class="row">
     <div class="col-xl-12">
       <ShowcodeCard :code="prism.basicAccordion" title="Basic Accordion">
-        <div class="accordion" id="accordionExample">
+        <div id="accordionExample" class="accordion">
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
+            <h2 id="headingOne" class="accordion-header">
               <button
                 class="accordion-button"
                 type="button"
@@ -47,7 +48,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
+            <h2 id="headingTwo" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -76,7 +77,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
+            <h2 id="headingThree" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -112,9 +113,9 @@ const dataToPass = {
         :code="prism.alwaysOpenAccordion"
         title="Always Open Accordion<p class='text-muted subtitle fs-12 fw-normal'>Omit the <code>data-bs-parent</code>  attribute on each<code>.accordion-collapse</code>  to make accordion items stay open when another item is opened.</p>"
       >
-        <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div id="accordionPanelsStayOpenExample" class="accordion">
           <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+            <h2 id="panelsStayOpen-headingOne" class="accordion-header">
               <button
                 class="accordion-button"
                 type="button"
@@ -141,7 +142,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+            <h2 id="panelsStayOpen-headingTwo" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -169,7 +170,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+            <h2 id="panelsStayOpen-headingThree" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -205,7 +206,7 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard
         :code="prism.flushAccordion"
-        title="Flush Accordion 
+        title="Flush Accordion
                             <p class='subtitle text-muted fs-12 fw-normal'>
                                 Add <code>.accordion-flush</code> to remove the default
                                 <code>background-color</code>,
@@ -215,9 +216,9 @@ const dataToPass = {
                             </p>"
         custom-card-body-class="p-0"
       >
-        <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div id="accordionFlushExample" class="accordion accordion-flush">
           <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingOne">
+            <h2 id="flush-headingOne" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -242,7 +243,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingTwo">
+            <h2 id="flush-headingTwo" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -268,7 +269,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingThree">
+            <h2 id="flush-headingThree" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -301,13 +302,15 @@ const dataToPass = {
   </div>
   <!-- End:: row-2 -->
   <!-- Start:: row-3 -->
-  <h6 class="mb-3">Light Colors:</h6>
+  <h6 class="mb-3">
+    Light Colors:
+  </h6>
   <div class="row">
     <div class="col-xl-12">
       <ShowcodeCard :code="prism.lightPrimary" title="Primary">
-        <div class="accordion accordion-primary" id="accordionPrimaryExample">
+        <div id="accordionPrimaryExample" class="accordion accordion-primary">
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingPrimaryOne">
+            <h2 id="headingPrimaryOne" class="accordion-header">
               <button
                 class="accordion-button"
                 type="button"
@@ -336,7 +339,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingPrimaryTwo">
+            <h2 id="headingPrimaryTwo" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -365,7 +368,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingPrimaryThree">
+            <h2 id="headingPrimaryThree" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -398,9 +401,9 @@ const dataToPass = {
     </div>
     <div class="col-xl-12">
       <ShowcodeCard :code="prism.lightSecondary" title="Secondary">
-        <div class="accordion accordion-secondary" id="accordionSecondaryExample">
+        <div id="accordionSecondaryExample" class="accordion accordion-secondary">
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingSecondaryOne">
+            <h2 id="headingSecondaryOne" class="accordion-header">
               <button
                 class="accordion-button"
                 type="button"
@@ -429,7 +432,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingSecondaryTwo">
+            <h2 id="headingSecondaryTwo" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -458,7 +461,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingSecondaryThree">
+            <h2 id="headingSecondaryThree" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -492,13 +495,15 @@ const dataToPass = {
   </div>
   <!-- End:: row-3 -->
   <!-- Start:: row-4 -->
-  <h6 class="mb-3">Solid Colors:</h6>
+  <h6 class="mb-3">
+    Solid Colors:
+  </h6>
   <div class="row">
     <div class="col-xl-12">
       <ShowcodeCard :code="prism.solidPrimary" title="Primary">
-        <div class="accordion accordion-solid-primary" id="accordionPrimarySolidExample">
+        <div id="accordionPrimarySolidExample" class="accordion accordion-solid-primary">
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingPrimarySolidOne">
+            <h2 id="headingPrimarySolidOne" class="accordion-header">
               <button
                 class="accordion-button"
                 type="button"
@@ -527,7 +532,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingPrimarySolidTwo">
+            <h2 id="headingPrimarySolidTwo" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -556,7 +561,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingPrimarySolidThree">
+            <h2 id="headingPrimarySolidThree" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -589,9 +594,9 @@ const dataToPass = {
     </div>
     <div class="col-xl-12">
       <ShowcodeCard :code="prism.solidSecondary" title="Secondary">
-        <div class="accordion accordion-solid-secondary" id="accordionSecondarySolidExample">
+        <div id="accordionSecondarySolidExample" class="accordion accordion-solid-secondary">
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingSecondarySolidOne">
+            <h2 id="headingSecondarySolidOne" class="accordion-header">
               <button
                 class="accordion-button"
                 type="button"
@@ -620,7 +625,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingSecondarySolidTwo">
+            <h2 id="headingSecondarySolidTwo" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -649,7 +654,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingSecondarySolidThree">
+            <h2 id="headingSecondarySolidThree" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -683,16 +688,18 @@ const dataToPass = {
   </div>
   <!-- End:: row-4 -->
   <!-- Start:: row-5 -->
-  <h6 class="mb-3">Colored Borders:</h6>
+  <h6 class="mb-3">
+    Colored Borders:
+  </h6>
   <div class="row">
     <div class="col-xl-12">
       <ShowcodeCard :code="prism.coloredPrimary" title="Primary">
         <div
-          class="accordion accordion-border-primary accordions-items-seperate"
           id="accordionprimaryborderExample"
+          class="accordion accordion-border-primary accordions-items-seperate"
         >
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingborderprimaryOne">
+            <h2 id="headingborderprimaryOne" class="accordion-header">
               <button
                 class="accordion-button"
                 type="button"
@@ -721,7 +728,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingborderprimaryTwo">
+            <h2 id="headingborderprimaryTwo" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -750,7 +757,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingborderprimaryThree">
+            <h2 id="headingborderprimaryThree" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -784,11 +791,11 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard :code="prism.coloredSecondary" title="Success">
         <div
-          class="accordion accordion-border-success accordions-items-seperate"
           id="accordionsuccessborderExample"
+          class="accordion accordion-border-success accordions-items-seperate"
         >
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingbordersuccessOne">
+            <h2 id="headingbordersuccessOne" class="accordion-header">
               <button
                 class="accordion-button"
                 type="button"
@@ -817,7 +824,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingbordersuccessTwo">
+            <h2 id="headingbordersuccessTwo" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -846,7 +853,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingbordersuccessThree">
+            <h2 id="headingbordersuccessThree" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -905,7 +912,7 @@ const dataToPass = {
             Button with data-bs-target
           </button>
         </p>
-        <div class="collapse" id="collapseExample">
+        <div id="collapseExample" class="collapse">
           <div class="card card-body mb-0">
             Some placeholder content for the collapse component. This panel is hidden by default but
             revealed when the user activates the relevant trigger.
@@ -923,8 +930,7 @@ const dataToPass = {
             role="button"
             aria-expanded="false"
             aria-controls="multiCollapseExample1"
-            >Toggle first element</a
-          >
+          >Toggle first element</a>
           <button
             class="btn btn-success mb-2 me-1"
             type="button"
@@ -948,7 +954,7 @@ const dataToPass = {
         </p>
         <div class="row">
           <div class="col m-1">
-            <div class="collapse multi-collapse" id="multiCollapseExample1">
+            <div id="multiCollapseExample1" class="collapse multi-collapse">
               <div class="card card-body mb-0">
                 Some placeholder content for the first collapse component of this multi-collapse
                 example. This panel is hidden by default but revealed when the user activates the
@@ -957,7 +963,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="col m-1">
-            <div class="collapse multi-collapse" id="multiCollapseExample2">
+            <div id="multiCollapseExample2" class="collapse multi-collapse">
               <div class="card card-body mb-0">
                 Some placeholder content for the second collapse component of this multi-collapse
                 example. This panel is hidden by default but revealed when the user activates the
@@ -975,11 +981,11 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard :code="prism.customIconAccordion" title="Custom Icon Accordion">
         <div
-          class="accordion accordion-customicon1 accordions-items-seperate"
           id="accordioncustomicon1Example"
+          class="accordion accordion-customicon1 accordions-items-seperate"
         >
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingcustomicon1One">
+            <h2 id="headingcustomicon1One" class="accordion-header">
               <button
                 class="accordion-button"
                 type="button"
@@ -1008,7 +1014,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingcustomicon1Two">
+            <h2 id="headingcustomicon1Two" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -1037,7 +1043,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingcustomicon1Three">
+            <h2 id="headingcustomicon1Three" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -1071,11 +1077,11 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard :code="prism.customAccordion" title="Custom Accordion">
         <div
-          class="accordion customized-accordion accordions-items-seperate"
           id="customizedAccordion"
+          class="accordion customized-accordion accordions-items-seperate"
         >
           <div class="accordion-item custom-accordion-primary">
-            <h2 class="accordion-header" id="customizedAccordionOne">
+            <h2 id="customizedAccordionOne" class="accordion-header">
               <button
                 class="accordion-button"
                 type="button"
@@ -1104,7 +1110,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item custom-accordion-secondary">
-            <h2 class="accordion-header" id="customizedAccordionTwo">
+            <h2 id="customizedAccordionTwo" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -1133,7 +1139,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item custom-accordion-danger">
-            <h2 class="accordion-header" id="customizedAccordionThree">
+            <h2 id="customizedAccordionThree" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -1171,11 +1177,11 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard :code="prism.leftAlignedIcons" title="Left Aligned Icons">
         <div
-          class="accordion accordionicon-left accordions-items-seperate"
           id="accordioniconLeftExample"
+          class="accordion accordionicon-left accordions-items-seperate"
         >
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingleftOne">
+            <h2 id="headingleftOne" class="accordion-header">
               <button
                 class="accordion-button"
                 type="button"
@@ -1204,7 +1210,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingleftTwo">
+            <h2 id="headingleftTwo" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -1233,7 +1239,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingleftThree">
+            <h2 id="headingleftThree" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -1267,11 +1273,11 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard :code="prism.withoutIcon" title="Without Icon">
         <div
-          class="accordion accordionicon-none accordions-items-seperate"
           id="accordioniconnoIconExample"
+          class="accordion accordionicon-none accordions-items-seperate"
         >
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingnoIconOne">
+            <h2 id="headingnoIconOne" class="accordion-header">
               <button
                 class="accordion-button"
                 type="button"
@@ -1300,7 +1306,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingnoIconTwo">
+            <h2 id="headingnoIconTwo" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -1329,7 +1335,7 @@ const dataToPass = {
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingnoIconThree">
+            <h2 id="headingnoIconThree" class="accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -1379,7 +1385,7 @@ const dataToPass = {
           </button>
         </p>
         <div style="min-height: 120px">
-          <div class="collapse collapse-horizontal" id="collapseWidthExample">
+          <div id="collapseWidthExample" class="collapse collapse-horizontal">
             <div class="card card-body mb-0" style="width: 230px">
               This is some placeholder content for a horizontal collapse. It's hidden by default and
               shown when triggered.

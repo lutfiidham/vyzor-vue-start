@@ -1,10 +1,11 @@
 <script setup>
-import * as SchoolData from '@/shared/data/dashboards/schooldata'
+import { Head } from '@inertiajs/vue3'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
 import SpkReusebleSchoolCard from '@/shared/@spk/dashboards/spk-reuseble-schoolCard.vue'
 import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head } from '@inertiajs/vue3'
+import * as SchoolData from '@/shared/data/dashboards/schooldata'
+
 const dataToPass = {
   title: 'Dashboards',
   currentpage: 'School',
@@ -14,12 +15,12 @@ const dataToPass = {
 
 <template>
   <Head title="School | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xxl-3">
       <div class="row">
-        <div class="col-xxl-12 col-lg-6" v-for="idx in SchoolData.SchoolCardsData" :key="idx.id">
+        <div v-for="idx in SchoolData.SchoolCardsData" :key="idx.id" class="col-xxl-12 col-lg-6">
           <SpkReusebleSchoolCard :card="idx" />
         </div>
       </div>
@@ -27,11 +28,13 @@ const dataToPass = {
     <div class="col-xxl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">School Revenue</div>
+          <div class="card-title">
+            School Revenue
+          </div>
         </div>
         <div class="card-body">
           <div id="school-revenue">
-            <apexchart
+            <Apexchart
               type="line"
               height="320px"
               :options="SchoolData.SchoolOptions"
@@ -44,7 +47,9 @@ const dataToPass = {
     <div class="col-xxl-3">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Events</div>
+          <div class="card-title">
+            Events
+          </div>
         </div>
         <div class="card-body">
           <ul class="list-unstyled school-events-list">
@@ -52,7 +57,7 @@ const dataToPass = {
               <div class="d-flex align-items-center gap-3 flex-wrap flex-xxl-nowrap">
                 <div class="lh-1">
                   <span :class="`avatar avatar-md bg-${idx.bgClass}-transparent`">
-                    <i :class="`ti ti-${idx.icon} fs-5`"></i>
+                    <i :class="`ti ti-${idx.icon} fs-5`" />
                   </span>
                 </div>
                 <div class="flex-grow-1">
@@ -60,7 +65,9 @@ const dataToPass = {
                     <span class="d-block fw-semibold">{{ idx.title }}</span>
                     <span class="badge bg-light text-default border">{{ idx.date }}</span>
                   </div>
-                  <div class="text-muted fs-13 event-description">{{ idx.description }}</div>
+                  <div class="text-muted fs-13 event-description">
+                    {{ idx.description }}
+                  </div>
                 </div>
               </div>
             </li>
@@ -76,7 +83,9 @@ const dataToPass = {
     <div class="col-xxl-3">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Students Activity</div>
+          <div class="card-title">
+            Students Activity
+          </div>
         </div>
         <div class="card-body">
           <ul class="list-unstyled students-activity-list">
@@ -86,7 +95,7 @@ const dataToPass = {
                   <span
                     :class="`avatar avatar-md avatar-rounded ${idx.initials ? 'bg-warning' : ''} `"
                   >
-                    <BaseImg :src="idx.avatar" v-if="idx.avatar" alt="" />
+                    <BaseImg v-if="idx.avatar" :src="idx.avatar" alt="" />
                     <template v-if="idx.initials">
                       {{ idx.initials }}
                     </template>
@@ -108,11 +117,13 @@ const dataToPass = {
     <div class="col-xxl-3">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Students Overview</div>
+          <div class="card-title">
+            Students Overview
+          </div>
         </div>
         <div class="card-body">
           <div id="students-overview">
-            <apexchart
+            <Apexchart
               type="donut"
               height="227px"
               :options="SchoolData.SchoolOverviewOptions"
@@ -132,7 +143,7 @@ const dataToPass = {
                   <span
                     class="badge bg-success-transparent rounded-pill d-inline-flex align-items-center"
                   >
-                    <i class="ti ti-arrow-up me-1"></i>2.45%
+                    <i class="ti ti-arrow-up me-1" />2.45%
                   </span>
                 </h5>
               </div>
@@ -147,7 +158,7 @@ const dataToPass = {
                   <span
                     class="badge bg-danger-transparent rounded-pill d-inline-flex align-items-center"
                   >
-                    <i class="ti ti-arrow-down me-1"></i>6.76%
+                    <i class="ti ti-arrow-down me-1" />6.76%
                   </span>
                 </h5>
               </div>
@@ -159,14 +170,14 @@ const dataToPass = {
     <div class="col-xxl-3">
       <div class="card custom-card overflow-hidden">
         <div class="card-header justify-content-between">
-          <div class="card-title">Top Students</div>
-          <a href="javascript:void(0);" class="text-muted fs-13"
-            >View All<i class="ti ti-arrow-narrow-right ms-1"></i
-          ></a>
+          <div class="card-title">
+            Top Students
+          </div>
+          <a href="javascript:void(0);" class="text-muted fs-13">View All<i class="ti ti-arrow-narrow-right ms-1" /></a>
         </div>
         <div class="card-body p-0">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item" v-for="idx in SchoolData.TopStudents" :key="idx.id">
+            <li v-for="idx in SchoolData.TopStudents" :key="idx.id" class="list-group-item">
               <div class="d-flex align-items-center gap-2">
                 <div class="lh-1">
                   <span class="avatar avatar-md">
@@ -178,9 +189,7 @@ const dataToPass = {
                   <span class="fs-13 text-muted">{{ idx.grade }}</span>
                 </div>
                 <div class="text-end">
-                  <span
-                    >GPA : <span class="fw-medium text-primary">{{ idx.gpa }}</span></span
-                  >
+                  <span>GPA : <span class="fw-medium text-primary">{{ idx.gpa }}</span></span>
                   <span :class="`text-${idx.achievementClass} fs-13 d-block`">{{
                     idx.achievement
                   }}</span>
@@ -194,17 +203,19 @@ const dataToPass = {
     <div class="col-xxl-3">
       <div class="card custom-card overflow-hidden">
         <div class="card-header justify-content-between">
-          <div class="card-title">Students Fee Analytics</div>
-          <a href="javascript:void(0);" class="text-muted fs-13"
-            >View All<i class="ti ti-arrow-narrow-right ms-1"></i
-          ></a>
+          <div class="card-title">
+            Students Fee Analytics
+          </div>
+          <a href="javascript:void(0);" class="text-muted fs-13">View All<i class="ti ti-arrow-narrow-right ms-1" /></a>
         </div>
         <div class="card-body p-0">
           <div class="table-responsive">
             <table class="table text-nowrap">
               <tbody>
                 <tr v-for="idx in SchoolData.Analyticspayments" :key="idx.id">
-                  <td :class="idx.tdClass">#SP0{{ idx.id }}</td>
+                  <td :class="idx.tdClass">
+                    #SP0{{ idx.id }}
+                  </td>
                   <td :class="idx.tdClass">
                     <div class="d-flex align-items-center gap-2">
                       <div class="lh-1">
@@ -221,8 +232,7 @@ const dataToPass = {
                   <td :class="`text-end ${idx.tdClass}`">
                     <span
                       :class="`${idx.status === 'Paid' ? 'text-success' : idx.status === 'Pending' ? 'text-danger' : 'text-warning'} fs-13 fw-semibold `"
-                      >{{ idx.status }}</span
-                    >
+                    >{{ idx.status }}</span>
                   </td>
                 </tr>
               </tbody>
@@ -239,7 +249,9 @@ const dataToPass = {
     <div class="col-xxl-9">
       <div class="card custom-card">
         <div class="card-header justify-content-between">
-          <div class="card-title">Student Summary</div>
+          <div class="card-title">
+            Student Summary
+          </div>
           <div class="d-flex flex-wrap gap-2">
             <div>
               <input
@@ -247,7 +259,7 @@ const dataToPass = {
                 type="text"
                 placeholder="Search Here"
                 aria-label=".form-control-sm example"
-              />
+              >
             </div>
             <div class="dropdown">
               <a
@@ -256,7 +268,7 @@ const dataToPass = {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Sort By<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block"></i>
+                Sort By<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block" />
               </a>
               <ul class="dropdown-menu" role="menu">
                 <li><a class="dropdown-item" href="javascript:void(0);">New</a></li>
@@ -269,7 +281,8 @@ const dataToPass = {
         <div class="card-body p-0">
           <div class="table-responsive">
             <TableComponent
-              tableClass="table text-nowrap"
+              #cell="{ row }"
+              table-class="table text-nowrap"
               :headers="[
                 { text: 'Student ID', thClass: '' },
                 { text: 'Name', thClass: '' },
@@ -281,7 +294,6 @@ const dataToPass = {
                 { text: 'Total Fees Paid', thClass: '' },
               ]"
               :rows="SchoolData.StudentPayments"
-              v-slot:cell="{ row }"
             >
               <td>SPK0{{ row.id }}</td>
               <td>
@@ -291,15 +303,16 @@ const dataToPass = {
                       <BaseImg :src="row.imageUrl" alt="" />
                     </span>
                   </div>
-                  <div class="fw-semibold">{{ row.name }}</div>
+                  <div class="fw-semibold">
+                    {{ row.name }}
+                  </div>
                 </div>
               </td>
               <td>{{ row.grade }}</td>
               <td>
                 <span
                   :class="`badge ${row.status === 'Paid' ? 'bg-success' : row.status === 'Pending' ? 'bg-warning' : 'bg-danger'}`"
-                  >{{ row.status }}</span
-                >
+                >{{ row.status }}</span>
               </td>
               <td>{{ row.currentPerformance }}</td>
               <td>{{ row.previousPerformance }}</td>
@@ -310,23 +323,27 @@ const dataToPass = {
         </div>
         <div class="card-footer border-top-0">
           <div class="d-flex align-items-center">
-            <div>Showing 6 Entries <i class="bi bi-arrow-right ms-2 fw-semibold"></i></div>
+            <div>Showing 6 Entries <i class="bi bi-arrow-right ms-2 fw-semibold" /></div>
             <div class="ms-auto">
               <nav aria-label="Page navigation" class="pagination-style-2">
                 <ul class="pagination mb-0 flex-wrap">
                   <li class="page-item disabled">
                     <a class="page-link" href="javascript:void(0);"> Prev </a>
                   </li>
-                  <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:void(0);">1</a>
+                  </li>
                   <li class="page-item active">
                     <a class="page-link" href="javascript:void(0);">2</a>
                   </li>
                   <li class="page-item">
                     <a class="page-link" href="javascript:void(0);">
-                      <i class="bi bi-three-dots"></i>
+                      <i class="bi bi-three-dots" />
                     </a>
                   </li>
-                  <li class="page-item"><a class="page-link" href="javascript:void(0);">17</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:void(0);">17</a>
+                  </li>
                   <li class="page-item">
                     <a class="page-link text-primary" href="javascript:void(0);"> next </a>
                   </li>
@@ -340,12 +357,14 @@ const dataToPass = {
     <div class="col-xxl-3">
       <div class="card custom-card">
         <div class="card-header justify-content-between">
-          <div class="card-title">Attendance Overview</div>
+          <div class="card-title">
+            Attendance Overview
+          </div>
           <a href="javascript:void(0)" class="btn btn-primary-light btn-sm">View All</a>
         </div>
         <div class="card-body">
           <div id="attendance-overview">
-            <apexchart
+            <Apexchart
               type="bar"
               height="365px"
               :options="SchoolData.SchoolAttendanceOptions"
@@ -356,12 +375,20 @@ const dataToPass = {
         <div class="card-footer p-0">
           <div class="row mt-0 g-0">
             <div class="col-6 border-end border-inline-end-dashed text-center p-3">
-              <p class="mb-1 fw-medium">Boys</p>
-              <h5 class="text-warning fw-semibold mb-0">12.34K</h5>
+              <p class="mb-1 fw-medium">
+                Boys
+              </p>
+              <h5 class="text-warning fw-semibold mb-0">
+                12.34K
+              </h5>
             </div>
             <div class="col-6 text-center p-3">
-              <p class="mb-1 fw-medium">Girls</p>
-              <h5 class="text-primary fw-semibold mb-0">10.19K</h5>
+              <p class="mb-1 fw-medium">
+                Girls
+              </p>
+              <h5 class="text-primary fw-semibold mb-0">
+                10.19K
+              </h5>
             </div>
           </div>
         </div>

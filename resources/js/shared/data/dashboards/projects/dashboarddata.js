@@ -395,8 +395,8 @@ export const ProjectOptions = {
   },
   yaxis: {
     labels: {
-      formatter: function (value) {
-        return '$' + value
+      formatter(value) {
+        return `$${value}`
       },
     },
   },
@@ -409,17 +409,17 @@ export const ProjectOptions = {
   tooltip: {
     y: [
       {
-        formatter: function (e) {
+        formatter(e) {
           return void 0 !== e ? e.toFixed(0) : e
         },
       },
       {
-        formatter: function (e) {
+        formatter(e) {
           return void 0 !== e ? e.toFixed(0) : e
         },
       },
       {
-        formatter: function (e) {
+        formatter(e) {
           return void 0 !== e ? e.toFixed(0) : e
         },
       },
@@ -496,7 +496,7 @@ export const Recentupdates = [
   },
 ]
 
-//Urgent Tasks
+// Urgent Tasks
 export const UrgentTasks = [
   {
     id: '1',
@@ -560,7 +560,7 @@ export const UrgentTasks = [
   },
 ]
 
-//Recent Transactions
+// Recent Transactions
 
 export const Transactions = [
   {
@@ -621,7 +621,7 @@ export const Transactions = [
   },
 ]
 
-//Projects Summary
+// Projects Summary
 
 export const ProjectsSummary = [
   {

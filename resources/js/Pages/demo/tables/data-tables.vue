@@ -1,23 +1,24 @@
 <script setup>
+import { Head } from '@inertiajs/vue3'
 import { ref } from 'vue'
-import { headers, items } from '@/shared/data/datatables.js'
 import Pageheader from '@/components/pageheader/pageheader.vue'
 import SimpleCard from '@/shared/@spk/simple-card.vue'
-import { Head } from '@inertiajs/vue3'
+import { headers, items } from '@/shared/data/datatables.js'
+
 const dataToPass = {
   title: 'Tables',
   currentpage: 'Data tables',
   activepage: 'Data Tables',
 }
-let searchValue = ref('')
-let searchValue1 = ref('')
-let searchValue2 = ref('')
-let searchValue3 = ref('')
+const searchValue = ref('')
+const searchValue1 = ref('')
+const searchValue2 = ref('')
+const searchValue3 = ref('')
 </script>
 
 <template>
   <Head title="Data-Tables | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start::row-1 -->
   <div class="row">
@@ -25,11 +26,11 @@ let searchValue3 = ref('')
       <SimpleCard title="Basic Datatable">
         <label class="mb-3">
           <input
+            v-model="searchValue"
             type="text"
             class="form-control form-control-sm"
-            v-model="searchValue"
             placeholder="Search value"
-          />
+          >
         </label>
         <EasyDataTable
           class="table text-nowrap"
@@ -37,13 +38,13 @@ let searchValue3 = ref('')
           :items="items"
           :search-value="searchValue"
           border-cell
-          :rowsPerPage="5"
-          :rowsItems="[5, 10, 25, 50, 100]"
+          :rows-per-page="5"
+          :rows-items="[5, 10, 25, 50, 100]"
         />
       </SimpleCard>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 
   <!-- Start:: row-2 -->
   <div class="row custom-button-table">
@@ -51,11 +52,11 @@ let searchValue3 = ref('')
       <SimpleCard title="Buttons pagination">
         <label class="mb-3">
           <input
+            v-model="searchValue1"
             type="text"
             class="form-control form-control-sm"
-            v-model="searchValue1"
             placeholder="Search value"
-          />
+          >
         </label>
         <EasyDataTable
           class="table text-nowrap"
@@ -64,8 +65,8 @@ let searchValue3 = ref('')
           :items="items"
           border-cell
           buttons-pagination
-          :rowsPerPage="5"
-          :rowsItems="[5, 10, 25, 50, 100]"
+          :rows-per-page="5"
+          :rows-items="[5, 10, 25, 50, 100]"
         />
       </SimpleCard>
     </div>
@@ -78,11 +79,11 @@ let searchValue3 = ref('')
       <SimpleCard title=" Show Index">
         <label class="mb-3">
           <input
+            v-model="searchValue2"
             type="text"
             class="form-control form-control-sm"
-            v-model="searchValue2"
             placeholder="Search value"
-          />
+          >
         </label>
         <EasyDataTable
           class="table text-nowrap"
@@ -91,8 +92,8 @@ let searchValue3 = ref('')
           border-cell
           show-index
           :search-value="searchValue2"
-          :rowsPerPage="10"
-          :rowsItems="[5, 10, 25, 50, 100]"
+          :rows-per-page="10"
+          :rows-items="[5, 10, 25, 50, 100]"
         />
       </SimpleCard>
     </div>
@@ -105,11 +106,11 @@ let searchValue3 = ref('')
       <SimpleCard title="Expandable row">
         <label class="mb-3">
           <input
+            v-model="searchValue3"
             type="text"
             class="form-control form-control-sm"
-            v-model="searchValue3"
             placeholder="Search value"
-          />
+          >
         </label>
         <EasyDataTable
           class="table text-nowrap"
@@ -117,11 +118,13 @@ let searchValue3 = ref('')
           :headers="headers"
           :items="items"
           border-cell
-          :rowsPerPage="5"
-          :rowsItems="[5, 10, 25, 50, 100]"
+          :rows-per-page="5"
+          :rows-items="[5, 10, 25, 50, 100]"
         >
           <template #expand="item">
-            <div style="padding: 15px">Additional Details of {{ item.name }}</div>
+            <div style="padding: 15px">
+              Additional Details of {{ item.name }}
+            </div>
           </template>
         </EasyDataTable>
       </SimpleCard>
@@ -139,8 +142,8 @@ let searchValue3 = ref('')
             :headers="headers"
             :items="[]"
             border-cell
-            :rowsPerPage="5"
-            :rowsItems="[5, 10, 25, 50, 100]"
+            :rows-per-page="5"
+            :rows-items="[5, 10, 25, 50, 100]"
           >
             <template #empty-message>
               <a href="#!">There was nothing to Show.</a>

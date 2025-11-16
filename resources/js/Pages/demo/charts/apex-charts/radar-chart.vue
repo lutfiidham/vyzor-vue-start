@@ -1,7 +1,7 @@
 <script setup>
-import * as radarData from '@/shared/data/apexcharts/apexchart-radar'
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as radarData from '@/shared/data/apexcharts/apexchart-radar'
 
 const dataToPass = {
   title: 'Charts',
@@ -13,18 +13,20 @@ const dataToPass = {
 
 <template>
   <Head title="Radar Charts | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Basic Radar Chart</div>
+          <div class="card-title">
+            Basic Radar Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="radar-basic">
-            <apexchart
+            <Apexchart
               height="300"
               type="radar"
               :options="radarData.Radaroptions"
@@ -37,11 +39,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Radar Chart-Multiple Series</div>
+          <div class="card-title">
+            Radar Chart-Multiple Series
+          </div>
         </div>
         <div class="card-body">
           <div id="radar-multiple">
-            <apexchart
+            <Apexchart
               height="300"
               type="radar"
               :options="radarData.Multioptions"
@@ -54,11 +58,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Radar Chart Polygon Fill</div>
+          <div class="card-title">
+            Radar Chart Polygon Fill
+          </div>
         </div>
         <div class="card-body">
           <div id="radar-polygon">
-            <apexchart
+            <Apexchart
               height="300"
               type="radar"
               :options="radarData.Polygonoptions"
@@ -69,7 +75,7 @@ const dataToPass = {
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

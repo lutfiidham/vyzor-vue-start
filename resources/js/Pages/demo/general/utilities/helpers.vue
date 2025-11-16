@@ -1,7 +1,8 @@
 <script setup>
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+
 const dataToPass = {
   title: 'Utilities',
   currentpage: 'Helpers',
@@ -11,40 +12,66 @@ const dataToPass = {
 
 <template>
   <Head title="Helpers | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Colors With backgrounds</div>
+          <div class="card-title">
+            Colors With backgrounds
+          </div>
         </div>
         <div class="card-body">
-          <div class="text-bg-primary p-3">Primary with contrasting color</div>
-          <div class="text-bg-secondary p-3">Secondary with contrasting color</div>
-          <div class="text-bg-success p-3">Success with contrasting color</div>
-          <div class="text-bg-danger p-3">Danger with contrasting color</div>
-          <div class="text-bg-warning p-3">Warning with contrasting color</div>
-          <div class="text-bg-info p-3">Info with contrasting color</div>
-          <div class="text-bg-light p-3 text-default">Light with contrasting color</div>
-          <div class="text-bg-dark p-3 text-white">Dark with contrasting color</div>
+          <div class="text-bg-primary p-3">
+            Primary with contrasting color
+          </div>
+          <div class="text-bg-secondary p-3">
+            Secondary with contrasting color
+          </div>
+          <div class="text-bg-success p-3">
+            Success with contrasting color
+          </div>
+          <div class="text-bg-danger p-3">
+            Danger with contrasting color
+          </div>
+          <div class="text-bg-warning p-3">
+            Warning with contrasting color
+          </div>
+          <div class="text-bg-info p-3">
+            Info with contrasting color
+          </div>
+          <div class="text-bg-light p-3 text-default">
+            Light with contrasting color
+          </div>
+          <div class="text-bg-dark p-3 text-white">
+            Dark with contrasting color
+          </div>
         </div>
       </div>
     </div>
     <div class="col-xxl-9 col-xl-9 col-lg-6 col-md-6 col-sm-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">With Other Components</div>
+          <div class="card-title">
+            With Other Components
+          </div>
         </div>
         <div class="card-body">
-          <h6 class="fw-medium mb-3">Badges:</h6>
+          <h6 class="fw-medium mb-3">
+            Badges:
+          </h6>
           <span class="badge text-bg-primary me-1">Primary</span>
           <span class="badge text-bg-info mb-4">Info</span>
-          <h6 class="fw-medium mb-3">cards:</h6>
+          <h6 class="fw-medium mb-3">
+            cards:
+          </h6>
           <div class="card text-bg-success mb-3" style="max-width: 18rem">
             <div class="card-header border-bottom-0">
-              <div class="card-title text-fixed-white">Header</div>
+              <div class="card-title text-fixed-white">
+                Header
+              </div>
             </div>
             <div class="card-body pt-0">
               <p class="card-text text-fixed-white">
@@ -55,7 +82,9 @@ const dataToPass = {
           </div>
           <div class="card text-bg-danger mb-3" style="max-width: 18rem">
             <div class="card-header border-bottom-0">
-              <div class="card-title text-fixed-white">Header</div>
+              <div class="card-title text-fixed-white">
+                Header
+              </div>
             </div>
             <div class="card-body pt-0">
               <p class="card-text text-fixed-white">
@@ -70,7 +99,9 @@ const dataToPass = {
     <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Card With Stretched Links</div>
+          <div class="card-title">
+            Card With Stretched Links
+          </div>
         </div>
         <div class="card-body">
           <BaseImg
@@ -79,15 +110,16 @@ const dataToPass = {
             alt="..."
           />
           <div class="card-body pb-0">
-            <h5 class="card-title">Card with stretched links</h5>
+            <h5 class="card-title">
+              Card with stretched links
+            </h5>
             <p class="card-text">
               <a
                 href="javascript:void(0);"
                 class="stretched-link text-danger"
                 style="position: relative"
-                >Stretched link will not work here, because <code>position: relative</code> is added
-                to the link</a
-              >
+              >Stretched link will not work here, because <code>position: relative</code> is added
+                to the link</a>
             </p>
             <p class="card-text bg-light mb-0 p-1 rounded" style="transform: rotate(0)">
               This
@@ -106,7 +138,9 @@ const dataToPass = {
     <div class="col-xxl-12 col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Clearfix</div>
+          <div class="card-title">
+            Clearfix
+          </div>
         </div>
         <div class="card-body">
           <div class="bg-light clearfix">
@@ -123,7 +157,9 @@ const dataToPass = {
     <div class="col-xxl-12 col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Colored links</div>
+          <div class="card-title">
+            Colored links
+          </div>
         </div>
         <div class="card-body">
           <div class="d-flex justify-content-evenly flex-wrap">
@@ -147,7 +183,9 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Ratio</div>
+          <div class="card-title">
+            Ratio
+          </div>
         </div>
         <div class="card-body">
           <div class="ratio ratio-16x9">
@@ -159,7 +197,7 @@ const dataToPass = {
               style="border: 0px"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
-            ></iframe>
+            />
           </div>
         </div>
       </div>
@@ -169,20 +207,30 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Aspect ratios</div>
+              <div class="card-title">
+                Aspect ratios
+              </div>
             </div>
             <div class="card-body bd-example-ratios">
               <div class="ratio ratio-1x1 me-1">
-                <div class="d-flex align-items-center justify-content-center">1x1</div>
+                <div class="d-flex align-items-center justify-content-center">
+                  1x1
+                </div>
               </div>
               <div class="ratio ratio-4x3 me-1">
-                <div class="d-flex align-items-center justify-content-center">4x3</div>
+                <div class="d-flex align-items-center justify-content-center">
+                  4x3
+                </div>
               </div>
               <div class="ratio ratio-16x9 me-1">
-                <div class="d-flex align-items-center justify-content-center">16x9</div>
+                <div class="d-flex align-items-center justify-content-center">
+                  16x9
+                </div>
               </div>
               <div class="ratio ratio-21x9">
-                <div class="d-flex align-items-center justify-content-center">21x9</div>
+                <div class="d-flex align-items-center justify-content-center">
+                  21x9
+                </div>
               </div>
             </div>
           </div>
@@ -190,14 +238,20 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Custom ratios</div>
+              <div class="card-title">
+                Custom ratios
+              </div>
             </div>
             <div class="card-body bd-example-ratios bd-example-ratios-breakpoint overflow-x-auto">
               <div class="ratio me-1" style="--bs-aspect-ratio: 50%">
-                <div class="d-flex align-items-center justify-content-center">2x1</div>
+                <div class="d-flex align-items-center justify-content-center">
+                  2x1
+                </div>
               </div>
               <div class="ratio ratio-4x3">
-                <div class="d-flex align-items-center justify-content-center">4x3, then 2x1</div>
+                <div class="d-flex align-items-center justify-content-center">
+                  4x3, then 2x1
+                </div>
               </div>
             </div>
           </div>
@@ -212,13 +266,21 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Vertical Stacking</div>
+          <div class="card-title">
+            Vertical Stacking
+          </div>
         </div>
         <div class="card-body">
           <div class="vstack gap-3">
-            <div class="bg-light border p-1 px-2 rounded">First item</div>
-            <div class="bg-light border p-1 px-2 rounded">Second item</div>
-            <div class="bg-light border p-1 px-2 rounded">Third item</div>
+            <div class="bg-light border p-1 px-2 rounded">
+              First item
+            </div>
+            <div class="bg-light border p-1 px-2 rounded">
+              Second item
+            </div>
+            <div class="bg-light border p-1 px-2 rounded">
+              Third item
+            </div>
           </div>
         </div>
       </div>
@@ -226,24 +288,44 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Horizontal Stacking</div>
+          <div class="card-title">
+            Horizontal Stacking
+          </div>
         </div>
         <div class="card-body">
           <div class="hstack gap-3 mb-3">
-            <div class="bg-light border p-1 px-2 rounded">First item</div>
-            <div class="bg-light border p-1 px-2 rounded">Second item</div>
-            <div class="bg-light border p-1 px-2 rounded">Third item</div>
+            <div class="bg-light border p-1 px-2 rounded">
+              First item
+            </div>
+            <div class="bg-light border p-1 px-2 rounded">
+              Second item
+            </div>
+            <div class="bg-light border p-1 px-2 rounded">
+              Third item
+            </div>
           </div>
           <div class="hstack gap-3 mb-3">
-            <div class="bg-light border p-1 px-2 rounded">First item</div>
-            <div class="bg-light border ms-auto p-1 px-2 rounded">Second item</div>
-            <div class="bg-light border p-1 px-2 rounded">Third item</div>
+            <div class="bg-light border p-1 px-2 rounded">
+              First item
+            </div>
+            <div class="bg-light border ms-auto p-1 px-2 rounded">
+              Second item
+            </div>
+            <div class="bg-light border p-1 px-2 rounded">
+              Third item
+            </div>
           </div>
           <div class="hstack gap-3">
-            <div class="bg-light border p-1 px-2 rounded">First item</div>
-            <div class="bg-light border ms-auto p-1 px-2 rounded">Second item</div>
-            <div class="vr"></div>
-            <div class="bg-light border p-1 px-2 rounded">Third item</div>
+            <div class="bg-light border p-1 px-2 rounded">
+              First item
+            </div>
+            <div class="bg-light border ms-auto p-1 px-2 rounded">
+              Second item
+            </div>
+            <div class="vr" />
+            <div class="bg-light border p-1 px-2 rounded">
+              Third item
+            </div>
           </div>
         </div>
       </div>
@@ -256,12 +338,18 @@ const dataToPass = {
     <div class="col-xl-4">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Vstack For Buttons</div>
+          <div class="card-title">
+            Vstack For Buttons
+          </div>
         </div>
         <div class="card-body">
           <div class="vstack gap-2 col-md-5 mx-auto">
-            <button type="button" class="btn btn-primary">Save changes</button>
-            <button type="button" class="btn btn-outline-primary">Cancel</button>
+            <button type="button" class="btn btn-primary">
+              Save changes
+            </button>
+            <button type="button" class="btn btn-outline-primary">
+              Cancel
+            </button>
           </div>
         </div>
       </div>
@@ -269,7 +357,9 @@ const dataToPass = {
     <div class="col-xl-4">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Inline Form With Hstack</div>
+          <div class="card-title">
+            Inline Form With Hstack
+          </div>
         </div>
         <div class="card-body">
           <div class="hstack gap-3 flex-wrap flex-xl-nowrap">
@@ -278,10 +368,14 @@ const dataToPass = {
               type="text"
               placeholder="Add your item here..."
               aria-label="Add your item here..."
-            />
-            <button type="button" class="btn btn-primary">Submit</button>
-            <div class="vr"></div>
-            <button type="button" class="btn btn-outline-danger">Reset</button>
+            >
+            <button type="button" class="btn btn-primary">
+              Submit
+            </button>
+            <div class="vr" />
+            <button type="button" class="btn btn-outline-danger">
+              Reset
+            </button>
           </div>
         </div>
       </div>
@@ -289,7 +383,9 @@ const dataToPass = {
     <div class="col-xl-4">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Text Truncation</div>
+          <div class="card-title">
+            Text Truncation
+          </div>
         </div>
         <div class="card-body">
           <div class="row">
@@ -312,7 +408,9 @@ const dataToPass = {
     <div class="col-xl-4">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">CUSTOM FOCUS RING</div>
+          <div class="card-title">
+            CUSTOM FOCUS RING
+          </div>
         </div>
         <div class="card-body">
           <a
@@ -327,7 +425,9 @@ const dataToPass = {
     <div class="col-xl-4">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">CSS VARIABLE FOCUS RING</div>
+          <div class="card-title">
+            CSS VARIABLE FOCUS RING
+          </div>
         </div>
         <div class="card-body">
           <a
@@ -343,7 +443,9 @@ const dataToPass = {
     <div class="col-xl-4">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">BLURRY OFFSET FOCUS RING</div>
+          <div class="card-title">
+            BLURRY OFFSET FOCUS RING
+          </div>
         </div>
         <div class="card-body p-4">
           <a
@@ -359,64 +461,58 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">FOCUS RING UTILITIES</div>
+          <div class="card-title">
+            FOCUS RING UTILITIES
+          </div>
         </div>
         <div class="card-body">
           <p>
             <a
               href="javascript:void(0)"
               class="d-inline-flex focus-ring focus-ring-primary py-1 px-2 text-decoration-none border rounded-2"
-              >Primary focus</a
-            >
+            >Primary focus</a>
           </p>
           <p>
             <a
               href="javascript:void(0)"
               class="d-inline-flex focus-ring focus-ring-secondary py-1 px-2 text-decoration-none border rounded-2"
-              >Secondary focus</a
-            >
+            >Secondary focus</a>
           </p>
           <p>
             <a
               href="javascript:void(0)"
               class="d-inline-flex focus-ring focus-ring-success py-1 px-2 text-decoration-none border rounded-2"
-              >Success focus</a
-            >
+            >Success focus</a>
           </p>
           <p>
             <a
               href="javascript:void(0)"
               class="d-inline-flex focus-ring focus-ring-danger py-1 px-2 text-decoration-none border rounded-2"
-              >Danger focus</a
-            >
+            >Danger focus</a>
           </p>
           <p>
             <a
               href="javascript:void(0)"
               class="d-inline-flex focus-ring focus-ring-warning py-1 px-2 text-decoration-none border rounded-2"
-              >Warning focus</a
-            >
+            >Warning focus</a>
           </p>
           <p>
             <a
               href="javascript:void(0)"
               class="d-inline-flex focus-ring focus-ring-info py-1 px-2 text-decoration-none border rounded-2"
-              >Info focus</a
-            >
+            >Info focus</a>
           </p>
           <p>
             <a
               href="javascript:void(0)"
               class="d-inline-flex focus-ring focus-ring-light py-1 px-2 text-decoration-none border rounded-2"
-              >Light focus</a
-            >
+            >Light focus</a>
           </p>
           <p>
             <a
               href="javascript:void(0)"
               class="d-inline-flex focus-ring focus-ring-dark py-1 px-2 text-decoration-none border rounded-2"
-              >Dark focus</a
-            >
+            >Dark focus</a>
           </p>
         </div>
       </div>

@@ -7,6 +7,7 @@ defineProps({
   LinkNavigate: [String, URL],
 })
 </script>
+
 <template>
   <div class="card custom-card text-center">
     <div :class="`card-header ${Customheaderclass}`">
@@ -23,7 +24,9 @@ defineProps({
       </ul>
     </div>
     <div class="card-body">
-      <h6 class="card-title fw-medium">Special title treatment</h6>
+      <h6 class="card-title fw-medium">
+        Special title treatment
+      </h6>
       <p class="card-text">
         With supporting text below as a natural lead-in to additional content.
       </p>

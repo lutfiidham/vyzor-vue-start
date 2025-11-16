@@ -1,21 +1,21 @@
-export let avatars = {
-    script: `
+export const avatars = {
+  script: `
     <span :class="avatar me-2 {idx.class}" v-for="(idx, index) in avatarData.Avatardata" :key="index">
                 <img :src="idx.src" alt="img">
             </span>`,
-    data: `
+  data: `
         Avatardata = [
         { id: 1, class: "avatar-radius-0", src: "/images/faces/1.jpg" },
         { id: 1, class: "", src: "/images/faces/2.jpg" },
         { id: 1, class: "avatar-rounded", src: "/images/faces/3.jpg" },
     ]`,
-  },
-  avatarSizes = {
-    script: `
+}
+export const avatarSizes = {
+  script: `
     <span :class="avatar avatar-{idx.class} me-2" v-for="(idx, index) in avatarData.Avatarsize" :key="index">
                 <img :src="idx.src" alt="img">
             </span>`,
-    data: `
+  data: `
          Avatarsize = [
         { id: 1, class: "xs", src: "/images/faces/4.jpg" },
         { id: 2, class: "sm", src: "/images/faces/5.jpg" },
@@ -25,15 +25,15 @@ export let avatars = {
         { id: 6, class: "xxl", src: "/images/faces/9.jpg" },
     ]
         `,
-  },
-  avatarWithIcons = {
-    script: `
+}
+export const avatarWithIcons = {
+  script: `
     <span :class="avatar avatar-{idx.class} me-2 avatar-rounded" v-for="(idx, index) in avatarData.Avataricon" :key="index">
                 <img :src="idx.src" alt="img">
                 <a href="javascript:void(0);" :class="badge bg-{idx.class1} rounded-pill avatar-badge"><i :class="fe fe-{idx.icon}"></i></a>
             </span>`,
 
-    data: `
+  data: `
          Avataricon = [
         { id: 1, class: "xs", src: "/images/faces/2.jpg", icon: "camera", class1: "success" },
         { id: 2, class: "sm", src: "/images/faces/3.jpg", icon: "edit", class1: "secondary" },
@@ -43,13 +43,13 @@ export let avatars = {
         { id: 6, class: "xxl", src: "/images/faces/9.jpg", icon: "plus", class1: "danger" },
     ]
         `,
-  },
-  avatarWithOnlineStatusIndicators = {
-    script: `
+}
+export const avatarWithOnlineStatusIndicators = {
+  script: `
    <span :class="avatar avatar-{idx.class} me-2 online avatar-rounded" v-for="(idx, index) in avatarData.Avataronline" :key="index">
                 <img :src="idx.src" alt="img">
             </span>`,
-    data: `
+  data: `
         Avataronline = [
         { id: 1, class: "xs online", src: "/images/faces/8.jpg" },
         { id: 2, class: "sm online", src: "/images/faces/10.jpg" },
@@ -59,13 +59,13 @@ export let avatars = {
         { id: 6, class: "xxl online", src: "/images/faces/15.jpg" },
     ]
         `,
-  },
-  avatarWithOfflineStatusIndicators = {
-    script: `
+}
+export const avatarWithOfflineStatusIndicators = {
+  script: `
     <span :class="avatar avatar-{idx.class} me-2 offline avatar-rounded" v-for="(idx, index) in avatarData.Avataroffline" :key="index">
                 <img :src="idx.src" alt="img">
             </span>`,
-    data: `
+  data: `
         Avataroffline = [
         { id: 1, class: "xs offline", src: "/images/faces/2.jpg" },
         { id: 2, class: "sm offline", src: "/images/faces/3.jpg" },
@@ -75,14 +75,14 @@ export let avatars = {
         { id: 6, class: "xxl offline", src: "/images/faces/7.jpg" },
     ]
         `,
-  },
-  avatarsWithNumberBadges = {
-    script: `
+}
+export const avatarsWithNumberBadges = {
+  script: `
      <span :class="avatar avatar-{idx.class} me-2 avatar-rounded" v-for="(idx, index) in avatarData.Avatarnumber" :key="index">
                 <img :src="idx.src" alt="img">
                 <span :class="badge rounded-pill bg-{idx.class1} avatar-badge">{{idx.data}}</span>
             </span>`,
-    data: `
+  data: `
          Avatarnumber = [
         { id: 1, class: "xs", src: "/images/faces/2.jpg", icon: "camera", class1: "primary", data: '2' },
         { id: 2, class: "sm", src: "/images/faces/3.jpg", icon: "edit", class1: "secondary", data: '5' },
@@ -92,13 +92,13 @@ export let avatars = {
         { id: 6, class: "xxl", src: "/images/faces/9.jpg", icon: "plus", class1: "danger", data: '9' },
     ]
         `,
-  },
-  avatarWithInitials = {
-    script: `
+}
+export const avatarWithInitials = {
+  script: `
     <span :class="avatar avatar-{idx.data} m-2 bg-{idx.color}" v-for="(idx, index) in avatarData.Avatarinitial" :key="index">
                 {{idx.data1}}
             </span>`,
-    data: `
+  data: `
          Avatarinitial = [
         { id: 1, data: "xs", color: "primary", data1: "XS" },
         { id: 2, data: "sm", color: "secondary", data1: "SM" },
@@ -108,13 +108,13 @@ export let avatars = {
         { id: 6, data: "xxl", color: "info", data1: "XXL" },
     ]
         `,
-  },
-  stackedAvatars = {
-    script: `
+}
+export const stackedAvatars = {
+  script: `
      <span class="avatar" v-for="(idx, index) in avatarData.Avatarstack" :key="index">
                 <img :src="idx.src" alt="img">
             </span>`,
-    data: `
+  data: `
         Avatarstack = [
         { id: 1, src: "/images/faces/2.jpg" },
         { id: 2, src: "/images/faces/8.jpg" },
@@ -124,13 +124,13 @@ export let avatars = {
         { id: 6, src: "/images/faces/13.jpg" },
     ]
         `,
-  },
-  roundedStackedAvatars = {
-    script: `
+}
+export const roundedStackedAvatars = {
+  script: `
      <span class="avatar avatar-rounded" v-for="(idx, index) in avatarData.Avatarstack" :key="index">
                 <img :src="idx.src" alt="img">
             </span>`,
-    data: `
+  data: `
         Avatarstack = [
         { id: 1, src: "/images/faces/2.jpg" },
         { id: 2, src: "/images/faces/8.jpg" },
@@ -140,4 +140,4 @@ export let avatars = {
         { id: 6, src: "/images/faces/13.jpg" },
     ]
         `,
-  }
+}

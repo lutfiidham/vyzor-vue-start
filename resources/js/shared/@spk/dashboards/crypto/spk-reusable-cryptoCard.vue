@@ -5,6 +5,7 @@ defineProps({
   cryptoCards: Object,
 })
 </script>
+
 <template>
   <div v-for="(item, index) in cryptoCards" :key="index" class="col-xxl-3 col-xl-6">
     <div class="card custom-card">
@@ -16,15 +17,17 @@ defineProps({
             </span>
           </div>
           <div class="flex-fill">
-            <h5 class="fw-semibold">{{ item.value }}</h5>
+            <h5 class="fw-semibold">
+              {{ item.value }}
+            </h5>
             <div class="d-flex align-items-end justify-content-between gap-3 flex-wrap">
               <div
                 :class="`text-${item.iconColor} fw-medium fs-12 d-inline-flex align-items-center`"
               >
-                <i :class="`${item.icon} me-1 align-middle`"></i>{{ item.percent }}
+                <i :class="`${item.icon} me-1 align-middle`" />{{ item.percent }}
               </div>
               <div :id="item.id">
-                <apexchart
+                <Apexchart
                   height="20px"
                   width="100px"
                   :type="item.type"

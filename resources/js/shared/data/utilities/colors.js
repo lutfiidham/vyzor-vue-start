@@ -1,4 +1,4 @@
-//Background Colors
+// Background Colors
 
 export const bgcolor = [
   { id: 1, color: 'primary' },
@@ -11,7 +11,7 @@ export const bgcolor = [
   { id: 8, color: 'dark' },
 ]
 
-//Other Colors
+// Other Colors
 
 export const Othercolors = [
   { id: 1, data: '100' },

@@ -1,60 +1,60 @@
-export let ObjectFitContain = {
-    script: `
+export const ObjectFitContain = {
+  script: `
    <img src="/images/media/media-28.jpg" class="object-fit-contain border rounded" alt="...">`,
-  },
-  ObjectFitCover = {
-    script: `
+}
+export const ObjectFitCover = {
+  script: `
      <img src="/images/media/media-28.jpg" class="object-fit-cover border rounded" alt="...">`,
-  },
-  ObjectFitFill = {
-    script: `
+}
+export const ObjectFitFill = {
+  script: `
      <img src="/images/media/media-28.jpg" class="object-fit-fill border rounded" alt="...">`,
-  },
-  ObjectFitScaleDown = {
-    script: `
+}
+export const ObjectFitScaleDown = {
+  script: `
     <img src="/images/media/media-28.jpg" class="object-fit-scale border rounded" alt="...">`,
-  },
-  ObjectFitNone = {
-    script: `
+}
+export const ObjectFitNone = {
+  script: `
     <img src="/images/media/media-28.jpg" class="object-fit-none border rounded" alt="...">`,
-  },
-  ObjectFitContainSMResponsive = {
-    script: `
+}
+export const ObjectFitContainSMResponsive = {
+  script: `
     <img src="/images/media/media-28.jpg" class="object-fit-sm-contain border rounded" alt="...">`,
-  },
-  ObjectFitContainMDResponsive = {
-    script: `
+}
+export const ObjectFitContainMDResponsive = {
+  script: `
      <img src="/images/media/media-28.jpg" class="object-fit-md-contain border rounded" alt="...">`,
-  },
-  ObjectFitContainLGResponsive = {
-    script: `
+}
+export const ObjectFitContainLGResponsive = {
+  script: `
      <img src="/images/media/media-28.jpg" class="object-fit-lg-contain border rounded" alt="...">`,
-  },
-  ObjectFitContainXLResponsive = {
-    script: `
+}
+export const ObjectFitContainXLResponsive = {
+  script: `
      <img src="/images/media/media-28.jpg" class="object-fit-xl-contain border rounded" alt="...">`,
-  },
-  ObjectFitContainXXLResponsive = {
-    script: `
+}
+export const ObjectFitContainXXLResponsive = {
+  script: `
     <img src="/images/media/media-28.jpg" class="object-fit-xxl-contain border rounded" alt="...">`,
-  },
-  ObjectFitContainVideo = {
-    script: `
+}
+export const ObjectFitContainVideo = {
+  script: `
    <video src="@/assets/video/1.mp4" class="object-fit-contain rounded border" autoplay loop muted></video>`,
-  },
-  ObjectFitCoverVideo = {
-    script: `
+}
+export const ObjectFitCoverVideo = {
+  script: `
     <video src="@/assets/video/1.mp4" class="object-fit-cover rounded border" autoplay loop muted></video>`,
-  },
-  ObjectFitFillVideo = {
-    script: `
+}
+export const ObjectFitFillVideo = {
+  script: `
      <video src="@/assets/video/1.mp4" class="object-fit-fill rounded border" autoplay loop muted></video>`,
-  },
-  ObjectFitScaleVideo = {
-    script: `
+}
+export const ObjectFitScaleVideo = {
+  script: `
       <video src="@/assets/video/1.mp4" class="object-fit-scale rounded border" autoplay loop muted></video>`,
-  },
-  ObjectFitNoneVideo = {
-    script: `
+}
+export const ObjectFitNoneVideo = {
+  script: `
      <video src="@/assets/video/1.mp4" class="object-fit-none rounded border" autoplay loop muted></video>`,
-  }
+}

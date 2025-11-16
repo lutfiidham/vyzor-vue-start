@@ -1,7 +1,8 @@
 <script setup>
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+
 const dataToPass = {
   title: 'Advanced Ui',
   currentpage: 'Navbar',
@@ -11,13 +12,15 @@ const dataToPass = {
 
 <template>
   <Head title="Navbar | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Navbar with sub-component</div>
+          <div class="card-title">
+            Navbar with sub-component
+          </div>
         </div>
         <div class="card-body">
           <nav class="navbar navbar-expand-lg bg-light">
@@ -38,23 +41,21 @@ const dataToPass = {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" />
               </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <div id="navbarSupportedContent" class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="javascript:void(0);"
-                      >Home</a
-                    >
+                    <a class="nav-link active" aria-current="page" href="javascript:void(0);">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);">Link</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a
+                      id="navbarDropdown"
                       class="nav-link dropdown-toggle"
                       href="javascript:void(0);"
-                      id="navbarDropdown"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
@@ -66,7 +67,7 @@ const dataToPass = {
                         <a class="dropdown-item" href="javascript:void(0);">Another action</a>
                       </li>
                       <li>
-                        <hr class="dropdown-divider" />
+                        <hr class="dropdown-divider">
                       </li>
                       <li>
                         <a class="dropdown-item" href="javascript:void(0);">Something else here</a>
@@ -83,8 +84,10 @@ const dataToPass = {
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
-                  />
-                  <button class="btn btn-primary" type="submit">Search</button>
+                  >
+                  <button class="btn btn-primary" type="submit">
+                    Search
+                  </button>
                 </form>
               </div>
             </div>
@@ -100,21 +103,19 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Brand With And Without Links</div>
+          <div class="card-title">
+            Brand With And Without Links
+          </div>
         </div>
         <div class="card-body">
           <nav class="navbar bg-light mb-3">
             <div class="container-fluid">
-              <a aria-label="anchor" class="navbar-brand" href="javascript:void(0);"
-                ><BaseImg src="/images/brand-logos/toggle-logo.png" alt=""
-              /></a>
+              <a aria-label="anchor" class="navbar-brand" href="javascript:void(0);"><BaseImg src="/images/brand-logos/toggle-logo.png" alt="" /></a>
             </div>
           </nav>
           <nav class="navbar bg-light">
             <div class="container-fluid">
-              <span class="navbar-brand mb-0 h1"
-                ><BaseImg src="/images/brand-logos/toggle-logo.png" alt=""
-              /></span>
+              <span class="navbar-brand mb-0 h1"><BaseImg src="/images/brand-logos/toggle-logo.png" alt="" /></span>
             </div>
           </nav>
         </div>
@@ -128,7 +129,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Image and text</div>
+          <div class="card-title">
+            Image and text
+          </div>
         </div>
         <div class="card-body">
           <nav class="navbar bg-light">
@@ -154,14 +157,14 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Nav with lists, links and dropdowns</div>
+          <div class="card-title">
+            Nav with lists, links and dropdowns
+          </div>
         </div>
         <div class="card-body">
           <nav class="navbar navbar-expand-lg bg-light mb-3">
             <div class="container-fluid">
-              <a aria-label="anchor" class="navbar-brand" href="javascript:void(0);"
-                ><BaseImg src="/images/brand-logos/toggle-logo.png" alt=""
-              /></a>
+              <a aria-label="anchor" class="navbar-brand" href="javascript:void(0);"><BaseImg src="/images/brand-logos/toggle-logo.png" alt="" /></a>
               <button
                 class="navbar-toggler"
                 type="button"
@@ -171,14 +174,12 @@ const dataToPass = {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" />
               </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
+              <div id="navbarNav" class="collapse navbar-collapse">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="javascript:void(0);"
-                      >Home</a
-                    >
+                    <a class="nav-link active" aria-current="page" href="javascript:void(0);">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);">Features</a>
@@ -195,9 +196,7 @@ const dataToPass = {
           </nav>
           <nav class="navbar navbar-expand-lg bg-light mb-3">
             <div class="container-fluid">
-              <a aria-label="anchor" class="navbar-brand" href="javascript:void(0);"
-                ><BaseImg src="/images/brand-logos/toggle-logo.png" alt=""
-              /></a>
+              <a aria-label="anchor" class="navbar-brand" href="javascript:void(0);"><BaseImg src="/images/brand-logos/toggle-logo.png" alt="" /></a>
               <button
                 class="navbar-toggler"
                 type="button"
@@ -207,9 +206,9 @@ const dataToPass = {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" />
               </button>
-              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div id="navbarNavAltMarkup" class="collapse navbar-collapse">
                 <div class="navbar-nav">
                   <a class="nav-link active" aria-current="page" href="javascript:void(0);">Home</a>
                   <a class="nav-link" href="javascript:void(0);">Features</a>
@@ -221,9 +220,7 @@ const dataToPass = {
           </nav>
           <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
-              <a aria-label="anchor" class="navbar-brand" href="javascript:void(0);"
-                ><BaseImg src="/images/brand-logos/toggle-logo.png" alt=""
-              /></a>
+              <a aria-label="anchor" class="navbar-brand" href="javascript:void(0);"><BaseImg src="/images/brand-logos/toggle-logo.png" alt="" /></a>
               <button
                 class="navbar-toggler"
                 type="button"
@@ -233,14 +230,12 @@ const dataToPass = {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" />
               </button>
-              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <div id="navbarNavDropdown" class="collapse navbar-collapse">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="javascript:void(0);"
-                      >Home</a
-                    >
+                    <a class="nav-link active" aria-current="page" href="javascript:void(0);">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);">Features</a>
@@ -250,9 +245,9 @@ const dataToPass = {
                   </li>
                   <li class="nav-item dropdown">
                     <a
+                      id="navbarDropdownMenuLink"
                       class="nav-link dropdown-toggle"
                       href="javascript:void(0);"
-                      id="navbarDropdownMenuLink"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
@@ -283,7 +278,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Forms In Navbar</div>
+          <div class="card-title">
+            Forms In Navbar
+          </div>
         </div>
         <div class="card-body">
           <nav class="navbar bg-light mb-3">
@@ -294,39 +291,43 @@ const dataToPass = {
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
-                />
-                <button class="btn btn-primary" type="submit">Search</button>
+                >
+                <button class="btn btn-primary" type="submit">
+                  Search
+                </button>
               </form>
             </div>
           </nav>
           <nav class="navbar bg-light mb-3">
             <div class="container-fluid">
-              <a aria-label="anchor" class="navbar-brand"
-                ><BaseImg src="/images/brand-logos/toggle-logo.png" alt=""
-              /></a>
+              <a aria-label="anchor" class="navbar-brand"><BaseImg src="/images/brand-logos/toggle-logo.png" alt="" /></a>
               <form class="d-flex" role="search">
                 <input
                   class="form-control me-2"
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
-                />
-                <button class="btn btn-primary" type="submit">Search</button>
+                >
+                <button class="btn btn-primary" type="submit">
+                  Search
+                </button>
               </form>
             </div>
           </nav>
-          <h6 class="mb-3 fw-medium">Input groups in navbar forms</h6>
+          <h6 class="mb-3 fw-medium">
+            Input groups in navbar forms
+          </h6>
           <nav class="navbar bg-light mb-3">
             <div class="container-fluid">
               <div class="input-group">
-                <span class="input-group-text" id="basic-addon1">@</span>
+                <span id="basic-addon1" class="input-group-text">@</span>
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Username"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
-                />
+                >
               </div>
             </div>
           </nav>
@@ -335,7 +336,9 @@ const dataToPass = {
           </h6>
           <nav class="navbar bg-light">
             <form class="container-fluid justify-content-start">
-              <button class="btn btn-primary m-1" type="submit">Main button</button>
+              <button class="btn btn-primary m-1" type="submit">
+                Main button
+              </button>
               <button class="btn btn-sm btn-outline-secondary m-1" type="button">
                 Smaller button
               </button>
@@ -352,7 +355,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Navbar With Text</div>
+          <div class="card-title">
+            Navbar With Text
+          </div>
         </div>
         <div class="card-body">
           <nav class="navbar bg-light mb-3">
@@ -372,14 +377,12 @@ const dataToPass = {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" />
               </button>
-              <div class="collapse navbar-collapse mt-md-0 mt-2" id="navbarText">
+              <div id="navbarText" class="collapse navbar-collapse mt-md-0 mt-2">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="javascript:void(0);"
-                      >Home</a
-                    >
+                    <a class="nav-link active" aria-current="page" href="javascript:void(0);">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);">Features</a>
@@ -403,7 +406,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Transparent Color Schemes</div>
+          <div class="card-title">
+            Transparent Color Schemes
+          </div>
         </div>
         <div class="card-body">
           <nav class="navbar navbar-expand-lg navbar-primary-transparent mb-3">
@@ -420,14 +425,12 @@ const dataToPass = {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" />
               </button>
-              <div class="collapse navbar-collapse" id="navbarColor01">
+              <div id="navbarColor01" class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="javascript:void(0);"
-                      >Home</a
-                    >
+                    <a class="nav-link active" aria-current="page" href="javascript:void(0);">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);">Features</a>
@@ -445,17 +448,17 @@ const dataToPass = {
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
-                  />
-                  <button class="btn btn-primary" type="submit">Search</button>
+                  >
+                  <button class="btn btn-primary" type="submit">
+                    Search
+                  </button>
                 </form>
               </div>
             </div>
           </nav>
           <nav class="navbar navbar-expand-lg navbar-secondary-transparent mb-3">
             <div class="container-fluid">
-              <a aria-label="anchor" class="navbar-brand" href="javascript:void(0);"
-                ><BaseImg src="/images/brand-logos/toggle-logo.png" alt=""
-              /></a>
+              <a aria-label="anchor" class="navbar-brand" href="javascript:void(0);"><BaseImg src="/images/brand-logos/toggle-logo.png" alt="" /></a>
               <button
                 class="navbar-toggler"
                 type="button"
@@ -465,14 +468,12 @@ const dataToPass = {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" />
               </button>
-              <div class="collapse navbar-collapse" id="navbarColor02">
+              <div id="navbarColor02" class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="javascript:void(0);"
-                      >Home</a
-                    >
+                    <a class="nav-link active" aria-current="page" href="javascript:void(0);">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);">Features</a>
@@ -490,17 +491,17 @@ const dataToPass = {
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
-                  />
-                  <button class="btn btn-secondary" type="submit">Search</button>
+                  >
+                  <button class="btn btn-secondary" type="submit">
+                    Search
+                  </button>
                 </form>
               </div>
             </div>
           </nav>
           <nav class="navbar navbar-expand-lg navbar-dark-transparent">
             <div class="container-fluid">
-              <a aria-label="anchor" class="navbar-brand" href="javascript:void(0);"
-                ><BaseImg src="/images/brand-logos/toggle-logo.png" alt=""
-              /></a>
+              <a aria-label="anchor" class="navbar-brand" href="javascript:void(0);"><BaseImg src="/images/brand-logos/toggle-logo.png" alt="" /></a>
               <button
                 class="navbar-toggler"
                 type="button"
@@ -510,14 +511,12 @@ const dataToPass = {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" />
               </button>
-              <div class="collapse navbar-collapse" id="navbarColor03">
+              <div id="navbarColor03" class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="javascript:void(0);"
-                      >Home</a
-                    >
+                    <a class="nav-link active" aria-current="page" href="javascript:void(0);">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);">Features</a>
@@ -535,8 +534,10 @@ const dataToPass = {
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
-                  />
-                  <button class="btn btn-dark" type="submit">Search</button>
+                  >
+                  <button class="btn btn-dark" type="submit">
+                    Search
+                  </button>
                 </form>
               </div>
             </div>
@@ -547,7 +548,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Solid Color Schemes</div>
+          <div class="card-title">
+            Solid Color Schemes
+          </div>
         </div>
         <div class="card-body">
           <nav class="navbar navbar-expand-lg navbar-primary mb-3">
@@ -564,14 +567,12 @@ const dataToPass = {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" />
               </button>
-              <div class="collapse navbar-collapse" id="navbarColor04">
+              <div id="navbarColor04" class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="javascript:void(0);"
-                      >Home</a
-                    >
+                    <a class="nav-link active" aria-current="page" href="javascript:void(0);">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);">Features</a>
@@ -589,17 +590,17 @@ const dataToPass = {
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
-                  />
-                  <button class="btn btn-light" type="submit">Search</button>
+                  >
+                  <button class="btn btn-light" type="submit">
+                    Search
+                  </button>
                 </form>
               </div>
             </div>
           </nav>
           <nav class="navbar navbar-expand-lg navbar-secondary mb-3">
             <div class="container-fluid">
-              <a aria-label="anchor" class="navbar-brand" href="javascript:void(0);"
-                ><BaseImg src="/images/brand-logos/toggle-dark.png" alt=""
-              /></a>
+              <a aria-label="anchor" class="navbar-brand" href="javascript:void(0);"><BaseImg src="/images/brand-logos/toggle-dark.png" alt="" /></a>
               <button
                 class="navbar-toggler"
                 type="button"
@@ -609,14 +610,12 @@ const dataToPass = {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" />
               </button>
-              <div class="collapse navbar-collapse" id="navbarColor05">
+              <div id="navbarColor05" class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="javascript:void(0);"
-                      >Home</a
-                    >
+                    <a class="nav-link active" aria-current="page" href="javascript:void(0);">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);">Features</a>
@@ -634,17 +633,17 @@ const dataToPass = {
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
-                  />
-                  <button class="btn btn-light" type="submit">Search</button>
+                  >
+                  <button class="btn btn-light" type="submit">
+                    Search
+                  </button>
                 </form>
               </div>
             </div>
           </nav>
           <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
-              <a aria-label="anchor" class="navbar-brand" href="javascript:void(0);"
-                ><BaseImg src="/images/brand-logos/toggle-logo.png" alt=""
-              /></a>
+              <a aria-label="anchor" class="navbar-brand" href="javascript:void(0);"><BaseImg src="/images/brand-logos/toggle-logo.png" alt="" /></a>
               <button
                 class="navbar-toggler"
                 type="button"
@@ -654,14 +653,12 @@ const dataToPass = {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" />
               </button>
-              <div class="collapse navbar-collapse" id="navbarColor06">
+              <div id="navbarColor06" class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="javascript:void(0);"
-                      >Home</a
-                    >
+                    <a class="nav-link active" aria-current="page" href="javascript:void(0);">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);">Features</a>
@@ -679,8 +676,10 @@ const dataToPass = {
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
-                  />
-                  <button class="btn btn-light" type="submit">Search</button>
+                  >
+                  <button class="btn btn-light" type="submit">
+                    Search
+                  </button>
                 </form>
               </div>
             </div>
@@ -696,7 +695,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Containers</div>
+          <div class="card-title">
+            Containers
+          </div>
         </div>
         <div class="card-body">
           <h6>Too center</h6>
@@ -724,7 +725,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Placement</div>
+          <div class="card-title">
+            Placement
+          </div>
         </div>
         <div class="card-body">
           <nav class="navbar bg-light">
@@ -743,7 +746,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Placement</div>
+          <div class="card-title">
+            Placement
+          </div>
         </div>
         <div class="card-body">
           <nav class="navbar fixed-top bg-light">
@@ -762,7 +767,9 @@ const dataToPass = {
     <div class="'col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Placement</div>
+          <div class="card-title">
+            Placement
+          </div>
         </div>
         <div class="card-body">
           <nav class="navbar fixed-bottom navbar-light bg-light">
@@ -781,7 +788,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Placement</div>
+          <div class="card-title">
+            Placement
+          </div>
         </div>
         <div class="card-body">
           <nav class="navbar sticky-top navbar-light bg-light">
@@ -800,7 +809,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Scrolling</div>
+          <div class="card-title">
+            Scrolling
+          </div>
         </div>
         <div class="card-body">
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -815,26 +826,24 @@ const dataToPass = {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" />
               </button>
-              <div class="collapse navbar-collapse" id="navbarScroll">
+              <div id="navbarScroll" class="collapse navbar-collapse">
                 <ul
                   class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
                   style="--bs-scroll-height: 100px"
                 >
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="javascript:void(0);"
-                      >Home</a
-                    >
+                    <a class="nav-link active" aria-current="page" href="javascript:void(0);">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);">Link</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a
+                      id="navbarScrollingDropdown"
                       class="nav-link dropdown-toggle"
                       href="javascript:void(0);"
-                      id="navbarScrollingDropdown"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
@@ -846,7 +855,7 @@ const dataToPass = {
                         <a class="dropdown-item" href="javascript:void(0);">Another action</a>
                       </li>
                       <li>
-                        <hr class="dropdown-divider" />
+                        <hr class="dropdown-divider">
                       </li>
                       <li>
                         <a class="dropdown-item" href="javascript:void(0);">Something else here</a>
@@ -859,8 +868,7 @@ const dataToPass = {
                       href="javascript:void(0);"
                       tabindex="-1"
                       aria-disabled="false"
-                      >Link</a
-                    >
+                    >Link</a>
                   </li>
                 </ul>
                 <form class="d-flex mt-3">
@@ -869,8 +877,10 @@ const dataToPass = {
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
-                  />
-                  <button class="btn btn-primary" type="submit">Search</button>
+                  >
+                  <button class="btn btn-primary" type="submit">
+                    Search
+                  </button>
                 </form>
               </div>
             </div>
@@ -886,7 +896,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Responsive behaviors Toggler</div>
+          <div class="card-title">
+            Responsive behaviors Toggler
+          </div>
         </div>
         <div class="card-body">
           <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
@@ -900,15 +912,13 @@ const dataToPass = {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" />
               </button>
-              <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+              <div id="navbarTogglerDemo01" class="collapse navbar-collapse">
                 <a class="navbar-brand text-default" href="javascript:void(0);">Hidden brand</a>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="javascript:void(0);"
-                      >Home</a
-                    >
+                    <a class="nav-link active" aria-current="page" href="javascript:void(0);">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);">Link</a>
@@ -919,8 +929,7 @@ const dataToPass = {
                       href="javascript:void(0);"
                       tabindex="-1"
                       aria-disabled="false"
-                      >Disabled</a
-                    >
+                    >Disabled</a>
                   </li>
                 </ul>
                 <form class="d-flex">
@@ -929,8 +938,10 @@ const dataToPass = {
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
-                  />
-                  <button class="btn btn-primary" type="submit">Search</button>
+                  >
+                  <button class="btn btn-primary" type="submit">
+                    Search
+                  </button>
                 </form>
               </div>
             </div>
@@ -948,14 +959,12 @@ const dataToPass = {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" />
               </button>
-              <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+              <div id="navbarTogglerDemo02" class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="javascript:void(0);"
-                      >Home</a
-                    >
+                    <a class="nav-link active" aria-current="page" href="javascript:void(0);">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);">Link</a>
@@ -966,8 +975,7 @@ const dataToPass = {
                       href="javascript:void(0);"
                       tabindex="-1"
                       aria-disabled="false"
-                      >Disabled</a
-                    >
+                    >Disabled</a>
                   </li>
                 </ul>
                 <form class="d-flex">
@@ -976,8 +984,10 @@ const dataToPass = {
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
-                  />
-                  <button class="btn btn-primary" type="submit">Search</button>
+                  >
+                  <button class="btn btn-primary" type="submit">
+                    Search
+                  </button>
                 </form>
               </div>
             </div>
@@ -994,15 +1004,13 @@ const dataToPass = {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" />
               </button>
               <a class="navbar-brand text-default" href="javascript:void(0);">Navbar</a>
-              <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+              <div id="navbarTogglerDemo03" class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="javascript:void(0);"
-                      >Home</a
-                    >
+                    <a class="nav-link active" aria-current="page" href="javascript:void(0);">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);">Link</a>
@@ -1013,8 +1021,7 @@ const dataToPass = {
                       href="javascript:void(0);"
                       tabindex="-1"
                       aria-disabled="false"
-                      >Disabled</a
-                    >
+                    >Disabled</a>
                   </li>
                 </ul>
                 <form class="d-flex">
@@ -1023,8 +1030,10 @@ const dataToPass = {
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
-                  />
-                  <button class="btn btn-primary" type="submit">Search</button>
+                  >
+                  <button class="btn btn-primary" type="submit">
+                    Search
+                  </button>
                 </form>
               </div>
             </div>
@@ -1040,12 +1049,16 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">External content</div>
+          <div class="card-title">
+            External content
+          </div>
         </div>
         <div class="card-body">
-          <div class="collapse" id="navbarToggleExternalContent">
+          <div id="navbarToggleExternalContent" class="collapse">
             <div class="bg-dark p-4">
-              <h5 class="text-white h4">Collapsed content</h5>
+              <h5 class="text-white h4">
+                Collapsed content
+              </h5>
               <span class="text-white op-7">Toggleable via the navbar brand.</span>
             </div>
           </div>
@@ -1060,7 +1073,7 @@ const dataToPass = {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" />
               </button>
             </div>
           </nav>
@@ -1075,7 +1088,9 @@ const dataToPass = {
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Offcanvas</div>
+          <div class="card-title">
+            Offcanvas
+          </div>
         </div>
         <div class="card-body">
           <nav class="navbar bg-light">
@@ -1089,38 +1104,38 @@ const dataToPass = {
                 data-bs-target="#offcanvasNavbar"
                 aria-controls="offcanvasNavbar"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" />
               </button>
               <div
+                id="offcanvasNavbar"
                 class="offcanvas offcanvas-end"
                 tabindex="-1"
-                id="offcanvasNavbar"
                 aria-labelledby="offcanvasNavbarLabel"
               >
                 <div class="offcanvas-header">
-                  <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                  <h5 id="offcanvasNavbarLabel" class="offcanvas-title">
+                    Offcanvas
+                  </h5>
                   <button
                     type="button"
                     class="btn-close"
                     data-bs-dismiss="offcanvas"
                     aria-label="Close"
-                  ></button>
+                  />
                 </div>
                 <div class="offcanvas-body">
                   <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="javascript:void(0);"
-                        >Home</a
-                      >
+                      <a class="nav-link active" aria-current="page" href="javascript:void(0);">Home</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="javascript:void(0);">Link</a>
                     </li>
                     <li class="nav-item dropdown mb-3">
                       <a
+                        id="offcanvasNavbarDropdown"
                         class="nav-link dropdown-toggle"
                         href="javascript:void(0);"
-                        id="offcanvasNavbarDropdown"
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
@@ -1132,12 +1147,10 @@ const dataToPass = {
                           <a class="dropdown-item" href="javascript:void(0);">Another action</a>
                         </li>
                         <li>
-                          <hr class="dropdown-divider" />
+                          <hr class="dropdown-divider">
                         </li>
                         <li>
-                          <a class="dropdown-item" href="javascript:void(0);"
-                            >Something else here</a
-                          >
+                          <a class="dropdown-item" href="javascript:void(0);">Something else here</a>
                         </li>
                       </ul>
                     </li>
@@ -1148,8 +1161,10 @@ const dataToPass = {
                       type="search"
                       placeholder="Search"
                       aria-label="Search"
-                    />
-                    <button class="btn btn-primary" type="submit">Search</button>
+                    >
+                    <button class="btn btn-primary" type="submit">
+                      Search
+                    </button>
                   </form>
                 </div>
               </div>

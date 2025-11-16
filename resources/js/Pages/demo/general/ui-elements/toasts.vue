@@ -1,12 +1,12 @@
 <script setup>
-import { onMounted, ref } from 'vue'
-import * as prism from '@/shared/data/prismCode/ui-elements/toasts'
-import { toast } from 'vue3-toastify'
-import 'vue3-toastify/dist/index.css'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
 import { Head } from '@inertiajs/vue3'
+import { onMounted, ref } from 'vue'
+import { toast } from 'vue3-toastify'
 import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as prism from '@/shared/data/prismCode/ui-elements/toasts'
+import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
+import 'vue3-toastify/dist/index.css'
 // Reactive state
 const dataToPass = {
   title: 'Ui Elements',
@@ -33,7 +33,7 @@ function toster(
   position,
   delay = 1000,
   closeOnClick = false,
-  newestOnTop = false
+  newestOnTop = false,
 ) {
   toast.success(String(text), {
     theme: theme || 'auto',
@@ -58,7 +58,7 @@ function successToast(
   hideProgressBar,
   transition,
   autoclose,
-  position
+  position,
 ) {
   toast.success(String(text), {
     theme: theme || 'auto',
@@ -79,7 +79,7 @@ function infoToast(
   hideProgressBar,
   transition,
   autoclose,
-  position
+  position,
 ) {
   toast.info(String(text), {
     theme: theme || 'auto',
@@ -100,7 +100,7 @@ function warningToast(
   hideProgressBar,
   transition,
   autoclose,
-  position
+  position,
 ) {
   toast.warning(String(text), {
     theme: theme || 'auto',
@@ -121,7 +121,7 @@ function errorToast(
   hideProgressBar,
   transition,
   autoclose,
-  position
+  position,
 ) {
   toast.error(String(text), {
     theme: theme || 'auto',
@@ -150,16 +150,16 @@ function showliveToast(event) {
 
 <template>
   <Head title="Toast | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xl-12">
       <ShowcodeCard title="Live example" :code="prism.LiveExample">
         <button
+          id="liveToastBtn"
           type="button"
           class="btn btn-primary btn-wave"
-          id="liveToastBtn"
           @click="showliveToast"
         >
           Show live toast
@@ -179,9 +179,11 @@ function showliveToast(event) {
                 class="btn-close"
                 data-bs-dismiss="toast"
                 aria-label="Close"
-              ></button>
+              />
             </div>
-            <div class="toast-body">Hello, world! This is a toast message.</div>
+            <div class="toast-body">
+              Hello, world! This is a toast message.
+            </div>
           </div>
         </div>
       </ShowcodeCard>
@@ -193,13 +195,15 @@ function showliveToast(event) {
           aria-atomic="true"
         >
           <div class="d-flex">
-            <div class="toast-body">Hello, world! This is the Primary toast message.</div>
+            <div class="toast-body">
+              Hello, world! This is the Primary toast message.
+            </div>
             <button
               type="button"
               class="btn-close btn-close-white me-2 m-auto"
               data-bs-dismiss="toast"
               aria-label="Close"
-            ></button>
+            />
           </div>
         </div>
         <div
@@ -209,13 +213,15 @@ function showliveToast(event) {
           aria-atomic="true"
         >
           <div class="d-flex">
-            <div class="toast-body">Hello, world! This is the Secondary toast.</div>
+            <div class="toast-body">
+              Hello, world! This is the Secondary toast.
+            </div>
             <button
               type="button"
               class="btn-close btn-close-white me-2 m-auto"
               data-bs-dismiss="toast"
               aria-label="Close"
-            ></button>
+            />
           </div>
         </div>
         <div
@@ -225,13 +231,15 @@ function showliveToast(event) {
           aria-atomic="true"
         >
           <div class="d-flex">
-            <div class="toast-body">Hello, world! This is the Success toast message.</div>
+            <div class="toast-body">
+              Hello, world! This is the Success toast message.
+            </div>
             <button
               type="button"
               class="btn-close btn-close-white me-2 m-auto"
               data-bs-dismiss="toast"
               aria-label="Close"
-            ></button>
+            />
           </div>
         </div>
         <div
@@ -241,13 +249,15 @@ function showliveToast(event) {
           aria-atomic="true"
         >
           <div class="d-flex">
-            <div class="toast-body">Hello, world! This is the info toast message.</div>
+            <div class="toast-body">
+              Hello, world! This is the info toast message.
+            </div>
             <button
               type="button"
               class="btn-close btn-close-white me-2 m-auto"
               data-bs-dismiss="toast"
               aria-label="Close"
-            ></button>
+            />
           </div>
         </div>
       </ShowcodeCard>
@@ -269,9 +279,11 @@ function showliveToast(event) {
               class="btn-close"
               data-bs-dismiss="toast"
               aria-label="Close"
-            ></button>
+            />
           </div>
-          <div class="toast-body">Hello, world! This is a toast message.</div>
+          <div class="toast-body">
+            Hello, world! This is a toast message.
+          </div>
         </div>
       </ShowcodeCard>
       <ShowcodeCard title="Stacking" :code="prism.Stacking">
@@ -291,9 +303,11 @@ function showliveToast(event) {
                 class="btn-close"
                 data-bs-dismiss="toast"
                 aria-label="Close"
-              ></button>
+              />
             </div>
-            <div class="toast-body">See? Just like this.</div>
+            <div class="toast-body">
+              See? Just like this.
+            </div>
           </div>
           <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header text-default">
@@ -310,9 +324,11 @@ function showliveToast(event) {
                 class="btn-close"
                 data-bs-dismiss="toast"
                 aria-label="Close"
-              ></button>
+              />
             </div>
-            <div class="toast-body">Heads up, toasts will stack automatically</div>
+            <div class="toast-body">
+              Heads up, toasts will stack automatically
+            </div>
           </div>
         </div>
       </ShowcodeCard>
@@ -334,9 +350,11 @@ function showliveToast(event) {
               class="btn-close"
               data-bs-dismiss="toast"
               aria-label="Close"
-            ></button>
+            />
           </div>
-          <div class="toast-body">Hello, world! This is a toast message.</div>
+          <div class="toast-body">
+            Hello, world! This is a toast message.
+          </div>
         </div>
       </ShowcodeCard>
       <ShowcodeCard title=" Custom content" :code="prism.CustomContent">
@@ -347,13 +365,15 @@ function showliveToast(event) {
           aria-atomic="true"
         >
           <div class="d-flex">
-            <div class="toast-body">Hello, world! This is a toast message.</div>
+            <div class="toast-body">
+              Hello, world! This is a toast message.
+            </div>
             <button
               type="button"
               class="btn-close me-2 m-auto"
               data-bs-dismiss="toast"
               aria-label="Close"
-            ></button>
+            />
           </div>
         </div>
         <div>
@@ -389,86 +409,86 @@ function showliveToast(event) {
       <ShowcodeCard title="Toast Variants" :code="prism.ToastVariants">
         <div class="btn-list">
           <button
-            v-on:click="
+            id="successToastBtn"
+            type="button"
+            class="btn btn-success-light me-2 btn-wave"
+            @click="
               successToast(
-                `<img class='bd-placeholder-img rounded me-2 toast-logo-img' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt='...'/>` +
-                  '<strong class=\' me-auto\'>Vyzor</strong>' +
-                  '<div class=\'toast-body\'>Your toast message here.</div>',
+                `<img class='bd-placeholder-img rounded me-2 toast-logo-img' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt='...'/>`
+                  + '<strong class=\' me-auto\'>Vyzor</strong>'
+                  + '<div class=\'toast-body\'>Your toast message here.</div>',
                 true,
                 'auto',
                 true,
                 true,
                 'bounce',
                 1000,
-                'top-right'
+                'top-right',
               )
             "
-            type="button"
-            class="btn btn-success-light me-2 btn-wave"
-            id="successToastBtn"
           >
             success
           </button>
           <button
-            v-on:click="
+            id="warningToastBtn"
+            type="button"
+            class="btn btn-warning-light me-2 btn-wave"
+            @click="
               warningToast(
-                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>` +
-                  '<strong class=\' me-auto\'>Vyzor</strong>' +
-                  '<div class=\'toast-body\'>Your toast message here.</div>',
+                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>`
+                  + '<strong class=\' me-auto\'>Vyzor</strong>'
+                  + '<div class=\'toast-body\'>Your toast message here.</div>',
                 true,
                 'auto',
                 true,
                 true,
                 'bounce',
                 1000,
-                'top-right'
+                'top-right',
               )
             "
-            type="button"
-            class="btn btn-warning-light me-2 btn-wave"
-            id="warningToastBtn"
           >
             warning
           </button>
           <button
-            v-on:click="
+            id="infoToastBtn"
+            type="button"
+            class="btn btn-info-light me-2 btn-wave"
+            @click="
               infoToast(
-                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>` +
-                  '<strong class=\' me-auto\'>Vyzor</strong>' +
-                  '<div class=\'toast-body\'>Your toast message here.</div>',
+                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>`
+                  + '<strong class=\' me-auto\'>Vyzor</strong>'
+                  + '<div class=\'toast-body\'>Your toast message here.</div>',
                 true,
                 'auto',
                 true,
                 true,
                 'bounce',
                 1000,
-                'top-right'
+                'top-right',
               )
             "
-            type="button"
-            class="btn btn-info-light me-2 btn-wave"
-            id="infoToastBtn"
           >
             info
           </button>
           <button
-            v-on:click="
+            id="dangerToastBtn"
+            type="button"
+            class="btn btn-danger-light me-2 btn-wave"
+            @click="
               errorToast(
-                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>` +
-                  '<strong class=\' me-auto\'>Vyzor</strong>' +
-                  '<div class=\'toast-body\'>Your toast message here.</div>',
+                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>`
+                  + '<strong class=\' me-auto\'>Vyzor</strong>'
+                  + '<div class=\'toast-body\'>Your toast message here.</div>',
                 true,
                 'auto',
                 true,
                 true,
                 'bounce',
                 1000,
-                'top-right'
+                'top-right',
               )
             "
-            type="button"
-            class="btn btn-danger-light me-2 btn-wave"
-            id="dangerToastBtn"
           >
             danger
           </button>
@@ -479,11 +499,14 @@ function showliveToast(event) {
       <ShowcodeCard title="Toast Options" :code="prism.ToastOptions">
         <div class="btn-list">
           <button
-            v-on:click="
+            id="solidsecondaryToastBtn"
+            type="button"
+            class="btn btn-secondary me-2 btn-wave"
+            @click="
               toster(
-                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>` +
-                  '<strong class=\' me-auto\'>Vyzor</strong>' +
-                  '<div class=\'toast-body\'>Your toast message here.</div>',
+                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>`
+                  + '<strong class=\' me-auto\'>Vyzor</strong>'
+                  + '<div class=\'toast-body\'>Your toast message here.</div>',
                 true,
                 'auto',
                 false,
@@ -493,21 +516,21 @@ function showliveToast(event) {
                 'top-right',
                 0,
                 false,
-                true
+                true,
               )
             "
-            type="button"
-            class="btn btn-secondary me-2 btn-wave"
-            id="solidsecondaryToastBtn"
           >
             Newest on Top
           </button>
           <button
-            v-on:click="
+            id="solidwarningToastBtn"
+            type="button"
+            class="btn btn-warning me-2 btn-wave"
+            @click="
               toster(
-                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>` +
-                  '<strong class=\' me-auto\'>Vyzor</strong>' +
-                  '<div class=\'toast-body\'>Your toast message here.</div>',
+                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>`
+                  + '<strong class=\' me-auto\'>Vyzor</strong>'
+                  + '<div class=\'toast-body\'>Your toast message here.</div>',
                 true,
                 'auto',
                 true,
@@ -517,21 +540,21 @@ function showliveToast(event) {
                 'top-right',
                 3000,
                 false,
-                false
+                false,
               )
             "
-            type="button"
-            class="btn btn-warning me-2 btn-wave"
-            id="solidwarningToastBtn"
           >
             Delay
           </button>
           <button
-            v-on:click="
+            id="solidinfoToastBtn"
+            type="button"
+            class="btn btn-info me-2 btn-wave"
+            @click="
               toster(
-                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>` +
-                  '<strong class=\' me-auto\'>Vyzor</strong>' +
-                  '<div class=\'toast-body\'>Your toast message here.</div>',
+                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>`
+                  + '<strong class=\' me-auto\'>Vyzor</strong>'
+                  + '<div class=\'toast-body\'>Your toast message here.</div>',
                 true,
                 'auto',
                 false,
@@ -541,54 +564,51 @@ function showliveToast(event) {
                 'top-right',
                 0,
                 true,
-                false
+                false,
               )
             "
-            type="button"
-            class="btn btn-info me-2 btn-wave"
-            id="solidinfoToastBtn"
           >
             Close on Click
           </button>
           <button
-            v-on:click="
+            id="solidsuccessToastBtn"
+            type="button"
+            class="btn btn-success me-2 btn-wave"
+            @click="
               toster(
-                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>` +
-                  '<strong class=\' me-auto\'>Vyzor</strong>' +
-                  '<div class=\'toast-body\'>Your toast message here.</div>',
+                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>`
+                  + '<strong class=\' me-auto\'>Vyzor</strong>'
+                  + '<div class=\'toast-body\'>Your toast message here.</div>',
                 true,
                 'auto',
                 false,
                 true,
                 'bounce',
                 1000,
-                'top-right'
+                'top-right',
               )
             "
-            type="button"
-            class="btn btn-success me-2 btn-wave"
-            id="solidsuccessToastBtn"
           >
             Disable Auto Close
           </button>
           <button
-            v-on:click="
+            id="middlerightToastBtn"
+            type="button"
+            class="btn btn-outline-primary me-2 btn-wave"
+            @click="
               toster(
-                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>` +
-                  '<strong class=\' me-auto\'>Vyzor</strong>' +
-                  '<div class=\'toast-body\'>Your toast message here.</div>',
+                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>`
+                  + '<strong class=\' me-auto\'>Vyzor</strong>'
+                  + '<div class=\'toast-body\'>Your toast message here.</div>',
                 true,
                 'auto',
                 true,
                 false,
                 'zoom',
                 1000,
-                'top-right'
+                'top-right',
               )
             "
-            type="button"
-            class="btn btn-outline-primary me-2 btn-wave"
-            id="middlerightToastBtn"
           >
             Show ProgressBar
           </button>
@@ -604,191 +624,191 @@ function showliveToast(event) {
       <ShowcodeCard title="Toast Placements" :code="prism.ToastPlacements">
         <div class="btn-list">
           <button
-            v-on:click="
+            id="topleftToastBtn"
+            type="button"
+            class="btn btn-outline-primary me-2 btn-wave"
+            @click="
               toster(
-                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>` +
-                  '<strong class=\' me-auto\'>Vyzor</strong>' +
-                  '<div class=\'toast-body\'>Your toast message here.</div>',
+                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>`
+                  + '<strong class=\' me-auto\'>Vyzor</strong>'
+                  + '<div class=\'toast-body\'>Your toast message here.</div>',
                 true,
                 'auto',
                 false,
                 true,
                 'bounce',
                 1000,
-                'top-left'
+                'top-left',
               )
             "
-            type="button"
-            class="btn btn-outline-primary me-2 btn-wave"
-            id="topleftToastBtn"
           >
             Top Left
           </button>
           <button
-            v-on:click="
+            id="topcenterToastBtn"
+            type="button"
+            class="btn btn-outline-primary me-2 btn-wave"
+            @click="
               toster(
-                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>` +
-                  '<strong class=\' me-auto\'>Vyzor</strong>' +
-                  '<div class=\'toast-body\'>Your toast message here.</div>',
+                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>`
+                  + '<strong class=\' me-auto\'>Vyzor</strong>'
+                  + '<div class=\'toast-body\'>Your toast message here.</div>',
                 true,
                 'auto',
                 false,
                 true,
                 'bounce',
                 1000,
-                'top-center'
+                'top-center',
               )
             "
-            type="button"
-            class="btn btn-outline-primary me-2 btn-wave"
-            id="topcenterToastBtn"
           >
             Top Center
           </button>
           <button
-            v-on:click="
+            id="toprightToastBtn"
+            type="button"
+            class="btn btn-outline-primary me-2 btn-wave"
+            @click="
               toster(
-                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>` +
-                  '<strong class=\' me-auto\'>Vyzor</strong>' +
-                  '<div class=\'toast-body\'>Your toast message here.</div>',
+                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>`
+                  + '<strong class=\' me-auto\'>Vyzor</strong>'
+                  + '<div class=\'toast-body\'>Your toast message here.</div>',
                 true,
                 'auto',
                 false,
                 true,
                 'bounce',
                 1000,
-                'top-right'
+                'top-right',
               )
             "
-            type="button"
-            class="btn btn-outline-primary me-2 btn-wave"
-            id="toprightToastBtn"
           >
             Top Right
           </button>
           <button
-            v-on:click="
+            id="bottomleftToastBtn"
+            type="button"
+            class="btn btn-outline-primary me-2 btn-wave"
+            @click="
               toster(
-                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>` +
-                  '<strong class=\' me-auto\'>Vyzor</strong>' +
-                  '<div class=\'toast-body\'>Your toast message here.</div>',
+                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>`
+                  + '<strong class=\' me-auto\'>Vyzor</strong>'
+                  + '<div class=\'toast-body\'>Your toast message here.</div>',
                 true,
                 'auto',
                 false,
                 true,
                 'bounce',
                 1000,
-                'bottom-left'
+                'bottom-left',
               )
             "
-            type="button"
-            class="btn btn-outline-primary me-2 btn-wave"
-            id="bottomleftToastBtn"
           >
             Bottom Left
           </button>
           <button
-            v-on:click="
+            id="bottomcenterToastBtn"
+            type="button"
+            class="btn btn-outline-primary me-2 btn-wave"
+            @click="
               toster(
-                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>` +
-                  '<strong class=\' me-auto\'>Vyzor</strong>' +
-                  '<div class=\'toast-body\'>Your toast message here.</div>',
+                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>`
+                  + '<strong class=\' me-auto\'>Vyzor</strong>'
+                  + '<div class=\'toast-body\'>Your toast message here.</div>',
                 true,
                 'auto',
                 false,
                 true,
                 'bounce',
                 1000,
-                'bottom-center'
+                'bottom-center',
               )
             "
-            type="button"
-            class="btn btn-outline-primary me-2 btn-wave"
-            id="bottomcenterToastBtn"
           >
             Bottom Center
           </button>
           <button
-            v-on:click="
+            id="bottomrightToastBtn"
+            type="button"
+            class="btn btn-outline-primary me-2 btn-wave"
+            @click="
               toster(
-                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>` +
-                  '<strong class=\' me-auto\'>Vyzor</strong>' +
-                  '<div class=\'toast-body\'>Your toast message here.</div>',
+                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>`
+                  + '<strong class=\' me-auto\'>Vyzor</strong>'
+                  + '<div class=\'toast-body\'>Your toast message here.</div>',
                 true,
                 'auto',
                 false,
                 true,
                 'bounce',
                 1000,
-                'bottom-right'
+                'bottom-right',
               )
             "
-            type="button"
-            class="btn btn-outline-primary me-2 btn-wave"
-            id="bottomrightToastBtn"
           >
             Bottom Right
           </button>
           <button
-            v-on:click="
+            id="middleleftToastBtn"
+            type="button"
+            class="btn btn-outline-primary me-2 btn-wave"
+            @click="
               toster(
-                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>` +
-                  '<strong class=\' me-auto\'>Vyzor</strong>' +
-                  '<div class=\'toast-body\'>Your toast message here.</div>',
+                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>`
+                  + '<strong class=\' me-auto\'>Vyzor</strong>'
+                  + '<div class=\'toast-body\'>Your toast message here.</div>',
                 true,
                 'auto',
                 false,
                 true,
                 'flip',
                 1000,
-                'top-right'
+                'top-right',
               )
             "
-            type="button"
-            class="btn btn-outline-primary me-2 btn-wave"
-            id="middleleftToastBtn"
           >
             Flip Animation
           </button>
           <button
-            v-on:click="
+            id="middlecenterToastBtn"
+            type="button"
+            class="btn btn-outline-primary me-2 btn-wave"
+            @click="
               toster(
-                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>` +
-                  '<strong class=\' me-auto\'>Vyzor</strong>' +
-                  '<div class=\'toast-body\'>Your toast message here.</div>',
+                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>`
+                  + '<strong class=\' me-auto\'>Vyzor</strong>'
+                  + '<div class=\'toast-body\'>Your toast message here.</div>',
                 true,
                 'auto',
                 false,
                 true,
                 'slide',
                 1000,
-                'top-right'
+                'top-right',
               )
             "
-            type="button"
-            class="btn btn-outline-primary me-2 btn-wave"
-            id="middlecenterToastBtn"
           >
             Slide Animation
           </button>
           <button
-            v-on:click="
+            id="middlerightToastBtn"
+            type="button"
+            class="btn btn-outline-primary me-2 btn-wave"
+            @click="
               toster(
-                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>` +
-                  '<strong class=\' me-auto\'>Vyzor</strong>' +
-                  '<div class=\'toast-body\'>Your toast message here.</div>',
+                `<img class=\' bd-placeholder-img rounded me-2 toast-logo-img \' src='${BASE_URL}/images/brand-logos/toggle-logo.png' alt=\'...\'/>`
+                  + '<strong class=\' me-auto\'>Vyzor</strong>'
+                  + '<div class=\'toast-body\'>Your toast message here.</div>',
                 true,
                 'auto',
                 false,
                 true,
                 'zoom',
                 1000,
-                'top-right'
+                'top-right',
               )
             "
-            type="button"
-            class="btn btn-outline-primary me-2 btn-wave"
-            id="middlerightToastBtn"
           >
             Zoom Animation
           </button>

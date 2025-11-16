@@ -1,8 +1,9 @@
 <script setup>
+import { Head } from '@inertiajs/vue3'
 import { startOfQuarter } from 'date-fns'
 import { ref } from 'vue'
 import Pageheader from '@/components/pageheader/pageheader.vue'
-import { Head } from '@inertiajs/vue3'
+
 const picked = ref(new Date())
 const picked2 = ref(new Date())
 const lowerpicked = new Date(picked2.value)
@@ -46,24 +47,28 @@ const dataToPass = {
 
 <template>
   <Head title="date-Time | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Basic Date picker</div>
+          <div class="card-title">
+            Basic Date picker
+          </div>
         </div>
         <div class="card-body">
           <div class="form-group">
             <div class="input-group salesDatePicker">
-              <div class="input-group-text text-muted"><i class="ri-calendar-line"></i></div>
+              <div class="input-group-text text-muted">
+                <i class="ri-calendar-line" />
+              </div>
               <Datepicker
-                class="form-control custom-date-picker custom"
-                autoApply
-                placeholder="Choose date"
                 v-model="picked"
+                class="form-control custom-date-picker custom"
+                auto-apply
+                placeholder="Choose date"
               />
             </div>
           </div>
@@ -73,18 +78,22 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Lower Limit Date</div>
+          <div class="card-title">
+            Lower Limit Date
+          </div>
         </div>
         <div class="card-body">
           <div class="form-group">
             <div class="input-group flex-nowrap input-group-custom">
-              <div class="input-group-text text-muted"><i class="ri-calendar-line"></i></div>
+              <div class="input-group-text text-muted">
+                <i class="ri-calendar-line" />
+              </div>
               <Datepicker
-                class="form-control custom-date-picker custom"
-                autoApply
-                placeholder="Choose date"
-                :lowerLimit="picked"
                 v-model="picked2"
+                class="form-control custom-date-picker custom"
+                auto-apply
+                placeholder="Choose date"
+                :lower-limit="picked"
               />
             </div>
           </div>
@@ -94,18 +103,22 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Upper Limit picker</div>
+          <div class="card-title">
+            Upper Limit picker
+          </div>
         </div>
         <div class="card-body">
           <div class="form-group">
             <div class="input-group flex-nowrap input-group-custom">
-              <div class="input-group-text text-muted"><i class="ri-calendar-line"></i></div>
+              <div class="input-group-text text-muted">
+                <i class="ri-calendar-line" />
+              </div>
               <Datepicker
-                class="form-control custom-date-picker custom"
-                autoApply
-                placeholder="Choose date"
-                :upperLimit="picked1"
                 v-model="picked3"
+                class="form-control custom-date-picker custom"
+                auto-apply
+                placeholder="Choose date"
+                :upper-limit="picked1"
               />
             </div>
           </div>
@@ -115,18 +128,22 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">input Format dates</div>
+          <div class="card-title">
+            input Format dates
+          </div>
         </div>
         <div class="card-body">
           <div class="form-group">
             <div class="input-group flex-nowrap input-group-custom">
-              <div class="input-group-text text-muted"><i class="ri-calendar-line"></i></div>
+              <div class="input-group-text text-muted">
+                <i class="ri-calendar-line" />
+              </div>
               <Datepicker
-                class="form-control custom-date-picker custom"
-                autoApply
-                placeholder="Choose date"
                 v-model="picked4"
-                inputFormat="dd-MM-yyyy"
+                class="form-control custom-date-picker custom"
+                auto-apply
+                placeholder="Choose date"
+                input-format="dd-MM-yyyy"
               />
             </div>
           </div>
@@ -141,17 +158,21 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Basic Date and Time picker</div>
+          <div class="card-title">
+            Basic Date and Time picker
+          </div>
         </div>
         <div class="card-body">
           <div class="form-group">
             <div class="input-group input-group-custom">
-              <div class="input-group-text text-muted"><i class="ri-calendar-line"></i></div>
+              <div class="input-group-text text-muted">
+                <i class="ri-calendar-line" />
+              </div>
               <Datepicker
-                autoApply
+                v-model="picked5"
+                auto-apply
                 placeholder="Date Time"
                 class="form-control datepicker-here custom-date-picker"
-                v-model="picked5"
                 time-picker-inline
               />
             </div>
@@ -162,17 +183,21 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Range Picker</div>
+          <div class="card-title">
+            Range Picker
+          </div>
         </div>
         <div class="card-body">
           <div class="form-group">
             <div class="input-group input-group-custom">
-              <div class="input-group-text text-muted"><i class="ri-calendar-line"></i></div>
+              <div class="input-group-text text-muted">
+                <i class="ri-calendar-line" />
+              </div>
               <Datepicker
+                v-model="date"
                 placeholder="Date Time"
                 class="form-control datepicker-here custom-date-picker custom"
-                autoApply
-                v-model="date"
+                auto-apply
                 range
               />
             </div>
@@ -183,18 +208,22 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Time Picker</div>
+          <div class="card-title">
+            Time Picker
+          </div>
         </div>
         <div class="card-body">
           <div class="form-group">
             <div class="input-group input-group-custom">
-              <div class="input-group-text text-muted"><i class="ri-calendar-line"></i></div>
+              <div class="input-group-text text-muted">
+                <i class="ri-calendar-line" />
+              </div>
               <Datepicker
+                v-model="time"
                 placeholder="Date Time"
                 class="form-control datepicker-here custom-date-picker"
-                autoApply
+                auto-apply
                 time-picker
-                v-model="time"
               />
             </div>
           </div>
@@ -204,17 +233,21 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Month Picker</div>
+          <div class="card-title">
+            Month Picker
+          </div>
         </div>
         <div class="card-body">
           <div class="form-group">
             <div class="input-group input-group-custom">
-              <div class="input-group-text text-muted"><i class="ri-calendar-line"></i></div>
+              <div class="input-group-text text-muted">
+                <i class="ri-calendar-line" />
+              </div>
               <Datepicker
+                v-model="month"
                 placeholder="Date Time"
                 class="form-control datepicker-here custom-date-picker"
-                autoApply
-                v-model="month"
+                auto-apply
                 month-picker
               />
             </div>
@@ -232,15 +265,19 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Quarter Picker</div>
+              <div class="card-title">
+                Quarter Picker
+              </div>
             </div>
             <div class="card-body">
               <div class="form-group mb-0">
                 <div class="input-group input-group-custom">
-                  <div class="input-group-text text-muted"><i class="ri-calendar-line"></i></div>
+                  <div class="input-group-text text-muted">
+                    <i class="ri-calendar-line" />
+                  </div>
                   <Datepicker
                     v-model="quarter"
-                    autoApply
+                    auto-apply
                     class="form-control custom-date-picker"
                     quarter-picker
                   />
@@ -252,17 +289,21 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Multi Calendars</div>
+              <div class="card-title">
+                Multi Calendars
+              </div>
             </div>
             <div class="card-body">
               <div class="form-group mb-0">
                 <div class="input-group input-group-custom">
-                  <div class="input-group-text text-muted"><i class="ri-calendar-line"></i></div>
+                  <div class="input-group-text text-muted">
+                    <i class="ri-calendar-line" />
+                  </div>
                   <Datepicker
                     v-model="date1"
                     range
                     multi-calendars
-                    autoApply
+                    auto-apply
                     class="form-control custom-date-picker custom"
                   />
                 </div>
@@ -275,16 +316,19 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Inline Calendar</div>
+          <div class="card-title">
+            Inline Calendar
+          </div>
         </div>
         <div class="card-body">
           <div class="form-group overflow-auto">
-            <Datepicker class="datepicker-here" inline autoApply v-model="inlinedate">
+            <Datepicker v-model="inlinedate" class="datepicker-here" inline auto-apply>
               <template #input-icon>
                 <div class="input-group-text text-muted">
-                  <i class="ri-calendar-line"></i>
-                </div> </template
-            ></Datepicker>
+                  <i class="ri-calendar-line" />
+                </div>
+              </template>
+            </Datepicker>
           </div>
         </div>
       </div>

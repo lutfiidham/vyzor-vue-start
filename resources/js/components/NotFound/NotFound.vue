@@ -15,9 +15,11 @@ import BaseImg from '../Baseimage/BaseImg.vue'
             <BaseImg src="/images/media/backgrounds/11.png" alt="" class="w-sm-auto w-100 h-100" />
           </div>
           <span class="d-block fs-4 text-primary fw-semibold">Oops! Something Went Wrong</span>
-          <p class="error-text mb-0">404</p>
+          <p class="error-text mb-0">
+            404
+          </p>
           <p class="fs-5 fw-normal mb-0">
-            There was an issue with the page. Try again <br />
+            There was an issue with the page. Try again <br>
             later or contact support.
           </p>
         </div>

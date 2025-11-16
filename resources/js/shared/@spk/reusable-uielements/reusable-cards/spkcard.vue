@@ -39,8 +39,8 @@ defineProps({
 
 <template>
   <div :class="`card custom-card ${cardClass}`">
-    <BaseImg :src="imgSrcA" alt="" :class="imgClassA" v-if="imgSrcA" />
-    <a href="javascript:void(0);" class="card-anchor" v-if="linkTag"></a>
+    <BaseImg v-if="imgSrcA" :src="imgSrcA" alt="" :class="imgClassA" />
+    <a v-if="linkTag" href="javascript:void(0);" class="card-anchor" />
     <template v-if="singleImg === 'top'">
       <a href="javascript:void(0);" class="p-3 pb-0 rounded-5">
         <BaseImg :src="imgSingleSrc" alt="" class="rounded-2 card-img-top" />
@@ -61,27 +61,31 @@ defineProps({
         </div>
       </template>
     </template>
-    <BaseImg :src="imgSrc" alt="" v-if="imgSrc" :class="imgClass" />
+    <BaseImg v-if="imgSrc" :src="imgSrc" alt="" :class="imgClass" />
     <template v-if="bodyText">
       <div :class="`card-body ${bodyClass}`">
-        <h6 :class="`card-title ${titleClass}`" v-if="title">{{ title }}</h6>
-        <p class="card-subtitle mb-3 text-muted" v-if="subTitle">{{ subTitle }}</p>
+        <h6 v-if="title" :class="`card-title ${titleClass}`">
+          {{ title }}
+        </h6>
+        <p v-if="subTitle" class="card-subtitle mb-3 text-muted">
+          {{ subTitle }}
+        </p>
         <slot name="bodyText" />
       </div>
     </template>
-    <slot name="outBodyText"></slot>
-    <BaseImg :src="imgSrcB" alt="" :class="imgClassB" v-if="imgSrcB" />
+    <slot name="outBodyText" />
+    <BaseImg v-if="imgSrcB" :src="imgSrcB" alt="" :class="imgClassB" />
     <template v-if="footer">
       <div :class="`card-footer ${cardFooter}`">
         <template v-if="typeof footer === 'string'">
-          <span v-html="footer"></span>
+          <span v-html="footer" />
         </template>
         <template v-else>
           <slot name="footer" />
         </template>
       </div>
     </template>
-    <BaseImg :src="imgSrcC" alt="" v-if="imgSrcC" :class="imgClassC" />
+    <BaseImg v-if="imgSrcC" :src="imgSrcC" alt="" :class="imgClassC" />
     <template v-if="singleImg == 'bottom'">
       <a href="javascript:void(0);" class="p-3 pt-0 rounded-5">
         <BaseImg :src="imgSingleSrc" alt="" class="rounded-2 card-img-bottom" />

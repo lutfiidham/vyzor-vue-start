@@ -1,9 +1,10 @@
 <script setup>
-import * as Pricingdata from '@/shared/data/pages/pricingdata'
+import { Head } from '@inertiajs/vue3'
 import Pageheader from '@/components/pageheader/pageheader.vue'
 import SpkBasicpricecard from '@/shared/@spk/pages/pricing/spk-basicpricecard.vue'
 import SpkPricecard from '@/shared/@spk/pages/pricing/spk-pricecard.vue'
-import { Head } from '@inertiajs/vue3'
+import * as Pricingdata from '@/shared/data/pages/pricingdata'
+
 const dataToPass = {
   title: 'Pages',
   currentpage: 'Pricing',
@@ -13,15 +14,15 @@ const dataToPass = {
 
 <template>
   <Head title="Pricing | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start:: row-1 -->
   <div class="row d-flex justify-content-center mb-5">
     <div class="pricing-heading-section text-center mb-5">
       <span class="badge bg-primary-transparent rounded-pill"> Pricing Plans </span>
-      <h2 class="fw-semibold mt-2">Choose the Right Plan for Your Needs</h2>
-      <span class="d-block text-muted fs-16 mb-3"
-        >Choose a plan that fits your needs with scalable features and great value.</span
-      >
+      <h2 class="fw-semibold mt-2">
+        Choose the Right Plan for Your Needs
+      </h2>
+      <span class="d-block text-muted fs-16 mb-3">Choose a plan that fits your needs with scalable features and great value.</span>
       <div class="tab-style-1 border p-1 bg-white rounded-pill d-inline-block">
         <ul class="nav nav-pills" role="tablist">
           <li class="nav-item" role="presentation">
@@ -54,23 +55,23 @@ const dataToPass = {
     </div>
     <div class="col-xl-9">
       <div class="tab-content">
-        <div class="tab-pane show active p-0 border-0" id="pricing-monthly" role="tabpanel">
+        <div id="pricing-monthly" class="tab-pane show active p-0 border-0" role="tabpanel">
           <div class="row">
             <div
-              class="col-xxl-4 col-xl-12"
               v-for="(idx, index) in Pricingdata.PricingData"
               :key="index"
+              class="col-xxl-4 col-xl-12"
             >
               <SpkPricecard :card="idx" />
             </div>
           </div>
         </div>
-        <div class="tab-pane p-0 border-0" id="pricing-yearly" role="tabpanel">
+        <div id="pricing-yearly" class="tab-pane p-0 border-0" role="tabpanel">
           <div class="row">
             <div
-              class="col-xxl-4 col-xl-12"
               v-for="(idx, index) in Pricingdata.YearData"
               :key="index"
+              class="col-xxl-4 col-xl-12"
             >
               <SpkPricecard :card="idx" />
             </div>
@@ -85,10 +86,10 @@ const dataToPass = {
   <div class="row d-flex justify-content-center">
     <div class="pricing-heading-section text-center mb-5">
       <span class="badge bg-primary-transparent rounded-pill"> Our Pricing </span>
-      <h2 class="fw-semibold mt-2">Choose the Plan That Fits Your Needs</h2>
-      <span class="d-block text-muted fs-16 mb-3"
-        >Select the right fit and enjoy seamless access to all features.</span
-      >
+      <h2 class="fw-semibold mt-2">
+        Choose the Plan That Fits Your Needs
+      </h2>
+      <span class="d-block text-muted fs-16 mb-3">Select the right fit and enjoy seamless access to all features.</span>
       <div class="tab-style-1 border bg-white rounded-0 d-inline-block">
         <ul class="nav nav-pills" role="tablist">
           <li class="nav-item" role="presentation">
@@ -121,23 +122,23 @@ const dataToPass = {
     </div>
     <div class="col-xl-9">
       <div class="tab-content">
-        <div class="tab-pane show active p-0 border-0" id="pricing1-monthly" role="tabpanel">
+        <div id="pricing1-monthly" class="tab-pane show active p-0 border-0" role="tabpanel">
           <div class="row">
             <div
-              class="col-xxl-4"
               v-for="(idx, index) in Pricingdata.BasicPricingdata"
               :key="index"
+              class="col-xxl-4"
             >
               <SpkBasicpricecard :card="idx" />
             </div>
           </div>
         </div>
-        <div class="tab-pane p-0 border-0" id="pricing1-yearly" role="tabpanel">
+        <div id="pricing1-yearly" class="tab-pane p-0 border-0" role="tabpanel">
           <div class="row">
             <div
-              class="col-xxl-4"
               v-for="(idx, index) in Pricingdata.BasicPricing1data"
               :key="index"
+              class="col-xxl-4"
             >
               <SpkBasicpricecard :card="idx" />
             </div>

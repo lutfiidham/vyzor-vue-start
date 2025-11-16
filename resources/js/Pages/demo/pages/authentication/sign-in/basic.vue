@@ -1,13 +1,14 @@
 <script setup>
+import { Head, Link, router } from '@inertiajs/vue3'
 import { onBeforeUnmount, onMounted, reactive, ref } from 'vue'
 import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head, Link, router } from '@inertiajs/vue3'
 import authlayout from '@/layouts/authlayout.vue'
-const baseUrl = __BASE_PATH__
 
 defineOptions({
   layout: authlayout,
 })
+
+const baseUrl = __BASE_PATH__
 
 const values = reactive({
   email: 'tomphillip21@gmail.com',
@@ -17,22 +18,24 @@ const values = reactive({
 
 const errors = reactive({})
 
-const validate = () => {
+function validate() {
   const newErrors = {}
 
   if (!values.email) {
     newErrors.email = 'Email is required.'
-  } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+  }
+  else if (!/\S[^\s@]*@\S+\.\S+/.test(values.email)) {
     newErrors.email = 'Invalid email format.'
   }
 
   if (!values.password) {
     newErrors.password = 'Password is required.'
-  } else if (values.password.length < 6) {
+  }
+  else if (values.password.length < 6) {
     newErrors.password = 'Password must be at least 6 characters.'
   }
 
-  Object.keys(errors).forEach((key) => delete errors[key]) // Clear previous errors
+  Object.keys(errors).forEach(key => delete errors[key]) // Clear previous errors
   Object.assign(errors, newErrors) // Apply new errors
 
   return Object.keys(newErrors).length === 0
@@ -40,22 +43,23 @@ const validate = () => {
 
 const matched = ref('')
 
-const handleSubmit = () => {
+function handleSubmit() {
   if (validate()) {
     matched.value = 'Save Password successful'
     router.visit(`${baseUrl}/demo/dashboards/sales/`)
   }
 }
 
-const togglePassword = () => {
+function togglePassword() {
   values.showPassword = !values.showPassword
 }
 
-const setBodyClass = (action) => {
+function setBodyClass(action) {
   if (action === 'add') {
     document.body.classList.add('authentication-background')
     document.body.style.display = 'block'
-  } else {
+  }
+  else {
     document.body.classList.remove('authentication-background')
     document.body.style.display = 'none'
   }
@@ -65,7 +69,8 @@ onMounted(() => {
   // Check if the user has visited before
   if (localStorage.getItem('visited') === 'true') {
     setBodyClass('add')
-  } else {
+  }
+  else {
     setBodyClass('add')
     localStorage.setItem('visited', 'true')
   }
@@ -110,20 +115,24 @@ onMounted(() => {
                 </Link>
               </div>
               <div>
-                <h4 class="mb-1 fw-semibold">Hi,Welcome back!</h4>
-                <p class="mb-4 text-muted fw-normal">Please enter your credentials</p>
+                <h4 class="mb-1 fw-semibold">
+                  Hi,Welcome back!
+                </h4>
+                <p class="mb-4 text-muted fw-normal">
+                  Please enter your credentials
+                </p>
               </div>
               <form @submit.prevent="handleSubmit">
                 <div class="row gy-3">
                   <Col :xl="12">
                     <Label for="signin-email" class="text-default">Email</Label>
                     <input
+                      id="signup-firstname"
+                      v-model="values.email"
                       type="email"
                       class="form-control"
-                      id="signup-firstname"
                       placeholder="Enter Email ID"
-                      v-model="values.email"
-                    />
+                    >
                     <p v-if="errors.email" class="text-danger text-sm mt-1 mb-0">
                       {{ errors.email }}
                     </p>
@@ -133,49 +142,54 @@ onMounted(() => {
                     <Label for="signin-password" class="text-default d-block">Password</Label>
                     <div class="position-relative">
                       <input
+                        id="signup-password"
+                        v-model="values.password"
                         :type="values.showPassword ? 'text' : 'password'"
                         class="form-control"
-                        id="signup-password"
                         placeholder="Password"
-                        v-model="values.password"
-                      />
+                      >
                       <a
                         href="#!"
                         class="show-password-button text-muted"
                         @click.prevent="togglePassword"
                       >
-                        <i :class="values.showPassword ? 'ri-eye-line' : 'ri-eye-off-line'"></i>
+                        <i :class="values.showPassword ? 'ri-eye-line' : 'ri-eye-off-line'" />
                       </a>
 
                       <p v-if="errors.password" class="text-danger text-sm mt-1 mb-0">
                         {{ errors.password }}
                       </p>
-                      <p v-if="matched" class="text-success text-sm">{{ matched }}</p>
+                      <p v-if="matched" class="text-success text-sm">
+                        {{ matched }}
+                      </p>
                     </div>
 
                     <div class="mt-2">
                       <div class="form-check d-flex gap-2 flex-wrap">
                         <input
+                          id="defaultCheck1"
                           class="form-check-input"
                           type="checkbox"
-                          id="defaultCheck1"
                           checked
-                        />
+                        >
                         <label class="form-check-label flex-grow-1" for="defaultCheck1">
                           Remember me
                         </label>
                         <Link
                           :href="`${baseUrl}/demo/pages/authentication/reset-password/basic/`"
                           class="float-end link-danger fw-medium fs-12"
-                          >Forget password ?</Link
                         >
+                          Forget password ?
+                        </Link>
                       </div>
                     </div>
                   </Col>
                 </div>
 
                 <div class="d-grid mt-3">
-                  <button type="submit" class="btn btn-primary">Sign In</button>
+                  <button type="submit" class="btn btn-primary">
+                    Sign In
+                  </button>
                 </div>
               </form>
               <div class="text-center my-3 authentication-barrier">
@@ -201,9 +215,9 @@ onMounted(() => {
               </div>
               <div class="text-center mt-3 fw-medium">
                 Dont have an account?
-                <Link :href="`${baseUrl}/demo/pages/authentication/sign-up/basic`" class="text-primary"
-                  >Sign Up</Link
-                >
+                <Link :href="`${baseUrl}/demo/pages/authentication/sign-up/basic`" class="text-primary">
+                  Sign Up
+                </Link>
               </div>
             </div>
           </div>

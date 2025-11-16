@@ -22,7 +22,7 @@ defineProps({
         </div>
         <div class="ms-auto">
           <div id="bitcoin-chart">
-            <apexchart
+            <Apexchart
               height="40px"
               width="150px"
               type="bar"
@@ -34,12 +34,20 @@ defineProps({
       </div>
       <div class="d-flex align-items-end">
         <div>
-          <p class="mb-1">{{ item.subtitle }}</p>
-          <p class="fs-20 mb-0 fw-medium lh-1 text-primary">{{ item.price }}</p>
+          <p class="mb-1">
+            {{ item.subtitle }}
+          </p>
+          <p class="fs-20 mb-0 fw-medium lh-1 text-primary">
+            {{ item.price }}
+          </p>
         </div>
         <div class="ms-auto text-end">
-          <p class="mb-0">{{ item.value }}</p>
-          <p class="mb-0 text-muted"><span class="text-muted">Vol:</span>{{ item.percent }}</p>
+          <p class="mb-0">
+            {{ item.value }}
+          </p>
+          <p class="mb-0 text-muted">
+            <span class="text-muted">Vol:</span>{{ item.percent }}
+          </p>
         </div>
       </div>
     </div>
@@ -59,9 +67,7 @@ defineProps({
         <a href="javascript:void(0);" class="list-group-item">
           <div class="d-flex w-100 justify-content-between align-items-center">
             <p class="mb-0 font-weight-semibold text-dark">
-              Market Rank<span v-if="item.badge" class="badge bg-secondary-transparent ms-3"
-                >3 Years</span
-              >
+              Market Rank<span v-if="item.badge" class="badge bg-secondary-transparent ms-3">3 Years</span>
             </p>
             <p class="text-dark mb-0 fs-15">
               <span class="numberfont">{{ item.rank }}</span>

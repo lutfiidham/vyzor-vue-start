@@ -1,15 +1,15 @@
-export let BorderSpinner = {
-    script: `
+export const BorderSpinner = {
+  script: `
     <div class="spinner-border" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>`,
-  },
-  Colors = {
-    script: `
+}
+export const Colors = {
+  script: `
     <div :class="spinner-border text-{idx.color}" role="status" v-for="(idx, index) in spinnerData.Colorspinner" :key="index">
                 <span class="visually-hidden">Loading...</span>
             </div>`,
-    data: `
+  data: `
          Colorspinner = [
 	{ id: 1, color: "primary" },
 	{ id: 5, color: "secondary" },
@@ -20,19 +20,19 @@ export let BorderSpinner = {
 	{ id: 10, color: "light" },
 	{ id: 11, color: "dark" }
 ]`,
-  },
-  GrowingSpinner = {
-    script: `
+}
+export const GrowingSpinner = {
+  script: `
     <div class="spinner-grow" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>`,
-  },
-  GrowingSpinner1 = {
-    script: `
+}
+export const GrowingSpinner1 = {
+  script: `
      <div :class="spinner-grow text-{idx.color}" role="status" v-for="(idx, index) in spinnerData.Colorspinner" :key="index">
                 <span class="visually-hidden">Loading...</span>
             </div>`,
-    data: `
+  data: `
             Colorspinner = [
        { id: 1, color: "primary" },
        { id: 5, color: "secondary" },
@@ -43,9 +43,9 @@ export let BorderSpinner = {
        { id: 10, color: "light" },
        { id: 11, color: "dark" }
    ]`,
-  },
-  AlignmentFlex = {
-    script: `
+}
+export const AlignmentFlex = {
+  script: `
     <div class="d-flex justify-content-center mb-4">
                     <div class="spinner-border" role="status">
                         <span class="visually-hidden">Loading...</span>
@@ -55,9 +55,9 @@ export let BorderSpinner = {
                     <strong>Loading...</strong>
                     <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
                 </div>`,
-  },
-  AlignmentFloat = {
-    script: `
+}
+export const AlignmentFloat = {
+  script: `
     <div class="clearfix mb-4">
                     <div class="spinner-border float-end" role="status">
                         <span class="visually-hidden">Loading...</span>
@@ -68,17 +68,17 @@ export let BorderSpinner = {
                         <span class="visually-hidden">Loading...</span>
                     </div>
                 </div>`,
-  },
-  AlignmentTextCenter = {
-    script: `
+}
+export const AlignmentTextCenter = {
+  script: `
     <div class="text-center">
                 <div class="spinner-border" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>`,
-  },
-  SpinnerSizes = {
-    script: `
+}
+export const SpinnerSizes = {
+  script: `
    <div class="spinner-border spinner-border-sm me-4" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
@@ -91,15 +91,15 @@ export let BorderSpinner = {
                 <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>`,
-  },
-  AlignmentMargin = {
-    script: `
+}
+export const AlignmentMargin = {
+  script: `
    <div class="spinner-border m-5" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>`,
-  },
-  Buttons = {
-    script: `
+}
+export const Buttons = {
+  script: `
      <div class="btn-list">
                 <button class="btn btn-primary-light" type="button" disabled>
                     <span class="spinner-border spinner-border-sm align-middle" role="status" aria-hidden="true"></span>
@@ -118,7 +118,7 @@ export let BorderSpinner = {
                         Loading...
                     </button>
             </div>`,
-    data: `
+  data: `
         Buttonspinner = [
 	{ id: 1, color: "primary-light", class: "" },
 	{ id: 2, color: "secondary-light", class: "" },
@@ -130,4 +130,4 @@ export let BorderSpinner = {
 	{ id: 8, color: "dark", class: "text-dark" }
 ]
         `,
-  }
+}

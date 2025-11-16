@@ -1,9 +1,10 @@
 <script setup>
+import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
 import * as prism from '@/shared/data/prismCode/ui-elements/spinner'
 import * as spinnerData from '@/shared/data/ui-elements/spinner'
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
-import { Head } from '@inertiajs/vue3'
+
 const dataToPass = {
   title: 'Ui Elements',
   currentpage: 'Spinners',
@@ -13,7 +14,7 @@ const dataToPass = {
 
 <template>
   <Head title="Spinners | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
@@ -39,10 +40,10 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Colors" :code="prism.Colors">
         <div
-          :class="`spinner-border me-2 text-${idx.color}`"
-          role="status"
           v-for="(idx, index) in spinnerData.Colorspinner"
           :key="index"
+          :class="`spinner-border me-2 text-${idx.color}`"
+          role="status"
         >
           <span class="visually-hidden">Loading...</span>
         </div>
@@ -51,10 +52,10 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Growing Color spinners" :code="prism.GrowingSpinner1">
         <div
-          :class="`spinner-grow me-2 text-${idx.color}`"
-          role="status"
           v-for="(idx, index) in spinnerData.Colorspinner"
           :key="index"
+          :class="`spinner-grow me-2 text-${idx.color}`"
+          role="status"
         >
           <span class="visually-hidden">Loading...</span>
         </div>
@@ -74,7 +75,7 @@ const dataToPass = {
         </div>
         <div class="d-flex align-items-center">
           <strong>Loading...</strong>
-          <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+          <div class="spinner-border ms-auto" role="status" aria-hidden="true" />
         </div>
       </ShowcodeCard>
     </div>
@@ -107,7 +108,7 @@ const dataToPass = {
       </ShowcodeCard>
       <ShowcodeCard
         title="Spinner Sizes"
-        custom-card-body-class="d-flex 
+        custom-card-body-class="d-flex
                 align-items-center"
         :code="prism.SpinnerSizes"
       >
@@ -145,7 +146,7 @@ const dataToPass = {
               class="spinner-border spinner-border-sm align-middle"
               role="status"
               aria-hidden="true"
-            ></span>
+            />
             <span class="visually-hidden">Loading...</span>
           </button>
           <button class="btn btn-primary-light" type="button" disabled>
@@ -153,7 +154,7 @@ const dataToPass = {
               class="spinner-border spinner-border-sm align-middle"
               role="status"
               aria-hidden="true"
-            ></span>
+            />
             Loading...
           </button>
           <button class="btn btn-primary-light" type="button" disabled>
@@ -161,21 +162,21 @@ const dataToPass = {
               class="spinner-grow spinner-grow-sm align-middle"
               role="status"
               aria-hidden="true"
-            ></span>
+            />
             <span class="visually-hidden">Loading...</span>
           </button>
           <button
+            v-for="(idx, index) in spinnerData.Buttonspinner"
+            :key="index"
             :class="`btn btn-${idx.color}`"
             type="button"
             disabled
-            v-for="(idx, index) in spinnerData.Buttonspinner"
-            :key="index"
           >
             <span
               class="spinner-grow spinner-grow-sm align-middle"
               role="status"
               aria-hidden="true"
-            ></span>
+            />
             Loading...
           </button>
         </div>

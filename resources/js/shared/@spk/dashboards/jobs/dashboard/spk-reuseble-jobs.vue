@@ -1,7 +1,7 @@
 <script setup>
 import { defineAsyncComponent } from 'vue'
 import BaseImg from '../../../../../components/Baseimage/BaseImg.vue'
-const CountUp = defineAsyncComponent(() => import('vue-countup-v3'))
+
 defineProps({
   list: Object,
   jobsCard: Boolean,
@@ -14,6 +14,7 @@ defineProps({
   imageIcon: Boolean,
   countUpClass: String,
 })
+const CountUp = defineAsyncComponent(() => import('vue-countup-v3'))
 </script>
 
 <template>
@@ -28,9 +29,8 @@ defineProps({
               <span class="fs-13 fw-medium text-truncate">{{ list.titles }}</span>
               <div :class="`d-flex align-items-center gap-2 mb-2  ${list.ValueClass1}`">
                 <h4 :class="`fw-medium mb-0 custom-dashboard ${list.ValueClass}`">
-                  <span :class="`count-up ${countUpClass}`" v-if="NoCountUp">{{ list.count }}</span>
-                  <span class="count-up" v-if="CountUpValue"><CountUp :end-val="list.count" /></span
-                  >{{ list.countK ? 'K' : '' }}
+                  <span v-if="NoCountUp" :class="`count-up ${countUpClass}`">{{ list.count }}</span>
+                  <span v-if="CountUpValue" class="count-up"><CountUp :end-val="list.count" /></span>{{ list.countK ? 'K' : '' }}
                 </h4>
                 <span :class="`badge bg-${list.priceColor}`">
                   {{ list.price }}
@@ -38,7 +38,7 @@ defineProps({
               </div>
               <p :class="`text-muted fs-13 mb-0 lh-1 ${list.smallText}`">
                 <span :class="`text-${list.iconColor} me-1 d-inline-block ${list.percentColor}`">
-                  <i :class="list.icon"></i>
+                  <i :class="list.icon" />
                   {{ list.percent }}
                 </span>
                 <span class="monthly-percent">this month</span>
@@ -47,9 +47,11 @@ defineProps({
 
             <!-- jobsCard content -->
             <div v-if="jobsCard" class="d-flex align-items-center gap-2">
-              <h3 class="fw-semibold mb-0">{{ list.count }}</h3>
+              <h3 class="fw-semibold mb-0">
+                {{ list.count }}
+              </h3>
               <span :class="`text-${list.iconColor}`">
-                <i :class="list.icon"></i>{{ list.percent }}
+                <i :class="list.icon" />{{ list.percent }}
               </span>
             </div>
           </div>
@@ -58,7 +60,7 @@ defineProps({
           v-if="imageIcon === false"
           :class="`avatar ${list.avatarClass} bg-${list.priceColor}-transparent mb-3 svg-${list.priceColor} mx-auto`"
           v-html="list.svgIcon"
-        ></div>
+        />
         <div
           v-else-if="imageIcon === true"
           :class="`avatar ${list.avatarClass} bg-${list.priceColor}-transparent mb-3 mt-3 svg-${list.priceColor} mx-auto`"

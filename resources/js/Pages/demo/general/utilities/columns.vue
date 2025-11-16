@@ -1,7 +1,8 @@
 <script setup>
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+
 const dataToPass = {
   title: 'Utilities',
   currentpage: 'Columns',
@@ -11,7 +12,7 @@ const dataToPass = {
 
 <template>
   <Head title="Columns | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
@@ -20,29 +21,55 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Vertical alignment</div>
+              <div class="card-title">
+                Vertical alignment
+              </div>
             </div>
             <div class="card-body bd-example-row bd-example-row-flex-cols">
               <div class="container">
                 <div class="row align-items-start mb-3">
-                  <div class="col">One of three columns</div>
-                  <div class="col">One of three columns</div>
-                  <div class="col">One of three columns</div>
+                  <div class="col">
+                    One of three columns
+                  </div>
+                  <div class="col">
+                    One of three columns
+                  </div>
+                  <div class="col">
+                    One of three columns
+                  </div>
                 </div>
                 <div class="row align-items-center mb-3">
-                  <div class="col">One of three columns</div>
-                  <div class="col">One of three columns</div>
-                  <div class="col">One of three columns</div>
+                  <div class="col">
+                    One of three columns
+                  </div>
+                  <div class="col">
+                    One of three columns
+                  </div>
+                  <div class="col">
+                    One of three columns
+                  </div>
                 </div>
                 <div class="row align-items-end mb-3">
-                  <div class="col">One of three columns</div>
-                  <div class="col">One of three columns</div>
-                  <div class="col">One of three columns</div>
+                  <div class="col">
+                    One of three columns
+                  </div>
+                  <div class="col">
+                    One of three columns
+                  </div>
+                  <div class="col">
+                    One of three columns
+                  </div>
                 </div>
                 <div class="row">
-                  <div class="col align-self-start">One of three columns</div>
-                  <div class="col align-self-center">One of three columns</div>
-                  <div class="col align-self-end">One of three columns</div>
+                  <div class="col align-self-start">
+                    One of three columns
+                  </div>
+                  <div class="col align-self-center">
+                    One of three columns
+                  </div>
+                  <div class="col align-self-end">
+                    One of three columns
+                  </div>
                 </div>
               </div>
             </div>
@@ -51,18 +78,22 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Column wrapping</div>
+              <div class="card-title">
+                Column wrapping
+              </div>
             </div>
             <div class="card-body bd-example-row">
               <div class="container">
                 <div class="row">
-                  <div class="col-9">.col-9</div>
+                  <div class="col-9">
+                    .col-9
+                  </div>
                   <div class="col-4">
-                    .col-4<br />Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a
+                    .col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a
                     new line as one contiguous unit.
                   </div>
                   <div class="col-6">
-                    .col-6<br />Subsequent columns continue along the new line.
+                    .col-6<br>Subsequent columns continue along the new line.
                   </div>
                 </div>
               </div>
@@ -72,7 +103,9 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Margin utilities</div>
+              <div class="card-title">
+                Margin utilities
+              </div>
             </div>
             <div class="card-body bd-example-row">
               <p class="mb-4">
@@ -82,16 +115,28 @@ const dataToPass = {
               </p>
               <div class="container">
                 <div class="row mb-3">
-                  <div class="col-md-4">.col-md-4</div>
-                  <div class="col-md-4 ms-auto">.col-md-4 .ms-auto</div>
+                  <div class="col-md-4">
+                    .col-md-4
+                  </div>
+                  <div class="col-md-4 ms-auto">
+                    .col-md-4 .ms-auto
+                  </div>
                 </div>
                 <div class="row mb-3">
-                  <div class="col-md-3 ms-md-auto">.col-md-3 .ms-md-auto</div>
-                  <div class="col-md-3 ms-md-auto">.col-md-3 .ms-md-auto</div>
+                  <div class="col-md-3 ms-md-auto">
+                    .col-md-3 .ms-md-auto
+                  </div>
+                  <div class="col-md-3 ms-md-auto">
+                    .col-md-3 .ms-md-auto
+                  </div>
                 </div>
                 <div class="row">
-                  <div class="col-auto me-auto">.col-auto .me-auto</div>
-                  <div class="col-auto">.col-auto</div>
+                  <div class="col-auto me-auto">
+                    .col-auto .me-auto
+                  </div>
+                  <div class="col-auto">
+                    .col-auto
+                  </div>
                 </div>
               </div>
             </div>
@@ -104,33 +149,59 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Horizontal alignment</div>
+              <div class="card-title">
+                Horizontal alignment
+              </div>
             </div>
             <div class="card-body bd-example-row">
               <div class="container">
                 <div class="row justify-content-start mb-3">
-                  <div class="col-4">One of two columns</div>
-                  <div class="col-4">One of two columns</div>
+                  <div class="col-4">
+                    One of two columns
+                  </div>
+                  <div class="col-4">
+                    One of two columns
+                  </div>
                 </div>
                 <div class="row justify-content-center mb-3">
-                  <div class="col-4">One of two columns</div>
-                  <div class="col-4">One of two columns</div>
+                  <div class="col-4">
+                    One of two columns
+                  </div>
+                  <div class="col-4">
+                    One of two columns
+                  </div>
                 </div>
                 <div class="row justify-content-end mb-3">
-                  <div class="col-4">One of two columns</div>
-                  <div class="col-4">One of two columns</div>
+                  <div class="col-4">
+                    One of two columns
+                  </div>
+                  <div class="col-4">
+                    One of two columns
+                  </div>
                 </div>
                 <div class="row justify-content-around mb-3">
-                  <div class="col-4">One of two columns</div>
-                  <div class="col-4 mb-3">One of two columns</div>
+                  <div class="col-4">
+                    One of two columns
+                  </div>
+                  <div class="col-4 mb-3">
+                    One of two columns
+                  </div>
                 </div>
                 <div class="row justify-content-between mb-3">
-                  <div class="col-4">One of two columns</div>
-                  <div class="col-4">One of two columns</div>
+                  <div class="col-4">
+                    One of two columns
+                  </div>
+                  <div class="col-4">
+                    One of two columns
+                  </div>
                 </div>
                 <div class="row justify-content-evenly">
-                  <div class="col-4">One of two columns</div>
-                  <div class="col-4">One of two columns</div>
+                  <div class="col-4">
+                    One of two columns
+                  </div>
+                  <div class="col-4">
+                    One of two columns
+                  </div>
                 </div>
               </div>
             </div>
@@ -139,19 +210,29 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Column breaks</div>
+              <div class="card-title">
+                Column breaks
+              </div>
             </div>
             <div class="card-body bd-example-row">
               <div class="container mb-3">
                 <div class="row">
-                  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
-                  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+                  <div class="col-6 col-sm-3">
+                    .col-6 .col-sm-3
+                  </div>
+                  <div class="col-6 col-sm-3">
+                    .col-6 .col-sm-3
+                  </div>
 
                   <!-- Force next columns to break to new line -->
-                  <div class="w-100"></div>
+                  <div class="w-100" />
 
-                  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
-                  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+                  <div class="col-6 col-sm-3">
+                    .col-6 .col-sm-3
+                  </div>
+                  <div class="col-6 col-sm-3">
+                    .col-6 .col-sm-3
+                  </div>
                 </div>
               </div>
               <p>
@@ -160,14 +241,22 @@ const dataToPass = {
               </p>
               <div class="container">
                 <div class="row">
-                  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
-                  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+                  <div class="col-6 col-sm-4">
+                    .col-6 .col-sm-4
+                  </div>
+                  <div class="col-6 col-sm-4">
+                    .col-6 .col-sm-4
+                  </div>
 
                   <!-- Force next columns to break to new line at md breakpoint and up -->
-                  <div class="w-100 d-none d-md-block"></div>
+                  <div class="w-100 d-none d-md-block" />
 
-                  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
-                  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+                  <div class="col-6 col-sm-4">
+                    .col-6 .col-sm-4
+                  </div>
+                  <div class="col-6 col-sm-4">
+                    .col-6 .col-sm-4
+                  </div>
                 </div>
               </div>
             </div>
@@ -176,14 +265,22 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Order classes</div>
+              <div class="card-title">
+                Order classes
+              </div>
             </div>
             <div class="card-body bd-example-row">
               <div class="container">
                 <div class="row mb-3">
-                  <div class="col">First in DOM, no order applied</div>
-                  <div class="col order-5">Second in DOM, with a larger order</div>
-                  <div class="col order-1">Third in DOM, with an order of 1</div>
+                  <div class="col">
+                    First in DOM, no order applied
+                  </div>
+                  <div class="col order-5">
+                    Second in DOM, with a larger order
+                  </div>
+                  <div class="col order-1">
+                    Third in DOM, with an order of 1
+                  </div>
                 </div>
               </div>
               <p>
@@ -196,9 +293,15 @@ const dataToPass = {
               </p>
               <div class="container">
                 <div class="row">
-                  <div class="col order-last">First in DOM, ordered last</div>
-                  <div class="col bd-example-grid">Second in DOM, unordered</div>
-                  <div class="col order-first">Third in DOM, ordered first</div>
+                  <div class="col order-last">
+                    First in DOM, ordered last
+                  </div>
+                  <div class="col bd-example-grid">
+                    Second in DOM, unordered
+                  </div>
+                  <div class="col order-first">
+                    Third in DOM, ordered first
+                  </div>
                 </div>
               </div>
             </div>
@@ -207,7 +310,9 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Standalone column classes</div>
+              <div class="card-title">
+                Standalone column classes
+              </div>
             </div>
             <div class="card-body">
               <p>
@@ -215,7 +320,9 @@ const dataToPass = {
                 <span class="text-danger">.row</span> to give an element a specific width. Whenever
                 column classes are used as non direct children of a row, the paddings are omitted.
               </p>
-              <div class="col-3 bg-light p-3 border">.col-3: width of 25%</div>
+              <div class="col-3 bg-light p-3 border">
+                .col-3: width of 25%
+              </div>
               <div class="col-sm-9 bg-light p-3 border">
                 .col-sm-9: width of 75% above sm breakpoint
               </div>
@@ -228,25 +335,39 @@ const dataToPass = {
   <!-- End:: row-1 -->
 
   <!-- Start:: row-2 -->
-  <h6 class="mb-3">Offsetting Columns</h6>
+  <h6 class="mb-3">
+    Offsetting Columns
+  </h6>
   <div class="row">
     <div class="col-xl-12">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Offset classes</div>
+          <div class="card-title">
+            Offset classes
+          </div>
         </div>
         <div class="card-body bd-example-row">
           <div class="container mb-3">
             <div class="row mb-3">
-              <div class="col-md-4">.col-md-4</div>
-              <div class="col-md-4 offset-md-4">.col-md-4 .offset-md-4</div>
+              <div class="col-md-4">
+                .col-md-4
+              </div>
+              <div class="col-md-4 offset-md-4">
+                .col-md-4 .offset-md-4
+              </div>
             </div>
             <div class="row mb-3">
-              <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
-              <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+              <div class="col-md-3 offset-md-3">
+                .col-md-3 .offset-md-3
+              </div>
+              <div class="col-md-3 offset-md-3">
+                .col-md-3 .offset-md-3
+              </div>
             </div>
             <div class="row">
-              <div class="col-md-6 offset-md-3">.col-md-6 .offset-md-3</div>
+              <div class="col-md-6 offset-md-3">
+                .col-md-6 .offset-md-3
+              </div>
             </div>
           </div>
           <p>
@@ -254,13 +375,17 @@ const dataToPass = {
           </p>
           <div class="container">
             <div class="row mb-3">
-              <div class="col-sm-5 col-md-6">.col-sm-5 .col-md-6</div>
+              <div class="col-sm-5 col-md-6">
+                .col-sm-5 .col-md-6
+              </div>
               <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
                 .col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-6 col-md-5 col-lg-6">.col-sm-6 .col-md-5 .col-lg-6</div>
+              <div class="col-sm-6 col-md-5 col-lg-6">
+                .col-sm-6 .col-md-5 .col-lg-6
+              </div>
               <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
                 .col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0
               </div>
@@ -277,11 +402,11 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-body">
-          <P
-            >The classes can be used together with utilities to create responsive floated images.
+          <P>
+            The classes can be used together with utilities to create responsive floated images.
             Make sure to wrap the content in a <span class="text-danger">.clearfix</span> wrapper to
-            clear the float if the text is shorter.</P
-          >
+            clear the float if the text is shorter.
+          </P>
           <div class="clearfix">
             <BaseImg
               src="/images/media/media-40.jpg"

@@ -1,17 +1,17 @@
 <script setup>
-import * as prism from '@/shared/data/prismCode/advancedUi/carousel'
-import 'vue3-carousel/carousel.css'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
-
+import { Head } from '@inertiajs/vue3'
 import { defineAsyncComponent, ref } from 'vue'
 import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
 
-const Carousel = defineAsyncComponent(() => import('vue3-carousel').then((m) => m.Carousel))
-const Slide = defineAsyncComponent(() => import('vue3-carousel').then((m) => m.Slide))
-const Navigation = defineAsyncComponent(() => import('vue3-carousel').then((m) => m.Navigation))
-const Pagination = defineAsyncComponent(() => import('vue3-carousel').then((m) => m.Pagination))
+import * as prism from '@/shared/data/prismCode/advancedUi/carousel'
+import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
+import 'vue3-carousel/carousel.css'
+
+const Carousel = defineAsyncComponent(() => import('vue3-carousel').then(m => m.Carousel))
+const Slide = defineAsyncComponent(() => import('vue3-carousel').then(m => m.Slide))
+const Navigation = defineAsyncComponent(() => import('vue3-carousel').then(m => m.Navigation))
+const Pagination = defineAsyncComponent(() => import('vue3-carousel').then(m => m.Pagination))
 
 const carouselConfig = {
   itemsToShow: 1,
@@ -32,7 +32,7 @@ const dataToPass = {
 
 <template>
   <Head title="Carousel | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
@@ -112,7 +112,9 @@ const dataToPass = {
             <div class="carousel__item">
               <BaseImg src="/images/media/media-59.jpg" class="d-block w-100" alt="..." />
               <div class="carousel-caption d-none d-md-block">
-                <h5 class="text-fixed-white">First slide label</h5>
+                <h5 class="text-fixed-white">
+                  First slide label
+                </h5>
                 <p>Some representative placeholder content for the first slide.</p>
               </div>
             </div>
@@ -121,7 +123,9 @@ const dataToPass = {
             <div class="carousel__item">
               <BaseImg src="/images/media/media-60.jpg" class="d-block w-100" alt="..." />
               <div class="carousel-caption d-none d-md-block">
-                <h5 class="text-fixed-white">Second slide label</h5>
+                <h5 class="text-fixed-white">
+                  Second slide label
+                </h5>
                 <p>Some representative placeholder content for the second slide.</p>
               </div>
             </div>
@@ -130,7 +134,9 @@ const dataToPass = {
             <div class="carousel__item">
               <BaseImg src="/images/media/media-61.jpg" class="d-block w-100" alt="..." />
               <div class="carousel-caption d-none d-md-block">
-                <h5 class="text-fixed-white">Third slide label</h5>
+                <h5 class="text-fixed-white">
+                  Third slide label
+                </h5>
                 <p>Some representative placeholder content for the third slide.</p>
               </div>
             </div>
@@ -223,7 +229,7 @@ const dataToPass = {
             data-bs-target="#carouselExampleControlsNoTouching"
             data-bs-slide="prev"
           >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="carousel-control-prev-icon" aria-hidden="true" />
             <span class="visually-hidden">Previous</span>
           </button>
           <button
@@ -232,7 +238,7 @@ const dataToPass = {
             data-bs-target="#carouselExampleControlsNoTouching"
             data-bs-slide="next"
           >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="carousel-control-next-icon" aria-hidden="true" />
             <span class="visually-hidden">Next</span>
           </button>
         </div>
@@ -249,41 +255,53 @@ const dataToPass = {
               class="active"
               aria-current="true"
               aria-label="Slide 1"
-            ></button>
+            />
             <button
               type="button"
               data-bs-target="#carouselExampleDark"
               data-bs-slide-to="1"
               aria-label="Slide 2"
-            ></button>
+            />
             <button
               type="button"
               data-bs-target="#carouselExampleDark"
               data-bs-slide-to="2"
               aria-label="Slide 3"
-            ></button>
+            />
           </div>
 
           <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="10000">
               <BaseImg src="/images/media/media-63.jpg" class="d-block w-100" alt="..." />
               <div class="carousel-caption d-none d-md-block">
-                <h5 class="text-fixed-white">First slide label</h5>
-                <p class="op-7">Some representative placeholder content for the first slide.</p>
+                <h5 class="text-fixed-white">
+                  First slide label
+                </h5>
+                <p class="op-7">
+                  Some representative placeholder content for the first slide.
+                </p>
               </div>
             </div>
             <div class="carousel-item" data-bs-interval="2000">
               <BaseImg src="/images/media/media-64.jpg" class="d-block w-100" alt="..." />
               <div class="carousel-caption d-none d-md-block">
-                <h5 class="text-fixed-white">Second slide label</h5>
-                <p class="op-7">Some representative placeholder content for the second slide.</p>
+                <h5 class="text-fixed-white">
+                  Second slide label
+                </h5>
+                <p class="op-7">
+                  Some representative placeholder content for the second slide.
+                </p>
               </div>
             </div>
             <div class="carousel-item">
               <BaseImg src="/images/media/media-62.jpg" class="d-block w-100" alt="..." />
               <div class="carousel-caption d-none d-md-block">
-                <h5 class="text-fixed-white">Third slide label</h5>
-                <p class="op-7">Some representative placeholder content for the third slide.</p>
+                <h5 class="text-fixed-white">
+                  Third slide label
+                </h5>
+                <p class="op-7">
+                  Some representative placeholder content for the third slide.
+                </p>
               </div>
             </div>
           </div>
@@ -293,7 +311,7 @@ const dataToPass = {
             data-bs-target="#carouselExampleDark"
             data-bs-slide="prev"
           >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="carousel-control-prev-icon" aria-hidden="true" />
             <span class="visually-hidden">Previous</span>
           </button>
           <button
@@ -302,7 +320,7 @@ const dataToPass = {
             data-bs-target="#carouselExampleDark"
             data-bs-slide="next"
           >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="carousel-control-next-icon" aria-hidden="true" />
             <span class="visually-hidden">Next</span>
           </button>
         </div>
@@ -434,14 +452,18 @@ const dataToPass = {
           </template>
         </Carousel>
         <div class="d-flex align-items-center justify-content-center mt-3 gap-2">
-          <button type="button" @click="prev" class="btn btn-primary-light btn-wave">Prev</button>
+          <button type="button" class="btn btn-primary-light btn-wave" @click="prev">
+            Prev
+          </button>
           <input
-            type="text"
-            class="form-control w-25 text-center"
             id="input"
             v-model="currentSlide"
-          />
-          <button type="button" @click="next" class="btn btn-primary-light btn-wave">Next</button>
+            type="text"
+            class="form-control w-25 text-center"
+          >
+          <button type="button" class="btn btn-primary-light btn-wave" @click="next">
+            Next
+          </button>
         </div>
       </ShowcodeCard>
     </div>

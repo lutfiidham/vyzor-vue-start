@@ -22,7 +22,7 @@ export const Pieoptions = {
   labels: ['Cricket'],
 }
 
-//Multiple Radialbar Chart
+// Multiple Radialbar Chart
 export const Multirseries = [44, 55, 67, 83]
 export const Multiroptions = {
   chart: {
@@ -46,7 +46,7 @@ export const Multiroptions = {
         total: {
           show: true,
           label: 'Total',
-          formatter: function (_w) {
+          formatter(_w) {
             // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
             return '249'
           },
@@ -101,8 +101,8 @@ export const Customoptions = {
     labels: {
       useSeriesColors: true,
     },
-    formatter: function (seriesName, opts) {
-      return seriesName + ':  ' + opts.w.globals.series[opts.seriesIndex]
+    formatter(seriesName, opts) {
+      return `${seriesName}:  ${opts.w.globals.series[opts.seriesIndex]}`
     },
     itemMargin: {
       vertical: 3,
@@ -177,7 +177,7 @@ export const Gradientoptions = {
           fontSize: '17px',
         },
         value: {
-          formatter: function (val) {
+          formatter(val) {
             // return parseInt(val);
             return val.toString()
           },

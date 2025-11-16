@@ -1,10 +1,10 @@
 <script setup>
-import simplebar from 'simplebar-vue'
-import 'simplebar-vue/dist/simplebar.min.css'
-import * as Blogdetailsdata from '@/shared/data/pages/blogdetails/blogdetailsdata'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as Blogdetailsdata from '@/shared/data/pages/blogdetails/blogdetailsdata'
+import 'simplebar-vue/dist/simplebar.min.css'
+
 const dataToPass = {
   title: 'Pages',
   subtitle: 'Blog',
@@ -15,11 +15,13 @@ const dataToPass = {
 
 <template>
   <Head title="Blog-Details | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xxl-9">
-      <h3 class="fw-medium mb-3">The Future of Artificial Intelligence: Trends to Watch in 2025</h3>
+      <h3 class="fw-medium mb-3">
+        The Future of Artificial Intelligence: Trends to Watch in 2025
+      </h3>
       <div class="card custom-card">
         <BaseImg src="/images/media/blog/27.jpg" class="card-img-top" alt="..." />
         <div class="card-body">
@@ -37,7 +39,7 @@ const dataToPass = {
             </div>
             <div class="d-flex align-items-center gap-3 text-muted">
               <div class="d-inline-flex align-items-center">
-                <i class="ti ti-calendar-event fs-16 me-2"></i>March 15, 2025
+                <i class="ti ti-calendar-event fs-16 me-2" />March 15, 2025
               </div>
               <div>1.2K Views</div>
             </div>
@@ -66,12 +68,12 @@ const dataToPass = {
               and affordability, potentially revolutionizing transportation and mobility.
             </p>
             <div class="card custom-card card-bg-primary">
-              <a href="javascript:void(0);" class="card-anchor"></a>
+              <a href="javascript:void(0);" class="card-anchor" />
               <div class="card-body">
                 <blockquote class="m-0 text-center">
                   <h5 class="text-fixed-white lh-base">
                     This highlights how AI is expected to revolutionize industries just as
-                    electricity did in the past, <br />
+                    electricity did in the past, <br>
                     becoming a core part of almost every sector..
                   </h5>
                   <footer class="blockquote-footer mt-3 mb-0 fs-14 text-fixed-white op-7">
@@ -117,10 +119,12 @@ const dataToPass = {
           <div class="blog-comments mb-4">
             <div class="card custom-card">
               <div class="card-header">
-                <div class="card-title">Comments</div>
+                <div class="card-title">
+                  Comments
+                </div>
               </div>
               <div class="card-body">
-                <simplebar id="blog-details-comment-list">
+                <Simplebar id="blog-details-comment-list">
                   <div class="mb-3 overflow-visible d-flex align-items-start flex-wrap">
                     <div class="me-3">
                       <span class="avatar avatar-rounded avatar-md">
@@ -138,50 +142,44 @@ const dataToPass = {
                               role="button"
                               aria-haspopup="true"
                               aria-expanded="false"
-                              ><i class="ri-more-2-fill"></i
-                            ></a>
+                            ><i class="ri-more-2-fill" /></a>
                             <div class="dropdown-menu dropdown-menu-start">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="fe fe-edit me-1 d-inline-block"></i> Edit</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="fe fe-flag me-1 d-inline-block"></i> Report Abuse</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="fe fe-trash-2 me-1 d-inline-block"></i> Delete</a
-                              >
+                              <a class="dropdown-item" href="javascript:void(0);"><i class="fe fe-edit me-1 d-inline-block" /> Edit</a>
+                              <a class="dropdown-item" href="javascript:void(0);"><i class="fe fe-flag me-1 d-inline-block" /> Report Abuse</a>
+                              <a class="dropdown-item" href="javascript:void(0);"><i class="fe fe-trash-2 me-1 d-inline-block" /> Delete</a>
                             </div>
                           </div>
                         </nav>
                         <h6 class="mt-0">
                           JohnDoe23 <span class="text-muted fs-12 ms-1">1 day ago</span>
                         </h6>
-                        <span><i class="fe fe-thumb-up text-danger"></i></span>
+                        <span><i class="fe fe-thumb-up text-danger" /></span>
                         <p class="font-13 text-muted">
                           This is a fascinating read! AI is truly shaping the future in ways we
                           never imagined. Excited to see what’s next!
                         </p>
-                        <span class="reply" id="1">
+                        <span id="1" class="reply">
                           <a
                             data-bs-toggle="collapse"
                             href="#collapseExample"
                             role="button"
                             aria-expanded="false"
                             aria-controls="collapseExample"
-                            ><span
-                              class="px-2 py-1 rounded bg-light text-muted fs-12 border d-inline-flex align-items-center"
-                              >Reply<i class="ti ti-share-3 ms-1"></i></span
-                          ></a>
+                          ><span
+                            class="px-2 py-1 rounded bg-light text-muted fs-12 border d-inline-flex align-items-center"
+                          >Reply<i class="ti ti-share-3 ms-1" /></span></a>
                         </span>
-                        <div class="collapse" id="collapseExample">
+                        <div id="collapseExample" class="collapse">
                           <textarea
-                            class="form-control mb-2 mt-3"
                             id="text-area"
+                            class="form-control mb-2 mt-3"
                             rows="3"
                             placeholder="Write a reply ..."
-                          ></textarea>
+                          />
                           <div class="text-end">
-                            <button class="btn btn-primary btn-wave btn-sm">Post</button>
+                            <button class="btn btn-primary btn-wave btn-sm">
+                              Post
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -201,52 +199,44 @@ const dataToPass = {
                                 role="button"
                                 aria-haspopup="true"
                                 aria-expanded="false"
-                                ><i class="ri-more-2-fill"></i
-                              ></a>
+                              ><i class="ri-more-2-fill" /></a>
                               <div class="dropdown-menu dropdown-menu-start">
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="fe fe-edit me-1 d-inline-block"></i> Edit</a
-                                >
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="fe fe-flag me-1 d-inline-block"></i> Report Abuse</a
-                                >
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="fe fe-trash-2 me-1 d-inline-block"></i> Delete</a
-                                >
+                                <a class="dropdown-item" href="javascript:void(0);"><i class="fe fe-edit me-1 d-inline-block" /> Edit</a>
+                                <a class="dropdown-item" href="javascript:void(0);"><i class="fe fe-flag me-1 d-inline-block" /> Report Abuse</a>
+                                <a class="dropdown-item" href="javascript:void(0);"><i class="fe fe-trash-2 me-1 d-inline-block" /> Delete</a>
                               </div>
                             </div>
                           </nav>
                           <h6 class="mt-0 d-flex align-items-center gap-2 flex-wrap">
-                            TechEnthusiast99<span class="badge text-muted bg-light border"
-                              >Reply to JohnDoe23</span
-                            ><span class="text-muted fs-12 ms-1">2 min ago</span>
+                            TechEnthusiast99<span class="badge text-muted bg-light border">Reply to JohnDoe23</span><span class="text-muted fs-12 ms-1">2 min ago</span>
                           </h6>
-                          <span><i class="fe fe-thumb-up text-danger"></i></span>
+                          <span><i class="fe fe-thumb-up text-danger" /></span>
                           <p class="font-13 text-muted">
                             I love how AI is revolutionizing different industries, but do you think
                             it will ever fully replace human creativity?
                           </p>
-                          <span class="reply" id="2">
+                          <span id="2" class="reply">
                             <a
                               data-bs-toggle="collapse"
                               href="#collapseExample1"
                               role="button"
                               aria-expanded="false"
                               aria-controls="collapseExample1"
-                              ><span
-                                class="px-2 py-1 rounded bg-light text-muted fs-12 border d-inline-flex align-items-center"
-                                >Reply<i class="ti ti-share-3 ms-1"></i></span
-                            ></a>
+                            ><span
+                              class="px-2 py-1 rounded bg-light text-muted fs-12 border d-inline-flex align-items-center"
+                            >Reply<i class="ti ti-share-3 ms-1" /></span></a>
                           </span>
-                          <div class="collapse" id="collapseExample1">
+                          <div id="collapseExample1" class="collapse">
                             <textarea
-                              class="form-control mb-2 mt-3"
                               id="text-area"
+                              class="form-control mb-2 mt-3"
                               rows="3"
                               placeholder="Write a reply ..."
-                            ></textarea>
+                            />
                             <div class="text-end">
-                              <button class="btn btn-primary btn-wave btn-sm">Post</button>
+                              <button class="btn btn-primary btn-wave btn-sm">
+                                Post
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -270,57 +260,49 @@ const dataToPass = {
                               role="button"
                               aria-haspopup="true"
                               aria-expanded="false"
-                              ><i class="ri-more-2-fill"></i
-                            ></a>
+                            ><i class="ri-more-2-fill" /></a>
                             <div class="dropdown-menu dropdown-menu-start">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="fe fe-edit me-1 d-inline-block"></i> Edit</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="fe fe-flag me-1 d-inline-block"></i> Report Abuse</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="fe fe-trash-2 me-1 d-inline-block"></i> Delete</a
-                              >
+                              <a class="dropdown-item" href="javascript:void(0);"><i class="fe fe-edit me-1 d-inline-block" /> Edit</a>
+                              <a class="dropdown-item" href="javascript:void(0);"><i class="fe fe-flag me-1 d-inline-block" /> Report Abuse</a>
+                              <a class="dropdown-item" href="javascript:void(0);"><i class="fe fe-trash-2 me-1 d-inline-block" /> Delete</a>
                             </div>
                           </div>
                         </nav>
                         <h6 class="mt-0">
-                          FutureCoder<span class="text-muted fs-12 ms-1 d-inline-block"
-                            >27 Mar 2025 - 10:45AM</span
-                          >
+                          FutureCoder<span class="text-muted fs-12 ms-1 d-inline-block">27 Mar 2025 - 10:45AM</span>
                         </h6>
                         <p class="font-13 text-muted">
                           Great insights! AI has come a long way, but ethical concerns around
                           automation still need to be addressed.
                         </p>
-                        <span class="reply" id="3">
+                        <span id="3" class="reply">
                           <a
                             data-bs-toggle="collapse"
                             href="#collapseExample2"
                             role="button"
                             aria-expanded="false"
                             aria-controls="collapseExample2"
-                            ><span
-                              class="px-2 py-1 rounded bg-light text-muted fs-12 border d-inline-flex align-items-center"
-                              >Reply<i class="ti ti-share-3 ms-1"></i></span
-                          ></a>
+                          ><span
+                            class="px-2 py-1 rounded bg-light text-muted fs-12 border d-inline-flex align-items-center"
+                          >Reply<i class="ti ti-share-3 ms-1" /></span></a>
                         </span>
-                        <div class="collapse" id="collapseExample2">
+                        <div id="collapseExample2" class="collapse">
                           <textarea
-                            class="form-control mb-2 mt-3"
                             id="text-area"
+                            class="form-control mb-2 mt-3"
                             rows="3"
                             placeholder="Write a reply ..."
-                          ></textarea>
+                          />
                           <div class="text-end">
-                            <button class="btn btn-primary btn-wave btn-sm">Post</button>
+                            <button class="btn btn-primary btn-wave btn-sm">
+                              Post
+                            </button>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </simplebar>
+                </Simplebar>
               </div>
             </div>
           </div>
@@ -329,26 +311,28 @@ const dataToPass = {
               <div class="col-xl-12">
                 <label for="blog-first-name" class="form-label">Name</label>
                 <input
+                  id="blog-first-name"
                   type="text"
                   class="form-control form-control-light"
-                  id="blog-first-name"
                   placeholder="Enter Name"
-                />
+                >
               </div>
               <div class="col-xl-12">
                 <label for="blog-comment" class="form-label">Write Comment</label>
                 <textarea
-                  class="form-control form-control-light"
                   id="blog-comment"
+                  class="form-control form-control-light"
                   rows="5"
-                ></textarea>
+                />
               </div>
               <div class="col-xl-12">
                 <div class="btn-list float-end">
                   <button class="btn btn-light btn-icon border">
-                    <i class="ti ti-paperclip"></i>
+                    <i class="ti ti-paperclip" />
                   </button>
-                  <button class="btn btn-primary float-end">Post Comment</button>
+                  <button class="btn btn-primary float-end">
+                    Post Comment
+                  </button>
                 </div>
               </div>
             </div>
@@ -366,7 +350,9 @@ const dataToPass = {
                   <BaseImg src="/images/faces/14.jpg" alt="" />
                 </span>
               </div>
-              <h5 class="fw-semibold mb-0">John Doe</h5>
+              <h5 class="fw-semibold mb-0">
+                John Doe
+              </h5>
               <span class="d-block text-muted mb-3">Tech Blogger</span>
               <p>
                 Jhon Doe, an AI and tech writer, explores emerging trends, innovations, and their
@@ -376,17 +362,17 @@ const dataToPass = {
                 <button
                   class="btn btn-icon btn-facebook btn-wave rounded-circle waves-effect waves-light"
                 >
-                  <i class="ri-facebook-line"></i>
+                  <i class="ri-facebook-line" />
                 </button>
                 <button
                   class="btn btn-icon btn-twitter btn-wave rounded-circle waves-effect waves-light"
                 >
-                  <i class="ri-twitter-x-line"></i>
+                  <i class="ri-twitter-x-line" />
                 </button>
                 <button
                   class="btn btn-icon btn-instagram btn-wave rounded-circle waves-effect waves-light"
                 >
-                  <i class="ri-instagram-line"></i>
+                  <i class="ri-instagram-line" />
                 </button>
               </div>
             </div>
@@ -396,9 +382,10 @@ const dataToPass = {
           <div class="card custom-card">
             <div class="card-body">
               <div class="text-center">
-                <h5 class="fw-semibold mb-3">Never Miss A Post!</h5>
-                <label class="form-check-label mb-4"
-                  >Subscribe for free and be the first to receive updates and exclusive content!
+                <h5 class="fw-semibold mb-3">
+                  Never Miss A Post!
+                </h5>
+                <label class="form-check-label mb-4">Subscribe for free and be the first to receive updates and exclusive content!
                 </label>
                 <div class="input-group">
                   <input
@@ -407,11 +394,11 @@ const dataToPass = {
                     placeholder="Email Here"
                     aria-label="blog-email"
                     aria-describedby="blog-subscribe"
-                  />
+                  >
                   <button
+                    id="blog-subscribe"
                     class="btn btn-primary btn-wave waves-effect waves-light"
                     type="button"
-                    id="blog-subscribe"
                   >
                     Subscribe
                   </button>
@@ -423,13 +410,17 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Top Categories</div>
+              <div class="card-title">
+                Top Categories
+              </div>
             </div>
             <div class="card-body">
               <ul class="list-unstyled top-blog-categories-list">
                 <li v-for="idx in Blogdetailsdata.CategoryStats" :key="idx.id">
                   <div class="d-flex align-items-center gap-2">
-                    <div class="flex-fill fw-medium">{{ idx.name }}</div>
+                    <div class="flex-fill fw-medium">
+                      {{ idx.name }}
+                    </div>
                     <div>
                       <span :class="`badge ${idx.badgeClass} rounded-pill`">{{ idx.count }}</span>
                     </div>
@@ -442,19 +433,19 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card overflow-hidden">
             <div class="card-header justify-content-between">
-              <div class="card-title">Blogs you may like</div>
-              <a href="javascript:void(0);" class="fs-13 text-muted text-decoration-underline"
-                >View All<i class="ti ti-arrow-narrow-right"></i
-              ></a>
+              <div class="card-title">
+                Blogs you may like
+              </div>
+              <a href="javascript:void(0);" class="fs-13 text-muted text-decoration-underline">View All<i class="ti ti-arrow-narrow-right" /></a>
             </div>
             <div class="card-body p-0">
               <ul class="list-group list-group-flush">
                 <li
-                  class="list-group-item"
                   v-for="idx in Blogdetailsdata.PopularPosts"
                   :key="idx.id"
+                  class="list-group-item"
                 >
-                  <a href="javascript:void(0);" class="stretched-link"></a>
+                  <a href="javascript:void(0);" class="stretched-link" />
                   <div class="d-flex align-items-center gap-3">
                     <div class="lh-1">
                       <span class="avatar avatar-xl">
@@ -462,7 +453,9 @@ const dataToPass = {
                       </span>
                     </div>
                     <div class="flex-fill">
-                      <div class="popular-blogs-title fw-semibold mb-1">{{ idx.title }}</div>
+                      <div class="popular-blogs-title fw-semibold mb-1">
+                        {{ idx.title }}
+                      </div>
                       <span class="d-block text-muted fs-13 fw-normal">{{ idx.dateViews }}</span>
                     </div>
                   </div>
@@ -474,17 +467,18 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Popular Tags</div>
+              <div class="card-title">
+                Popular Tags
+              </div>
             </div>
             <div class="card-body">
               <div class="d-flex align-items-center gap-2 flex-wrap">
                 <a
-                  href="javascript:void(0);"
-                  class="badge bg-primary-transparent"
                   v-for="idx in Blogdetailsdata.Tags"
                   :key="idx.id"
-                  >{{ idx.title }}</a
-                >
+                  href="javascript:void(0);"
+                  class="badge bg-primary-transparent"
+                >{{ idx.title }}</a>
               </div>
             </div>
           </div>
@@ -492,61 +486,63 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Archive</div>
+              <div class="card-title">
+                Archive
+              </div>
             </div>
             <div class="card-body">
               <ul class="list-unstyled blog-archive">
                 <li>
-                  <a href="javascript:void(0)" class="stretched-link"></a>
+                  <a href="javascript:void(0)" class="stretched-link" />
                   <div class="d-flex align-items-center gap-5 justify-content-between">
                     <div>2024</div>
                     <div>
-                      <i class="ti ti-chevron-right"></i>
+                      <i class="ti ti-chevron-right" />
                     </div>
                   </div>
                 </li>
                 <li>
-                  <a href="javascript:void(0)" class="stretched-link"></a>
+                  <a href="javascript:void(0)" class="stretched-link" />
                   <div class="d-flex align-items-center gap-5 justify-content-between">
                     <div>2023</div>
                     <div>
-                      <i class="ti ti-chevron-right"></i>
+                      <i class="ti ti-chevron-right" />
                     </div>
                   </div>
                 </li>
                 <li>
-                  <a href="javascript:void(0)" class="stretched-link"></a>
+                  <a href="javascript:void(0)" class="stretched-link" />
                   <div class="d-flex align-items-center gap-5 justify-content-between">
                     <div>2022</div>
                     <div>
-                      <i class="ti ti-chevron-right"></i>
+                      <i class="ti ti-chevron-right" />
                     </div>
                   </div>
                 </li>
                 <li>
-                  <a href="javascript:void(0)" class="stretched-link"></a>
+                  <a href="javascript:void(0)" class="stretched-link" />
                   <div class="d-flex align-items-center gap-5 justify-content-between">
                     <div>2021</div>
                     <div>
-                      <i class="ti ti-chevron-right"></i>
+                      <i class="ti ti-chevron-right" />
                     </div>
                   </div>
                 </li>
                 <li>
-                  <a href="javascript:void(0)" class="stretched-link"></a>
+                  <a href="javascript:void(0)" class="stretched-link" />
                   <div class="d-flex align-items-center gap-5 justify-content-between">
                     <div>2020</div>
                     <div>
-                      <i class="ti ti-chevron-right"></i>
+                      <i class="ti ti-chevron-right" />
                     </div>
                   </div>
                 </li>
                 <li>
-                  <a href="javascript:void(0)" class="stretched-link"></a>
+                  <a href="javascript:void(0)" class="stretched-link" />
                   <div class="d-flex align-items-center gap-5 justify-content-between">
                     <div>2019</div>
                     <div>
-                      <i class="ti ti-chevron-right"></i>
+                      <i class="ti ti-chevron-right" />
                     </div>
                   </div>
                 </li>
@@ -557,7 +553,7 @@ const dataToPass = {
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

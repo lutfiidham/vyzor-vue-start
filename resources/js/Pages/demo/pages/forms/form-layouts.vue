@@ -1,8 +1,9 @@
 <script setup>
-import * as prism from '@/shared/data/prismCode/forms/form-layouts'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as prism from '@/shared/data/prismCode/forms/form-layouts'
+import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
+
 const dataToPass = {
   title: 'Forms',
   currentpage: 'Form Layouts',
@@ -12,7 +13,7 @@ const dataToPass = {
 
 <template>
   <Head title="Form-Layouts | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
@@ -20,17 +21,19 @@ const dataToPass = {
       <ShowcodeCard :code="prism.verticalForms" title="Vertical Forms">
         <div class="mb-3">
           <label for="form-text" class="form-label fs-14 text-dark">Enter name</label>
-          <input type="text" class="form-control" id="form-text" placeholder="full name" />
+          <input id="form-text" type="text" class="form-control" placeholder="full name">
         </div>
         <div class="mb-3">
           <label for="form-password" class="form-label fs-14 text-dark">Enter Password</label>
-          <input type="password" class="form-control" id="form-password" placeholder="password" />
+          <input id="form-password" type="password" class="form-control" placeholder="password">
         </div>
         <div class="form-check mb-3">
-          <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required />
+          <input id="invalidCheck" class="form-check-input" type="checkbox" value="" required>
           <label class="form-check-label" for="invalidCheck"> Accept Policy </label>
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-primary" type="submit">
+          Submit
+        </button>
       </ShowcodeCard>
     </div>
     <div class="col-xl-12">
@@ -39,47 +42,51 @@ const dataToPass = {
           <div class="row mb-3">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-              <input type="email" class="form-control" id="inputEmail3" />
+              <input id="inputEmail3" type="email" class="form-control">
             </div>
           </div>
           <div class="row mb-3">
             <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputPassword3" />
+              <input id="inputPassword3" type="password" class="form-control">
             </div>
           </div>
           <fieldset class="row mb-3">
-            <legend class="col-form-label col-sm-2 pt-0">Qualified</legend>
+            <legend class="col-form-label col-sm-2 pt-0">
+              Qualified
+            </legend>
             <div class="col-sm-10">
               <div class="form-check">
                 <input
+                  id="gridRadios1"
                   class="form-check-input"
                   type="radio"
                   name="gridRadios"
-                  id="gridRadios1"
                   value="option1"
                   checked
-                />
+                >
                 <label class="form-check-label" for="gridRadios1"> Prelims </label>
               </div>
               <div class="form-check disabled">
                 <input
+                  id="gridRadios2"
                   class="form-check-input"
                   type="radio"
                   name="gridRadios"
-                  id="gridRadios2"
                   value="option3"
                   disabled
-                />
+                >
                 <label class="form-check-label" for="gridRadios2"> Mains </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck1" />
+                <input id="gridCheck1" class="form-check-input" type="checkbox">
                 <label class="form-check-label" for="gridCheck1"> Certified </label>
               </div>
             </div>
           </fieldset>
-          <button type="submit" class="btn btn-primary">Sign in</button>
+          <button type="submit" class="btn btn-primary">
+            Sign in
+          </button>
         </form>
       </ShowcodeCard>
     </div>
@@ -93,22 +100,28 @@ const dataToPass = {
         <div class="mb-3">
           <label for="form-text1" class="form-label fs-14 text-dark">Enter name</label>
           <div class="input-group">
-            <div class="input-group-text"><i class="ri-user-line"></i></div>
-            <input type="text" class="form-control" id="form-text1" placeholder="" />
+            <div class="input-group-text">
+              <i class="ri-user-line" />
+            </div>
+            <input id="form-text1" type="text" class="form-control" placeholder="">
           </div>
         </div>
         <div class="mb-3">
           <label for="form-password1" class="form-label fs-14 text-dark">Enter Password</label>
           <div class="input-group">
-            <div class="input-group-text"><i class="ri-lock-line"></i></div>
-            <input type="password" class="form-control" id="form-password1" placeholder="" />
+            <div class="input-group-text">
+              <i class="ri-lock-line" />
+            </div>
+            <input id="form-password1" type="password" class="form-control" placeholder="">
           </div>
         </div>
         <div class="form-check mb-3">
-          <input class="form-check-input" type="checkbox" value="" id="invalidCheck1" required />
+          <input id="invalidCheck1" class="form-check-input" type="checkbox" value="" required>
           <label class="form-check-label" for="invalidCheck1"> Accept Policy </label>
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-primary" type="submit">
+          Submit
+        </button>
       </ShowcodeCard>
     </div>
     <div class="col-xl-12">
@@ -118,9 +131,9 @@ const dataToPass = {
             <label for="inputEmail1" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
               <div class="input-group">
-                <input type="email" class="form-control" id="inputEmail1" />
+                <input id="inputEmail1" type="email" class="form-control">
                 <div class="input-group-text">
-                  <i class="ri-mail-line"></i>
+                  <i class="ri-mail-line" />
                 </div>
               </div>
             </div>
@@ -129,45 +142,49 @@ const dataToPass = {
             <label for="inputPassword1" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
               <div class="input-group">
-                <input type="password" class="form-control" id="inputPassword1" />
+                <input id="inputPassword1" type="password" class="form-control">
                 <div class="input-group-text">
-                  <i class="ri-lock-line"></i>
+                  <i class="ri-lock-line" />
                 </div>
               </div>
             </div>
           </div>
           <fieldset class="row mb-3">
-            <legend class="col-form-label col-sm-2 pt-0">Qualified</legend>
+            <legend class="col-form-label col-sm-2 pt-0">
+              Qualified
+            </legend>
             <div class="col-sm-10">
               <div class="form-check">
                 <input
+                  id="gridRadios4"
                   class="form-check-input"
                   type="radio"
                   name="gridRadios"
-                  id="gridRadios4"
                   value="option1"
                   checked
-                />
+                >
                 <label class="form-check-label" for="gridRadios4"> Prelims </label>
               </div>
               <div class="form-check disabled">
                 <input
+                  id="gridRadios3"
                   class="form-check-input"
                   type="radio"
                   name="gridRadios"
-                  id="gridRadios3"
                   value="option3"
                   disabled
-                />
+                >
                 <label class="form-check-label" for="gridRadios3"> Mains </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck2" />
+                <input id="gridCheck2" class="form-check-input" type="checkbox">
                 <label class="form-check-label" for="gridCheck2"> Certified </label>
               </div>
             </div>
           </fieldset>
-          <button type="submit" class="btn btn-primary">Sign in</button>
+          <button type="submit" class="btn btn-primary">
+            Sign in
+          </button>
         </form>
       </ShowcodeCard>
     </div>
@@ -182,33 +199,45 @@ const dataToPass = {
           <div class="col-12">
             <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
             <div class="input-group">
-              <div class="input-group-text">@</div>
+              <div class="input-group-text">
+                @
+              </div>
               <input
+                id="inlineFormInputGroupUsername"
                 type="text"
                 class="form-control"
-                id="inlineFormInputGroupUsername"
                 placeholder="Username"
-              />
+              >
             </div>
           </div>
           <div class="col-12">
             <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
-            <select class="form-select" id="inlineFormSelectPref">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select id="inlineFormSelectPref" class="form-select">
+              <option selected>
+                Choose...
+              </option>
+              <option value="1">
+                One
+              </option>
+              <option value="2">
+                Two
+              </option>
+              <option value="3">
+                Three
+              </option>
             </select>
           </div>
           <div class="col-12">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="inlineFormCheck" />
+              <input id="inlineFormCheck" class="form-check-input" type="checkbox">
               <label class="form-check-label" for="inlineFormCheck"> Remember me </label>
             </div>
           </div>
 
           <div class="col-12">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">
+              Submit
+            </button>
           </div>
         </form>
       </ShowcodeCard>
@@ -217,13 +246,13 @@ const dataToPass = {
       <ShowcodeCard :code="prism.columnsizing" title="Column sizing">
         <div class="row g-3">
           <div class="col-sm-7">
-            <input type="text" class="form-control" placeholder="City" aria-label="City" />
+            <input type="text" class="form-control" placeholder="City" aria-label="City">
           </div>
           <div class="col-sm">
-            <input type="text" class="form-control" placeholder="State" aria-label="State" />
+            <input type="text" class="form-control" placeholder="State" aria-label="State">
           </div>
           <div class="col-sm">
-            <input type="text" class="form-control" placeholder="Zip" aria-label="Zip" />
+            <input type="text" class="form-control" placeholder="Zip" aria-label="Zip">
           </div>
         </div>
       </ShowcodeCard>
@@ -238,60 +267,56 @@ const dataToPass = {
         <div class="mb-3">
           <label for="formGroupExampleInput" class="form-label">Example label</label>
           <input
+            id="formGroupExampleInput"
             type="text"
             class="form-control"
-            id="formGroupExampleInput"
             placeholder="Example input placeholder"
-          />
+          >
         </div>
         <div class="mb-1">
           <label for="formGroupExampleInput2" class="form-label">Another label</label>
           <input
+            id="formGroupExampleInput2"
             type="text"
             class="form-control"
-            id="formGroupExampleInput2"
             placeholder="Another input placeholder"
-          />
+          >
         </div>
       </ShowcodeCard>
     </div>
     <div class="col-xl-12">
       <ShowcodeCard :code="prism.horizontalformlabelsizing" title="Horizontal form label sizing">
         <div class="row mb-3">
-          <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-            >Email</label
-          >
+          <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
           <div class="col-sm-10">
             <input
+              id="colFormLabelSm"
               type="email"
               class="form-control form-control-sm"
-              id="colFormLabelSm"
               placeholder="col-form-label-sm"
-            />
+            >
           </div>
         </div>
         <div class="row mb-3">
           <label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
           <div class="col-sm-10">
             <input
+              id="colFormLabel"
               type="email"
               class="form-control"
-              id="colFormLabel"
               placeholder="col-form-label"
-            />
+            >
           </div>
         </div>
         <div class="row">
-          <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg"
-            >Email</label
-          >
+          <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
           <div class="col-sm-10">
             <input
+              id="colFormLabelLg"
               type="email"
               class="form-control form-control-lg"
-              id="colFormLabelLg"
               placeholder="col-form-label-lg"
-            />
+            >
           </div>
         </div>
       </ShowcodeCard>
@@ -306,81 +331,103 @@ const dataToPass = {
         <form class="row gy-2 gx-3 align-items-center mb-4">
           <div class="col-auto">
             <label class="visually-hidden" for="autoSizingInput">Name</label>
-            <input type="text" class="form-control" id="autoSizingInput" placeholder="Jane Doe" />
+            <input id="autoSizingInput" type="text" class="form-control" placeholder="Jane Doe">
           </div>
           <div class="col-auto">
             <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
             <div class="input-group">
-              <div class="input-group-text">@</div>
+              <div class="input-group-text">
+                @
+              </div>
               <input
+                id="autoSizingInputGroup"
                 type="text"
                 class="form-control"
-                id="autoSizingInputGroup"
                 placeholder="Username"
-              />
+              >
             </div>
           </div>
           <div class="col-auto">
             <label class="visually-hidden" for="autoSizingSelect">Preference</label>
-            <select class="form-select" id="autoSizingSelect">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select id="autoSizingSelect" class="form-select">
+              <option selected>
+                Choose...
+              </option>
+              <option value="1">
+                One
+              </option>
+              <option value="2">
+                Two
+              </option>
+              <option value="3">
+                Three
+              </option>
             </select>
           </div>
           <div class="col-auto">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="autoSizingCheck" />
+              <input id="autoSizingCheck" class="form-check-input" type="checkbox">
               <label class="form-check-label" for="autoSizingCheck"> Remember me </label>
             </div>
           </div>
           <div class="col-auto">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">
+              Submit
+            </button>
           </div>
         </form>
-        <span class="fw-semibold mb-1 text-muted"
-          >You can then remix that once again with size-specific column classes.</span
-        >
+        <span class="fw-semibold mb-1 text-muted">You can then remix that once again with size-specific column classes.</span>
         <form class="row gx-3 gy-2 align-items-center mt-0">
           <div class="col-sm-3">
             <label class="visually-hidden" for="specificSizeInputName">Name</label>
             <input
+              id="specificSizeInputName"
               type="text"
               class="form-control"
-              id="specificSizeInputName"
               placeholder="Jane Doe"
-            />
+            >
           </div>
           <div class="col-sm-3">
             <label class="visually-hidden" for="specificSizeInputGroupUsername">Username</label>
             <div class="input-group">
-              <div class="input-group-text">@</div>
+              <div class="input-group-text">
+                @
+              </div>
               <input
+                id="specificSizeInputGroupUsername"
                 type="text"
                 class="form-control"
-                id="specificSizeInputGroupUsername"
                 placeholder="Username"
-              />
+              >
             </div>
           </div>
           <div class="col-sm-3">
             <label class="visually-hidden" for="specificSizeSelect">Preference</label>
-            <select class="form-select" id="specificSizeSelect">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select id="specificSizeSelect" class="form-select">
+              <option selected>
+                Choose...
+              </option>
+              <option value="1">
+                One
+              </option>
+              <option value="2">
+                Two
+              </option>
+              <option value="3">
+                Three
+              </option>
             </select>
           </div>
           <div class="col-auto">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="autoSizingCheck2" />
+              <input id="autoSizingCheck2" class="form-check-input" type="checkbox">
               <label class="form-check-label" for="autoSizingCheck2"> Remember me </label>
             </div>
           </div>
           <div class="col-auto">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">
+              Submit
+            </button>
           </div>
         </form>
       </ShowcodeCard>
@@ -400,7 +447,7 @@ const dataToPass = {
               class="form-control"
               placeholder="First name"
               aria-label="First name"
-            />
+            >
           </div>
           <div class="col-md-6 mb-3">
             <label class="form-label">Last Name</label>
@@ -409,13 +456,13 @@ const dataToPass = {
               class="form-control"
               placeholder="Last name"
               aria-label="Last name"
-            />
+            >
           </div>
           <div class="col-md-6 mb-3">
             <label class="form-label">Address</label>
             <div class="row">
               <div class="col-xl-12 mb-3">
-                <input type="text" class="form-control" placeholder="Street" aria-label="Street" />
+                <input type="text" class="form-control" placeholder="Street" aria-label="Street">
               </div>
               <div class="col-xl-12 mb-3">
                 <input
@@ -423,14 +470,16 @@ const dataToPass = {
                   class="form-control"
                   placeholder="Landmark"
                   aria-label="Landmark"
-                />
+                >
               </div>
               <div class="col-xxl-6 col-xl-12 mb-3">
-                <input type="text" class="form-control" placeholder="City" aria-label="City" />
+                <input type="text" class="form-control" placeholder="City" aria-label="City">
               </div>
               <div class="col-xxl-6 col-xl-12 mb-3">
                 <select id="inputState1" class="form-select">
-                  <option selected>State</option>
+                  <option selected>
+                    State
+                  </option>
                   <option>...</option>
                 </select>
               </div>
@@ -440,11 +489,13 @@ const dataToPass = {
                   class="form-control"
                   placeholder="Postal/Zip code"
                   aria-label="Postal/Zip code"
-                />
+                >
               </div>
               <div class="col-xxl-6 col-xl-12 mb-3">
                 <select id="inputCountry" class="form-select">
-                  <option selected>Country</option>
+                  <option selected>
+                    Country
+                  </option>
                   <option>...</option>
                 </select>
               </div>
@@ -454,11 +505,11 @@ const dataToPass = {
             <div class="row">
               <div class="col-xl-12 mb-3">
                 <label class="form-label">Email</label>
-                <input type="email" class="form-control" placeholder="Email" aria-label="email" />
+                <input type="email" class="form-control" placeholder="Email" aria-label="email">
               </div>
               <div class="col-xl-12 mb-3">
                 <label class="form-label">D.O.B</label>
-                <input type="date" class="form-control" aria-label="dateofbirth" />
+                <input type="date" class="form-control" aria-label="dateofbirth">
               </div>
               <div class="col-xl-12 mb-3">
                 <div class="row">
@@ -466,29 +517,29 @@ const dataToPass = {
                   <div class="col-xl-6">
                     <div class="form-check">
                       <input
+                        id="flexRadioDefault1"
                         class="form-check-input"
                         type="radio"
                         name="flexRadioDefault"
-                        id="flexRadioDefault1"
-                      />
+                      >
                       <label class="form-check-label" for="flexRadioDefault1"> Married </label>
                     </div>
                   </div>
                   <div class="col-xl-6">
                     <div class="form-check">
                       <input
+                        id="flexRadioDefault2"
                         class="form-check-input"
                         type="radio"
                         name="flexRadioDefault"
-                        id="flexRadioDefault2"
                         checked
-                      />
+                      >
                       <label class="form-check-label" for="flexRadioDefault2"> Single </label>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-xl-12"></div>
+              <div class="col-xl-12" />
             </div>
           </div>
           <div class="col-md-6 mb-3">
@@ -498,7 +549,7 @@ const dataToPass = {
               class="form-control"
               placeholder="Phone number"
               aria-label="Phone number"
-            />
+            >
           </div>
           <div class="col-md-6 mb-3">
             <label class="form-label">Alternative Contact</label>
@@ -507,16 +558,18 @@ const dataToPass = {
               class="form-control"
               placeholder="Phone number"
               aria-label="Phone number"
-            />
+            >
           </div>
           <div class="col-md-12">
             <div class="form-check mb-3">
-              <input class="form-check-input" type="checkbox" id="gridCheck" />
+              <input id="gridCheck" class="form-check-input" type="checkbox">
               <label class="form-check-label" for="gridCheck"> Check me out </label>
             </div>
           </div>
           <div class="col-md-12">
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="submit" class="btn btn-primary">
+              Sign in
+            </button>
           </div>
         </div>
       </ShowcodeCard>
@@ -531,7 +584,7 @@ const dataToPass = {
               class="form-control"
               placeholder="First name"
               aria-label="First name"
-            />
+            >
           </div>
           <div class="col-md-6">
             <label class="form-label">Last Name</label>
@@ -540,57 +593,61 @@ const dataToPass = {
               class="form-control"
               placeholder="Last name"
               aria-label="Last name"
-            />
+            >
           </div>
           <div class="col-md-6">
             <label for="inputEmail4" class="form-label">Email</label>
-            <input type="email" class="form-control" id="inputEmail4" placeholder="Email id" />
+            <input id="inputEmail4" type="email" class="form-control" placeholder="Email id">
           </div>
           <div class="col-md-6">
             <label for="inputPassword4" class="form-label">Password</label>
             <input
+              id="inputPassword4"
               type="password"
               class="form-control"
-              id="inputPassword4"
               placeholder="Password"
-            />
+            >
           </div>
           <div class="col-12">
             <label for="inputAddress" class="form-label">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" />
+            <input id="inputAddress" type="text" class="form-control" placeholder="1234 Main St">
           </div>
           <div class="col-12">
             <label for="inputAddress2" class="form-label">Address 2</label>
             <input
+              id="inputAddress2"
               type="text"
               class="form-control"
-              id="inputAddress2"
               placeholder="Apartment, studio, or floor"
-            />
+            >
           </div>
           <div class="col-md-6">
             <label for="inputCity" class="form-label">City</label>
-            <input type="text" class="form-control" id="inputCity" />
+            <input id="inputCity" type="text" class="form-control">
           </div>
           <div class="col-md-4">
             <label for="inputState" class="form-label">State</label>
             <select id="inputState" class="form-select form-select-lg">
-              <option selected>Choose...</option>
+              <option selected>
+                Choose...
+              </option>
               <option>...</option>
             </select>
           </div>
           <div class="col-md-2">
             <label for="inputZip" class="form-label">Zip</label>
-            <input type="text" class="form-control" id="inputZip" />
+            <input id="inputZip" type="text" class="form-control">
           </div>
           <div class="col-12">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck3" />
+              <input id="gridCheck3" class="form-check-input" type="checkbox">
               <label class="form-check-label" for="gridCheck3"> Check me out </label>
             </div>
           </div>
           <div class="col-12">
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="submit" class="btn btn-primary">
+              Sign in
+            </button>
           </div>
         </form>
       </ShowcodeCard>

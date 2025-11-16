@@ -1,23 +1,23 @@
 <script lang="ts" setup>
-import { ref, computed } from 'vue'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import 'swiper/swiper-bundle.css'
-
 // Swiper modules
 import {
   Autoplay,
+  EffectCoverflow,
+  EffectCube,
+  EffectFade,
+  EffectFlip,
+  FreeMode,
+  Keyboard,
+  Mousewheel,
   Navigation,
   Pagination,
   Scrollbar,
-  Mousewheel,
-  Keyboard,
-  EffectCube,
-  EffectFade,
-  EffectCoverflow,
-  EffectFlip,
-  FreeMode,
   Thumbs,
 } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { ref } from 'vue'
+
+import 'swiper/swiper-bundle.css'
 
 // Props
 const props = defineProps<{
@@ -28,7 +28,7 @@ const props = defineProps<{
 
 // Thumbs (optional)
 const thumbsSwiper = ref(null)
-const setThumbsSwiper = (swiper: any) => {
+function setThumbsSwiper(swiper: any) {
   thumbsSwiper.value = swiper
 }
 
@@ -58,11 +58,11 @@ const modules = [
 </script>
 
 <template>
-  <swiper :class="swiperClass" :pagination="customPagination" :navigation="true" :modules="modules">
-    <swiper-slide v-for="(item, index) in swiperItems" :key="index" :class="swiperSildeClass">
+  <Swiper :class="swiperClass" :pagination="customPagination" :navigation="true" :modules="modules">
+    <SwiperSlide v-for="(item, index) in swiperItems" :key="index" :class="swiperSildeClass">
       <slot :card="item" :index="index" />
-    </swiper-slide>
-  </swiper>
+    </SwiperSlide>
+  </Swiper>
 </template>
 
 <style scoped></style>

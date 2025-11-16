@@ -1,9 +1,9 @@
 <script setup>
+import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
 import * as prism from '@/shared/data/prismCode/ui-elements/progress'
 import * as progressData from '@/shared/data/ui-elements/progress'
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
-import { Head } from '@inertiajs/vue3'
 
 const dataToPass = {
   title: 'Ui Elements',
@@ -14,38 +14,38 @@ const dataToPass = {
 
 <template>
   <Head title="Progress | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xl-12">
       <ShowcodeCard title="Basic Progress" :code="prism.basicProgress">
         <div
+          v-for="(idx, index) in progressData.progressdata"
+          :key="index"
           :class="`progress ${idx.maincustomClass}`"
           role="progressbar"
           aria-label="Basic example"
           aria-valuenow="0"
           aria-valuemin="0"
           aria-valuemax="100"
-          v-for="(idx, index) in progressData.progressdata"
-          :key="index"
         >
-          <div class="progress-bar" :style="{ width: idx.data + '%' }"></div>
+          <div class="progress-bar" :style="{ width: `${idx.data}%` }" />
         </div>
       </ShowcodeCard>
     </div>
     <div class="col-xl-12">
       <ShowcodeCard title="Different Colored Progress" :code="prism.differentColoredProgress">
         <div
+          v-for="(idx, index) in progressData.Coloreddata"
+          :key="index"
           :class="`progress ${idx.maincustomClass}`"
           role="progressbar"
           aria-valuenow="20"
           aria-valuemin="0"
           aria-valuemax="100"
-          v-for="(idx, index) in progressData.Coloreddata"
-          :key="index"
         >
-          <div :class="`progress-bar bg-${idx.color}`" :style="{ width: idx.data + '%' }"></div>
+          <div :class="`progress-bar bg-${idx.color}`" :style="{ width: `${idx.data}%` }" />
         </div>
       </ShowcodeCard>
     </div>
@@ -57,33 +57,33 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Striped Progress" :code="prism.stripedProgress">
         <div
+          v-for="(idx, index) in progressData.Stripeddata"
+          :key="index"
           :class="`progress ${idx.maincustomClass}`"
           role="progressbar"
           aria-valuenow="10"
           aria-valuemin="0"
           aria-valuemax="100"
-          v-for="(idx, index) in progressData.Stripeddata"
-          :key="index"
         >
           <div
             :class="`progress-bar progress-bar-striped bg-${idx.color}`"
-            :style="{ width: idx.data + '%' }"
-          ></div>
+            :style="{ width: `${idx.data}%` }"
+          />
         </div>
       </ShowcodeCard>
     </div>
     <div class="col-xl-12">
       <ShowcodeCard title="Progress Height" :code="prism.progressHeight">
         <div
+          v-for="(idx, index) in progressData.Heightdata"
+          :key="index"
           :class="`progress ${idx.class}`"
           role="progressbar"
           aria-valuenow="10"
           aria-valuemin="0"
           aria-valuemax="100"
-          v-for="(idx, index) in progressData.Heightdata"
-          :key="index"
         >
-          <div class="progress-bar bg-primary" :style="{ width: idx.data + '%' }"></div>
+          <div class="progress-bar bg-primary" :style="{ width: `${idx.data}%` }" />
         </div>
       </ShowcodeCard>
     </div>
@@ -95,15 +95,15 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Progress With Labels" :code="prism.progressWithLabels">
         <div
+          v-for="(idx, index) in progressData.Stripeddata"
+          :key="index"
           :class="`progress ${idx.maincustomClass}`"
           role="progressbar"
           aria-valuenow="10"
           aria-valuemin="0"
           aria-valuemax="100"
-          v-for="(idx, index) in progressData.Stripeddata"
-          :key="index"
         >
-          <div :class="`progress-bar bg-${idx.color}`" :style="{ width: idx.data + '%' }">
+          <div :class="`progress-bar bg-${idx.color}`" :style="{ width: `${idx.data}%` }">
             {{ idx.data }}%
           </div>
         </div>
@@ -112,34 +112,34 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Multiple bars With Sizes" :code="prism.multipleBarsWithSizes">
         <div
-          :class="`progress-stacked progress-${idx.size} ${idx.maincustomClass}`"
           v-for="(idx, index) in progressData.Multipleprogress"
           :key="index"
+          :class="`progress-stacked progress-${idx.size} ${idx.maincustomClass}`"
         >
           <div
             :class="`progress-bar bg-${idx.class1}`"
             role="progressbar"
-            :style="{ width: idx.now1 + '%' }"
+            :style="{ width: `${idx.now1}%` }"
             aria-valuenow="5"
             aria-valuemin="0"
             aria-valuemax="100"
-          ></div>
+          />
           <div
             :class="`progress-bar bg-${idx.class2}`"
             role="progressbar"
-            :style="{ width: idx.now2 + '%' }"
+            :style="{ width: `${idx.now2}%` }"
             aria-valuenow="10"
             aria-valuemin="0"
             aria-valuemax="100"
-          ></div>
+          />
           <div
             :class="`progress-bar bg-${idx.class3}`"
             role="progressbar"
-            :style="{ width: idx.now3 + '%' }"
+            :style="{ width: `${idx.now3}%` }"
             aria-valuenow="15"
             aria-valuemin="0"
             aria-valuemax="100"
-          ></div>
+          />
         </div>
       </ShowcodeCard>
     </div>
@@ -151,36 +151,36 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Animated Stripped Progress" :code="prism.animatedStrippedProgress">
         <div
+          v-for="(idx, index) in progressData.Animatedata"
+          :key="index"
           :class="`progress ${idx.class}`"
           role="progressbar"
           aria-valuenow="10"
           aria-valuemin="0"
           aria-valuemax="100"
-          v-for="(idx, index) in progressData.Animatedata"
-          :key="index"
         >
           <div
             :class="`progress-bar progress-bar-striped bg-${idx.color} progress-bar-animated`"
-            :style="{ width: idx.data + '%' }"
-          ></div>
+            :style="{ width: `${idx.data}%` }"
+          />
         </div>
       </ShowcodeCard>
     </div>
     <div class="col-xl-12">
       <ShowcodeCard title="Gradient Progress" :code="prism.gradientProgress">
         <div
+          v-for="(idx, index) in progressData.Animatedata"
+          :key="index"
           :class="`progress ${idx.class}`"
           role="progressbar"
           aria-valuenow="10"
           aria-valuemin="0"
           aria-valuemax="100"
-          v-for="(idx, index) in progressData.Animatedata"
-          :key="index"
         >
           <div
             :class="`progress-bar bg-${idx.color}-gradient`"
-            :style="{ width: idx.data + '%' }"
-          ></div>
+            :style="{ width: `${idx.data}%` }"
+          />
         </div>
       </ShowcodeCard>
     </div>
@@ -192,18 +192,18 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Custom Animated Progress" :code="prism.customAnimatedProgress">
         <div
+          v-for="(idx, index) in progressData.Animatedata"
+          :key="index"
           :class="`progress ${idx.class} progress-animate`"
           role="progressbar"
           aria-valuenow="10"
           aria-valuemin="0"
           aria-valuemax="100"
-          v-for="(idx, index) in progressData.Animatedata"
-          :key="index"
         >
           <div
             :class="`progress-bar bg-${idx.color}-gradient`"
-            :style="{ width: idx.data + '%' }"
-          ></div>
+            :style="{ width: `${idx.data}%` }"
+          />
         </div>
       </ShowcodeCard>
     </div>
@@ -216,9 +216,13 @@ const dataToPass = {
           aria-valuemin="0"
           aria-valuemax="100"
         >
-          <h6 class="progress-bar-title">Mobiles</h6>
+          <h6 class="progress-bar-title">
+            Mobiles
+          </h6>
           <div class="progress-bar" style="width: 50%">
-            <div class="progress-bar-value">50%</div>
+            <div class="progress-bar-value">
+              50%
+            </div>
           </div>
         </div>
         <div
@@ -228,9 +232,13 @@ const dataToPass = {
           aria-valuemin="0"
           aria-valuemax="100"
         >
-          <h6 class="progress-bar-title bg-secondary">Watches</h6>
+          <h6 class="progress-bar-title bg-secondary">
+            Watches
+          </h6>
           <div class="progress-bar bg-secondary" style="width: 60%">
-            <div class="progress-bar-value bg-secondary">60%</div>
+            <div class="progress-bar-value bg-secondary">
+              60%
+            </div>
           </div>
         </div>
         <div
@@ -240,9 +248,13 @@ const dataToPass = {
           aria-valuemin="0"
           aria-valuemax="100"
         >
-          <h6 class="progress-bar-title bg-success">Shirts</h6>
+          <h6 class="progress-bar-title bg-success">
+            Shirts
+          </h6>
           <div class="progress-bar bg-success" style="width: 70%">
-            <div class="progress-bar-value bg-success">70%</div>
+            <div class="progress-bar-value bg-success">
+              70%
+            </div>
           </div>
         </div>
       </ShowcodeCard>
@@ -255,18 +267,18 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard title="Custom Progress-2" :code="prism.customProgress2">
         <div
+          v-for="(idx, index) in progressData.CustomProgress2data"
+          :key="index"
           :class="`progress progress-sm ${idx.class3}`"
           role="progressbar"
           aria-valuenow="50"
           aria-valuemin="0"
           aria-valuemax="100"
-          v-for="(idx, index) in progressData.CustomProgress2data"
-          :key="index"
         >
-          <div :class="`progress-item-1 bg-${idx.class}`"></div>
-          <div :class="`progress-item-2 bg-${idx.class2}`"></div>
-          <div :class="`progress-item-3 bg-${idx.class1}`"></div>
-          <div :class="`progress-bar bg-${idx.class}`" :style="{ width: idx.now + '%' }"></div>
+          <div :class="`progress-item-1 bg-${idx.class}`" />
+          <div :class="`progress-item-2 bg-${idx.class2}`" />
+          <div :class="`progress-item-3 bg-${idx.class1}`" />
+          <div :class="`progress-bar bg-${idx.class}`" :style="{ width: `${idx.now}%` }" />
         </div>
       </ShowcodeCard>
     </div>
@@ -280,7 +292,9 @@ const dataToPass = {
           aria-valuemax="100"
         >
           <div class="progress-bar" style="width: 50%">
-            <div class="progress-bar-value">50%</div>
+            <div class="progress-bar-value">
+              50%
+            </div>
           </div>
         </div>
         <div
@@ -291,7 +305,9 @@ const dataToPass = {
           aria-valuemax="100"
         >
           <div class="progress-bar bg-secondary" style="width: 60%">
-            <div class="progress-bar-value secondary">60%</div>
+            <div class="progress-bar-value secondary">
+              60%
+            </div>
           </div>
         </div>
         <div
@@ -302,7 +318,9 @@ const dataToPass = {
           aria-valuemax="100"
         >
           <div class="progress-bar bg-success" style="width: 70%">
-            <div class="progress-bar-value success">70%</div>
+            <div class="progress-bar-value success">
+              70%
+            </div>
           </div>
         </div>
       </ShowcodeCard>
@@ -321,8 +339,10 @@ const dataToPass = {
           aria-valuemin="0"
           aria-valuemax="100"
         >
-          <div class="progress-bar bg-primary-gradient" style="width: 10%"></div>
-          <div class="progress-bar-label">10%</div>
+          <div class="progress-bar bg-primary-gradient" style="width: 10%" />
+          <div class="progress-bar-label">
+            10%
+          </div>
         </div>
         <div
           class="progress progress-xl mb-3 progress-animate custom-progress-4 secondary"
@@ -331,8 +351,10 @@ const dataToPass = {
           aria-valuemin="0"
           aria-valuemax="100"
         >
-          <div class="progress-bar bg-secondary-gradient" style="width: 20%"></div>
-          <div class="progress-bar-label">20%</div>
+          <div class="progress-bar bg-secondary-gradient" style="width: 20%" />
+          <div class="progress-bar-label">
+            20%
+          </div>
         </div>
         <div
           class="progress progress-xl mb-3 progress-animate custom-progress-4 success"
@@ -341,8 +363,10 @@ const dataToPass = {
           aria-valuemin="0"
           aria-valuemax="100"
         >
-          <div class="progress-bar bg-success-gradient" style="width: 40%"></div>
-          <div class="progress-bar-label">40%</div>
+          <div class="progress-bar bg-success-gradient" style="width: 40%" />
+          <div class="progress-bar-label">
+            40%
+          </div>
         </div>
         <div
           class="progress progress-xl mb-3 progress-animate custom-progress-4 info"
@@ -351,8 +375,10 @@ const dataToPass = {
           aria-valuemin="0"
           aria-valuemax="100"
         >
-          <div class="progress-bar bg-info-gradient" style="width: 60%"></div>
-          <div class="progress-bar-label">60%</div>
+          <div class="progress-bar bg-info-gradient" style="width: 60%" />
+          <div class="progress-bar-label">
+            60%
+          </div>
         </div>
         <div
           class="progress progress-xl mb-3 progress-animate custom-progress-4 warning"
@@ -361,8 +387,10 @@ const dataToPass = {
           aria-valuemin="0"
           aria-valuemax="100"
         >
-          <div class="progress-bar bg-warning-gradient" style="width: 80%"></div>
-          <div class="progress-bar-label">80%</div>
+          <div class="progress-bar bg-warning-gradient" style="width: 80%" />
+          <div class="progress-bar-label">
+            80%
+          </div>
         </div>
         <div
           class="progress progress-xl progress-animate custom-progress-4 danger"
@@ -371,14 +399,18 @@ const dataToPass = {
           aria-valuemin="0"
           aria-valuemax="100"
         >
-          <div class="progress-bar bg-danger-gradient" style="width: 90%"></div>
-          <div class="progress-bar-label">90%</div>
+          <div class="progress-bar bg-danger-gradient" style="width: 90%" />
+          <div class="progress-bar-label">
+            90%
+          </div>
         </div>
       </ShowcodeCard>
     </div>
     <div class="col-xl-12">
       <ShowcodeCard title="Custom Progress-5" :code="prism.customProgress5">
-        <h6 class="fw-medium mb-2">Project Dependencies</h6>
+        <h6 class="fw-medium mb-2">
+          Project Dependencies
+        </h6>
         <div class="progress-stacked progress-xl mb-5">
           <div
             class="progress-bar"
@@ -424,7 +456,7 @@ const dataToPass = {
                 aria-valuemin="0"
                 aria-valuemax="100"
               >
-                <div class="progress-bar bg-primary" style="width: 25%"></div>
+                <div class="progress-bar bg-primary" style="width: 25%" />
               </div>
               <p class="fs-12 fw-medium mb-0 text-muted">
                 Css<span class="float-end fs-10 fw-normal">35%</span>
@@ -436,7 +468,7 @@ const dataToPass = {
                 aria-valuemin="0"
                 aria-valuemax="100"
               >
-                <div class="progress-bar bg-secondary" style="width: 35%"></div>
+                <div class="progress-bar bg-secondary" style="width: 35%" />
               </div>
               <p class="fs-12 fw-medium mb-0 text-muted">
                 Js<span class="float-end fs-10 fw-normal">40%</span>
@@ -448,7 +480,7 @@ const dataToPass = {
                 aria-valuemin="0"
                 aria-valuemax="100"
               >
-                <div class="progress-bar bg-danger" style="width: 40%"></div>
+                <div class="progress-bar bg-danger" style="width: 40%" />
               </div>
             </div>
           </div>

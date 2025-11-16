@@ -1,16 +1,3 @@
-<template>
-  <img
-    :src="imageUrl"
-    :alt="alt"
-    :class="class"
-    :height="height"
-    :width="width"
-    :id="id"
-    v-bind="$attrs"
-    :style="style"
-  />
-</template>
-
 <script setup>
 import { computed } from 'vue'
 
@@ -30,6 +17,20 @@ const isExternalUrl = computed(() => /^https?:\/\//.test(props.src))
 // Use the base path defined in Vite config
 const imageUrl = computed(() => {
   const basePathValue = !isExternalUrl.value ? __BASE_PATH__ : ''
+
   return `${basePathValue}${props.src}`
 })
 </script>
+
+<template>
+  <img
+    :id="id"
+    :src="imageUrl"
+    :alt="alt"
+    :class="class"
+    :height="height"
+    :width="width"
+    v-bind="$attrs"
+    :style="style"
+  >
+</template>

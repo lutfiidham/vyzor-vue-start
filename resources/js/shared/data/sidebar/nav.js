@@ -1,11 +1,12 @@
 import * as Svgicons from './menusvg-icons'
+
 const badgePrimary = `<span class="badge bg-primary-transparent ms-2">9</span>`
 const badgeSucccess = `<span class="badge bg-success-transparent ms-2">6</span>`
 const badgeWarning = `<span class="badge bg-warning-transparent ms-2">5</span>`
 const badgeInfo = `<span class="badge bg-info-transparent ms-2">4</span>`
 const badgedanger = `<span class="badge bg-danger-transparent ms-2">6</span>`
 const badgeSuccess = `<span class="badge bg-success-transparent ms-2">8</span>`
-let baseUrl = __BASE_PATH__
+const baseUrl = __BASE_PATH__
 export const MENUITEMS = [
   {
     menutitle: '⚠️ DEMO PAGES ⚠️',
@@ -1070,7 +1071,7 @@ export const MENUITEMS = [
             active: false,
             selected: false,
             dirchange: false,
-            title: "FAQ's",
+            title: 'FAQ\'s',
           },
           {
             title: 'Invoice',

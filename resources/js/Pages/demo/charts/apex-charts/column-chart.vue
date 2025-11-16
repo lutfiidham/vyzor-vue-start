@@ -1,7 +1,7 @@
 <script setup>
-import * as culumnData from '@/shared/data/apexcharts/apexchart-column'
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as culumnData from '@/shared/data/apexcharts/apexchart-column'
 
 const dataToPass = {
   title: 'Charts',
@@ -13,18 +13,20 @@ const dataToPass = {
 
 <template>
   <Head title="Column Charts | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Basic Column Chart</div>
+          <div class="card-title">
+            Basic Column Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="column-basic">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="culumnData.Columnbasicoptions"
@@ -37,11 +39,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Column Chart With Datalabels</div>
+          <div class="card-title">
+            Column Chart With Datalabels
+          </div>
         </div>
         <div class="card-body">
           <div id="column-datalabels">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="culumnData.Columnchartoptions"
@@ -54,11 +58,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Stacked Column Chart</div>
+          <div class="card-title">
+            Stacked Column Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="column-stacked">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="culumnData.Stackcolumnoptions"
@@ -71,11 +77,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">100% Stacked Column Chart</div>
+          <div class="card-title">
+            100% Stacked Column Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="column-stacked-full">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="culumnData.Columnstack1options"
@@ -88,11 +96,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Column Chart With Markers</div>
+          <div class="card-title">
+            Column Chart With Markers
+          </div>
         </div>
         <div class="card-body">
           <div id="column-markers">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="culumnData.Columnmakeroptions"
@@ -105,11 +115,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Column Chart With Rotated Labels</div>
+          <div class="card-title">
+            Column Chart With Rotated Labels
+          </div>
         </div>
         <div class="card-body">
           <div id="column-rotated-labels">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="culumnData.Columnrotateoptions"
@@ -122,11 +134,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Column Chart With Negative Values</div>
+          <div class="card-title">
+            Column Chart With Negative Values
+          </div>
         </div>
         <div class="card-body">
           <div id="column-negative">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="culumnData.Columnvalueoptions"
@@ -139,11 +153,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Range Column Chart</div>
+          <div class="card-title">
+            Range Column Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="column-range">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="culumnData.Columnoptions"
@@ -156,11 +172,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Distributed Columns Chart</div>
+          <div class="card-title">
+            Distributed Columns Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="columns-distributed">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="culumnData.Column1options"
@@ -171,7 +189,7 @@ const dataToPass = {
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

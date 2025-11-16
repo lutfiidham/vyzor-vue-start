@@ -1,13 +1,14 @@
 <script setup>
+import { Head, Link, router } from '@inertiajs/vue3'
 import { onBeforeUnmount, onMounted, reactive, ref } from 'vue'
 import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head, Link, router } from '@inertiajs/vue3'
 import authlayout from '@/layouts/authlayout.vue'
-const baseUrl = __BASE_PATH__
 
 defineOptions({
   layout: authlayout,
 })
+
+const baseUrl = __BASE_PATH__
 
 const formData = reactive({
   password: '',
@@ -22,39 +23,40 @@ const passwordVisibility = reactive({
 
 const matched = ref('')
 
-const clearError = (field) => {
+function clearError(field) {
   formErrors[field] = ''
 }
 
-const togglePasswordVisibility = (field) => {
+function togglePasswordVisibility(field) {
   passwordVisibility[field] = !passwordVisibility[field]
 }
 
-const validate = () => {
+function validate() {
   const errors = {}
   if (!formData.password || formData.password.length < 6) {
     errors.password = 'Password must be at least 6 characters'
   }
 
   // Copy errors into reactive formErrors
-  Object.keys(formErrors).forEach((key) => delete formErrors[key])
+  Object.keys(formErrors).forEach(key => delete formErrors[key])
   Object.assign(formErrors, errors)
 
   return Object.keys(errors).length === 0
 }
 
-const handleSubmit = () => {
+function handleSubmit() {
   if (validate()) {
     router.visit(`${baseUrl}/demo/dashboards/sales`) // Replace with your actual route
     matched.value = 'Save Password successful'
   }
 }
 
-const setBodyClass = (action) => {
+function setBodyClass(action) {
   if (action === 'add') {
     document.body.classList.add('bg-white')
     document.body.style.display = 'block'
-  } else {
+  }
+  else {
     document.body.classList.remove('bg-white')
     document.body.style.display = 'none'
   }
@@ -64,7 +66,8 @@ onMounted(() => {
   // Check if the user has visited before
   if (localStorage.getItem('visited') === 'true') {
     setBodyClass('add')
-  } else {
+  }
+  else {
     setBodyClass('add')
     localStorage.setItem('visited', 'true')
   }
@@ -94,8 +97,12 @@ onMounted(() => {
         <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-6 col-sm-8 col-12">
           <div class="card custom-card border-0 shadow-none my-4">
             <div class="card-body p-5">
-              <p class="h4 mb-2 fw-semibold">Hello Tom Phillip</p>
-              <p class="mb-3 text-muted fw-normal">Welcome Back</p>
+              <p class="h4 mb-2 fw-semibold">
+                Hello Tom Phillip
+              </p>
+              <p class="mb-3 text-muted fw-normal">
+                Welcome Back
+              </p>
               <div class="d-flex gap-2 align-items-center mb-3">
                 <div class="lh-1">
                   <span class="avatar avatar-sm avatar-rounded">
@@ -103,7 +110,9 @@ onMounted(() => {
                   </span>
                 </div>
                 <div>
-                  <p class="mb-0 text-dark fw-medium">tomphillip32@gmail.com</p>
+                  <p class="mb-0 text-dark fw-medium">
+                    tomphillip32@gmail.com
+                  </p>
                 </div>
               </div>
               <form @submit.prevent="handleSubmit">
@@ -112,24 +121,24 @@ onMounted(() => {
                     <label for="password" class="form-label text-default">Password</label>
                     <div class="position-relative">
                       <input
+                        id="password"
+                        v-model="formData.password"
                         :type="passwordVisibility.password ? 'text' : 'password'"
                         class="form-control form-control-lg"
-                        id="password"
                         placeholder="password"
-                        v-model="formData.password"
-                        @input="clearError('password')"
                         autocomplete="new-password"
-                      />
+                        @input="clearError('password')"
+                      >
 
                       <a
-                        href="#!"
-                        @click.prevent="togglePasswordVisibility('password')"
-                        class="show-password-button text-muted"
                         id="button-addon2"
+                        href="#!"
+                        class="show-password-button text-muted"
+                        @click.prevent="togglePasswordVisibility('password')"
                       >
                         <i
                           :class="`align-middle ${passwordVisibility.password ? 'ri-eye-line' : 'ri-eye-off-line'}`"
-                        ></i>
+                        />
                       </a>
                     </div>
 
@@ -143,7 +152,9 @@ onMounted(() => {
                   </div>
 
                   <div class="col-xl-12 d-grid mt-2">
-                    <button type="submit" class="btn btn-lg btn-primary">Unlock</button>
+                    <button type="submit" class="btn btn-lg btn-primary">
+                      Unlock
+                    </button>
                   </div>
                 </div>
               </form>
@@ -171,7 +182,9 @@ onMounted(() => {
         </div>
         <div class="authentication-cover-content">
           <div class="p-5">
-            <h3 class="fw-semibold lh-base">Welcome to Dashboard</h3>
+            <h3 class="fw-semibold lh-base">
+              Welcome to Dashboard
+            </h3>
             <p class="mb-0 text-muted fw-medium">
               Manage your website and content with ease using our powerful admin tools.
             </p>

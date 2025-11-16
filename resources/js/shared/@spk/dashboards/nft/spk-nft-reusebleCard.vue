@@ -1,24 +1,23 @@
 <script setup>
 import { Link } from '@inertiajs/vue3'
 import BaseImg from '../../../../components/Baseimage/BaseImg.vue'
-const baseUrl = __BASE_PATH__
+
 defineProps({
   card: Object,
 })
+const baseUrl = __BASE_PATH__
 </script>
+
 <template>
   <div class="card custom-card">
     <div class="d-flex align-items-center justify-content-between nft-like-section w-100 px-3">
       <div class="flex-fill">
         <button class="btn btn-sm btn-icon btn-danger rounded-pill btn-wave">
-          <i class="ri-heart-fill"></i>
+          <i class="ri-heart-fill" />
         </button>
       </div>
       <div>
-        <span class="badge nft-like-badge text-default"
-          ><i class="ri-heart-fill me-1 text-danger align-middle d-inline-block"></i
-          >{{ card.likes }}</span
-        >
+        <span class="badge nft-like-badge text-default"><i class="ri-heart-fill me-1 text-danger align-middle d-inline-block" />{{ card.likes }}</span>
       </div>
       <p class="mb-0 nft-auction-time">
         {{ card.time }}
@@ -29,11 +28,11 @@ defineProps({
       <div class="p-2">
         <div class="mb-3">
           <Link :href="`${baseUrl}/demo/dashboards/nft/nft-details`">
-            <h6 class="fw-semibold mb-1 text-truncate">{{ card.title }}</h6>
+            <h6 class="fw-semibold mb-1 text-truncate">
+              {{ card.title }}
+            </h6>
           </Link>
-          <a href="javascript:void(0);"
-            ><span class="fs-13 text-muted fw-medium">{{ card.author }}</span></a
-          >
+          <a href="javascript:void(0);"><span class="fs-13 text-muted fw-medium">{{ card.author }}</span></a>
         </div>
         <div class="d-flex align-items-end justify-content-between flex-wrap gap-2">
           <div class="flex-fill">
@@ -53,7 +52,9 @@ defineProps({
             </div>
           </div>
           <div>
-            <button class="btn btn-primary">{{ card.bidAmount }}</button>
+            <button class="btn btn-primary">
+              {{ card.bidAmount }}
+            </button>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 <script setup>
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
 
 const dataToPass = {
   title: 'Utilities',
@@ -11,7 +11,7 @@ const dataToPass = {
 
 <template>
   <Head title="CSS-Grid | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
@@ -20,12 +20,18 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">starts</div>
+              <div class="card-title">
+                starts
+              </div>
             </div>
             <div class="card-body bd-example-cssgrid text-center">
               <div class="grid">
-                <div class="g-col-3 g-start-2">.g-col-3 .g-start-2</div>
-                <div class="g-col-4 g-start-6">.g-col-4 .g-start-6</div>
+                <div class="g-col-3 g-start-2">
+                  .g-col-3 .g-start-2
+                </div>
+                <div class="g-col-4 g-start-6">
+                  .g-col-4 .g-start-6
+                </div>
               </div>
             </div>
           </div>
@@ -33,18 +39,30 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Responsive</div>
+              <div class="card-title">
+                Responsive
+              </div>
             </div>
             <div class="card-body bd-example-cssgrid text-center overflow-x-auto">
               <div class="grid mb-3">
-                <div class="g-col-md-4">.g-col-md-4</div>
-                <div class="g-col-md-4">.g-col-md-4</div>
-                <div class="g-col-md-4">.g-col-md-4</div>
+                <div class="g-col-md-4">
+                  .g-col-md-4
+                </div>
+                <div class="g-col-md-4">
+                  .g-col-md-4
+                </div>
+                <div class="g-col-md-4">
+                  .g-col-md-4
+                </div>
               </div>
               <p>Compare that to this two column layout at all viewports.</p>
               <div class="grid">
-                <div class="g-col-6">.g-col-6</div>
-                <div class="g-col-6">.g-col-6</div>
+                <div class="g-col-6">
+                  .g-col-6
+                </div>
+                <div class="g-col-6">
+                  .g-col-6
+                </div>
               </div>
             </div>
           </div>
@@ -52,7 +70,9 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Auto columns</div>
+              <div class="card-title">
+                Auto columns
+              </div>
             </div>
             <div class="card-body bd-example-cssgrid text-center nesting-grid-reponsive">
               <p>
@@ -61,15 +81,25 @@ const dataToPass = {
                 to one column.
               </p>
               <div class="grid mb-3 text-center">
-                <div class="g-col-6">.g-col-6</div>
-                <div class="g-col-6">.g-col-6</div>
+                <div class="g-col-6">
+                  .g-col-6
+                </div>
+                <div class="g-col-6">
+                  .g-col-6
+                </div>
 
-                <div class="g-col-6">.g-col-6</div>
-                <div class="g-col-6">.g-col-6</div>
+                <div class="g-col-6">
+                  .g-col-6
+                </div>
+                <div class="g-col-6">
+                  .g-col-6
+                </div>
               </div>
               <p>This behavior can be mixed with grid column classes.</p>
               <div class="grid text-center grid-col-mixed-responsive">
-                <div class="g-col-6">.g-col-6</div>
+                <div class="g-col-6">
+                  .g-col-6
+                </div>
                 <div>1</div>
                 <div>1</div>
                 <div>1</div>
@@ -83,17 +113,27 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Columns and gaps</div>
+              <div class="card-title">
+                Columns and gaps
+              </div>
             </div>
             <div class="card-body bd-example-cssgrid text-center">
               <div class="overflow-x-auto">
                 <div class="grid mb-3" style="--bs-columns: 4; --bs-gap: 5rem">
-                  <div class="g-col-2">.g-col-2</div>
-                  <div class="g-col-2">.g-col-2</div>
+                  <div class="g-col-2">
+                    .g-col-2
+                  </div>
+                  <div class="g-col-2">
+                    .g-col-2
+                  </div>
                 </div>
                 <div class="grid" style="--bs-columns: 10; --bs-gap: 1rem">
-                  <div class="g-col-6">.g-col-6</div>
-                  <div class="g-col-4">.g-col-4</div>
+                  <div class="g-col-6">
+                    .g-col-6
+                  </div>
+                  <div class="g-col-4">
+                    .g-col-4
+                  </div>
                 </div>
               </div>
             </div>
@@ -102,21 +142,31 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Gaps</div>
+              <div class="card-title">
+                Gaps
+              </div>
             </div>
             <div class="card-body bd-example-cssgrid text-center overflow-x-auto">
-              <P
-                >Change the vertical gaps only by modifying the
+              <P>
+                Change the vertical gaps only by modifying the
                 <span class="text-danger">row-gap</span>. Note that we use gap on
                 <span class="text-danger me-1">.grid</span>s, but row-gap and
                 <Span class="text-danger me-1">column-gap</Span>can be modified as needed.
               </P>
               <div class="grid mb-3" style="row-gap: 0">
-                <div class="g-col-6">.g-col-6</div>
-                <div class="g-col-6">.g-col-6</div>
+                <div class="g-col-6">
+                  .g-col-6
+                </div>
+                <div class="g-col-6">
+                  .g-col-6
+                </div>
 
-                <div class="g-col-6">.g-col-6</div>
-                <div class="g-col-6">.g-col-6</div>
+                <div class="g-col-6">
+                  .g-col-6
+                </div>
+                <div class="g-col-6">
+                  .g-col-6
+                </div>
               </div>
               <p>
                 Because of that, you can have different vertical and horizontal gaps, which can take
@@ -125,11 +175,19 @@ const dataToPass = {
                 our <span class="text-danger">--bs-gap</span> CSS variable.
               </p>
               <div class="grid" style="--bs-gap: 0.25rem 1rem">
-                <div class="g-col-6">.g-col-6</div>
-                <div class="g-col-6">.g-col-6</div>
+                <div class="g-col-6">
+                  .g-col-6
+                </div>
+                <div class="g-col-6">
+                  .g-col-6
+                </div>
 
-                <div class="g-col-6">.g-col-6</div>
-                <div class="g-col-6">.g-col-6</div>
+                <div class="g-col-6">
+                  .g-col-6
+                </div>
+                <div class="g-col-6">
+                  .g-col-6
+                </div>
               </div>
             </div>
           </div>
@@ -141,14 +199,22 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Three columns</div>
+              <div class="card-title">
+                Three columns
+              </div>
             </div>
             <div class="card-body">
               <div class="bd-example-cssgrid text-center overflow-x-auto">
                 <div class="grid">
-                  <div class="g-col-4">.g-col-4</div>
-                  <div class="g-col-4">.g-col-4</div>
-                  <div class="g-col-4">.g-col-4</div>
+                  <div class="g-col-4">
+                    .g-col-4
+                  </div>
+                  <div class="g-col-4">
+                    .g-col-4
+                  </div>
+                  <div class="g-col-4">
+                    .g-col-4
+                  </div>
                 </div>
               </div>
             </div>
@@ -157,16 +223,26 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Wrapping</div>
+              <div class="card-title">
+                Wrapping
+              </div>
             </div>
             <div class="card-body">
               <div class="bd-example-cssgrid text-center overflow-x-auto">
                 <div class="grid">
-                  <div class="g-col-6">.g-col-6</div>
-                  <div class="g-col-6">.g-col-6</div>
+                  <div class="g-col-6">
+                    .g-col-6
+                  </div>
+                  <div class="g-col-6">
+                    .g-col-6
+                  </div>
 
-                  <div class="g-col-6">.g-col-6</div>
-                  <div class="g-col-6">.g-col-6</div>
+                  <div class="g-col-6">
+                    .g-col-6
+                  </div>
+                  <div class="g-col-6">
+                    .g-col-6
+                  </div>
                 </div>
               </div>
             </div>
@@ -175,7 +251,9 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Nesting</div>
+              <div class="card-title">
+                Nesting
+              </div>
             </div>
             <div class="card-body bd-example-cssgrid text-center nesting-grid-reponsive">
               <div class="grid overflow-x-auto" style="--bs-columns: 3">
@@ -189,9 +267,15 @@ const dataToPass = {
                 <div>
                   Second auto-column
                   <div class="grid" style="--bs-columns: 12">
-                    <div class="g-col-6">6 of 12</div>
-                    <div class="g-col-4">4 of 12</div>
-                    <div class="g-col-2">2 of 12</div>
+                    <div class="g-col-6">
+                      6 of 12
+                    </div>
+                    <div class="g-col-4">
+                      4 of 12
+                    </div>
+                    <div class="g-col-2">
+                      2 of 12
+                    </div>
                   </div>
                 </div>
                 <div>Third auto-column</div>
@@ -202,7 +286,9 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">No grid classes</div>
+              <div class="card-title">
+                No grid classes
+              </div>
             </div>
             <div class="card-body bd-example-cssgrid text-center">
               <div class="grid" style="--bs-columns: 3">
@@ -216,13 +302,19 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Adding rows</div>
+              <div class="card-title">
+                Adding rows
+              </div>
             </div>
             <div class="card-body bd-example-cssgrid text-center">
               <div class="grid" style="--bs-rows: 3; --bs-columns: 3">
                 <div>Auto-column</div>
-                <div class="g-start-2" style="grid-row: 2">Auto-column</div>
-                <div class="g-start-3" style="grid-row: 3">Auto-column</div>
+                <div class="g-start-2" style="grid-row: 2">
+                  Auto-column
+                </div>
+                <div class="g-start-3" style="grid-row: 3">
+                  Auto-column
+                </div>
               </div>
             </div>
           </div>
@@ -230,7 +322,9 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Customizing</div>
+              <div class="card-title">
+                Customizing
+              </div>
             </div>
             <div class="card-body">
               <div class="table-responsive">

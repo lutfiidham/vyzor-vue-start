@@ -1,5 +1,5 @@
-export let basicExamples = {
-    script: `
+export const basicExamples = {
+  script: `
 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                     <label for="floatingInput">Email address</label>
@@ -8,9 +8,9 @@ export let basicExamples = {
                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                     <label for="floatingPassword">Password</label>
                 </div>`,
-  },
-  readonlyplaintext = {
-    script: `
+}
+export const readonlyplaintext = {
+  script: `
 <div class="form-floating mb-3">
                     <input type="email" readonly class="form-control-plaintext" id="floatingEmptyPlaintextInput"
                         placeholder="name@example.com">
@@ -21,9 +21,9 @@ export let basicExamples = {
                         placeholder="name@example.com" value="name@example.com">
                     <label for="floatingPlaintextInput">Input with value</label>
                 </div>`,
-  },
-  floatingLabelsWithPreDefinedValues = {
-    script: `
+}
+export const floatingLabelsWithPreDefinedValues = {
+  script: `
 <form class="form-floating my-3">
                     <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com"
                         value="test@example.com">
@@ -34,9 +34,9 @@ export let basicExamples = {
                         placeholder="name@example.com" value="test@example.com">
                     <label for="floatingInputInvalid">Invalid input</label>
                 </form>`,
-  },
-  textareas = {
-    script: `
+}
+export const textareas = {
+  script: `
 <div class="form-floating mb-4">
                     <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
                     <label for="floatingTextarea">Description</label>
@@ -46,9 +46,9 @@ export let basicExamples = {
                         disabled></textarea>
                     <label for="floatingTextarea2">Disabled</label>
                 </div>`,
-  },
-  floatingLabelsInSelect = {
-    script: `
+}
+export const floatingLabelsInSelect = {
+  script: `
 <div class="form-floating">
                     <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
                         <option selected>Open this select menu</option>
@@ -58,9 +58,9 @@ export let basicExamples = {
                     </select>
                     <label for="floatingSelect">Works with selects</label>
                 </div>`,
-  },
-  floatingLabelsWithLayouts = {
-    script: `
+}
+export const floatingLabelsWithLayouts = {
+  script: `
 <div class="row g-2">
                     <div class="col-md">
                         <div class="form-floating">
@@ -81,9 +81,9 @@ export let basicExamples = {
                         </div>
                     </div>
                 </div>`,
-  },
-  floatingLabelColors = {
-    script: `
+}
+export const floatingLabelColors = {
+  script: `
 <div class="row gy-4">
                     <div class="col-xl-4">
                         <div class="form-floating mb-4 floating-primary">
@@ -128,4 +128,4 @@ export let basicExamples = {
                         </div>
                     </div>
                 </div>`,
-  }
+}

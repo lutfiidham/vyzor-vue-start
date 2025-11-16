@@ -1,13 +1,14 @@
 <script setup>
+import { Head, Link, router } from '@inertiajs/vue3'
 import { onBeforeUnmount, onMounted, reactive, ref } from 'vue'
 import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head, Link, router } from '@inertiajs/vue3'
 import authlayout from '@/layouts/authlayout.vue'
-const baseUrl = __BASE_PATH__
 
 defineOptions({
   layout: authlayout,
 })
+
+const baseUrl = __BASE_PATH__
 
 const formData = reactive({
   password: '',
@@ -24,18 +25,18 @@ const passwordVisibility = reactive({
 const matched = ref('')
 
 // Handle input change
-const handleChange = (field, value) => {
+function handleChange(field, value) {
   formData[field] = value
   formErrors[field] = ''
 }
 
 // Toggle visibility for password fields
-const togglePasswordVisibility = (field) => {
+function togglePasswordVisibility(field) {
   passwordVisibility[field] = !passwordVisibility[field]
 }
 
 // Validate form inputs
-const validate = () => {
+function validate() {
   const errors = {}
 
   if (!formData.password || formData.password.length < 6) {
@@ -52,7 +53,7 @@ const validate = () => {
 }
 
 // Handle form submission
-const handleSubmit = (e) => {
+function handleSubmit(e) {
   e.preventDefault()
 
   // Clear previous success message
@@ -65,11 +66,12 @@ const handleSubmit = (e) => {
   }
 }
 
-const setBodyClass = (action) => {
+function setBodyClass(action) {
   if (action === 'add') {
     document.body.classList.add('bg-white')
     document.body.style.display = 'block'
-  } else {
+  }
+  else {
     document.body.classList.remove('bg-white')
     document.body.style.display = 'none'
   }
@@ -79,7 +81,8 @@ onMounted(() => {
   // Check if the user has visited before
   if (localStorage.getItem('visited') === 'true') {
     setBodyClass('add')
-  } else {
+  }
+  else {
     setBodyClass('add')
     localStorage.setItem('visited', 'true')
   }
@@ -110,8 +113,12 @@ onMounted(() => {
           <div class="card custom-card border-0 shadow-none my-4">
             <div class="card-body p-5">
               <div>
-                <h4 class="mb-1 fw-semibold">Create Password</h4>
-                <p class="mb-4 text-muted fw-normal">Set your new password</p>
+                <h4 class="mb-1 fw-semibold">
+                  Create Password
+                </h4>
+                <p class="mb-4 text-muted fw-normal">
+                  Set your new password
+                </p>
               </div>
               <form @submit="handleSubmit">
                 <div class="row gy-3">
@@ -119,22 +126,22 @@ onMounted(() => {
                     <label for="create-password" class="form-label text-default">Password</label>
                     <div class="position-relative">
                       <input
+                        id="password1"
+                        v-model="formData.password"
                         :type="passwordVisibility.password ? 'text' : 'password'"
                         class="form-control form-control-lg"
-                        id="password1"
                         placeholder="password"
-                        v-model="formData.password"
-                      />
+                      >
                       <a
                         href="#!"
-                        @click.prevent="togglePasswordVisibility('password')"
                         class="show-password-button text-muted"
+                        @click.prevent="togglePasswordVisibility('password')"
                       >
                         <i
                           :class="`align-middle ${
                             passwordVisibility.password ? 'ri-eye-line' : 'ri-eye-off-line'
                           }`"
-                        ></i>
+                        />
                       </a>
                     </div>
                     <p v-if="formErrors.password" class="text-danger text-xs mt-1 mb-0">
@@ -142,27 +149,25 @@ onMounted(() => {
                     </p>
                   </div>
                   <div class="col-xl-12">
-                    <label for="create-confirmpassword" class="form-label text-default"
-                      >Confirm Password</label
-                    >
+                    <label for="create-confirmpassword" class="form-label text-default">Confirm Password</label>
                     <div class="position-relative">
                       <input
+                        id="confirmPassword"
+                        v-model="formData.confirmPassword"
                         :type="passwordVisibility.passwords ? 'text' : 'password'"
                         class="form-control form-control-lg"
-                        id="confirmPassword"
                         placeholder="confirm password"
-                        v-model="formData.confirmPassword"
-                      />
+                      >
                       <a
                         href="#!"
-                        @click.prevent="togglePasswordVisibility('passwords')"
                         class="show-password-button text-muted"
+                        @click.prevent="togglePasswordVisibility('passwords')"
                       >
                         <i
                           :class="`align-middle ${
                             passwordVisibility.passwords ? 'ri-eye-line' : 'ri-eye-off-line'
                           }`"
-                        ></i>
+                        />
                       </a>
                     </div>
                     <p v-if="formErrors.confirmPassword" class="text-danger text-xs mt-1">
@@ -174,13 +179,13 @@ onMounted(() => {
                     <div class="mt-2">
                       <div class="form-check mb-0">
                         <input
+                          id="defaultCheck1"
+                          v-model="rememberPassword"
                           class="form-check-input"
                           type="checkbox"
                           value=""
-                          id="defaultCheck1"
-                          v-model="rememberPassword"
                           checked
-                        />
+                        >
                         <label class="form-check-label" for="defaultCheck1">
                           Remember password ?
                         </label>
@@ -189,7 +194,9 @@ onMounted(() => {
                   </div>
                 </div>
                 <div class="d-grid mt-3">
-                  <button type="submit" class="btn btn-primary">Create Password</button>
+                  <button type="submit" class="btn btn-primary">
+                    Create Password
+                  </button>
                 </div>
               </form>
               <div class="text-center my-3 authentication-barrier">
@@ -215,9 +222,9 @@ onMounted(() => {
               </div>
               <div class="text-center mt-3 fw-medium">
                 Dont have an account?
-                <Link :href="`${baseUrl}/demo/pages/authentication/sign-up/basic`" class="text-primary"
-                  >Sign Up</Link
-                >
+                <Link :href="`${baseUrl}/demo/pages/authentication/sign-up/basic`" class="text-primary">
+                  Sign Up
+                </Link>
               </div>
             </div>
           </div>
@@ -236,7 +243,9 @@ onMounted(() => {
         </div>
         <div class="authentication-cover-content">
           <div class="p-5">
-            <h3 class="fw-semibold lh-base">Welcome to Dashboard</h3>
+            <h3 class="fw-semibold lh-base">
+              Welcome to Dashboard
+            </h3>
             <p class="mb-0 text-muted fw-medium">
               Manage your website and content with ease using our powerful admin tools.
             </p>

@@ -5,6 +5,7 @@ defineProps({
   card: Object,
 })
 </script>
+
 <template>
   <div class="card custom-card">
     <BaseImg :src="card.imgSrc" class="card-img-top" alt="..." />
@@ -15,13 +16,13 @@ defineProps({
       <span class="text-muted fs-13">{{ card.role }}</span>
       <div class="btn-list mt-3">
         <button class="btn btn-light btn-icon rounded-circle border">
-          <i class="ri-facebook-circle-fill lh-1"></i>
+          <i class="ri-facebook-circle-fill lh-1" />
         </button>
         <button class="btn btn-light btn-icon rounded-circle border">
-          <i class="ri-twitter-x-fill lh-1"></i>
+          <i class="ri-twitter-x-fill lh-1" />
         </button>
         <button class="btn btn-light btn-icon rounded-circle border">
-          <i class="ri-linkedin-box-fill lh-1"></i>
+          <i class="ri-linkedin-box-fill lh-1" />
         </button>
       </div>
     </div>

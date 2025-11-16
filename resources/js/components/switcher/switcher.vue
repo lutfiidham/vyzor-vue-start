@@ -1,8 +1,8 @@
 <script setup>
-import { ref, reactive, onMounted, onUnmounted, computed } from 'vue'
 import { Tooltip } from 'bootstrap'
-import { switcherStore } from '../../../stores/switcher'
+import { computed, onMounted, onUnmounted, reactive, ref } from 'vue'
 import { MENUITEMS } from '@/shared/data/sidebar/nav'
+import { switcherStore } from '../../../stores/switcher'
 import BaseImg from '../Baseimage/BaseImg.vue'
 // Reactive state and refs
 let switcher = reactive(switcherStore())
@@ -32,27 +32,28 @@ const themeBackgroundFn = computed({
     localStorage.removeItem('vyzorHeader')
     localStorage.removeItem('vyzorMenu')
 
-    const parts = value.split(',').map((s) => s.trim())
+    const parts = value.split(',').map(s => s.trim())
     if (parts.length === 6) {
       const val1 = parts.slice(0, 3).join(',')
       const val2 = parts.slice(3).join(',')
       switcher.themeBackgroundFn(val1, val2)
-    } else {
+    }
+    else {
       console.warn('Invalid format:', value)
     }
   },
 })
 
 function primaryColorFn(color) {
-  let primaryRgb = convertRgbToIndividual(color)
+  const primaryRgb = convertRgbToIndividual(color)
   switcher.themePrimaryFn(primaryRgb)
 }
 
 function dynamicBackgroundColorFn(color) {
-  let bgRgb = convertRgbToIndividual(color)
-  let bgRgb2 = convertRgbToIndividual(color)
-  let bg1Update = bgRgb.split(', ').join(', ')
-  let bg2Update = bgRgb2.split(', ')
+  const bgRgb = convertRgbToIndividual(color)
+  const bgRgb2 = convertRgbToIndividual(color)
+  const bg1Update = bgRgb.split(', ').join(', ')
+  const bg2Update = bgRgb2.split(', ')
   bg2Update[0] = Number(bg2Update[0]) + 14
   bg2Update[1] = Number(bg2Update[1]) + 14
   bg2Update[2] = Number(bg2Update[2]) + 14
@@ -76,7 +77,8 @@ function colorthemeFn(value) {
     localStorage.setItem('vyzorMenu', 'dark')
     localStorage.setItem('vyzorHeader', 'dark')
     themeBackgroundStr.value = ''
-  } else {
+  }
+  else {
     localStorage.removeItem('vyzorHeader')
     localStorage.removeItem('vyzorMenu')
     themeBackgroundStr.value = ''
@@ -171,13 +173,13 @@ onMounted(() => {
   switcher.themeBackgroundStorage()
   themePrimarySelected.value = switcher.themePrimary
   themeBackgroundStr.value = switcher.themeBackground
-  let pop = new Tooltip(document.body, {
+  const pop = new Tooltip(document.body, {
     selector: '[data-bs-toggle="tooltip"]',
   })
 })
 
 onUnmounted(() => {
-  let popovers = document.getElementsByClassName('tooltip')
+  const popovers = document.getElementsByClassName('tooltip')
   Array.from(popovers).forEach((item) => {
     item.remove()
   })
@@ -187,26 +189,28 @@ onUnmounted(() => {
 <template>
   <!-- Start Switcher -->
   <div
+    id="switcher-canvas"
     class="offcanvas offcanvas-end"
     tabindex="-1"
-    id="switcher-canvas"
     aria-labelledby="offcanvasRightLabel"
   >
     <div class="offcanvas-header border-bottom d-block p-0">
       <div class="d-flex align-items-center justify-content-between p-3">
-        <h5 class="offcanvas-title text-default" id="offcanvasRightLabel">Switcher</h5>
+        <h5 id="offcanvasRightLabel" class="offcanvas-title text-default">
+          Switcher
+        </h5>
         <button
           type="button"
           class="btn-close"
           data-bs-dismiss="offcanvas"
           aria-label="Close"
-        ></button>
+        />
       </div>
       <nav class="border-top border-block-start-dashed">
-        <div class="nav nav-tabs nav-justified" id="switcher-main-tab" role="tablist">
+        <div id="switcher-main-tab" class="nav nav-tabs nav-justified" role="tablist">
           <button
-            class="nav-link active"
             id="switcher-home-tab"
+            class="nav-link active"
             data-bs-toggle="tab"
             data-bs-target="#switcher-home"
             type="button"
@@ -217,8 +221,8 @@ onUnmounted(() => {
             Theme Styles
           </button>
           <button
-            class="nav-link"
             id="switcher-profile-tab"
+            class="nav-link"
             data-bs-toggle="tab"
             data-bs-target="#switcher-profile"
             type="button"
@@ -232,486 +236,506 @@ onUnmounted(() => {
       </nav>
     </div>
     <div class="offcanvas-body">
-      <div class="tab-content" id="nav-tabContent">
+      <div id="nav-tabContent" class="tab-content">
         <div
-          class="tab-pane fade show active border-0"
           id="switcher-home"
+          class="tab-pane fade show active border-0"
           role="tabpanel"
           aria-labelledby="switcher-home-tab"
           tabindex="0"
         >
           <div class="">
-            <p class="switcher-style-head">Theme Color Mode:</p>
+            <p class="switcher-style-head">
+              Theme Color Mode:
+            </p>
             <div class="row switcher-style gx-0">
               <div class="col-4">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-light-theme"> Light </label>
                   <input
-                    @click="colorthemeFn('light')"
+                    id="switcher-light-theme"
                     class="form-check-input"
                     type="radio"
                     name="theme-style"
-                    id="switcher-light-theme"
                     :checked="switcher.colortheme == 'light' ? true : false"
-                  />
+                    @click="colorthemeFn('light')"
+                  >
                 </div>
               </div>
               <div class="col-4">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-dark-theme"> Dark </label>
                   <input
-                    @click="colorthemeFn('dark')"
+                    id="switcher-dark-theme"
                     class="form-check-input"
                     type="radio"
                     name="theme-style"
-                    id="switcher-dark-theme"
                     :checked="switcher.colortheme == 'dark' ? true : false"
-                  />
+                    @click="colorthemeFn('dark')"
+                  >
                 </div>
               </div>
             </div>
           </div>
           <div class="">
-            <p class="switcher-style-head">Directions:</p>
+            <p class="switcher-style-head">
+              Directions:
+            </p>
             <div class="row switcher-style gx-0">
               <div class="col-4">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-ltr"> LTR </label>
                   <input
-                    @click="directionFn('ltr')"
+                    id="switcher-ltr"
                     class="form-check-input"
                     type="radio"
                     name="direction"
-                    id="switcher-ltr"
                     :checked="switcher.direction == 'ltr' ? true : false"
-                  />
+                    @click="directionFn('ltr')"
+                  >
                 </div>
               </div>
               <div class="col-4">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-rtl"> RTL </label>
                   <input
-                    @click="directionFn('rtl')"
+                    id="switcher-rtl"
                     class="form-check-input"
                     type="radio"
                     name="direction"
-                    id="switcher-rtl"
                     :checked="switcher.direction == 'rtl' ? true : false"
-                  />
+                    @click="directionFn('rtl')"
+                  >
                 </div>
               </div>
             </div>
           </div>
           <div class="">
-            <p class="switcher-style-head">Navigation Styles:</p>
+            <p class="switcher-style-head">
+              Navigation Styles:
+            </p>
             <div class="row switcher-style gx-0">
               <div class="col-4">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-vertical"> Vertical </label>
                   <input
-                    @click="navigationStylesFn('vertical')"
+                    id="switcher-vertical"
                     class="form-check-input"
                     type="radio"
                     name="navigation-style"
-                    id="switcher-vertical"
                     :checked="switcher.navigationStyles == 'vertical' ? true : false"
-                  />
+                    @click="navigationStylesFn('vertical')"
+                  >
                 </div>
               </div>
               <div class="col-4">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-horizontal"> Horizontal </label>
                   <input
-                    @click="navigationStylesFn('horizontal')"
+                    id="switcher-horizontal"
                     class="form-check-input"
                     type="radio"
                     name="navigation-style"
-                    id="switcher-horizontal"
                     :checked="switcher.navigationStyles == 'horizontal' ? true : false"
-                  />
+                    @click="navigationStylesFn('horizontal')"
+                  >
                 </div>
               </div>
             </div>
           </div>
           <div class="navigation-menu-styles">
-            <p class="switcher-style-head">Vertical & Horizontal Menu Styles:</p>
+            <p class="switcher-style-head">
+              Vertical & Horizontal Menu Styles:
+            </p>
             <div class="row switcher-style gx-0 pb-2 gy-2">
               <div class="col-4">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-menu-click"> Menu Click </label>
                   <input
-                    @click="menuStylesFn('menu-click')"
+                    id="switcher-menu-click"
                     class="form-check-input"
                     type="radio"
                     name="navigation-menu-styles"
-                    id="switcher-menu-click"
                     :checked="switcher.menuStyles == 'menu-click' ? true : false"
-                  />
+                    @click="menuStylesFn('menu-click')"
+                  >
                 </div>
               </div>
               <div class="col-4">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-menu-hover"> Menu Hover </label>
                   <input
-                    @click="menuStylesFn('menu-hover')"
+                    id="switcher-menu-hover"
                     class="form-check-input"
                     type="radio"
                     name="navigation-menu-styles"
-                    id="switcher-menu-hover"
                     :checked="switcher.menuStyles == 'menu-hover' ? true : false"
-                  />
+                    @click="menuStylesFn('menu-hover')"
+                  >
                 </div>
               </div>
               <div class="col-4">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-icon-click"> Icon Click </label>
                   <input
-                    @click="menuStylesFn('icon-click')"
+                    id="switcher-icon-click"
                     class="form-check-input"
                     type="radio"
                     name="navigation-menu-styles"
-                    id="switcher-icon-click"
                     :checked="switcher.menuStyles == 'icon-click' ? true : false"
-                  />
+                    @click="menuStylesFn('icon-click')"
+                  >
                 </div>
               </div>
               <div class="col-4">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-icon-hover"> Icon Hover </label>
                   <input
-                    @click="menuStylesFn('icon-hover')"
+                    id="switcher-icon-hover"
                     class="form-check-input"
                     type="radio"
                     name="navigation-menu-styles"
-                    id="switcher-icon-hover"
                     :checked="switcher.menuStyles == 'icon-hover' ? true : false"
-                  />
+                    @click="menuStylesFn('icon-hover')"
+                  >
                 </div>
               </div>
             </div>
           </div>
           <div class="sidemenu-layout-styles">
-            <p class="switcher-style-head">Sidemenu Layout Styles:</p>
+            <p class="switcher-style-head">
+              Sidemenu Layout Styles:
+            </p>
             <div class="row switcher-style gx-0 pb-2 gy-2">
               <div class="col-sm-6">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-default-menu"> Default Menu </label>
                   <input
-                    @click="layoutStylesFn('default-menu')"
+                    id="switcher-default-menu"
                     class="form-check-input"
                     type="radio"
                     name="sidemenu-layout-styles"
-                    id="switcher-default-menu"
                     :checked="switcher.layoutStyles == 'default-menu' ? true : false"
-                  />
+                    @click="layoutStylesFn('default-menu')"
+                  >
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-closed-menu"> Closed Menu </label>
                   <input
-                    @click="layoutStylesFn('closed-menu')"
+                    id="switcher-closed-menu"
                     class="form-check-input"
                     type="radio"
                     name="sidemenu-layout-styles"
-                    id="switcher-closed-menu"
                     :checked="switcher.layoutStyles == 'closed-menu' ? true : false"
-                  />
+                    @click="layoutStylesFn('closed-menu')"
+                  >
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-icontext-menu"> Icon Text </label>
                   <input
-                    @click="layoutStylesFn('icontext-menu')"
+                    id="switcher-icontext-menu"
                     class="form-check-input"
                     type="radio"
                     name="sidemenu-layout-styles"
-                    id="switcher-icontext-menu"
                     :checked="switcher.layoutStyles == 'icontext-menu' ? true : false"
-                  />
+                    @click="layoutStylesFn('icontext-menu')"
+                  >
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-icon-overlay"> Icon Overlay </label>
                   <input
-                    @click="layoutStylesFn('icon-overlay')"
+                    id="switcher-icon-overlay"
                     class="form-check-input"
                     type="radio"
                     name="sidemenu-layout-styles"
-                    id="switcher-icon-overlay"
                     :checked="switcher.layoutStyles == 'icon-overlay' ? true : false"
-                  />
+                    @click="layoutStylesFn('icon-overlay')"
+                  >
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-detached"> Detached </label>
                   <input
-                    @click="layoutStylesFn('detached')"
+                    id="switcher-detached"
                     class="form-check-input"
                     type="radio"
                     name="sidemenu-layout-styles"
-                    id="switcher-detached"
                     :checked="switcher.layoutStyles == 'detached' ? true : false"
-                  />
+                    @click="layoutStylesFn('detached')"
+                  >
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-double-menu"> Double Menu </label>
                   <input
-                    @click="layoutStylesFn('double-menu')"
+                    id="switcher-double-menu"
                     class="form-check-input"
                     type="radio"
                     name="sidemenu-layout-styles"
-                    id="switcher-double-menu"
                     :checked="switcher.layoutStyles == 'double-menu' ? true : false"
-                  />
+                    @click="layoutStylesFn('double-menu')"
+                  >
                 </div>
               </div>
             </div>
           </div>
           <div class="">
-            <p class="switcher-style-head">Page Styles:</p>
+            <p class="switcher-style-head">
+              Page Styles:
+            </p>
             <div class="row switcher-style gx-0">
               <div class="col-xl-3 col-6">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-regular"> Regular </label>
                   <input
-                    @click="pageStylesFn('regular')"
+                    id="switcher-regular"
                     class="form-check-input"
                     type="radio"
                     name="page-styles"
-                    id="switcher-regular"
                     :checked="switcher.pageStyles == 'regular' ? true : false"
-                  />
+                    @click="pageStylesFn('regular')"
+                  >
                 </div>
               </div>
               <div class="col-xl-3 col-6">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-classic"> Classic </label>
                   <input
-                    @click="pageStylesFn('classic')"
+                    id="switcher-classic"
                     class="form-check-input"
                     type="radio"
                     name="page-styles"
-                    id="switcher-classic"
                     :checked="switcher.pageStyles == 'classic' ? true : false"
-                  />
+                    @click="pageStylesFn('classic')"
+                  >
                 </div>
               </div>
               <div class="col-xl-3 col-6">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-modern"> Modern </label>
                   <input
-                    @click="pageStylesFn('modern')"
+                    id="switcher-modern"
                     class="form-check-input"
                     type="radio"
                     name="page-styles"
-                    id="switcher-modern"
                     :checked="switcher.pageStyles == 'modern' ? true : false"
-                  />
+                    @click="pageStylesFn('modern')"
+                  >
                 </div>
               </div>
               <div class="col-xl-3 col-6">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-flat"> Flat </label>
                   <input
-                    @click="pageStylesFn('flat')"
+                    id="switcher-modern"
                     class="form-check-input"
                     type="radio"
                     name="page-styles"
-                    id="switcher-modern"
                     :checked="switcher.pageStyles == 'flat' ? true : false"
-                  />
+                    @click="pageStylesFn('flat')"
+                  >
                 </div>
               </div>
             </div>
           </div>
           <div class="">
-            <p class="switcher-style-head">Layout Width Styles:</p>
+            <p class="switcher-style-head">
+              Layout Width Styles:
+            </p>
             <div class="row switcher-style gx-0">
               <div class="col-4">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-default-width"> Default </label>
                   <input
-                    @click="widthStylesFn('default')"
+                    id="switcher-full-width"
                     class="form-check-input"
                     type="radio"
                     name="layout-width"
-                    id="switcher-full-width"
                     :checked="switcher.widthStyles == 'default' ? true : false"
-                  />
+                    @click="widthStylesFn('default')"
+                  >
                 </div>
               </div>
               <div class="col-5">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-full-width"> Full Width </label>
                   <input
-                    @click="widthStylesFn('full-width')"
+                    id="switcher-full-width"
                     class="form-check-input"
                     type="radio"
                     name="layout-width"
-                    id="switcher-full-width"
                     :checked="switcher.widthStyles == 'fullwidth' ? true : false"
-                  />
+                    @click="widthStylesFn('full-width')"
+                  >
                 </div>
               </div>
               <div class="col-3">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-boxed"> Boxed </label>
                   <input
-                    @click="widthStylesFn('boxed')"
+                    id="switcher-boxed"
                     class="form-check-input"
                     type="radio"
                     name="layout-width"
-                    id="switcher-boxed"
                     :checked="switcher.widthStyles == 'boxed' ? true : false"
-                  />
+                    @click="widthStylesFn('boxed')"
+                  >
                 </div>
               </div>
             </div>
           </div>
           <div class="">
-            <p class="switcher-style-head">Menu Positions:</p>
+            <p class="switcher-style-head">
+              Menu Positions:
+            </p>
             <div class="row switcher-style gx-0">
               <div class="col-4">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-menu-fixed"> Fixed </label>
                   <input
-                    @click="menuPositionFn('fixed')"
+                    id="switcher-menu-fixed"
                     class="form-check-input"
                     type="radio"
                     name="menu-positions"
-                    id="switcher-menu-fixed"
                     :checked="switcher.menuPosition == 'fixed' ? true : false"
-                  />
+                    @click="menuPositionFn('fixed')"
+                  >
                 </div>
               </div>
               <div class="col-4">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-menu-scroll"> Scrollable </label>
                   <input
-                    @click="menuPositionFn('scrollable')"
+                    id="switcher-menu-scroll"
                     class="form-check-input"
                     type="radio"
                     name="menu-positions"
-                    id="switcher-menu-scroll"
                     :checked="switcher.menuPosition == 'scrollable' ? true : false"
-                  />
+                    @click="menuPositionFn('scrollable')"
+                  >
                 </div>
               </div>
             </div>
           </div>
           <div class="">
-            <p class="switcher-style-head">Header Positions:</p>
+            <p class="switcher-style-head">
+              Header Positions:
+            </p>
             <div class="row switcher-style gx-0">
               <div class="col-4">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-header-fixed"> Fixed </label>
                   <input
-                    @click="headerPositionFn('fixed')"
+                    id="switcher-header-fixed"
                     class="form-check-input"
                     type="radio"
                     name="header-positions"
-                    id="switcher-header-fixed"
                     :checked="switcher.headerPosition == 'fixed' ? true : false"
-                  />
+                    @click="headerPositionFn('fixed')"
+                  >
                 </div>
               </div>
               <div class="col-4">
                 <div class="form-check switch-select">
                   <label class="form-check-label" for="switcher-header-scroll"> Scrollable </label>
                   <input
-                    @click="headerPositionFn('scrollable')"
+                    id="switcher-header-scroll"
                     class="form-check-input"
                     type="radio"
                     name="header-positions"
-                    id="switcher-header-scroll"
                     :checked="switcher.headerPosition == 'scrollable' ? true : false"
-                  />
+                    @click="headerPositionFn('scrollable')"
+                  >
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          class="tab-pane fade border-0"
           id="switcher-profile"
+          class="tab-pane fade border-0"
           role="tabpanel"
           aria-labelledby="switcher-profile-tab"
           tabindex="0"
         >
           <div>
             <div class="theme-colors">
-              <p class="switcher-style-head">Menu Colors:</p>
+              <p class="switcher-style-head">
+                Menu Colors:
+              </p>
               <div class="d-flex switcher-style pb-2">
                 <div class="form-check switch-select me-3">
                   <input
+                    id="switcher-menu-light"
                     class="form-check-input color-input color-white"
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
                     title="Light Menu"
                     type="radio"
-                    @click="menuColorFn('light')"
                     name="menu-colors"
-                    id="switcher-menu-light"
                     :checked="switcher.menuColor == 'light' ? true : false"
-                  />
+                    @click="menuColorFn('light')"
+                  >
                 </div>
                 <div class="form-check switch-select me-3">
                   <input
-                    @click="menuColorFn('dark')"
                     class="form-check-input color-input color-dark"
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
+                    id="switcher-menu-dark"
                     title="Dark Menu"
                     type="radio"
                     name="menu-colors"
-                    id="switcher-menu-dark"
                     :checked="switcher.menuColor == 'dark' ? true : false"
-                  />
+                    @click="menuColorFn('dark')"
+                  >
                 </div>
                 <div class="form-check switch-select me-3">
                   <input
-                    @click="menuColorFn('color')"
                     class="form-check-input color-input color-primary"
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
+                    id="switcher-menu-primary"
                     title="Color Menu"
                     type="radio"
                     name="menu-colors"
-                    id="switcher-menu-primary"
                     :checked="switcher.menuColor == 'color' ? true : false"
-                  />
+                    @click="menuColorFn('color')"
+                  >
                 </div>
                 <div class="form-check switch-select me-3">
                   <input
-                    @click="menuColorFn('gradient')"
                     class="form-check-input color-input color-gradient"
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
+                    id="switcher-menu-gradient"
                     title="Gradient Menu"
                     type="radio"
                     name="menu-colors"
-                    id="switcher-menu-gradient"
                     :checked="switcher.menuColor == 'gradient' ? true : false"
-                  />
+                    @click="menuColorFn('gradient')"
+                  >
                 </div>
                 <div class="form-check switch-select me-3">
                   <input
-                    @click="menuColorFn('transparent')"
                     class="form-check-input color-input color-transparent"
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
+                    id="switcher-menu-transparent"
                     title="Transparent Menu"
                     type="radio"
                     name="menu-colors"
-                    id="switcher-menu-transparent"
                     :checked="switcher.menuColor == 'transparent' ? true : false"
-                  />
+                    @click="menuColorFn('transparent')"
+                  >
                 </div>
               </div>
               <div class="px-4 pb-3 text-muted fs-11">
@@ -720,72 +744,74 @@ onUnmounted(() => {
               </div>
             </div>
             <div class="theme-colors">
-              <p class="switcher-style-head">Header Colors:</p>
+              <p class="switcher-style-head">
+                Header Colors:
+              </p>
               <div class="d-flex switcher-style pb-2">
                 <div class="form-check switch-select me-3">
                   <input
-                    @click="headerColorFn('light')"
                     class="form-check-input color-input color-white"
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
+                    id="switcher-header-light"
                     title="Light Header"
                     type="radio"
                     name="header-colors"
-                    id="switcher-header-light"
                     :checked="switcher.headerColor == 'light' ? true : false"
-                  />
+                    @click="headerColorFn('light')"
+                  >
                 </div>
                 <div class="form-check switch-select me-3">
                   <input
-                    @click="headerColorFn('dark')"
                     class="form-check-input color-input color-dark"
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
+                    id="switcher-header-dark"
                     title="Dark Header"
                     type="radio"
                     name="header-colors"
-                    id="switcher-header-dark"
                     :checked="switcher.headerColor == 'dark' ? true : false"
-                  />
+                    @click="headerColorFn('dark')"
+                  >
                 </div>
                 <div class="form-check switch-select me-3">
                   <input
-                    @click="headerColorFn('color')"
                     class="form-check-input color-input color-primary"
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
+                    id="switcher-header-primary"
                     title="Color Header"
                     type="radio"
                     name="header-colors"
-                    id="switcher-header-primary"
                     :checked="switcher.headerColor == 'color' ? true : false"
-                  />
+                    @click="headerColorFn('color')"
+                  >
                 </div>
                 <div class="form-check switch-select me-3">
                   <input
-                    @click="headerColorFn('gradient')"
                     class="form-check-input color-input color-gradient"
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
+                    id="switcher-header-gradient"
                     title="Gradient Header"
                     type="radio"
                     name="header-colors"
-                    id="switcher-header-gradient"
                     :checked="switcher.headerColor == 'gradient' ? true : false"
-                  />
+                    @click="headerColorFn('gradient')"
+                  >
                 </div>
                 <div class="form-check switch-select me-3">
                   <input
-                    @click="headerColorFn('transparent')"
                     class="form-check-input color-input color-transparent"
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
+                    id="switcher-header-transparent"
                     title="Transparent Header"
                     type="radio"
                     name="header-colors"
-                    id="switcher-header-transparent"
                     :checked="switcher.headerColor == 'transparent' ? true : false"
-                  />
+                    @click="headerColorFn('transparent')"
+                  >
                 </div>
               </div>
               <div class="px-4 pb-3 text-muted fs-11">
@@ -794,214 +820,221 @@ onUnmounted(() => {
               </div>
             </div>
             <div class="theme-colors">
-              <p class="switcher-style-head">Theme Primary:</p>
+              <p class="switcher-style-head">
+                Theme Primary:
+              </p>
               <div class="d-flex align-items-center switcher-style">
                 <div class="form-check switch-select me-3">
                   <input
+                    id="switcher-primary"
                     v-model="themePrimaryFn"
                     class="form-check-input color-input color-primary-1"
                     type="radio"
                     name="theme-primary"
-                    id="switcher-primary"
                     value="42 ,16, 164"
                     :checked="themePrimaryFn == '42 ,16, 164'"
-                  />
+                  >
                 </div>
                 <div class="form-check switch-select me-3">
                   <input
+                    id="switcher-primary1"
                     v-model="themePrimaryFn"
                     class="form-check-input color-input color-primary-2"
                     type="radio"
                     name="theme-primary"
-                    id="switcher-primary1"
                     value="125 ,0, 189"
                     :checked="themePrimaryFn == '125 ,0, 189'"
-                  />
+                  >
                 </div>
                 <div class="form-check switch-select me-3">
                   <input
+                    id="switcher-primary2"
                     v-model="themePrimaryFn"
                     class="form-check-input color-input color-primary-3"
                     type="radio"
                     name="theme-primary"
-                    id="switcher-primary2"
                     value="4, 118, 141"
                     :checked="themePrimaryFn == '4, 118, 141'"
-                  />
+                  >
                 </div>
                 <div class="form-check switch-select me-3">
                   <input
+                    id="switcher-primary3"
                     v-model="themePrimaryFn"
                     class="form-check-input color-input color-primary-4"
                     type="radio"
                     name="theme-primary"
-                    id="switcher-primary3"
                     value="138, 0, 32"
                     :checked="themePrimaryFn == '138, 0, 32'"
-                  />
+                  >
                 </div>
                 <div class="form-check switch-select me-3">
                   <input
+                    id="switcher-primary4"
                     v-model="themePrimaryFn"
                     class="form-check-input color-input color-primary-5"
                     type="radio"
                     name="theme-primary"
-                    id="switcher-primary4"
                     value="9 ,124, 103"
                     :checked="themePrimaryFn == '9 ,124, 103'"
-                  />
+                  >
                 </div>
                 <div class="form-check switch-select ps-0 mt-1 color-primary-light">
-                  <color-picker
-                    @update:pureColor="primaryColorFn"
-                    v-model:dynamicPrimaryColor="dynamicPrimaryColor"
+                  <ColorPicker
+                    v-model:dynamic-primary-color="dynamicPrimaryColor"
                     shape="circle"
                     format="rgb"
-                    pickerType="chrome"
-                    useType="pure"
-                    :disableAlpha="true"
+                    picker-type="chrome"
+                    use-type="pure"
+                    :disable-alpha="true"
+                    @update:pure-color="primaryColorFn"
                   />
                 </div>
               </div>
             </div>
             <div class="theme-colors">
-              <p class="switcher-style-head">Theme Background:</p>
+              <p class="switcher-style-head">
+                Theme Background:
+              </p>
               <div class="d-flex align-items-center switcher-style">
                 <div class="form-check switch-select me-3">
                   <input
+                    id="switcher-background"
                     v-model="themeBackgroundFn"
                     class="form-check-input color-input color-bg-1"
                     type="radio"
                     name="theme-background"
-                    id="switcher-background"
                     value="0,8,52,14,22,66"
                     :checked="switcher.themeBackground == `0,8,52,14,22,66`"
-                  />
+                  >
                 </div>
                 <div class="form-check switch-select me-3">
                   <input
+                    id="switcher-background1"
                     v-model="themeBackgroundFn"
                     class="form-check-input color-input color-bg-2"
                     type="radio"
                     value="58,0,109,72,14,123"
                     :checked="switcher.themeBackground == `58,0,109,72,14,123`"
                     name="theme-background"
-                    id="switcher-background1"
-                  />
+                  >
                 </div>
                 <div class="form-check switch-select me-3">
                   <input
+                    id="switcher-background2"
                     v-model="themeBackgroundFn"
                     value="0,59,70,14,73,84"
                     class="form-check-input color-input color-bg-3"
                     type="radio"
                     :checked="switcher.themeBackground == `0,59,70,14,73,84`"
                     name="theme-background"
-                    id="switcher-background2"
-                  />
+                  >
                 </div>
                 <div class="form-check switch-select me-3">
                   <input
+                    id="switcher-background3"
                     v-model="themeBackgroundFn"
                     value="65,0,0,79,14,14"
                     class="form-check-input color-input color-bg-4"
                     type="radio"
                     :checked="switcher.themeBackground == `65,0,0,79,14,14`"
                     name="theme-background"
-                    id="switcher-background3"
-                  />
+                  >
                 </div>
                 <div class="form-check switch-select me-3">
                   <input
+                    id="switcher-background4"
                     v-model="themeBackgroundFn"
                     value="1,77,46,15,91,60"
                     class="form-check-input color-input color-bg-5"
                     type="radio"
                     :checked="switcher.themeBackground == `1,77,46,15,91,60`"
                     name="theme-background"
-                    id="switcher-background4"
-                  />
+                  >
                 </div>
                 <div
                   class="form-check switch-select ps-0 mt-1 tooltip-static-demo color-bg-transparent"
                 >
-                  <color-picker
-                    @update:pureColor="dynamicBackgroundColorFn"
+                  <ColorPicker
                     v-model="dynamicBackgroundColor"
                     shape="circle"
                     format="rgb"
-                    pickerType="chrome"
-                    useType="pure"
-                    :disableAlpha="true"
-                    ><i class="icon">ICON_HERE</i></color-picker
+                    picker-type="chrome"
+                    use-type="pure"
+                    :disable-alpha="true"
+                    @update:pure-color="dynamicBackgroundColorFn"
                   >
+                    <i class="icon">ICON_HERE</i>
+                  </ColorPicker>
                 </div>
               </div>
             </div>
             <div class="menu-image mb-3">
-              <p class="switcher-style-head">Menu With Background Image:</p>
+              <p class="switcher-style-head">
+                Menu With Background Image:
+              </p>
               <div class="d-flex flex-wrap align-items-center switcher-style">
                 <div class="form-check switch-select menu-img-select m-2">
                   <input
-                    @click="backgroundImageFn('bgimg1')"
+                    id="switcher-bg-img"
                     class="form-check-input bgimage-input bg-img1"
                     type="radio"
                     name="theme-background"
-                    id="switcher-bg-img"
                     :checked="switcher.backgroundImage == 'bgimg1' ? true : false"
-                  />
+                    @click="backgroundImageFn('bgimg1')"
+                  >
                   <div class="bg-img-container">
                     <BaseImg src="/images/menu-bg-images/bg-img1.jpg" alt="" />
                   </div>
                 </div>
                 <div class="form-check switch-select menu-img-select m-2">
                   <input
-                    @click="backgroundImageFn('bgimg2')"
+                    id="switcher-bg-img1"
                     class="form-check-input bgimage-input bg-img2"
                     type="radio"
                     name="theme-background"
-                    id="switcher-bg-img1"
                     :checked="switcher.backgroundImage == 'bgimg2' ? true : false"
-                  />
+                    @click="backgroundImageFn('bgimg2')"
+                  >
                   <div class="bg-img-container">
                     <BaseImg src="/images/menu-bg-images/bg-img2.jpg" alt="" />
                   </div>
                 </div>
                 <div class="form-check switch-select menu-img-select m-2">
                   <input
-                    @click="backgroundImageFn('bgimg3')"
+                    id="switcher-bg-img2"
                     class="form-check-input bgimage-input bg-img3"
                     type="radio"
                     name="theme-background"
-                    id="switcher-bg-img2"
                     :checked="switcher.backgroundImage == 'bgimg3' ? true : false"
-                  />
+                    @click="backgroundImageFn('bgimg3')"
+                  >
                   <div class="bg-img-container">
                     <BaseImg src="/images/menu-bg-images/bg-img3.jpg" alt="" />
                   </div>
                 </div>
                 <div class="form-check switch-select menu-img-select m-2">
                   <input
-                    @click="backgroundImageFn('bgimg4')"
+                    id="switcher-bg-img3"
                     class="form-check-input bgimage-input bg-img4"
                     type="radio"
                     name="theme-background"
-                    id="switcher-bg-img3"
                     :checked="switcher.backgroundImage == 'bgimg4' ? true : false"
-                  />
+                    @click="backgroundImageFn('bgimg4')"
+                  >
                   <div class="bg-img-container">
                     <BaseImg src="/images/menu-bg-images/bg-img4.jpg" alt="" />
                   </div>
                 </div>
                 <div class="form-check switch-select menu-img-select m-2">
                   <input
-                    @click="backgroundImageFn('bgimg5')"
+                    id="switcher-bg-img4"
                     class="form-check-input bgimage-input bg-img5"
                     type="radio"
                     name="theme-background"
-                    id="switcher-bg-img4"
                     :checked="switcher.backgroundImage == 'bgimg5' ? true : false"
-                  />
+                    @click="backgroundImageFn('bgimg5')"
+                  >
                   <div class="bg-img-container">
                     <BaseImg src="/images/menu-bg-images/bg-img5.jpg" alt="" />
                   </div>
@@ -1012,12 +1045,11 @@ onUnmounted(() => {
         </div>
         <div class="d-flex justify-content-between canvas-footer flex-wrap">
           <a
-            href="javascript:void(0);"
             id="reset-all"
+            href="javascript:void(0);"
             class="btn btn-danger m-1 w-100"
             @click="reset()"
-            >Reset</a
-          >
+          >Reset</a>
         </div>
       </div>
     </div>

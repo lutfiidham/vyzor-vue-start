@@ -13,18 +13,21 @@ export const useAuthStore = defineStore('auth', {
       this.loading = true
 
       // Simulate API authentication using mock data
-      const user = users.find((u) => u.username === username && u.password === password)
+      const user = users.find(u => u.username === username && u.password === password)
 
       if (user) {
         const token = this.generateToken(user)
         localStorage.setItem('token', token) // Store token in localStorage
         this.authenticated = true
         this.loading = false
+
         return { authenticated: true }
-      } else {
+      }
+      else {
         localStorage.removeItem('token')
         this.authenticated = false
         this.loading = false
+
         return { authenticated: false }
       }
     },

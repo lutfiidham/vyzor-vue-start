@@ -1,7 +1,7 @@
 <script setup>
-import * as barData from '@/shared/data/apexcharts/apexchart-bar'
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as barData from '@/shared/data/apexcharts/apexchart-bar'
 
 const dataToPass = {
   itle: 'Charts',
@@ -13,17 +13,19 @@ const dataToPass = {
 
 <template>
   <Head title="Bar Charts | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Basic Bar Chart</div>
+          <div class="card-title">
+            Basic Bar Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="bar-basic">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="barData.Barbasicoptions"
@@ -36,11 +38,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Grouped Bar Chart</div>
+          <div class="card-title">
+            Grouped Bar Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="bar-group">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="barData.Bargroupoptions"
@@ -53,11 +57,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Stacked Bar Chart</div>
+          <div class="card-title">
+            Stacked Bar Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="bar-stacked">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="barData.Barstackoptions"
@@ -70,11 +76,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">100% Stacked Bar Chart</div>
+          <div class="card-title">
+            100% Stacked Bar Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="bar-full">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="barData.Barstack1options"
@@ -87,11 +95,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Bar Chart With Negative Values</div>
+          <div class="card-title">
+            Bar Chart With Negative Values
+          </div>
         </div>
         <div class="card-body">
           <div id="bar-negative">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="barData.Barchartoptions"
@@ -104,11 +114,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Bar Chart With Markers</div>
+          <div class="card-title">
+            Bar Chart With Markers
+          </div>
         </div>
         <div class="card-body">
           <div id="bar-markers">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="barData.Barmakeroptions"
@@ -121,11 +133,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Reversed Bar Chart</div>
+          <div class="card-title">
+            Reversed Bar Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="bar-reversed">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="barData.Barreverseoptions"
@@ -138,11 +152,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Bar With Category DataLabels</div>
+          <div class="card-title">
+            Bar With Category DataLabels
+          </div>
         </div>
         <div class="card-body">
           <div id="bar-categories">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="barData.Barlableoptions"
@@ -155,11 +171,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Patterned Bar Chart</div>
+          <div class="card-title">
+            Patterned Bar Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="bar-pattern">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="barData.Barpatternoptions"
@@ -172,11 +190,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Bar With Image Fill</div>
+          <div class="card-title">
+            Bar With Image Fill
+          </div>
         </div>
         <div class="card-body">
           <div id="bar-image">
-            <apexchart
+            <Apexchart
               height="300"
               type="bar"
               :options="barData.Barimgoptions"
@@ -187,7 +207,7 @@ const dataToPass = {
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

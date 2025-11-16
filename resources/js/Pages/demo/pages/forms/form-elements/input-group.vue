@@ -1,8 +1,8 @@
 <script setup>
-import * as prism from '@/shared/data/prismCode/forms/formelements/inputgroup'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import ShowcodeCard from '../../../../../../UI/showcodeCard.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as prism from '@/shared/data/prismCode/forms/formelements/inputgroup'
+import ShowcodeCard from '../../../../../../UI/showcodeCard.vue'
 
 const dataToPass = {
   title: 'Forms',
@@ -14,21 +14,21 @@ const dataToPass = {
 
 <template>
   <Head title="Input-Group | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xl-12">
       <ShowcodeCard :code="prism.inputGroups" title="Input Groups">
         <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1">@</span>
+          <span id="basic-addon1" class="input-group-text">@</span>
           <input
             type="text"
             class="form-control"
             placeholder="Username"
             aria-label="Username"
             aria-describedby="basic-addon1"
-          />
+          >
         </div>
         <div class="input-group mb-3">
           <input
@@ -37,27 +37,27 @@ const dataToPass = {
             placeholder="Recipient's username"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
-          />
-          <span class="input-group-text" id="basic-addon2">@example.com</span>
+          >
+          <span id="basic-addon2" class="input-group-text">@example.com</span>
         </div>
         <label for="basic-url" class="form-label">Your vanity URL</label>
         <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon3">https://example.com/</span>
-          <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" />
+          <span id="basic-addon3" class="input-group-text">https://example.com/</span>
+          <input id="basic-url" type="text" class="form-control" aria-describedby="basic-addon3">
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">$</span>
-          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" />
+          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
           <span class="input-group-text">.00</span>
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Username" aria-label="Username" />
+          <input type="text" class="form-control" placeholder="Username" aria-label="Username">
           <span class="input-group-text">@</span>
-          <input type="text" class="form-control" placeholder="Server" aria-label="Server" />
+          <input type="text" class="form-control" placeholder="Server" aria-label="Server">
         </div>
         <div class="input-group">
           <span class="input-group-text">With textarea</span>
-          <textarea class="form-control" aria-label="With textarea"></textarea>
+          <textarea class="form-control" aria-label="With textarea" />
         </div>
       </ShowcodeCard>
     </div>
@@ -72,8 +72,8 @@ const dataToPass = {
           <ShowcodeCard :code="prism.MultipleInputs" title="Multiple inputs">
             <div class="input-group">
               <span class="input-group-text">First , last name</span>
-              <input type="text" aria-label="First name" class="form-control" />
-              <input type="text" aria-label="Last name" class="form-control" />
+              <input type="text" aria-label="First name" class="form-control">
+              <input type="text" aria-label="Last name" class="form-control">
             </div>
           </ShowcodeCard>
         </div>
@@ -86,9 +86,9 @@ const dataToPass = {
                   type="checkbox"
                   value=""
                   aria-label="Checkbox for following text input"
-                />
+                >
               </div>
-              <input type="text" class="form-control" aria-label="Text input with checkbox" />
+              <input type="text" class="form-control" aria-label="Text input with checkbox">
             </div>
             <div class="input-group">
               <div class="input-group-text">
@@ -97,9 +97,9 @@ const dataToPass = {
                   type="radio"
                   value=""
                   aria-label="Radio button for following text input"
-                />
+                >
               </div>
-              <input type="text" class="form-control" aria-label="Text input with radio button" />
+              <input type="text" class="form-control" aria-label="Text input with radio button">
             </div>
           </ShowcodeCard>
         </div>
@@ -112,9 +112,9 @@ const dataToPass = {
                   type="checkbox"
                   value=""
                   aria-label="Checkbox for following text input"
-                />
+                >
               </div>
-              <input type="text" class="form-control" aria-label="Text input with checkbox" />
+              <input type="text" class="form-control" aria-label="Text input with checkbox">
             </div>
             <div class="input-group">
               <div class="input-group-text">
@@ -123,16 +123,18 @@ const dataToPass = {
                   type="radio"
                   value=""
                   aria-label="Radio button for following text input"
-                />
+                >
               </div>
-              <input type="text" class="form-control" aria-label="Text input with radio button" />
+              <input type="text" class="form-control" aria-label="Text input with radio button">
             </div>
           </ShowcodeCard>
         </div>
         <div class="col-xl-12">
           <ShowcodeCard :code="prism.segmentedButtons" title="Segmented buttons">
             <div class="input-group mb-3">
-              <button type="button" class="btn btn-primary">Action</button>
+              <button type="button" class="btn btn-primary">
+                Action
+              </button>
               <button
                 type="button"
                 class="btn btn-primary dropdown-toggle dropdown-toggle-split"
@@ -146,7 +148,7 @@ const dataToPass = {
                 <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
                 <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
                 <li>
-                  <hr class="dropdown-divider" />
+                  <hr class="dropdown-divider">
                 </li>
                 <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
               </ul>
@@ -154,15 +156,17 @@ const dataToPass = {
                 type="text"
                 class="form-control"
                 aria-label="Text input with segmented dropdown button"
-              />
+              >
             </div>
             <div class="input-group">
               <input
                 type="text"
                 class="form-control"
                 aria-label="Text input with segmented dropdown button"
-              />
-              <button type="button" class="btn btn-primary">Action</button>
+              >
+              <button type="button" class="btn btn-primary">
+                Action
+              </button>
               <button
                 type="button"
                 class="btn btn-primary dropdown-toggle dropdown-toggle-split"
@@ -176,7 +180,7 @@ const dataToPass = {
                 <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
                 <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
                 <li>
-                  <hr class="dropdown-divider" />
+                  <hr class="dropdown-divider">
                 </li>
                 <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
               </ul>
@@ -187,47 +191,83 @@ const dataToPass = {
           <ShowcodeCard :code="prism.customSelect" title="Custom select">
             <div class="input-group mb-3">
               <label class="input-group-text" for="inputGroupSelect01">Options</label>
-              <select class="form-select" id="inputGroupSelect01">
-                <option selected>Choose...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+              <select id="inputGroupSelect01" class="form-select">
+                <option selected>
+                  Choose...
+                </option>
+                <option value="1">
+                  One
+                </option>
+                <option value="2">
+                  Two
+                </option>
+                <option value="3">
+                  Three
+                </option>
               </select>
             </div>
             <div class="input-group mb-3">
-              <select class="form-select" id="inputGroupSelect02">
-                <option selected>Choose...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+              <select id="inputGroupSelect02" class="form-select">
+                <option selected>
+                  Choose...
+                </option>
+                <option value="1">
+                  One
+                </option>
+                <option value="2">
+                  Two
+                </option>
+                <option value="3">
+                  Three
+                </option>
               </select>
               <label class="input-group-text" for="inputGroupSelect02">Options</label>
             </div>
             <div class="input-group mb-3">
-              <button class="btn btn-primary" type="button">Button</button>
+              <button class="btn btn-primary" type="button">
+                Button
+              </button>
               <select
-                class="form-select"
                 id="inputGroupSelect03"
+                class="form-select"
                 aria-label="Example select with button addon"
               >
-                <option selected>Choose...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option selected>
+                  Choose...
+                </option>
+                <option value="1">
+                  One
+                </option>
+                <option value="2">
+                  Two
+                </option>
+                <option value="3">
+                  Three
+                </option>
               </select>
             </div>
             <div class="input-group">
               <select
-                class="form-select"
                 id="inputGroupSelect04"
+                class="form-select"
                 aria-label="Example select with button addon"
               >
-                <option selected>Choose...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option selected>
+                  Choose...
+                </option>
+                <option value="1">
+                  One
+                </option>
+                <option value="2">
+                  Two
+                </option>
+                <option value="3">
+                  Three
+                </option>
               </select>
-              <button class="btn btn-primary" type="button">Button</button>
+              <button class="btn btn-primary" type="button">
+                Button
+              </button>
             </div>
           </ShowcodeCard>
         </div>
@@ -238,65 +278,73 @@ const dataToPass = {
         <div class="col-xl-12">
           <ShowcodeCard :code="prism.sizing" title="Sizing">
             <div class="input-group input-group-sm mb-3">
-              <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+              <span id="inputGroup-sizing-sm" class="input-group-text">Small</span>
               <input
                 type="text"
                 class="form-control"
                 aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-sm"
-              />
+              >
             </div>
             <div class="input-group mb-3">
-              <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+              <span id="inputGroup-sizing-default" class="input-group-text">Default</span>
               <input
                 type="text"
                 class="form-control"
                 aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default"
-              />
+              >
             </div>
             <div class="input-group input-group-lg">
-              <span class="input-group-text" id="inputGroup-sizing-lg">Large</span>
+              <span id="inputGroup-sizing-lg" class="input-group-text">Large</span>
               <input
                 type="text"
                 class="form-control"
                 aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-lg"
-              />
+              >
             </div>
           </ShowcodeCard>
         </div>
         <div class="col-xl-12">
           <ShowcodeCard :code="prism.buttonswithDropdowns" title="Buttons addons">
             <div class="input-group mb-3">
-              <button class="btn btn-primary" type="button" id="button-addon1">Button</button>
+              <button id="button-addon1" class="btn btn-primary" type="button">
+                Button
+              </button>
               <input
                 type="text"
                 class="form-control"
                 placeholder=""
                 aria-label="Example text with button addon"
                 aria-describedby="button-addon1"
-              />
+              >
             </div>
             <div class="input-group mb-3">
-              <button class="btn btn-primary" type="button" id="button-addon">Button</button>
+              <button id="button-addon" class="btn btn-primary" type="button">
+                Button
+              </button>
               <input
                 type="text"
                 class="form-control"
                 placeholder="Recipient's username"
                 aria-label="Recipient's username"
                 aria-describedby="button-addon"
-              />
+              >
             </div>
             <div class="input-group mb-3">
-              <button class="btn btn-primary" type="button">Button</button>
-              <button class="btn btn-primary" type="button">Button</button>
+              <button class="btn btn-primary" type="button">
+                Button
+              </button>
+              <button class="btn btn-primary" type="button">
+                Button
+              </button>
               <input
                 type="text"
                 class="form-control px-sm-3 px-1"
                 placeholder=""
                 aria-label="Example text with two button addons"
-              />
+              >
             </div>
             <div class="input-group">
               <input
@@ -304,9 +352,13 @@ const dataToPass = {
                 class="form-control px-sm-3 px-1"
                 placeholder="Recipient's username"
                 aria-label="Recipient's username with two button addons"
-              />
-              <button class="btn btn-primary" type="button">Button</button>
-              <button class="btn btn-primary" type="button">Button</button>
+              >
+              <button class="btn btn-primary" type="button">
+                Button
+              </button>
+              <button class="btn btn-primary" type="button">
+                Button
+              </button>
             </div>
           </ShowcodeCard>
         </div>
@@ -326,7 +378,7 @@ const dataToPass = {
                 <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
                 <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
                 <li>
-                  <hr class="dropdown-divider" />
+                  <hr class="dropdown-divider">
                 </li>
                 <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
               </ul>
@@ -334,14 +386,14 @@ const dataToPass = {
                 type="text"
                 class="form-control"
                 aria-label="Text input with dropdown button"
-              />
+              >
             </div>
             <div class="input-group input-btn-outline mb-3">
               <input
                 type="text"
                 class="form-control"
                 aria-label="Text input with dropdown button"
-              />
+              >
               <button
                 class="btn btn-outline-primary dropdown-toggle"
                 type="button"
@@ -355,7 +407,7 @@ const dataToPass = {
                 <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
                 <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
                 <li>
-                  <hr class="dropdown-divider" />
+                  <hr class="dropdown-divider">
                 </li>
                 <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
               </ul>
@@ -376,7 +428,7 @@ const dataToPass = {
                 </li>
                 <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
                 <li>
-                  <hr class="dropdown-divider" />
+                  <hr class="dropdown-divider">
                 </li>
                 <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
               </ul>
@@ -384,7 +436,7 @@ const dataToPass = {
                 type="text"
                 class="form-control custom-drop"
                 aria-label="Text input with 2 dropdown buttons"
-              />
+              >
               <button
                 class="btn btn-primary-transparent dropdown-toggle px-1 px-sm-3 custom-group"
                 type="button"
@@ -398,7 +450,7 @@ const dataToPass = {
                 <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
                 <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
                 <li>
-                  <hr class="dropdown-divider" />
+                  <hr class="dropdown-divider">
                 </li>
                 <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
               </ul>
@@ -409,36 +461,36 @@ const dataToPass = {
           <ShowcodeCard :code="prism.customfileInput" title="Custom file input">
             <div class="input-group mb-3">
               <label class="input-group-text" for="inputGroupFile01">Upload</label>
-              <input type="file" class="form-control py-1" id="inputGroupFile01" />
+              <input id="inputGroupFile01" type="file" class="form-control py-1">
             </div>
 
             <div class="input-group mb-3">
-              <input type="file" class="form-control py-1" id="inputGroupFile02" />
+              <input id="inputGroupFile02" type="file" class="form-control py-1">
               <label class="input-group-text" for="inputGroupFile02">Upload</label>
             </div>
 
             <div class="input-group mb-3">
-              <button class="btn btn-primary" type="button" id="inputGroupFileAddon03">
+              <button id="inputGroupFileAddon03" class="btn btn-primary" type="button">
                 Button
               </button>
               <input
+                id="inputGroupFile03"
                 type="file"
                 class="form-control py-1"
-                id="inputGroupFile03"
                 aria-describedby="inputGroupFileAddon03"
                 aria-label="Upload"
-              />
+              >
             </div>
 
             <div class="input-group">
               <input
+                id="inputGroupFile04"
                 type="file"
                 class="form-control py-1"
-                id="inputGroupFile04"
                 aria-describedby="inputGroupFileAddon04"
                 aria-label="Upload"
-              />
-              <button class="btn btn-primary" type="button" id="inputGroupFileAddon04">
+              >
+              <button id="inputGroupFileAddon04" class="btn btn-primary" type="button">
                 Button
               </button>
             </div>
@@ -454,14 +506,14 @@ const dataToPass = {
     <div class="col-xl-12">
       <ShowcodeCard :code="prism.warpping" title="Warpping">
         <div class="input-group flex-nowrap">
-          <span class="input-group-text" id="addon-wrapping">@</span>
+          <span id="addon-wrapping" class="input-group-text">@</span>
           <input
             type="text"
             class="form-control"
             placeholder="Username"
             aria-label="Username"
             aria-describedby="addon-wrapping"
-          />
+          >
         </div>
       </ShowcodeCard>
     </div>

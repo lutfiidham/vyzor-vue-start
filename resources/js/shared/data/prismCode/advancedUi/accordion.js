@@ -1,5 +1,5 @@
-export let basicAccordion = {
-    script: `
+export const basicAccordion = {
+  script: `
         <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
@@ -82,9 +82,9 @@ export let basicAccordion = {
                     </div>
                 </div>
             </div>`,
-  },
-  alwaysOpenAccordion = {
-    script: `   <div class="accordion" id="accordionPanelsStayOpenExample">
+}
+export const alwaysOpenAccordion = {
+  script: `   <div class="accordion" id="accordionPanelsStayOpenExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
@@ -152,9 +152,9 @@ export let basicAccordion = {
                     </div>
                 </div>
             </div>`,
-  },
-  flushAccordion = {
-    script: `<div class="accordion accordion-flush" id="accordionFlushExample">
+}
+export const flushAccordion = {
+  script: `<div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -213,9 +213,9 @@ export let basicAccordion = {
                     </div>
                 </div>
             </div>`,
-  },
-  lightPrimary = {
-    script: `<div class="accordion accordion-primary" id="accordionPrimaryExample">
+}
+export const lightPrimary = {
+  script: `<div class="accordion accordion-primary" id="accordionPrimaryExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingPrimaryOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePrimaryOne" aria-expanded="true" aria-controls="collapsePrimaryOne">
@@ -271,9 +271,9 @@ export let basicAccordion = {
                         </div>
                     </div>
                 </div>`,
-  },
-  lightSecondary = {
-    script: ` <div class="accordion accordion-secondary" id="accordionSecondaryExample">
+}
+export const lightSecondary = {
+  script: ` <div class="accordion accordion-secondary" id="accordionSecondaryExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingSecondaryOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSecondaryOne" aria-expanded="true" aria-controls="collapseSecondaryOne">
@@ -329,9 +329,9 @@ export let basicAccordion = {
                         </div>
                     </div>
                 </div>`,
-  },
-  solidPrimary = {
-    script: `<div class="accordion accordion-solid-primary" id="accordionPrimarySolidExample">
+}
+export const solidPrimary = {
+  script: `<div class="accordion accordion-solid-primary" id="accordionPrimarySolidExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingPrimarySolidOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePrimarySolidOne" aria-expanded="true" aria-controls="collapsePrimarySolidOne">
@@ -387,9 +387,9 @@ export let basicAccordion = {
                         </div>
                     </div>
                 </div>`,
-  },
-  solidSecondary = {
-    script: ` <div class="accordion accordion-solid-secondary" id="accordionSecondarySolidExample">
+}
+export const solidSecondary = {
+  script: ` <div class="accordion accordion-solid-secondary" id="accordionSecondarySolidExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingSecondarySolidOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSecondarySolidOne" aria-expanded="true" aria-controls="collapseSecondarySolidOne">
@@ -445,9 +445,9 @@ export let basicAccordion = {
                     </div>
                 </div>
             </div>`,
-  },
-  coloredPrimary = {
-    script: `<div class="accordion accordion-border-primary accordions-items-seperate" id="accordionprimaryborderExample">
+}
+export const coloredPrimary = {
+  script: `<div class="accordion accordion-border-primary accordions-items-seperate" id="accordionprimaryborderExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingborderprimaryOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#primaryBorderOne" aria-expanded="true" aria-controls="primaryBorderOne">
@@ -503,9 +503,9 @@ export let basicAccordion = {
                         </div>
                     </div>
                 </div>`,
-  },
-  coloredSecondary = {
-    script: `<div class="accordion accordion-border-success accordions-items-seperate" id="accordionsuccessborderExample">
+}
+export const coloredSecondary = {
+  script: `<div class="accordion accordion-border-success accordions-items-seperate" id="accordionsuccessborderExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingbordersuccessOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#successBorderOne" aria-expanded="true" aria-controls="successBorderOne">
@@ -561,9 +561,9 @@ export let basicAccordion = {
                         </div>
                     </div>
                 </div>`,
-  },
-  leftAlignedIcons = {
-    script: `<div class="accordion accordionicon-left accordions-items-seperate" id="accordioniconLeftExample">
+}
+export const leftAlignedIcons = {
+  script: `<div class="accordion accordionicon-left accordions-items-seperate" id="accordioniconLeftExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingleftOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseleftOne" aria-expanded="true" aria-controls="collapseleftOne">
@@ -621,9 +621,9 @@ export let basicAccordion = {
                         </div>
                     </div>
                 </div>`,
-  },
-  withoutIcon = {
-    script: ` <div class="accordion accordionicon-none accordions-items-seperate" id="accordioniconnoIconExample">
+}
+export const withoutIcon = {
+  script: ` <div class="accordion accordionicon-none accordions-items-seperate" id="accordioniconnoIconExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingnoIconOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsenoIconOne" aria-expanded="true" aria-controls="collapsenoIconOne">
@@ -681,9 +681,9 @@ export let basicAccordion = {
                         </div>
                     </div>
                 </div>`,
-  },
-  customIconAccordion = {
-    script: `<div class="accordion accordion-customicon1 accordions-items-seperate" id="accordioncustomicon1Example">
+}
+export const customIconAccordion = {
+  script: `<div class="accordion accordion-customicon1 accordions-items-seperate" id="accordioncustomicon1Example">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingcustomicon1One">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsecustomicon1One" aria-expanded="true" aria-controls="collapsecustomicon1One">
@@ -739,9 +739,9 @@ export let basicAccordion = {
                         </div>
                     </div>
                 </div>`,
-  },
-  customAccordion = {
-    script: `<div class="accordion customized-accordion accordions-items-seperate" id="customizedAccordion">
+}
+export const customAccordion = {
+  script: `<div class="accordion customized-accordion accordions-items-seperate" id="customizedAccordion">
                     <div class="accordion-item custom-accordion-primary">
                         <h2 class="accordion-header" id="customizedAccordionOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#customized-AccordionOne" aria-expanded="true" aria-controls="customized-AccordionOne">
@@ -797,9 +797,9 @@ export let basicAccordion = {
                         </div>
                     </div>
                 </div>`,
-  },
-  example = {
-    script: ` <p class="mb-0">
+}
+export const example = {
+  script: ` <p class="mb-0">
                     <a class="btn btn-primary collapsed mb-2" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                         Link with href
                     </a>
@@ -816,9 +816,9 @@ export let basicAccordion = {
                         trigger.
                     </div>
                 </div>`,
-  },
-  targetsCollapse = {
-    script: ` <p class="mb-0">
+}
+export const targetsCollapse = {
+  script: ` <p class="mb-0">
                     <a class="btn btn-primary mb-2" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
                     <button class="btn btn-success mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second
                         element</button>
@@ -851,9 +851,9 @@ export let basicAccordion = {
                         </div>
                     </div>
                 </div>`,
-  },
-  horizontalCollapse = {
-    script: `<p>
+}
+export const horizontalCollapse = {
+  script: `<p>
                     <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
                         Toggle width collapse
                     </button>
@@ -867,4 +867,4 @@ export let basicAccordion = {
                         </div>
                     </div>
                 </div>`,
-  }
+}

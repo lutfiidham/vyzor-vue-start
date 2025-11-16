@@ -1,29 +1,3 @@
-<template>
-  <div class="input-group">
-    <input
-      :type="inputType"
-      v-model="inputValue"
-      :name="name"
-      :id="id"
-      :placeholder="placeholder"
-      class="form-control form-control-lg"
-      :required="required"
-    />
-    <button
-      type="button"
-      @click="changeInputType"
-      class="btn btn-outline-secondary password-toggle"
-      style="border-left: none"
-      :title="inputType === 'text' ? 'Sembunyikan password' : 'Tampilkan password'"
-    >
-      <i
-        class="align-middle transition-transform duration-200 ease-in-out"
-        :class="inputType === 'text' ? 'ri-eye-line' : 'ri-eye-off-line'"
-      ></i>
-    </button>
-  </div>
-</template>
-
 <script setup>
 import { ref, watch } from 'vue'
 
@@ -40,21 +14,47 @@ const emit = defineEmits(['update:modelValue'])
 const inputType = ref('password')
 const inputValue = ref(props.modelValue || '')
 
-const changeInputType = () => {
+function changeInputType() {
   inputType.value = inputType.value === 'text' ? 'password' : 'text'
 }
 
-watch(inputValue, (newValue) => {
+watch(inputValue, newValue => {
   emit('update:modelValue', newValue)
 })
 
 watch(
   () => props.modelValue,
-  (newValue) => {
+  newValue => {
     inputValue.value = newValue || ''
-  }
+  },
 )
 </script>
+
+<template>
+  <div class="input-group">
+    <input
+      :id="id"
+      v-model="inputValue"
+      :type="inputType"
+      :name="name"
+      :placeholder="placeholder"
+      class="form-control form-control-lg"
+      :required="required"
+    >
+    <button
+      type="button"
+      class="btn btn-outline-secondary password-toggle"
+      style="border-left: none"
+      :title="inputType === 'text' ? 'Sembunyikan password' : 'Tampilkan password'"
+      @click="changeInputType"
+    >
+      <i
+        class="align-middle transition-transform duration-200 ease-in-out"
+        :class="inputType === 'text' ? 'ri-eye-line' : 'ri-eye-off-line'"
+      />
+    </button>
+  </div>
+</template>
 
 <style scoped>
 .password-toggle i {

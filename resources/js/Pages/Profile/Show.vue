@@ -1,17 +1,122 @@
+<script setup>
+import { Head, Link, router, usePage } from '@inertiajs/vue3'
+import { computed } from 'vue'
+
+// Props
+const props = defineProps({
+  user: {
+    type: Object,
+    default: () => ({
+      id: 1,
+      name: 'Admin User',
+      email: 'admin@vyzor.test',
+      phone: null,
+      avatar: null,
+      role: 'Admin',
+      timezone: 'UTC',
+      locale: 'en',
+      is_active: true,
+      last_login_at: '2025-11-09T08:00:00Z',
+    }),
+  },
+  permissions: {
+    type: Array,
+    default: () => [],
+  },
+  stats: {
+    type: Object,
+    default: () => ({
+      loginCount: 142,
+      activeDays: 87,
+    }),
+  },
+  recentActivity: {
+    type: Array,
+    default: () => [
+      {
+        title: 'Profile Updated',
+        description: 'You updated your profile information',
+        time: '2 hours ago',
+        icon: 'ri-user-line',
+        color: 'bg-primary-transparent',
+      },
+      {
+        title: 'Password Changed',
+        description: 'You changed your password',
+        time: '1 day ago',
+        icon: 'ri-lock-line',
+        color: 'bg-success-transparent',
+      },
+      {
+        title: 'Logged In',
+        description: 'You logged in from Chrome on Windows',
+        time: '2 days ago',
+        icon: 'ri-login-box-line',
+        color: 'bg-info-transparent',
+      },
+    ],
+  },
+})
+
+const page = usePage()
+
+// Use page props as fallback if props not provided
+const user = computed(() => props.user || page.props.auth?.user || props.user)
+const permissions = computed(() => props.permissions.length > 0 ? props.permissions : (page.props.auth?.permissions || []))
+
+// Methods
+function editProfile() {
+  router.visit('/profile/edit')
+}
+
+function getRoleBadgeClass(role) {
+  const classes = {
+    admin: 'bg-primary',
+    manager: 'bg-success',
+    user: 'bg-info',
+  }
+
+  return classes[role] || 'bg-secondary'
+}
+
+function formatDate(date) {
+  if (!date)
+    return 'N/A'
+
+  return new Date(date).toLocaleString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  })
+}
+</script>
+
 <template>
   <Head title="My Profile" />
   <div>
     <!-- Page Header -->
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
       <div>
-        <h1 class="page-title fw-semibold fs-20 mb-0">My Profile</h1>
-        <p class="mb-0 text-muted">View and manage your profile information</p>
+        <h1 class="page-title fw-semibold fs-20 mb-0">
+          My Profile
+        </h1>
+        <p class="mb-0 text-muted">
+          View and manage your profile information
+        </p>
       </div>
       <div class="ms-md-1 ms-0">
         <nav>
           <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><Link href="/dashboard">Home</Link></li>
-            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+            <li class="breadcrumb-item">
+              <Link href="/dashboard">
+                Home
+              </Link>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Profile
+            </li>
           </ol>
         </nav>
       </div>
@@ -33,35 +138,51 @@
               </div>
               <div class="flex-fill main-profile-info">
                 <div class="d-flex align-items-center justify-content-between">
-                  <h6 class="fw-semibold mb-1">{{ user.name }}</h6>
+                  <h6 class="fw-semibold mb-1">
+                    {{ user.name }}
+                  </h6>
                 </div>
-                <p class="mb-1 op-7">{{ user.email }}</p>
+                <p class="mb-1 op-7">
+                  {{ user.email }}
+                </p>
                 <p class="fs-12 mb-4 op-5">
                   <span class="me-3">
-                    <i class="ri-shield-user-line me-1 align-middle"></i>{{ user.role }}
+                    <i class="ri-shield-user-line me-1 align-middle" />{{ user.role }}
                   </span>
                   <span>
-                    <i class="ri-map-pin-line me-1 align-middle"></i>{{ user.timezone || 'UTC' }}
+                    <i class="ri-map-pin-line me-1 align-middle" />{{ user.timezone || 'UTC' }}
                   </span>
                 </p>
                 <div class="d-flex mb-0">
                   <div class="me-4">
-                    <p class="fw-bold fs-20 text-shadow mb-0">{{ stats.loginCount }}</p>
-                    <p class="mb-0 fs-11 op-5">Total Logins</p>
+                    <p class="fw-bold fs-20 text-shadow mb-0">
+                      {{ stats.loginCount }}
+                    </p>
+                    <p class="mb-0 fs-11 op-5">
+                      Total Logins
+                    </p>
                   </div>
                   <div class="me-4">
-                    <p class="fw-bold fs-20 text-shadow mb-0">{{ stats.activeDays }}</p>
-                    <p class="mb-0 fs-11 op-5">Active Days</p>
+                    <p class="fw-bold fs-20 text-shadow mb-0">
+                      {{ stats.activeDays }}
+                    </p>
+                    <p class="mb-0 fs-11 op-5">
+                      Active Days
+                    </p>
                   </div>
                   <div class="me-4">
-                    <p class="fw-bold fs-20 text-shadow mb-0">{{ permissions.length }}</p>
-                    <p class="mb-0 fs-11 op-5">Permissions</p>
+                    <p class="fw-bold fs-20 text-shadow mb-0">
+                      {{ permissions.length }}
+                    </p>
+                    <p class="mb-0 fs-11 op-5">
+                      Permissions
+                    </p>
                   </div>
                 </div>
               </div>
               <div class="ms-auto">
                 <button class="btn btn-light btn-wave" @click="editProfile">
-                  <i class="ri-pencil-line me-1"></i>Edit Profile
+                  <i class="ri-pencil-line me-1" />Edit Profile
                 </button>
               </div>
             </div>
@@ -74,25 +195,33 @@
                   <ul class="list-group">
                     <li class="list-group-item border-0">
                       <div class="d-flex flex-wrap align-items-center">
-                        <div class="me-2 fw-semibold">Full Name:</div>
+                        <div class="me-2 fw-semibold">
+                          Full Name:
+                        </div>
                         <span class="fs-12 text-muted">{{ user.name }}</span>
                       </div>
                     </li>
                     <li class="list-group-item border-0">
                       <div class="d-flex flex-wrap align-items-center">
-                        <div class="me-2 fw-semibold">Email:</div>
+                        <div class="me-2 fw-semibold">
+                          Email:
+                        </div>
                         <span class="fs-12 text-muted">{{ user.email }}</span>
                       </div>
                     </li>
                     <li class="list-group-item border-0">
                       <div class="d-flex flex-wrap align-items-center">
-                        <div class="me-2 fw-semibold">Phone:</div>
+                        <div class="me-2 fw-semibold">
+                          Phone:
+                        </div>
                         <span class="fs-12 text-muted">{{ user.phone || 'Not set' }}</span>
                       </div>
                     </li>
                     <li class="list-group-item border-0">
                       <div class="d-flex flex-wrap align-items-center">
-                        <div class="me-2 fw-semibold">Role:</div>
+                        <div class="me-2 fw-semibold">
+                          Role:
+                        </div>
                         <span :class="`badge ${getRoleBadgeClass(user.role)}`">
                           {{ user.role }}
                         </span>
@@ -104,19 +233,25 @@
                   <ul class="list-group">
                     <li class="list-group-item border-0">
                       <div class="d-flex flex-wrap align-items-center">
-                        <div class="me-2 fw-semibold">Timezone:</div>
+                        <div class="me-2 fw-semibold">
+                          Timezone:
+                        </div>
                         <span class="fs-12 text-muted">{{ user.timezone || 'UTC' }}</span>
                       </div>
                     </li>
                     <li class="list-group-item border-0">
                       <div class="d-flex flex-wrap align-items-center">
-                        <div class="me-2 fw-semibold">Language:</div>
+                        <div class="me-2 fw-semibold">
+                          Language:
+                        </div>
                         <span class="fs-12 text-muted">{{ user.locale || 'en' }}</span>
                       </div>
                     </li>
                     <li class="list-group-item border-0">
                       <div class="d-flex flex-wrap align-items-center">
-                        <div class="me-2 fw-semibold">Status:</div>
+                        <div class="me-2 fw-semibold">
+                          Status:
+                        </div>
                         <span :class="`badge ${user.is_active ? 'bg-success' : 'bg-danger'}`">
                           {{ user.is_active ? 'Active' : 'Inactive' }}
                         </span>
@@ -124,7 +259,9 @@
                     </li>
                     <li class="list-group-item border-0">
                       <div class="d-flex flex-wrap align-items-center">
-                        <div class="me-2 fw-semibold">Last Login:</div>
+                        <div class="me-2 fw-semibold">
+                          Last Login:
+                        </div>
                         <span class="fs-12 text-muted">
                           {{ user.last_login_at ? formatDate(user.last_login_at) : 'Never' }}
                         </span>
@@ -144,13 +281,15 @@
       <div class="col-xl-12">
         <div class="card custom-card">
           <div class="card-header">
-            <div class="card-title">My Permissions</div>
+            <div class="card-title">
+              My Permissions
+            </div>
           </div>
           <div class="card-body">
             <div class="row g-2">
-              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" v-for="permission in permissions" :key="permission">
+              <div v-for="permission in permissions" :key="permission" class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                 <div class="p-2 border rounded d-flex align-items-center">
-                  <i class="ri-checkbox-circle-line text-success me-2"></i>
+                  <i class="ri-checkbox-circle-line text-success me-2" />
                   <span class="fs-12">{{ permission }}</span>
                 </div>
               </div>
@@ -168,7 +307,9 @@
       <div class="col-xl-12">
         <div class="card custom-card">
           <div class="card-header">
-            <div class="card-title">Recent Activity</div>
+            <div class="card-title">
+              Recent Activity
+            </div>
           </div>
           <div class="card-body">
             <ul v-if="recentActivity.length > 0" class="list-unstyled mb-0 activity-timeline">
@@ -176,19 +317,23 @@
                 <div class="d-flex align-items-start">
                   <div class="me-3">
                     <span :class="`avatar avatar-sm avatar-rounded ${activity.color}`">
-                      <i :class="activity.icon"></i>
+                      <i :class="activity.icon" />
                     </span>
                   </div>
                   <div class="flex-fill">
-                    <p class="mb-1 fw-semibold">{{ activity.title }}</p>
-                    <p class="mb-1 text-muted fs-12">{{ activity.description }}</p>
+                    <p class="mb-1 fw-semibold">
+                      {{ activity.title }}
+                    </p>
+                    <p class="mb-1 text-muted fs-12">
+                      {{ activity.description }}
+                    </p>
                     <span class="text-muted fs-11">{{ activity.time }}</span>
                   </div>
                 </div>
               </li>
             </ul>
             <div v-else class="text-center text-muted py-3">
-              <i class="ri-information-line me-1"></i>No recent activity
+              <i class="ri-information-line me-1" />No recent activity
             </div>
           </div>
         </div>
@@ -196,98 +341,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { computed } from 'vue'
-import { Head, Link, router, usePage } from '@inertiajs/vue3'
-
-const page = usePage()
-
-// Props
-const props = defineProps({
-  user: {
-    type: Object,
-    default: () => ({
-      id: 1,
-      name: 'Admin User',
-      email: 'admin@vyzor.test',
-      phone: null,
-      avatar: null,
-      role: 'Admin',
-      timezone: 'UTC',
-      locale: 'en',
-      is_active: true,
-      last_login_at: '2025-11-09T08:00:00Z'
-    })
-  },
-  permissions: {
-    type: Array,
-    default: () => []
-  },
-  stats: {
-    type: Object,
-    default: () => ({
-      loginCount: 142,
-      activeDays: 87
-    })
-  },
-  recentActivity: {
-    type: Array,
-    default: () => [
-      {
-        title: 'Profile Updated',
-        description: 'You updated your profile information',
-        time: '2 hours ago',
-        icon: 'ri-user-line',
-        color: 'bg-primary-transparent'
-      },
-      {
-        title: 'Password Changed',
-        description: 'You changed your password',
-        time: '1 day ago',
-        icon: 'ri-lock-line',
-        color: 'bg-success-transparent'
-      },
-      {
-        title: 'Logged In',
-        description: 'You logged in from Chrome on Windows',
-        time: '2 days ago',
-        icon: 'ri-login-box-line',
-        color: 'bg-info-transparent'
-      }
-    ]
-  }
-})
-
-// Use page props as fallback if props not provided
-const user = computed(() => props.user || page.props.auth?.user || props.user)
-const permissions = computed(() => props.permissions.length > 0 ? props.permissions : (page.props.auth?.permissions || []))
-
-// Methods
-const editProfile = () => {
-  router.visit('/profile/edit')
-}
-
-const getRoleBadgeClass = (role) => {
-  const classes = {
-    admin: 'bg-primary',
-    manager: 'bg-success',
-    user: 'bg-info'
-  }
-  return classes[role] || 'bg-secondary'
-}
-
-const formatDate = (date) => {
-  if (!date) return 'N/A'
-  return new Date(date).toLocaleString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
-  })
-}
-</script>
 
 <style scoped>
 .main-profile-cover {

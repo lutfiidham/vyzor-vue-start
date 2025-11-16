@@ -1,5 +1,5 @@
-import { defineStore } from 'pinia'
 import { usePage } from '@inertiajs/vue3'
+import { defineStore } from 'pinia'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -7,8 +7,8 @@ export const useAuthStore = defineStore('auth', {
   }),
 
   getters: {
-    isAuthenticated: (state) => !!state.user,
-    currentUser: (state) => state.user,
+    isAuthenticated: state => !!state.user,
+    currentUser: state => state.user,
   },
 
   actions: {
@@ -23,6 +23,6 @@ export const useAuthStore = defineStore('auth', {
 
     clearUser() {
       this.user = null
-    }
+    },
   },
 })

@@ -1,7 +1,7 @@
 <script setup>
-import * as pieData from '@/shared/data/apexcharts/apexchart-pie'
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as pieData from '@/shared/data/apexcharts/apexchart-pie'
 
 const dataToPass = {
   title: 'Charts',
@@ -13,17 +13,19 @@ const dataToPass = {
 
 <template>
   <Head title="Pie Charts | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start::row-1 -->
   <div class="row">
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Basic Pie Chart</div>
+          <div class="card-title">
+            Basic Pie Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="pie-basic">
-            <apexchart
+            <Apexchart
               height="300"
               type="pie"
               :options="pieData.Basicpieoptions"
@@ -36,11 +38,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Simple Donut Chart</div>
+          <div class="card-title">
+            Simple Donut Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="donut-simple">
-            <apexchart
+            <Apexchart
               height="300"
               type="donut"
               :options="pieData.Donutoptions"
@@ -53,11 +57,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Updating Donut Chart</div>
+          <div class="card-title">
+            Updating Donut Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="donut-update">
-            <apexchart
+            <Apexchart
               height="300"
               type="donut"
               :options="pieData.Updatedoptions"
@@ -70,11 +76,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Monochrome Pie Chart</div>
+          <div class="card-title">
+            Monochrome Pie Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="pie-monochrome">
-            <apexchart
+            <Apexchart
               height="300"
               type="pie"
               :options="pieData.Piemonooptions"
@@ -87,11 +95,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Gradient Donut Chart</div>
+          <div class="card-title">
+            Gradient Donut Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="donut-gradient">
-            <apexchart
+            <Apexchart
               height="300"
               type="donut"
               :options="pieData.Piegardientoptions"
@@ -104,11 +114,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Image Filled Pie Chart</div>
+          <div class="card-title">
+            Image Filled Pie Chart
+          </div>
         </div>
         <div class="card-body">
           <div id="pie-image">
-            <apexchart
+            <Apexchart
               height="300"
               type="pie"
               :options="pieData.Pieimgoptions"
@@ -121,11 +133,13 @@ const dataToPass = {
     <div class="col-xl-6">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Donut Chart With Patterns</div>
+          <div class="card-title">
+            Donut Chart With Patterns
+          </div>
         </div>
         <div class="card-body mx-auto">
           <div id="donut-pattern">
-            <apexchart
+            <Apexchart
               height="300"
               type="donut"
               :options="pieData.Piechartoptions"
@@ -136,7 +150,7 @@ const dataToPass = {
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

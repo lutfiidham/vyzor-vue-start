@@ -3,6 +3,7 @@ defineProps({
   card: Object,
 })
 </script>
+
 <template>
   <div class="card custom-card dashboard-main-card">
     <div class="card-body">
@@ -11,8 +12,7 @@ defineProps({
           <span
             :class="`avatar avatar-md avatar-rounded bg-${card.svgColor}-transparent svg-${card.svgColor}`"
             v-html="card.svgIcon"
-          >
-          </span>
+          />
         </div>
         <div class="flex-fill">
           <div class="d-flex align-items-end justify-content-between">
@@ -25,7 +25,7 @@ defineProps({
                 aria-expanded="false"
                 class="btn btn-icon btn-sm rounded-circle btn-light"
               >
-                <i class="ti ti-dots text-muted fs-5"></i>
+                <i class="ti ti-dots text-muted fs-5" />
               </a>
               <ul class="dropdown-menu" role="menu">
                 <li><a class="dropdown-item" href="javascript:void(0);">Today</a></li>
@@ -36,9 +36,11 @@ defineProps({
             </div>
           </div>
           <div class="d-flex align-items-end justify-content-between">
-            <h4 class="fw-semibold mb-0">{{ card.value }}</h4>
+            <h4 class="fw-semibold mb-0">
+              {{ card.value }}
+            </h4>
             <div :class="`text-${card.arrow === 'up' ? 'success' : 'danger'} fs-13`">
-              <i :class="`ti ti-arrow-${card.arrow}`"></i>{{ card.percent }}
+              <i :class="`ti ti-arrow-${card.arrow}`" />{{ card.percent }}
             </div>
           </div>
         </div>

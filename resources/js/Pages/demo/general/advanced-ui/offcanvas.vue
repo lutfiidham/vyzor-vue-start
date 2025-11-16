@@ -1,9 +1,9 @@
 <script setup>
-import * as prism from '@/shared/data/prismCode/advancedUi/offcanvas'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as prism from '@/shared/data/prismCode/advancedUi/offcanvas'
+import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
 
 const dataToPass = {
   title: 'Advanced Ui',
@@ -14,7 +14,7 @@ const dataToPass = {
 
 <template>
   <Head title="Offcanvas | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xl-6">
@@ -38,19 +38,21 @@ const dataToPass = {
           Button with data-bs-target
         </button>
         <div
+          id="offcanvasExample"
           class="offcanvas offcanvas-start"
           tabindex="-1"
-          id="offcanvasExample"
           aria-labelledby="offcanvasExampleLabel"
         >
           <div class="offcanvas-header border-bottom border-block-end-dashed">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Notifications</h5>
+            <h5 id="offcanvasExampleLabel" class="offcanvas-title">
+              Notifications
+            </h5>
             <button
               type="button"
               class="btn-close"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
-            ></button>
+            />
           </div>
           <div class="offcanvas-body p-0">
             <div>
@@ -62,13 +64,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        New Website Created<span class="badge bg-light text-muted float-end"
-                          >20 Nov 2022</span
-                        >
+                        New Website Created<span class="badge bg-light text-muted float-end">20 Nov 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>30 mins ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />30 mins ago</span>
                     </div>
                   </div>
                 </li>
@@ -79,13 +77,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for the new project<span class="badge bg-light text-muted float-end"
-                          >3 Jan 2023</span
-                        >
+                        Prepare for the new project<span class="badge bg-light text-muted float-end">3 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>2 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />2 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -96,13 +90,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Decide the live discussion<span class="badge bg-light text-muted float-end"
-                          >17 Feb 2023</span
-                        >
+                        Decide the live discussion<span class="badge bg-light text-muted float-end">17 Feb 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>3 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />3 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -115,13 +105,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end"
-                          >29 Dec 2022</span
-                        >
+                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end">29 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -132,13 +118,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for presentation<span class="badge bg-light text-muted float-end"
-                          >31 Dec 2022</span
-                        >
+                        Prepare for presentation<span class="badge bg-light text-muted float-end">31 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -153,12 +135,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Brenda New product launching<span
                           class="badge bg-light text-muted float-end"
-                          >1 Jan 2023</span
-                        >
+                        >1 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>7 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />7 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -171,12 +150,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Medeleine Hey! there i'm available<span
                           class="badge bg-light text-muted float-end"
-                          >5 Jan 2023</span
-                        >
+                        >5 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>3 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />3 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -187,13 +163,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Olivia New schedule release<span class="badge bg-light text-muted float-end"
-                          >6 Jan 2023</span
-                        >
+                        Olivia New schedule release<span class="badge bg-light text-muted float-end">6 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>45 mins ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />45 mins ago</span>
                     </div>
                   </div>
                 </li>
@@ -206,12 +178,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Kamala Preparing for new admin launch<span
                           class="badge bg-light text-muted float-end"
-                          >7 Jan 2023</span
-                        >
+                        >7 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>28 mins ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />28 mins ago</span>
                     </div>
                   </div>
                 </li>
@@ -226,12 +195,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Oisha Meeting with clinet for dinner<span
                           class="badge bg-light text-muted float-end"
-                          >10 Jan 2023</span
-                        >
+                        >10 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>14 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />14 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -242,13 +208,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for the new project<span class="badge bg-light text-muted float-end"
-                          >3 Jan 2023</span
-                        >
+                        Prepare for the new project<span class="badge bg-light text-muted float-end">3 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>2 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />2 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -259,13 +221,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Decide the live discussion<span class="badge bg-light text-muted float-end"
-                          >17 Feb 2023</span
-                        >
+                        Decide the live discussion<span class="badge bg-light text-muted float-end">17 Feb 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>3 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />3 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -278,13 +236,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end"
-                          >29 Dec 2022</span
-                        >
+                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end">29 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -295,13 +249,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for presentation<span class="badge bg-light text-muted float-end"
-                          >31 Dec 2022</span
-                        >
+                        Prepare for presentation<span class="badge bg-light text-muted float-end">31 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -323,21 +273,23 @@ const dataToPass = {
           Enable body scrolling
         </button>
         <div
+          id="offcanvasScrolling"
           class="offcanvas offcanvas-start"
           data-bs-scroll="true"
           data-bs-backdrop="false"
           tabindex="-1"
-          id="offcanvasScrolling"
           aria-labelledby="offcanvasScrollingLabel"
         >
           <div class="offcanvas-header border-bottom border-block-end-dashed">
-            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Notifications</h5>
+            <h5 id="offcanvasScrollingLabel" class="offcanvas-title">
+              Notifications
+            </h5>
             <button
               type="button"
               class="btn-close"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
-            ></button>
+            />
           </div>
           <div class="offcanvas-body p-0">
             <div>
@@ -349,13 +301,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        New Website Created<span class="badge bg-light text-muted float-end"
-                          >20 Nov 2022</span
-                        >
+                        New Website Created<span class="badge bg-light text-muted float-end">20 Nov 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>30 mins ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />30 mins ago</span>
                     </div>
                   </div>
                 </li>
@@ -366,13 +314,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for the new project<span class="badge bg-light text-muted float-end"
-                          >3 Jan 2023</span
-                        >
+                        Prepare for the new project<span class="badge bg-light text-muted float-end">3 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>2 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />2 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -383,13 +327,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Decide the live discussion<span class="badge bg-light text-muted float-end"
-                          >17 Feb 2023</span
-                        >
+                        Decide the live discussion<span class="badge bg-light text-muted float-end">17 Feb 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>3 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />3 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -402,13 +342,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end"
-                          >29 Dec 2022</span
-                        >
+                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end">29 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -419,13 +355,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for presentation<span class="badge bg-light text-muted float-end"
-                          >31 Dec 2022</span
-                        >
+                        Prepare for presentation<span class="badge bg-light text-muted float-end">31 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -440,12 +372,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Brenda New product launching<span
                           class="badge bg-light text-muted float-end"
-                          >1 Jan 2023</span
-                        >
+                        >1 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>7 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />7 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -458,12 +387,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Medeleine Hey! there i'm available<span
                           class="badge bg-light text-muted float-end"
-                          >5 Jan 2023</span
-                        >
+                        >5 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>3 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />3 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -474,13 +400,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Olivia New schedule release<span class="badge bg-light text-muted float-end"
-                          >6 Jan 2023</span
-                        >
+                        Olivia New schedule release<span class="badge bg-light text-muted float-end">6 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>45 mins ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />45 mins ago</span>
                     </div>
                   </div>
                 </li>
@@ -493,12 +415,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Kamala Preparing for new admin launch<span
                           class="badge bg-light text-muted float-end"
-                          >7 Jan 2023</span
-                        >
+                        >7 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>28 mins ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />28 mins ago</span>
                     </div>
                   </div>
                 </li>
@@ -513,12 +432,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Oisha Meeting with clinet for dinner<span
                           class="badge bg-light text-muted float-end"
-                          >10 Jan 2023</span
-                        >
+                        >10 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>14 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />14 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -529,13 +445,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for the new project<span class="badge bg-light text-muted float-end"
-                          >3 Jan 2023</span
-                        >
+                        Prepare for the new project<span class="badge bg-light text-muted float-end">3 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>2 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />2 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -546,13 +458,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Decide the live discussion<span class="badge bg-light text-muted float-end"
-                          >17 Feb 2023</span
-                        >
+                        Decide the live discussion<span class="badge bg-light text-muted float-end">17 Feb 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>3 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />3 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -565,13 +473,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end"
-                          >29 Dec 2022</span
-                        >
+                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end">29 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -582,13 +486,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for presentation<span class="badge bg-light text-muted float-end"
-                          >31 Dec 2022</span
-                        >
+                        Prepare for presentation<span class="badge bg-light text-muted float-end">31 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -610,20 +510,22 @@ const dataToPass = {
           Toggle static offcanvas
         </button>
         <div
+          id="staticBackdrop"
           class="offcanvas offcanvas-start"
           data-bs-backdrop="static"
           tabindex="-1"
-          id="staticBackdrop"
           aria-labelledby="staticBackdropLabel"
         >
           <div class="offcanvas-header border-bottom border-block-end-dashed">
-            <h5 class="offcanvas-title" id="staticBackdropLabel">Notifications</h5>
+            <h5 id="staticBackdropLabel" class="offcanvas-title">
+              Notifications
+            </h5>
             <button
               type="button"
               class="btn-close"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
-            ></button>
+            />
           </div>
           <div class="offcanvas-body p-0">
             <div>
@@ -635,13 +537,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        New Website Created<span class="badge bg-light text-muted float-end"
-                          >20 Nov 2022</span
-                        >
+                        New Website Created<span class="badge bg-light text-muted float-end">20 Nov 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>30 mins ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />30 mins ago</span>
                     </div>
                   </div>
                 </li>
@@ -652,13 +550,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for the new project<span class="badge bg-light text-muted float-end"
-                          >3 Jan 2023</span
-                        >
+                        Prepare for the new project<span class="badge bg-light text-muted float-end">3 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>2 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />2 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -669,13 +563,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Decide the live discussion<span class="badge bg-light text-muted float-end"
-                          >17 Feb 2023</span
-                        >
+                        Decide the live discussion<span class="badge bg-light text-muted float-end">17 Feb 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>3 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />3 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -688,13 +578,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end"
-                          >29 Dec 2022</span
-                        >
+                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end">29 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -705,13 +591,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for presentation<span class="badge bg-light text-muted float-end"
-                          >31 Dec 2022</span
-                        >
+                        Prepare for presentation<span class="badge bg-light text-muted float-end">31 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -726,12 +608,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Brenda New product launching<span
                           class="badge bg-light text-muted float-end"
-                          >1 Jan 2023</span
-                        >
+                        >1 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>7 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />7 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -744,12 +623,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Medeleine Hey! there i'm available<span
                           class="badge bg-light text-muted float-end"
-                          >5 Jan 2023</span
-                        >
+                        >5 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>3 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />3 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -760,13 +636,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Olivia New schedule release<span class="badge bg-light text-muted float-end"
-                          >6 Jan 2023</span
-                        >
+                        Olivia New schedule release<span class="badge bg-light text-muted float-end">6 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>45 mins ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />45 mins ago</span>
                     </div>
                   </div>
                 </li>
@@ -779,12 +651,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Kamala Preparing for new admin launch<span
                           class="badge bg-light text-muted float-end"
-                          >7 Jan 2023</span
-                        >
+                        >7 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>28 mins ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />28 mins ago</span>
                     </div>
                   </div>
                 </li>
@@ -799,12 +668,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Oisha Meeting with clinet for dinner<span
                           class="badge bg-light text-muted float-end"
-                          >10 Jan 2023</span
-                        >
+                        >10 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>14 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />14 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -815,13 +681,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for the new project<span class="badge bg-light text-muted float-end"
-                          >3 Jan 2023</span
-                        >
+                        Prepare for the new project<span class="badge bg-light text-muted float-end">3 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>2 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />2 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -832,13 +694,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Decide the live discussion<span class="badge bg-light text-muted float-end"
-                          >17 Feb 2023</span
-                        >
+                        Decide the live discussion<span class="badge bg-light text-muted float-end">17 Feb 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>3 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />3 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -851,13 +709,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end"
-                          >29 Dec 2022</span
-                        >
+                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end">29 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -868,13 +722,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for presentation<span class="badge bg-light text-muted float-end"
-                          >31 Dec 2022</span
-                        >
+                        Prepare for presentation<span class="badge bg-light text-muted float-end">31 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -896,20 +746,22 @@ const dataToPass = {
           Enable both scrolling &amp; backdrop
         </button>
         <div
+          id="offcanvasWithBothOptions"
           class="offcanvas offcanvas-start"
           data-bs-scroll="true"
           tabindex="-1"
-          id="offcanvasWithBothOptions"
           aria-labelledby="offcanvasWithBothOptionsLabel"
         >
           <div class="offcanvas-header border-bottom border-block-end-dashed">
-            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Notifications</h5>
+            <h5 id="offcanvasWithBothOptionsLabel" class="offcanvas-title">
+              Notifications
+            </h5>
             <button
               type="button"
               class="btn-close"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
-            ></button>
+            />
           </div>
           <div class="offcanvas-body p-0">
             <div>
@@ -921,13 +773,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        New Website Created<span class="badge bg-light text-muted float-end"
-                          >20 Nov 2022</span
-                        >
+                        New Website Created<span class="badge bg-light text-muted float-end">20 Nov 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>30 mins ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />30 mins ago</span>
                     </div>
                   </div>
                 </li>
@@ -938,13 +786,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for the new project<span class="badge bg-light text-muted float-end"
-                          >3 Jan 2023</span
-                        >
+                        Prepare for the new project<span class="badge bg-light text-muted float-end">3 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>2 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />2 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -955,13 +799,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Decide the live discussion<span class="badge bg-light text-muted float-end"
-                          >17 Feb 2023</span
-                        >
+                        Decide the live discussion<span class="badge bg-light text-muted float-end">17 Feb 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>3 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />3 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -974,13 +814,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end"
-                          >29 Dec 2022</span
-                        >
+                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end">29 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -991,13 +827,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for presentation<span class="badge bg-light text-muted float-end"
-                          >31 Dec 2022</span
-                        >
+                        Prepare for presentation<span class="badge bg-light text-muted float-end">31 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -1012,12 +844,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Brenda New product launching<span
                           class="badge bg-light text-muted float-end"
-                          >1 Jan 2023</span
-                        >
+                        >1 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>7 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />7 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -1030,12 +859,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Medeleine Hey! there i'm available<span
                           class="badge bg-light text-muted float-end"
-                          >5 Jan 2023</span
-                        >
+                        >5 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>3 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />3 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -1046,13 +872,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Olivia New schedule release<span class="badge bg-light text-muted float-end"
-                          >6 Jan 2023</span
-                        >
+                        Olivia New schedule release<span class="badge bg-light text-muted float-end">6 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>45 mins ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />45 mins ago</span>
                     </div>
                   </div>
                 </li>
@@ -1065,12 +887,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Kamala Preparing for new admin launch<span
                           class="badge bg-light text-muted float-end"
-                          >7 Jan 2023</span
-                        >
+                        >7 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>28 mins ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />28 mins ago</span>
                     </div>
                   </div>
                 </li>
@@ -1085,12 +904,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Oisha Meeting with clinet for dinner<span
                           class="badge bg-light text-muted float-end"
-                          >10 Jan 2023</span
-                        >
+                        >10 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>14 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />14 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -1101,13 +917,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for the new project<span class="badge bg-light text-muted float-end"
-                          >3 Jan 2023</span
-                        >
+                        Prepare for the new project<span class="badge bg-light text-muted float-end">3 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>2 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />2 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -1118,13 +930,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Decide the live discussion<span class="badge bg-light text-muted float-end"
-                          >17 Feb 2023</span
-                        >
+                        Decide the live discussion<span class="badge bg-light text-muted float-end">17 Feb 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>3 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />3 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -1137,13 +945,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end"
-                          >29 Dec 2022</span
-                        >
+                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end">29 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -1154,13 +958,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for presentation<span class="badge bg-light text-muted float-end"
-                          >31 Dec 2022</span
-                        >
+                        Prepare for presentation<span class="badge bg-light text-muted float-end">31 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -1182,21 +982,25 @@ const dataToPass = {
           Toggle top offcanvas
         </button>
         <div
+          id="offcanvasTop"
           class="offcanvas offcanvas-top"
           tabindex="-1"
-          id="offcanvasTop"
           aria-labelledby="offcanvasTopLabel"
         >
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasTopLabel">Offcanvas top</h5>
+            <h5 id="offcanvasTopLabel" class="offcanvas-title">
+              Offcanvas top
+            </h5>
             <button
               type="button"
               class="btn-close"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
-            ></button>
+            />
           </div>
-          <div class="offcanvas-body">...</div>
+          <div class="offcanvas-body">
+            ...
+          </div>
         </div>
         <button
           class="btn btn-primary mb-1 me-2"
@@ -1208,19 +1012,21 @@ const dataToPass = {
           Toggle right offcanvas
         </button>
         <div
+          id="offcanvasRight"
           class="offcanvas offcanvas-end"
           tabindex="-1"
-          id="offcanvasRight"
           aria-labelledby="offcanvasRightLabel1"
         >
           <div class="offcanvas-header border-bottom border-block-end-dashed">
-            <h5 class="offcanvas-title" id="offcanvasRightLabel1">Notifications</h5>
+            <h5 id="offcanvasRightLabel1" class="offcanvas-title">
+              Notifications
+            </h5>
             <button
               type="button"
               class="btn-close"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
-            ></button>
+            />
           </div>
           <div class="offcanvas-body p-0">
             <div>
@@ -1232,13 +1038,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        New Website Created<span class="badge bg-light text-muted float-end"
-                          >20 Nov 2022</span
-                        >
+                        New Website Created<span class="badge bg-light text-muted float-end">20 Nov 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>30 mins ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />30 mins ago</span>
                     </div>
                   </div>
                 </li>
@@ -1249,13 +1051,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for the new project<span class="badge bg-light text-muted float-end"
-                          >3 Jan 2023</span
-                        >
+                        Prepare for the new project<span class="badge bg-light text-muted float-end">3 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>2 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />2 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -1266,13 +1064,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Decide the live discussion<span class="badge bg-light text-muted float-end"
-                          >17 Feb 2023</span
-                        >
+                        Decide the live discussion<span class="badge bg-light text-muted float-end">17 Feb 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>3 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />3 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -1285,13 +1079,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end"
-                          >29 Dec 2022</span
-                        >
+                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end">29 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -1302,13 +1092,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for presentation<span class="badge bg-light text-muted float-end"
-                          >31 Dec 2022</span
-                        >
+                        Prepare for presentation<span class="badge bg-light text-muted float-end">31 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -1323,12 +1109,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Brenda New product launching<span
                           class="badge bg-light text-muted float-end"
-                          >1 Jan 2023</span
-                        >
+                        >1 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>7 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />7 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -1341,12 +1124,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Medeleine Hey! there i'm available<span
                           class="badge bg-light text-muted float-end"
-                          >5 Jan 2023</span
-                        >
+                        >5 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>3 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />3 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -1357,13 +1137,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Olivia New schedule release<span class="badge bg-light text-muted float-end"
-                          >6 Jan 2023</span
-                        >
+                        Olivia New schedule release<span class="badge bg-light text-muted float-end">6 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>45 mins ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />45 mins ago</span>
                     </div>
                   </div>
                 </li>
@@ -1376,12 +1152,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Kamala Preparing for new admin launch<span
                           class="badge bg-light text-muted float-end"
-                          >7 Jan 2023</span
-                        >
+                        >7 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>28 mins ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />28 mins ago</span>
                     </div>
                   </div>
                 </li>
@@ -1396,12 +1169,9 @@ const dataToPass = {
                       <p class="fw-semibold mb-0">
                         Oisha Meeting with clinet for dinner<span
                           class="badge bg-light text-muted float-end"
-                          >10 Jan 2023</span
-                        >
+                        >10 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>14 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />14 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -1412,13 +1182,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for the new project<span class="badge bg-light text-muted float-end"
-                          >3 Jan 2023</span
-                        >
+                        Prepare for the new project<span class="badge bg-light text-muted float-end">3 Jan 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>2 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />2 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -1429,13 +1195,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Decide the live discussion<span class="badge bg-light text-muted float-end"
-                          >17 Feb 2023</span
-                        >
+                        Decide the live discussion<span class="badge bg-light text-muted float-end">17 Feb 2023</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>3 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />3 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -1448,13 +1210,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end"
-                          >29 Dec 2022</span
-                        >
+                        Meeting at 3:00 pm<span class="badge bg-light text-muted float-end">29 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -1465,13 +1223,9 @@ const dataToPass = {
                     </div>
                     <div class="flex-fill">
                       <p class="fw-semibold mb-0">
-                        Prepare for presentation<span class="badge bg-light text-muted float-end"
-                          >31 Dec 2022</span
-                        >
+                        Prepare for presentation<span class="badge bg-light text-muted float-end">31 Dec 2022</span>
                       </p>
-                      <span class="fs-12 text-muted"
-                        ><i class="ri-time-line align-middle me-1"></i>4 hrs ago</span
-                      >
+                      <span class="fs-12 text-muted"><i class="ri-time-line align-middle me-1" />4 hrs ago</span>
                     </div>
                   </div>
                 </li>
@@ -1489,21 +1243,25 @@ const dataToPass = {
           Toggle bottom offcanvas
         </button>
         <div
+          id="offcanvasBottom"
           class="offcanvas offcanvas-bottom"
           tabindex="-1"
-          id="offcanvasBottom"
           aria-labelledby="offcanvasBottomLabel"
         >
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+            <h5 id="offcanvasBottomLabel" class="offcanvas-title">
+              Offcanvas bottom
+            </h5>
             <button
               type="button"
               class="btn-close"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
-            ></button>
+            />
           </div>
-          <div class="offcanvas-body small">...</div>
+          <div class="offcanvas-body small">
+            ...
+          </div>
         </div>
       </ShowcodeCard>
     </div>

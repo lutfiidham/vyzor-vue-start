@@ -1,21 +1,22 @@
 <script setup>
-import Pageheader from '@/components/pageheader/pageheader.vue'
+import { Head } from '@inertiajs/vue3'
+import { Chart as ChartJS, registerables } from 'chart.js'
 import { defineAsyncComponent } from 'vue'
 import {
+  BarChart,
+  BubbleChart,
   DoughnutChart,
   LineChart,
-  BarChart,
-  ScatterChart,
-  BubbleChart,
-  RadarChart,
-  PolarAreaChart,
   PieChart,
+  PolarAreaChart,
+  RadarChart,
+  ScatterChart,
 } from 'vue-chart-3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
 import * as chartjsData from '@/shared/data/chartjs/chartjs'
-import { Chart as ChartJS, registerables } from 'chart.js'
-import { Head } from '@inertiajs/vue3'
+
 const ChartjsCardComponent = defineAsyncComponent(
-  () => import('@/shared/@spk/charts/chartjs-cards.vue')
+  () => import('@/shared/@spk/charts/chartjs-cards.vue'),
 )
 
 ChartJS.register(...registerables)
@@ -72,7 +73,7 @@ const chartjs = [
 
 <template>
   <Head title="Chartjs Charts | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start::row-1 -->
   <div class="row">
@@ -85,7 +86,7 @@ const chartjs = [
       />
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

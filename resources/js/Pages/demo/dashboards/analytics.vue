@@ -1,10 +1,11 @@
 <script setup>
-import * as analyticsData from '@/shared/data/dashboards/analyticsdata'
+import { Head } from '@inertiajs/vue3'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
 import SpkReusableAnlyticsCard from '@/shared/@spk/dashboards/spk-reusable-anlyticsCard.vue'
 import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head } from '@inertiajs/vue3'
+import * as analyticsData from '@/shared/data/dashboards/analyticsdata'
+
 const dataToPass = {
   title: 'Dashboards',
   currentpage: 'Analytics',
@@ -14,16 +15,18 @@ const dataToPass = {
 
 <template>
   <Head title="Analytics | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xxl-9">
       <div class="row">
-        <SpkReusableAnlyticsCard :analyticData="analyticsData.analyticData" />
+        <SpkReusableAnlyticsCard :analytic-data="analyticsData.analyticData" />
         <div class="col-xxl-4">
           <div class="card custom-card">
             <div class="card-header justify-content-between">
-              <div class="card-title">Sessions By Device</div>
+              <div class="card-title">
+                Sessions By Device
+              </div>
               <div class="dropdown">
                 <a
                   href="javascript:void(0);"
@@ -31,7 +34,7 @@ const dataToPass = {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  View All<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block"></i>
+                  View All<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block" />
                 </a>
                 <ul class="dropdown-menu" role="menu">
                   <li><a class="dropdown-item" href="javascript:void(0);">Day</a></li>
@@ -42,7 +45,7 @@ const dataToPass = {
             </div>
             <div class="card-body">
               <div id="sessions-device">
-                <apexchart
+                <Apexchart
                   height="259px"
                   type="donut"
                   :options="analyticsData.sessionoptions"
@@ -54,19 +57,25 @@ const dataToPass = {
               <div class="row">
                 <div class="col">
                   <div class="p-3 text-center border-end">
-                    <h5 class="fw-semibold mb-1">1754</h5>
+                    <h5 class="fw-semibold mb-1">
+                      1754
+                    </h5>
                     <span class="fs-12 d-block">Mobile</span>
                   </div>
                 </div>
                 <div class="col">
                   <div class="p-3 text-center border-end">
-                    <h5 class="fw-semibold mb-1">1234</h5>
+                    <h5 class="fw-semibold mb-1">
+                      1234
+                    </h5>
                     <span class="fs-12 d-block">Tablet</span>
                   </div>
                 </div>
                 <div class="col">
                   <div class="p-3 text-center">
-                    <h5 class="fw-semibold mb-1">878</h5>
+                    <h5 class="fw-semibold mb-1">
+                      878
+                    </h5>
                     <span class="fs-12 d-block">Desktop</span>
                   </div>
                 </div>
@@ -77,11 +86,13 @@ const dataToPass = {
         <div class="col-xxl-8">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Audience Metrics</div>
+              <div class="card-title">
+                Audience Metrics
+              </div>
             </div>
             <div class="card-body">
               <div id="audience-metrics">
-                <apexchart
+                <Apexchart
                   height="330px"
                   type="line"
                   :options="analyticsData.audienceoptions"
@@ -94,16 +105,20 @@ const dataToPass = {
         <div class="col-xxl-4">
           <div class="card custom-card overflow-hidden">
             <div class="card-header">
-              <div class="card-title">Visitors By Countries</div>
+              <div class="card-title">
+                Visitors By Countries
+              </div>
             </div>
             <div class="card-body p-0">
               <TableComponent
-                tableClass="table text-nowrap"
+                #cell="{ row }"
+                table-class="table text-nowrap"
                 :headers="[{ text: 'S.No' }, { text: 'Country' }, { text: 'Visitors' }]"
                 :rows="analyticsData.countryData"
-                v-slot:cell="{ row }"
               >
-                <td class="border-bottom-0">{{ row.rank }}</td>
+                <td class="border-bottom-0">
+                  {{ row.rank }}
+                </td>
                 <td class="border-bottom-0">
                   <div class="d-flex align-items-center gap-2">
                     <div class="lh-1">
@@ -111,16 +126,15 @@ const dataToPass = {
                         <BaseImg :src="row.flagUrl" :alt="row.country" />
                       </span>
                     </div>
-                    <div class="fw-semibold">{{ row.country }}</div>
+                    <div class="fw-semibold">
+                      {{ row.country }}
+                    </div>
                   </div>
                 </td>
                 <td class="border-bottom-0">
-                  <span class="fs-12 text-muted me-2"
-                    >(<i
-                      :class="`ti ti-arrow-${row.arrow} text-${row.arrow === 'up' ? 'success' : 'danger'} fs-16 align-middle`"
-                    ></i
-                    >{{ row.percentageChange }})</span
-                  >{{ row.count }}
+                  <span class="fs-12 text-muted me-2">(<i
+                    :class="`ti ti-arrow-${row.arrow} text-${row.arrow === 'up' ? 'success' : 'danger'} fs-16 align-middle`"
+                  />{{ row.percentageChange }})</span>{{ row.count }}
                 </td>
               </TableComponent>
             </div>
@@ -129,14 +143,16 @@ const dataToPass = {
         <div class="col-xxl-8">
           <div class="card custom-card overflow-hidden">
             <div class="card-header justify-content-between">
-              <div class="card-title">Top Campaigns</div>
+              <div class="card-title">
+                Top Campaigns
+              </div>
               <div class="dropdown">
                 <a
                   href="javascript:void(0);"
                   class="p-2 fs-12 text-muted tag-link"
                   data-bs-toggle="dropdown"
                 >
-                  View All<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block"></i>
+                  View All<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block" />
                 </a>
                 <ul class="dropdown-menu" role="menu">
                   <li><a class="dropdown-item" href="javascript:void(0);">Download</a></li>
@@ -147,7 +163,8 @@ const dataToPass = {
             </div>
             <div class="card-body p-0">
               <TableComponent
-                tableClass="table text-nowrap top-campaigns-table"
+                #cell="{ row }"
+                table-class="table text-nowrap top-campaigns-table"
                 :headers="[
                   { text: 'Provider' },
                   { text: 'Sales' },
@@ -156,7 +173,6 @@ const dataToPass = {
                   { text: 'Ation', thClass: 'text-center' },
                 ]"
                 :rows="analyticsData.influencerData"
-                v-slot:cell="{ row }"
               >
                 <td :class="row.tableClass">
                   <div class="d-flex align-items-center lh-1">
@@ -164,7 +180,9 @@ const dataToPass = {
                       <BaseImg :src="row.avatarUrl" />
                     </span>
                     <div>
-                      <p class="fw-medium mb-1">{{ row.name }}</p>
+                      <p class="fw-medium mb-1">
+                        {{ row.name }}
+                      </p>
                       <span class="fs-12 text-muted">{{ row.role }}</span>
                     </div>
                   </div>
@@ -187,8 +205,7 @@ const dataToPass = {
                       title=""
                       data-bs-original-title="Edit"
                       aria-label="Edit"
-                      ><i class="bi bi-pencil-square"></i
-                    ></a>
+                    ><i class="bi bi-pencil-square" /></a>
                     <a
                       href="javascript:void(0);"
                       class="btn btn-light btn-icon btn-sm"
@@ -196,8 +213,7 @@ const dataToPass = {
                       title=""
                       data-bs-original-title="Delete"
                       aria-label="Delete"
-                      ><i class="bi bi-trash"></i
-                    ></a>
+                    ><i class="bi bi-trash" /></a>
                   </div>
                 </td>
               </TableComponent>
@@ -207,7 +223,9 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header justify-content-between">
-              <div class="card-title">Engagement Metrics</div>
+              <div class="card-title">
+                Engagement Metrics
+              </div>
               <div class="d-flex flex-wrap gap-2">
                 <div>
                   <input
@@ -215,7 +233,7 @@ const dataToPass = {
                     type="text"
                     placeholder="Search Here"
                     aria-label=".form-control-sm example"
-                  />
+                  >
                 </div>
                 <div class="dropdown">
                   <a
@@ -224,7 +242,7 @@ const dataToPass = {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    Sort By<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block"></i>
+                    Sort By<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block" />
                   </a>
                   <ul class="dropdown-menu" role="menu">
                     <li><a class="dropdown-item" href="javascript:void(0);">New</a></li>
@@ -236,7 +254,8 @@ const dataToPass = {
             </div>
             <div class="card-body p-0">
               <TableComponent
-                tableClass="table text-nowrap"
+                #cell="{ row }"
+                table-class="table text-nowrap"
                 :headers="[
                   { text: 'S.No', thClass: 'text-center' },
                   { text: 'User' },
@@ -247,9 +266,10 @@ const dataToPass = {
                   { text: 'Conversion Rate', thClass: 'text-center' },
                 ]"
                 :rows="analyticsData.engagementdata"
-                v-slot:cell="{ row }"
               >
-                <td class="text-center">{{ row.rank }}</td>
+                <td class="text-center">
+                  {{ row.rank }}
+                </td>
                 <td>
                   <div class="d-flex align-items-center gap-2">
                     <div class="lh-1">
@@ -277,12 +297,14 @@ const dataToPass = {
                 </td>
                 <td>{{ row.views }}</td>
                 <td>{{ row.conversionRate }}</td>
-                <td class="text-center">{{ row.percentage }}</td>
+                <td class="text-center">
+                  {{ row.percentage }}
+                </td>
               </TableComponent>
             </div>
             <div class="card-footer border-top-0">
               <div class="d-flex align-items-center flex-wrap">
-                <div>Showing 5 Entries <i class="bi bi-arrow-right ms-2 fw-semibold"></i></div>
+                <div>Showing 5 Entries <i class="bi bi-arrow-right ms-2 fw-semibold" /></div>
                 <div class="ms-auto">
                   <nav aria-label="Page navigation" class="pagination-style-4">
                     <ul class="pagination mb-0">
@@ -312,7 +334,9 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card overflow-hidden">
             <div class="card-header">
-              <div class="card-title">Browser Insights</div>
+              <div class="card-title">
+                Browser Insights
+              </div>
             </div>
             <div class="card-body">
               <ul class="list-unstyled browser-insights-list">
@@ -339,7 +363,7 @@ const dataToPass = {
                           aria-valuenow="78"
                           aria-valuemin="0"
                           aria-valuemax="100"
-                        ></div>
+                        />
                       </div>
                     </div>
                   </div>
@@ -351,11 +375,13 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header justify-content-between">
-              <div class="card-title">Users By Time Of Week</div>
+              <div class="card-title">
+                Users By Time Of Week
+              </div>
             </div>
             <div class="card-body p-0">
               <div id="users-by-time">
-                <apexchart
+                <Apexchart
                   height="262px"
                   type="heatmap"
                   :options="analyticsData.timeoptions"
@@ -368,15 +394,17 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Top Referral Pages</div>
+              <div class="card-title">
+                Top Referral Pages
+              </div>
             </div>
             <div class="card-body">
               <div class="d-flex align-items-center mb-3 flex-wrap">
-                <h4 class="fw-bold mb-0">4,289</h4>
+                <h4 class="fw-bold mb-0">
+                  4,289
+                </h4>
                 <div class="ms-2">
-                  <span class="badge bg-success-transparent"
-                    >1.02<i class="ri-arrow-up-s-fill align-mmiddle ms-1"></i
-                  ></span>
+                  <span class="badge bg-success-transparent">1.02<i class="ri-arrow-up-s-fill align-mmiddle ms-1" /></span>
                   <span class="text-muted ms-1 text-nowrap">compared to last week</span>
                 </div>
               </div>
@@ -388,7 +416,7 @@ const dataToPass = {
                   aria-valuenow="21"
                   aria-valuemin="0"
                   aria-valuemax="100"
-                ></div>
+                />
                 <div
                   class="progress-bar bg-info"
                   role="progressbar"
@@ -396,7 +424,7 @@ const dataToPass = {
                   aria-valuenow="26"
                   aria-valuemin="0"
                   aria-valuemax="100"
-                ></div>
+                />
                 <div
                   class="progress-bar bg-warning"
                   role="progressbar"
@@ -404,7 +432,7 @@ const dataToPass = {
                   aria-valuenow="35"
                   aria-valuemin="0"
                   aria-valuemax="100"
-                ></div>
+                />
                 <div
                   class="progress-bar bg-success"
                   role="progressbar"
@@ -412,7 +440,7 @@ const dataToPass = {
                   aria-valuenow="18"
                   aria-valuemin="0"
                   aria-valuemax="100"
-                ></div>
+                />
               </div>
               <ul class="list-unstyled mb-0 pt-2 top-referral-pages">
                 <li
@@ -422,7 +450,9 @@ const dataToPass = {
                 >
                   <div class="d-flex align-items-center justify-content-between">
                     <div>{{ item.path }}</div>
-                    <div class="fs-12 text-muted">{{ item.views }}</div>
+                    <div class="fs-12 text-muted">
+                      {{ item.views }}
+                    </div>
                   </div>
                 </li>
               </ul>
@@ -432,7 +462,9 @@ const dataToPass = {
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header">
-              <div class="card-title">Average Sessions</div>
+              <div class="card-title">
+                Average Sessions
+              </div>
             </div>
             <div class="card-body pb-0">
               <div class="d-flex gap-3 flex-wrap align-items-center mb-3">
@@ -444,22 +476,25 @@ const dataToPass = {
                   viewBox="0 0 24 24"
                 >
                   <g fill="currentColor">
-                    <path fill-opacity="0.5" d="M8 13h6v4H8z"></path>
-                    <path d="M6 6H4v12h2zm14 1H8v4h12z"></path>
+                    <path fill-opacity="0.5" d="M8 13h6v4H8z" />
+                    <path d="M6 6H4v12h2zm14 1H8v4h12z" />
                   </g>
                 </svg>
                 <div>
-                  <h6 class="fw-medium mb-0">3m 45s</h6>
+                  <h6 class="fw-medium mb-0">
+                    3m 45s
+                  </h6>
                 </div>
                 <div class="ms-auto text-muted fs-11 text-end">
-                  <div class="fw-medium">From Last Week</div>
+                  <div class="fw-medium">
+                    From Last Week
+                  </div>
                   <span class="text-success fw-semibold">
-                    1.25% <i class="ri-arrow-up-line lh-1 align-center fs-14 fw-normal"></i
-                  ></span>
+                    1.25% <i class="ri-arrow-up-line lh-1 align-center fs-14 fw-normal" /></span>
                 </div>
               </div>
               <div id="analytics-avgsession">
-                <apexchart
+                <Apexchart
                   height="283px"
                   type="bar"
                   :options="analyticsData.averageoptions"

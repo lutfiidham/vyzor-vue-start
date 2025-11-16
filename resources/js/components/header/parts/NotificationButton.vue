@@ -1,12 +1,37 @@
+<script setup>
+import { Link } from '@inertiajs/vue3'
+import { ref } from 'vue'
+import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
+import { Notifications } from '@/shared/data/header.js'
+import BaseImg from '../../Baseimage/BaseImg.vue'
+import 'vue3-perfect-scrollbar/style.css'
+
+const props = defineProps({
+  baseUrl: {
+    type: String,
+    default: '',
+  },
+})
+
+const emit = defineEmits(['notifications-updated'])
+
+const notifications = ref([...Notifications])
+
+function clearAllNotifications() {
+  notifications.value = []
+  emit('notifications-updated', notifications.value)
+}
+</script>
+
 <template>
   <li class="header-element notifications-dropdown d-xl-block d-none dropdown">
     <!-- Start::header-link|dropdown-toggle -->
     <a
+      id="messageDropdown"
       href="javascript:void(0);"
       class="header-link dropdown-toggle"
       data-bs-toggle="dropdown"
       data-bs-auto-close="outside"
-      id="messageDropdown"
       aria-expanded="false"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="header-link-icon" viewBox="0 0 256 256">
@@ -32,7 +57,7 @@
           stroke-width="16"
         />
       </svg>
-      <span class="header-icon-pulse bg-secondary rounded pulse pulse-secondary"></span>
+      <span class="header-icon-pulse bg-secondary rounded pulse pulse-secondary" />
     </a>
     <!-- End::header-link|dropdown-toggle -->
     <!-- Start::main-header-dropdown -->
@@ -42,25 +67,25 @@
     >
       <div class="p-3 bg-primary text-fixed-white">
         <div class="d-flex align-items-center justify-content-between">
-          <p class="mb-0 fs-16">Notifications</p>
-          <a href="javascript:void(0);" class="badge bg-light text-default border" @click="clearAllNotifications"
-            >Clear All</a
-          >
+          <p class="mb-0 fs-16">
+            Notifications
+          </p>
+          <a href="javascript:void(0);" class="badge bg-light text-default border" @click="clearAllNotifications">Clear All</a>
         </div>
       </div>
-      <div class="dropdown-divider"></div>
-      <PerfectScrollbar class="list-unstyled mb-0" id="header-notification-scroll">
+      <div class="dropdown-divider" />
+      <PerfectScrollbar id="header-notification-scroll" class="list-unstyled mb-0">
         <li
-          :class="`dropdown-item position-relative ${notification.liClass}`"
           v-for="notification in notifications"
           :key="notification.id"
+          :class="`dropdown-item position-relative ${notification.liClass}`"
         >
-          <Link :href="`${baseUrl}/demo/applications/chat/`" class="stretched-link"></Link>
+          <Link :href="`${baseUrl}/demo/applications/chat/`" class="stretched-link" />
           <div class="d-flex align-items-start gap-3">
             <div class="lh-1">
               <span class="avatar avatar-sm avatar-rounded bg-primary-transparent">
                 <BaseImg v-if="notification.avatar" :src="notification.avatar" alt="" />
-                <i v-if="notification.icon" class="ri-notification-line fs-16"></i>
+                <i v-if="notification.icon" class="ri-notification-line fs-16" />
               </span>
             </div>
             <div class="flex-fill">
@@ -69,47 +94,22 @@
             </div>
             <div class="text-end">
               <span class="d-block mb-1 fs-12 text-muted">{{ notification.time }}</span>
-              <span :class="`d-block text-primary ${notification.isUnread ? '' : 'd-none'} `"
-                ><i class="ri-circle-fill fs-9"></i
-              ></span>
+              <span :class="`d-block text-primary ${notification.isUnread ? '' : 'd-none'} `"><i class="ri-circle-fill fs-9" /></span>
             </div>
           </div>
         </li>
       </PerfectScrollbar>
-      <div class="p-5 empty-item1 d-none" v-if="!notifications.length">
+      <div v-if="!notifications.length" class="p-5 empty-item1 d-none">
         <div class="text-center">
           <span class="avatar avatar-xl avatar-rounded bg-secondary-transparent">
-            <i class="ri-notification-off-line fs-2"></i>
+            <i class="ri-notification-off-line fs-2" />
           </span>
-          <h6 class="fw-medium mt-3">No New Notifications</h6>
+          <h6 class="fw-medium mt-3">
+            No New Notifications
+          </h6>
         </div>
       </div>
     </div>
     <!-- End::main-header-dropdown -->
   </li>
 </template>
-
-<script setup>
-import { ref } from 'vue'
-import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
-import 'vue3-perfect-scrollbar/style.css'
-import { Notifications } from '@/shared/data/header.js'
-import BaseImg from '../../Baseimage/BaseImg.vue'
-import { Link } from '@inertiajs/vue3'
-
-const props = defineProps({
-  baseUrl: {
-    type: String,
-    default: ''
-  }
-})
-
-const emit = defineEmits(['notifications-updated'])
-
-const notifications = ref([...Notifications])
-
-const clearAllNotifications = () => {
-  notifications.value = []
-  emit('notifications-updated', notifications.value)
-}
-</script>

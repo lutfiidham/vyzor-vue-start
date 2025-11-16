@@ -34,7 +34,7 @@ const locations = [
 <template>
   <GoogleMap :api-key="apiKey" :center="center" :zoom="3" style="width: 100%; height: 300px">
     <MarkerCluster>
-      <Marker v-for="(location, i) in locations" :options="{ position: location }" :key="i" />
+      <Marker v-for="(location, i) in locations" :key="i" :options="{ position: location }" />
     </MarkerCluster>
   </GoogleMap>
 </template>

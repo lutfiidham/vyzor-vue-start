@@ -1,20 +1,22 @@
 <script setup>
+import { Head, Link } from '@inertiajs/vue3'
 import { onBeforeUnmount, onMounted } from 'vue'
 import BaseImg from '@/components/Baseimage/BaseImg.vue'
-import { Head, Link } from '@inertiajs/vue3'
 import authlayout from '@/layouts/authlayout.vue'
 import ParticlesJs from '@/shared/@spk/reuseble-plugin/particles-js.vue'
-const baseUrl = __BASE_PATH__
 
 defineOptions({
   layout: authlayout,
 })
 
-const setBodyClass = (action) => {
+const baseUrl = __BASE_PATH__
+
+function setBodyClass(action) {
   if (action === 'add') {
     document.body.classList.add('coming-soon-main')
     document.body.style.display = 'block'
-  } else {
+  }
+  else {
     document.body.classList.remove('coming-soon-main')
     document.body.style.display = 'none'
   }
@@ -24,7 +26,8 @@ onMounted(() => {
   // Check if the user has visited before
   if (localStorage.getItem('visited') === 'true') {
     setBodyClass('add')
-  } else {
+  }
+  else {
     setBodyClass('add')
     localStorage.setItem('visited', 'true')
   }
@@ -73,15 +76,17 @@ onMounted(() => {
                     />
                   </Link>
                 </div>
-                <h1 class="mb-0">Under Maintenance</h1>
+                <h1 class="mb-0">
+                  Under Maintenance
+                </h1>
                 <div
-                  class="d-flex gap-5 flex-wrap gy-xxl-0 gy-3 justify-content-center my-4 rounded p-4 timer-container"
                   id="timer"
+                  class="d-flex gap-5 flex-wrap gy-xxl-0 gy-3 justify-content-center my-4 rounded p-4 timer-container"
                 >
                   <Countdown />
                 </div>
                 <p class="mb-4 fs-18">
-                  We're cooking up something great! Our website is getting an <br />
+                  We're cooking up something great! Our website is getting an <br>
                   upgrade – check back soon for a better experience!
                 </p>
                 <div class="input-group">
@@ -91,8 +96,8 @@ onMounted(() => {
                     placeholder="info@gmail.com"
                     aria-label="info@gmail.com"
                     aria-describedby="button-addon2"
-                  />
-                  <button class="btn btn-primary btn-lg" type="button" id="button-addon2">
+                  >
+                  <button id="button-addon2" class="btn btn-primary btn-lg" type="button">
                     Subscribe
                   </button>
                 </div>

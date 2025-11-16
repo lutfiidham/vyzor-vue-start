@@ -1,8 +1,8 @@
 <script setup>
-import Swal from 'sweetalert2'
-import 'sweetalert2/dist/sweetalert2.min.css'
-import Pageheader from '@/components/pageheader/pageheader.vue'
 import { Head } from '@inertiajs/vue3'
+import Swal from 'sweetalert2'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import 'sweetalert2/dist/sweetalert2.min.css'
 // Page data
 const dataToPass = {
   title: 'Applications',
@@ -11,11 +11,11 @@ const dataToPass = {
 }
 
 // SweetAlert methods
-const basicSwal = () => {
+function basicSwal() {
   Swal.fire('Hello this is Basic alert message')
 }
 
-const TitleAlert = () => {
+function TitleAlert() {
   Swal.fire({
     title: 'The Internet?',
     text: 'That thing is still around?',
@@ -23,7 +23,7 @@ const TitleAlert = () => {
   })
 }
 
-const FooterAlert = () => {
+function FooterAlert() {
   Swal.fire({
     icon: 'error',
     title: 'Oops...',
@@ -32,7 +32,7 @@ const FooterAlert = () => {
   })
 }
 
-const LoginWindow = () => {
+function LoginWindow() {
   Swal.fire({
     imageUrl: 'https://placeholder.pics/svg/300x1500',
     imageHeight: 1500,
@@ -40,7 +40,7 @@ const LoginWindow = () => {
   })
 }
 
-const CustomHTMLAlert = () => {
+function CustomHTMLAlert() {
   Swal.fire({
     title: '<strong>HTML <u>example</u></strong>',
     icon: 'info',
@@ -63,7 +63,7 @@ const CustomHTMLAlert = () => {
   })
 }
 
-const MultipleButtons = () => {
+function MultipleButtons() {
   Swal.fire({
     title: 'Do you want to save the changes?',
     showDenyButton: true,
@@ -73,13 +73,14 @@ const MultipleButtons = () => {
   }).then((result) => {
     if (result.isConfirmed) {
       Swal.fire('Saved!', '', 'success')
-    } else if (result.isDenied) {
+    }
+    else if (result.isDenied) {
       Swal.fire('Changes are not saved', '', 'info')
     }
   })
 }
 
-const AlertDialog = () => {
+function AlertDialog() {
   Swal.fire({
     position: 'top-end',
     icon: 'success',
@@ -89,10 +90,10 @@ const AlertDialog = () => {
   })
 }
 
-const ConfirmAlert = () => {
+function ConfirmAlert() {
   Swal.fire({
     title: 'Are you sure?',
-    text: "You won't be able to revert this!",
+    text: 'You won\'t be able to revert this!',
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
@@ -105,7 +106,7 @@ const ConfirmAlert = () => {
   })
 }
 
-const AlertParameters = () => {
+function AlertParameters() {
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
       confirmButton: 'btn btn-success',
@@ -117,7 +118,7 @@ const AlertParameters = () => {
   swalWithBootstrapButtons
     .fire({
       title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      text: 'You won\'t be able to revert this!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes, delete it!',
@@ -127,13 +128,14 @@ const AlertParameters = () => {
     .then((result) => {
       if (result.isConfirmed) {
         swalWithBootstrapButtons.fire('Deleted!', 'Your file has been deleted.', 'success')
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
+      }
+      else if (result.dismiss === Swal.DismissReason.cancel) {
         swalWithBootstrapButtons.fire('Cancelled', 'Your imaginary file is safe :)', 'error')
       }
     })
 }
 
-const ImageAlert = () => {
+function ImageAlert() {
   Swal.fire({
     title: 'Sweet!',
     text: 'Modal with a custom image.',
@@ -144,7 +146,7 @@ const ImageAlert = () => {
   })
 }
 
-const Backgroundimage = () => {
+function Backgroundimage() {
   Swal.fire({
     title: 'Custom width, padding, color, background.',
     width: 600,
@@ -154,7 +156,7 @@ const Backgroundimage = () => {
   })
 }
 
-const Ajaxalert = () => {
+function Ajaxalert() {
   Swal.fire({
     title: 'Submit your Github username',
     input: 'text',
@@ -167,7 +169,9 @@ const Ajaxalert = () => {
     preConfirm: (login) => {
       return fetch(`//api.github.com/users/${login}`)
         .then((response) => {
-          if (!response.ok) throw new Error(response.statusText)
+          if (!response.ok)
+            throw new Error(response.statusText)
+
           return response.json()
         })
         .catch((error) => {
@@ -185,7 +189,7 @@ const Ajaxalert = () => {
   })
 }
 
-const Autoclose = () => {
+function Autoclose() {
   let timerInterval
 
   Swal.fire({
@@ -210,39 +214,41 @@ const Autoclose = () => {
 }
 
 // State alerts
-const stateSuccess = () => {
+function stateSuccess() {
   Swal.fire('Success Message', 'Great job!!', 'success')
 }
 
-const stateDanger = () => {
+function stateDanger() {
   Swal.fire('Danger Message', 'Something went wrong!!', 'error')
 }
 
-const stateWarning = () => {
+function stateWarning() {
   Swal.fire('Warning Message', 'Careful now!', 'warning')
 }
 
-const stateInfo = () => {
+function stateInfo() {
   Swal.fire('Info Message', 'Heads up!', 'info')
 }
 
-const stateQuestion = () => {
+function stateQuestion() {
   Swal.fire('Question Message', 'What do you want to do?', 'question')
 }
 </script>
 
 <template>
   <Head title="Sweet Alerts | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
   <!-- Start:: row-1 -->
   <div class="row">
     <div class="col-xl-3">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Basic Alert</div>
+          <div class="card-title">
+            Basic Alert
+          </div>
         </div>
         <div class="card-body text-center">
-          <button class="btn btn-primary btn-w-md" id="basic-alert" @click="basicSwal">
+          <button id="basic-alert" class="btn btn-primary btn-w-md" @click="basicSwal">
             Basic Alert
           </button>
         </div>
@@ -251,10 +257,12 @@ const stateQuestion = () => {
     <div class="col-xl-3">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Title With Text Under</div>
+          <div class="card-title">
+            Title With Text Under
+          </div>
         </div>
         <div class="card-body text-center">
-          <button class="btn btn-primary btn-w-md" id="alert-text" @click="TitleAlert">
+          <button id="alert-text" class="btn btn-primary btn-w-md" @click="TitleAlert">
             Title With Text
           </button>
         </div>
@@ -263,10 +271,12 @@ const stateQuestion = () => {
     <div class="col-xl-3">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">With Text,Error Icon & Footer</div>
+          <div class="card-title">
+            With Text,Error Icon & Footer
+          </div>
         </div>
         <div class="card-body text-center">
-          <button class="btn btn-primary btn-w-md" id="alert-footer" @click="FooterAlert">
+          <button id="alert-footer" class="btn btn-primary btn-w-md" @click="FooterAlert">
             Alert Footer
           </button>
         </div>
@@ -275,10 +285,12 @@ const stateQuestion = () => {
     <div class="col-xl-3">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Alert With Long Window</div>
+          <div class="card-title">
+            Alert With Long Window
+          </div>
         </div>
         <div class="card-body text-center">
-          <button class="btn btn-primary btn-w-md" id="long-window" @click="LoginWindow">
+          <button id="long-window" class="btn btn-primary btn-w-md" @click="LoginWindow">
             Long Window Here
           </button>
         </div>
@@ -287,10 +299,12 @@ const stateQuestion = () => {
     <div class="col-xl-3">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Custom HTML Description</div>
+          <div class="card-title">
+            Custom HTML Description
+          </div>
         </div>
         <div class="card-body text-center">
-          <button class="btn btn-primary btn-w-md" id="alert-description" @click="CustomHTMLAlert">
+          <button id="alert-description" class="btn btn-primary btn-w-md" @click="CustomHTMLAlert">
             Custom HTML Alert
           </button>
         </div>
@@ -299,10 +313,12 @@ const stateQuestion = () => {
     <div class="col-xl-3">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Alert With Multiple Buttons</div>
+          <div class="card-title">
+            Alert With Multiple Buttons
+          </div>
         </div>
         <div class="card-body text-center">
-          <button class="btn btn-primary btn-w-md" id="three-buttons" @click="MultipleButtons">
+          <button id="three-buttons" class="btn btn-primary btn-w-md" @click="MultipleButtons">
             Multiple Buttons
           </button>
         </div>
@@ -311,10 +327,12 @@ const stateQuestion = () => {
     <div class="col-xl-3">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Custom Positioned Dialog Alert</div>
+          <div class="card-title">
+            Custom Positioned Dialog Alert
+          </div>
         </div>
         <div class="card-body text-center">
-          <button class="btn btn-primary btn-w-md" id="alert-dialog" @click="AlertDialog">
+          <button id="alert-dialog" class="btn btn-primary btn-w-md" @click="AlertDialog">
             Alert Dialog
           </button>
         </div>
@@ -323,10 +341,12 @@ const stateQuestion = () => {
     <div class="col-xl-3">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Confirm Alert</div>
+          <div class="card-title">
+            Confirm Alert
+          </div>
         </div>
         <div class="card-body text-center">
-          <button class="btn btn-primary btn-w-md" id="alert-confirm" @click="ConfirmAlert">
+          <button id="alert-confirm" class="btn btn-primary btn-w-md" @click="ConfirmAlert">
             Confirm Alert
           </button>
         </div>
@@ -335,10 +355,12 @@ const stateQuestion = () => {
     <div class="col-xl-3">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Alert With Parameters</div>
+          <div class="card-title">
+            Alert With Parameters
+          </div>
         </div>
         <div class="card-body text-center">
-          <button class="btn btn-primary btn-w-md" id="alert-parameter" @click="AlertParameters">
+          <button id="alert-parameter" class="btn btn-primary btn-w-md" @click="AlertParameters">
             Alert Parameters
           </button>
         </div>
@@ -347,10 +369,12 @@ const stateQuestion = () => {
     <div class="col-xl-3">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Alert With Image</div>
+          <div class="card-title">
+            Alert With Image
+          </div>
         </div>
         <div class="card-body text-center">
-          <button class="btn btn-primary btn-w-md" id="alert-image" @click="ImageAlert">
+          <button id="alert-image" class="btn btn-primary btn-w-md" @click="ImageAlert">
             Image Alert
           </button>
         </div>
@@ -359,10 +383,12 @@ const stateQuestion = () => {
     <div class="col-xl-3">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Alert With Image</div>
+          <div class="card-title">
+            Alert With Image
+          </div>
         </div>
         <div class="card-body text-center">
-          <button class="btn btn-primary btn-w-md" id="alert-custom-bg" @click="Backgroundimage">
+          <button id="alert-custom-bg" class="btn btn-primary btn-w-md" @click="Backgroundimage">
             Custom Alert
           </button>
         </div>
@@ -371,10 +397,12 @@ const stateQuestion = () => {
     <div class="col-xl-3">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Auto Close Alert</div>
+          <div class="card-title">
+            Auto Close Alert
+          </div>
         </div>
         <div class="card-body text-center">
-          <button class="btn btn-primary btn-w-md" id="alert-auto-close" @click="Autoclose">
+          <button id="alert-auto-close" class="btn btn-primary btn-w-md" @click="Autoclose">
             Auto Close
           </button>
         </div>
@@ -386,10 +414,12 @@ const stateQuestion = () => {
     <div class="col-xl-5">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">Ajax Request Alert</div>
+          <div class="card-title">
+            Ajax Request Alert
+          </div>
         </div>
         <div class="card-body text-center">
-          <button class="btn btn-primary btn-w-md" id="alert-ajax" @click="Ajaxalert">
+          <button id="alert-ajax" class="btn btn-primary btn-w-md" @click="Ajaxalert">
             Ajax Request
           </button>
         </div>
@@ -398,26 +428,28 @@ const stateQuestion = () => {
     <div class="col-xl-7">
       <div class="card custom-card">
         <div class="card-header">
-          <div class="card-title">State Icons</div>
+          <div class="card-title">
+            State Icons
+          </div>
         </div>
         <div
           class="card-body text-center d-flex gap-1 flex-wrap align-items-center justify-content-center"
         >
-          <button class="btn btn-success btn-w-md" id="alert-custom-success" @click="stateSuccess">
+          <button id="alert-custom-success" class="btn btn-success btn-w-md" @click="stateSuccess">
             Success
           </button>
-          <button class="btn btn-danger btn-w-md" id="alert-custom-danger" @click="stateDanger">
+          <button id="alert-custom-danger" class="btn btn-danger btn-w-md" @click="stateDanger">
             Danger
           </button>
-          <button class="btn btn-warning btn-w-md" id="alert-custom-warning" @click="stateWarning">
+          <button id="alert-custom-warning" class="btn btn-warning btn-w-md" @click="stateWarning">
             Warning
           </button>
-          <button class="btn btn-info btn-w-md" id="alert-custom-info" @click="stateInfo">
+          <button id="alert-custom-info" class="btn btn-info btn-w-md" @click="stateInfo">
             Info
           </button>
           <button
-            class="btn btn-primary btn-w-md"
             id="alert-custom-question"
+            class="btn btn-primary btn-w-md"
             @click="stateQuestion"
           >
             Question

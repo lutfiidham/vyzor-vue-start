@@ -1,10 +1,11 @@
 <script setup>
-import * as salesData from '@/shared/data/dashboards/salesdata.js'
-import { ref } from 'vue'
-import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
-import SpkReuseblejobs from '@/shared/@spk/dashboards/jobs/dashboard/spk-reuseble-jobs.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3' // For Vue 3
+import { ref } from 'vue'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import SpkReuseblejobs from '@/shared/@spk/dashboards/jobs/dashboard/spk-reuseble-jobs.vue'
+import TableComponent from '@/shared/@spk/table-reuseble/table-component.vue'
+import * as salesData from '@/shared/data/dashboards/salesdata.js'
+
 const picked = ref(new Date())
 const picked2 = ref(new Date())
 const lowerpicked = new Date(picked2.value)
@@ -30,25 +31,27 @@ date.value = [startDate, endDate]
     class="d-flex align-items-center justify-content-between mb-3 page-header-breadcrumb flex-wrap gap-2"
   >
     <div>
-      <h1 class="page-title fw-medium fs-20 mb-0">Dashboard</h1>
+      <h1 class="page-title fw-medium fs-20 mb-0">
+        Dashboard
+      </h1>
     </div>
     <div class="d-flex align-items-center flex-wrap">
       <div class="form-group">
         <Datepicker
+          v-model="date"
           placeholder="Search By Date Range"
           :enable-time-picker="false"
           class="form-control breadcrumb-input border-0 bg-white custom-date-input ps-0"
-          autoApply
-          v-model="date"
+          auto-apply
           range
         />
       </div>
       <div class="btn-list custom-button-list">
         <button class="btn btn-icon btn-primary btn-wave">
-          <i class="ri-refresh-line"></i>
+          <i class="ri-refresh-line" />
         </button>
         <button class="btn btn-icon btn-primary btn-wave me-0">
-          <i class="ri-filter-3-line"></i>
+          <i class="ri-filter-3-line" />
         </button>
       </div>
     </div>
@@ -61,15 +64,15 @@ date.value = [startDate, endDate]
         <div class="col-xl-3">
           <div class="row">
             <div
-              class="col-xl-12 col-md-6"
               v-for="(idx, index) in salesData.SalesCard"
               :key="index"
+              class="col-xl-12 col-md-6"
             >
               <SpkReuseblejobs
-                titleClass="fs-13 fw-medium mb-0"
-                :listCard="true"
-                :cardClass="`card ${idx.cardClass}`"
-                :imageIcon="false"
+                title-class="fs-13 fw-medium mb-0"
+                :list-card="true"
+                :card-class="`card ${idx.cardClass}`"
+                :image-icon="false"
                 :list="idx"
                 :NoCountUp="true"
               />
@@ -79,7 +82,9 @@ date.value = [startDate, endDate]
         <div class="col-xl-9">
           <div class="card custom-card">
             <div class="card-header justify-content-between">
-              <div class="card-title">Sales Overview</div>
+              <div class="card-title">
+                Sales Overview
+              </div>
               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-primary btn-wave waves-effect waves-light">
                   Day
@@ -106,7 +111,7 @@ date.value = [startDate, endDate]
             </div>
             <div class="card-body pb-0 pt-5">
               <div id="sales-overview">
-                <apexchart
+                <Apexchart
                   height="380px"
                   type="line"
                   :options="salesData.overviewoptions"
@@ -119,19 +124,25 @@ date.value = [startDate, endDate]
                 <div class="col-sm-4 border-sm-end">
                   <div class="p-3 text-center">
                     <span class="d-block text-muted mb-1">Total Orders</span>
-                    <h6 class="fw-semibold mb-0">15,535</h6>
+                    <h6 class="fw-semibold mb-0">
+                      15,535
+                    </h6>
                   </div>
                 </div>
                 <div class="col-sm-4 border-sm-end">
                   <div class="p-3 text-center">
                     <span class="d-block text-muted mb-1">Total Sales</span>
-                    <h6 class="fw-semibold mb-0">21,754</h6>
+                    <h6 class="fw-semibold mb-0">
+                      21,754
+                    </h6>
                   </div>
                 </div>
                 <div class="col-sm-4">
                   <div class="p-3 text-center">
                     <span class="d-block text-muted mb-1">Revenue Earned</span>
-                    <h6 class="fw-semibold mb-0">$1.8M</h6>
+                    <h6 class="fw-semibold mb-0">
+                      $1.8M
+                    </h6>
                   </div>
                 </div>
               </div>
@@ -152,13 +163,11 @@ date.value = [startDate, endDate]
               </div>
               <div class="d-flex align-items-center justify-content-between gap-3">
                 <div>
-                  <h5 class="fw-semibold mb-1 text-fixed-white">Hi, Tom Phillip &#128075;</h5>
-                  <span class="d-block fs-14 mb-3 pe-5 text-fixed-white"
-                    >Check out the latest sales updates.</span
-                  >
-                  <a href="javascript:void(0)" class="btn btn-secondary btn-wave mt-1"
-                    >Upgrade To Pro <i class="ti ti-arrow-narrow-right"></i
-                  ></a>
+                  <h5 class="fw-semibold mb-1 text-fixed-white">
+                    Hi, Tom Phillip &#128075;
+                  </h5>
+                  <span class="d-block fs-14 mb-3 pe-5 text-fixed-white">Check out the latest sales updates.</span>
+                  <a href="javascript:void(0)" class="btn btn-secondary btn-wave mt-1">Upgrade To Pro <i class="ti ti-arrow-narrow-right" /></a>
                 </div>
                 <div class="dashboard-banner-image d-sm-block d-none">
                   <svg
@@ -328,14 +337,14 @@ date.value = [startDate, endDate]
         <div class="col-xl-12">
           <div class="card custom-card">
             <div class="card-header justify-content-between">
-              <div class="card-title">Visitors By Device</div>
-              <a href="javascript:void(0);" class="fs-12 text-muted text-decoration-underline"
-                >View Report <i class="ti ti-arrow-narrow-right"></i
-              ></a>
+              <div class="card-title">
+                Visitors By Device
+              </div>
+              <a href="javascript:void(0);" class="fs-12 text-muted text-decoration-underline">View Report <i class="ti ti-arrow-narrow-right" /></a>
             </div>
             <div class="card-body pb-0 p-0">
               <div id="visitors-report">
-                <apexchart
+                <Apexchart
                   height="335px"
                   type="radar"
                   :options="salesData.visitorsoptions"
@@ -355,10 +364,10 @@ date.value = [startDate, endDate]
     <div class="col-xxl-3 col-md-6">
       <div class="card custom-card overflow-hidden">
         <div class="card-header justify-content-between">
-          <div class="card-title">Top Selling Products</div>
-          <a href="javascript:void(0);" class="text-muted fs-12 text-decoration-underline"
-            >View All<i class="ti ti-arrow-narrow-right"></i
-          ></a>
+          <div class="card-title">
+            Top Selling Products
+          </div>
+          <a href="javascript:void(0);" class="text-muted fs-12 text-decoration-underline">View All<i class="ti ti-arrow-narrow-right" /></a>
         </div>
         <div class="card-body p-0">
           <ul class="list-group list-group-flush">
@@ -376,10 +385,12 @@ date.value = [startDate, endDate]
                 <div class="flex-fill">
                   <span class="fw-semibold mb-1 d-block">{{ product.title }}</span>
                   <div class="d-flex align-items-center gap-2 fw-medium">
-                    <div class="fs-12 text-muted">{{ product.price }}</div>
-                    <div class="vr"></div>
-                    <span :class="product.stockClass + ' fs-12'">
-                      <i class="ri-circle-fill me-1 fs-7 align-middle"></i>{{ product.stockStatus }}
+                    <div class="fs-12 text-muted">
+                      {{ product.price }}
+                    </div>
+                    <div class="vr" />
+                    <span :class="`${product.stockClass} fs-12`">
+                      <i class="ri-circle-fill me-1 fs-7 align-middle" />{{ product.stockStatus }}
                     </span>
                   </div>
                 </div>
@@ -396,17 +407,17 @@ date.value = [startDate, endDate]
     <div class="col-xxl-3 col-md-6">
       <div class="card custom-card">
         <div class="card-header justify-content-between">
-          <div class="card-title">Recent Activity</div>
-          <a href="javascript:void(0);" class="text-muted fs-12 text-decoration-underline"
-            >View All<i class="ti ti-arrow-narrow-right"></i
-          ></a>
+          <div class="card-title">
+            Recent Activity
+          </div>
+          <a href="javascript:void(0);" class="text-muted fs-12 text-decoration-underline">View All<i class="ti ti-arrow-narrow-right" /></a>
         </div>
         <div class="card-body px-5">
           <ul class="list-unstyled recent-activity-list">
             <li
               v-for="(activity, i) in salesData.recentActivities"
-              :class="activity.liclass"
               :key="i"
+              :class="activity.liclass"
             >
               <div class="recent-activity-time text-end">
                 <span class="fw-semibold d-block">{{ activity.date }}</span>
@@ -427,10 +438,10 @@ date.value = [startDate, endDate]
     <div class="col-xxl-3 col-xl-6">
       <div class="card custom-card">
         <div class="card-header justify-content-between">
-          <div class="card-title">Top Customers</div>
-          <a href="javascript:void(0);" class="text-muted fs-12 text-decoration-underline"
-            >View All<i class="ti ti-arrow-narrow-right"></i
-          ></a>
+          <div class="card-title">
+            Top Customers
+          </div>
+          <a href="javascript:void(0);" class="text-muted fs-12 text-decoration-underline">View All<i class="ti ti-arrow-narrow-right" /></a>
         </div>
         <div class="card-body">
           <ul class="list-unstyled top-customers-list">
@@ -446,7 +457,9 @@ date.value = [startDate, endDate]
                   <span class="fs-11 text-muted">{{ user.email }}</span>
                 </div>
                 <div class="text-end">
-                  <div :class="user.spentClass">{{ user.spentAmount }}</div>
+                  <div :class="user.spentClass">
+                    {{ user.spentAmount }}
+                  </div>
                   <span class="fs-12 text-muted">{{ user.spentLabel }}</span>
                 </div>
               </div>
@@ -458,7 +471,9 @@ date.value = [startDate, endDate]
     <div class="col-xxl-3 col-xl-6">
       <div class="card custom-card overflow-hidden">
         <div class="card-header justify-content-between">
-          <div class="card-title">Top User Channels</div>
+          <div class="card-title">
+            Top User Channels
+          </div>
           <div class="dropdown">
             <a
               aria-label="anchor"
@@ -467,7 +482,7 @@ date.value = [startDate, endDate]
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <i class="ri-more-2-fill"></i>
+              <i class="ri-more-2-fill" />
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="javascript:void(0);">Week</a></li>
@@ -491,10 +506,12 @@ date.value = [startDate, endDate]
                 </div>
                 <div class="text-end">
                   <div class="d-flex align-items-center gap-2 mb-2">
-                    <span :class="['fs-12', 'fw-medium', company.arrowColorClass]">
-                      <i :class="company.arrowClass"></i>{{ company.percent }}
+                    <span class="fs-12 fw-medium" :class="[company.arrowColorClass]">
+                      <i :class="company.arrowClass" />{{ company.percent }}
                     </span>
-                    <div class="fw-semibold">{{ company.count }}</div>
+                    <div class="fw-semibold">
+                      {{ company.count }}
+                    </div>
                   </div>
                   <div
                     :class="company.progressBgClass"
@@ -506,7 +523,7 @@ date.value = [startDate, endDate]
                     <div
                       :class="company.progressBarClass"
                       :style="{ width: company.progressWidth }"
-                    ></div>
+                    />
                   </div>
                 </div>
               </div>
@@ -523,7 +540,9 @@ date.value = [startDate, endDate]
     <div class="col-xl-8">
       <div class="card custom-card overflow-hidden">
         <div class="card-header justify-content-between">
-          <div class="card-title">Recent Invoices</div>
+          <div class="card-title">
+            Recent Invoices
+          </div>
           <div class="d-flex flex-wrap gap-2">
             <div class="dropdown">
               <a
@@ -531,7 +550,7 @@ date.value = [startDate, endDate]
                 class="btn btn-outline-light btn-wave waves-effect waves-light"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-                >Filters<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block"></i>
+              >Filters<i class="ri-arrow-down-s-line align-middle ms-1 d-inline-block" />
               </a>
               <ul class="dropdown-menu" role="menu">
                 <li><a class="dropdown-item" href="javascript:void(0);">New</a></li>
@@ -545,14 +564,15 @@ date.value = [startDate, endDate]
                 type="text"
                 placeholder="Search Here"
                 aria-label=".form-control-sm example"
-              />
+              >
             </div>
           </div>
         </div>
         <div class="card-body p-0">
           <TableComponent
-            tableClass="table text-nowrap table-hover"
-            :showCheckbox="true"
+            #cell="{ row }"
+            table-class="table text-nowrap table-hover"
+            :show-checkbox="true"
             :headers="[
               { text: 'ID' },
               { text: 'Customer' },
@@ -563,13 +583,14 @@ date.value = [startDate, endDate]
               { text: 'Actions' },
             ]"
             :rows="salesData.orders"
-            v-slot:cell="{ row }"
           >
-            <td :class="row.tableClass">{{ row.orderId }}</td>
+            <td :class="row.tableClass">
+              {{ row.orderId }}
+            </td>
             <td :class="row.tableClass">
               <div class="d-flex align-items-center gap-2">
                 <div class="lh-1">
-                  <span :class="['avatar avatar-sm avatar-rounded', row.user.avatarClass]">
+                  <span class="avatar avatar-sm avatar-rounded" :class="[row.user.avatarClass]">
                     {{ row.user.initials }}
                   </span>
                 </div>
@@ -617,23 +638,17 @@ date.value = [startDate, endDate]
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <i class="ri-more-2-fill"></i>
+                  <i class="ri-more-2-fill" />
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="javascript:void(0);"
-                      ><i class="ri-eye-line me-2"></i>View</a
-                    >
+                    <a class="dropdown-item" href="javascript:void(0);"><i class="ri-eye-line me-2" />View</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="javascript:void(0);"
-                      ><i class="ri-pencil-line me-2"></i>Edit</a
-                    >
+                    <a class="dropdown-item" href="javascript:void(0);"><i class="ri-pencil-line me-2" />Edit</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="javascript:void(0);"
-                      ><i class="ri-delete-bin-line me-2"></i>Delete</a
-                    >
+                    <a class="dropdown-item" href="javascript:void(0);"><i class="ri-delete-bin-line me-2" />Delete</a>
                   </li>
                 </ul>
               </div>
@@ -642,23 +657,27 @@ date.value = [startDate, endDate]
         </div>
         <div class="card-footer">
           <div class="d-flex align-items-center flex-wrap">
-            <div>Showing 5 Entries <i class="bi bi-arrow-right ms-2 fw-semibold"></i></div>
+            <div>Showing 5 Entries <i class="bi bi-arrow-right ms-2 fw-semibold" /></div>
             <div class="ms-auto">
               <nav aria-label="Page navigation" class="pagination-style-2">
                 <ul class="pagination mb-0 flex-wrap">
                   <li class="page-item disabled">
                     <a class="page-link" href="javascript:void(0);"> Prev </a>
                   </li>
-                  <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:void(0);">1</a>
+                  </li>
                   <li class="page-item active">
                     <a class="page-link" href="javascript:void(0);">2</a>
                   </li>
                   <li class="page-item">
                     <a class="page-link" href="javascript:void(0);">
-                      <i class="bi bi-three-dots"></i>
+                      <i class="bi bi-three-dots" />
                     </a>
                   </li>
-                  <li class="page-item"><a class="page-link" href="javascript:void(0);">17</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:void(0);">17</a>
+                  </li>
                   <li class="page-item">
                     <a class="page-link text-primary" href="javascript:void(0);"> next </a>
                   </li>
@@ -672,7 +691,9 @@ date.value = [startDate, endDate]
     <div class="col-xl-4">
       <div class="card custom-card overflow-hidden">
         <div class="card-header justify-content-between">
-          <div class="card-title">Recent Transactions</div>
+          <div class="card-title">
+            Recent Transactions
+          </div>
           <div class="dropdown">
             <a
               aria-label="anchor"
@@ -681,7 +702,7 @@ date.value = [startDate, endDate]
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <i class="ri-more-2-fill"></i>
+              <i class="ri-more-2-fill" />
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="javascript:void(0);">Week</a></li>
@@ -692,24 +713,24 @@ date.value = [startDate, endDate]
         </div>
         <div class="card-body p-0">
           <TableComponent
-            tableClass="table text-nowrap"
+            #cell="{ row }"
+            table-class="table text-nowrap"
             :headers="[
               { text: 'Order' },
               { text: 'Price' },
               { text: 'Products', thClass: 'text-end' },
             ]"
             :rows="salesData.recentTransactions"
-            v-slot:cell="{ row }"
           >
             <td :class="row.tdClass">
               <div class="flex-fill">
                 <div><span class="fw-semibold">Order Id</span> - {{ row.orderId }}</div>
                 <div class="d-flex align-items-center gap-2 fw-medium">
-                  <div class="fs-12 text-muted">{{ row.itemCount }}</div>
-                  <div class="vr"></div>
-                  <span :class="row.status.class"
-                    ><i :class="row.status.icon"></i>{{ row.status.text }}</span
-                  >
+                  <div class="fs-12 text-muted">
+                    {{ row.itemCount }}
+                  </div>
+                  <div class="vr" />
+                  <span :class="row.status.class"><i :class="row.status.icon" />{{ row.status.text }}</span>
                 </div>
               </div>
             </td>

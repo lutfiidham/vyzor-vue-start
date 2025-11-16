@@ -1,8 +1,9 @@
 <script setup>
-import * as prism from '@/shared/data/prismCode/ui-elements/links-interactions'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
 import { Head } from '@inertiajs/vue3'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as prism from '@/shared/data/prismCode/ui-elements/links-interactions'
+import ShowcodeCard from '../../../../../UI/showcodeCard.vue'
+
 const dataToPass = {
   title: 'Ui Elements',
   currentpage: 'Links & Interactions',
@@ -12,7 +13,7 @@ const dataToPass = {
 
 <template>
   <Head title="Links-Interactions | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start::row-1 -->
   <div class="row">
@@ -21,13 +22,15 @@ const dataToPass = {
         <div class="col-xl-12">
           <ShowcodeCard
             title="TEXT SELECTION"
-            customCardHeaderClass="justify-content-between"
+            custom-card-header-class="justify-content-between"
             :code="prism.textSlection"
           >
             <p class="user-select-all">
               This paragraph will be entirely selected when clicked by the user.
             </p>
-            <p class="user-select-auto">This paragraph has default select behavior.</p>
+            <p class="user-select-auto">
+              This paragraph has default select behavior.
+            </p>
             <p class="user-select-none mb-0">
               This paragraph will not be selectable when clicked by the user.
             </p>
@@ -36,7 +39,7 @@ const dataToPass = {
         <div class="col-xl-12">
           <ShowcodeCard
             title="POINTER EVENTS"
-            customCardHeaderClass="justify-content-between"
+            custom-card-header-class="justify-content-between"
             :code="prism.pointerevents"
           >
             <p>
@@ -44,16 +47,14 @@ const dataToPass = {
                 href="javascript:void(0)"
                 class="pe-none text-primary fw-medium text-decoration-underline"
                 tabindex="-1"
-                >This link</a
-              >
+              >This link</a>
               can not be clicked.
             </p>
             <p>
               <a
                 href="javascript:void(0)"
                 class="pe-auto text-primary fw-medium text-decoration-underline"
-                >This link</a
-              >
+              >This link</a>
               can be clicked (this is default behavior).
             </p>
             <p class="pe-none mb-0">
@@ -61,8 +62,7 @@ const dataToPass = {
                 href="javascript:void(0)"
                 tabindex="-1"
                 class="text-primary fw-medium text-decoration-underline"
-                >This link</a
-              >
+              >This link</a>
               can not be clicked because the <code>pointer-events</code> property is inherited from
               its parent. However, <a href="javascript:void(0)" class="pe-auto">this link</a> has a
               <code>pe-auto</code> class and can be clicked.
@@ -72,7 +72,7 @@ const dataToPass = {
         <div class="col-xl-12">
           <ShowcodeCard
             title=" LINK OPACITY "
-            customCardHeaderClass="justify-content-between"
+            custom-card-header-class="justify-content-between"
             :code="prism.linkOpacity"
           >
             <p><a class="link-opacity-10" href="javascript:void(0)">Link opacity 10</a></p>
@@ -87,7 +87,7 @@ const dataToPass = {
         <div class="col-xl-12">
           <ShowcodeCard
             title="LINK HOVER VARIANT"
-            customCardHeaderClass="justify-content-between"
+            custom-card-header-class="justify-content-between"
             :code="prism.linkHoverVariant"
           >
             <a
@@ -101,50 +101,35 @@ const dataToPass = {
         <div class="col-xl-12">
           <ShowcodeCard
             title=" LINK UNDERLINE COLORS "
-            customCardHeaderClass="justify-content-between"
+            custom-card-header-class="justify-content-between"
             :code="prism.linkUnderlineColors"
           >
             <p>
-              <a href="javascript:void(0)" class="link-underline-primary text-decoration-underline"
-                >Primary underline</a
-              >
+              <a href="javascript:void(0)" class="link-underline-primary text-decoration-underline">Primary underline</a>
             </p>
             <p>
               <a
                 href="javascript:void(0)"
                 class="link-underline-secondary text-decoration-underline"
-                >Secondary underline</a
-              >
+              >Secondary underline</a>
             </p>
             <p>
-              <a href="javascript:void(0)" class="link-underline-success text-decoration-underline"
-                >Success underline</a
-              >
+              <a href="javascript:void(0)" class="link-underline-success text-decoration-underline">Success underline</a>
             </p>
             <p>
-              <a href="javascript:void(0)" class="link-underline-danger text-decoration-underline"
-                >Danger underline</a
-              >
+              <a href="javascript:void(0)" class="link-underline-danger text-decoration-underline">Danger underline</a>
             </p>
             <p>
-              <a href="javascript:void(0)" class="link-underline-warning text-decoration-underline"
-                >Warning underline</a
-              >
+              <a href="javascript:void(0)" class="link-underline-warning text-decoration-underline">Warning underline</a>
             </p>
             <p>
-              <a href="javascript:void(0)" class="link-underline-info text-decoration-underline"
-                >Info underline</a
-              >
+              <a href="javascript:void(0)" class="link-underline-info text-decoration-underline">Info underline</a>
             </p>
             <p>
-              <a href="javascript:void(0)" class="link-underline-light text-decoration-underline"
-                >Light underline</a
-              >
+              <a href="javascript:void(0)" class="link-underline-light text-decoration-underline">Light underline</a>
             </p>
             <p class="mb-0">
-              <a href="javascript:void(0)" class="link-underline-dark text-decoration-underline"
-                >Dark underline</a
-              >
+              <a href="javascript:void(0)" class="link-underline-dark text-decoration-underline">Dark underline</a>
             </p>
           </ShowcodeCard>
         </div>
@@ -155,81 +140,69 @@ const dataToPass = {
         <div class="col-xl-12">
           <ShowcodeCard
             title="LINK UNDERLINE OFFSET"
-            customCardHeaderClass="justify-content-between"
+            custom-card-header-class="justify-content-between"
             :code="prism.linkUnderlineOffset"
           >
             <p><a href="javascript:void(0)" class="text-decoration-underline">Default link</a></p>
             <p>
-              <a class="link-offset-1 text-decoration-underline" href="javascript:void(0)"
-                >Offset 1 link</a
-              >
+              <a class="link-offset-1 text-decoration-underline" href="javascript:void(0)">Offset 1 link</a>
             </p>
             <p>
-              <a class="link-offset-2 text-decoration-underline" href="javascript:void(0)"
-                >Offset 2 link</a
-              >
+              <a class="link-offset-2 text-decoration-underline" href="javascript:void(0)">Offset 2 link</a>
             </p>
             <p class="mb-0">
-              <a class="link-offset-3 text-decoration-underline" href="javascript:void(0)"
-                >Offset 3 link</a
-              >
+              <a class="link-offset-3 text-decoration-underline" href="javascript:void(0)">Offset 3 link</a>
             </p>
           </ShowcodeCard>
         </div>
         <div class="col-xl-12">
           <ShowcodeCard
             title=" LINK UNDERLINE OPACITY"
-            customCardHeaderClass="justify-content-between"
+            custom-card-header-class="justify-content-between"
             :code="prism.linkUnderlineOpacity"
           >
             <p>
               <a
                 class="text-decoration-underline link-offset-2 link-underline link-underline-opacity-0"
                 href="javascript:void(0)"
-                >Underline opacity 0</a
-              >
+              >Underline opacity 0</a>
             </p>
             <p>
               <a
                 class="text-decoration-underline link-offset-2 link-underline link-underline-opacity-10"
                 href="javascript:void(0)"
-                >Underline opacity 10</a
-              >
+              >Underline opacity 10</a>
             </p>
             <p>
               <a
                 class="text-decoration-underline link-offset-2 link-underline link-underline-opacity-25"
                 href="javascript:void(0)"
-                >Underline opacity 25</a
-              >
+              >Underline opacity 25</a>
             </p>
             <p>
               <a
                 class="text-decoration-underline link-offset-2 link-underline link-underline-opacity-50"
                 href="javascript:void(0)"
-                >Underline opacity 50</a
-              >
+              >Underline opacity 50</a>
             </p>
             <p>
               <a
                 class="text-decoration-underline link-offset-2 link-underline link-underline-opacity-75"
                 href="javascript:void(0)"
-                >Underline opacity 75</a
-              >
+              >Underline opacity 75</a>
             </p>
             <p>
               <a
                 class="text-decoration-underline link-offset-2 link-underline link-underline-opacity-100"
                 href="javascript:void(0)"
-                >Underline opacity 100</a
-              >
+              >Underline opacity 100</a>
             </p>
           </ShowcodeCard>
         </div>
         <div class="col-xl-12">
           <ShowcodeCard
             title=" LINK HOVER OPACITY "
-            customCardHeaderClass="justify-content-between"
+            custom-card-header-class="justify-content-between"
             :code="prism.linkHoverOpacity"
           >
             <p>
@@ -252,78 +225,69 @@ const dataToPass = {
         <div class="col-xl-12">
           <ShowcodeCard
             title=" COLORED LINKS "
-            customCardHeaderClass="justify-content-between"
+            custom-card-header-class="justify-content-between"
             :code="prism.coloredLinks"
           >
             <p>
               <a
                 href="javascript:void(0)"
                 class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-decoration-underline"
-                >Primary link</a
-              >
+              >Primary link</a>
             </p>
             <p>
               <a
                 href="javascript:void(0)"
                 class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-decoration-underline"
-                >Secondary link</a
-              >
+              >Secondary link</a>
             </p>
             <p>
               <a
                 href="javascript:void(0)"
                 class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-decoration-underline"
-                >Success link</a
-              >
+              >Success link</a>
             </p>
             <p>
               <a
                 href="javascript:void(0)"
                 class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-decoration-underline"
-                >Danger link</a
-              >
+              >Danger link</a>
             </p>
             <p>
               <a
                 href="javascript:void(0)"
                 class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-decoration-underline"
-                >Warning link</a
-              >
+              >Warning link</a>
             </p>
             <p>
               <a
                 href="javascript:void(0)"
                 class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-decoration-underline"
-                >Info link</a
-              >
+              >Info link</a>
             </p>
             <p>
               <a
                 href="javascript:void(0)"
                 class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-decoration-underline"
-                >Light link</a
-              >
+              >Light link</a>
             </p>
             <p>
               <a
                 href="javascript:void(0)"
                 class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-decoration-underline"
-                >Dark link</a
-              >
+              >Dark link</a>
             </p>
             <p>
               <a
                 href="javascript:void(0)"
                 class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover text-decoration-underline"
-                >Emphasis link</a
-              >
+              >Emphasis link</a>
             </p>
           </ShowcodeCard>
         </div>
       </div>
     </div>
   </div>
-  <!--End::row-1 -->
+  <!-- End::row-1 -->
 </template>
 
 <style scoped>

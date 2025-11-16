@@ -1,5 +1,242 @@
+<script setup>
+import { Link, usePage } from '@inertiajs/vue3'
+import { Tooltip } from 'bootstrap'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
+import {
+  notificationNotes as initialNotificationNotes,
+} from '@/shared/data/header.js'
+import { MENUITEMS } from '@/shared/data/sidebar/nav.js'
+import { useAuthStore } from '../../../stores/auth'
+import { switcherStore } from '../../../stores/switcher.js'
+import BaseImg from '../Baseimage/BaseImg.vue'
+
+// Modular components
+import {
+  // LanguageSwitcher,
+  DarkModeToggle,
+  // CartButton,
+  // NotificationButton,
+  FullscreenToggle,
+  ProfileDropdown,
+} from './parts/index.js'
+
+// Stores
+const switcher = switcherStore()
+const { logUserOut } = useAuthStore()
+const page = usePage()
+const baseUrl = __BASE_PATH__
+
+// Get current user from page props
+const currentUser = computed(() => page.props.auth?.user || null)
+
+// User initials for avatar fallback
+const userInitials = computed(() => {
+  if (!currentUser.value?.name)
+    return 'U'
+
+  return currentUser.value.name.charAt(0).toUpperCase()
+})
+
+// Computed logo link - if on demo pages, link to demo dashboard, else to main dashboard
+const logoLink = computed(() => {
+  const currentPath = page.url
+  const isDemoPage = currentPath.startsWith('/demo')
+
+  return isDemoPage ? `${baseUrl}/demo/dashboards/sales/` : '/dashboard'
+})
+
+// Refs
+const isFullScreen = ref(false)
+const search = ref('')
+const showSuggestions = ref(false)
+const notificationNotes = ref([...initialNotificationNotes])
+
+// Functions
+function colorthemeFn(value) {
+  localStorage.setItem('vyzorcolortheme', value)
+  localStorage.removeItem('vyzorbodyBgRGB') // ❌ Fix: removeItem takes only one argument
+  switcher.colorthemeFn(value)
+}
+
+function ToggleMenu() {
+  const html = document.documentElement
+
+  if (window.innerWidth <= 992) {
+    const dataToggled = html.getAttribute('data-toggled')
+    html.setAttribute('data-toggled', dataToggled === 'open' ? 'close' : 'open')
+  }
+  else {
+    const menuNavLayoutType = html.getAttribute('data-nav-style')
+    const verticalStyleType = html.getAttribute('data-vertical-style')
+    const dataToggled = html.getAttribute('data-toggled')
+
+    if (menuNavLayoutType) {
+      if (dataToggled) {
+        html.removeAttribute('data-toggled')
+      }
+      else {
+        html.setAttribute('data-toggled', `${menuNavLayoutType}-closed`)
+      }
+    }
+    else if (verticalStyleType) {
+      if (verticalStyleType === 'doublemenu') {
+        if (dataToggled === 'double-menu-open' && document.querySelector('.double-menu-active')) {
+          html.setAttribute('data-toggled', 'double-menu-close')
+        }
+        else if (document.querySelector('.double-menu-active')) {
+          html.setAttribute('data-toggled', 'double-menu-open')
+        }
+      }
+      else {
+        if (dataToggled) {
+          html.removeAttribute('data-toggled')
+        }
+        else {
+          const map = {
+            closed: 'close-menu-close',
+            icontext: 'icon-text-close',
+            overlay: 'icon-overlay-close',
+            detached: 'detached-close',
+          }
+          html.setAttribute('data-toggled', map[verticalStyleType] || '')
+        }
+      }
+    }
+  }
+}
+
+function toggleFullScreen() {
+  const element = document.documentElement
+  if (document.fullscreenElement) {
+    document.exitFullscreen()
+  }
+  else {
+    element.requestFullscreen()
+  }
+}
+
+function fullscreenChanged() {
+  isFullScreen.value = !!document.fullscreenElement
+}
+
+// Event handlers for modular components
+function handleLanguageChanged(lang) {
+  console.log('Language changed to:', lang)
+  // Add language change logic here
+}
+
+function handleThemeChanged(theme) {
+  console.log('Theme changed to:', theme)
+  // Theme is already handled in DarkModeToggle component
+}
+
+function handleCartUpdated(cartItems) {
+  notificationNotes.value = cartItems
+  console.log('Cart updated:', cartItems)
+}
+
+function handleNotificationsUpdated(notifications) {
+  console.log('Notifications updated:', notifications)
+  // Add notification update logic here
+}
+
+function handleFullscreenChanged(isFullscreen) {
+  isFullScreen.value = isFullscreen
+  console.log('Fullscreen changed:', isFullscreen)
+}
+
+// Legacy functions (kept for compatibility)
+function handleCartDelete(id) {
+  notificationNotes.value = notificationNotes.value.filter(item => item.id !== id)
+}
+
+function dec(event) {
+  event.preventDefault()
+  const input = event.currentTarget.parentElement?.querySelector('input')
+  if (input) {
+    const unit = Number(input.value)
+    if (unit > 1) {
+      input.value = String(unit - 1)
+    }
+  }
+}
+
+function inc(event) {
+  event.preventDefault()
+  const input = event.currentTarget.parentElement?.querySelector('input')
+  if (input) {
+    input.value = String(Number(input.value) + 1)
+  }
+}
+
+function handleClickOutside() {
+  showSuggestions.value = false
+}
+
+function handleToChange(event) {
+  const target = event.target
+  search.value = target.value
+  showSuggestions.value = search.value.length > 0
+}
+
+function handleSuggestionClick(suggestionTitle) {
+  search.value = ''
+  showSuggestions.value = false
+}
+
+// Computed
+const filterSuggestions = computed(() => {
+  const getTitlesWithPaths = (menuItems) => {
+    const titles = []
+    menuItems.forEach((item) => {
+      if (item?.path) {
+        titles.push({ title: item.title, path: item.path })
+      }
+      if (Array.isArray(item?.children)) {
+        titles.push(...getTitlesWithPaths(item.children))
+      }
+    })
+
+    return titles
+  }
+
+  return getTitlesWithPaths(MENUITEMS)
+})
+
+const uniqueSuggestions = computed(() => {
+  const searchLower = search.value.toLowerCase()
+  const suggestions = filterSuggestions.value.filter(item =>
+    item.title.toLowerCase().includes(searchLower),
+  )
+  const uniqueTitles = Array.from(new Set(suggestions.map(item => item.title.toLowerCase())))
+
+  return uniqueTitles.map(title => suggestions.find(item => item.title.toLowerCase() === title))
+})
+
+// Tooltip lifecycle
+let pop = null
+
+onMounted(() => {
+  document.addEventListener('fullscreenchange', fullscreenChanged, { passive: true })
+  document.body.addEventListener('click', handleClickOutside, { passive: true })
+  pop = new Tooltip(document.body, {
+    selector: '[data-bs-toggle="tooltip"]',
+  })
+})
+
+onUnmounted(() => {
+  document.body.removeEventListener('click', handleClickOutside)
+  document.removeEventListener('fullscreenchange', fullscreenChanged)
+  if (pop)
+    pop.dispose()
+
+  const popovers = document.getElementsByClassName('tooltip')
+  Array.from(popovers).forEach(el => el.remove())
+})
+</script>
+
 <template>
-  <header class="app-header sticky" id="header">
+  <header id="header" class="app-header sticky">
     <!-- Start::main-header-container -->
     <div class="main-header-container container-fluid">
       <!-- Start::header-content-left -->
@@ -21,12 +258,11 @@
         <div class="header-element mx-lg-0 mx-2">
           <a
             aria-label="Hide Sidebar"
-            @click="ToggleMenu"
             class="sidemenu-toggle header-link animated-arrow hor-toggle horizontal-navtoggle"
             data-bs-toggle="sidebar"
             href="javascript:void(0);"
-            ><span></span
-          ></a>
+            @click="ToggleMenu"
+          ><span /></a>
         </div>
         <!-- End::header-element -->
 
@@ -34,31 +270,33 @@
           <div class="autoComplete_wrapper">
             <!-- Start::header-link -->
             <input
+              id="header-search"
               type="text"
               class="header-search-bar form-control bg-white"
-              id="header-search"
               :value="search"
-              @input="handleToChange"
               placeholder="Search"
               spellcheck="false"
               autocomplete="off"
               autocapitalize="off"
-            />
+              @input="handleToChange"
+            >
             <template v-if="showSuggestions">
               <div
                 className="custom-card card w-100 search-result position-absolute z-index-9 search-fix border mt-1"
               >
                 <div className="card-header">
-                  <div className="card-title mb-0 text-break">Search result of {{ search }}</div>
+                  <div className="card-title mb-0 text-break">
+                    Search result of {{ search }}
+                  </div>
                 </div>
                 <div className="card-body overflow-auto">
-                  <div class="list-group custom-header" Id="autoComplete_list_1">
+                  <div Id="autoComplete_list_1" class="list-group custom-header">
                     <template v-if="uniqueSuggestions.length > 0">
                       <li
-                        id="autoComplete_result_0"
-                        class="list-group-item li-Class"
                         v-for="(e, index) in uniqueSuggestions.slice(0, 7)"
+                        id="autoComplete_result_0"
                         :key="index"
+                        class="list-group-item li-Class"
                       >
                         <Link
                           :href="`${e.path}/`"
@@ -77,7 +315,7 @@
               </div>
             </template>
             <a href="javascript:void(0);" class="header-search-icon border-0">
-              <i class="bi bi-search fs-12"></i>
+              <i class="bi bi-search fs-12" />
             </a>
             <!-- End::header-link -->
           </div>
@@ -149,7 +387,7 @@
 
         <!-- Start::header-element -->
         <li class="header-element">
-          <!-- Start::header-link|switcher-icon 
+          <!-- Start::header-link|switcher-icon
           <a
             href="javascript:void(0);"
             class="header-link switcher-icon"
@@ -192,8 +430,8 @@
   </header>
 
   <div
-    class="modal fade"
     id="header-responsive-search"
+    class="modal fade"
     tabindex="-1"
     aria-labelledby="header-responsive-search"
     aria-hidden="true"
@@ -207,10 +445,10 @@
               class="form-control border-end-0"
               placeholder="Search Anything ..."
               :value="search"
-              @input="handleToChange"
               aria-label="Search Anything ..."
               aria-describedby="button-addon2"
-            />
+              @input="handleToChange"
+            >
             <template v-if="showSuggestions">
               <div
                 className="custom-card card w-100 search-result position-absolute z-index-9 search-fix border mt-15 rounded-1"
@@ -218,19 +456,17 @@
                 <div className="card-header d-none d-sm-block">
                   <div className="card-title mb-0 text-break">
                     Search result of
-                    <b
-                      ><u>{{ search }}</u></b
-                    >
+                    <b><u>{{ search }}</u></b>
                   </div>
                 </div>
                 <div className="card-body overflow-auto">
-                  <div class="list-group custom-header" Id="autoComplete_list_1">
+                  <div Id="autoComplete_list_1" class="list-group custom-header">
                     <template v-if="uniqueSuggestions.length > 0">
                       <li
-                        id="autoComplete_result_0"
-                        class="list-group-item li-Class"
                         v-for="(e, index) in uniqueSuggestions.slice(0, 7)"
+                        id="autoComplete_result_0"
                         :key="index"
+                        class="list-group-item li-Class"
                       >
                         <Link
                           :href="`${e.path}/`"
@@ -248,8 +484,8 @@
                 </div>
               </div>
             </template>
-            <button class="btn btn-primary" type="button" id="button-addon2">
-              <i class="bi bi-search"></i>
+            <button id="button-addon2" class="btn btn-primary" type="button">
+              <i class="bi bi-search" />
             </button>
           </div>
         </div>
@@ -257,228 +493,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { useAuthStore } from '../../../stores/auth'
-import { switcherStore } from '../../../stores/switcher.js'
-import { MENUITEMS } from '@/shared/data/sidebar/nav.js'
-import { Tooltip } from 'bootstrap'
-import {
-  Languages,
-  Notifications,
-  notificationNotes as initialNotificationNotes,
-} from '@/shared/data/header.js'
-import BaseImg from '../Baseimage/BaseImg.vue'
-import { Link, usePage } from '@inertiajs/vue3'
-
-// Modular components
-import {
-  // LanguageSwitcher,
-  DarkModeToggle,
-  // CartButton,
-  // NotificationButton,
-  FullscreenToggle,
-  ProfileDropdown,
-} from './parts/index.js'
-
-// Stores
-const switcher = switcherStore()
-const { logUserOut } = useAuthStore()
-const page = usePage()
-const baseUrl = __BASE_PATH__
-
-// Get current user from page props
-const currentUser = computed(() => page.props.auth?.user || null)
-
-// User initials for avatar fallback
-const userInitials = computed(() => {
-  if (!currentUser.value?.name) return 'U'
-  return currentUser.value.name.charAt(0).toUpperCase()
-})
-
-// Computed logo link - if on demo pages, link to demo dashboard, else to main dashboard
-const logoLink = computed(() => {
-  const currentPath = page.url
-  const isDemoPage = currentPath.startsWith('/demo')
-  return isDemoPage ? `${baseUrl}/demo/dashboards/sales/` : '/dashboard'
-})
-
-// Refs
-const isFullScreen = ref(false)
-const search = ref('')
-const showSuggestions = ref(false)
-const notificationNotes = ref([...initialNotificationNotes])
-
-// Functions
-const colorthemeFn = (value) => {
-  localStorage.setItem('vyzorcolortheme', value)
-  localStorage.removeItem('vyzorbodyBgRGB') // ❌ Fix: removeItem takes only one argument
-  switcher.colorthemeFn(value)
-}
-
-const ToggleMenu = () => {
-  const html = document.documentElement
-
-  if (window.innerWidth <= 992) {
-    const dataToggled = html.getAttribute('data-toggled')
-    html.setAttribute('data-toggled', dataToggled === 'open' ? 'close' : 'open')
-  } else {
-    const menuNavLayoutType = html.getAttribute('data-nav-style')
-    const verticalStyleType = html.getAttribute('data-vertical-style')
-    const dataToggled = html.getAttribute('data-toggled')
-
-    if (menuNavLayoutType) {
-      if (dataToggled) {
-        html.removeAttribute('data-toggled')
-      } else {
-        html.setAttribute('data-toggled', `${menuNavLayoutType}-closed`)
-      }
-    } else if (verticalStyleType) {
-      if (verticalStyleType === 'doublemenu') {
-        if (dataToggled === 'double-menu-open' && document.querySelector('.double-menu-active')) {
-          html.setAttribute('data-toggled', 'double-menu-close')
-        } else if (document.querySelector('.double-menu-active')) {
-          html.setAttribute('data-toggled', 'double-menu-open')
-        }
-      } else {
-        if (dataToggled) {
-          html.removeAttribute('data-toggled')
-        } else {
-          const map = {
-            closed: 'close-menu-close',
-            icontext: 'icon-text-close',
-            overlay: 'icon-overlay-close',
-            detached: 'detached-close',
-          }
-          html.setAttribute('data-toggled', map[verticalStyleType] || '')
-        }
-      }
-    }
-  }
-}
-
-const toggleFullScreen = () => {
-  const element = document.documentElement
-  if (document.fullscreenElement) {
-    document.exitFullscreen()
-  } else {
-    element.requestFullscreen()
-  }
-}
-
-const fullscreenChanged = () => {
-  isFullScreen.value = !!document.fullscreenElement
-}
-
-// Event handlers for modular components
-const handleLanguageChanged = (lang) => {
-  console.log('Language changed to:', lang)
-  // Add language change logic here
-}
-
-const handleThemeChanged = (theme) => {
-  console.log('Theme changed to:', theme)
-  // Theme is already handled in DarkModeToggle component
-}
-
-const handleCartUpdated = (cartItems) => {
-  notificationNotes.value = cartItems
-  console.log('Cart updated:', cartItems)
-}
-
-const handleNotificationsUpdated = (notifications) => {
-  console.log('Notifications updated:', notifications)
-  // Add notification update logic here
-}
-
-const handleFullscreenChanged = (isFullscreen) => {
-  isFullScreen.value = isFullscreen
-  console.log('Fullscreen changed:', isFullscreen)
-}
-
-// Legacy functions (kept for compatibility)
-const handleCartDelete = (id) => {
-  notificationNotes.value = notificationNotes.value.filter((item) => item.id !== id)
-}
-
-const dec = (event) => {
-  event.preventDefault()
-  const input = event.currentTarget.parentElement?.querySelector('input')
-  if (input) {
-    const unit = Number(input.value)
-    if (unit > 1) {
-      input.value = String(unit - 1)
-    }
-  }
-}
-
-const inc = (event) => {
-  event.preventDefault()
-  const input = event.currentTarget.parentElement?.querySelector('input')
-  if (input) {
-    input.value = String(Number(input.value) + 1)
-  }
-}
-
-const handleClickOutside = () => {
-  showSuggestions.value = false
-}
-
-const handleToChange = (event) => {
-  const target = event.target
-  search.value = target.value
-  showSuggestions.value = search.value.length > 0
-}
-
-const handleSuggestionClick = (suggestionTitle) => {
-  search.value = ''
-  showSuggestions.value = false
-}
-
-// Computed
-const filterSuggestions = computed(() => {
-  const getTitlesWithPaths = (menuItems) => {
-    const titles = []
-    menuItems.forEach((item) => {
-      if (item?.path) {
-        titles.push({ title: item.title, path: item.path })
-      }
-      if (Array.isArray(item?.children)) {
-        titles.push(...getTitlesWithPaths(item.children))
-      }
-    })
-    return titles
-  }
-  return getTitlesWithPaths(MENUITEMS)
-})
-
-const uniqueSuggestions = computed(() => {
-  const searchLower = search.value.toLowerCase()
-  const suggestions = filterSuggestions.value.filter((item) =>
-    item.title.toLowerCase().includes(searchLower)
-  )
-  const uniqueTitles = Array.from(new Set(suggestions.map((item) => item.title.toLowerCase())))
-  return uniqueTitles.map((title) => suggestions.find((item) => item.title.toLowerCase() === title))
-})
-
-// Tooltip lifecycle
-let pop = null
-
-onMounted(() => {
-  document.addEventListener('fullscreenchange', fullscreenChanged, { passive: true })
-  document.body.addEventListener('click', handleClickOutside, { passive: true })
-  pop = new Tooltip(document.body, {
-    selector: '[data-bs-toggle="tooltip"]',
-  })
-})
-
-onUnmounted(() => {
-  document.body.removeEventListener('click', handleClickOutside)
-  document.removeEventListener('fullscreenchange', fullscreenChanged)
-  if (pop) pop.dispose()
-
-  const popovers = document.getElementsByClassName('tooltip')
-  Array.from(popovers).forEach((el) => el.remove())
-})
-</script>

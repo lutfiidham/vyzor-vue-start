@@ -1,11 +1,11 @@
 <script setup>
-import { ref, computed } from 'vue'
-import * as CustomerData from '@/shared/data/dashboards/ecommerce/customersdata'
-import Swal from 'sweetalert2'
-import 'sweetalert2/dist/sweetalert2.min.css'
-import Pageheader from '@/components/pageheader/pageheader.vue'
-import BaseImg from '@/components/Baseimage/BaseImg.vue'
 import { Head } from '@inertiajs/vue3'
+import Swal from 'sweetalert2'
+import { computed, ref } from 'vue'
+import BaseImg from '@/components/Baseimage/BaseImg.vue'
+import Pageheader from '@/components/pageheader/pageheader.vue'
+import * as CustomerData from '@/shared/data/dashboards/ecommerce/customersdata'
+import 'sweetalert2/dist/sweetalert2.min.css'
 
 // Metadata
 const picked = ref(new Date())
@@ -32,10 +32,10 @@ const customers = ref([...CustomerData.CustomerTable])
 const filteredProducts = computed(() => {
   return customers.value
     .filter((product) => {
-      const matchesCategory =
-        CategoriesValue.value === 'Customer Status' ||
-        CategoriesValue.value === 'All Status' ||
-        product.status === CategoriesValue.value
+      const matchesCategory
+        = CategoriesValue.value === 'Customer Status'
+          || CategoriesValue.value === 'All Status'
+          || product.status === CategoriesValue.value
 
       const matchesSearch = product.name.toLowerCase().includes(searchQuery.value.toLowerCase())
 
@@ -65,7 +65,7 @@ function deleteCustomer(id) {
     confirmButtonText: 'Yes, delete it!',
   }).then((result) => {
     if (result.isConfirmed) {
-      customers.value = customers.value.filter((customer) => customer.id !== id)
+      customers.value = customers.value.filter(customer => customer.id !== id)
       Swal.fire('Deleted!', 'Customer has been deleted.', 'success')
     }
   })
@@ -74,7 +74,7 @@ function deleteCustomer(id) {
 
 <template>
   <Head title="Ecommerce-Customers List | Vyzor - Laravel & Vue " />
-  <Pageheader :propData="dataToPass" />
+  <Pageheader :prop-data="dataToPass" />
 
   <!-- Start::row-2 -->
   <div class="row">
@@ -84,13 +84,13 @@ function deleteCustomer(id) {
           <!-- Search Bar -->
           <div class="w-sm-25">
             <input
+              id="search-input"
+              v-model="searchQuery"
               class="form-control"
               type="search"
-              id="search-input"
               placeholder="Search Customer"
-              v-model="searchQuery"
               aria-label="search-product"
-            />
+            >
           </div>
 
           <!-- Filters Section -->
@@ -98,11 +98,11 @@ function deleteCustomer(id) {
             <!-- Category Filter -->
             <div class="">
               <VueMultiselect
+                v-model="CategoriesValue"
                 :searchable="true"
                 :allow-empty="false"
                 :show-labels="false"
                 placeholder="Customer Status"
-                v-model="CategoriesValue"
                 :options="Categories"
                 :taggable="false"
               />
@@ -112,41 +112,33 @@ function deleteCustomer(id) {
             <div class="">
               <div class="dropdown d-grid">
                 <button
+                  id="dropdownMenuButton1"
                   class="btn btn-primary-light dropdown-toggle"
                   type="button"
-                  id="dropdownMenuButton1"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <i class="ri-upload-2-line me-1"></i>Export
+                  <i class="ri-upload-2-line me-1" />Export
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="">
                   <li>
-                    <a class="dropdown-item" href="javascript:void(0);"
-                      ><i class="bi bi-file-earmark-excel me-2"></i>Excel</a
-                    >
+                    <a class="dropdown-item" href="javascript:void(0);"><i class="bi bi-file-earmark-excel me-2" />Excel</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="javascript:void(0);"
-                      ><i class="bi bi-file-earmark-excel me-2"></i>Csv</a
-                    >
+                    <a class="dropdown-item" href="javascript:void(0);"><i class="bi bi-file-earmark-excel me-2" />Csv</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="javascript:void(0);"
-                      ><i class="bi bi-filetype-pdf me-2"></i>PDF</a
-                    >
+                    <a class="dropdown-item" href="javascript:void(0);"><i class="bi bi-filetype-pdf me-2" />PDF</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="javascript:void(0);"
-                      ><i class="bi bi-file-zip me-2"></i>Zip</a
-                    >
+                    <a class="dropdown-item" href="javascript:void(0);"><i class="bi bi-file-zip me-2" />Zip</a>
                   </li>
                 </ul>
               </div>
             </div>
             <div class="d-grid">
               <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addtask">
-                <i class="ri ri-add-line me-1"></i>Add Customer
+                <i class="ri ri-add-line me-1" />Add Customer
               </button>
             </div>
           </div>
@@ -157,40 +149,51 @@ function deleteCustomer(id) {
         <!-- Table inside the card-body -->
         <div class="card-body p-0 custom-product-list">
           <div id="product-table" class="grid-card-table">
-            <v-table :data="filteredProducts" class="">
+            <VTable :data="filteredProducts" class="">
               <template #head>
-                <v-th class="gridjs-th gridjs-th-sort" sortKey="id" defaultSort="asc">#</v-th>
-                <v-th class="gridjs-th gridjs-th-sort" sortKey="id">Customer IP </v-th>
-                <v-th class="gridjs-th gridjs-th-sort" sortKey="price">Customer Name</v-th>
-                <v-th class="gridjs-th gridjs-th-sort" sortKey="stockStatus">Status</v-th>
-                <v-th class="gridjs-th gridjs-th-sort" sortKey="date">Joining Date</v-th>
-                <v-th class="gridjs-th gridjs-th-sort" sortKey="status">Actions</v-th>
+                <VTh class="gridjs-th gridjs-th-sort" sort-key="id" default-sort="asc">
+                  #
+                </VTh>
+                <VTh class="gridjs-th gridjs-th-sort" sort-key="id">
+                  Customer IP
+                </VTh>
+                <VTh class="gridjs-th gridjs-th-sort" sort-key="price">
+                  Customer Name
+                </VTh>
+                <VTh class="gridjs-th gridjs-th-sort" sort-key="stockStatus">
+                  Status
+                </VTh>
+                <VTh class="gridjs-th gridjs-th-sort" sort-key="date">
+                  Joining Date
+                </VTh>
+                <VTh class="gridjs-th gridjs-th-sort" sort-key="status">
+                  Actions
+                </VTh>
               </template>
 
               <template #body="{ rows }">
                 <tr v-if="rows.length === 0">
-                  <td colspan="9" class="text-center py-4">No matching records found</td>
+                  <td colspan="9" class="text-center py-4">
+                    No matching records found
+                  </td>
                 </tr>
                 <tr v-for="row in rows" :key="row.id" class="gridjs-tr">
                   <td data-column-id="#" class="gridjs-td">
-                    <span
-                      ><input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="customer-192.168.1.1"
-                        value=""
-                        aria-label="..."
-                    /></span>
+                    <span><input
+                      id="customer-192.168.1.1"
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      aria-label="..."
+                    ></span>
                   </td>
                   <td data-column-id="customerIp" class="gridjs-td">
-                    <span
-                      ><a href="javascript:void(0);">{{ row.ip }}</a></span
-                    >
+                    <span><a href="javascript:void(0);">{{ row.ip }}</a></span>
                   </td>
                   <td data-column-id="customerName" class="gridjs-td">
                     <span>
                       <div class="d-flex align-items-center gap-3 position-relative">
-                        <a href="javascript:void(0);" class="stretched-link"></a>
+                        <a href="javascript:void(0);" class="stretched-link" />
                         <div class="lh-1">
                           <span class="avatar avatar-md">
                             <BaseImg :src="row.avatar" alt="Customer Image" />
@@ -204,14 +207,13 @@ function deleteCustomer(id) {
                     </span>
                   </td>
                   <td data-column-id="status" class="gridjs-td">
-                    <span
-                      ><span
-                        :class="`badge bg-${row.status === 'Active' ? 'success' : 'danger'}-transparent`"
-                        >{{ row.status }}</span
-                      ></span
-                    >
+                    <span><span
+                      :class="`badge bg-${row.status === 'Active' ? 'success' : 'danger'}-transparent`"
+                    >{{ row.status }}</span></span>
                   </td>
-                  <td data-column-id="joiningDate" class="gridjs-td">{{ row.joinedDate }}</td>
+                  <td data-column-id="joiningDate" class="gridjs-td">
+                    {{ row.joinedDate }}
+                  </td>
                   <td data-column-id="actions" class="gridjs-td">
                     <span>
                       <div class="dropdown">
@@ -221,21 +223,18 @@ function deleteCustomer(id) {
                           data-bs-toggle="dropdown"
                           aria-expanded="false"
                         >
-                          <i class="ri-more-2-fill"></i>
+                          <i class="ri-more-2-fill" />
                         </a>
                         <ul class="dropdown-menu">
                           <li>
-                            <a class="dropdown-item" href="javascript:void(0);"
-                              ><i class="ri-pencil-line me-2"></i>Edit</a
-                            >
+                            <a class="dropdown-item" href="javascript:void(0);"><i class="ri-pencil-line me-2" />Edit</a>
                           </li>
                           <li>
                             <a
                               class="dropdown-item btn-delete"
                               href="javascript:void(0);"
                               @click="deleteCustomer(row.id)"
-                              ><i class="ri-delete-bin-line me-2"></i>Delete</a
-                            >
+                            ><i class="ri-delete-bin-line me-2" />Delete</a>
                           </li>
                         </ul>
                       </div>
@@ -243,7 +242,7 @@ function deleteCustomer(id) {
                   </td>
                 </tr>
               </template>
-            </v-table>
+            </VTable>
           </div>
           <div class="gridjs-footer">
             <div class="gridjs-pagination">
@@ -290,48 +289,52 @@ function deleteCustomer(id) {
   <!-- End::row-2 -->
 
   <!-- Start:: Add new customer modal -->
-  <div class="modal fade" id="addtask" tabindex="-1" aria-hidden="true">
+  <div id="addtask" class="modal fade" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content mt-5">
         <div class="modal-header">
-          <h6 class="modal-title" id="mail-ComposeLabel">Add Customer</h6>
+          <h6 id="mail-ComposeLabel" class="modal-title">
+            Add Customer
+          </h6>
           <button
             type="button"
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
-          ></button>
+          />
         </div>
         <div class="modal-body px-4">
           <div class="row gy-2">
             <div class="col-xl-12">
               <label for="customer-name" class="form-label">Customer Name</label>
               <input
+                id="customer-name"
                 type="text"
                 class="form-control"
-                id="customer-name"
                 placeholder="Customer Name"
-              />
+              >
             </div>
             <div class="col-xl-12">
               <label for="customer-email" class="form-label">Customer Email</label>
               <input
+                id="customer-email"
                 type="email"
                 class="form-control"
-                id="customer-email"
                 placeholder="Customer Email"
-              />
+              >
             </div>
             <div class="col-xl-12">
               <label class="form-label">Joined Date</label>
               <div class="form-group">
                 <div class="input-group salesDatePicker">
-                  <div class="input-group-text text-muted"><i class="ri-calendar-line"></i></div>
+                  <div class="input-group-text text-muted">
+                    <i class="ri-calendar-line" />
+                  </div>
                   <Datepicker
-                    class="form-control custom-date-picker custom"
-                    autoApply
-                    placeholder="Choose date"
                     v-model="picked"
+                    class="form-control custom-date-picker custom"
+                    auto-apply
+                    placeholder="Choose date"
                   />
                 </div>
               </div>
@@ -339,10 +342,10 @@ function deleteCustomer(id) {
             <div class="col-xl-12">
               <label class="form-label">Status</label>
               <VueMultiselect
+                v-model="SelectValue"
                 :searchable="true"
                 :show-labels="false"
                 placeholder="Customer Status"
-                v-model="SelectValue"
                 :options="Select"
                 :taggable="false"
               />
@@ -350,8 +353,12 @@ function deleteCustomer(id) {
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Add Customer</button>
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+            Cancel
+          </button>
+          <button type="button" class="btn btn-primary">
+            Add Customer
+          </button>
         </div>
       </div>
     </div>
