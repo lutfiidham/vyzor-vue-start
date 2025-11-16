@@ -507,23 +507,31 @@ watch(
         <div class="card custom-card">
           <div class="card-header justify-content-between">
             <div class="card-title">Menus List</div>
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center gap-3">
               <!-- Demo Menu Toggle -->
               <div class="d-flex align-items-center">
                 <ToggleSwitch
-                  customClass="toggle-secondary"
+                  customClass="toggle-warning"
                   mainClass="d-flex align-items-center gap-2"
                   :isOn="showDemoMenu"
-                  title="Show Demo Menu"
+                  title="md"
                   @toggle="toggleDemoMenu($event)"
                 />
+                <span class="text-muted ms-2 fw-medium">Show Demo Menu</span>
               </div>
-              <button class="btn btn-secondary btn-wave me-2" @click="clearCache">
-                <i class="ri-refresh-line me-1"></i>Clear Cache
-              </button>
-              <button class="btn btn-primary btn-wave" @click="openCreateModal">
-                <i class="ri-add-line me-1"></i>Create Menu
-              </button>
+
+              <!-- Divider -->
+              <div class="border-start" style="height: 24px; width: 1px;"></div>
+
+              <!-- Action Buttons -->
+              <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-sm btn-secondary btn-wave" @click="clearCache">
+                  <i class="ri-refresh-line me-1"></i>Clear Cache
+                </button>
+                <button class="btn btn-sm btn-primary btn-wave" @click="openCreateModal">
+                  <i class="ri-add-line me-1"></i>Create Menu
+                </button>
+              </div>
             </div>
           </div>
           <div class="card-body">
