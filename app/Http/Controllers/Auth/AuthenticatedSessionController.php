@@ -55,14 +55,21 @@ class AuthenticatedSessionController extends Controller
         // Find user
         $user = User::where($loginField, $request->username)->first();
 
-        // Check if user exists and password is correct
-        if (!$user || !Auth::attempt([
-            $loginField => $request->username, 
+        // Check if user exists, password is correct, and user is active
+        if (!$user || !$user->is_active || !Auth::attempt([
+            $loginField => $request->username,
             'password' => $request->password
         ], $request->boolean('remember'))) {
-            
+
             // Increment rate limiter on failed attempt
             RateLimiter::hit($throttleKey, 60);
+
+            // Provide specific error for inactive users
+            if ($user && !$user->is_active) {
+                throw ValidationException::withMessages([
+                    'username' => __('auth.inactive'),
+                ]);
+            }
 
             throw ValidationException::withMessages([
                 'username' => __('auth.failed'),

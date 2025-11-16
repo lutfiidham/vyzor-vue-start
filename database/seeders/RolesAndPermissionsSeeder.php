@@ -61,6 +61,8 @@ class RolesAndPermissionsSeeder extends Seeder
             'system.maintenance',
             'system.backup',
             'system.restore',
+
+            'demo.view',
         ];
 
         foreach ($permissions as $permission) {
