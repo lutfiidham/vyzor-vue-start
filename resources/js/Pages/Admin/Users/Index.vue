@@ -44,9 +44,10 @@
               <div class="col-xl-2 col-lg-3 col-md-6">
                 <select class="form-select" v-model="filters.role" @change="applyFilters">
                   <option value="">All Roles</option>
-                  <option value="admin">Admin</option>
-                  <option value="manager">Manager</option>
-                  <option value="user">User</option>
+                  <option value="Super Admin">Super Admin</option>
+                  <option value="Admin">Admin</option>
+                  <option value="Manager">Manager</option>
+                  <option value="User">User</option>
                 </select>
               </div>
               <div class="col-xl-2 col-lg-3 col-md-6">
@@ -298,9 +299,10 @@
                     :disabled="viewingUser"
                     required
                   >
-                    <option value="user">User</option>
-                    <option value="manager">Manager</option>
-                    <option value="admin">Admin</option>
+                    <option value="User">User</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Super Admin">Super Admin</option>
                   </select>
                 </div>
                 <div class="col-xl-6 mb-3">
@@ -350,9 +352,10 @@ const props = defineProps({
     type: Object,
     default: () => ({
       data: [
-        { id: 1, name: 'Admin User', email: 'admin@vyzor.test', role: 'admin', is_active: true, last_login_at: '2025-11-09T08:00:00Z', locked_until: null },
-        { id: 2, name: 'Manager User', email: 'manager@vyzor.test', role: 'manager', is_active: true, last_login_at: '2025-11-09T07:30:00Z', locked_until: null },
-        { id: 3, name: 'Regular User', email: 'user@vyzor.test', role: 'user', is_active: true, last_login_at: '2025-11-08T15:20:00Z', locked_until: null }
+        { id: 1, name: 'Super Admin', email: 'superadmin@vyzor.test', role: 'Super Admin', is_active: true, last_login_at: '2025-11-09T08:00:00Z', locked_until: null },
+        { id: 2, name: 'Admin User', email: 'admin@vyzor.test', role: 'Admin', is_active: true, last_login_at: '2025-11-09T08:00:00Z', locked_until: null },
+        { id: 3, name: 'Manager User', email: 'manager@vyzor.test', role: 'Manager', is_active: true, last_login_at: '2025-11-09T07:30:00Z', locked_until: null },
+        { id: 4, name: 'Regular User', email: 'user@vyzor.test', role: 'User', is_active: true, last_login_at: '2025-11-08T15:20:00Z', locked_until: null }
       ],
       total: 3,
       from: 1,

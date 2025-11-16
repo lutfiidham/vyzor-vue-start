@@ -723,21 +723,28 @@ const props = defineProps({
     default: () => [
       {
         id: 1,
-        name: 'admin',
-        description: 'Administrator with full access',
+        name: 'Super Admin',
+        description: 'Super Administrator with full system access',
         permissions: [],
         users_count: 1,
       },
       {
         id: 2,
-        name: 'manager',
+        name: 'Admin',
+        description: 'Administrator with full access',
+        permissions: [],
+        users_count: 1,
+      },
+      {
+        id: 3,
+        name: 'Manager',
         description: 'Manager with limited admin access',
         permissions: [],
         users_count: 2,
       },
       {
-        id: 3,
-        name: 'user',
+        id: 4,
+        name: 'User',
         description: 'Regular user with basic access',
         permissions: [],
         users_count: 5,

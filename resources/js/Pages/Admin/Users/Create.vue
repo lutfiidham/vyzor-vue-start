@@ -7,14 +7,15 @@ const form = useForm({
   email: '',
   password: '',
   password_confirmation: '',
-  role: 'user',
+  role: 'User',
   status: 'active'
 })
 
 const roles = [
-  { value: 'admin', label: 'Admin' },
-  { value: 'manager', label: 'Manager' },
-  { value: 'user', label: 'User' }
+  { value: 'Super Admin', label: 'Super Admin' },
+  { value: 'Admin', label: 'Admin' },
+  { value: 'Manager', label: 'Manager' },
+  { value: 'User', label: 'User' }
 ]
 
 const statuses = [

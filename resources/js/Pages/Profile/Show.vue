@@ -213,7 +213,7 @@ const props = defineProps({
       email: 'admin@vyzor.test',
       phone: null,
       avatar: null,
-      role: 'admin',
+      role: 'Admin',
       timezone: 'UTC',
       locale: 'en',
       is_active: true,

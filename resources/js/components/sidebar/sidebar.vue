@@ -162,16 +162,21 @@ const showDemoMenu = computed(() => {
   return page.props.settings?.show_demo_menu || false
 })
 
-// Check if user is admin
-const isAdmin = computed(() => {
-  return userRoles.value.some((role) =>
-    typeof role === 'string' ? role.toLowerCase() === 'admin' : role.name?.toLowerCase() === 'admin'
-  )
+// Check if user has admin-level access (Super Admin or Admin)
+const isSuperAdminLevel = computed(() => {
+  return userRoles.value.some((role) => {
+    if (typeof role === 'string') {
+      const roleLower = role.toLowerCase()
+      return roleLower === 'super admin'
+    }
+    const roleName = role.name?.toLowerCase()
+    return roleName === 'super admin'
+  })
 })
 
-// Check if demo menu should be shown
+// Check if demo menu should be shown (only for admin-level users)
 const shouldShowDemoMenu = computed(() => {
-  return isAdmin.value && showDemoMenu.value
+  return isSuperAdminLevel.value && showDemoMenu.value
 })
 
 // Computed logo link - if on demo pages, link to demo dashboard, else to main dashboard

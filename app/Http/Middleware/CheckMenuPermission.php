@@ -13,8 +13,8 @@ class CheckMenuPermission
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Allow access if user has admin role (bypass permission check)
-        if (auth()->user() && auth()->user()->hasRole('admin')) {
+        // Allow access if user has Super Admin or Admin role (bypass permission check)
+        if (auth()->user() && auth()->user()->hasAnyRole(['Super Admin', 'Admin'])) {
             return $next($request);
         }
         

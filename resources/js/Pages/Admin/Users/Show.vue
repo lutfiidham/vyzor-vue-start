@@ -23,7 +23,10 @@ const getStatusBadgeClass = (status) => {
 }
 
 const getRoleBadgeClass = (role) => {
-  switch (role) {
+  const roleLower = role?.toLowerCase()
+  switch (roleLower) {
+    case 'super admin':
+      return 'bg-purple'
     case 'admin':
       return 'bg-danger'
     case 'manager':

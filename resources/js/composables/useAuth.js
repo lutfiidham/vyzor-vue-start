@@ -26,11 +26,31 @@ export function useAuth() {
     return roles.every(role => userRoles.includes(role))
   }
   
-  const isAdmin = computed(() => hasRole('admin'))
+  const isSuperAdmin = computed(() => {
+    const userRoles = user.value?.roles || []
+    return userRoles.includes('Super Admin')
+  })
   
-  const isManager = computed(() => hasRole('manager'))
+  const isAdmin = computed(() => {
+    const userRoles = user.value?.roles || []
+    return userRoles.includes('Admin')
+  })
   
-  const isUser = computed(() => hasRole('user'))
+  const isManager = computed(() => {
+    const userRoles = user.value?.roles || []
+    return userRoles.includes('Manager')
+  })
+  
+  const isUser = computed(() => {
+    const userRoles = user.value?.roles || []
+    return userRoles.includes('User')
+  })
+  
+  // Helper to check if user has admin-level access (Super Admin or Admin)
+  const isAdminLevel = computed(() => {
+    const userRoles = user.value?.roles || []
+    return userRoles.includes('Super Admin') || userRoles.includes('Admin')
+  })
 
   return {
     user,
@@ -38,7 +58,9 @@ export function useAuth() {
     hasRole,
     hasAnyRole,
     hasAllRoles,
+    isSuperAdmin,
     isAdmin,
+    isAdminLevel,
     isManager,
     isUser,
   }

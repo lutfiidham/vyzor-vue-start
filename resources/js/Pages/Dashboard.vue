@@ -220,8 +220,8 @@
       </div>
     </div>
 
-    <!-- System Info - Only visible for Admin -->
-    <div class="row" v-if="isAdmin">
+    <!-- System Info - Only visible for Super Admin -->
+    <div class="row" v-if="isSuperAdmin">
       <div class="col-xl-12">
         <div class="card custom-card">
           <div class="card-header">
@@ -272,7 +272,7 @@ const props = defineProps({
 })
 
 // Auth composable
-const { user, isAdmin } = useAuth()
+const { user, isAdminLevel, isSuperAdmin, isAdmin } = useAuth()
 
 // Page data
 const page = usePage()
