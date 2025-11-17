@@ -12,5 +12,7 @@ return new class extends SettingsMigration
         $this->migrator->add('general.timezone', config('app.timezone', 'UTC'));
         $this->migrator->add('general.date_format', 'Y-m-d');
         $this->migrator->add('general.app_description', 'Modern Laravel + Vue.js Application');
+        $this->migrator->add('general.app_keywords', 'Modern Laravel + Vue.js Application');
+        $this->migrator->add('general.show_demo_menu', true);
     }
 };

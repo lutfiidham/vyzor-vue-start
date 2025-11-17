@@ -21,6 +21,7 @@ class SettingsSeeder extends Seeder
         $generalSettings->timezone = config('app.timezone', 'UTC');
         $generalSettings->date_format = 'Y-m-d';
         $generalSettings->app_description = 'Modern Laravel + Vue.js Application with Advanced Features';
+        $generalSettings->show_demo_menu = true;
         $generalSettings->save();
 
         // Email Settings
