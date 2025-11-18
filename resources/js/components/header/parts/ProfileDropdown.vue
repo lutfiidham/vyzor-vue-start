@@ -29,12 +29,13 @@ const userInitials = computed(() => {
       aria-expanded="false"
     >
       <div class="d-flex align-items-center">
-        <span class="avatar avatar-sm avatar-rounded me-2">
+        <span class="avatar avatar-sm avatar-rounded me-2 header-avatar">
           <BaseImg
             v-if="currentUser?.avatar"
             :src="currentUser.avatar"
             alt="User Avatar"
             class="header-link-icon"
+            style="object-fit: cover;"
           />
           <span v-else class="avatar-title bg-primary header-link-icon">{{ userInitials }}</span>
         </span>
@@ -63,8 +64,8 @@ const userInitials = computed(() => {
       <div class="p-3">
         <div class="d-flex align-items-start gap-2">
           <div class="lh-1">
-            <span class="avatar avatar-sm bg-primary-transparent avatar-rounded">
-              <BaseImg v-if="currentUser?.avatar" :src="currentUser.avatar" alt="User Avatar" />
+            <span class="avatar avatar-sm bg-primary-transparent avatar-rounded dropdown-avatar">
+              <BaseImg v-if="currentUser?.avatar" :src="currentUser.avatar" alt="User Avatar" style="object-fit: cover;" />
               <span v-else class="avatar-title bg-primary">{{ userInitials }}</span>
             </span>
           </div>
