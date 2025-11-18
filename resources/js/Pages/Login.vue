@@ -1,6 +1,6 @@
 <script setup>
 import { Head, Link, useForm, usePage } from '@inertiajs/vue3'
-import { getCurrentInstance, onMounted, onUnmounted } from 'vue'
+import { getCurrentInstance, onMounted, onUnmounted, ref } from 'vue'
 import PasswordInput from '../../UI/passwordInput.vue'
 import BaseImg from '../components/Baseimage/BaseImg.vue'
 import authlayout from '../layouts/authlayout.vue'
@@ -20,6 +20,7 @@ const form = useForm({
 })
 
 const theme = localStorage.getItem('vyzorcolortheme') || 'light'
+const showForgotPasswordModal = ref(false)
 
 function login() {
   form.post('/login', {
@@ -44,6 +45,14 @@ function login() {
       })
     },
   })
+}
+
+function openForgotPasswordModal() {
+  showForgotPasswordModal.value = true
+}
+
+function closeForgotPasswordModal() {
+  showForgotPasswordModal.value = false
 }
 
 onMounted(() => {
@@ -138,19 +147,13 @@ onMounted(() => {
                   </div>
                   <div class="mt-2">
                     <div class="form-check d-flex gap-2 flex-wrap">
-                      <input
-                        id="defaultCheck1"
-                        v-model="form.remember"
-                        class="form-check-input"
-                        type="checkbox"
-                      >
-                      <label class="form-check-label grow" for="defaultCheck1"> Remember me </label>
-                      <Link
-                        :href="`${baseUrl}/demo/pages/authentication/reset-password/basic`"
-                        class="float-end link-danger fw-medium fs-12"
+                      <button
+                        type="button"
+                        @click="openForgotPasswordModal"
+                        class="float-end link-danger fw-medium fs-12 border-0 bg-transparent p-0"
                       >
                         Forget password ?
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -169,27 +172,6 @@ onMounted(() => {
                 </button>
               </div>
             </form>
-            <div class="text-center my-3 authentication-barrier">
-              <span class="op-4 fs-13">OR</span>
-            </div>
-            <div class="d-grid mb-3">
-              <button
-                class="btn btn-white btn-w-lg border d-flex align-items-center justify-content-center flex-fill mb-3"
-              >
-                <span class="avatar avatar-xs">
-                  <BaseImg src="/images/media/apps/google.png" alt="" />
-                </span>
-                <span class="lh-1 ms-2 fs-13 text-default fw-medium">Signup with Google</span>
-              </button>
-              <button
-                class="btn btn-white btn-w-lg border d-flex align-items-center justify-content-center flex-fill"
-              >
-                <span class="avatar avatar-xs">
-                  <BaseImg src="/images/media/apps/facebook.png" alt="" />
-                </span>
-                <span class="lh-1 ms-2 fs-13 text-default fw-medium">Signup with Facebook</span>
-              </button>
-            </div>
             <div class="text-center mt-3 fw-medium">
               Dont have an account?
               <Link
@@ -200,6 +182,61 @@ onMounted(() => {
               </Link>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Forgot Password Modal -->
+  <div
+    v-if="showForgotPasswordModal"
+    class="modal fade show d-block"
+    tabindex="-1"
+    style="background-color: rgba(0, 0, 0, 0.5)"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">
+            Forgot Password
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            @click="closeForgotPasswordModal"
+            aria-label="Close"
+          />
+        </div>
+        <div class="modal-body">
+          <div class="text-center mb-4">
+            <i class="ti ti-lock fs-1 text-primary mb-3" />
+            <h6>Hubungi Administrator</h6>
+            <p class="text-muted">
+              Untuk reset password, silakan hubungi administrator sistem melalui:
+            </p>
+          </div>
+          <div class="contact-info bg-light p-3 rounded mb-3">
+            <div class="d-flex align-items-center mb-2">
+              <i class="ti ti-mail me-2 text-primary" />
+              <strong>Email:</strong> support@vyzor.test
+            </div>
+            <div class="d-flex align-items-center">
+              <i class="ti ti-phone me-2 text-primary" />
+              <strong>Phone:</strong> +62 XXX-XXXX-XXXX
+            </div>
+          </div>
+          <p class="text-muted small mb-0">
+            Administrator akan membantu Anda melakukan reset password dengan aman.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            @click="closeForgotPasswordModal"
+          >
+            Close
+          </button>
         </div>
       </div>
     </div>

@@ -102,7 +102,7 @@ onMounted(() => {
                 Sign Up
               </h4>
               <p class="mb-4 text-muted fw-normal">
-                Join us by creating a free account!
+                Join us by creating an account!
               </p>
             </div>
             <form @submit.prevent="register">
@@ -177,28 +177,7 @@ onMounted(() => {
                   <span v-else>Sign Up</span>
                 </button>
               </div>
-            </form>
-            <div class="text-center my-3 authentication-barrier">
-              <span class="op-4 fs-13">OR</span>
-            </div>
-            <div class="d-grid mb-3">
-              <button
-                class="btn btn-white btn-w-lg border d-flex align-items-center justify-content-center flex-fill mb-3"
-              >
-                <span class="avatar avatar-xs">
-                  <BaseImg src="/images/media/apps/google.png" alt="" />
-                </span>
-                <span class="lh-1 ms-2 fs-13 text-default fw-medium">Signup with Google</span>
-              </button>
-              <button
-                class="btn btn-white btn-w-lg border d-flex align-items-center justify-content-center flex-fill"
-              >
-                <span class="avatar avatar-xs">
-                  <BaseImg src="/images/media/apps/facebook.png" alt="" />
-                </span>
-                <span class="lh-1 ms-2 fs-13 text-default fw-medium">Signup with Facebook</span>
-              </button>
-            </div>
+            </form>            
             <div class="text-center mt-3 fw-medium">
               Already have an account?
               <Link
