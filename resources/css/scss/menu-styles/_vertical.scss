@@ -141,6 +141,7 @@
     &.active {
       color: variables.$primary;
       background-color: variables.$primary-01;
+      box-shadow: 0 2px 8px rgba(67, 97, 238, 0.15), 0 1px 3px rgba(67, 97, 238, 0.1);
 
       .side-menu__label,
       .side-menu__angle {
@@ -195,6 +196,7 @@
 
         &.active {
           background-color: transparent !important;
+          box-shadow: 0 2px 6px rgba(67, 97, 238, 0.12), 0 1px 2px rgba(67, 97, 238, 0.08);
         }
       }
     }
